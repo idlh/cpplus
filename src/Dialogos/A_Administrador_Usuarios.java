@@ -31,6 +31,20 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -41,6 +55,7 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         jPanel2.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Atención Administrativa");
         jPanel2.add(jLabel1);
         jLabel1.setBounds(10, 10, 140, 14);
@@ -50,13 +65,57 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         jLabel2.setBounds(10, 22, 290, 14);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 0, 440, 50);
+        jPanel2.setBounds(0, 0, 480, 50);
+
+        jLabel3.setText("Identificación:");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(20, 80, 80, 20);
+        jPanel1.add(jTextField1);
+        jTextField1.setBounds(100, 80, 120, 20);
+
+        jLabel4.setText("HC:");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(260, 80, 40, 20);
+        jPanel1.add(jTextField2);
+        jTextField2.setBounds(310, 80, 120, 20);
+
+        jLabel5.setText("1er Nombre:");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(20, 200, 70, 20);
+        jPanel1.add(jTextField3);
+        jTextField3.setBounds(100, 200, 120, 20);
+
+        jLabel6.setText("2do Nombre:");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(240, 200, 70, 20);
+        jPanel1.add(jTextField4);
+        jTextField4.setBounds(310, 200, 120, 20);
+
+        jLabel7.setText("1er Apellido:");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(20, 230, 70, 20);
+        jPanel1.add(jTextField5);
+        jTextField5.setBounds(100, 230, 120, 20);
+
+        jLabel8.setText("2do Apellido:");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(240, 230, 70, 20);
+        jPanel1.add(jTextField6);
+        jTextField6.setBounds(310, 230, 120, 20);
+
+        jLabel9.setText("TD:");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(20, 110, 17, 14);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox1);
+        jComboBox1.setBounds(100, 110, 56, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,9 +167,23 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,7 +18,7 @@ Clases.Declaraciones Declaraciones = new Clases.Declaraciones();
     public Desktop() {
         initComponents();
         setLocationRelativeTo(this);
-        
+        JOptionPane.showMessageDialog(null, "Done.");
     }
 
     /**
