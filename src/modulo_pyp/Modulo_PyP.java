@@ -11,7 +11,7 @@ import javax.swing.UIManager;
  * @author IdlhDeveloper
  */
 public class Modulo_PyP {
-
+public static Desktop d ;
     /**
      * @param args the command line arguments
      */
@@ -20,7 +20,7 @@ public class Modulo_PyP {
          UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }catch(Exception e){
         }
-        Desktop d = new Desktop();
+        d = new Desktop();
         d.show();
     }
 }
