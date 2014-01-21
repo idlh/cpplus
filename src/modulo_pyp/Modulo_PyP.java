@@ -4,6 +4,8 @@
  */
 package modulo_pyp;
 
+import javax.swing.UIManager;
+
 /**
  *
  * @author IdlhDeveloper
@@ -14,7 +16,10 @@ public class Modulo_PyP {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+         try {
+         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }catch(Exception e){
+        }
         Desktop d = new Desktop();
         d.show();
     }
