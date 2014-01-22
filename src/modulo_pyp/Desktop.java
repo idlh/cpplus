@@ -11,14 +11,13 @@ import javax.swing.JOptionPane;
  * @author IdlhDeveloper
  */
 public class Desktop extends javax.swing.JFrame {
-Clases.Declaraciones Declaraciones = new Clases.Declaraciones();
+Clases.Declaraciones_AD Declaraciones = new Clases.Declaraciones_AD();
     /**
      * Creates new form Desktop
      */
     public Desktop() {
         initComponents();
         setLocationRelativeTo(this);
-        JOptionPane.showMessageDialog(null, "Done.");
     }
 
     /**
@@ -181,7 +180,9 @@ Clases.Declaraciones Declaraciones = new Clases.Declaraciones();
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-        Lanzar_Administrativos();
+        Dialogos.A_Administrador_Usuarios AU = new Dialogos.A_Administrador_Usuarios(this, rootPaneCheckingEnabled);
+        AU.show();
+       // Lanzar_Administrativos();
     }//GEN-LAST:event_jLabel5MouseClicked
     private void Lanzar_Administrativos(){
         try {

@@ -8,7 +8,7 @@ package Clases;
  *
  * @author IdlhDeveloper
  */
-public class Declaraciones {
+public class Declaraciones_AD {
     public Administrativo.C_Contenedor CContenedor = new Administrativo.C_Contenedor();
     
 }
