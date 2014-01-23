@@ -83,6 +83,7 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -283,6 +284,11 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
 
         jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/reload-limpiar.png"))); // NOI18N
         jLabel28.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel28MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel28);
         jLabel28.setBounds(340, 470, 42, 40);
 
@@ -290,6 +296,20 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         jLabel29.setPreferredSize(new java.awt.Dimension(40, 14));
         jPanel1.add(jLabel29);
         jLabel29.setBounds(30, 490, 260, 14);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(0, 50, 450, 10);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -308,6 +328,10 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
         this.dispose();
     }//GEN-LAST:event_jLabel27MouseClicked
+
+    private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
+        Limpiar();
+    }//GEN-LAST:event_jLabel28MouseClicked
 
     /**
      * @param args the command line arguments
@@ -356,7 +380,7 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
               if(!jTextField2.getText().isEmpty()){
                if(!jTextField3.getText().isEmpty()){
                  if(!jTextField5.getText().isEmpty()){
-              
+                   
                   
                   
                   
@@ -443,6 +467,7 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;

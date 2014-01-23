@@ -72,7 +72,7 @@ Clases.Declaraciones_AD Declaraciones = new Clases.Declaraciones_AD();
         jPanel5.setLayout(null);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/37.png"))); // NOI18N
-        jLabel5.setText("Atención Administrativa");
+        jLabel5.setText("Agendar Pacientes");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -88,16 +88,19 @@ Clases.Declaraciones_AD Declaraciones = new Clases.Declaraciones_AD();
         jPanel5.add(jLabel5);
         jLabel5.setBounds(20, 30, 170, 20);
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/clip_board.png"))); // NOI18N
-        jLabel10.setText("Atención de Enfermeria");
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/male.png"))); // NOI18N
+        jLabel10.setText("Re-programar");
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel5.add(jLabel10);
         jLabel10.setBounds(20, 94, 160, 20);
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/male.png"))); // NOI18N
-        jLabel9.setText("Atención Médica");
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/clip_board.png"))); // NOI18N
+        jLabel9.setText("Confirmar Asistencia");
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel9MouseEntered(evt);
             }
@@ -180,21 +183,37 @@ Clases.Declaraciones_AD Declaraciones = new Clases.Declaraciones_AD();
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-        Dialogos.A_Administrador_Usuarios AU = new Dialogos.A_Administrador_Usuarios(this, rootPaneCheckingEnabled);
-        AU.show();
-       // Lanzar_Administrativos();
+        Lanzar_Administrativos();
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        Dialogos.A_Programas DProgramas = new Dialogos.A_Programas(null, true);
+        DProgramas.show();
+    }//GEN-LAST:event_jLabel9MouseClicked
     private void Lanzar_Administrativos(){
         try {
-            Contenedor_.removeAll();
-            Declaraciones.CContenedor.setBounds(0, 0, 745, 393);
-            Contenedor_.add(Declaraciones.CContenedor);
-            Contenedor_.repaint();
-            Contenedor_.validate();
-            this.repaint();
+            if(Contenedor_.getComponentCount()==0){
+                Load_Contenedor();
+                Declaraciones.CContenedor.area.addTab("Agendar Pacientes",Declaraciones.Agendar);
+                Declaraciones.CContenedor.area.setSelectedComponent(Declaraciones.Agendar);
+                }else{
+                Declaraciones.CContenedor.area.setSelectedComponent(Declaraciones.Agendar);
+                }
+                Declaraciones.Agendar.repaint();
+                Declaraciones.Agendar.validate();
+                Declaraciones.CContenedor.area.repaint();
+                Declaraciones.CContenedor.area.validate();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+    }
+    private void Load_Contenedor(){
+        Contenedor_.removeAll();
+        Declaraciones.CContenedor.setBounds(0, 0, 745, 393);
+        Contenedor_.add(Declaraciones.CContenedor);
+        this.repaint();
+        Contenedor_.repaint();
+        Contenedor_.validate();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JPanel Contenedor_;

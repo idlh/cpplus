@@ -27,12 +27,14 @@ public class C_Contenedor extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        area = new javax.swing.JTabbedPane();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
-        jPanel1.add(jTabbedPane1);
-        jTabbedPane1.setBounds(0, 0, 747, 394);
+
+        area.setFocusable(false);
+        jPanel1.add(area);
+        area.setBounds(0, 0, 747, 394);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -46,7 +48,7 @@ public class C_Contenedor extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTabbedPane area;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
