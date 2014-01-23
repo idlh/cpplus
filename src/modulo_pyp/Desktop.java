@@ -89,7 +89,7 @@ Clases.Declaraciones_AD Declaraciones = new Clases.Declaraciones_AD();
         jLabel5.setBounds(20, 30, 170, 20);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/male.png"))); // NOI18N
-        jLabel10.setText("Re-programar");
+        jLabel10.setText("Re - programar");
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel5.add(jLabel10);
         jLabel10.setBounds(20, 94, 160, 20);
