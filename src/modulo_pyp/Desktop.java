@@ -4,6 +4,7 @@
  */
 package modulo_pyp;
 
+import Dialogos.ListPacientes;
 import javax.swing.JOptionPane;
 
 /**
@@ -121,6 +122,11 @@ Clases.Declaraciones_AD Declaraciones = new Clases.Declaraciones_AD();
         jLabel1.setBounds(0, 0, 203, 304);
 
         jLabel2.setText("jLabel2");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel2MouseReleased(evt);
+            }
+        });
         jPanel5.add(jLabel2);
         jLabel2.setBounds(10, 310, 34, 30);
 
@@ -190,6 +196,11 @@ Clases.Declaraciones_AD Declaraciones = new Clases.Declaraciones_AD();
         Dialogos.A_Programas DProgramas = new Dialogos.A_Programas(null, true);
         DProgramas.show();
     }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+        ListPacientes lp = new ListPacientes(null, true);
+        lp.setVisible(true);
+    }//GEN-LAST:event_jLabel2MouseReleased
     private void Lanzar_Administrativos(){
         try {
             if(Contenedor_.getComponentCount()==0){
