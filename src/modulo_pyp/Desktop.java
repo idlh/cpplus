@@ -4,18 +4,13 @@
  */
 package modulo_pyp;
 
-import Dialogos.ListPacientes;
-import javax.swing.JOptionPane;
-
-/**
- *
- * @author IdlhDeveloper
- */
+import Clases.Declaraciones_AD;
 import Dialogos.ListPacientes;
 import javax.swing.JOptionPane;
 public class Desktop extends javax.swing.JFrame {
 Clases.Declaraciones_AD Declaraciones = new Clases.Declaraciones_AD();
 public Administrativo.C_Agendar Agendar = new Administrativo.C_Agendar();
+public Administrativo.C_Confirmar Confirmar = new Administrativo.C_Confirmar();
     /**
      * Creates new form Desktop
      */
@@ -192,19 +187,18 @@ public Administrativo.C_Agendar Agendar = new Administrativo.C_Agendar();
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-        Lanzar_Administrativos();
+        Lanzar_Agend();
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        Dialogos.A_Programas DProgramas = new Dialogos.A_Programas(null, true);
-        DProgramas.show();
+       Lanzar_Asistencia();
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
         ListPacientes lp = new ListPacientes(null, true);
         lp.setVisible(true);
     }//GEN-LAST:event_jLabel2MouseReleased
-    private void Lanzar_Administrativos(){
+    private void Lanzar_Agend(){
         try {        
             if(Contenedor_.getComponentCount()==0){
                 Load_Contenedor();
@@ -224,10 +218,30 @@ public Administrativo.C_Agendar Agendar = new Administrativo.C_Agendar();
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
+    private void Lanzar_Asistencia(){
+        try {
+            if(Contenedor_.getComponentCount()==0){
+               Load_Contenedor();
+               Declaraciones_AD.CContenedor.area.addTab("Confirmar Asistencia", Confirmar);
+               Declaraciones_AD.CContenedor.area.setSelectedComponent(Confirmar);
+               Agendar.repaint();
+               Agendar.validate();
+            }else{
+               Declaraciones_AD.CContenedor.area.addTab("Confirmar Asistencia", Confirmar);
+               Declaraciones_AD.CContenedor.area.setSelectedComponent(Confirmar);
+               Agendar.repaint();
+               Agendar.validate(); 
+            }
+            Declaraciones_AD.CContenedor.area.repaint();
+            Declaraciones_AD.CContenedor.area.validate();
+        } catch (Exception e) {
+           JOptionPane.showMessageDialog(this, e.getMessage()); 
+        }
+    }
     private void Load_Contenedor(){
         Contenedor_.removeAll();
-        Declaraciones.CContenedor.setBounds(0, 0, 745, 393);
-        Contenedor_.add(Declaraciones.CContenedor);
+        Declaraciones_AD.CContenedor.setBounds(0, 0, 745, 393);
+        Contenedor_.add(Declaraciones_AD.CContenedor);
         this.repaint();
         Contenedor_.repaint();
         Contenedor_.validate();

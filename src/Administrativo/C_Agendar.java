@@ -115,6 +115,7 @@ public PypAdmProgramas programa=null;
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextField3.setToolTipText("Recuerde ingrese la hora en formato HH:mm (24 Horas)");
         jFormattedTextField3.setMinimumSize(new java.awt.Dimension(22, 20));
         jFormattedTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
