@@ -4,8 +4,8 @@
  */
 package modulo_pyp;
 
-import Clases.Declaraciones_AD;
-
+import Dialogos.ListPacientes;
+import javax.swing.JOptionPane;
 
 /**
  *
