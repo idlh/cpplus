@@ -12,11 +12,7 @@ import Entidades.PypAdmProgramas;
  * @author IdlhDeveloper
  */
 public class Declaraciones_AD {
-    
-    
-    //Dialogos
-   
-    
+        
     //Contenedores - Panel's
     public static Administrativo.C_Contenedor CContenedor = new Administrativo.C_Contenedor();
     
