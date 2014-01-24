@@ -4,7 +4,7 @@
  */
 package Clases;
 
-import Controladores.PypAdmProgramasJpaController;
+import Entidades.PypAdmAgend;
 import Entidades.PypAdmProgramas;
 
 /**
@@ -18,20 +18,13 @@ public class Declaraciones_AD {
    
     
     //Contenedores - Panel's
-    public Administrativo.C_Contenedor CContenedor = new Administrativo.C_Contenedor();
-    public Administrativo.C_Agendar Agendar = new Administrativo.C_Agendar();
+    public static Administrativo.C_Contenedor CContenedor = new Administrativo.C_Contenedor();
+    
     
     //Entidades
     public PypAdmProgramas Programas_PYP  = new PypAdmProgramas();
+    public PypAdmAgend RAgendas = new PypAdmAgend();
     
     //Controladores
-    public PypAdmProgramasJpaController Control_Programas_PYP = new PypAdmProgramasJpaController();
-    
-    
-    
-    
-    
-    
-    
-    
+     
 }

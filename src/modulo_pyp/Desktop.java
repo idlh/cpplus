@@ -4,6 +4,7 @@
  */
 package modulo_pyp;
 
+import Clases.Declaraciones_AD;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,6 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class Desktop extends javax.swing.JFrame {
 Clases.Declaraciones_AD Declaraciones = new Clases.Declaraciones_AD();
+public Administrativo.C_Agendar Agendar = new Administrativo.C_Agendar();
     /**
      * Creates new form Desktop
      */
@@ -191,18 +193,21 @@ Clases.Declaraciones_AD Declaraciones = new Clases.Declaraciones_AD();
         DProgramas.show();
     }//GEN-LAST:event_jLabel9MouseClicked
     private void Lanzar_Administrativos(){
-        try {
+        try {        
             if(Contenedor_.getComponentCount()==0){
                 Load_Contenedor();
-                Declaraciones.CContenedor.area.addTab("Agendar Pacientes",Declaraciones.Agendar);
-                Declaraciones.CContenedor.area.setSelectedComponent(Declaraciones.Agendar);
+                Declaraciones_AD.CContenedor.area.addTab("Agendar Pacientes",Agendar);
+                Declaraciones_AD.CContenedor.area.setSelectedComponent(Agendar);
+                Agendar.repaint();
+                Agendar.validate();
                 }else{
-                Declaraciones.CContenedor.area.setSelectedComponent(Declaraciones.Agendar);
+                Declaraciones_AD.CContenedor.area.addTab("Agendar Pacientes",Agendar);
+                Declaraciones_AD.CContenedor.area.setSelectedComponent(Agendar);
+                Agendar.repaint();
+                Agendar.validate();
                 }
-                Declaraciones.Agendar.repaint();
-                Declaraciones.Agendar.validate();
-                Declaraciones.CContenedor.area.repaint();
-                Declaraciones.CContenedor.area.validate();
+                Declaraciones_AD.CContenedor.area.repaint();
+                Declaraciones_AD.CContenedor.area.validate();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }

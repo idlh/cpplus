@@ -4,6 +4,9 @@
  */
 package Dialogos;
 
+import Administrativo.C_Agendar;
+import Clases.Declaraciones_AD;
+import Controladores.PypAdmProgramasJpaController;
 import Entidades.PypAdmProgramas;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -15,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author IdlhDeveloper
  */
 public class A_Programas extends javax.swing.JDialog {
-Clases.Declaraciones_AD  Declaraciones = new Clases.Declaraciones_AD();
+
 Clases.Funciones_AD Funciones_AD = new Clases.Funciones_AD();
     /**
      * Creates new form A_Programas
@@ -162,6 +165,11 @@ Clases.Funciones_AD Funciones_AD = new Clases.Funciones_AD();
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         if(tabla.getSelectedRowCount()!=0){
             jLabel4.setText("");
+            modulo_pyp.Modulo_PyP.d.Agendar.programa = (PypAdmProgramas) tabla.getValueAt(tabla.getSelectedRow(), 0);
+            C_Agendar.jTextField2.setText(""+tabla.getValueAt(tabla.getSelectedRow(), 1));
+            C_Agendar.jLabel15.setText("");
+            C_Agendar.jLabel15.setVisible(false);
+            this.dispose();
         }else{
            jLabel4.setText("Por favor seleccione un registro."); 
         }
@@ -243,7 +251,8 @@ Clases.Funciones_AD Funciones_AD = new Clases.Funciones_AD();
               Object M[]=null;
               int u=0;
               List<PypAdmProgramas> Programas;
-              Programas=Declaraciones.Control_Programas_PYP.find_Programas();
+              PypAdmProgramasJpaController Control_Programas_PYP = new PypAdmProgramasJpaController();
+              Programas=Control_Programas_PYP.find_Programas();
                 for (int i = 0; i < Programas.size(); i++) {
                     modelo.addRow(M);
                     modelo.setValueAt(Programas.get(i), u, 0);

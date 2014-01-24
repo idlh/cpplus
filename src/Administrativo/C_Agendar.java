@@ -4,17 +4,34 @@
  */
 package Administrativo;
 
+import Controladores.InfoPacienteJpaController;
+import Controladores.PypAdmAgendJpaController;
+import Entidades.InfoPaciente;
+import Entidades.PypAdmProgramas;
+import java.awt.event.KeyEvent;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JOptionPane;
 /**
  *
  * @author IdlhDeveloper
  */
 public class C_Agendar extends javax.swing.JPanel {
-
+Dialogos.A_Administrador_Usuarios AU = new Dialogos.A_Administrador_Usuarios(null, true);
+InfoPacienteJpaController Control_Paciente = new InfoPacienteJpaController();
+PypAdmAgendJpaController Agenda = new PypAdmAgendJpaController();
+Clases.Funciones_AD Funciones = new Clases.Funciones_AD();
+Clases.Declaraciones_AD Declaraciones = new Clases.Declaraciones_AD();
+Dialogos.A_Programas Programas = new Dialogos.A_Programas(null, true);
+InfoPaciente paciente=null;
+int verify=0;
+public PypAdmProgramas programa=null;
     /**
      * Creates new form C_Agendar
      */
     public C_Agendar() {
         initComponents();
+        jTextField1.setDocument(new Clases.SoloNumeros());
     }
 
     /**
@@ -50,6 +67,14 @@ public class C_Agendar extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         jCalendar1 = new com.toedter.calendar.JCalendar();
         jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -103,14 +128,25 @@ public class C_Agendar extends javax.swing.JPanel {
         jLabel3.setText("Identificación:");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(30, 100, 80, 20);
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
         jPanel1.add(jTextField1);
         jTextField1.setBounds(110, 100, 110, 20);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/buscar.png"))); // NOI18N
         jLabel4.setToolTipText("Encuentra un programa");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(460, 120, 34, 30);
+        jLabel4.setBounds(550, 120, 34, 30);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -120,18 +156,21 @@ public class C_Agendar extends javax.swing.JPanel {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 18, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel4);
-        jPanel4.setBounds(0, 363, 750, 18);
+        jPanel4.setBounds(0, 363, 750, 10);
 
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Programa:");
         jPanel1.add(jLabel5);
         jLabel5.setBounds(30, 130, 80, 20);
+
+        jTextField2.setEditable(false);
+        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jTextField2);
-        jTextField2.setBounds(110, 130, 340, 20);
+        jTextField2.setBounds(110, 130, 430, 20);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/buscar.png"))); // NOI18N
         jLabel6.setToolTipText("Encuentra un usuario");
@@ -149,6 +188,7 @@ public class C_Agendar extends javax.swing.JPanel {
         jPanel1.add(jLabel7);
         jLabel7.setBounds(30, 160, 80, 20);
 
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Hora:");
         jPanel1.add(jLabel8);
         jLabel8.setBounds(310, 160, 40, 20);
@@ -167,12 +207,22 @@ public class C_Agendar extends javax.swing.JPanel {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/guardar-big.png"))); // NOI18N
         jLabel10.setToolTipText("Guardar");
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel10);
         jLabel10.setBounds(300, 320, 44, 40);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/reload-limpiar.png"))); // NOI18N
         jLabel11.setToolTipText("Limpiar");
         jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel11);
         jLabel11.setBounds(350, 320, 40, 40);
 
@@ -203,11 +253,30 @@ public class C_Agendar extends javax.swing.JPanel {
         jCalendar1.setBounds(110, 160, 184, 153);
 
         jLabel15.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/alert.png"))); // NOI18N
         jLabel15.setMaximumSize(new java.awt.Dimension(40, 14));
         jLabel15.setMinimumSize(new java.awt.Dimension(40, 14));
         jLabel15.setPreferredSize(new java.awt.Dimension(40, 14));
         jPanel1.add(jLabel15);
         jLabel15.setBounds(10, 340, 280, 14);
+
+        jLabel16.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/okey.png"))); // NOI18N
+        jLabel16.setText("El Registro fue guardado con exito.");
+        jPanel1.add(jLabel16);
+        jLabel16.setBounds(10, 340, 210, 16);
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/male.png"))); // NOI18N
+        jLabel17.setText("Crear Usuarios");
+        jLabel17.setToolTipText("No existe un usuario?, crealo ahora.");
+        jLabel17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel17);
+        jLabel17.setBounds(10, 62, 120, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -222,21 +291,53 @@ public class C_Agendar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jFormattedTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField3KeyReleased
-
+        if(!jFormattedTextField3.getText().equals("  :  ")){
+            jLabel15.setText("");
+            jLabel15.setVisible(false);
+        }
     }//GEN-LAST:event_jFormattedTextField3KeyReleased
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        if(!jTextField1.getText().isEmpty()){
-            
-        }else{
-           jLabel15.setText("Por favor ingrese un numero de identificacion"); 
-           jTextField1.requestFocusInWindow();
-        }
+        Search();
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        
+        Limpiar();
+        Clases.Declaraciones_AD.CContenedor.area.remove(Clases.Declaraciones_AD.CContenedor.area.getSelectedComponent());
     }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        if(!jTextField1.getText().isEmpty()){
+          jLabel15.setText("");
+          jLabel15.setVisible(false);
+        }
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            Search();
+        }
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        Limpiar();
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        jPanel5.setVisible(false);
+        jLabel15.setVisible(false);
+        jLabel16.setVisible(false);
+        jTextField1.requestFocusInWindow();
+    }//GEN-LAST:event_formComponentShown
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        Programas.show();
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        Save();
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+        AU.show();
+    }//GEN-LAST:event_jLabel17MouseClicked
     private void Limpiar(){
         jTextField1.setText("");
         jTextField2.setText("");
@@ -244,20 +345,105 @@ public class C_Agendar extends javax.swing.JPanel {
         jLabel13.setText("");
         jLabel14.setText("");
         jPanel5.setVisible(false);
-        
+        jLabel15.setText("");
+        jLabel15.setVisible(false);
+        paciente = null;
+        verify=0;
+    }
+    private void Search(){
+        try {
+            jLabel15.setText("");
+            jLabel15.setVisible(false);
+            if(!jTextField1.getText().isEmpty()){
+           Object e = Control_Paciente.get_pacienteByID_(jTextField1.getText());
+           if(!e.toString().equals("0")){
+                 paciente = (InfoPaciente) e;
+                 jLabel13.setText(""+paciente.getNombre1()+" "+paciente.getNombre2()+" "+paciente.getApellido1()+" "+paciente.getApellido2());
+                 jLabel14.setText(""+paciente.getNumDoc());
+                 jPanel5.setVisible(true);
+                 verify=1;
+            }else{
+              jTextField1.requestFocusInWindow();
+              Limpiar();
+              jLabel15.setVisible(true);
+              jLabel15.setText("No existe un usuario asociado a esta identificación"); 
+            }
+        }else{
+           jLabel15.setText("Por favor ingrese un numero de identificacion"); 
+           jTextField1.requestFocusInWindow();
+           jLabel15.setVisible(true);
+        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
+    private void Save(){
+        try {
+            if(verify==1 && !jTextField1.getText().isEmpty()){
+                if(!jTextField2.getText().isEmpty()){
+                    if(!jFormattedTextField3.getText().equals("  :  ")){
+                       Declaraciones.RAgendas.setIdPaciente(paciente);
+                       Declaraciones.RAgendas.setIdPrograma(programa);
+                       Declaraciones.RAgendas.setFecha(Funciones.stringToDate(Funciones.getFecha_Jcalendar(jCalendar1)));
+                       Declaraciones.RAgendas.setHora(Funciones.getHora(jFormattedTextField3.getText()));
+                       Declaraciones.RAgendas.setEstado('1');
+                       Agenda.create(Declaraciones.RAgendas);
+                       jLabel16.setVisible(true);
+                       Contar();
+                    }else{
+                      jLabel15.setText("Por favor ingrese la hora");    
+                     jLabel15.setVisible(true);
+                    }
+                }else{
+                  jLabel15.setText("Por favor consulte un programa");  
+                 jLabel15.setVisible(true);
+                }
+            }else{
+              jLabel15.setText("Por favor consulte un usuario"); 
+             jLabel15.setVisible(true);
+            jTextField1.requestFocusInWindow();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
+    private Timer timer = new Timer(); 
+   private int segundos=5;
+   class Contador extends TimerTask {
+        @Override
+        public void run() {
+            segundos--;
+            if(segundos==0){
+                 Detener();
+                 jLabel16.setVisible(false);
+                 Limpiar();
+                 jTextField1.requestFocusInWindow();
+            }
+        }
+    }
+      public void Contar(){
+        this.segundos=5;
+        timer = new Timer();
+        timer.schedule(new Contador(), 0, 600);
+    }
+   public int getSegundos(){
+        return this.segundos;
+    }
+    public void Detener(){
+        timer.cancel();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JCalendar jCalendar1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
+    public static javax.swing.JLabel jLabel13;
+    public static javax.swing.JLabel jLabel14;
+    public static javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -272,6 +458,6 @@ public class C_Agendar extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    public static javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
