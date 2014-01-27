@@ -6,12 +6,17 @@
 
 package Dialogos;
 
+import Clases.Funciones_AD;
+import controller.PypAdmAsistConJpaController;
+import entity.PypAdmAsistCon;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -24,11 +29,16 @@ import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 public class ListPacientes extends javax.swing.JDialog {
     Properties props = new Properties();
     private DefaultTableModel modelo;
+    private EntityManagerFactory factory;
+    private PypAdmAsistConJpaController paacjc;
+    private final Object dato[] = null;
 
     public ListPacientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         ParametrosBD();
+        ModeloListadoPaciente();
+        showPacientes();
     }
     
     private List<String> referenceUser(){
@@ -67,14 +77,15 @@ public class ListPacientes extends javax.swing.JDialog {
         
         private DefaultTableModel getModelo(){
             DefaultTableModel model = new DefaultTableModel(
-            null, new String [] {"Asistencia","Documento", "Nombre"}){
+            null, new String [] {"Asistencia","TD","Documento", "Nombre"}){
                 Class[] types = new Class []{
+                        PypAdmAsistCon.class,
                         java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class
                 };
                 boolean[] canEdit = new boolean [] {
-                    false,false,false
+                    false,false,false,false
                 };
                 @Override
                 public Class getColumnClass(int columnIndex) {
@@ -90,12 +101,36 @@ public class ListPacientes extends javax.swing.JDialog {
         
         private void ModeloListadoPaciente(){
             modelo =getModelo();
-            jTable1.setModel(modelo);       
+            jTable1.setModel(modelo);
             jTable1.getTableHeader().setReorderingAllowed(false);
             jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//             Funciones.setOcultarColumnas(jtable1, new int[]{7});
-//             Funciones.setSizeColumnas(jtable1, new int[]{0,1,2,3,4,5,6}, new int[]{60,80,140,100,90,270,58});
-//             jtable1.setDefaultRenderer(Object.class, new tools.ColorDefaultTableCellRenderer());
+            Funciones_AD.setOcultarColumnas(jTable1, new int[]{0});
+            Funciones_AD.setSizeColumnas(jTable1, new int[]{1,2}, new int[]{30,80});
+        }
+        
+        public void showPacientes(){
+            factory = Persistence.createEntityManagerFactory("EJB_CEPU",props);
+            paacjc = new PypAdmAsistConJpaController(factory);
+            List<PypAdmAsistCon> asistCon = null ;
+            if(jRadioButton1.isSelected()==true){
+                //asignar el id del profecional de la tabla cmprofesionales
+                asistCon = paacjc.listPypAdmAsistCon(1);
+            }else{
+               asistCon = paacjc.listPypAdmAsistCon();
+            }
+            if(asistCon!=null){
+                while(modelo.getRowCount()>0){
+                    modelo.removeRow(0);
+                }
+                for(int i=0;i<asistCon.size();i++){
+                    modelo.addRow(dato);
+                    modelo.setValueAt(asistCon.get(i), i, 0);
+                    modelo.setValueAt(asistCon.get(i).getIdAgend().getIdPaciente().getTipoDoc(), i, 1);
+                    modelo.setValueAt(asistCon.get(i).getIdAgend().getIdPaciente().getNumDoc(), i, 2);
+                    modelo.setValueAt(asistCon.get(i).getIdAgend().getIdPaciente().getNombre1()+" "+
+                            asistCon.get(i).getIdAgend().getIdPaciente().getApellido1(), i, 3);
+                }
+            }            
         }
 
     @SuppressWarnings("unchecked")
@@ -161,12 +196,18 @@ public class ListPacientes extends javax.swing.JDialog {
         jButton1.setContentAreaFilled(false);
         jButton1.setFocusable(false);
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sigA1.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.ABOVE_TOP));
         jPanel3.setOpaque(false);
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Mis Pacientes");
+        jRadioButton1.setEnabled(false);
         jRadioButton1.setFocusable(false);
         jRadioButton1.setOpaque(false);
 
@@ -205,6 +246,11 @@ public class ListPacientes extends javax.swing.JDialog {
 
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTable1MouseReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Del Paciente"));
@@ -213,29 +259,38 @@ public class ListPacientes extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Nombre:");
 
-        jLabel3.setText("ALVARO ALBERTO MONSALVE VELLOJIN");
+        jLabel3.setMaximumSize(new java.awt.Dimension(234, 14));
+        jLabel3.setMinimumSize(new java.awt.Dimension(234, 14));
+        jLabel3.setPreferredSize(new java.awt.Dimension(234, 14));
 
-        jLabel4.setText("10999555");
+        jLabel4.setMaximumSize(new java.awt.Dimension(188, 14));
+        jLabel4.setMinimumSize(new java.awt.Dimension(188, 14));
+        jLabel4.setPreferredSize(new java.awt.Dimension(188, 14));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Documento:");
 
-        jLabel6.setText("CC");
+        jLabel6.setMaximumSize(new java.awt.Dimension(40, 14));
+        jLabel6.setMinimumSize(new java.awt.Dimension(40, 14));
+        jLabel6.setPreferredSize(new java.awt.Dimension(40, 14));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Entidad:");
 
-        jLabel8.setText("SALUDCOOP E.P.S");
+        jLabel8.setMaximumSize(new java.awt.Dimension(234, 14));
+        jLabel8.setMinimumSize(new java.awt.Dimension(234, 14));
+        jLabel8.setPreferredSize(new java.awt.Dimension(234, 14));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Edad:");
 
-        jLabel10.setText("29 AÑOS");
+        jLabel10.setMaximumSize(new java.awt.Dimension(90, 14));
+        jLabel10.setMinimumSize(new java.awt.Dimension(90, 14));
+        jLabel10.setPreferredSize(new java.awt.Dimension(90, 14));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel11.setText("Programa:");
 
-        jLabel12.setText("<html><p>DETECCIÓN TEMPRANA DE LAS ALTERACIONES DEL DESARROLLO DEL JOVEN (10-29 AÑOS)</p></html>");
         jLabel12.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel12.setMaximumSize(new java.awt.Dimension(234, 28));
         jLabel12.setMinimumSize(new java.awt.Dimension(234, 28));
@@ -259,32 +314,32 @@ public class ListPacientes extends javax.swing.JDialog {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -293,20 +348,20 @@ public class ListPacientes extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel10))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -369,6 +424,25 @@ public class ListPacientes extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
+        if(jTable1.getSelectedRow()!=-1){
+            PypAdmAsistCon pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            jLabel3.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getNombre1()+" "+
+                    pypAdmAsistCon.getIdAgend().getIdPaciente().getNombre2()+" "+
+                    pypAdmAsistCon.getIdAgend().getIdPaciente().getApellido1()+" "+
+                    pypAdmAsistCon.getIdAgend().getIdPaciente().getApellido2());
+            jLabel6.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getTipoDoc());
+            jLabel4.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getNumDoc());
+            jLabel8.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getContratante().getNombreEntidad());
+            jLabel12.setText("<html><p>"+ pypAdmAsistCon.getIdAgend().getIdPrograma().getNombre()+"</p></html>");
+                    
+        }
+    }//GEN-LAST:event_jTable1MouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
