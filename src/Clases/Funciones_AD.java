@@ -98,7 +98,34 @@ public class Funciones_AD {
    ex.printStackTrace(); 
    return null; 
   } 
- }
+ }  
   
+  
+  /**
+   * Funcion para ocultar columnas
+   * @param tbl JTable
+   * @param columna vector que enumera las columnas de la JTable
+   */    
+  public static void setOcultarColumnas(JTable tbl, int columna[]){
+    for(int i = 0;i<columna.length;i++){
+        tbl.getColumnModel().getColumn(columna[i]).setMaxWidth(0);
+        tbl.getColumnModel().getColumn(columna[i]).setMinWidth(0);
+        tbl.getTableHeader().getColumnModel().getColumn(columna[i]).setMaxWidth(0);
+        tbl.getTableHeader().getColumnModel().getColumn(columna[i]).setMinWidth(0);
+    }
+  }
+  
+    /**
+     * Funcion para darle tamaños a columnas
+     * @param tbl JTable
+     * @param columna vector que enumera las columnas de la JTable
+     * @param sizeColumn vector que asigna size respectivamente a columna
+     */
+    public static void setSizeColumnas(JTable tbl,int columna[], int sizeColumn[]){
+        for(int i=0;i<columna.length;i++){
+            tbl.getColumnModel().getColumn(columna[i]).setMinWidth(sizeColumn[i]);
+            tbl.getTableHeader().getColumnModel().getColumn(columna[i]).setMaxWidth(sizeColumn[i]);
+        }
+    }
   
 }
