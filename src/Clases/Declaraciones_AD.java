@@ -15,12 +15,10 @@ public class Declaraciones_AD {
         
     //Contenedores - Panel's
     public static Administrativo.C_Contenedor CContenedor = new Administrativo.C_Contenedor();
-    
-    
+    public static Dialogos.A_Confirmar Confirmar = new Dialogos.A_Confirmar(null, true);
     //Entidades
     public PypAdmProgramas Programas_PYP  = new PypAdmProgramas();
     public PypAdmAgend RAgendas = new PypAdmAgend();
-    
     //Controladores
      
 }

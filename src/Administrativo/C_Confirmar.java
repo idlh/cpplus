@@ -4,12 +4,18 @@
  */
 package Administrativo;
 
+import Clases.Declaraciones_AD;
 import Controladores.PypAdmAgendJpaController;
 import Entidades.PypAdmAgend;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -17,6 +23,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class C_Confirmar extends javax.swing.JPanel {
 Clases.Funciones_AD Funciones = new Clases.Funciones_AD();
+Clases.Declaraciones_AD D = new Clases.Declaraciones_AD();
+private TableRowSorter trsfiltro; 
+String filtro;
     /**
      * Creates new form C_Confirmar
      */
@@ -38,7 +47,6 @@ Clases.Funciones_AD Funciones = new Clases.Funciones_AD();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -74,15 +82,6 @@ Clases.Funciones_AD Funciones = new Clases.Funciones_AD();
         jLabel2.setText("Confirmación Asistencia");
         jPanel2.add(jLabel2);
         jLabel2.setBounds(20, 22, 280, 20);
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton1);
-        jButton1.setBounds(590, 20, 73, 23);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 750, 50);
@@ -152,6 +151,12 @@ Clases.Funciones_AD Funciones = new Clases.Funciones_AD();
         jLabel5.setText("Busqueda:");
         jPanel1.add(jLabel5);
         jLabel5.setBounds(240, 70, 60, 20);
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField1);
         jTextField1.setBounds(300, 70, 200, 20);
 
@@ -197,32 +202,44 @@ Clases.Funciones_AD Funciones = new Clases.Funciones_AD();
         Clases.Declaraciones_AD.CContenedor.area.remove(Clases.Declaraciones_AD.CContenedor.area.getSelectedComponent());
     }//GEN-LAST:event_jLabel3MouseClicked
 
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        Search_A();
-        jLabel8.setVisible(false);
-    }//GEN-LAST:event_formComponentShown
-
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         if(jDateChooser1.getDateEditor().getDate() != null){
+            Clear_Table();
             Search_A();
-        }else{
-           jLabel8.setVisible(true); 
-           jLabel8.setText("Por favor ingrese una fecha");
+            }else{
+            jLabel8.setVisible(true); 
+            jLabel8.setText("Por favor ingrese una fecha");
         }
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         if(tabla.getRowCount()!=0){
-            System.out.println("da");
+           Declaraciones_AD.Confirmar.show();
         }else{
            jLabel8.setVisible(true); 
            jLabel8.setText("Por favor realize una busqueda"); 
         }
     }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Search_A();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        jTextField1.addKeyListener(new KeyAdapter() {
+        public void keyReleased(final KeyEvent e) {
+        String cadena = (jTextField1.getText()).toUpperCase();
+        jTextField1.setText(cadena);
+        repaint();  
+        filtro();
+        }
+        });
+        trsfiltro = new TableRowSorter(modelo);
+        tabla.setRowSorter(trsfiltro);
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        jLabel8.setVisible(false);
+    }//GEN-LAST:event_formComponentShown
+     public void filtro() {
+    trsfiltro.setRowFilter(RowFilter.regexFilter(jTextField1.getText(), 2));
+    }
     public static DefaultTableModel modelo;
      private void CrearModelo(){
          try {
@@ -239,7 +256,7 @@ Clases.Funciones_AD Funciones = new Clases.Funciones_AD();
                 java.lang.String.class
                 };
                 boolean[] canEdit = new boolean [] {
-                false,false,false,false,false
+                false,false,false,false,false,false
                 };
                 @Override
                 public Class getColumnClass(int columnIndex) {
@@ -267,29 +284,40 @@ Clases.Funciones_AD Funciones = new Clases.Funciones_AD();
         private void Search_A(){
             try {
                 int u=0;
+                Date f;
+                Date h;
                 Object M[]=null;
                 List<PypAdmAgend> Listado;
                 String nombre;
                 PypAdmAgendJpaController ControlA = new PypAdmAgendJpaController();
-                Listado=ControlA.find_Pacientes_Agendados();
+                String ff = Funciones.getFecha(jDateChooser1);
+                Listado=ControlA.find_Pacientes_Agendados(Funciones.StringToDate(ff));
                 for (int i = 0; i < Listado.size(); i++) {
                 modelo.addRow(M);
+                f = Listado.get(i).getFecha();  
+                h = Listado.get(i).getHora();
                 nombre= Listado.get(i).getIdPaciente().getNombre1()+" "+Listado.get(i).getIdPaciente().getNombre1()+
                 " "+Listado.get(i).getIdPaciente().getApellido1()+" "+Listado.get(i).getIdPaciente().getApellido2();       
                 modelo.setValueAt(Listado.get(i), u, 0);   
                 modelo.setValueAt(Listado.get(i).getIdPaciente().getNumDoc(), u, 1);
                 modelo.setValueAt(nombre, u, 2);   
                 modelo.setValueAt(Listado.get(i).getIdPrograma().getNombre(), u, 3);
-                modelo.setValueAt(Listado.get(i).getFecha(), u, 4);
-                modelo.setValueAt(Listado.get(i).getHora(), u, 5);
+                modelo.setValueAt(Funciones.Formatear_Fecha_object(f), u, 4);
+                modelo.setValueAt(Funciones.Formatear_Hora(h), u, 5);
                 u=u+1;
                 }
+                jLabel8.setVisible(false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
         }
+        public void Clear_Table(){
+        for (int i = 0; i < tabla.getRowCount(); i++) {
+           modelo.removeRow(i);
+           i-=1;
+       }
+      }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

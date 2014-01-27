@@ -83,7 +83,7 @@ Clases.Funciones_AD Funciones_AD = new Clases.Funciones_AD();
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(10, 100, 370, 270);
 
-        jPanel2.setBackground(new java.awt.Color(124, 199, 33));
+        jPanel2.setBackground(new java.awt.Color(138, 207, 244));
         jPanel2.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -97,7 +97,7 @@ Clases.Funciones_AD Funciones_AD = new Clases.Funciones_AD();
         jLabel2.setBounds(10, 22, 290, 14);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 0, 400, 50);
+        jPanel2.setBounds(0, 0, 390, 50);
         jPanel1.add(jTextField1);
         jTextField1.setBounds(10, 70, 370, 20);
 

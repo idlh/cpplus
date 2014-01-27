@@ -44,6 +44,14 @@ public class Funciones_AD {
             return null;
        }
     }
+    SimpleDateFormat yyyy_MMdd = new SimpleDateFormat("yyyy-MM-dd");
+    public String get_Fecha_yyyMMdd(JDateChooser jd){ 
+        if (jd.getDate()!=null){
+            return yyyy_MMdd.format(jd.getDate());
+        }else{
+            return null;
+       }
+    }
    public int getInteger(String valor){
         int integer = Integer.parseInt(valor);
         return integer;
@@ -71,7 +79,26 @@ public class Funciones_AD {
       f=format.parse(Hora);
       return f;
     }
-  
+  public String Formatear_Fecha_object(Date d){
+        SimpleDateFormat formatoDeFecha = new SimpleDateFormat("dd/MM/yyyy");
+        return formatoDeFecha.format(d);
+    }
+  public String Formatear_Hora(Date d){
+    SimpleDateFormat formatoDeFecha = new SimpleDateFormat("HH:mm");
+    return formatoDeFecha.format(d);
+    }
+  public java.util.Date StringToDate(String fecha){ 
+   SimpleDateFormat formatoDelTextoo = new SimpleDateFormat("yyyy-MM-dd"); 
+   Date fechaEnviar=null; 
+   try { 
+   fechaEnviar = formatoDelTextoo.parse(fecha); 
+   return fechaEnviar; 
+   } 
+   catch (ParseException ex) { 
+   ex.printStackTrace(); 
+   return null; 
+  } 
+ }
   
   
 }
