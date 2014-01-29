@@ -247,7 +247,7 @@ public Administrativo.C_Confirmar Confirmar = new Administrativo.C_Confirmar();
         Contenedor_.validate();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JPanel Contenedor_;
+    public javax.swing.JPanel Contenedor_;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

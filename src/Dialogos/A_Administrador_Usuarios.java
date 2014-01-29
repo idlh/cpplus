@@ -268,6 +268,11 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
 
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/guardar-big.png"))); // NOI18N
         jLabel26.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel26MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel26);
         jLabel26.setBounds(290, 470, 42, 40);
 
@@ -333,6 +338,10 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         Limpiar();
     }//GEN-LAST:event_jLabel28MouseClicked
 
+    private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked
+        Registrar_HV();
+    }//GEN-LAST:event_jLabel26MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -381,9 +390,7 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
                if(!jTextField3.getText().isEmpty()){
                  if(!jTextField5.getText().isEmpty()){
                    
-                  
-                  
-                  
+
                   
                 }else{
                 jLabel29.setText("Por favor ingrese el primer apellido");   

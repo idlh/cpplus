@@ -83,6 +83,10 @@ public class Funciones_AD {
         SimpleDateFormat formatoDeFecha = new SimpleDateFormat("dd/MM/yyyy");
         return formatoDeFecha.format(d);
     }
+  public String Format_Fecha_GUION(Date d){
+        SimpleDateFormat formatoDeFecha = new SimpleDateFormat("yyyy-MM-dd");
+        return formatoDeFecha.format(d);
+    }
   public String Formatear_Hora(Date d){
     SimpleDateFormat formatoDeFecha = new SimpleDateFormat("HH:mm");
     return formatoDeFecha.format(d);
@@ -99,8 +103,42 @@ public class Funciones_AD {
    return null; 
   } 
  }  
-  
-  
+ public String getCausaEX(String CausaExterna){
+     String Ce = null;
+     if(CausaExterna.equals("ACCIDENTE DE TRABAJO")){
+             Ce = "01";
+         } else if (CausaExterna.equals("ACCIDENTE DE TRANSITO")){
+             Ce = "02";
+         } else if (CausaExterna.equals("ACCIDENTE RABICO")){
+             Ce = "03"; 
+         } else if (CausaExterna.equals("ACCIDENTE OFIDICO")){
+             Ce = "04";
+         } else if (CausaExterna.equals("OTRO TIPO DE ACCIDENTE")){
+             Ce = "05";
+         } else if (CausaExterna.equals("EVENTO CATASTROFICO")){
+             Ce = "06";
+         } else if (CausaExterna.equals("LESION POR AGRESION")){
+             Ce = "07";
+         } else if (CausaExterna.equals("LESION AUTO-INFLIGIDA")){
+             Ce = "08";
+         } else if (CausaExterna.equals("SOSPECHA DE MALTRATO FISICO")){
+             Ce = "09";
+         } else if (CausaExterna.equals("SOSPECHA DE ABUSO SEXUAL")){
+             Ce = "10"; 
+         } else if (CausaExterna.equals("SOSPECHA DE VIOLENCIA SEXUAL")){
+             Ce = "11"; 
+         } else if (CausaExterna.equals("SOSPECHA DE MALTRATO EMOCIONAL")){
+             Ce = "12";
+         } else if (CausaExterna.equals("ENFERMEDAD GENERAL")){
+             Ce = "13";
+         } else if (CausaExterna.equals("ENFERMEDAD PROFESIONAL")){
+             Ce = "14";
+         } else if (CausaExterna.equals("OTRA")){
+             Ce = "15";
+         }
+      return Ce;
+    } 
+   
   /**
    * Funcion para ocultar columnas
    * @param tbl JTable

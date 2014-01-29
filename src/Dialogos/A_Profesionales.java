@@ -4,11 +4,18 @@
  */
 package Dialogos;
 
+import Clases.Declaraciones_AD;
 import Controladores.PypAdmControlProfesionalesJpaController;
 import Entidades.PypAdmControlProfesionales;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -16,8 +23,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class A_Profesionales extends javax.swing.JDialog {
     Clases.Funciones_AD Funciones_AD = new Clases.Funciones_AD();
-    PypAdmControlProfesionales Profesionales = new PypAdmControlProfesionales();
     PypAdmControlProfesionalesJpaController P_Controller = new PypAdmControlProfesionalesJpaController();
+    private TableRowSorter trsfiltro; 
+    String filtro;
     /**
      * Creates new form A_Profesionales
      */
@@ -54,6 +62,11 @@ public class A_Profesionales extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -92,6 +105,12 @@ public class A_Profesionales extends javax.swing.JDialog {
         jLabel3.setText("Buscar:");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(10, 70, 40, 20);
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField1);
         jTextField1.setBounds(50, 70, 310, 20);
 
@@ -106,6 +125,13 @@ public class A_Profesionales extends javax.swing.JDialog {
 
             }
         ));
+        tabla2.setSelectionBackground(new java.awt.Color(153, 204, 255));
+        tabla2.setSelectionForeground(new java.awt.Color(102, 102, 102));
+        tabla2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla2MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabla2);
 
         jPanel1.add(jScrollPane1);
@@ -123,6 +149,11 @@ public class A_Profesionales extends javax.swing.JDialog {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Aceptar-ok.png"))); // NOI18N
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel5);
         jLabel5.setBounds(270, 347, 40, 40);
 
@@ -168,9 +199,40 @@ public class A_Profesionales extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        Load_Profesionales();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void tabla2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla2MouseClicked
+        jLabel8.setText(""+tabla2.getValueAt(tabla2.getSelectedRow(), 2));
+        jLabel9.setText(""+tabla2.getValueAt(tabla2.getSelectedRow(), 3));
+    }//GEN-LAST:event_tabla2MouseClicked
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        jTextField1.addKeyListener(new KeyAdapter() {
+        public void keyReleased(final KeyEvent e) {
+        String cadena = (jTextField1.getText()).toUpperCase();
+        jTextField1.setText(cadena);
+        repaint();  
+        filtro();
+        }
+        });
+        trsfiltro = new TableRowSorter(modelo);
+        tabla2.setRowSorter(trsfiltro);
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        Declaraciones_AD.Confirmar.Profesional = (PypAdmControlProfesionales) tabla2.getValueAt(tabla2.getSelectedRow(), 0);
+        Declaraciones_AD.Confirmar.jTextField1.setText(""+tabla2.getValueAt(tabla2.getSelectedRow(), 1));
+        this.dispose();
+    }//GEN-LAST:event_jLabel5MouseClicked
+    public void filtro() {
+        trsfiltro.setRowFilter(RowFilter.regexFilter(jTextField1.getText(), 1));
+    }
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -214,7 +276,7 @@ public class A_Profesionales extends javax.swing.JDialog {
          try {
              modelo = (new DefaultTableModel(
                 null, new String [] {
-                "id","Profesional,fi,ff"}){
+                "id","Profesional","fi","ff"}){
                 Class[] types = new Class [] {
                 java.lang.String.class,
                 java.lang.String.class,
@@ -237,18 +299,43 @@ public class A_Profesionales extends javax.swing.JDialog {
           tabla2.getTableHeader().setReorderingAllowed(false);
           tabla2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
           Funciones_AD.ocultarColumnas(tabla2, new int[] {0});
+          Funciones_AD.ocultarColumnas(tabla2, new int[] {2});
+          Funciones_AD.ocultarColumnas(tabla2, new int[] {3});
          } catch (Exception e) {
              JOptionPane.showMessageDialog(null,e.toString()+"error2");
             }     
         } 
         public void Load_Profesionales(){
             try {
-                
-                
+              Clear_Table();
+              Date fi;
+              Date ff;
+              int u=0;
+              Object M[]=null;
+              String Nombre_pro=null;
+              List<PypAdmControlProfesionales>Profesional;  
+              Profesional=P_Controller.find_Profesionales();
+                for (int i = 0; i < Profesional.size(); i++) {
+                    modelo.addRow(M);
+                    fi = Profesional.get(i).getFechaInicio();
+                    ff = Profesional.get(i).getFechaFin();
+                    modelo.setValueAt(Profesional.get(i), u, 0);
+                    Nombre_pro = Profesional.get(i).getIdProfesional().getIdDescripcionLogin().getNombres()+" "+Profesional.get(i).getIdProfesional().getIdDescripcionLogin().getNombres();
+                    modelo.setValueAt(Nombre_pro, u, 1);
+                    modelo.setValueAt(Funciones_AD.Formatear_Fecha_object(fi), u, 2);
+                    modelo.setValueAt(Funciones_AD.Formatear_Fecha_object(ff), u, 3);
+                    u=u+1;
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
         }
+        public void Clear_Table(){
+        for (int i = 0; i < tabla2.getRowCount(); i++) {
+           modelo.removeRow(i);
+           i-=1;
+        }
+      }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

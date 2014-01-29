@@ -214,6 +214,9 @@ String filtro;
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         if(tabla.getRowCount()!=0){
+           Declaraciones_AD.Confirmar.Agend = (PypAdmAgend) tabla.getValueAt(tabla.getSelectedRow(), 0);
+           Declaraciones_AD.Confirmar.jLabel13.setText(""+tabla.getValueAt(tabla.getSelectedRow(), 1));
+           Declaraciones_AD.Confirmar.jLabel12.setText(""+tabla.getValueAt(tabla.getSelectedRow(), 2));           
            Declaraciones_AD.Confirmar.show();
         }else{
            jLabel8.setVisible(true); 
@@ -281,7 +284,7 @@ String filtro;
              JOptionPane.showMessageDialog(null,e.toString()+"error2");
             }     
         } 
-        private void Search_A(){
+        public void Search_A(){
             try {
                 int u=0;
                 Date f;

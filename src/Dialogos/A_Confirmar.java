@@ -4,7 +4,17 @@
  */
 package Dialogos;
 
+import Controladores.PypAdmAdmisionJpaController;
+import Controladores.PypAdmAgendJpaController;
+import Controladores.PypAdmAsistConJpaController;
+import Controladores.PypAdmRespJpaController;
+import Entidades.PypAdmAdmision;
 import Entidades.PypAdmAgend;
+import Entidades.PypAdmAsistCon;
+import Entidades.PypAdmControlProfesionales;
+import Entidades.PypAdmResp;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,7 +22,17 @@ import Entidades.PypAdmAgend;
  */
 public class A_Confirmar extends javax.swing.JDialog {
 Dialogos.A_Profesionales Profesionales = new Dialogos.A_Profesionales(null, rootPaneCheckingEnabled);
-public PypAdmAgend Agend;
+public PypAdmAgend Agend=null;
+public PypAdmControlProfesionales Profesional=null;
+public PypAdmAsistCon Confirmar = new PypAdmAsistCon();
+PypAdmAdmision Admision = new PypAdmAdmision();
+PypAdmResp Responsable = new PypAdmResp();
+Clases.Funciones_AD Funciones = new Clases.Funciones_AD();
+PypAdmAgendJpaController Control_Agend = new PypAdmAgendJpaController();
+PypAdmAsistConJpaController Control_Asistencia = new PypAdmAsistConJpaController();
+PypAdmRespJpaController Control_resp = new PypAdmRespJpaController();
+PypAdmAdmisionJpaController Control_admision = new PypAdmAdmisionJpaController();
+Utilidades.Nat n = new Utilidades.Nat();
     /**
      * Creates new form A_Confirmar
      */
@@ -20,6 +40,8 @@ public PypAdmAgend Agend;
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(this);
+        jCheckBox1.setVisible(false);
+        jPanel6.setVisible(false);
     }
 
     /**
@@ -33,28 +55,67 @@ public PypAdmAgend Agend;
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel10 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jFormattedTextField5 = new javax.swing.JFormattedTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jFormattedTextField5 = new javax.swing.JFormattedTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        RadioSI = new javax.swing.JRadioButton();
+        RadioNO = new javax.swing.JRadioButton();
+        jLabel16 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox();
+        jLabel15 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jLabel24 = new javax.swing.JLabel();
 
         jLabel10.setText("jLabel10");
 
+        jButton1.setText("jButton1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -63,7 +124,7 @@ public PypAdmAgend Agend;
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 480, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,7 +132,7 @@ public PypAdmAgend Agend;
         );
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(0, 50, 450, 10);
+        jPanel3.setBounds(0, 50, 480, 10);
 
         jPanel2.setBackground(new java.awt.Color(138, 207, 244));
         jPanel2.setLayout(null);
@@ -88,26 +149,60 @@ public PypAdmAgend Agend;
         jLabel2.setBounds(20, 22, 280, 20);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 0, 450, 50);
+        jPanel2.setBounds(0, 0, 480, 50);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/cerrar.png"))); // NOI18N
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(430, 480, 42, 40);
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/guardar-big.png"))); // NOI18N
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(380, 480, 44, 40);
+
+        jLabel11.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel11.setMaximumSize(new java.awt.Dimension(40, 14));
+        jLabel11.setMinimumSize(new java.awt.Dimension(40, 14));
+        jLabel11.setPreferredSize(new java.awt.Dimension(40, 14));
+        jPanel1.add(jLabel11);
+        jLabel11.setBounds(10, 500, 370, 14);
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel12.setMaximumSize(new java.awt.Dimension(162, 15));
+        jLabel12.setMinimumSize(new java.awt.Dimension(162, 15));
+        jLabel12.setPreferredSize(new java.awt.Dimension(162, 15));
+        jPanel1.add(jLabel12);
+        jLabel12.setBounds(20, 70, 450, 15);
+
+        jLabel13.setMaximumSize(new java.awt.Dimension(60, 14));
+        jLabel13.setMinimumSize(new java.awt.Dimension(60, 14));
+        jLabel13.setPreferredSize(new java.awt.Dimension(60, 14));
+        jPanel1.add(jLabel13);
+        jLabel13.setBounds(50, 90, 130, 14);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(null);
+        jPanel4.add(jDateChooser1);
+        jDateChooser1.setBounds(80, 20, 95, 20);
 
         jLabel3.setText("Fecha:");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(20, 90, 70, 20);
-        jPanel1.add(jDateChooser1);
-        jDateChooser1.setBounds(90, 90, 95, 20);
-
-        jLabel4.setText("Profesional:");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(20, 150, 70, 20);
-
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(90, 150, 300, 20);
+        jPanel4.add(jLabel3);
+        jLabel3.setBounds(10, 20, 70, 20);
 
         jLabel5.setText("Hora:");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(20, 120, 70, 20);
+        jPanel4.add(jLabel5);
+        jLabel5.setBounds(10, 50, 70, 20);
 
         try {
             jFormattedTextField5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
@@ -121,8 +216,8 @@ public PypAdmAgend Agend;
                 jFormattedTextField5KeyReleased(evt);
             }
         });
-        jPanel1.add(jFormattedTextField5);
-        jFormattedTextField5.setBounds(90, 120, 60, 20);
+        jPanel4.add(jFormattedTextField5);
+        jFormattedTextField5.setBounds(80, 50, 60, 20);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/buscar.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -131,59 +226,182 @@ public PypAdmAgend Agend;
                 jLabel6MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(400, 140, 30, 30);
+        jPanel4.add(jLabel6);
+        jLabel6.setBounds(390, 70, 30, 30);
+
+        jTextField1.setEditable(false);
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(jTextField1);
+        jTextField1.setBounds(80, 80, 300, 20);
+
+        jLabel4.setText("Profesional:");
+        jPanel4.add(jLabel4);
+        jLabel4.setBounds(10, 80, 70, 20);
 
         jLabel7.setText("Primer vez:");
-        jPanel1.add(jLabel7);
-        jLabel7.setBounds(20, 180, 70, 20);
+        jPanel4.add(jLabel7);
+        jLabel7.setBounds(10, 110, 70, 20);
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Si");
-        jRadioButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jRadioButton1);
-        jRadioButton1.setBounds(90, 180, 40, 23);
+        RadioSI.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(RadioSI);
+        RadioSI.setText("Si");
+        RadioSI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel4.add(RadioSI);
+        RadioSI.setBounds(80, 110, 40, 23);
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setSelected(true);
-        jRadioButton2.setText("No");
-        jRadioButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jRadioButton2);
-        jRadioButton2.setBounds(140, 180, 50, 23);
+        RadioNO.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(RadioNO);
+        RadioNO.setSelected(true);
+        RadioNO.setText("No");
+        RadioNO.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel4.add(RadioNO);
+        RadioNO.setBounds(130, 110, 50, 23);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/cerrar.png"))); // NOI18N
-        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel16.setText("Causa Ext:");
+        jPanel4.add(jLabel16);
+        jLabel16.setBounds(10, 140, 70, 20);
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ACCIDENTE DE TRABAJO", "ACCIDENTE DE TRANSITO", "ACCIDENTE RABICO", "ACCIDENTE OFIDICO", "OTRO TIPO DE ACCIDENTE", "EVENTO CATASTROFICO", "LESION POR AGRESION", "LESION AUTO-INFLIGIDA", "SOSPECHA DE MALTRATO FISICO", "SOSPECHA DE ABUSO SEXUAL", "SOSPECHA DE VIOLENCIA SEXUAL", "SOSPECHA DE MALTRATO EMOCIONAL", "ENFERMEDAD GENERAL", "ENFERMEDAD PROFESIONAL", "OTRA" }));
+        jComboBox2.setSelectedIndex(14);
+        jComboBox2.setEnabled(false);
+        jComboBox2.setFocusable(false);
+        jPanel4.add(jComboBox2);
+        jComboBox2.setBounds(80, 140, 300, 20);
+
+        jLabel15.setText("Estado Ing:");
+        jPanel4.add(jLabel15);
+        jLabel15.setBounds(10, 170, 70, 20);
+
+        jRadioButton1.setBackground(new java.awt.Color(102, 204, 255));
+        buttonGroup2.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("Conciente");
+        jPanel4.add(jRadioButton1);
+        jRadioButton1.setBounds(80, 170, 90, 23);
+
+        jRadioButton2.setBackground(new java.awt.Color(255, 153, 51));
+        buttonGroup2.add(jRadioButton2);
+        jRadioButton2.setText("Inconsciente");
+        jPanel4.add(jRadioButton2);
+        jRadioButton2.setBounds(170, 170, 100, 23);
+
+        jRadioButton3.setBackground(new java.awt.Color(255, 102, 102));
+        buttonGroup2.add(jRadioButton3);
+        jRadioButton3.setText("Muerto");
+        jPanel4.add(jRadioButton3);
+        jRadioButton3.setBounds(270, 170, 100, 23);
+
+        jRadioButton5.setBackground(new java.awt.Color(153, 153, 153));
+        buttonGroup3.add(jRadioButton5);
+        jRadioButton5.setText("No");
+        jPanel4.add(jRadioButton5);
+        jRadioButton5.setBounds(170, 200, 100, 23);
+
+        jRadioButton4.setBackground(new java.awt.Color(0, 153, 153));
+        buttonGroup3.add(jRadioButton4);
+        jRadioButton4.setSelected(true);
+        jRadioButton4.setText("Si");
+        jPanel4.add(jRadioButton4);
+        jRadioButton4.setBounds(80, 200, 90, 23);
+
+        jLabel17.setText("Medios?:");
+        jPanel4.add(jLabel17);
+        jLabel17.setBounds(10, 200, 60, 20);
+
+        jLabel18.setText("Observación:");
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
+                jLabel18MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel8);
-        jLabel8.setBounds(395, 220, 42, 40);
+        jPanel4.add(jLabel18);
+        jLabel18.setBounds(10, 230, 70, 14);
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/guardar-big.png"))); // NOI18N
-        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jLabel9);
-        jLabel9.setBounds(340, 220, 44, 40);
+        jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
-        jLabel11.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel11.setMaximumSize(new java.awt.Dimension(40, 14));
-        jLabel11.setMinimumSize(new java.awt.Dimension(40, 14));
-        jLabel11.setPreferredSize(new java.awt.Dimension(40, 14));
-        jPanel1.add(jLabel11);
-        jLabel11.setBounds(20, 240, 310, 14);
+        jPanel4.add(jScrollPane1);
+        jScrollPane1.setBounds(80, 230, 340, 90);
+
+        jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setText("hab0x00");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jCheckBox1);
+        jCheckBox1.setBounds(10, 300, 70, 23);
+
+        jTabbedPane1.addTab("Datos de Admisión", jPanel4);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(null);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(null);
+
+        jLabel22.setText("Teléfono:");
+        jPanel6.add(jLabel22);
+        jLabel22.setBounds(20, 110, 90, 20);
+        jPanel6.add(jTextField4);
+        jTextField4.setBounds(110, 110, 130, 20);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PADRE", "MADRE", "HIJO/A", "HERMANO/A", "ESPOSO/A", "TIO/A", "SOBRINO/A", "UNION LIBRE", "OTRO" }));
+        jPanel6.add(jComboBox1);
+        jComboBox1.setBounds(110, 80, 130, 20);
+
+        jLabel21.setText("Parentesco:");
+        jPanel6.add(jLabel21);
+        jLabel21.setBounds(20, 80, 90, 20);
+
+        jLabel20.setText("Nombres:");
+        jPanel6.add(jLabel20);
+        jLabel20.setBounds(20, 50, 90, 20);
+        jPanel6.add(jTextField3);
+        jTextField3.setBounds(110, 50, 250, 20);
+        jPanel6.add(jTextField2);
+        jTextField2.setBounds(110, 20, 130, 20);
+
+        jLabel19.setText("Identificación:");
+        jPanel6.add(jLabel19);
+        jLabel19.setBounds(20, 20, 80, 20);
+
+        jPanel5.add(jPanel6);
+        jPanel6.setBounds(10, 40, 430, 170);
+
+        jCheckBox2.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox2.setText("Registrar");
+        jCheckBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox2.setFocusable(false);
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jCheckBox2);
+        jCheckBox2.setBounds(20, 10, 160, 23);
+
+        jTabbedPane1.addTab("Datos Responsable", jPanel5);
+
+        jPanel1.add(jTabbedPane1);
+        jTabbedPane1.setBounds(10, 110, 460, 360);
+
+        jLabel24.setText("HC:");
+        jPanel1.add(jLabel24);
+        jLabel24.setBounds(20, 90, 30, 14);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
         );
 
         pack();
@@ -194,12 +412,49 @@ public PypAdmAgend Agend;
     }//GEN-LAST:event_jFormattedTextField5KeyReleased
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        Limpiar();
         this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         Profesionales.show();
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        Confirmar();
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        Limpiar();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+       
+        if(jCheckBox1.isVisible()==true){
+            jCheckBox1.setVisible(false);
+        }else{
+            jCheckBox1.setVisible(true);
+        }
+    }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        jComboBox2.setEnabled(true);
+        if(jCheckBox1.isSelected()){
+            //--
+        }else{
+            jCheckBox1.setVisible(false);
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        if(jCheckBox2.isSelected()){
+            jPanel6.setVisible(true);
+            jTextField2.requestFocusInWindow();
+        }else{
+            jPanel6.setVisible(false);
+        }
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,16 +497,173 @@ public PypAdmAgend Agend;
             }
         });
     }
+    private void Confirmar(){
+        try {
+         String f=null;
+         if(jDateChooser1.getDateEditor().getDate() !=null){
+             if(!jFormattedTextField5.getText().equals("  :  ")){
+                 if(!jTextField1.getText().equals("")){
+                     
+                    Confirmar.setIdAgend(Agend);
+                    Confirmar.setIdControlPro(Profesional);
+                    Confirmar.setPrimeraVez(getPrimerVez());
+                    f = Funciones.getFecha(jDateChooser1);
+                    Confirmar.setFecha(Funciones.stringToDate(f));
+                    Confirmar.setHora(Funciones.getHora(jFormattedTextField5.getText()));
+                    Confirmar.setEstado('1');
+                    Control_Asistencia.create(Confirmar);
+                    Agend.setEstado('2');
+                    Control_Agend.edit(Agend);
+                    
+                    Admision.setIdAsistcon(Confirmar);
+                    Date d = Agend.getIdPaciente().getFechaNacimiento();
+                    String ff = Funciones.Format_Fecha_GUION(d);
+                    Admision.setEdadAdmision(ff);
+                    Admision.setCausaExterna(Funciones.getCausaEX(jComboBox2.getSelectedItem().toString()));
+                    Admision.setEstadoIngreso(getEstadoIng());
+                    Admision.setMedioIngreso(getMedio());
+                    Admision.setObservacion(Observacion());
+                    Admision.setEstado('1');
+                    Control_admision.create(Admision);
+                    
+                    if(jCheckBox2.isSelected()){
+                    Responsable.setIdAdmpyp(Admision);    
+                    Responsable.setIdentificacion(jTextField2.getText());
+                    Responsable.setNombres(jTextField3.getText());
+                    Responsable.setParentesco(getParentesco());
+                    Responsable.setTelefono(jTextField4.getText());
+                    Responsable.setEstado('1'); 
+                    Control_resp.create(Responsable);
+                    }else{
+                      //--  
+                    }
+                    
+                    modulo_pyp.Modulo_PyP.d.Confirmar.Clear_Table();
+                    modulo_pyp.Modulo_PyP.d.Confirmar.Search_A();
+                    Limpiar();
+                    this.dispose();  
+                     
+                   }else{
+                  jLabel11.setText("Por favor seleccione un profesional");     
+                 jTextField1.requestFocusInWindow();
+                 }
+               }else{
+               jLabel11.setText("Por favor ingrese una hora");  
+              jFormattedTextField5.requestFocusInWindow();
+             }
+            }else{
+            jLabel11.setText("Por favor ingrese una fecha");
+           jDateChooser1.getDateEditor().getUiComponent().requestFocusInWindow();
+         } 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+      }
+    }
+    private char getPrimerVez(){
+        char v = '0';
+        if(RadioSI.isSelected()){
+          v='1';  
+        }else if(RadioNO.isSelected()){
+          v='0';  
+        }
+        return v;
+    }
+    private char getEstadoIng(){
+        char f = 'C';
+        if(jRadioButton1.isSelected()){
+           f = 'C'; 
+        }else if(jRadioButton2.isSelected()){
+           f = 'I'; 
+        }else if(jRadioButton3.isSelected()){
+           f = 'M'; 
+        }
+        return f;
+    }
+    private char getMedio(){
+        char m = '1';
+        if(jRadioButton4.isSelected()){
+            m = '1';
+        }else if(jRadioButton5.isSelected()){
+            m = '0';
+        }
+        return m;
+    }
+    private String Observacion(){
+        String Obs;
+        if(jTextArea1.getText().isEmpty()){
+            Obs = "N/A";
+        }else{
+            Obs = jTextArea1.getText();
+        }
+        return Obs;
+    }
+    private void Limpiar(){
+        jDateChooser1.setDate(null);
+        jFormattedTextField5.setText(null);
+        jTextField1.setText("");
+        Agend = null;
+        Profesional = null;
+        Responsable = null;
+        jTextArea1.setText("");
+        jComboBox2.setSelectedIndex(14);
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jComboBox1.setSelectedIndex(0);
+        jTextField4.setText("");
+        jPanel6.setVisible(false);
+        jCheckBox2.setSelected(false);
+    }
+    private char getParentesco(){
+        char par = 'P';
+        if(jComboBox1.getSelectedIndex()==0){
+           par = 'P'; 
+        }else if(jComboBox1.getSelectedIndex()==1){
+           par = 'M';
+        }else if(jComboBox1.getSelectedIndex()==2){
+           par = 'H';
+        }else if(jComboBox1.getSelectedIndex()==3){
+           par = 'N';
+        }else if(jComboBox1.getSelectedIndex()==4){
+           par = 'E';
+        }else if(jComboBox1.getSelectedIndex()==5){
+           par = 'T';
+        }else if(jComboBox1.getSelectedIndex()==6){
+           par = 'S';
+        }else if(jComboBox1.getSelectedIndex()==7){
+           par = 'U';
+        }else if(jComboBox1.getSelectedIndex()==8){
+           par = 'O';
+        }
+        return par;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton RadioNO;
+    private javax.swing.JRadioButton RadioSI;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JFormattedTextField jFormattedTextField5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    public javax.swing.JLabel jLabel12;
+    public javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -262,8 +674,20 @@ public PypAdmAgend Agend;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
+    public javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
