@@ -195,7 +195,7 @@ public Administrativo.C_Confirmar Confirmar = new Administrativo.C_Confirmar();
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
-        ListPacientes lp = new ListPacientes(null, true);
+        ListPacientes lp = new ListPacientes(this, true);
         lp.setVisible(true);
     }//GEN-LAST:event_jLabel2MouseReleased
     private void Lanzar_Agend(){
