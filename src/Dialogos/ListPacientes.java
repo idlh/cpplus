@@ -17,9 +17,12 @@ import java.util.List;
 import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import modulo_pyp.Desktop;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
 /**
@@ -426,6 +429,7 @@ public class ListPacientes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        JFrame desktop = (Desktop) (JFrame) SwingUtilities.getWindowAncestor(this);
         
     }//GEN-LAST:event_jButton1MouseReleased
 
