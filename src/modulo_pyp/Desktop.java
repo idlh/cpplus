@@ -5,7 +5,7 @@
 package modulo_pyp;
 
 import Clases.Declaraciones_AD;
-import Dialogos.ListPacientes;
+import Dialogos.HCDiag.ListPacientes;
 import javax.swing.JOptionPane;
 public class Desktop extends javax.swing.JFrame {
 Clases.Declaraciones_AD Declaraciones = new Clases.Declaraciones_AD();

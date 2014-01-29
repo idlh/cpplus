@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 
-package Dialogos;
+package Dialogos.HCDiag;
 
 import Clases.Funciones_AD;
+import HC.CrecDesarrollo;
 import controller.PypAdmAsistConJpaController;
 import entity.PypAdmAsistCon;
 import java.io.BufferedReader;
@@ -35,6 +36,7 @@ public class ListPacientes extends javax.swing.JDialog {
     private EntityManagerFactory factory;
     private PypAdmAsistConJpaController paacjc;
     private final Object dato[] = null;
+    private CrecDesarrollo crecDesarrollo;
 
     public ListPacientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -168,7 +170,6 @@ public class ListPacientes extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(674, 378));
-        setPreferredSize(new java.awt.Dimension(680, 381));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -429,8 +430,16 @@ public class ListPacientes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-        JFrame desktop = (Desktop) (JFrame) SwingUtilities.getWindowAncestor(this);
-        
+        Desktop desktop =(Desktop) this.getParent();
+        desktop.Contenedor_.removeAll();
+        crecDesarrollo = new CrecDesarrollo();
+        crecDesarrollo.setBounds(0, 0, 745, 393);
+        desktop.Contenedor_.removeAll();
+        desktop.Contenedor_.add(crecDesarrollo);
+        crecDesarrollo.setVisible(true);
+        desktop.Contenedor_.validate();
+        desktop.Contenedor_.repaint();
+        this.dispose();
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
