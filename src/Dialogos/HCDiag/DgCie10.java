@@ -1,14 +1,52 @@
 package Dialogos.HCDiag;
 
+import Clases.Funciones_AD;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Alvaro Monsalve
  */
 public class DgCie10 extends javax.swing.JDialog {
+    private DefaultTableModel modelo;
 
     public DgCie10(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        ModeloListadoPaciente();
+    }
+    
+    private DefaultTableModel getModelo(){
+        DefaultTableModel model = new DefaultTableModel(
+        null, new String [] {"id","Codigo", "Descripcion"}){
+            Class[] types = new Class []{
+                    java.lang.String.class,
+                    java.lang.String.class,
+                    java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false,false,false
+            };
+            @Override
+            public Class getColumnClass(int columnIndex) {
+               return types [columnIndex];
+            }
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex){
+               return canEdit [colIndex];
+            }
+        };  
+        return model;
+    }
+    
+    private void ModeloListadoPaciente(){
+        modelo =getModelo();
+        jTable1.setModel(modelo);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        Funciones_AD.setOcultarColumnas(jTable1, new int[]{0});
+        Funciones_AD.setSizeColumnas(jTable1, new int[]{1}, new int[]{60});
     }
 
     @SuppressWarnings("unchecked")
