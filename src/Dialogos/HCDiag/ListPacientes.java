@@ -435,8 +435,7 @@ public class ListPacientes extends javax.swing.JDialog {
         crecDesarrollo = new CrecDesarrollo();
         crecDesarrollo.setBounds(0, 0, 745, 393);
         desktop.Contenedor_.removeAll();
-        desktop.Contenedor_.add(crecDesarrollo);
-        
+        desktop.Contenedor_.add(crecDesarrollo);        
         crecDesarrollo.setVisible(true);
         desktop.Contenedor_.validate();
         desktop.Contenedor_.repaint();
