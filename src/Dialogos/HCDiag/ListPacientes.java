@@ -432,7 +432,7 @@ public class ListPacientes extends javax.swing.JDialog {
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         Desktop desktop =(Desktop) this.getParent();
         desktop.Contenedor_.removeAll();
-        crecDesarrollo = new CrecDesarrollo();
+        crecDesarrollo = new CrecDesarrollo(factory);
         crecDesarrollo.setBounds(0, 0, 745, 393);
         desktop.Contenedor_.removeAll();
         desktop.Contenedor_.add(crecDesarrollo);        

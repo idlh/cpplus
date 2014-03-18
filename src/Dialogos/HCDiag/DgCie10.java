@@ -1,27 +1,36 @@
 package Dialogos.HCDiag;
 
 import Clases.Funciones_AD;
+import controller.StaticCie10JpaController;
+import entity.StaticCie10;
+import java.util.List;
+import javax.persistence.EntityManagerFactory;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
  * @author Alvaro Monsalve
  */
 public class DgCie10 extends javax.swing.JDialog {
-    private DefaultTableModel modelo;
+    public DefaultTableModel modelo;
+    private final EntityManagerFactory factory;
+    private final Object dato[] = null;
 
-    public DgCie10(java.awt.Frame parent, boolean modal) {
+    public DgCie10(java.awt.Frame parent, boolean modal, EntityManagerFactory factory) {
         super(parent, modal);
         initComponents();
+        this.factory = factory;
         ModeloListadoPaciente();
     }
     
     private DefaultTableModel getModelo(){
         DefaultTableModel model = new DefaultTableModel(
-        null, new String [] {"id","Codigo", "Descripcion"}){
+        null, new String [] {"entidad","Codigo", "Descripcion"}){
             Class[] types = new Class []{
-                    java.lang.String.class,
+                    StaticCie10.class,
                     java.lang.String.class,
                     java.lang.String.class
             };
@@ -47,8 +56,20 @@ public class DgCie10 extends javax.swing.JDialog {
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Funciones_AD.setOcultarColumnas(jTable1, new int[]{0});
         Funciones_AD.setSizeColumnas(jTable1, new int[]{1}, new int[]{60});
+        listar();
     }
-
+    
+    private void listar(){
+        StaticCie10JpaController staticcie10EJB = new StaticCie10JpaController(factory);
+        List<StaticCie10> listaCie10 = staticcie10EJB.findStaticCie10Entities();
+        for(int i=0;i<listaCie10.size();i++){
+                modelo.addRow(dato);
+                modelo.setValueAt(listaCie10.get(i), i, 0);
+                modelo.setValueAt(listaCie10.get(i).getCodigo(), i, 1);
+                modelo.setValueAt(listaCie10.get(i).getDescripcion(), i, 2);
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -63,8 +84,8 @@ public class DgCie10 extends javax.swing.JDialog {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(411, 381));
-        setMinimumSize(new java.awt.Dimension(411, 381));
+        setMaximumSize(new java.awt.Dimension(470, 381));
+        setMinimumSize(new java.awt.Dimension(470, 381));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -81,7 +102,7 @@ public class DgCie10 extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,6 +127,12 @@ public class DgCie10 extends javax.swing.JDialog {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtrar"));
         jPanel3.setOpaque(false);
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -185,6 +212,12 @@ public class DgCie10 extends javax.swing.JDialog {
 //        this.dispose();
     }//GEN-LAST:event_jButton1MouseReleased
 
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        TableRowSorter sorter = new TableRowSorter(modelo);
+        sorter.setRowFilter (RowFilter.regexFilter(jTextField1.getText().toUpperCase()));
+        jTable1.setRowSorter (sorter);
+    }//GEN-LAST:event_jTextField1KeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -192,7 +225,7 @@ public class DgCie10 extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     public javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
