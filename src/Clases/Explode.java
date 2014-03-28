@@ -11,7 +11,7 @@ public class Explode {
     //
     private JPanel container;
     private JPanel content;
-    //coordenadas del JPanel contenido
+    //coordenadas del JPanel contenid
     private int px=0;
     private int py=0;
     //
