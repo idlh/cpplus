@@ -6,8 +6,10 @@
 
 package Dialogos.HCDiag;
 
+import Clases.Consultarcie10;
 import Clases.Funciones_AD;
 import HC.CrecDesarrollo;
+import HC.Adulto;
 import controller.PypAdmAsistConJpaController;
 import entity.PypAdmAsistCon;
 import java.io.BufferedReader;
@@ -37,6 +39,8 @@ public class ListPacientes extends javax.swing.JDialog {
     private PypAdmAsistConJpaController paacjc;
     private final Object dato[] = null;
     private CrecDesarrollo crecDesarrollo;
+    private PypAdmAsistCon pypAdmAsistCon;
+    private Adulto adult;
 
     public ListPacientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -55,7 +59,9 @@ public class ListPacientes extends javax.swing.JDialog {
             StandardPBEStringEncryptor s = new StandardPBEStringEncryptor(); 
             s.setPassword(pass);            
             String texto=null;
+            System.out.println(clipa);
             lector = new FileReader(clipa);
+            
             BufferedReader contenido=new BufferedReader(lector);
             while((texto=contenido.readLine())!=null){
                 parametros.add(s.decrypt(texto));
@@ -198,6 +204,7 @@ public class ListPacientes extends javax.swing.JDialog {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sigA0.PNG"))); // NOI18N
         jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusable(false);
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sigA1.png"))); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -431,20 +438,24 @@ public class ListPacientes extends javax.swing.JDialog {
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         Desktop desktop =(Desktop) this.getParent();
-        desktop.Contenedor_.removeAll();
-        crecDesarrollo = new CrecDesarrollo(factory);
-        crecDesarrollo.setBounds(0, 0, 745, 393);
-        desktop.Contenedor_.removeAll();
-        desktop.Contenedor_.add(crecDesarrollo);        
-        crecDesarrollo.setVisible(true);
-        desktop.Contenedor_.validate();
-        desktop.Contenedor_.repaint();
-        this.dispose();
+        pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+        desktop.Contenedor_.removeAll();        
+        if(pypAdmAsistCon.getIdAgend().getIdPrograma().getId()==3){
+            adult = new Adulto(factory, pypAdmAsistCon);
+            adult.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(adult);
+            adult.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
+
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
         if(jTable1.getSelectedRow()!=-1){
-            PypAdmAsistCon pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+             pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
             jLabel3.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getNombre1()+" "+
                     pypAdmAsistCon.getIdAgend().getIdPaciente().getNombre2()+" "+
                     pypAdmAsistCon.getIdAgend().getIdPaciente().getApellido1()+" "+
@@ -482,6 +493,6 @@ public class ListPacientes extends javax.swing.JDialog {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    public static javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
