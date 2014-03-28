@@ -45,6 +45,7 @@ public Administrativo.C_Confirmar Confirmar = new Administrativo.C_Confirmar();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
