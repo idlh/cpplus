@@ -13,10 +13,10 @@ import java.awt.Color;
  * @author Administrador
  */
 public class Procedimientos extends javax.swing.JPanel {
-        HC.ProcedimientosM pa = new ProcedimientosM();
-        public HC.ProcedimientosL pl = new ProcedimientosL();
-        HC.ProcedimientosI pi = new ProcedimientosI();
-        HC.ProcedimientosQ pq = new ProcedimientosQ();
+        HC.ProcedimientosM pa = null;
+        public HC.ProcedimientosL pl = null;
+        HC.ProcedimientosI pi = null;
+        HC.ProcedimientosQ pq = null;
         HC.ProcedimientosO po = new ProcedimientosO();
         Dialogos.HCDiag.Dprocedimientos prog;
 
@@ -289,7 +289,7 @@ public class Procedimientos extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel19MouseExited
 
     private void jLabel14MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseReleased
-        // TODO add your handling code here:        
+        if(pa==null)pa = new ProcedimientosM();
         HC.OrdenesM.jPanel1.removeAll();
 //        pa.setBounds(0, 0, 408, 297);
 //        HC.OrdenesM.jPanel1.add(pa);
@@ -301,7 +301,7 @@ public class Procedimientos extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel14MouseReleased
 
     private void jLabel16MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseReleased
-        // TODO add your handling code here:
+        if(pl==null)pl = new ProcedimientosL();
         HC.OrdenesM.jPanel1.removeAll();
 //        pl.setBounds(0, 0, 408, 297);
 //        HC.OrdenesM.jPanel1.add(pl);
@@ -312,7 +312,7 @@ public class Procedimientos extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel16MouseReleased
 
     private void jLabel17MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseReleased
-        // TODO add your handling code here:
+        if(pi==null)pi = new ProcedimientosI();
         HC.OrdenesM.jPanel1.removeAll();
 //        pi.setBounds(0, 0, 408, 297);
 //        HC.OrdenesM.jPanel1.add(pi);
@@ -323,7 +323,7 @@ public class Procedimientos extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel17MouseReleased
 
     private void jLabel19MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseReleased
-        // TODO add your handling code here:
+        if(pq==null)pq = new ProcedimientosQ();
         HC.OrdenesM.jPanel1.removeAll();
 //        pq.setBounds(0, 0, 408, 297);
 //        HC.OrdenesM.jPanel1.add(pq);
@@ -334,7 +334,7 @@ public class Procedimientos extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel19MouseReleased
 
     private void jLabel18MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseReleased
-        // TODO add your handling code here:
+        if(po==null)po = new ProcedimientosO();
         HC.OrdenesM.jPanel1.removeAll();
 //        po.setBounds(0, 0, 408, 297);
 //        HC.OrdenesM.jPanel1.add(po);

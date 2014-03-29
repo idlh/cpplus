@@ -14,7 +14,9 @@ import java.awt.Color;
  */
 public class OrdenesM extends javax.swing.JPanel {
 public int val = 0;
-public static HC.Procedimientos pa;
+public static HC.Procedimientos pa=null;
+HC.Recomendaciones reco = null;
+HC.Medicamentos me = null;
     /**
      * Creates new form OrdenesM
      */
@@ -232,12 +234,12 @@ public static HC.Procedimientos pa;
     }//GEN-LAST:event_jLabel16MouseExited
 
     private void jLabel13MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseReleased
+       if(me==null) me = new Medicamentos();
         // TODO add your handling code here:
-        HC.Medicamentos me = new Medicamentos();
         jPanel1.removeAll();
 //        me.setBounds(0, 0, 408, 297);
 //        jPanel1.add(me);        
-//        me.setVisible(true);
+//        me.setVisible(true);  
 //        jPanel1.validate();
 //        jPanel1.repaint();
         new Clases.Explode(HC.OrdenesM.jPanel1, me).play();
@@ -248,7 +250,7 @@ public static HC.Procedimientos pa;
         if(val==1){
             jPanel21.setLocation(10, 296);
             jPanel2.setVisible(true);
-             pa = new Procedimientos();
+             if (pa==null)pa = new Procedimientos();
             this.jPanel2.removeAll();
             pa.setBounds(0, 0, 124, 221);
             this.jPanel2.add(pa);        
@@ -261,7 +263,6 @@ public static HC.Procedimientos pa;
                 this.jPanel2.removeAll();
                 jPanel2.setVisible(false);
                 jPanel21.setLocation(10, 113);
-                this.jPanel1.removeAll();
                 this.jPanel1.validate();
                 this.jPanel1.repaint();
                 val = 1;
@@ -270,8 +271,8 @@ public static HC.Procedimientos pa;
     }//GEN-LAST:event_jLabel14MouseReleased
 
     private void jLabel16MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseReleased
-        // TODO add your handling code here:
-        HC.Recomendaciones reco = new Recomendaciones();
+        if(reco==null) reco = new Recomendaciones();
+// TODO add your handling code here:        
         jPanel1.removeAll();
 //        reco.setBounds(0, 0, 408, 297);
 //        jPanel1.add(reco);        

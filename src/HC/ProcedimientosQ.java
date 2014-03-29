@@ -6,8 +6,15 @@
 
 package HC;
 
+import Clases.Funciones_AD;
+import Dialogos.HCDiag.Dprocedimientos;
 import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,12 +22,14 @@ import javax.swing.SwingUtilities;
  */
 public class ProcedimientosQ extends javax.swing.JPanel {
  Dialogos.HCDiag.Dprocedimientos prog;
+ public static DefaultTableModel modelo;
  
     /**
      * Creates new form Medicamentos
      */
     public ProcedimientosQ() {
         initComponents();
+        tabla();
     }
 
     /**
@@ -34,7 +43,7 @@ public class ProcedimientosQ extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tablaquirurgicos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -47,7 +56,7 @@ public class ProcedimientosQ extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Procedimientos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 10))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tablaquirurgicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -58,7 +67,13 @@ public class ProcedimientosQ extends javax.swing.JPanel {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        Tablaquirurgicos.setFocusable(false);
+        Tablaquirurgicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                TablaquirurgicosMouseEntered(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Tablaquirurgicos);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/añardirc1.png"))); // NOI18N
         jButton1.setToolTipText("Añadir paraclinico");
@@ -84,6 +99,9 @@ public class ProcedimientosQ extends javax.swing.JPanel {
         jButton3.setFocusable(false);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/quitarc2.png"))); // NOI18N
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton3MouseReleased(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton3MouseEntered(evt);
             }
@@ -166,19 +184,86 @@ public class ProcedimientosQ extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3MouseExited
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-        prog = new Dialogos.HCDiag.Dprocedimientos((Frame) SwingUtilities.getWindowAncestor(this),true);
-        prog.procquirur();
-        prog.show();
-       
+        final Dprocedimientos pr = new Dprocedimientos((Frame) SwingUtilities.getWindowAncestor(this), true);
+        pr.procquirur();
+        pr.jButton3.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Agregar_Registro(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0).toString(), 
+                    pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
+                    pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
+                    pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString()
+                );
+                pr.dispose();
+            }
+        });
+        pr.setVisible(true);
     }//GEN-LAST:event_jButton1MouseReleased
 
+    private void TablaquirurgicosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaquirurgicosMouseEntered
+        int rowindex = Tablaquirurgicos.rowAtPoint(evt.getPoint());
+        int columnindex = Tablaquirurgicos.columnAtPoint(evt.getPoint());
+        Tablaquirurgicos.setToolTipText((String)Tablaquirurgicos.getValueAt(rowindex, columnindex));
+    }//GEN-LAST:event_TablaquirurgicosMouseEntered
 
+    private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
+        quitarrgistro();
+    }//GEN-LAST:event_jButton3MouseReleased
+    public void tabla(){
+        try {
+                getModelo();
+                Tablaquirurgicos.getTableHeader().setReorderingAllowed(false);
+                Tablaquirurgicos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                Funciones_AD.setOcultarColumnas(Tablaquirurgicos, new int[]{0,1,3});
+                Funciones_AD.setSizeColumnas(Tablaquirurgicos, new int[]{1}, new int[]{450});  
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage().toString());
+        }
+    }     
+     public void getModelo(){
+         modelo = new DefaultTableModel(
+        null, new String [] {"Id","Codigo", "Procedimiento", "Categoria"}){
+            Class[] types = new Class []{
+                    java.lang.String.class,
+                    java.lang.String.class,
+                    java.lang.String.class,
+                    java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false,false,false,false
+            };
+            @Override
+            public Class getColumnClass(int columnIndex) {
+               return types [columnIndex];
+            }
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex){
+               return canEdit [colIndex];
+            }
+        };
+        Tablaquirurgicos.setModel(modelo);
+    } 
+    public void Agregar_Registro(String r1, String r2, String r3, String r4){
+        try {
+        DefaultTableModel temp = (DefaultTableModel) Tablaquirurgicos.getModel();
+        Object nuevo[]= {r1,r2,r3,r4};
+        temp.addRow(nuevo); 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null," :(  "+ e.getMessage());
+        }
+    }
+    public void quitarrgistro(){
+        if(modelo.getRowCount()>0 && Tablaquirurgicos.getSelectedRow()>-1){
+            modelo.removeRow(Tablaquirurgicos.getSelectedRow());
+        }
+     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    javax.swing.JTable Tablaquirurgicos;
     javax.swing.JButton jButton1;
     javax.swing.JButton jButton3;
     javax.swing.JLabel jLabel1;
     javax.swing.JPanel jPanel1;
     javax.swing.JScrollPane jScrollPane1;
-    javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,12 +17,14 @@ import modulo_pyp.Desktop;
 public class Adulto extends javax.swing.JPanel {
     private EntityManagerFactory factory;
     private PypAdmAsistCon pypAdmAsistCon;
-    HC.MotivoC mo = new MotivoC();
-    HC.AntecedentesP ant = new AntecedentesP();
-    HC.Enfermedadac enf = new Enfermedadac();
-    HC.Exploracionf ex = new Exploracionf();
-    HC.OrdenesM om = new OrdenesM();
-    HC.PruebasComple pc = new PruebasComple();
+    HC.MotivoC mo = null;
+    HC.AntecedentesP ant = null;
+    HC.Enfermedadac enf = null;
+    HC.Exploracionf ex = null;
+    HC.OrdenesM om = null;
+    HC.PruebasComple pc = null;  
+    HC.DiagnosticosM dx=null; 
+    
     public Adulto(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.factory = factory;
@@ -566,6 +568,7 @@ public class Adulto extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+        if(mo==null) mo = new MotivoC();
         this.jPanel4.removeAll();
 //        mo.setBounds(0, 0, 558, 345);
 //        this.jPanel4.add(mo);        
@@ -577,6 +580,7 @@ public class Adulto extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel2MouseReleased
 
     private void jLabel5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseReleased
+        if(ant==null) ant = new AntecedentesP();
 //        ant.setBounds(0, 0, 558, 345);
         this.jPanel4.removeAll();
 //        this.jPanel4.add(ant);        
@@ -587,6 +591,7 @@ public class Adulto extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel5MouseReleased
 
     private void jLabel6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseReleased
+        if(enf==null) enf = new Enfermedadac();
 //        enf.setBounds(0, 0, 558, 345);
         this.jPanel4.removeAll();
 //        this.jPanel4.add(enf);        
@@ -597,6 +602,7 @@ public class Adulto extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel6MouseReleased
 
     private void jLabel7MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseReleased
+        if(ex==null) ex = new Exploracionf();
 //        ex.setBounds(0, 0, 558, 345);
         this.jPanel4.removeAll();
 //        this.jPanel4.add(ex);        
@@ -607,6 +613,7 @@ public class Adulto extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel7MouseReleased
 
     private void jLabel8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseReleased
+        if(pc==null) pc = new PruebasComple();
 //        pc.setBounds(0, 0, 558, 345);
         this.jPanel4.removeAll();
 //        this.jPanel4.add(pc);        
@@ -617,7 +624,7 @@ public class Adulto extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel8MouseReleased
 
     private void jLabel10MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseReleased
-        HC.DiagnosticosM dx = new DiagnosticosM(factory);
+        if (dx==null) dx= new DiagnosticosM(factory);
 //        dx.setBounds(0, 0, 558, 345);
         this.jPanel4.removeAll();
 //        this.jPanel4.add(dx);        
@@ -628,6 +635,7 @@ public class Adulto extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel10MouseReleased
 
     private void jLabel11MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseReleased
+        if(om==null) om = new OrdenesM();
 //        om.setBounds(0, 0, 558, 345);
         this.jPanel4.removeAll();
 //        this.jPanel4.add(om);        

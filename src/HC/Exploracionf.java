@@ -90,11 +90,29 @@ public class Exploracionf extends javax.swing.JPanel {
 
         jLabel15.setText("°C");
 
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField8KeyTyped(evt);
+            }
+        });
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
+
         jLabel8.setText("TaS:");
 
         jLabel16.setText("Talla:");
 
         jLabel9.setText("resp/m");
+
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
 
         jLabel2.setText("mmHg");
 
@@ -108,13 +126,31 @@ public class Exploracionf extends javax.swing.JPanel {
 
         jLabel19.setText("Peso:");
 
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField9KeyTyped(evt);
+            }
+        });
+
         jLabel12.setText("TaD:");
 
         jLabel20.setText("IMC:");
 
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
+
         jLabel4.setText("mmHg");
 
         jLabel13.setText("ppm");
+
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
 
         jScrollPane1.setViewportView(jTextPane1);
 
@@ -362,6 +398,35 @@ public class Exploracionf extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        char car = evt.getKeyChar();
+        if((car<'0'||car>'9'))evt.consume();
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        char car = evt.getKeyChar();
+        if((car<'0'||car>'9'))evt.consume();
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
+        char car = evt.getKeyChar();
+        if((car<'0'||car>'9'))evt.consume();
+    }//GEN-LAST:event_jTextField8KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+       char car = evt.getKeyChar();
+        if((car<'0'||car>'9'))evt.consume();
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        char car = evt.getKeyChar();
+        if((car<'0'||car>'9'))evt.consume();
+    }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField9KeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
