@@ -257,6 +257,7 @@ public class ListPacientes extends javax.swing.JDialog {
 
             }
         ));
+        jTable1.setFocusable(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jTable1MouseReleased(evt);
