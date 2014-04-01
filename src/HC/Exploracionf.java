@@ -6,6 +6,9 @@
 
 package HC;
 
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author Administrador
@@ -17,6 +20,25 @@ public class Exploracionf extends javax.swing.JPanel {
      */
     public Exploracionf() {
         initComponents();
+        jTextField10.setEditable(false);
+        jTextArea1.setSelectionStart(0);
+        jTextArea1.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea2.setSelectionStart(0);
+        jTextArea2.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea3.setSelectionStart(0);
+        jTextArea3.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea4.setSelectionStart(0);
+        jTextArea4.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea5.setSelectionStart(0);
+        jTextArea5.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea6.setSelectionStart(0);
+        jTextArea6.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea7.setSelectionStart(0);
+        jTextArea7.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea8.setSelectionStart(0);
+        jTextArea8.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea9.setSelectionStart(0);
+        jTextArea9.setSelectionEnd(jTextArea1.getText().length());
     }
 
     /**
@@ -84,19 +106,33 @@ public class Exploracionf extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Exploración Física");
 
+        jTabbedPane1.setFocusable(false);
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel14.setText("Cm");
 
         jLabel15.setText("°C");
 
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField7KeyReleased(evt);
+            }
+        });
+
         jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField8KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField8KeyTyped(evt);
             }
         });
 
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField1KeyTyped(evt);
             }
@@ -109,6 +145,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jLabel9.setText("resp/m");
 
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField4KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField4KeyTyped(evt);
             }
@@ -127,6 +166,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jLabel19.setText("Peso:");
 
         jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField9KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField9KeyTyped(evt);
             }
@@ -137,6 +179,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jLabel20.setText("IMC:");
 
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField2KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField2KeyTyped(evt);
             }
@@ -147,10 +192,16 @@ public class Exploracionf extends javax.swing.JPanel {
         jLabel13.setText("ppm");
 
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField5KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField5KeyTyped(evt);
             }
         });
+
+        jTextField10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jTextField10.setForeground(new java.awt.Color(255, 255, 204));
 
         jScrollPane1.setViewportView(jTextPane1);
 
@@ -304,70 +355,181 @@ public class Exploracionf extends javax.swing.JPanel {
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setText("No se encuentran datos relevantes");
+        jTextArea1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea1MouseReleased(evt);
+            }
+        });
+        jTextArea1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea1KeyReleased(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTextArea1);
 
         jTabbedPane1.addTab("Aspecto general", jScrollPane2);
 
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextArea2.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
+        jTextArea2.setText("No se encuentran datos relevantes");
+        jTextArea2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea2MouseReleased(evt);
+            }
+        });
+        jTextArea2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea2KeyReleased(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTextArea2);
 
         jTabbedPane1.addTab("Neurologico, oral y cara", jScrollPane3);
 
         jTextArea3.setColumns(20);
         jTextArea3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextArea3.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea3.setRows(5);
+        jTextArea3.setText("No se encuentran datos relevantes");
+        jTextArea3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea3MouseReleased(evt);
+            }
+        });
+        jTextArea3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea3KeyReleased(evt);
+            }
+        });
         jScrollPane4.setViewportView(jTextArea3);
 
         jTabbedPane1.addTab("Cardiovascular", jScrollPane4);
 
         jTextArea4.setColumns(20);
         jTextArea4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextArea4.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea4.setRows(5);
+        jTextArea4.setText("No se encuentran datos relevantes");
+        jTextArea4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea4MouseReleased(evt);
+            }
+        });
+        jTextArea4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea4KeyReleased(evt);
+            }
+        });
         jScrollPane5.setViewportView(jTextArea4);
 
         jTabbedPane1.addTab("Respiratorio", jScrollPane5);
 
+        jTabbedPane2.setFocusable(false);
+
         jTextArea5.setColumns(20);
         jTextArea5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextArea5.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea5.setLineWrap(true);
         jTextArea5.setRows(5);
+        jTextArea5.setText("No se encuentran datos relevantes");
+        jTextArea5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea5MouseReleased(evt);
+            }
+        });
+        jTextArea5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea5KeyReleased(evt);
+            }
+        });
         jScrollPane6.setViewportView(jTextArea5);
 
         jTabbedPane2.addTab("Gastrointestinal", jScrollPane6);
 
         jTextArea6.setColumns(20);
         jTextArea6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextArea6.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea6.setLineWrap(true);
         jTextArea6.setRows(5);
+        jTextArea6.setText("No se encuentran datos relevantes");
+        jTextArea6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea6MouseReleased(evt);
+            }
+        });
+        jTextArea6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea6KeyReleased(evt);
+            }
+        });
         jScrollPane7.setViewportView(jTextArea6);
 
         jTabbedPane2.addTab("Genitourinario", jScrollPane7);
 
         jTextArea7.setColumns(20);
         jTextArea7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextArea7.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea7.setLineWrap(true);
         jTextArea7.setRows(5);
+        jTextArea7.setText("No se encuentran datos relevantes");
+        jTextArea7.setToolTipText("");
+        jTextArea7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea7MouseReleased(evt);
+            }
+        });
+        jTextArea7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea7KeyReleased(evt);
+            }
+        });
         jScrollPane8.setViewportView(jTextArea7);
 
         jTabbedPane2.addTab("Hematoinfeccioso", jScrollPane8);
 
         jTextArea8.setColumns(20);
         jTextArea8.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextArea8.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea8.setLineWrap(true);
         jTextArea8.setRows(5);
+        jTextArea8.setText("No se encuentran datos relevantes");
+        jTextArea8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea8MouseReleased(evt);
+            }
+        });
+        jTextArea8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea8KeyReleased(evt);
+            }
+        });
         jScrollPane9.setViewportView(jTextArea8);
 
         jTabbedPane2.addTab("Endocrino - Metabolico", jScrollPane9);
 
         jTextArea9.setColumns(20);
         jTextArea9.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextArea9.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea9.setLineWrap(true);
         jTextArea9.setRows(5);
+        jTextArea9.setText("No se encuentran datos relevantes");
+        jTextArea9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea9MouseReleased(evt);
+            }
+        });
+        jTextArea9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea9KeyReleased(evt);
+            }
+        });
         jScrollPane10.setViewportView(jTextArea9);
 
         jTabbedPane2.addTab("Osteomuscular y Piel", jScrollPane10);
@@ -427,6 +589,153 @@ public class Exploracionf extends javax.swing.JPanel {
     private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9KeyTyped
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+             jTextField2.requestFocus();
+         }
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+             jTextField5.requestFocus();
+         }
+    }//GEN-LAST:event_jTextField4KeyReleased
+
+    private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+             jTextField9.requestFocus();
+         }
+    }//GEN-LAST:event_jTextField7KeyReleased
+
+    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+             jTextField4.requestFocus();
+         }
+    }//GEN-LAST:event_jTextField2KeyReleased
+
+    private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+             jTextField7.requestFocus();
+         }
+    }//GEN-LAST:event_jTextField5KeyReleased
+
+    private void jTextField9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+             jTextField8.requestFocus();
+         }
+    }//GEN-LAST:event_jTextField9KeyReleased
+
+    private void jTextField8KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyReleased
+       if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+           float imc =0;
+           String im =null;
+           imc = Float.parseFloat(jTextField9.getText())/((Float.parseFloat(jTextField8.getText())*Float.parseFloat(jTextField8.getText()))/100)*100;
+           im = String.valueOf(imc);
+           if(imc<19){  
+               jTextField10.setForeground(Color.red);
+               jTextField10.setBackground(Color.WHITE);
+           }else{
+               if(imc>=19 && imc<25){
+                   jTextField10.setForeground(new Color(0,153,204));
+                   jTextField10.setBackground(Color.WHITE);
+               }else{
+                   if(imc>=25 && imc <30){
+                       jTextField10.setForeground(new Color(255,102,51));
+                       jTextField10.setBackground(Color.WHITE);
+                   }else{
+                       if(imc>=30){
+                           jTextField10.setForeground(new Color(255,255,204));
+                           jTextField10.setBackground(Color.BLACK);
+                       }
+                   }
+               }
+           }
+           jTextField10.setText(im);
+           jTextPane1.requestFocus();
+         }
+    }//GEN-LAST:event_jTextField8KeyReleased
+
+    private void jTextArea1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea1MouseReleased
+       jTextArea1.setSelectionStart(0);
+       jTextArea1.setSelectionEnd(jTextArea1.getText().length());
+    }//GEN-LAST:event_jTextArea1MouseReleased
+
+    private void jTextArea2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea2MouseReleased
+       jTextArea2.setSelectionStart(0);
+       jTextArea2.setSelectionEnd(jTextArea1.getText().length());
+    }//GEN-LAST:event_jTextArea2MouseReleased
+
+    private void jTextArea3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea3MouseReleased
+       jTextArea3.setSelectionStart(0);
+       jTextArea3.setSelectionEnd(jTextArea1.getText().length());
+    }//GEN-LAST:event_jTextArea3MouseReleased
+
+    private void jTextArea4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea4MouseReleased
+       jTextArea4.setSelectionStart(0);
+       jTextArea4.setSelectionEnd(jTextArea1.getText().length());
+    }//GEN-LAST:event_jTextArea4MouseReleased
+
+    private void jTextArea9MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea9MouseReleased
+       jTextArea9.setSelectionStart(0);
+       jTextArea9.setSelectionEnd(jTextArea1.getText().length());
+    }//GEN-LAST:event_jTextArea9MouseReleased
+
+    private void jTextArea8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea8MouseReleased
+       jTextArea8.setSelectionStart(0);
+       jTextArea8.setSelectionEnd(jTextArea1.getText().length());
+    }//GEN-LAST:event_jTextArea8MouseReleased
+
+    private void jTextArea7MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea7MouseReleased
+       jTextArea7.setSelectionStart(0);
+       jTextArea7.setSelectionEnd(jTextArea1.getText().length());
+    }//GEN-LAST:event_jTextArea7MouseReleased
+
+    private void jTextArea6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea6MouseReleased
+       jTextArea6.setSelectionStart(0);
+       jTextArea6.setSelectionEnd(jTextArea1.getText().length());
+    }//GEN-LAST:event_jTextArea6MouseReleased
+
+    private void jTextArea5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea5MouseReleased
+       jTextArea5.setSelectionStart(0);
+       jTextArea5.setSelectionEnd(jTextArea1.getText().length());
+    }//GEN-LAST:event_jTextArea5MouseReleased
+
+    private void jTextArea1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyReleased
+        jTextArea1.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea1KeyReleased
+
+    private void jTextArea2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea2KeyReleased
+        jTextArea2.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea2KeyReleased
+
+    private void jTextArea3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea3KeyReleased
+        jTextArea3.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea3KeyReleased
+
+    private void jTextArea4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea4KeyReleased
+        jTextArea4.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea4KeyReleased
+
+    private void jTextArea5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea5KeyReleased
+        jTextArea5.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea5KeyReleased
+
+    private void jTextArea6KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea6KeyReleased
+        jTextArea6.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea6KeyReleased
+
+    private void jTextArea7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea7KeyReleased
+        jTextArea7.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea7KeyReleased
+
+    private void jTextArea8KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea8KeyReleased
+        jTextArea8.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea8KeyReleased
+
+    private void jTextArea9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea9KeyReleased
+        jTextArea9.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea9KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
