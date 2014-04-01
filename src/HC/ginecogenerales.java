@@ -6,6 +6,8 @@
 
 package HC;
 
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author Administrador
@@ -106,22 +108,47 @@ public class ginecogenerales extends javax.swing.JPanel {
         jDateChooser1.setBounds(64, 40, 95, 20);
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
         add(jTextField1);
         jTextField1.setBounds(64, 66, 95, 19);
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField2KeyReleased(evt);
+            }
+        });
         add(jTextField2);
         jTextField2.setBounds(64, 91, 95, 19);
 
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField3KeyReleased(evt);
+            }
+        });
         add(jTextField3);
         jTextField3.setBounds(64, 116, 95, 19);
 
         jTextField4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField4KeyReleased(evt);
+            }
+        });
         add(jTextField4);
         jTextField4.setBounds(64, 141, 95, 19);
 
         jTextField5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField5KeyReleased(evt);
+            }
+        });
         add(jTextField5);
         jTextField5.setBounds(64, 166, 95, 19);
 
@@ -140,6 +167,11 @@ public class ginecogenerales extends javax.swing.JPanel {
         jLabel10.setBounds(164, 70, 94, 11);
 
         jTextField7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField7KeyReleased(evt);
+            }
+        });
         add(jTextField7);
         jTextField7.setBounds(262, 66, 72, 19);
 
@@ -196,9 +228,56 @@ public class ginecogenerales extends javax.swing.JPanel {
         jTextField10.setMinimumSize(new java.awt.Dimension(72, 19));
         jTextField10.setName(""); // NOI18N
         jTextField10.setPreferredSize(new java.awt.Dimension(72, 19));
+        jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField10KeyReleased(evt);
+            }
+        });
         add(jTextField10);
         jTextField10.setBounds(262, 41, 72, 19);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+             jTextField2.requestFocus();
+         }
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+             jTextField3.requestFocus();
+         }
+    }//GEN-LAST:event_jTextField2KeyReleased
+
+    private void jTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+             jTextField4.requestFocus();
+         }
+    }//GEN-LAST:event_jTextField3KeyReleased
+
+    private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+             jTextField5.requestFocus();
+         }
+    }//GEN-LAST:event_jTextField4KeyReleased
+
+    private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+             jTextField10.requestFocus();
+         }
+    }//GEN-LAST:event_jTextField5KeyReleased
+
+    private void jTextField10KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+             jTextField7.requestFocus();
+         }
+    }//GEN-LAST:event_jTextField10KeyReleased
+
+    private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+             jTextField9.requestFocus();
+         }
+    }//GEN-LAST:event_jTextField7KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
