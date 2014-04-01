@@ -72,7 +72,7 @@ public class MotivoC extends javax.swing.JPanel {
         });
 
         jCheckBox7.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox7.setText("Embarazo adolecente");
+        jCheckBox7.setText("Fracaso economico");
         jCheckBox7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox7.setFocusable(false);
 
@@ -139,7 +139,7 @@ public class MotivoC extends javax.swing.JPanel {
                             .addComponent(jCheckBox4)
                             .addComponent(jCheckBox6)
                             .addComponent(jCheckBox5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox10)
                             .addComponent(jCheckBox8)
