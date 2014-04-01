@@ -1,22 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package HC;
-
-/**
- *
- * @author Administrador
- */
+import Clases.Funciones_AD;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+import Dialogos.HCDiag.Dmedicamentos;
+import Dialogos.HCDiag.Mostrarmed;
+import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 public class Medicamentos extends javax.swing.JPanel {
-
-    /**
-     * Creates new form Medicamentos
-     */
+Clases.Cmedicamentos med = new Clases.Cmedicamentos();
+Dialogos.HCDiag.Mostrarmed mosmed;
+int row;
+    public static DefaultTableModel modelo;
     public Medicamentos() {
         initComponents();
+        cargar();
+        Tablamedi.addMouseListener(new MouseAdapter() {});
     }
 
     /**
@@ -28,12 +30,25 @@ public class Medicamentos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tablamedi = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+
+        jPopupMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/clip_board.png"))); // NOI18N
+        jMenuItem1.setText("Ver");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jMenuItem1MouseReleased(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(408, 297));
@@ -43,7 +58,7 @@ public class Medicamentos extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Medicamentos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 10))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tablamedi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -54,7 +69,15 @@ public class Medicamentos extends javax.swing.JPanel {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        Tablamedi.setComponentPopupMenu(jPopupMenu1);
+        Tablamedi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Tablamedi.setFocusable(false);
+        Tablamedi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                TablamediMouseReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Tablamedi);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/añardirc1.png"))); // NOI18N
         jButton1.setToolTipText("Añadir Medicamento");
@@ -63,6 +86,9 @@ public class Medicamentos extends javax.swing.JPanel {
         jButton1.setPreferredSize(new java.awt.Dimension(43, 40));
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/añadirc2.png"))); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton1MouseEntered(evt);
             }
@@ -77,6 +103,9 @@ public class Medicamentos extends javax.swing.JPanel {
         jButton3.setFocusable(false);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/quitarc2.png"))); // NOI18N
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton3MouseReleased(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton3MouseEntered(evt);
             }
@@ -139,32 +168,133 @@ public class Medicamentos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        // TODO add your handling code here:
         HC.Adulto.jLabel4.setText("Añadir Medicamento");
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        // TODO add your handling code here:
         HC.Adulto.jLabel4.setText("...");
     }//GEN-LAST:event_jButton1MouseExited
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
-        // TODO add your handling code here:
         HC.Adulto.jLabel4.setText("Quitar Medicamento");
     }//GEN-LAST:event_jButton3MouseEntered
 
     private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
-        // TODO add your handling code here:
         HC.Adulto.jLabel4.setText("...");
     }//GEN-LAST:event_jButton3MouseExited
 
+    private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
+        quitarrgistro();
+    }//GEN-LAST:event_jButton3MouseReleased
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        final Dmedicamentos medi = new Dmedicamentos((Frame) SwingUtilities.getWindowAncestor(this), true);
+        medi.jButton2.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(medi.jTextField3.getText().equals("")){
+                    medi.jTextField3.setText("0");
+                }
+                Agregar_Registro(medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(),0).toString(),
+                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(),1).toString(),
+                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(),2).toString(),
+                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(),3).toString(),
+                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(),4).toString(),
+                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(),5).toString(),
+                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(),6).toString(),
+                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(),7).toString(),
+                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(),8).toString(),
+                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(),9).toString(),
+                        medi.jTextField2.getText()+" - "+medi.jComboBox1.getSelectedItem().toString(),
+                        medi.jComboBox2.getSelectedItem().toString(),
+                        medi.jTextArea1.getText().toString(),
+                        medi.jTextField3.getText().toString()
+                );                
+                medi.dispose();
+            }
+        });         
+        medi.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
+        mosmed = new Mostrarmed((Frame) SwingUtilities.getWindowAncestor(this), true);
+        mosmed.jTextArea1.setText(Tablamedi.getValueAt(row, 1).toString());
+        mosmed.jLabel3.setText(Tablamedi.getValueAt(row, 10).toString());
+        mosmed.jLabel7.setText(Tablamedi.getValueAt(row, 11).toString());
+        mosmed.jTextArea2.setText(Tablamedi.getValueAt(row, 12).toString());
+        mosmed.setLocationRelativeTo(null);
+        mosmed.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem1MouseReleased
+
+    private void TablamediMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablamediMouseReleased
+        row = Tablamedi.rowAtPoint(evt.getPoint());
+    }//GEN-LAST:event_TablamediMouseReleased
+    public void cargar(){
+        getModelo();
+        Tablamedi.getTableHeader().setReorderingAllowed(false);
+        Tablamedi.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        Funciones_AD.setOcultarColumnas(Tablamedi, new int[]{0,2,3,4,6,5,7,8,9,10,11,12,13});
+        Funciones_AD.setSizeColumnas(Tablamedi, new int[]{1}, new int[]{650});
+    }
+    public void getModelo(){
+        modelo = new DefaultTableModel(
+        null, new String [] {"Id","Medicamento","Principío Activo", "Concentracion","Presentacion Farmaceutica","Dosis", "Via de administracion","pos","Registro invima","Presentacion Comercial","dosisf","viaf","observacion","Cantidad sum"}){
+            Class[] types = new Class []{
+                    java.lang.String.class,
+                    java.lang.String.class,
+                    java.lang.String.class,
+                    java.lang.String.class,
+                    java.lang.String.class,
+                    java.lang.String.class,
+                    java.lang.String.class,
+                    java.lang.String.class,
+                    java.lang.String.class,
+                    java.lang.String.class,                    
+                    java.lang.String.class,
+                    java.lang.String.class,
+                    java.lang.String.class,
+                    java.lang.String.class,
+                    java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+            };
+            @Override
+            public Class getColumnClass(int columnIndex) {
+               return types [columnIndex];
+            }
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex){
+               return canEdit [colIndex];
+            }
+        };
+        Tablamedi.setModel(modelo); 
+    }   
+    public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5, String r6, String r7, String r8, String r9, String r10, String r11, String r12, String r13, String r14){
+        try {
+        DefaultTableModel temp = (DefaultTableModel) Tablamedi.getModel();
+        Object nuevo[]= {r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14};
+        temp.addRow(nuevo); 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null," :(  "+ e.getMessage());
+        }
+    }
+     public void quitarrgistro(){
+        if(modelo.getRowCount()>0 && Tablamedi.getSelectedRow()>-1){
+            modelo.removeRow(Tablamedi.getSelectedRow());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    javax.swing.JTable Tablamedi;
     javax.swing.JButton jButton1;
     javax.swing.JButton jButton3;
     javax.swing.JLabel jLabel1;
+    javax.swing.JMenuItem jMenuItem1;
     javax.swing.JPanel jPanel1;
+    javax.swing.JPopupMenu jPopupMenu1;
     javax.swing.JScrollPane jScrollPane1;
-    javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
