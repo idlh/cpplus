@@ -16,7 +16,7 @@ import modulo_pyp.Desktop;
  */
 public class Adulto extends javax.swing.JPanel {
     private EntityManagerFactory factory;
-    private PypAdmAsistCon pypAdmAsistCon;
+    public static PypAdmAsistCon pypAdmAsistCon;
     HC.MotivoC mo = null;
     HC.AntecedentesP ant = null;
     HC.Enfermedadac enf = null;
@@ -575,7 +575,7 @@ public class Adulto extends javax.swing.JPanel {
 //        mo.setVisible(true);
 //        this.jPanel4.validate();
 //        this.jPanel4.repaint();
-        mo.jLabel3.setText("Programa del Adulto");
+        mo.jLabel3.setText("Detección Temprana De Las Alteraciones Del Adulto");
         new Clases.Explode(jPanel4, mo).play();
     }//GEN-LAST:event_jLabel2MouseReleased
 
