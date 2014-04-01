@@ -6,9 +6,12 @@ package Clases;
 
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
+import java.io.IOException;
+import java.net.SocketException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 /**
@@ -165,5 +168,13 @@ public class Funciones_AD {
             tbl.getTableHeader().getColumnModel().getColumn(columna[i]).setMaxWidth(sizeColumn[i]);
         }
     }
-  
+    public static void fileDownload(String pathDestino){
+        try {
+            new _Ftp().downloadFile(pathDestino);
+        } catch (SocketException ex) {
+            JOptionPane.showMessageDialog(null,"fileUpload SocketException: "+ ex.getMessage());
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null,"fileUpload IOException: "+ ex.getMessage());
+        }
+    }
 }
