@@ -22,6 +22,22 @@ public class AntecedentesP extends javax.swing.JPanel {
     public AntecedentesP() {
         initComponents();
         jPanel24.setBackground(Color.white);
+        jTextArea1.setSelectionStart(0);
+        jTextArea1.setSelectionEnd(jTextArea8.getText().length());
+        jTextArea2.setSelectionStart(0);
+        jTextArea2.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea3.setSelectionStart(0);
+        jTextArea3.setSelectionEnd(jTextArea8.getText().length());
+        jTextArea4.setSelectionStart(0);
+        jTextArea4.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea5.setSelectionStart(0);
+        jTextArea5.setSelectionEnd(jTextArea8.getText().length());
+        jTextArea6.setSelectionStart(0);
+        jTextArea6.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea7.setSelectionStart(0);
+        jTextArea7.setSelectionEnd(jTextArea8.getText().length());
+        jTextArea8.setSelectionStart(0);
+        jTextArea8.setSelectionEnd(jTextArea1.getText().length());
     }
 
     /**
@@ -102,8 +118,21 @@ public class AntecedentesP extends javax.swing.JPanel {
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setText("No se encuentran datos");
+        jTextArea1.setSelectionEnd(0);
+        jTextArea1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea1MouseReleased(evt);
+            }
+        });
+        jTextArea1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea1KeyReleased(evt);
+            }
+        });
         jScrollPane17.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
@@ -139,8 +168,20 @@ public class AntecedentesP extends javax.swing.JPanel {
 
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextArea2.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
+        jTextArea2.setText("No se encuentran datos");
+        jTextArea2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea2MouseReleased(evt);
+            }
+        });
+        jTextArea2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea2KeyReleased(evt);
+            }
+        });
         jScrollPane18.setViewportView(jTextArea2);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -176,8 +217,20 @@ public class AntecedentesP extends javax.swing.JPanel {
 
         jTextArea3.setColumns(20);
         jTextArea3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextArea3.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea3.setLineWrap(true);
         jTextArea3.setRows(5);
+        jTextArea3.setText("No se encuentran datos");
+        jTextArea3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea3MouseReleased(evt);
+            }
+        });
+        jTextArea3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea3KeyReleased(evt);
+            }
+        });
         jScrollPane19.setViewportView(jTextArea3);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -213,8 +266,20 @@ public class AntecedentesP extends javax.swing.JPanel {
 
         jTextArea4.setColumns(20);
         jTextArea4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextArea4.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea4.setLineWrap(true);
         jTextArea4.setRows(5);
+        jTextArea4.setText("No se encuentran datos");
+        jTextArea4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea4MouseReleased(evt);
+            }
+        });
+        jTextArea4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea4KeyReleased(evt);
+            }
+        });
         jScrollPane20.setViewportView(jTextArea4);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -268,8 +333,20 @@ public class AntecedentesP extends javax.swing.JPanel {
 
         jTextArea5.setColumns(20);
         jTextArea5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextArea5.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea5.setLineWrap(true);
         jTextArea5.setRows(5);
+        jTextArea5.setText("Ninguno");
+        jTextArea5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea5MouseReleased(evt);
+            }
+        });
+        jTextArea5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea5KeyReleased(evt);
+            }
+        });
         jScrollPane21.setViewportView(jTextArea5);
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
@@ -338,8 +415,21 @@ public class AntecedentesP extends javax.swing.JPanel {
 
         jTextArea6.setColumns(20);
         jTextArea6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextArea6.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea6.setLineWrap(true);
         jTextArea6.setRows(5);
+        jTextArea6.setText("Ninguno");
+        jTextArea6.setToolTipText("");
+        jTextArea6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea6MouseReleased(evt);
+            }
+        });
+        jTextArea6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea6KeyReleased(evt);
+            }
+        });
         jScrollPane22.setViewportView(jTextArea6);
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -390,8 +480,20 @@ public class AntecedentesP extends javax.swing.JPanel {
 
         jTextArea7.setColumns(20);
         jTextArea7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextArea7.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea7.setLineWrap(true);
         jTextArea7.setRows(5);
+        jTextArea7.setText("No se encuentran datos");
+        jTextArea7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea7MouseReleased(evt);
+            }
+        });
+        jTextArea7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea7KeyReleased(evt);
+            }
+        });
         jScrollPane23.setViewportView(jTextArea7);
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
@@ -427,8 +529,20 @@ public class AntecedentesP extends javax.swing.JPanel {
 
         jTextArea8.setColumns(20);
         jTextArea8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextArea8.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea8.setLineWrap(true);
         jTextArea8.setRows(5);
+        jTextArea8.setText("No se encuentran datos");
+        jTextArea8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextArea8MouseReleased(evt);
+            }
+        });
+        jTextArea8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea8KeyReleased(evt);
+            }
+        });
         jScrollPane24.setViewportView(jTextArea8);
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
@@ -636,6 +750,78 @@ public class AntecedentesP extends javax.swing.JPanel {
         jPanel23.setBackground(new Color(125,164,222));
         HC.Adulto.jLabel4.setText("...");
     }//GEN-LAST:event_jLabel18MouseExited
+
+    private void jTextArea1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea1MouseReleased
+        jTextArea1.setSelectionStart(0);
+        jTextArea1.setSelectionEnd(jTextArea1.getText().length());
+    }//GEN-LAST:event_jTextArea1MouseReleased
+
+    private void jTextArea1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyReleased
+        jTextArea1.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea1KeyReleased
+
+    private void jTextArea2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea2MouseReleased
+        jTextArea2.setSelectionStart(0);
+        jTextArea2.setSelectionEnd(jTextArea2.getText().length());
+    }//GEN-LAST:event_jTextArea2MouseReleased
+
+    private void jTextArea2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea2KeyReleased
+        jTextArea2.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea2KeyReleased
+
+    private void jTextArea3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea3MouseReleased
+        jTextArea3.setSelectionStart(0);
+        jTextArea3.setSelectionEnd(jTextArea3.getText().length());
+    }//GEN-LAST:event_jTextArea3MouseReleased
+
+    private void jTextArea3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea3KeyReleased
+        jTextArea3.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea3KeyReleased
+
+    private void jTextArea4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea4MouseReleased
+        jTextArea4.setSelectionStart(0);
+        jTextArea4.setSelectionEnd(jTextArea4.getText().length());
+    }//GEN-LAST:event_jTextArea4MouseReleased
+
+    private void jTextArea4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea4KeyReleased
+        jTextArea4.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea4KeyReleased
+
+    private void jTextArea5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea5MouseReleased
+        jTextArea5.setSelectionStart(0);
+        jTextArea5.setSelectionEnd(jTextArea5.getText().length());
+    }//GEN-LAST:event_jTextArea5MouseReleased
+
+    private void jTextArea5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea5KeyReleased
+        jTextArea5.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea5KeyReleased
+
+    private void jTextArea6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea6MouseReleased
+        jTextArea6.setSelectionStart(0);
+        jTextArea6.setSelectionEnd(jTextArea6.getText().length());
+    }//GEN-LAST:event_jTextArea6MouseReleased
+
+    private void jTextArea6KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea6KeyReleased
+        jTextArea6.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea6KeyReleased
+
+    private void jTextArea7MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea7MouseReleased
+        jTextArea7.setSelectionStart(0);
+        jTextArea7.setSelectionEnd(jTextArea7.getText().length());
+    }//GEN-LAST:event_jTextArea7MouseReleased
+
+    private void jTextArea7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea7KeyReleased
+        jTextArea7.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea7KeyReleased
+
+    private void jTextArea8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea8MouseReleased
+        jTextArea8.setSelectionStart(0);
+        jTextArea8.setSelectionEnd(jTextArea8.getText().length());
+    }//GEN-LAST:event_jTextArea8MouseReleased
+
+    private void jTextArea8KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea8KeyReleased
+        jTextArea8.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jTextArea8KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
