@@ -63,13 +63,20 @@ public class ginecomac extends javax.swing.JPanel {
         jCheckBox4.setText("Uso de MAC actual");
         jCheckBox4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox4.setFocusable(false);
+        jCheckBox4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox4MouseReleased(evt);
+            }
+        });
 
         jTextField9.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jTextField9.setEnabled(false);
 
         jCheckBox5.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox5.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         jCheckBox5.setText("Efectos Secundarios");
         jCheckBox5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox5.setEnabled(false);
         jCheckBox5.setFocusable(false);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
@@ -77,6 +84,8 @@ public class ginecomac extends javax.swing.JPanel {
 
         jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No aplica", "Anticonceptivos Orales Combinados", "Anticonceptivos Inyectables Combinados", "Inyectable sólo progrestágenos", "Píldoras sólo progestágenos", "Preservativo", "Definitivos", "DIU", "Jadell", "Otros", "No usaba", " " }));
+        jComboBox2.setSelectedIndex(-1);
+        jComboBox2.setEnabled(false);
         jComboBox2.setFocusable(false);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
@@ -134,13 +143,20 @@ public class ginecomac extends javax.swing.JPanel {
         jCheckBox6.setText("Uso de MAC previo");
         jCheckBox6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox6.setFocusable(false);
+        jCheckBox6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox6MouseReleased(evt);
+            }
+        });
 
         jTextField10.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jTextField10.setEnabled(false);
 
         jCheckBox7.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox7.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         jCheckBox7.setText("Efectos Secundarios");
         jCheckBox7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox7.setEnabled(false);
         jCheckBox7.setFocusable(false);
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
@@ -148,6 +164,8 @@ public class ginecomac extends javax.swing.JPanel {
 
         jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No aplica", "Anticonceptivos Orales Combinados", "Anticonceptivos Inyectables Combinados", "Inyectable sólo progrestágenos", "Píldoras sólo progestágenos", "Preservativo", "Definitivos", "DIU", "Jadell", "Otros", "No usaba", " " }));
+        jComboBox3.setSelectedIndex(-1);
+        jComboBox3.setEnabled(false);
         jComboBox3.setFocusable(false);
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
@@ -196,6 +214,42 @@ public class ginecomac extends javax.swing.JPanel {
         add(jPanel2);
         jPanel2.setBounds(10, 40, 330, 100);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jCheckBox6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox6MouseReleased
+        if (jCheckBox6.isSelected()==true){
+            this.jTextField10.setEnabled(true);
+            this.jTextField10.requestFocus();
+            this.jComboBox3.setEnabled(true);
+            this.jCheckBox7.setEnabled(true);
+        }else{
+            if(jCheckBox6.isSelected()==false){
+                this.jTextField10.setEnabled(false);
+                this.jTextField10.setText(null);
+                this.jComboBox3.setEnabled(false);
+                this.jComboBox3.setSelectedIndex(-1);
+                this.jCheckBox7.setEnabled(false);
+                this.jCheckBox7.setSelected(false);
+            }
+        }
+    }//GEN-LAST:event_jCheckBox6MouseReleased
+
+    private void jCheckBox4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox4MouseReleased
+        if (jCheckBox4.isSelected()==true){
+            this.jTextField9.setEnabled(true);
+            this.jTextField9.requestFocus();
+            this.jComboBox2.setEnabled(true);
+            this.jCheckBox5.setEnabled(true);
+        }else{
+            if(jCheckBox4.isSelected()==false){
+                this.jTextField9.setEnabled(false);
+                this.jTextField9.setText(null);
+                this.jComboBox2.setEnabled(false);
+                this.jComboBox2.setSelectedIndex(-1);
+                this.jCheckBox5.setEnabled(false);
+                this.jCheckBox5.setSelected(false);
+            }
+        }
+    }//GEN-LAST:event_jCheckBox4MouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
