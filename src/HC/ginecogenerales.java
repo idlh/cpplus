@@ -1,22 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package HC;
 
 import java.awt.event.KeyEvent;
 
 /**
  *
- * @author Administrador
+ * @author Camilo
  */
 public class ginecogenerales extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Antecedentesgine
-     */
     public ginecogenerales() {
         initComponents();
     }
@@ -238,45 +229,45 @@ public class ginecogenerales extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             jTextField2.requestFocus();
-         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField2.requestFocus();
+        }
     }//GEN-LAST:event_jTextField1KeyReleased
 
     private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             jTextField3.requestFocus();
-         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField3.requestFocus();
+        }
     }//GEN-LAST:event_jTextField2KeyReleased
 
     private void jTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyReleased
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             jTextField4.requestFocus();
-         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField4.requestFocus();
+        }
     }//GEN-LAST:event_jTextField3KeyReleased
 
     private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             jTextField5.requestFocus();
-         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField5.requestFocus();
+        }
     }//GEN-LAST:event_jTextField4KeyReleased
 
     private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             jTextField10.requestFocus();
-         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField10.requestFocus();
+        }
     }//GEN-LAST:event_jTextField5KeyReleased
 
     private void jTextField10KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyReleased
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             jTextField7.requestFocus();
-         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField7.requestFocus();
+        }
     }//GEN-LAST:event_jTextField10KeyReleased
 
     private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             jTextField9.requestFocus();
-         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField9.requestFocus();
+        }
     }//GEN-LAST:event_jTextField7KeyReleased
 
 

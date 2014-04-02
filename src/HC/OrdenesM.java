@@ -1,19 +1,27 @@
 package HC;
+
 import java.awt.Color;
+import entity.PypAdmAsistCon;
+
 public class OrdenesM extends javax.swing.JPanel {
-public int val = 0;
-public static HC.Procedimientos pa=null;
-HC.Recomendaciones reco = null;
-HC.Medicamentos me = null;
-    public OrdenesM() {
+
+    public int val = 0;
+    private final PypAdmAsistCon pypAdmAsistCon;
+    public static HC.Procedimientos pa = null;
+    HC.Recomendaciones reco = null;
+    HC.Medicamentos me = null;
+
+    public OrdenesM(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
+        this.pypAdmAsistCon = pypAdmAsistCon;
         jPanel1.setBackground(Color.white);
-        if (val==0){
-        jPanel2.setVisible(false);
-        jPanel21.setLocation(10, 113);        
+        if (val == 0) {
+            jPanel2.setVisible(false);
+            jPanel21.setLocation(10, 113);
         }
         val = 1;
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -177,43 +185,39 @@ HC.Medicamentos me = null;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseEntered
-        // TODO add your handling code here:
         HC.Adulto.jLabel4.setText("Medicamentos");
-        jPanel18.setBackground(new Color(255,227,255));
+        jPanel18.setBackground(new Color(255, 227, 255));
     }//GEN-LAST:event_jLabel13MouseEntered
 
     private void jLabel13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseExited
-        // TODO add your handling code here:
         HC.Adulto.jLabel4.setText("...");
-        jPanel18.setBackground(new Color(125,164,222));
+        jPanel18.setBackground(new Color(125, 164, 222));
     }//GEN-LAST:event_jLabel13MouseExited
 
     private void jLabel14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseEntered
-        // TODO add your handling code here:
         HC.Adulto.jLabel4.setText("Procedimientos");
-        jPanel19.setBackground(new Color(255,227,255));
+        jPanel19.setBackground(new Color(255, 227, 255));
     }//GEN-LAST:event_jLabel14MouseEntered
 
     private void jLabel14MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseExited
-        // TODO add your handling code here:
         HC.Adulto.jLabel4.setText("...");
-        jPanel19.setBackground(new Color(125,164,222));
+        jPanel19.setBackground(new Color(125, 164, 222));
     }//GEN-LAST:event_jLabel14MouseExited
 
     private void jLabel16MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseEntered
-        // TODO add your handling code here:
         HC.Adulto.jLabel4.setText("Recomendaciones");
-        jPanel21.setBackground(new Color(255,227,255));
+        jPanel21.setBackground(new Color(255, 227, 255));
     }//GEN-LAST:event_jLabel16MouseEntered
 
     private void jLabel16MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseExited
-        // TODO add your handling code here:
         HC.Adulto.jLabel4.setText("...");
-        jPanel21.setBackground(new Color(125,164,222));
+        jPanel21.setBackground(new Color(125, 164, 222));
     }//GEN-LAST:event_jLabel16MouseExited
 
     private void jLabel13MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseReleased
-       if(me==null) me = new Medicamentos();
+        if (me == null) {
+            me = new Medicamentos(pypAdmAsistCon);
+        }
         // TODO add your handling code here:
         jPanel1.removeAll();
 //        me.setBounds(0, 0, 408, 297);
@@ -225,20 +229,21 @@ HC.Medicamentos me = null;
     }//GEN-LAST:event_jLabel13MouseReleased
 
     private void jLabel14MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseReleased
-        // TODO add your handling code here:
-        if(val==1){
+        if (val == 1) {
             jPanel21.setLocation(10, 296);
             jPanel2.setVisible(true);
-             if (pa==null)pa = new Procedimientos();
+            if (pa == null) {
+                pa = new Procedimientos();
+            }
             this.jPanel2.removeAll();
             pa.setBounds(0, 0, 124, 221);
-            this.jPanel2.add(pa);        
+            this.jPanel2.add(pa);
             pa.setVisible(true);
             this.jPanel2.validate();
             this.jPanel2.repaint();
-            val=0;
-        }else{
-            if(val==0){                
+            val = 0;
+        } else {
+            if (val == 0) {
                 this.jPanel2.removeAll();
                 jPanel2.setVisible(false);
                 jPanel21.setLocation(10, 113);
@@ -246,12 +251,13 @@ HC.Medicamentos me = null;
                 this.jPanel1.repaint();
                 val = 1;
             }
-        }       
+        }
     }//GEN-LAST:event_jLabel14MouseReleased
 
     private void jLabel16MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseReleased
-        if(reco==null) reco = new Recomendaciones();
-// TODO add your handling code here:        
+        if (reco == null) {
+            reco = new Recomendaciones();
+        }
         jPanel1.removeAll();
 //        reco.setBounds(0, 0, 408, 297);
 //        jPanel1.add(reco);        

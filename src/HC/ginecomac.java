@@ -1,20 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package HC;
 
 /**
  *
- * @author Administrador
+ * @author Camilo
  */
 public class ginecomac extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Antecedentesgine
-     */
     public ginecomac() {
         initComponents();
     }
@@ -216,13 +207,13 @@ public class ginecomac extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBox6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox6MouseReleased
-        if (jCheckBox6.isSelected()==true){
+        if (jCheckBox6.isSelected() == true) {
             this.jTextField10.setEnabled(true);
             this.jTextField10.requestFocus();
             this.jComboBox3.setEnabled(true);
             this.jCheckBox7.setEnabled(true);
-        }else{
-            if(jCheckBox6.isSelected()==false){
+        } else {
+            if (jCheckBox6.isSelected() == false) {
                 this.jTextField10.setEnabled(false);
                 this.jTextField10.setText(null);
                 this.jComboBox3.setEnabled(false);
@@ -234,13 +225,13 @@ public class ginecomac extends javax.swing.JPanel {
     }//GEN-LAST:event_jCheckBox6MouseReleased
 
     private void jCheckBox4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox4MouseReleased
-        if (jCheckBox4.isSelected()==true){
+        if (jCheckBox4.isSelected() == true) {
             this.jTextField9.setEnabled(true);
             this.jTextField9.requestFocus();
             this.jComboBox2.setEnabled(true);
             this.jCheckBox5.setEnabled(true);
-        }else{
-            if(jCheckBox4.isSelected()==false){
+        } else {
+            if (jCheckBox4.isSelected() == false) {
                 this.jTextField9.setEnabled(false);
                 this.jTextField9.setText(null);
                 this.jComboBox2.setEnabled(false);

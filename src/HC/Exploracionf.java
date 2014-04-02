@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package HC;
 
 import java.awt.Color;
@@ -11,13 +5,10 @@ import java.awt.event.KeyEvent;
 
 /**
  *
- * @author Administrador
+ * @author Camilo
  */
 public class Exploracionf extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Exploracionf
-     */
     public Exploracionf() {
         initComponents();
         jTextField10.setEditable(false);
@@ -168,9 +159,6 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField9KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField9KeyTyped(evt);
             }
         });
 
@@ -563,142 +551,148 @@ public class Exploracionf extends javax.swing.JPanel {
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         char car = evt.getKeyChar();
-        if((car<'0'||car>'9'))evt.consume();
+        if ((car < '0' || car > '9')) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
         char car = evt.getKeyChar();
-        if((car<'0'||car>'9'))evt.consume();
+        if ((car < '0' || car > '9')) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField4KeyTyped
 
     private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
         char car = evt.getKeyChar();
-        if((car<'0'||car>'9'))evt.consume();
+        if ((car < '0' || car > '9')) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField8KeyTyped
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
-       char car = evt.getKeyChar();
-        if((car<'0'||car>'9'))evt.consume();
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9')) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
         char car = evt.getKeyChar();
-        if((car<'0'||car>'9'))evt.consume();
+        if ((car < '0' || car > '9')) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField5KeyTyped
 
-    private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9KeyTyped
-
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             jTextField2.requestFocus();
-         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField2.requestFocus();
+        }
     }//GEN-LAST:event_jTextField1KeyReleased
 
     private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             jTextField5.requestFocus();
-         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField5.requestFocus();
+        }
     }//GEN-LAST:event_jTextField4KeyReleased
 
     private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             jTextField9.requestFocus();
-         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField9.requestFocus();
+        }
     }//GEN-LAST:event_jTextField7KeyReleased
 
     private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             jTextField4.requestFocus();
-         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField4.requestFocus();
+        }
     }//GEN-LAST:event_jTextField2KeyReleased
 
     private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             jTextField7.requestFocus();
-         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField7.requestFocus();
+        }
     }//GEN-LAST:event_jTextField5KeyReleased
 
     private void jTextField9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyReleased
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             jTextField8.requestFocus();
-         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField8.requestFocus();
+        }
     }//GEN-LAST:event_jTextField9KeyReleased
 
     private void jTextField8KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyReleased
-       if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-           float imc =0;
-           String im =null;
-           imc = Float.parseFloat(jTextField9.getText())/((Float.parseFloat(jTextField8.getText())*Float.parseFloat(jTextField8.getText()))/100)*100;
-           im = String.valueOf(imc);
-           if(imc<19){  
-               jTextField10.setForeground(Color.red);
-               jTextField10.setBackground(Color.WHITE);
-           }else{
-               if(imc>=19 && imc<25){
-                   jTextField10.setForeground(new Color(0,153,204));
-                   jTextField10.setBackground(Color.WHITE);
-               }else{
-                   if(imc>=25 && imc <30){
-                       jTextField10.setForeground(new Color(255,102,51));
-                       jTextField10.setBackground(Color.WHITE);
-                   }else{
-                       if(imc>=30){
-                           jTextField10.setForeground(new Color(255,255,204));
-                           jTextField10.setBackground(Color.BLACK);
-                       }
-                   }
-               }
-           }
-           jTextField10.setText(im);
-           jTextPane1.requestFocus();
-         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            float imc = 0;
+            String im = null;
+            imc = Float.parseFloat(jTextField9.getText()) / ((Float.parseFloat(jTextField8.getText()) * Float.parseFloat(jTextField8.getText())) / 100) * 100;
+            im = String.valueOf(imc);
+            if (imc < 19) {
+                jTextField10.setForeground(Color.red);
+                jTextField10.setBackground(Color.WHITE);
+            } else {
+                if (imc >= 19 && imc < 25) {
+                    jTextField10.setForeground(new Color(0, 153, 204));
+                    jTextField10.setBackground(Color.WHITE);
+                } else {
+                    if (imc >= 25 && imc < 30) {
+                        jTextField10.setForeground(new Color(255, 102, 51));
+                        jTextField10.setBackground(Color.WHITE);
+                    } else {
+                        if (imc >= 30) {
+                            jTextField10.setForeground(new Color(255, 255, 204));
+                            jTextField10.setBackground(Color.BLACK);
+                        }
+                    }
+                }
+            }
+            jTextField10.setText(im);
+            jTextPane1.requestFocus();
+        }
     }//GEN-LAST:event_jTextField8KeyReleased
 
     private void jTextArea1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea1MouseReleased
-       jTextArea1.setSelectionStart(0);
-       jTextArea1.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea1.setSelectionStart(0);
+        jTextArea1.setSelectionEnd(jTextArea1.getText().length());
     }//GEN-LAST:event_jTextArea1MouseReleased
 
     private void jTextArea2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea2MouseReleased
-       jTextArea2.setSelectionStart(0);
-       jTextArea2.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea2.setSelectionStart(0);
+        jTextArea2.setSelectionEnd(jTextArea1.getText().length());
     }//GEN-LAST:event_jTextArea2MouseReleased
 
     private void jTextArea3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea3MouseReleased
-       jTextArea3.setSelectionStart(0);
-       jTextArea3.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea3.setSelectionStart(0);
+        jTextArea3.setSelectionEnd(jTextArea1.getText().length());
     }//GEN-LAST:event_jTextArea3MouseReleased
 
     private void jTextArea4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea4MouseReleased
-       jTextArea4.setSelectionStart(0);
-       jTextArea4.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea4.setSelectionStart(0);
+        jTextArea4.setSelectionEnd(jTextArea1.getText().length());
     }//GEN-LAST:event_jTextArea4MouseReleased
 
     private void jTextArea9MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea9MouseReleased
-       jTextArea9.setSelectionStart(0);
-       jTextArea9.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea9.setSelectionStart(0);
+        jTextArea9.setSelectionEnd(jTextArea1.getText().length());
     }//GEN-LAST:event_jTextArea9MouseReleased
 
     private void jTextArea8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea8MouseReleased
-       jTextArea8.setSelectionStart(0);
-       jTextArea8.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea8.setSelectionStart(0);
+        jTextArea8.setSelectionEnd(jTextArea1.getText().length());
     }//GEN-LAST:event_jTextArea8MouseReleased
 
     private void jTextArea7MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea7MouseReleased
-       jTextArea7.setSelectionStart(0);
-       jTextArea7.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea7.setSelectionStart(0);
+        jTextArea7.setSelectionEnd(jTextArea1.getText().length());
     }//GEN-LAST:event_jTextArea7MouseReleased
 
     private void jTextArea6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea6MouseReleased
-       jTextArea6.setSelectionStart(0);
-       jTextArea6.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea6.setSelectionStart(0);
+        jTextArea6.setSelectionEnd(jTextArea1.getText().length());
     }//GEN-LAST:event_jTextArea6MouseReleased
 
     private void jTextArea5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea5MouseReleased
-       jTextArea5.setSelectionStart(0);
-       jTextArea5.setSelectionEnd(jTextArea1.getText().length());
+        jTextArea5.setSelectionStart(0);
+        jTextArea5.setSelectionEnd(jTextArea1.getText().length());
     }//GEN-LAST:event_jTextArea5MouseReleased
 
     private void jTextArea1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyReleased
