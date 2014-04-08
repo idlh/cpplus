@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Dialogos.HCDiag;
 
-import Clases.Consultarcie10;
 import Clases.Funciones_AD;
 import HC.CrecDesarrollo;
 import HC.Adulto;
@@ -20,10 +18,8 @@ import java.util.List;
 import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import modulo_pyp.Desktop;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
@@ -33,6 +29,7 @@ import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
  * @author Alvaro Monsalve
  */
 public class ListPacientes extends javax.swing.JDialog {
+
     Properties props = new Properties();
     private DefaultTableModel modelo;
     private EntityManagerFactory factory;
@@ -49,100 +46,102 @@ public class ListPacientes extends javax.swing.JDialog {
         ModeloListadoPaciente();
         showPacientes();
     }
-    
-    private List<String> referenceUser(){
-        List<String> parametros=new ArrayList<String>();
-        FileReader lector=null;
+
+    private List<String> referenceUser() {
+        List<String> parametros = new ArrayList<String>();
+        FileReader lector = null;
         try {
             String clipa = getClass().getResource("/Recursos/config.clipa").getFile();
             String pass = "2f5OKp8g";
-            StandardPBEStringEncryptor s = new StandardPBEStringEncryptor(); 
-            s.setPassword(pass);            
-            String texto=null;
+            StandardPBEStringEncryptor s = new StandardPBEStringEncryptor();
+            s.setPassword(pass);
+            String texto = null;
             System.out.println(clipa);
             lector = new FileReader(clipa);
-            
-            BufferedReader contenido=new BufferedReader(lector);
-            while((texto=contenido.readLine())!=null){
+
+            BufferedReader contenido = new BufferedReader(lector);
+            while ((texto = contenido.readLine()) != null) {
                 parametros.add(s.decrypt(texto));
             }
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "10133:\n"+ex.getMessage(), ListPacientes.class.getName(), JOptionPane.INFORMATION_MESSAGE);
-        }finally {
+            JOptionPane.showMessageDialog(null, "10133:\n" + ex.getMessage(), ListPacientes.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
             try {
                 lector.close();
             } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "10134:\n"+ex.getMessage(), ListPacientes.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "10134:\n" + ex.getMessage(), ListPacientes.class.getName(), JOptionPane.INFORMATION_MESSAGE);
             }
         }
-        return parametros;        
+        return parametros;
     }
-    
-        private void ParametrosBD(){
-            List<String> parametros = referenceUser();            
-            props.put("javax.persistence.jdbc.user", parametros.get(0));
-            props.put("javax.persistence.jdbc.password", parametros.get(1));
-            props.put("javax.persistence.jdbc.url", parametros.get(2));
-            props.put("javax.persistence.jdbc.driver",parametros.get(3));                       
-        }
-        
-        private DefaultTableModel getModelo(){
-            DefaultTableModel model = new DefaultTableModel(
-            null, new String [] {"Asistencia","TD","Documento", "Nombre"}){
-                Class[] types = new Class []{
+
+    private void ParametrosBD() {
+        List<String> parametros = referenceUser();
+        props.put("javax.persistence.jdbc.user", parametros.get(0));
+        props.put("javax.persistence.jdbc.password", parametros.get(1));
+        props.put("javax.persistence.jdbc.url", parametros.get(2));
+        props.put("javax.persistence.jdbc.driver", parametros.get(3));
+    }
+
+    private DefaultTableModel getModelo() {
+        DefaultTableModel model = new DefaultTableModel(
+                null, new String[]{"Asistencia", "TD", "Documento", "Nombre"}) {
+                    Class[] types = new Class[]{
                         PypAdmAsistCon.class,
                         java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class
+                    };
+                    boolean[] canEdit = new boolean[]{
+                        false, false, false, false
+                    };
+
+                    @Override
+                    public Class getColumnClass(int columnIndex) {
+                        return types[columnIndex];
+                    }
+
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int colIndex) {
+                        return canEdit[colIndex];
+                    }
                 };
-                boolean[] canEdit = new boolean [] {
-                    false,false,false,false
-                };
-                @Override
-                public Class getColumnClass(int columnIndex) {
-                   return types [columnIndex];
-                }
-                @Override
-                public boolean isCellEditable(int rowIndex, int colIndex){
-                   return canEdit [colIndex];
-                }
-            };  
-            return model;
+        return model;
+    }
+
+    private void ModeloListadoPaciente() {
+        modelo = getModelo();
+        jTable1.setModel(modelo);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        Funciones_AD.setOcultarColumnas(jTable1, new int[]{0});
+        Funciones_AD.setSizeColumnas(jTable1, new int[]{1, 2}, new int[]{30, 80});
+    }
+
+    private void showPacientes() {
+        factory = Persistence.createEntityManagerFactory("EJB_CEPU", props);
+        paacjc = new PypAdmAsistConJpaController(factory);
+        List<PypAdmAsistCon> asistCon = null;
+        if (jRadioButton1.isSelected() == true) {
+            //asignar el id del profecional de la tabla cmprofesionales
+            asistCon = paacjc.listPypAdmAsistCon(1);
+        } else {
+            asistCon = paacjc.listPypAdmAsistCon();
         }
-        
-        private void ModeloListadoPaciente(){
-            modelo =getModelo();
-            jTable1.setModel(modelo);
-            jTable1.getTableHeader().setReorderingAllowed(false);
-            jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-            Funciones_AD.setOcultarColumnas(jTable1, new int[]{0});
-            Funciones_AD.setSizeColumnas(jTable1, new int[]{1,2}, new int[]{30,80});
-        }
-        
-        public void showPacientes(){
-            factory = Persistence.createEntityManagerFactory("EJB_CEPU",props);
-            paacjc = new PypAdmAsistConJpaController(factory);
-            List<PypAdmAsistCon> asistCon = null ;
-            if(jRadioButton1.isSelected()==true){
-                //asignar el id del profecional de la tabla cmprofesionales
-                asistCon = paacjc.listPypAdmAsistCon(1);
-            }else{
-               asistCon = paacjc.listPypAdmAsistCon();
+        if (asistCon != null) {
+            while (modelo.getRowCount() > 0) {
+                modelo.removeRow(0);
             }
-            if(asistCon!=null){
-                while(modelo.getRowCount()>0){
-                    modelo.removeRow(0);
-                }
-                for(int i=0;i<asistCon.size();i++){
-                    modelo.addRow(dato);
-                    modelo.setValueAt(asistCon.get(i), i, 0);
-                    modelo.setValueAt(asistCon.get(i).getIdAgend().getIdPaciente().getTipoDoc(), i, 1);
-                    modelo.setValueAt(asistCon.get(i).getIdAgend().getIdPaciente().getNumDoc(), i, 2);
-                    modelo.setValueAt(asistCon.get(i).getIdAgend().getIdPaciente().getNombre1()+" "+
-                            asistCon.get(i).getIdAgend().getIdPaciente().getApellido1(), i, 3);
-                }
-            }            
+            for (int i = 0; i < asistCon.size(); i++) {
+                modelo.addRow(dato);
+                modelo.setValueAt(asistCon.get(i), i, 0);
+                modelo.setValueAt(asistCon.get(i).getIdAgend().getIdPaciente().getTipoDoc(), i, 1);
+                modelo.setValueAt(asistCon.get(i).getIdAgend().getIdPaciente().getNumDoc(), i, 2);
+                modelo.setValueAt(asistCon.get(i).getIdAgend().getIdPaciente().getNombre1() + " "
+                        + asistCon.get(i).getIdAgend().getIdPaciente().getApellido1(), i, 3);
+            }
         }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -438,11 +437,12 @@ public class ListPacientes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-        Desktop desktop =(Desktop) this.getParent();
+        Desktop desktop = (Desktop) this.getParent();
         pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
-        desktop.Contenedor_.removeAll();        
-        if(pypAdmAsistCon.getIdAgend().getIdPrograma().getId()==3){
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
+            System.out.println("4");
             adult = new Adulto(factory, pypAdmAsistCon);
+            System.out.println("5");
             adult.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(adult);
@@ -455,17 +455,17 @@ public class ListPacientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
-        if(jTable1.getSelectedRow()!=-1){
-             pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
-            jLabel3.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getNombre1()+" "+
-                    pypAdmAsistCon.getIdAgend().getIdPaciente().getNombre2()+" "+
-                    pypAdmAsistCon.getIdAgend().getIdPaciente().getApellido1()+" "+
-                    pypAdmAsistCon.getIdAgend().getIdPaciente().getApellido2());
+        if (jTable1.getSelectedRow() != -1) {
+            pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            jLabel3.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getNombre1() + " "
+                    + pypAdmAsistCon.getIdAgend().getIdPaciente().getNombre2() + " "
+                    + pypAdmAsistCon.getIdAgend().getIdPaciente().getApellido1() + " "
+                    + pypAdmAsistCon.getIdAgend().getIdPaciente().getApellido2());
             jLabel6.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getTipoDoc());
             jLabel4.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getNumDoc());
             jLabel8.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getContratante().getNombreEntidad());
-            jLabel12.setText("<html><p>"+ pypAdmAsistCon.getIdAgend().getIdPrograma().getNombre()+"</p></html>");
-                    
+            jLabel12.setText("<html><p>" + pypAdmAsistCon.getIdAgend().getIdPrograma().getNombre() + "</p></html>");
+
         }
     }//GEN-LAST:event_jTable1MouseReleased
 
