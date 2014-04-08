@@ -8,6 +8,9 @@ import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import java.io.IOException;
 import java.net.SocketException;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -168,13 +171,53 @@ public class Funciones_AD {
             tbl.getTableHeader().getColumnModel().getColumn(columna[i]).setMaxWidth(sizeColumn[i]);
         }
     }
-    public static void fileDownload(String pathDestino){
+
+    public static void fileDownload(String pathDestino) {
         try {
             new _Ftp().downloadFile(pathDestino);
         } catch (SocketException ex) {
-            JOptionPane.showMessageDialog(null,"fileUpload SocketException: "+ ex.getMessage());
+            JOptionPane.showMessageDialog(null, "fileUpload SocketException: " + ex.getMessage());
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null,"fileUpload IOException: "+ ex.getMessage());
+            JOptionPane.showMessageDialog(null, "fileUpload IOException: " + ex.getMessage());
         }
+    }
+
+    public Object[][] RetornarDatos(String sql) {
+        BDConectar BD = new BDConectar();
+        try {
+            BD.ConectarBasedeDatos();
+            BD.resultado = BD.sentencia.executeQuery(sql);
+            Object[][] obj = this.ResultSetToArray(BD.resultado);
+            BD.resultado.close();
+            BD.DesconectarBasedeDatos();
+            return obj;
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Clipa+", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Clipa+", JOptionPane.ERROR_MESSAGE);
+          }
+        return null;
+    }
+
+    public Object[][] ResultSetToArray(ResultSet rs) {
+        Object obj[][] = null;
+        try {
+            rs.last();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int numCols = rsmd.getColumnCount();
+            int numFils = rs.getRow();
+            obj = new Object[numFils][numCols];
+            int j = 0;
+            rs.beforeFirst();
+            while (rs.next()) {
+                for (int i = 0; i < numCols; i++) {
+                    obj[j][i] = rs.getObject(i + 1);
+                }
+                j++;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Clipa+", JOptionPane.ERROR_MESSAGE);
+        }
+        return obj;
     }
 }
