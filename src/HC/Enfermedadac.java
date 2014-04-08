@@ -1,13 +1,24 @@
 package HC;
 
+import entity.PypAdmAsistCon;
+import Clases.Actualizar;
+import Clases.Funciones_AD;
+import Clases.Save;
+
 /**
  *
  * @author Camilo
  */
 public class Enfermedadac extends javax.swing.JPanel {
 
-    public Enfermedadac() {
+    private final PypAdmAsistCon pypAdmAsistCon;
+    Actualizar act = new Actualizar();
+    Funciones_AD Funciones = new Funciones_AD();
+    Save sav = new Save();
+
+    public Enfermedadac(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
+        this.pypAdmAsistCon = pypAdmAsistCon;
     }
 
     /**
@@ -56,7 +67,18 @@ public class Enfermedadac extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+    public void actualizarenfac() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        act.actenfactual(d, jTextPane1.getText().toUpperCase().toString());
+    }
+    
+    public void cargardatosenf(){
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+        jTextPane1.setText(h[0][16].toString());
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JLabel jLabel3;
     javax.swing.JScrollPane jScrollPane1;

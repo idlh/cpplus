@@ -7,9 +7,9 @@ public class OrdenesM extends javax.swing.JPanel {
 
     public int val = 0;
     private final PypAdmAsistCon pypAdmAsistCon;
-    public static HC.Procedimientos pa = null;
-    HC.Recomendaciones reco = null;
-    HC.Medicamentos me = null;
+    public Procedimientos pa = null;
+    public Recomendaciones reco = null;
+    public Medicamentos me = null;
 
     public OrdenesM(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
@@ -20,6 +20,17 @@ public class OrdenesM extends javax.swing.JPanel {
             jPanel21.setLocation(10, 113);
         }
         val = 1;
+        if (me == null) {
+            me = new Medicamentos(pypAdmAsistCon);
+        }
+        if (val == 1) {
+            if (pa == null) {
+                pa = new Procedimientos(pypAdmAsistCon);
+            }
+        }
+        if (reco == null) {
+            reco = new Recomendaciones(pypAdmAsistCon);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -215,10 +226,6 @@ public class OrdenesM extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel16MouseExited
 
     private void jLabel13MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseReleased
-        if (me == null) {
-            me = new Medicamentos(pypAdmAsistCon);
-        }
-        // TODO add your handling code here:
         jPanel1.removeAll();
 //        me.setBounds(0, 0, 408, 297);
 //        jPanel1.add(me);        
@@ -232,9 +239,6 @@ public class OrdenesM extends javax.swing.JPanel {
         if (val == 1) {
             jPanel21.setLocation(10, 296);
             jPanel2.setVisible(true);
-            if (pa == null) {
-                pa = new Procedimientos();
-            }
             this.jPanel2.removeAll();
             pa.setBounds(0, 0, 124, 221);
             this.jPanel2.add(pa);
@@ -255,9 +259,6 @@ public class OrdenesM extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel14MouseReleased
 
     private void jLabel16MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseReleased
-        if (reco == null) {
-            reco = new Recomendaciones();
-        }
         jPanel1.removeAll();
 //        reco.setBounds(0, 0, 408, 297);
 //        jPanel1.add(reco);        
@@ -267,7 +268,15 @@ public class OrdenesM extends javax.swing.JPanel {
         new Clases.Explode(HC.OrdenesM.jPanel1, reco).play();
     }//GEN-LAST:event_jLabel16MouseReleased
 
+    public void actordenesm() {
+        reco.actrecomendaciones();
+        me.actmedicamentos();
+        pa.guardarprocedimientos();
+    }
 
+    public void cargarordenesm() {
+        reco.cargarrecom();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JLabel jLabel13;
     javax.swing.JLabel jLabel14;

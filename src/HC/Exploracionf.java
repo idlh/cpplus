@@ -2,6 +2,11 @@ package HC;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import entity.PypAdmAsistCon;
+import Clases.Actualizar;
+import Clases.Funciones_AD;
+import Clases.Save;
+import java.math.BigDecimal;
 
 /**
  *
@@ -9,27 +14,14 @@ import java.awt.event.KeyEvent;
  */
 public class Exploracionf extends javax.swing.JPanel {
 
-    public Exploracionf() {
+    private final PypAdmAsistCon pypAdmAsistCon;
+    Actualizar act = new Actualizar();
+    Save sav = new Save();
+    Funciones_AD Funciones = new Funciones_AD();
+
+    public Exploracionf(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
-        jTextField10.setEditable(false);
-        jTextArea1.setSelectionStart(0);
-        jTextArea1.setSelectionEnd(jTextArea1.getText().length());
-        jTextArea2.setSelectionStart(0);
-        jTextArea2.setSelectionEnd(jTextArea1.getText().length());
-        jTextArea3.setSelectionStart(0);
-        jTextArea3.setSelectionEnd(jTextArea1.getText().length());
-        jTextArea4.setSelectionStart(0);
-        jTextArea4.setSelectionEnd(jTextArea1.getText().length());
-        jTextArea5.setSelectionStart(0);
-        jTextArea5.setSelectionEnd(jTextArea1.getText().length());
-        jTextArea6.setSelectionStart(0);
-        jTextArea6.setSelectionEnd(jTextArea1.getText().length());
-        jTextArea7.setSelectionStart(0);
-        jTextArea7.setSelectionEnd(jTextArea1.getText().length());
-        jTextArea8.setSelectionStart(0);
-        jTextArea8.setSelectionEnd(jTextArea1.getText().length());
-        jTextArea9.setSelectionStart(0);
-        jTextArea9.setSelectionEnd(jTextArea1.getText().length());
+        this.pypAdmAsistCon = pypAdmAsistCon;
     }
 
     /**
@@ -109,6 +101,9 @@ public class Exploracionf extends javax.swing.JPanel {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField7KeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField7KeyTyped(evt);
+            }
         });
 
         jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -159,6 +154,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField9KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField9KeyTyped(evt);
             }
         });
 
@@ -558,7 +556,9 @@ public class Exploracionf extends javax.swing.JPanel {
 
     private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9')) {
+        if ((car < '0' || car > '9') && jTextField4.getText().contains(".")) {
+            evt.consume();
+        } else if ((car < '0' || car > '9') && (car != '.')) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField4KeyTyped
@@ -625,7 +625,8 @@ public class Exploracionf extends javax.swing.JPanel {
             float imc = 0;
             String im = null;
             imc = Float.parseFloat(jTextField9.getText()) / ((Float.parseFloat(jTextField8.getText()) * Float.parseFloat(jTextField8.getText())) / 100) * 100;
-            im = String.valueOf(imc);
+            BigDecimal value = new BigDecimal(imc).setScale(2, BigDecimal.ROUND_HALF_UP);
+            im = String.valueOf(value);
             if (imc < 19) {
                 jTextField10.setForeground(Color.red);
                 jTextField10.setBackground(Color.WHITE);
@@ -731,6 +732,76 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea9.setForeground(Color.BLACK);
     }//GEN-LAST:event_jTextArea9KeyReleased
 
+    private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9') && jTextField9.getText().contains(".")) {
+            evt.consume();
+        } else if ((car < '0' || car > '9') && (car != '.')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField9KeyTyped
+
+    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9') && jTextField7.getText().contains(".")) {
+            evt.consume();
+        } else if ((car < '0' || car > '9') && (car != '.')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField7KeyTyped
+
+    public void actexpf() {//condicionar si las cajas de texto estan vacias linea 730 - 734
+        int tas, tad, fc, talla;
+        float fr, temp, peso, imc;
+        if (jTextField1.getText().equals("")) {
+            tas = 0;
+        } else {
+            tas = Integer.parseInt(jTextField1.getText().toString());
+        }
+        if (jTextField2.getText().equals("")) {
+            tad = 0;
+        } else {
+            tad = Integer.parseInt(jTextField2.getText().toString());
+        }
+        if (jTextField4.getText().equals("")) {
+            fr = 0;
+        } else {
+            fr = Float.parseFloat(jTextField4.getText().toString());
+        }
+        if (jTextField5.getText().equals("")) {
+            fc = 0;
+        } else {
+            fc = Integer.parseInt(jTextField5.getText().toString());
+        }
+        if (jTextField7.getText().equals("")) {
+            temp = 0;
+        } else {
+            temp = Float.parseFloat(jTextField7.getText().toString());
+        }
+        if (jTextField8.getText().equals("")) {
+            talla = 0;
+        } else {
+            talla = Integer.parseInt(jTextField8.getText().toString());
+        }
+        if (jTextField9.getText().equals("")) {
+            peso = 0;
+        } else {
+            peso = Float.parseFloat(jTextField9.getText().toString());
+        }
+        if (jTextField10.getText().equals("")) {
+            imc = 0;
+        } else {
+            imc = Float.parseFloat(jTextField10.getText().toString());
+        }
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        act.actexploracion(d, tas, tad, fr, fc, temp, talla, peso, imc,
+                jTextPane1.getText().toUpperCase().toString(), jTextArea1.getText().toUpperCase().toString(),
+                jTextArea2.getText().toUpperCase().toString(), jTextArea3.getText().toUpperCase().toString(),
+                jTextArea4.getText().toUpperCase().toString(), jTextArea5.getText().toUpperCase().toString(),
+                jTextArea6.getText().toUpperCase().toString(), jTextArea7.getText().toUpperCase().toString(),
+                jTextArea8.getText().toUpperCase().toString(), jTextArea9.getText().toUpperCase().toString());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JLabel jLabel10;

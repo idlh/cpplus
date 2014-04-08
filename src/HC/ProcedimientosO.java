@@ -9,6 +9,10 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import Clases.Save;
+import entity.PypAdmAsistCon;
+import Clases.Actualizar;
+import Clases.CargarordenesM;
 
 /**
  *
@@ -17,10 +21,17 @@ import javax.swing.table.DefaultTableModel;
 public class ProcedimientosO extends javax.swing.JPanel {
 
     Dialogos.HCDiag.Dprocedimientos prog;
-    public static DefaultTableModel modelo;
+    private DefaultTableModel modelo;
+    Funciones_AD Funciones = new Funciones_AD();
+    Save sav = new Save();
+    private final PypAdmAsistCon pypAdmAsistCon;
+    Actualizar act = new Actualizar();
+    CargarordenesM tab = new CargarordenesM();
+    String est = "1";
 
-    public ProcedimientosO() {
+    public ProcedimientosO(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
+        this.pypAdmAsistCon = pypAdmAsistCon;
         tabla();
     }
 
@@ -108,15 +119,15 @@ public class ProcedimientosO extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,12 +193,14 @@ public class ProcedimientosO extends javax.swing.JPanel {
                 Agregar_Registro(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0).toString(),
                         pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
                         pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
-                        pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString()
+                        pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
+                        "1"
                 );
                 pr.dispose();
             }
         });
         pr.setVisible(true);
+        est = "2";
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void TrablaotrosprocedimientosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TrablaotrosprocedimientosMouseEntered
@@ -204,8 +217,11 @@ public class ProcedimientosO extends javax.swing.JPanel {
             getModelo();
             Trablaotrosprocedimientos.getTableHeader().setReorderingAllowed(false);
             Trablaotrosprocedimientos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-            Funciones_AD.setOcultarColumnas(Trablaotrosprocedimientos, new int[]{0, 1, 3});
+            Funciones_AD.setOcultarColumnas(Trablaotrosprocedimientos, new int[]{0, 1, 3, 4});
             Funciones_AD.setSizeColumnas(Trablaotrosprocedimientos, new int[]{1}, new int[]{450});
+            Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+            String d = (c[0][0].toString());
+            tab.cargartablaotros(modelo, d, "17");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage().toString());
         }
@@ -213,15 +229,16 @@ public class ProcedimientosO extends javax.swing.JPanel {
 
     public void getModelo() {
         modelo = new DefaultTableModel(
-                null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria"}) {
+                null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria", "Estado"}) {
                     Class[] types = new Class[]{
+                        java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class
                     };
                     boolean[] canEdit = new boolean[]{
-                        false, false, false, false
+                        false, false, false, false, false
                     };
 
                     @Override
@@ -237,10 +254,10 @@ public class ProcedimientosO extends javax.swing.JPanel {
         Trablaotrosprocedimientos.setModel(modelo);
     }
 
-    public void Agregar_Registro(String r1, String r2, String r3, String r4) {
+    public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5) {
         try {
             DefaultTableModel temp = (DefaultTableModel) Trablaotrosprocedimientos.getModel();
-            Object nuevo[] = {r1, r2, r3, r4};
+            Object nuevo[] = {r1, r2, r3, r4, r5};
             temp.addRow(nuevo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, " :(  " + e.getMessage());
@@ -249,7 +266,32 @@ public class ProcedimientosO extends javax.swing.JPanel {
 
     public void quitarrgistro() {
         if (modelo.getRowCount() > 0 && Trablaotrosprocedimientos.getSelectedRow() > -1) {
-            modelo.removeRow(Trablaotrosprocedimientos.getSelectedRow());
+            if (modelo.getValueAt(Trablaotrosprocedimientos.getSelectedRow(), 4).equals("2")) {
+                Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+                String d = (c[0][0].toString());
+                act.actprocedimiento(d, modelo.getValueAt(Trablaotrosprocedimientos.getSelectedRow(), 0).toString());
+                modelo.removeRow(Trablaotrosprocedimientos.getSelectedRow());
+            } else {
+                if (modelo.getRowCount() > 0 && Trablaotrosprocedimientos.getSelectedRow() > -1) {
+                    modelo.removeRow(Trablaotrosprocedimientos.getSelectedRow());
+                }
+            }
+        }
+    }
+
+    public void actproceotr() {
+        if (est.toString().equals("2")) {
+            Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+            String d = (c[0][0].toString());
+            for (int i = 0; i < modelo.getRowCount(); i++) {
+                if (modelo.getValueAt(i, 4).equals("1")) {
+                    modelo.setValueAt("2", i, 4);
+                    sav.newproce(d, modelo.getValueAt(i, 0).toString(),
+                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString()
+                    );
+                }
+            }
+            est = "1";
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

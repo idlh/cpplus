@@ -15,6 +15,8 @@ import Clases.Save;
 import entity.PypAdmAsistCon;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import Clases.Actualizar;
+import Clases.CargarordenesM;
 
 public class Medicamentos extends javax.swing.JPanel {
 
@@ -24,7 +26,11 @@ public class Medicamentos extends javax.swing.JPanel {
     Funciones_AD Funciones = new Funciones_AD();
     int row;
     Save sav = new Save();
+    Object datos[][];
     public static DefaultTableModel modelo;
+    String id, dosis, cantidad, dosisu, via, administracion, fc, fh;
+    Actualizar act = new Actualizar();
+    CargarordenesM tab = new CargarordenesM();
 
     public Medicamentos(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
@@ -222,29 +228,14 @@ public class Medicamentos extends javax.swing.JPanel {
                                 JOptionPane.showMessageDialog(null, "La cantidad de suministro no puede ser nula");
                                 medi.jTextField3.requestFocus();
                             } else {
-                                String id, dosis, cantidad, dosisu, via, administracion, fc, fh;
-                                Date fecha = pypAdmAsistCon.getFecha();
-                                Date hora = pypAdmAsistCon.getHora();
-                                String patronh = "HH:mm:ss";
-                                String patron = "yyyy-MM-dd ";
-                                SimpleDateFormat formato = new SimpleDateFormat(patron);
-                                SimpleDateFormat formatoh = new SimpleDateFormat(patronh);
-                                fc = formato.format(fecha);
-                                fh = formatoh.format(hora);
                                 Agregar_Registro(medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 0).toString(),
                                         medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 1).toString(),
-                                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 2).toString(),
-                                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 3).toString(),
-                                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 4).toString(),
-                                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 5).toString(),
-                                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 6).toString(),
-                                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 7).toString(),
-                                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 8).toString(),
-                                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 9).toString(),
-                                        medi.jTextField2.getText() + " - " + medi.jComboBox1.getSelectedItem().toString(),
+                                        medi.jTextField2.getText(),
+                                        medi.jComboBox1.getSelectedItem().toString(),
                                         medi.jComboBox2.getSelectedItem().toString(),
                                         medi.jTextArea1.getText().toString(),
-                                        medi.jTextField3.getText().toString()
+                                        medi.jTextField3.getText().toString(),
+                                        "1"
                                 );
                                 medi.dispose();
                                 id = String.valueOf(medi.Tmedicamentos.getSelectedRow());
@@ -253,15 +244,9 @@ public class Medicamentos extends javax.swing.JPanel {
                                 dosisu = medi.jComboBox1.getSelectedItem().toString();
                                 via = medi.jComboBox2.getSelectedItem().toString();
                                 administracion = medi.jTextArea1.getText().toString();
-                                Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-                                String d = (c[0][0].toString());
-                                System.out.println(fc);
-                                sav.newposo(d, id, dosis, cantidad, dosisu, via, administracion,
-                                        pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc + fh);
                             }
                         }
                     }
-
                 }
             }
         });
@@ -271,9 +256,9 @@ public class Medicamentos extends javax.swing.JPanel {
     private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
         mosmed = new Mostrarmed((Frame) SwingUtilities.getWindowAncestor(this), true);
         mosmed.jTextArea1.setText(Tablamedi.getValueAt(row, 1).toString());
-        mosmed.jLabel3.setText(Tablamedi.getValueAt(row, 10).toString());
-        mosmed.jLabel7.setText(Tablamedi.getValueAt(row, 11).toString());
-        mosmed.jTextArea2.setText(Tablamedi.getValueAt(row, 12).toString());
+        mosmed.jLabel3.setText(Tablamedi.getValueAt(row, 2).toString() + " - " + Tablamedi.getValueAt(row, 3).toString());
+        mosmed.jLabel7.setText(Tablamedi.getValueAt(row, 4).toString());
+        mosmed.jTextArea2.setText(Tablamedi.getValueAt(row, 5).toString().toUpperCase());
         mosmed.setLocationRelativeTo(null);
         mosmed.setVisible(true);
 
@@ -286,21 +271,22 @@ public class Medicamentos extends javax.swing.JPanel {
         getModelo();
         Tablamedi.getTableHeader().setReorderingAllowed(false);
         Tablamedi.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        Funciones_AD.setOcultarColumnas(Tablamedi, new int[]{0, 2, 3, 4, 6, 5, 7, 8, 9, 10, 11, 12, 13});
+        Funciones_AD.setOcultarColumnas(Tablamedi, new int[]{0, 2, 3, 4, 6, 5, 7});
         Funciones_AD.setSizeColumnas(Tablamedi, new int[]{1}, new int[]{650});
+        Object a[][];
+        a = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
+        int b = Integer.parseInt(a[0][0].toString());
+        if (b != 0) {
+            Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+            String d = (c[0][0].toString());
+            tab.cargartablamedi(modelo, d);
+        }
     }
 
     public void getModelo() {
         modelo = new DefaultTableModel(
-                null, new String[]{"Id", "Medicamento", "Principío Activo", "Concentracion", "Presentacion Farmaceutica", "Dosis", "Via de administracion", "pos", "Registro invima", "Presentacion Comercial", "dosisf", "viaf", "observacion", "Cantidad sum"}) {
+                null, new String[]{"Id", "Medicamento", "dosisf", "dosisff", "viaf", "observacion", "Cantidad sum", "estado"}) {
                     Class[] types = new Class[]{
-                        java.lang.String.class,
-                        java.lang.String.class,
-                        java.lang.String.class,
-                        java.lang.String.class,
-                        java.lang.String.class,
-                        java.lang.String.class,
-                        java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
@@ -311,7 +297,7 @@ public class Medicamentos extends javax.swing.JPanel {
                         java.lang.String.class
                     };
                     boolean[] canEdit = new boolean[]{
-                        false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                        false, false, false, false, false, false, false, false
                     };
 
                     @Override
@@ -327,10 +313,10 @@ public class Medicamentos extends javax.swing.JPanel {
         Tablamedi.setModel(modelo);
     }
 
-    public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5, String r6, String r7, String r8, String r9, String r10, String r11, String r12, String r13, String r14) {
+    public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5, String r6, String r7, String r8) {
         try {
             DefaultTableModel temp = (DefaultTableModel) Tablamedi.getModel();
-            Object nuevo[] = {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14};
+            Object nuevo[] = {r1, r2, r3, r4, r5, r6, r7, r8};
             temp.addRow(nuevo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, " :(  " + e.getMessage());
@@ -338,8 +324,48 @@ public class Medicamentos extends javax.swing.JPanel {
     }
 
     public void quitarrgistro() {
+
         if (modelo.getRowCount() > 0 && Tablamedi.getSelectedRow() > -1) {
-            modelo.removeRow(Tablamedi.getSelectedRow());
+            if (modelo.getValueAt(Tablamedi.getSelectedRow(), 7).equals("2")) {
+                Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+                String d = (c[0][0].toString());
+                Date fecha = pypAdmAsistCon.getFecha();
+                Date hora = pypAdmAsistCon.getHora();
+                String patronh = "HH:mm:ss";
+                String patron = "yyyy-MM-dd ";
+                SimpleDateFormat formato = new SimpleDateFormat(patron);
+                SimpleDateFormat formatoh = new SimpleDateFormat(patronh);
+                fc = formato.format(fecha);
+                fh = formatoh.format(hora);
+                act.actposologia(d, modelo.getValueAt(Tablamedi.getSelectedRow(), 0).toString(), modelo.getValueAt(Tablamedi.getSelectedRow(), 10).toString());
+                modelo.removeRow(Tablamedi.getSelectedRow());
+            } else {
+                if (modelo.getRowCount() > 0 && Tablamedi.getSelectedRow() > -1) {
+                    modelo.removeRow(Tablamedi.getSelectedRow());
+                }
+            }
+        }
+    }
+
+    public void actmedicamentos() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Date fecha = pypAdmAsistCon.getFecha();
+        Date hora = pypAdmAsistCon.getHora();
+        String patronh = "HH:mm:ss";
+        String patron = "yyyy-MM-dd ";
+        SimpleDateFormat formato = new SimpleDateFormat(patron);
+        SimpleDateFormat formatoh = new SimpleDateFormat(patronh);
+        fc = formato.format(fecha);
+        fh = formatoh.format(hora);
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            if (modelo.getValueAt(i, 7).equals("1")) {
+                modelo.setValueAt("2", i, 7);
+                sav.newposo(d, modelo.getValueAt(i, 0).toString(), modelo.getValueAt(i, 2).toString(),
+                        modelo.getValueAt(i, 6).toString(), modelo.getValueAt(i, 3).toString(),
+                        modelo.getValueAt(i, 4).toString(), modelo.getValueAt(i, 5).toString().toUpperCase(),
+                        pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc + fh, modelo.getValueAt(i, 7).toString());
+            }
         }
     }
 

@@ -12,6 +12,8 @@ import javax.swing.table.DefaultTableModel;
 import entity.PypAdmAsistCon;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
+import Clases.Save;
+import Clases.Actualizar;
 
 public class PruebasComple extends javax.swing.JPanel {
 
@@ -19,6 +21,9 @@ public class PruebasComple extends javax.swing.JPanel {
     private javax.swing.JFileChooser jFileChooser1;
     public DefaultTableModel modeloAyudDiag, modDestroyAyudDiag;
     public PypAdmAsistCon pypAdmAsistCon;
+    Funciones_AD Funciones = new Funciones_AD();
+    Save sav = new Save();
+    Actualizar act = new Actualizar();
     private final Object dato[] = null;
     private final String s = System.getProperty("file.separator");
 
@@ -146,8 +151,9 @@ public class PruebasComple extends javax.swing.JPanel {
         jFileChooser1.setFileFilter(filter);
         int result = jFileChooser1.showOpenDialog(null);
         File file = null;
+        String seleccion = null;
         if (result == JFileChooser.APPROVE_OPTION) {
-            String seleccion = (String) JOptionPane.showInputDialog(this, "Tipo de Archivo Adjunto", "Mensaje",
+            seleccion = (String) JOptionPane.showInputDialog(this, "Tipo de Archivo Adjunto", "Mensaje",
                     JOptionPane.QUESTION_MESSAGE, null, tipoAyudaDiag, "LABORATORIO");
             file = jFileChooser1.getSelectedFile();
             jTextField1.setText(file.getAbsolutePath());
@@ -185,6 +191,9 @@ public class PruebasComple extends javax.swing.JPanel {
                 }
             }
         }
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        act.actpruebasc(d, file.getName().toString(), jTextField1.getText(), seleccion);
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void TablaconteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaconteMouseReleased
@@ -256,6 +265,19 @@ public class PruebasComple extends javax.swing.JPanel {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "10052:\n" + ex.getMessage(), PruebasComple.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
+    }
+
+    public void actpruebasc() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        act.acthallasgo(d, jTextArea1.getText().toUpperCase().toString());
+    }
+    
+    public void cargarpruebas(){
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+        jTextArea1.setText(h[0][22].toString());
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JTable Tablaconte;

@@ -1,13 +1,24 @@
 package HC;
 
+import entity.PypAdmAsistCon;
+import Clases.Actualizar;
+import Clases.Funciones_AD;
+import Clases.Save;
+
 /**
  *
  * @author Camilo
  */
 public class ginecomac extends javax.swing.JPanel {
 
-    public ginecomac() {
+    private final PypAdmAsistCon pypAdmAsistCon;
+    Actualizar act = new Actualizar();
+    Funciones_AD Funciones = new Funciones_AD();
+    Save sav = new Save();
+
+    public ginecomac(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
+        this.pypAdmAsistCon = pypAdmAsistCon;
     }
 
     /**
@@ -242,6 +253,169 @@ public class ginecomac extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jCheckBox4MouseReleased
 
+    public void actginecomac() {
+        String q, w, e, r, t, y, j1, j2;
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        if (jCheckBox6.isSelected() == true) {
+            q = "1";
+        } else {
+            q = "0";
+        }
+        if (jCheckBox7.isSelected() == true && jCheckBox7.isEnabled() == true) {
+            w = "1";
+        } else {
+            w = "0";
+        }
+        if (jCheckBox4.isSelected() == true) {
+            e = "1";
+        } else {
+            e = "0";
+        }
+        if (jCheckBox5.isSelected() == true && jCheckBox5.isEnabled() == true) {
+            r = "1";
+        } else {
+            r = "0";
+        }
+        if (jTextField10.isEnabled() == true) {
+            j1 = jTextField10.getText().toUpperCase().toString();
+        } else {
+            j1 = "";
+        }
+        if (jTextField9.isEnabled() == true) {
+            j2 = jTextField10.getText().toUpperCase().toString();
+        } else {
+            j2 = "";
+        }
+        if (jComboBox3.isEnabled() == true) {
+            t = String.valueOf(jComboBox3.getSelectedIndex());
+        } else {
+            t = "0";
+        }
+        if (jComboBox2.isEnabled() == true) {
+            y = String.valueOf(jComboBox2.getSelectedIndex());
+        } else {
+            y = "0";
+        }
+        act.actualizarginecom(d, q, t, j1, w,
+                e, y, j2, r);
+    }
+
+    public void cargarginecom() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object h[][] = Funciones.RetornarDatos(act.cargarantecedentesg(d));
+        if (h[0][16].toString().equals("0")) {
+            jCheckBox6.setSelected(false);
+        } else {
+            jCheckBox6.setSelected(true);
+            jTextField10.setEnabled(true);
+            jComboBox3.setEnabled(true);
+            jCheckBox7.setEnabled(true);
+        }
+        if (h[0][17].toString().equals("0")) {
+            jComboBox3.setSelectedIndex(0);
+        } else {
+            if (h[0][17].toString().equals("1")) {
+                jComboBox3.setSelectedIndex(1);
+            } else {
+                if (h[0][17].toString().equals("2")) {
+                    jComboBox3.setSelectedIndex(2);
+                } else {
+                    if (h[0][17].toString().equals("3")) {
+                        jComboBox3.setSelectedIndex(3);
+                    } else {
+                        if (h[0][17].toString().equals("4")) {
+                            jComboBox3.setSelectedIndex(4);
+                        } else {
+                            if (h[0][17].toString().equals("5")) {
+                                jComboBox3.setSelectedIndex(5);
+                            } else {
+                                if (h[0][17].toString().equals("6")) {
+                                    jComboBox3.setSelectedIndex(6);
+                                } else {
+                                    if (h[0][17].toString().equals("7")) {
+                                        jComboBox3.setSelectedIndex(7);
+                                    } else {
+                                        if (h[0][17].toString().equals("8")) {
+                                            jComboBox3.setSelectedIndex(8);
+                                        } else {
+                                            if (h[0][17].toString().equals("9")) {
+                                                jComboBox3.setSelectedIndex(9);
+                                            } else {
+                                                jComboBox3.setSelectedIndex(10);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        jTextField10.setText(h[0][18].toString());
+        if(h[0][19].toString().equals("0")){
+            jCheckBox7.setSelected(false);
+        }else{
+            jCheckBox7.setSelected(true);
+        }
+        if (h[0][20].toString().equals("0")) {
+            jCheckBox4.setSelected(false);
+        } else {
+            jCheckBox4.setSelected(true);
+            jTextField9.setEnabled(true);
+            jComboBox2.setEnabled(true);
+            jCheckBox5.setEnabled(true);
+        }
+        if (h[0][21].toString().equals("0")) {
+            jComboBox2.setSelectedIndex(0);
+        } else {
+            if (h[0][21].toString().equals("1")) {
+                jComboBox2.setSelectedIndex(1);
+            } else {
+                if (h[0][21].toString().equals("2")) {
+                    jComboBox2.setSelectedIndex(2);
+                } else {
+                    if (h[0][21].toString().equals("3")) {
+                        jComboBox2.setSelectedIndex(3);
+                    } else {
+                        if (h[0][21].toString().equals("4")) {
+                            jComboBox2.setSelectedIndex(4);
+                        } else {
+                            if (h[0][21].toString().equals("5")) {
+                                jComboBox2.setSelectedIndex(5);
+                            } else {
+                                if (h[0][21].toString().equals("6")) {
+                                    jComboBox2.setSelectedIndex(6);
+                                } else {
+                                    if (h[0][21].toString().equals("7")) {
+                                        jComboBox2.setSelectedIndex(7);
+                                    } else {
+                                        if (h[0][21].toString().equals("8")) {
+                                            jComboBox2.setSelectedIndex(8);
+                                        } else {
+                                            if (h[0][21].toString().equals("9")) {
+                                                jComboBox2.setSelectedIndex(9);
+                                            } else {
+                                                jComboBox2.setSelectedIndex(10);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        jTextField9.setText(h[0][22].toString());
+        if(h[0][23].toString().equals("0")){
+            jCheckBox5.setSelected(false);
+        }else{
+            jCheckBox5.setSelected(true);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JCheckBox jCheckBox4;

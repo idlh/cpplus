@@ -1,6 +1,5 @@
 package HC;
 
-import Clases.Funciones_AD;
 import Dialogos.HCDiag.Dprocedimientos;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -9,6 +8,11 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import Clases.Funciones_AD;
+import Clases.Save;
+import entity.PypAdmAsistCon;
+import Clases.Actualizar;
+import Clases.CargarordenesM;
 
 /**
  *
@@ -17,10 +21,17 @@ import javax.swing.table.DefaultTableModel;
 public class ProcedimientosI extends javax.swing.JPanel {
 
     Dialogos.HCDiag.Dprocedimientos prog;
-    public static DefaultTableModel modelo;
+    private DefaultTableModel modelo;
+    Funciones_AD Funciones = new Funciones_AD();
+    Save sav = new Save();
+    private final PypAdmAsistCon pypAdmAsistCon;
+    Actualizar act = new Actualizar();
+    CargarordenesM tab = new CargarordenesM();
+    String est = "1";
 
-    public ProcedimientosI() {
+    public ProcedimientosI(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
+        this.pypAdmAsistCon = pypAdmAsistCon;
         tabla();
     }
 
@@ -181,12 +192,14 @@ public class ProcedimientosI extends javax.swing.JPanel {
                 Agregar_Registro(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0).toString(),
                         pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
                         pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
-                        pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString()
+                        pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
+                        "1"
                 );
                 pr.dispose();
             }
         });
         pr.setVisible(true);
+        est = "2";
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void TablaimagenologiaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaimagenologiaMouseEntered
@@ -203,8 +216,11 @@ public class ProcedimientosI extends javax.swing.JPanel {
             getModelo();
             Tablaimagenologia.getTableHeader().setReorderingAllowed(false);
             Tablaimagenologia.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-            Funciones_AD.setOcultarColumnas(Tablaimagenologia, new int[]{0, 1, 3});
+            Funciones_AD.setOcultarColumnas(Tablaimagenologia, new int[]{0, 1, 3, 4});
             Funciones_AD.setSizeColumnas(Tablaimagenologia, new int[]{1}, new int[]{450});
+            Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+            String d = (c[0][0].toString());
+            tab.cargartabla(modelo, d, "15");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage().toString());
         }
@@ -212,15 +228,16 @@ public class ProcedimientosI extends javax.swing.JPanel {
 
     public void getModelo() {
         modelo = new DefaultTableModel(
-                null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria"}) {
+                null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria", "Estado"}) {
                     Class[] types = new Class[]{
+                        java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class
                     };
                     boolean[] canEdit = new boolean[]{
-                        false, false, false, false
+                        false, false, false, false, false
                     };
 
                     @Override
@@ -236,10 +253,10 @@ public class ProcedimientosI extends javax.swing.JPanel {
         Tablaimagenologia.setModel(modelo);
     }
 
-    public void Agregar_Registro(String r1, String r2, String r3, String r4) {
+    public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5) {
         try {
             DefaultTableModel temp = (DefaultTableModel) Tablaimagenologia.getModel();
-            Object nuevo[] = {r1, r2, r3, r4};
+            Object nuevo[] = {r1, r2, r3, r4, r5};
             temp.addRow(nuevo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, " :(  " + e.getMessage());
@@ -248,7 +265,32 @@ public class ProcedimientosI extends javax.swing.JPanel {
 
     public void quitarrgistro() {
         if (modelo.getRowCount() > 0 && Tablaimagenologia.getSelectedRow() > -1) {
-            modelo.removeRow(Tablaimagenologia.getSelectedRow());
+            if (modelo.getValueAt(Tablaimagenologia.getSelectedRow(), 4).equals("2")) {
+                Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+                String d = (c[0][0].toString());
+                act.actprocedimiento(d, modelo.getValueAt(Tablaimagenologia.getSelectedRow(), 0).toString());
+                modelo.removeRow(Tablaimagenologia.getSelectedRow());
+            } else {
+                if (modelo.getRowCount() > 0 && Tablaimagenologia.getSelectedRow() > -1) {
+                    modelo.removeRow(Tablaimagenologia.getSelectedRow());
+                }
+            }
+        }
+    }
+
+    public void actproceimage() {
+        if (est.toString().equals("2")) {
+            Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+            String d = (c[0][0].toString());
+            for (int i = 0; i < modelo.getRowCount(); i++) {
+                if (modelo.getValueAt(i, 4).equals("1")) {
+                    modelo.setValueAt("2", i, 4);
+                    sav.newproce(d, modelo.getValueAt(i, 0).toString(),
+                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString()
+                    );
+                }
+            }
+            est = "1";
         }
     }
 

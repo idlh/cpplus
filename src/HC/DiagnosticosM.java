@@ -9,6 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.persistence.EntityManagerFactory;
 import javax.swing.SwingUtilities;
+import Clases.Actualizar;
+import Clases.Save;
+import Clases.Funciones_AD;
 
 /**
  *
@@ -17,17 +20,24 @@ import javax.swing.SwingUtilities;
 public class DiagnosticosM extends javax.swing.JPanel {
 
     private Clases.Consultarcie10 cie;
-    private EntityManagerFactory factory;
+    private final EntityManagerFactory factory;
+    private final PypAdmAsistCon pypAdmAsistCon;
     private StaticCie10 cie101, cie102, cie103, cie104;
+    int ciep = 0, est = 0;
+    Funciones_AD Funciones = new Funciones_AD();
+    Save sav = new Save();
+    Actualizar act = new Actualizar();
 
-    public DiagnosticosM(EntityManagerFactory factory) {
+    public DiagnosticosM(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.factory = factory;
-        PypAdmAsistCon pypAdmAsistCon = (PypAdmAsistCon) Dialogos.HCDiag.ListPacientes.jTable1.getValueAt(Dialogos.HCDiag.ListPacientes.jTable1.getSelectedRow(), 0);
+        this.pypAdmAsistCon = pypAdmAsistCon;
+        pypAdmAsistCon = (PypAdmAsistCon) Dialogos.HCDiag.ListPacientes.jTable1.getValueAt(Dialogos.HCDiag.ListPacientes.jTable1.getSelectedRow(), 0);
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
             cie = new Consultarcie10();
             cie.llamar_cie("Z108");
             jTextField1.setEditable(false);
+            ciep = 11859;
         }
         jTextField2.setEditable(false);
         jTextField3.setEditable(false);
@@ -111,7 +121,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
         jTextField3.setFont(new java.awt.Font("Tahoma", 1, 8)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(125, 164, 222));
 
-        jLabel5.setText("Diagnostico Relacionado 1");
+        jLabel5.setText("Diagnostico Relacionado 3");
 
         jTextField4.setFont(new java.awt.Font("Tahoma", 1, 8)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(125, 164, 222));
@@ -246,6 +256,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
             }
         });
         dc.setVisible(true);
+        est = 1;
     }//GEN-LAST:event_jButton2MouseReleased
 
     private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
@@ -262,10 +273,10 @@ public class DiagnosticosM extends javax.swing.JPanel {
             }
         });
         dc.setVisible(true);
+        est = 2;
     }//GEN-LAST:event_jButton3MouseReleased
 
     private void jButton5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseReleased
-        // TODO add your handling code here:
         final DgCie10 dc = new DgCie10((Frame) SwingUtilities.getWindowAncestor(this), true, factory);
         dc.jButton1.addActionListener(new ActionListener() {
 
@@ -279,10 +290,10 @@ public class DiagnosticosM extends javax.swing.JPanel {
             }
         });
         dc.setVisible(true);
+        est = 3;
     }//GEN-LAST:event_jButton5MouseReleased
 
     private void jButton4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseReleased
-        // TODO add your handling code here:
         final DgCie10 dc = new DgCie10((Frame) SwingUtilities.getWindowAncestor(this), true, factory);
         dc.jButton1.addActionListener(new ActionListener() {
 
@@ -296,7 +307,76 @@ public class DiagnosticosM extends javax.swing.JPanel {
             }
         });
         dc.setVisible(true);
+        est = 4;
     }//GEN-LAST:event_jButton4MouseReleased
+
+    public void actdx() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        int d1, d2, d3, d4;
+        if (est == 1) {
+            if (jTextField2.getText().equals("")) {
+                d1 = 1;
+            } else {
+                d1 = cie101.getId();
+            }
+            act.actdx1(d, ciep, d1);
+        }
+        if (est == 2) {
+            if (jTextField3.getText().equals("")) {
+                d2 = 1;
+            } else {
+                d2 = cie102.getId();
+            }
+            act.actdx2(d, ciep, d2);
+        }
+        if (est == 3) {
+            if (jTextField5.getText().equals("")) {
+                d3 = 1;
+            } else {
+                d3 = cie103.getId();
+            }
+            act.actdx3(d, ciep, d3);
+        }
+        if (est == 4) {
+            if (jTextField4.getText().equals("")) {
+                d4 = 1;
+            } else {
+                d4 = cie104.getId();
+            }
+            act.actdx4(d, ciep, d4);
+        }
+    }
+
+    public void cargardx() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+        Object r1[][] = Funciones.RetornarDatos(act.cargarcierel1(h[0][18].toString()));
+        Object r2[][] = Funciones.RetornarDatos(act.cargarcierel2(h[0][19].toString()));
+        Object r3[][] = Funciones.RetornarDatos(act.cargarcierel3(h[0][20].toString()));
+        Object r4[][] = Funciones.RetornarDatos(act.cargarcierel4(h[0][21].toString()));
+        if (h[0][18].toString().equals("1")) {
+            jTextField2.setText("");
+        } else {
+            jTextField2.setText(r1[0][0].toString());
+        }
+        if (h[0][19].toString().equals("1")) {
+            jTextField3.setText("");
+        } else {
+            jTextField3.setText(r2[0][0].toString());
+        }
+        if (h[0][20].toString().equals("1")) {
+            jTextField5.setText("");
+        } else {
+            jTextField5.setText(r3[0][0].toString());
+        }
+        if (h[0][21].toString().equals("1")) {
+            jTextField4.setText("");
+        } else {
+            jTextField4.setText(r4[0][0].toString());
+        }
+    }
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
         HC.Adulto.jLabel4.setText("Añadir diagnostico");

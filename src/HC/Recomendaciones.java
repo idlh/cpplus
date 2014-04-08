@@ -1,13 +1,24 @@
 package HC;
 
+import entity.PypAdmAsistCon;
+import Clases.Actualizar;
+import Clases.Save;
+import Clases.Funciones_AD;
+
 /**
  *
  * @author Camilo
  */
 public class Recomendaciones extends javax.swing.JPanel {
 
-    public Recomendaciones() {
+    private final PypAdmAsistCon pypAdmAsistCon;
+    Actualizar act = new Actualizar();
+    Save sav = new Save();
+    Funciones_AD Funciones = new Funciones_AD();
+
+    public Recomendaciones(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
+        this.pypAdmAsistCon = pypAdmAsistCon;
     }
 
     /**
@@ -57,7 +68,18 @@ public class Recomendaciones extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+    public void actrecomendaciones() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        act.actrecomendaciones(d, jTextArea1.getText().toUpperCase().toString());
+    }
+    
+    public void cargarrecom(){
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+        jTextArea1.setText(h[0][26].toString());
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JLabel jLabel1;
     javax.swing.JScrollPane jScrollPane1;

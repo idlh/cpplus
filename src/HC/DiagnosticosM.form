@@ -215,7 +215,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Diagnostico Relacionado 1"/>
+        <Property name="text" type="java.lang.String" value="Diagnostico Relacionado 3"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField4">

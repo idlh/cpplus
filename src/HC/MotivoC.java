@@ -1,20 +1,31 @@
 package HC;
 
+import Clases.Actualizar;
+import Clases.Funciones_AD;
+import Clases.Save;
+import entity.PypAdmAsistCon;
+
 /**
  *
  * @author Camilo
  */
 public class MotivoC extends javax.swing.JPanel {
 
-    public MotivoC() {
+    Actualizar act = new Actualizar();
+    Funciones_AD Funciones = new Funciones_AD();
+    Save sav = new Save();
+    private final PypAdmAsistCon pypAdmAsistCon;
+
+    public MotivoC(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
+        this.pypAdmAsistCon = pypAdmAsistCon;
         if (jCheckBox10.isSelected() == false) {
             jTextArea1.setEnabled(false);
         } else {
             jTextArea1.setEnabled(true);
-        }      
+        }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -174,6 +185,111 @@ public class MotivoC extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jCheckBox10ActionPerformed
 
+    public void actualizardatos() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        String q, w, e, r, t, y, u, i, o;
+        if (jCheckBox1.isSelected() == true) {
+            q = "1";
+        } else {
+            q = "0";
+        }
+        if (jCheckBox4.isSelected() == true) {
+            w = "1";
+        } else {
+            w = "0";
+        }
+        if (jCheckBox7.isSelected() == true) {
+            e = "1";
+        } else {
+            e = "0";
+        }
+        if (jCheckBox2.isSelected() == true) {
+            r = "1";
+        } else {
+            r = "0";
+        }
+        if (jCheckBox5.isSelected() == true) {
+            t = "1";
+        } else {
+            t = "0";
+        }
+        if (jCheckBox8.isSelected() == true) {
+            y = "1";
+        } else {
+            y = "0";
+        }
+        if (jCheckBox3.isSelected() == true) {
+            u = "1";
+        } else {
+            u = "0";
+        }
+        if (jCheckBox6.isSelected() == true) {
+            i = "1";
+        } else {
+            i = "0";
+        }
+        if (jCheckBox10.isSelected() == true) {
+            o = "1";
+        } else {
+            o = "0";
+        }
+        act.actueventos(d, q, w, e, r, t, y, u, i, o, jTextArea1.getText().toUpperCase().toString());
+    }
+
+    public void cargareventose() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object h[][] = Funciones.RetornarDatos(act.cargareventose(d));
+        if (h[0][2].toString().equals("0")) {
+            jCheckBox1.setSelected(false);
+        } else {
+            jCheckBox1.setSelected(true);
+        }
+        if (h[0][3].toString().equals("0")) {
+            jCheckBox4.setSelected(false);
+        } else {
+            jCheckBox4.setSelected(true);
+        }
+        if (h[0][4].toString().equals("0")) {
+            jCheckBox7.setSelected(false);
+        } else {
+            jCheckBox7.setSelected(true);
+        }
+        if (h[0][5].toString().equals("0")) {
+            jCheckBox2.setSelected(false);
+        } else {
+            jCheckBox2.setSelected(true);
+        }
+        if (h[0][6].toString().equals("0")) {
+            jCheckBox5.setSelected(false);
+        } else {
+            jCheckBox5.setSelected(true);
+        }
+        if (h[0][7].toString().equals("0")) {
+            jCheckBox8.setSelected(false);
+        } else {
+            jCheckBox8.setSelected(true);
+        }
+        if (h[0][8].toString().equals("0")) {
+            jCheckBox3.setSelected(false);
+        } else {
+            jCheckBox3.setSelected(true);
+        }
+        if (h[0][9].toString().equals("0")) {
+            jCheckBox6.setSelected(false);
+        } else {
+            jCheckBox6.setSelected(true);
+        }
+        if (h[0][10].toString().equals("0")) {
+            jCheckBox10.setSelected(false);
+            jTextArea1.setEnabled(false);
+        } else {
+            jCheckBox10.setSelected(true);
+            jTextArea1.setEnabled(true);
+        }
+        jTextArea1.setText(h[0][11].toString());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JCheckBox jCheckBox1;

@@ -1,15 +1,29 @@
 package HC;
 
 import java.awt.event.KeyEvent;
+import Clases.Actualizar;
+import Clases.Funciones_AD;
+import Clases.Save;
+import entity.PypAdmAsistCon;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Camilo
  */
 public class ginecogenerales extends javax.swing.JPanel {
-
-    public ginecogenerales() {
+    
+    private final PypAdmAsistCon pypAdmAsistCon;
+    Funciones_AD Funciones = new Funciones_AD();
+    Save sav = new Save();
+    Actualizar act = new Actualizar();
+    
+    public ginecogenerales(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
+        this.pypAdmAsistCon = pypAdmAsistCon;
     }
 
     /**
@@ -103,6 +117,9 @@ public class ginecogenerales extends javax.swing.JPanel {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField1KeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
         });
         add(jTextField1);
         jTextField1.setBounds(64, 66, 95, 19);
@@ -111,6 +128,9 @@ public class ginecogenerales extends javax.swing.JPanel {
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField2KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
             }
         });
         add(jTextField2);
@@ -121,6 +141,9 @@ public class ginecogenerales extends javax.swing.JPanel {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField3KeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
         });
         add(jTextField3);
         jTextField3.setBounds(64, 116, 95, 19);
@@ -130,6 +153,9 @@ public class ginecogenerales extends javax.swing.JPanel {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField4KeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
         });
         add(jTextField4);
         jTextField4.setBounds(64, 141, 95, 19);
@@ -138,6 +164,9 @@ public class ginecogenerales extends javax.swing.JPanel {
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField5KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
             }
         });
         add(jTextField5);
@@ -270,6 +299,132 @@ public class ginecogenerales extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTextField7KeyReleased
 
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField5KeyTyped
+    
+    public void actuginecog() {
+        String q, w, e, r;
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        if (jCheckBox1.isSelected() == true) {
+            q = "1";
+        } else {
+            q = "0";
+        }
+        if (jCheckBox2.isSelected() == true) {
+            w = "1";
+        } else {
+            w = "0";
+        }
+        if (jCheckBox3.isSelected() == true) {
+            e = "1";
+        } else {
+            e = "0";
+        }
+        r = String.valueOf(jComboBox1.getSelectedIndex());
+        Date fuma = jDateChooser1.getDate();
+        Date fupa = jDateChooser2.getDate();
+        String fum, fup;
+        String patron = "yyyy-MM-dd";
+        SimpleDateFormat formato = new SimpleDateFormat(patron);
+        if (fuma != null) {
+            fum = formato.format(fuma);
+        } else {
+            fum = "0001-01-01";
+        }
+        if (fupa != null) {
+            fup = formato.format(fupa);
+        } else {
+            fup = "0001-01-01";
+        }
+        act.actualizarginecog(d, fum, jTextField10.getText().toUpperCase().toString(), jTextField1.getText().toUpperCase().toString(),
+                jTextField2.getText().toUpperCase().toString(), jTextField3.getText().toUpperCase().toString(),
+                jTextField4.getText().toUpperCase().toString(), jTextField5.getText().toUpperCase().toString(), fup,
+                jTextField7.getText().toUpperCase().toString(), jTextField9.getText().toUpperCase().toString(), q, r, w, e);
+    }
+    
+    public void cargarginecog() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object h[][] = Funciones.RetornarDatos(act.cargarantecedentesg(d));
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date fecha = formato.parse(h[0][2].toString());
+            jDateChooser1.setDate(fecha);
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Error al convertir la fecha fum " + e.getMessage());
+        }
+        jTextField10.setText(h[0][3].toString());
+        jTextField1.setText(h[0][4].toString());
+        jTextField2.setText(h[0][5].toString());
+        jTextField3.setText(h[0][6].toString());
+        jTextField4.setText(h[0][7].toString());
+        jTextField5.setText(h[0][8].toString());
+        try {
+            Date fechafup = formato.parse(h[0][9].toString());
+            jDateChooser2.setDate(fechafup);
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Error al convertir la fecha fup " + e.getMessage().toString());
+        }
+        jTextField7.setText(h[0][10].toString());
+        jTextField9.setText(h[0][11].toString());
+        if (h[0][12].toString().equals("0")) {
+            jCheckBox1.setSelected(false);
+        } else {
+            jCheckBox1.setSelected(true);
+        }
+        if (h[0][14].toString().equals("0")) {
+            jCheckBox2.setSelected(false);
+        } else {
+            jCheckBox2.setSelected(true);
+        }
+        if (h[0][15].toString().equals("0")) {
+            jCheckBox3.setSelected(false);
+        } else {
+            jCheckBox3.setSelected(true);
+        }
+        if (h[0][14].toString().equals("0")) {
+            jComboBox1.setSelectedIndex(0);
+        } else {
+            if (h[0][14].toString().equals("1")) {
+                jComboBox1.setSelectedIndex(1);
+            } else {
+                jComboBox1.setSelectedIndex(2);
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JCheckBox jCheckBox1;

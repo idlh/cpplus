@@ -1,6 +1,9 @@
 package HC;
 
 import java.awt.Color;
+import entity.PypAdmAsistCon;
+import Clases.Funciones_AD;
+import Clases.Save;
 
 /**
  *
@@ -8,15 +11,34 @@ import java.awt.Color;
  */
 public class Procedimientos extends javax.swing.JPanel {
 
-    HC.ProcedimientosM pa = null;
+    public HC.ProcedimientosM pa = null;
     public HC.ProcedimientosL pl = null;
-    HC.ProcedimientosI pi = null;
-    HC.ProcedimientosQ pq = null;
-    HC.ProcedimientosO po = new ProcedimientosO();
+    public HC.ProcedimientosI pi = null;
+    public HC.ProcedimientosQ pq = null;
+    public HC.ProcedimientosO po = null;
     Dialogos.HCDiag.Dprocedimientos prog;
+    private PypAdmAsistCon pypAdmAsistCon;
+    Funciones_AD Funciones = new Funciones_AD();
+    Save sav = new Save();
 
-    public Procedimientos() {
+    public Procedimientos(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
+        this.pypAdmAsistCon = pypAdmAsistCon;
+        if (pa == null) {
+            pa = new ProcedimientosM(pypAdmAsistCon);
+        }
+        if (pl == null) {
+            pl = new ProcedimientosL(pypAdmAsistCon);
+        }
+        if (pi == null) {
+            pi = new ProcedimientosI(pypAdmAsistCon);
+        }
+        if (pq == null) {
+            pq = new ProcedimientosQ(pypAdmAsistCon);
+        }
+        if (po == null) {
+            po = new ProcedimientosO(pypAdmAsistCon);
+        }        
     }
 
     /**
@@ -271,71 +293,38 @@ public class Procedimientos extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel19MouseExited
 
     private void jLabel14MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseReleased
-        if (pa == null) {
-            pa = new ProcedimientosM();
-        }
         HC.OrdenesM.jPanel1.removeAll();
-//        pa.setBounds(0, 0, 408, 297);
-//        HC.OrdenesM.jPanel1.add(pa);
-//        pa.setVisible(true);
-//        HC.OrdenesM.jPanel1.validate();
-//        HC.OrdenesM.jPanel1.repaint();
         new Clases.Explode(HC.OrdenesM.jPanel1, pa).play();
 
     }//GEN-LAST:event_jLabel14MouseReleased
 
     private void jLabel16MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseReleased
-        if (pl == null) {
-            pl = new ProcedimientosL();
-        }
         HC.OrdenesM.jPanel1.removeAll();
-//        pl.setBounds(0, 0, 408, 297);
-//        HC.OrdenesM.jPanel1.add(pl);
-//        pl.setVisible(true);
-//        HC.OrdenesM.jPanel1.validate();
-//        HC.OrdenesM.jPanel1.repaint();
         new Clases.Explode(HC.OrdenesM.jPanel1, pl).play();
     }//GEN-LAST:event_jLabel16MouseReleased
 
     private void jLabel17MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseReleased
-        if (pi == null) {
-            pi = new ProcedimientosI();
-        }
         HC.OrdenesM.jPanel1.removeAll();
-//        pi.setBounds(0, 0, 408, 297);
-//        HC.OrdenesM.jPanel1.add(pi);
-//        pi.setVisible(true);
-//        HC.OrdenesM.jPanel1.validate();
-//        HC.OrdenesM.jPanel1.repaint();
         new Clases.Explode(HC.OrdenesM.jPanel1, pi).play();
     }//GEN-LAST:event_jLabel17MouseReleased
 
     private void jLabel19MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseReleased
-        if (pq == null) {
-            pq = new ProcedimientosQ();
-        }
         HC.OrdenesM.jPanel1.removeAll();
-//        pq.setBounds(0, 0, 408, 297);
-//        HC.OrdenesM.jPanel1.add(pq);
-//        pq.setVisible(true);
-//        HC.OrdenesM.jPanel1.validate();
-//        HC.OrdenesM.jPanel1.repaint();
         new Clases.Explode(HC.OrdenesM.jPanel1, pq).play();
     }//GEN-LAST:event_jLabel19MouseReleased
 
     private void jLabel18MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseReleased
-        if (po == null) {
-            po = new ProcedimientosO();
-        }
         HC.OrdenesM.jPanel1.removeAll();
-//        po.setBounds(0, 0, 408, 297);
-//        HC.OrdenesM.jPanel1.add(po);
-//        po.setVisible(true);
-//        HC.OrdenesM.jPanel1.validate();
-//        HC.OrdenesM.jPanel1.repaint();
         new Clases.Explode(HC.OrdenesM.jPanel1, po).play();
     }//GEN-LAST:event_jLabel18MouseReleased
 
+    public void guardarprocedimientos() {
+        pi.actproceimage();
+        pl.actprocelab();
+        pa.actprocemon();
+        po.actproceotr();
+        pq.actprocedquirur();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JLabel jLabel14;
