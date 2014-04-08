@@ -22,7 +22,7 @@ public class Adulto extends javax.swing.JPanel {
     AntecedentesP antecedentesp = null;
     Enfermedadac enfermedadac = null;
     Exploracionf exploracionf = null;
-    OrdenesM ordenesm = null;
+    public OrdenesM ordenesm = null;
     PruebasComple pruebascomple = null;
     DiagnosticosM diagnosticosm = null;
     Actualizar act = new Actualizar();
@@ -51,6 +51,7 @@ public class Adulto extends javax.swing.JPanel {
             diagnosticosm = new DiagnosticosM(factory, pypAdmAsistCon);
         }
         if (ordenesm == null) {
+            System.out.println("orden");
             ordenesm = new OrdenesM(pypAdmAsistCon);
         }
         crearhc();
@@ -709,6 +710,7 @@ public class Adulto extends javax.swing.JPanel {
 
     private void crearhc() {
         Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
+        System.out.println("crearhc");
         int b = Integer.parseInt(a[0][0].toString());
         if (b != 0) {
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));

@@ -5,7 +5,7 @@ import entity.PypAdmAsistCon;
 
 public class OrdenesM extends javax.swing.JPanel {
 
-    public int val = 0;
+//    private int val = 0;//permite mantenir visual el panel 
     private final PypAdmAsistCon pypAdmAsistCon;
     public Procedimientos pa = null;
     public Recomendaciones reco = null;
@@ -15,20 +15,17 @@ public class OrdenesM extends javax.swing.JPanel {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
         jPanel1.setBackground(Color.white);
-        if (val == 0) {
-            jPanel2.setVisible(false);
-            jPanel21.setLocation(10, 113);
-        }
-        val = 1;
+        jPanel2.setVisible(false);
+        jPanel21.setLocation(10, 113);
         if (me == null) {
             me = new Medicamentos(pypAdmAsistCon);
         }
-        if (val == 1) {
-            if (pa == null) {
-                pa = new Procedimientos(pypAdmAsistCon);
-            }
+        if (pa == null) {
+            System.out.println("procedimiento");
+            pa = new Procedimientos(pypAdmAsistCon);
         }
         if (reco == null) {
+            System.out.println("recoment");
             reco = new Recomendaciones(pypAdmAsistCon);
         }
     }
@@ -236,7 +233,7 @@ public class OrdenesM extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel13MouseReleased
 
     private void jLabel14MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseReleased
-        if (val == 1) {
+        if (jPanel2.isVisible() == false) {
             jPanel21.setLocation(10, 296);
             jPanel2.setVisible(true);
             this.jPanel2.removeAll();
@@ -245,17 +242,34 @@ public class OrdenesM extends javax.swing.JPanel {
             pa.setVisible(true);
             this.jPanel2.validate();
             this.jPanel2.repaint();
-            val = 0;
         } else {
-            if (val == 0) {
-                this.jPanel2.removeAll();
-                jPanel2.setVisible(false);
-                jPanel21.setLocation(10, 113);
-                this.jPanel1.validate();
-                this.jPanel1.repaint();
-                val = 1;
-            }
+            this.jPanel2.removeAll();
+            jPanel2.setVisible(false);
+            jPanel21.setLocation(10, 113);
+            this.jPanel1.validate();
+            this.jPanel1.repaint();
         }
+
+//        if (val == 1) {
+//            jPanel21.setLocation(10, 296);
+//            jPanel2.setVisible(true);
+//            this.jPanel2.removeAll();
+//            pa.setBounds(0, 0, 124, 221);
+//            this.jPanel2.add(pa);
+//            pa.setVisible(true);
+//            this.jPanel2.validate();
+//            this.jPanel2.repaint();
+//            val = 0;
+//        } else {
+//            if (val == 0) {
+//                this.jPanel2.removeAll();
+//                jPanel2.setVisible(false);
+//                jPanel21.setLocation(10, 113);
+//                this.jPanel1.validate();
+//                this.jPanel1.repaint();
+//                val = 1;
+//            }
+//        }
     }//GEN-LAST:event_jLabel14MouseReleased
 
     private void jLabel16MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseReleased

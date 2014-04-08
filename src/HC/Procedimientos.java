@@ -293,6 +293,7 @@ public class Procedimientos extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel19MouseExited
 
     private void jLabel14MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseReleased
+        
         HC.OrdenesM.jPanel1.removeAll();
         new Clases.Explode(HC.OrdenesM.jPanel1, pa).play();
 

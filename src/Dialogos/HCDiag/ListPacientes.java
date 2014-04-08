@@ -37,7 +37,7 @@ public class ListPacientes extends javax.swing.JDialog {
     private final Object dato[] = null;
     private CrecDesarrollo crecDesarrollo;
     private PypAdmAsistCon pypAdmAsistCon;
-    private Adulto adult;
+    public Adulto adult;
 
     public ListPacientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
