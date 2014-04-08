@@ -1,6 +1,10 @@
 package HC;
 
 import java.awt.Color;
+import entity.PypAdmAsistCon;
+import Clases.Actualizar;
+import Clases.Save;
+import Clases.Funciones_AD;
 
 /**
  *
@@ -8,11 +12,22 @@ import java.awt.Color;
  */
 public class AntecedentesP extends javax.swing.JPanel {
 
-    ginecogenerales gi = new ginecogenerales();
-    ginecomac gimac = new ginecomac();
+    public ginecogenerales gi = null;
+    public ginecomac gimac = null;
+    private final PypAdmAsistCon pypAdmAsistCon;
+    Actualizar act = new Actualizar();
+    Save sav = new Save();
+    Funciones_AD Funciones = new Funciones_AD();
 
-    public AntecedentesP() {
+    public AntecedentesP(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
+        this.pypAdmAsistCon = pypAdmAsistCon;
+        if (gi == null) {
+            gi = new ginecogenerales(pypAdmAsistCon);
+        }
+        if (gimac == null) {
+            gimac = new ginecomac(pypAdmAsistCon);
+        }
         jPanel24.setBackground(Color.white);
     }
 
@@ -677,24 +692,12 @@ public class AntecedentesP extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel13MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseReleased
-        // TODO add your handling code here:
-//        gi.setBounds(0, 0, 334, 246);
         this.jPanel24.removeAll();
-//        this.jPanel24.add(gi);        
-//        gi.setVisible(true);
-//        this.jPanel24.validate();
-//        this.jPanel24.repaint();
         new Clases.Explode(jPanel24, gi).play();
     }//GEN-LAST:event_jLabel13MouseReleased
 
     private void jLabel18MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseReleased
-        // TODO add your handling code here:
-//        gimac.setBounds(0, 0, 334, 246);
         this.jPanel24.removeAll();
-//        this.jPanel24.add(gimac);        
-//        gimac.setVisible(true);
-//        this.jPanel24.validate();
-//        this.jPanel24.repaint();
         new Clases.Explode(jPanel24, gimac).play();
     }//GEN-LAST:event_jLabel18MouseReleased
 
@@ -790,7 +793,149 @@ public class AntecedentesP extends javax.swing.JPanel {
         jTextArea8.setForeground(Color.BLACK);
     }//GEN-LAST:event_jTextArea8KeyReleased
 
+    public void guardarantep() {
+        gi.actuginecog();
+        gimac.actginecomac();
+        String q, w, e, r, t, y;
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        if (jCheckBox1.isSelected() == true) {//hta
+            q = "1";
+        } else {
+            q = "0";
+        }
+        if (jCheckBox2.isSelected() == true) {//dm
+            w = "1";
+        } else {
+            w = "0";
+        }
+        if (jCheckBox3.isSelected() == true) {//disp
+            e = "1";
+        } else {
+            e = "0";
+        }
+        if (jCheckBox4.isSelected() == true) {//tabaco
+            r = "1";
+        } else {
+            r = "0";
+        }
+        if (jCheckBox5.isSelected() == true) {//alcohol
+            t = "1";
+        } else {
+            t = "0";
+        }
+        if (jCheckBox6.isSelected() == true) {//droga
+            y = "1";
+        } else {
+            y = "0";
+        }
+        act.actualizarantp(d, jTextArea1.getText().toUpperCase().toString(), jTextArea2.getText().toUpperCase().toString(),
+                jTextArea3.getText().toUpperCase().toString(), jTextArea4.getText().toUpperCase().toString(),
+                w, q, e, jTextArea5.getText().toUpperCase().toString(), r, t, y, jTextArea6.getText().toUpperCase().toString(),
+                jTextArea7.getText().toUpperCase().toString(), jTextArea8.getText().toUpperCase().toString());
+    }
 
+    public void cargarancedentes() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+        if (h[0][2].toString().equals("NO SE ENCUENTRAN DATOS")) {
+            jTextArea1.setText(h[0][2].toString());
+            jTextArea1.setSelectionStart(0);
+            jTextArea1.setSelectionEnd(jTextArea1.getText().length());
+        } else {
+            jTextArea1.setText(h[0][2].toString());
+            jTextArea1.setForeground(Color.BLACK);
+        }
+        if (h[0][3].toString().equals("NO SE ENCUENTRAN DATOS")) {
+            jTextArea2.setText(h[0][3].toString());
+            jTextArea2.setSelectionStart(0);
+            jTextArea2.setSelectionEnd(jTextArea2.getText().length());
+        } else {
+            jTextArea2.setText(h[0][3].toString());
+            jTextArea2.setForeground(Color.BLACK);
+        }
+        if (h[0][4].toString().equals("NO SE ENCUENTRAN DATOS")) {
+            jTextArea3.setText(h[0][4].toString());
+            jTextArea3.setSelectionStart(0);
+            jTextArea3.setSelectionEnd(jTextArea3.getText().length());
+        } else {
+            jTextArea3.setText(h[0][4].toString());
+            jTextArea3.setForeground(Color.BLACK);
+        }
+        if (h[0][5].toString().equals("NO SE ENCUENTRAN DATOS")) {
+            jTextArea4.setText(h[0][5].toString());
+            jTextArea4.setSelectionStart(0);
+            jTextArea4.setSelectionEnd(jTextArea4.getText().length());
+        } else {
+            jTextArea4.setText(h[0][5].toString());
+            jTextArea4.setForeground(Color.BLACK);
+        }
+        if (h[0][6].toString().equals("0")) {
+            jCheckBox2.setSelected(false);
+        } else {
+            jCheckBox2.setSelected(true);
+        }
+        if (h[0][7].toString().equals("0")) {
+            jCheckBox1.setSelected(false);
+        } else {
+            jCheckBox1.setSelected(true);
+        }
+        if (h[0][8].toString().equals("0")) {
+            jCheckBox3.setSelected(false);
+        } else {
+            jCheckBox3.setSelected(true);
+        }
+        if (h[0][9].toString().equals("NINGUNO")) {
+            jTextArea5.setText(h[0][9].toString());
+            jTextArea5.setSelectionStart(0);
+            jTextArea5.setSelectionEnd(jTextArea5.getText().length());
+        } else {
+            jTextArea5.setText(h[0][9].toString());
+            jTextArea5.setForeground(Color.BLACK);
+        }
+        if (h[0][10].toString().equals("0")) {
+            jCheckBox4.setSelected(false);
+        } else {
+            jCheckBox4.setSelected(true);
+        }
+        if (h[0][11].toString().equals("0")) {
+            jCheckBox5.setSelected(false);
+        } else {
+            jCheckBox5.setSelected(true);
+        }
+        if (h[0][12].toString().equals("0")) {
+            jCheckBox6.setSelected(false);
+        } else {
+            jCheckBox6.setSelected(true);
+        }
+        if (h[0][13].toString().equals("NINGUNO")) {
+            jTextArea6.setText(h[0][13].toString());
+            jTextArea6.setSelectionStart(0);
+            jTextArea6.setSelectionEnd(jTextArea6.getText().length());
+        } else {
+            jTextArea6.setText(h[0][13].toString());
+            jTextArea6.setForeground(Color.BLACK);
+        }
+        if (h[0][14].toString().equals("NO SE ENCUENTRAN DATOS")) {
+            jTextArea7.setText(h[0][14].toString());
+            jTextArea7.setSelectionStart(0);
+            jTextArea7.setSelectionEnd(jTextArea7.getText().length());
+        } else {
+            jTextArea7.setText(h[0][14].toString());
+            jTextArea7.setForeground(Color.BLACK);
+        }
+        if (h[0][15].toString().equals("NO SE ENCUENTRAN DATOS")) {
+            jTextArea8.setText(h[0][15].toString());
+            jTextArea8.setSelectionStart(0);
+            jTextArea8.setSelectionEnd(jTextArea8.getText().length());
+        } else {
+            jTextArea8.setText(h[0][15].toString());
+            jTextArea8.setForeground(Color.BLACK);
+        }
+        gi.cargarginecog();
+        gimac.cargarginecom();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JCheckBox jCheckBox1;
     javax.swing.JCheckBox jCheckBox2;
