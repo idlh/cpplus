@@ -23,6 +23,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import modulo_pyp.Desktop;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import HC.Controlprenatal;
 
 /**
  *
@@ -38,6 +39,7 @@ public class ListPacientes extends javax.swing.JDialog {
     private CrecDesarrollo crecDesarrollo;
     private PypAdmAsistCon pypAdmAsistCon;
     public Adulto adult;
+    public Controlprenatal controlp;
 
     public ListPacientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -122,7 +124,7 @@ public class ListPacientes extends javax.swing.JDialog {
         factory = Persistence.createEntityManagerFactory("EJB_CEPU", props);
         paacjc = new PypAdmAsistConJpaController(factory);
         List<PypAdmAsistCon> asistCon = null;
-        if (jRadioButton1.isSelected() == true) {
+        if (jRadioButton1.isSelected() == true && pypAdmAsistCon.getEstado() == 1) {
             //asignar el id del profecional de la tabla cmprofesionales
             asistCon = paacjc.listPypAdmAsistCon(1);
         } else {
@@ -439,10 +441,8 @@ public class ListPacientes extends javax.swing.JDialog {
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         Desktop desktop = (Desktop) this.getParent();
         pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            System.out.println("4");
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
             adult = new Adulto(factory, pypAdmAsistCon);
-            System.out.println("5");
             adult.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(adult);
@@ -451,7 +451,27 @@ public class ListPacientes extends javax.swing.JDialog {
             desktop.Contenedor_.repaint();
             this.dispose();
         }
-
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
+            adult = new Adulto(factory, pypAdmAsistCon);
+            adult.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(adult);
+            adult.jLabel3.setText("Consulta de control");
+            adult.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
+            controlp = new Controlprenatal(factory, pypAdmAsistCon);
+            controlp.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(controlp);
+            controlp.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
