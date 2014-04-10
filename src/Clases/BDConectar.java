@@ -1,7 +1,9 @@
 package Clases;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,6 +18,7 @@ public class BDConectar {
     public Connection conexion, conexionLite;
     public Statement sentencia, sentenciaLite;
     public ResultSet resultado, resultadoLite;
+    public PreparedStatement preparedStatement;
 
     public void ConectarBasedeDatos() throws ClassNotFoundException {
         try {

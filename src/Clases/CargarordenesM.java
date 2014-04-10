@@ -1,6 +1,8 @@
 package Clases;
 
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -176,6 +178,40 @@ public class CargarordenesM {
             JOptionPane.showMessageDialog(null, "tab003 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void cargartablapruebas(DefaultTableModel modelo, String id) {
+        try {
+            bd.ConectarBasedeDatos();
+            c = 0;
+            Object s[] = null;
+            ImageIcon icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/Delete16x16.png"));
+            ImageIcon icon2 = new javax.swing.ImageIcon(getClass().getResource("/Recursos/download.png"));
+            bd.resultado = bd.sentencia.executeQuery("SELECT "
+                    + "     `pyp_pruebascomplementarias`.`nombre`"
+                    + "    , `pyp_pruebascomplementarias`.`ruta`"
+                    + "    , `pyp_pruebascomplementarias`.`tipo`"
+                    + "    , `pyp_pruebascomplementarias`.`estado`"
+                    + "	FROM `database`.`pyp_pruebascomplementarias`"
+                    + "	WHERE `pyp_pruebascomplementarias`.`id_infohisto`='" + id + "' AND `pyp_pruebascomplementarias`.`estado` = 1;");
+            if (bd.resultado != null) {
+                while(bd.resultado.next()){
+                    modelo.addRow(s);
+                    modelo.setValueAt(new JLabel(icon), c, 0);
+                    modelo.setValueAt(new JLabel(icon2), c, 1);
+                    modelo.setValueAt(bd.resultado.getString("nombre"), c, 2);
+                    modelo.setValueAt(bd.resultado.getString("ruta"), c, 3);
+                    modelo.setValueAt(bd.resultado.getString("tipo"), c, 4);
+                    modelo.setValueAt(bd.resultado.getString("ruta"), c, 5);
+                    modelo.setValueAt(bd.resultado.getString("estado"), c, 6);
+                    c++;
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "tab004 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "tab004 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }
