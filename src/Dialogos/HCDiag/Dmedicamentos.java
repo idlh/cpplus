@@ -7,6 +7,7 @@ package Dialogos.HCDiag;
 
 import Clases.Cmedicamentos;
 import Clases.Funciones_AD;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
@@ -175,7 +176,15 @@ public class Dmedicamentos extends javax.swing.JDialog {
         jLabel3.setForeground(new java.awt.Color(125, 164, 222));
         jLabel3.setText("Dosis:");
 
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
+            }
+        });
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField2KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField2KeyTyped(evt);
             }
@@ -477,6 +486,17 @@ public class Dmedicamentos extends javax.swing.JDialog {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        jTextField2.selectAll();
+    }//GEN-LAST:event_jTextField2FocusGained
+
+    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
+        if (jTextField2.getText().length() >= 5) {
+            evt.setKeyChar((char) KeyEvent.VK_CLEAR);
+            jTextArea1.requestFocus();
+        }
+    }//GEN-LAST:event_jTextField2KeyReleased
 
     /**
      * @param args the cordenesmmand line arguments
