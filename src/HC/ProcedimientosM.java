@@ -13,6 +13,7 @@ import Clases.Save;
 import entity.PypAdmAsistCon;
 import Clases.Actualizar;
 import Clases.CargarordenesM;
+import HC.Adulto;
 
 /**
  *
@@ -168,19 +169,43 @@ public class ProcedimientosM extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        HC.Adulto.jLabel4.setText("Añadir Procedimiento");
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
+            HC.Adulto.jLabel4.setText("Añadir procedimiento");
+        } else {
+            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+                HC.Controlprenatal.jLabel4.setText("Añadir procedimiento");
+            }
+        }
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        HC.Adulto.jLabel4.setText("...");
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
+            HC.Adulto.jLabel4.setText("...");
+        } else {
+            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+                HC.Controlprenatal.jLabel4.setText("...");
+            }
+        }
     }//GEN-LAST:event_jButton1MouseExited
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
-        HC.Adulto.jLabel4.setText("Quitar Procedimiento");
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
+            HC.Adulto.jLabel4.setText("Quitar procedimiento");
+        } else {
+            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+                HC.Controlprenatal.jLabel4.setText("Quitar procedimiento");
+            }
+        }
     }//GEN-LAST:event_jButton3MouseEntered
 
     private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
-        HC.Adulto.jLabel4.setText("...");
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
+            HC.Adulto.jLabel4.setText("...");
+        } else {
+            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+                HC.Controlprenatal.jLabel4.setText("...");
+            }
+        }
     }//GEN-LAST:event_jButton3MouseExited
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
@@ -219,11 +244,15 @@ public class ProcedimientosM extends javax.swing.JPanel {
             Tablemonitorizacion.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             Funciones_AD.setOcultarColumnas(Tablemonitorizacion, new int[]{0, 1, 3, 4});
             Funciones_AD.setSizeColumnas(Tablemonitorizacion, new int[]{1}, new int[]{450});
-            Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-            String d = (c[0][0].toString());
-            tab.cargartabla(modelo, d, "16");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage().toString());
+            Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
+            int b = Integer.parseInt(a[0][0].toString());
+            if (b != 0) {
+                Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+                String d = (c[0][0].toString());
+                tab.cargartabla(modelo, d, "16");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "error: " + e.getMessage().toString(), ProcedimientosM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

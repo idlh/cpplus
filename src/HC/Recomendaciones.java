@@ -4,6 +4,7 @@ import entity.PypAdmAsistCon;
 import Clases.Actualizar;
 import Clases.Save;
 import Clases.Funciones_AD;
+import java.awt.Color;
 
 /**
  *
@@ -44,8 +45,20 @@ public class Recomendaciones extends javax.swing.JPanel {
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setText("Ninguna");
+        jTextArea1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea1FocusGained(evt);
+            }
+        });
+        jTextArea1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea1KeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -67,6 +80,14 @@ public class Recomendaciones extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextArea1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyReleased
+        jTextArea1.setForeground(Color.black);
+    }//GEN-LAST:event_jTextArea1KeyReleased
+
+    private void jTextArea1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusGained
+       jTextArea1.selectAll();
+    }//GEN-LAST:event_jTextArea1FocusGained
 
     public void actrecomendaciones() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));

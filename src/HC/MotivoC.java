@@ -114,6 +114,11 @@ public class MotivoC extends javax.swing.JPanel {
         jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea1FocusGained(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -184,6 +189,10 @@ public class MotivoC extends javax.swing.JPanel {
             jTextArea1.setEnabled(true);
         }
     }//GEN-LAST:event_jCheckBox10ActionPerformed
+
+    private void jTextArea1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusGained
+        jTextArea1.selectAll();
+    }//GEN-LAST:event_jTextArea1FocusGained
 
     public void actualizardatos() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));

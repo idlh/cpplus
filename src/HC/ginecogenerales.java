@@ -15,15 +15,26 @@ import javax.swing.JOptionPane;
  * @author Camilo
  */
 public class ginecogenerales extends javax.swing.JPanel {
-    
+
     private final PypAdmAsistCon pypAdmAsistCon;
     Funciones_AD Funciones = new Funciones_AD();
     Save sav = new Save();
     Actualizar act = new Actualizar();
-    
+
     public ginecogenerales(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
+        if (pypAdmAsistCon.getIdAgend().getIdPaciente().getGenero().toString().equals("M")) {
+            jDateChooser1.setEnabled(false);
+            jTextField1.setEnabled(false);
+            jTextField2.setEnabled(false);
+            jTextField3.setEnabled(false);
+            jTextField4.setEnabled(false);
+            jTextField5.setEnabled(false);
+            jTextField10.setEnabled(false);
+            jTextField7.setEnabled(false);
+            jDateChooser2.setEnabled(false);
+        }
     }
 
     /**
@@ -113,6 +124,11 @@ public class ginecogenerales extends javax.swing.JPanel {
         jDateChooser1.setBounds(64, 40, 95, 20);
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+        });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField1KeyReleased(evt);
@@ -125,6 +141,11 @@ public class ginecogenerales extends javax.swing.JPanel {
         jTextField1.setBounds(64, 66, 95, 19);
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
+            }
+        });
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField2KeyReleased(evt);
@@ -137,6 +158,11 @@ public class ginecogenerales extends javax.swing.JPanel {
         jTextField2.setBounds(64, 91, 95, 19);
 
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField3FocusGained(evt);
+            }
+        });
         jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField3KeyReleased(evt);
@@ -149,6 +175,11 @@ public class ginecogenerales extends javax.swing.JPanel {
         jTextField3.setBounds(64, 116, 95, 19);
 
         jTextField4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField4FocusGained(evt);
+            }
+        });
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField4KeyReleased(evt);
@@ -161,6 +192,11 @@ public class ginecogenerales extends javax.swing.JPanel {
         jTextField4.setBounds(64, 141, 95, 19);
 
         jTextField5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField5FocusGained(evt);
+            }
+        });
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField5KeyReleased(evt);
@@ -187,6 +223,11 @@ public class ginecogenerales extends javax.swing.JPanel {
         jLabel10.setBounds(164, 70, 94, 11);
 
         jTextField7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField7.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField7FocusGained(evt);
+            }
+        });
         jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField7KeyReleased(evt);
@@ -204,6 +245,16 @@ public class ginecogenerales extends javax.swing.JPanel {
         jTextField9.setMaximumSize(new java.awt.Dimension(72, 19));
         jTextField9.setMinimumSize(new java.awt.Dimension(72, 19));
         jTextField9.setPreferredSize(new java.awt.Dimension(72, 19));
+        jTextField9.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField9FocusGained(evt);
+            }
+        });
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField9KeyTyped(evt);
+            }
+        });
         add(jTextField9);
         jTextField9.setBounds(262, 91, 72, 19);
 
@@ -248,6 +299,11 @@ public class ginecogenerales extends javax.swing.JPanel {
         jTextField10.setMinimumSize(new java.awt.Dimension(72, 19));
         jTextField10.setName(""); // NOI18N
         jTextField10.setPreferredSize(new java.awt.Dimension(72, 19));
+        jTextField10.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField10FocusGained(evt);
+            }
+        });
         jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField10KeyReleased(evt);
@@ -333,7 +389,46 @@ public class ginecogenerales extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField5KeyTyped
-    
+
+    private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField9KeyTyped
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        jTextField1.selectAll();
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        jTextField2.selectAll();
+    }//GEN-LAST:event_jTextField2FocusGained
+
+    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        jTextField3.selectAll();
+    }//GEN-LAST:event_jTextField3FocusGained
+
+    private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
+        jTextField4.selectAll();
+    }//GEN-LAST:event_jTextField4FocusGained
+
+    private void jTextField5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusGained
+        jTextField5.selectAll();
+    }//GEN-LAST:event_jTextField5FocusGained
+
+    private void jTextField10FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField10FocusGained
+        jTextField10.selectAll();
+    }//GEN-LAST:event_jTextField10FocusGained
+
+    private void jTextField7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusGained
+        jTextField7.selectAll();
+    }//GEN-LAST:event_jTextField7FocusGained
+
+    private void jTextField9FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField9FocusGained
+        jTextField9.selectAll();
+    }//GEN-LAST:event_jTextField9FocusGained
+
     public void actuginecog() {
         String q, w, e, r;
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
@@ -374,7 +469,7 @@ public class ginecogenerales extends javax.swing.JPanel {
                 jTextField4.getText().toUpperCase().toString(), jTextField5.getText().toUpperCase().toString(), fup,
                 jTextField7.getText().toUpperCase().toString(), jTextField9.getText().toUpperCase().toString(), q, r, w, e);
     }
-    
+
     public void cargarginecog() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());

@@ -4,6 +4,7 @@ import entity.PypAdmAsistCon;
 import Clases.Actualizar;
 import Clases.Funciones_AD;
 import Clases.Save;
+import java.awt.Color;
 
 /**
  *
@@ -31,8 +32,8 @@ public class Enfermedadac extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(558, 345));
@@ -41,7 +42,23 @@ public class Enfermedadac extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Enfermedad Actual");
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jTextPane1.setColumns(20);
+        jTextPane1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextPane1.setForeground(new java.awt.Color(204, 204, 204));
+        jTextPane1.setLineWrap(true);
+        jTextPane1.setRows(5);
+        jTextPane1.setText("Ninguno");
+        jTextPane1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextPane1FocusGained(evt);
+            }
+        });
+        jTextPane1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextPane1KeyReleased(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTextPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -50,10 +67,10 @@ public class Enfermedadac extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(0, 422, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -62,18 +79,26 @@ public class Enfermedadac extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextPane1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPane1KeyReleased
+        jTextPane1.setForeground(Color.black);
+    }//GEN-LAST:event_jTextPane1KeyReleased
+
+    private void jTextPane1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextPane1FocusGained
+        jTextPane1.selectAll();
+    }//GEN-LAST:event_jTextPane1FocusGained
 
     public void actualizarenfac() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
         act.actenfactual(d, jTextPane1.getText().toUpperCase().toString());
     }
-    
-    public void cargardatosenf(){
+
+    public void cargardatosenf() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
         Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
@@ -81,7 +106,7 @@ public class Enfermedadac extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JLabel jLabel3;
-    javax.swing.JScrollPane jScrollPane1;
-    javax.swing.JTextPane jTextPane1;
+    javax.swing.JScrollPane jScrollPane2;
+    javax.swing.JTextArea jTextPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -57,6 +57,7 @@ public class Medicamentos extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         jPopupMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -163,6 +164,10 @@ public class Medicamentos extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/1389649412_Capsule.png"))); // NOI18N
         jLabel1.setText("Medicamentos");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 8)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel2.setText("Seleccione el medicamento y presione clic derecho para ver mas.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -173,33 +178,60 @@ public class Medicamentos extends javax.swing.JPanel {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        HC.Adulto.jLabel4.setText("Añadir Medicamento");
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
+            HC.Adulto.jLabel4.setText("Añadir medicamento");
+        } else {
+            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+                HC.Controlprenatal.jLabel4.setText("Añadir medicamento");
+            }
+        }
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        HC.Adulto.jLabel4.setText("...");
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
+            HC.Adulto.jLabel4.setText("...");
+        } else {
+            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+                HC.Controlprenatal.jLabel4.setText("...");
+            }
+        }
     }//GEN-LAST:event_jButton1MouseExited
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
-        HC.Adulto.jLabel4.setText("Quitar Medicamento");
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
+            HC.Adulto.jLabel4.setText("Quitar medicamento");
+        } else {
+            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+                HC.Controlprenatal.jLabel4.setText("Quitar medicamento");
+            }
+        }
     }//GEN-LAST:event_jButton3MouseEntered
 
     private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
-        HC.Adulto.jLabel4.setText("...");
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
+            HC.Adulto.jLabel4.setText("...");
+        } else {
+            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+                HC.Controlprenatal.jLabel4.setText("...");
+            }
+        }
     }//GEN-LAST:event_jButton3MouseExited
 
     private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
@@ -324,20 +356,11 @@ public class Medicamentos extends javax.swing.JPanel {
     }
 
     public void quitarrgistro() {
-
         if (modelo.getRowCount() > 0 && Tablamedi.getSelectedRow() > -1) {
             if (modelo.getValueAt(Tablamedi.getSelectedRow(), 7).equals("2")) {
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
-                Date fecha = pypAdmAsistCon.getFecha();
-                Date hora = pypAdmAsistCon.getHora();
-                String patronh = "HH:mm:ss";
-                String patron = "yyyy-MM-dd ";
-                SimpleDateFormat formato = new SimpleDateFormat(patron);
-                SimpleDateFormat formatoh = new SimpleDateFormat(patronh);
-                fc = formato.format(fecha);
-                fh = formatoh.format(hora);
-                act.actposologia(d, modelo.getValueAt(Tablamedi.getSelectedRow(), 0).toString(), modelo.getValueAt(Tablamedi.getSelectedRow(), 10).toString());
+                act.actposologia(d, modelo.getValueAt(Tablamedi.getSelectedRow(), 0).toString(), modelo.getValueAt(Tablamedi.getSelectedRow(), 2).toString());
                 modelo.removeRow(Tablamedi.getSelectedRow());
             } else {
                 if (modelo.getRowCount() > 0 && Tablamedi.getSelectedRow() > -1) {
@@ -374,6 +397,7 @@ public class Medicamentos extends javax.swing.JPanel {
     javax.swing.JButton jButton1;
     javax.swing.JButton jButton3;
     javax.swing.JLabel jLabel1;
+    javax.swing.JLabel jLabel2;
     javax.swing.JMenuItem jMenuItem1;
     javax.swing.JPanel jPanel1;
     javax.swing.JPopupMenu jPopupMenu1;

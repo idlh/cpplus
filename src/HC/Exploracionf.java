@@ -22,6 +22,7 @@ public class Exploracionf extends javax.swing.JPanel {
     public Exploracionf(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
+        jTextField10.setEditable(false);
     }
 
     /**
@@ -59,9 +60,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jTextField10 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -97,6 +98,11 @@ public class Exploracionf extends javax.swing.JPanel {
 
         jLabel15.setText("°C");
 
+        jTextField7.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField7FocusGained(evt);
+            }
+        });
         jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField7KeyReleased(evt);
@@ -106,6 +112,11 @@ public class Exploracionf extends javax.swing.JPanel {
             }
         });
 
+        jTextField8.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField8FocusGained(evt);
+            }
+        });
         jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField8KeyReleased(evt);
@@ -115,6 +126,11 @@ public class Exploracionf extends javax.swing.JPanel {
             }
         });
 
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+        });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField1KeyReleased(evt);
@@ -130,6 +146,11 @@ public class Exploracionf extends javax.swing.JPanel {
 
         jLabel9.setText("resp/m");
 
+        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField4FocusGained(evt);
+            }
+        });
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField4KeyReleased(evt);
@@ -151,6 +172,11 @@ public class Exploracionf extends javax.swing.JPanel {
 
         jLabel19.setText("Peso:");
 
+        jTextField9.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField9FocusGained(evt);
+            }
+        });
         jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField9KeyReleased(evt);
@@ -164,6 +190,11 @@ public class Exploracionf extends javax.swing.JPanel {
 
         jLabel20.setText("IMC:");
 
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
+            }
+        });
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField2KeyReleased(evt);
@@ -177,6 +208,11 @@ public class Exploracionf extends javax.swing.JPanel {
 
         jLabel13.setText("ppm");
 
+        jTextField5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField5FocusGained(evt);
+            }
+        });
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField5KeyReleased(evt);
@@ -187,11 +223,26 @@ public class Exploracionf extends javax.swing.JPanel {
         });
 
         jTextField10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextField10.setForeground(new java.awt.Color(255, 255, 204));
-
-        jScrollPane1.setViewportView(jTextPane1);
 
         jLabel5.setText("Otros:");
+
+        jTextPane1.setColumns(20);
+        jTextPane1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextPane1.setForeground(new java.awt.Color(204, 204, 204));
+        jTextPane1.setLineWrap(true);
+        jTextPane1.setRows(5);
+        jTextPane1.setText("Ninguno");
+        jTextPane1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextPane1FocusGained(evt);
+            }
+        });
+        jTextPane1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextPane1KeyReleased(evt);
+            }
+        });
+        jScrollPane11.setViewportView(jTextPane1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -254,87 +305,83 @@ public class Exploracionf extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 107, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addGap(3, 3, 3)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel12))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel4)))
-                                .addGap(6, 6, 6)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel11))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel13)))
-                                .addGap(5, 5, 5)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel19))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel18)))
-                                .addGap(5, 5, 5)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel20)
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel12))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4)))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel8))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel2)))
-                                .addGap(6, 6, 6)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel10))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel9)))
-                                .addGap(5, 5, 5)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel17))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel15)))
-                                .addGap(5, 5, 5)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel16))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel14)))))))
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel11))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel13)))
+                        .addGap(5, 5, 5)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel19))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel18)))
+                        .addGap(5, 5, 5)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel8))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2)))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel10))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9)))
+                        .addGap(5, 5, 5)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel17))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel15)))
+                        .addGap(5, 5, 5)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel16))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel14)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Constantes", jPanel1);
@@ -345,9 +392,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jTextArea1.setText("No se encuentran datos relevantes");
-        jTextArea1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea1MouseReleased(evt);
+        jTextArea1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea1FocusGained(evt);
             }
         });
         jTextArea1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -365,9 +412,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
         jTextArea2.setText("No se encuentran datos relevantes");
-        jTextArea2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea2MouseReleased(evt);
+        jTextArea2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea2FocusGained(evt);
             }
         });
         jTextArea2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -384,9 +431,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea3.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea3.setRows(5);
         jTextArea3.setText("No se encuentran datos relevantes");
-        jTextArea3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea3MouseReleased(evt);
+        jTextArea3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea3FocusGained(evt);
             }
         });
         jTextArea3.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -403,9 +450,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea4.setForeground(new java.awt.Color(204, 204, 204));
         jTextArea4.setRows(5);
         jTextArea4.setText("No se encuentran datos relevantes");
-        jTextArea4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea4MouseReleased(evt);
+        jTextArea4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea4FocusGained(evt);
             }
         });
         jTextArea4.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -425,9 +472,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea5.setLineWrap(true);
         jTextArea5.setRows(5);
         jTextArea5.setText("No se encuentran datos relevantes");
-        jTextArea5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea5MouseReleased(evt);
+        jTextArea5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea5FocusGained(evt);
             }
         });
         jTextArea5.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -445,9 +492,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea6.setLineWrap(true);
         jTextArea6.setRows(5);
         jTextArea6.setText("No se encuentran datos relevantes");
-        jTextArea6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea6MouseReleased(evt);
+        jTextArea6.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea6FocusGained(evt);
             }
         });
         jTextArea6.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -466,9 +513,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea7.setRows(5);
         jTextArea7.setText("No se encuentran datos relevantes");
         jTextArea7.setToolTipText("");
-        jTextArea7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea7MouseReleased(evt);
+        jTextArea7.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea7FocusGained(evt);
             }
         });
         jTextArea7.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -486,9 +533,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea8.setLineWrap(true);
         jTextArea8.setRows(5);
         jTextArea8.setText("No se encuentran datos relevantes");
-        jTextArea8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea8MouseReleased(evt);
+        jTextArea8.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea8FocusGained(evt);
             }
         });
         jTextArea8.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -506,9 +553,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea9.setLineWrap(true);
         jTextArea9.setRows(5);
         jTextArea9.setText("No se encuentran datos relevantes");
-        jTextArea9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea9MouseReleased(evt);
+        jTextArea9.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea9FocusGained(evt);
             }
         });
         jTextArea9.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -588,10 +635,18 @@ public class Exploracionf extends javax.swing.JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jTextField2.requestFocus();
         }
+        if (jTextField1.getText().length() >= 3) {
+            evt.setKeyChar((char) KeyEvent.VK_CLEAR);
+            jTextField2.requestFocus();
+        }
     }//GEN-LAST:event_jTextField1KeyReleased
 
     private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField5.requestFocus();
+        }
+        if (jTextField4.getText().length() >= 5) {
+            evt.setKeyChar((char) KeyEvent.VK_CLEAR);
             jTextField5.requestFocus();
         }
     }//GEN-LAST:event_jTextField4KeyReleased
@@ -600,10 +655,18 @@ public class Exploracionf extends javax.swing.JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jTextField9.requestFocus();
         }
+        if (jTextField7.getText().length() >= 5) {
+            evt.setKeyChar((char) KeyEvent.VK_CLEAR);
+            jTextField9.requestFocus();
+        }
     }//GEN-LAST:event_jTextField7KeyReleased
 
     private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField4.requestFocus();
+        }
+        if (jTextField2.getText().length() >= 3) {
+            evt.setKeyChar((char) KeyEvent.VK_CLEAR);
             jTextField4.requestFocus();
         }
     }//GEN-LAST:event_jTextField2KeyReleased
@@ -612,89 +675,56 @@ public class Exploracionf extends javax.swing.JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jTextField7.requestFocus();
         }
+        if (jTextField5.getText().length() >= 3) {
+            evt.setKeyChar((char) KeyEvent.VK_CLEAR);
+            jTextField7.requestFocus();
+        }
     }//GEN-LAST:event_jTextField5KeyReleased
 
     private void jTextField9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jTextField8.requestFocus();
         }
+        if (jTextField9.getText().length() >= 5) {
+            evt.setKeyChar((char) KeyEvent.VK_CLEAR);
+            jTextField8.requestFocus();
+        }
     }//GEN-LAST:event_jTextField9KeyReleased
 
     private void jTextField8KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            float imc = 0;
-            String im = null;
-            imc = Float.parseFloat(jTextField9.getText()) / ((Float.parseFloat(jTextField8.getText()) * Float.parseFloat(jTextField8.getText())) / 100) * 100;
-            BigDecimal value = new BigDecimal(imc).setScale(2, BigDecimal.ROUND_HALF_UP);
-            im = String.valueOf(value);
-            if (imc < 19) {
-                jTextField10.setForeground(Color.red);
+            jTextPane1.requestFocus();
+        }
+        if (jTextField8.getText().length() >= 5) {
+            evt.setKeyChar((char) KeyEvent.VK_CLEAR);
+            jTextPane1.requestFocus();
+        }
+        float imc = 0;
+        String im = null;
+        imc = Float.parseFloat(jTextField9.getText()) / ((Float.parseFloat(jTextField8.getText()) * Float.parseFloat(jTextField8.getText())) / 100) * 100;
+        BigDecimal value = new BigDecimal(imc).setScale(2, BigDecimal.ROUND_HALF_UP);
+        im = String.valueOf(value);
+        if (imc < 19) {
+            jTextField10.setForeground(Color.red);
+            jTextField10.setBackground(Color.WHITE);
+        } else {
+            if (imc >= 19 && imc < 25) {
+                jTextField10.setForeground(new Color(0, 153, 204));
                 jTextField10.setBackground(Color.WHITE);
             } else {
-                if (imc >= 19 && imc < 25) {
-                    jTextField10.setForeground(new Color(0, 153, 204));
+                if (imc >= 25 && imc < 30) {
+                    jTextField10.setForeground(new Color(255, 102, 51));
                     jTextField10.setBackground(Color.WHITE);
                 } else {
-                    if (imc >= 25 && imc < 30) {
-                        jTextField10.setForeground(new Color(255, 102, 51));
-                        jTextField10.setBackground(Color.WHITE);
-                    } else {
-                        if (imc >= 30) {
-                            jTextField10.setForeground(new Color(255, 255, 204));
-                            jTextField10.setBackground(Color.BLACK);
-                        }
+                    if (imc >= 30) {
+                        jTextField10.setForeground(new Color(255, 255, 204));
+                        jTextField10.setBackground(Color.BLACK);
                     }
                 }
             }
-            jTextField10.setText(im);
-            jTextPane1.requestFocus();
         }
+        jTextField10.setText(im);
     }//GEN-LAST:event_jTextField8KeyReleased
-
-    private void jTextArea1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea1MouseReleased
-        jTextArea1.setSelectionStart(0);
-        jTextArea1.setSelectionEnd(jTextArea1.getText().length());
-    }//GEN-LAST:event_jTextArea1MouseReleased
-
-    private void jTextArea2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea2MouseReleased
-        jTextArea2.setSelectionStart(0);
-        jTextArea2.setSelectionEnd(jTextArea1.getText().length());
-    }//GEN-LAST:event_jTextArea2MouseReleased
-
-    private void jTextArea3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea3MouseReleased
-        jTextArea3.setSelectionStart(0);
-        jTextArea3.setSelectionEnd(jTextArea1.getText().length());
-    }//GEN-LAST:event_jTextArea3MouseReleased
-
-    private void jTextArea4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea4MouseReleased
-        jTextArea4.setSelectionStart(0);
-        jTextArea4.setSelectionEnd(jTextArea1.getText().length());
-    }//GEN-LAST:event_jTextArea4MouseReleased
-
-    private void jTextArea9MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea9MouseReleased
-        jTextArea9.setSelectionStart(0);
-        jTextArea9.setSelectionEnd(jTextArea1.getText().length());
-    }//GEN-LAST:event_jTextArea9MouseReleased
-
-    private void jTextArea8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea8MouseReleased
-        jTextArea8.setSelectionStart(0);
-        jTextArea8.setSelectionEnd(jTextArea1.getText().length());
-    }//GEN-LAST:event_jTextArea8MouseReleased
-
-    private void jTextArea7MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea7MouseReleased
-        jTextArea7.setSelectionStart(0);
-        jTextArea7.setSelectionEnd(jTextArea1.getText().length());
-    }//GEN-LAST:event_jTextArea7MouseReleased
-
-    private void jTextArea6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea6MouseReleased
-        jTextArea6.setSelectionStart(0);
-        jTextArea6.setSelectionEnd(jTextArea1.getText().length());
-    }//GEN-LAST:event_jTextArea6MouseReleased
-
-    private void jTextArea5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea5MouseReleased
-        jTextArea5.setSelectionStart(0);
-        jTextArea5.setSelectionEnd(jTextArea1.getText().length());
-    }//GEN-LAST:event_jTextArea5MouseReleased
 
     private void jTextArea1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyReleased
         jTextArea1.setForeground(Color.BLACK);
@@ -750,6 +780,78 @@ public class Exploracionf extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTextField7KeyTyped
 
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        jTextField1.selectAll();
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        jTextField2.selectAll();
+    }//GEN-LAST:event_jTextField2FocusGained
+
+    private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
+        jTextField4.selectAll();
+    }//GEN-LAST:event_jTextField4FocusGained
+
+    private void jTextField5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusGained
+        jTextField5.selectAll();
+    }//GEN-LAST:event_jTextField5FocusGained
+
+    private void jTextField7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusGained
+        jTextField7.selectAll();
+    }//GEN-LAST:event_jTextField7FocusGained
+
+    private void jTextField9FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField9FocusGained
+        jTextArea9.selectAll();
+    }//GEN-LAST:event_jTextField9FocusGained
+
+    private void jTextField8FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusGained
+        jTextField8.selectAll();
+    }//GEN-LAST:event_jTextField8FocusGained
+
+    private void jTextPane1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextPane1FocusGained
+        jTextPane1.selectAll();
+    }//GEN-LAST:event_jTextPane1FocusGained
+
+    private void jTextPane1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPane1KeyReleased
+        jTextPane1.setForeground(Color.black);
+    }//GEN-LAST:event_jTextPane1KeyReleased
+
+    private void jTextArea5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea5FocusGained
+        jTextArea5.selectAll();
+    }//GEN-LAST:event_jTextArea5FocusGained
+
+    private void jTextArea6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea6FocusGained
+       jTextArea6.selectAll();
+    }//GEN-LAST:event_jTextArea6FocusGained
+
+    private void jTextArea7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea7FocusGained
+        jTextArea7.selectAll();
+    }//GEN-LAST:event_jTextArea7FocusGained
+
+    private void jTextArea8FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea8FocusGained
+        jTextArea8.selectAll();
+    }//GEN-LAST:event_jTextArea8FocusGained
+
+    private void jTextArea9FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea9FocusGained
+        jTextArea9.selectAll();
+    }//GEN-LAST:event_jTextArea9FocusGained
+
+    private void jTextArea1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusGained
+        jTextArea1.selectAll();
+    }//GEN-LAST:event_jTextArea1FocusGained
+
+    private void jTextArea2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea2FocusGained
+        jTextArea2.selectAll();
+    }//GEN-LAST:event_jTextArea2FocusGained
+
+    private void jTextArea3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea3FocusGained
+        jTextArea3.selectAll();
+    }//GEN-LAST:event_jTextArea3FocusGained
+
+    private void jTextArea4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea4FocusGained
+        jTextArea4.selectAll();
+    }//GEN-LAST:event_jTextArea4FocusGained
+
     public void actexpf() {//condicionar si las cajas de texto estan vacias linea 730 - 734
         int tas, tad, fc, talla;
         float fr, temp, peso, imc;
@@ -803,6 +905,93 @@ public class Exploracionf extends javax.swing.JPanel {
                 jTextArea8.getText().toUpperCase().toString(), jTextArea9.getText().toUpperCase().toString());
     }
 
+    public void cargarexploracion() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object h[][] = Funciones.RetornarDatos(act.cargarexploracion(d));
+        jTextField1.setText(h[0][2].toString());
+        jTextField2.setText(h[0][3].toString());
+        jTextField4.setText(h[0][4].toString());
+        jTextField5.setText(h[0][5].toString());
+        jTextField7.setText(h[0][6].toString());
+        jTextField8.setText(h[0][7].toString());
+        jTextField9.setText(h[0][8].toString());
+        jTextField10.setText(String.valueOf(h[0][9].toString()));
+        jTextPane1.setText(h[0][10].toString());
+        if (h[0][11].toString().equals("NO SE ENCUENTRAN DATOS RELEVANTES")) {
+            jTextArea1.setText(h[0][11].toString());
+            jTextArea1.setSelectionStart(0);
+            jTextArea1.setSelectionEnd(jTextArea1.getText().length());
+        } else {
+            jTextArea1.setText(h[0][11].toString());
+            jTextArea1.setForeground(Color.BLACK);
+        }
+        if (h[0][12].toString().equals("NO SE ENCUENTRAN DATOS RELEVANTES")) {
+            jTextArea2.setText(h[0][12].toString());
+            jTextArea2.setSelectionStart(0);
+            jTextArea2.setSelectionEnd(jTextArea2.getText().length());
+        } else {
+            jTextArea2.setText(h[0][12].toString());
+            jTextArea2.setForeground(Color.BLACK);
+        }
+        if (h[0][13].toString().equals("NO SE ENCUENTRAN DATOS RELEVANTES")) {
+            jTextArea3.setText(h[0][13].toString());
+            jTextArea3.setSelectionStart(0);
+            jTextArea3.setSelectionEnd(jTextArea3.getText().length());
+        } else {
+            jTextArea3.setText(h[0][13].toString());
+            jTextArea3.setForeground(Color.BLACK);
+        }
+        if (h[0][14].toString().equals("NO SE ENCUENTRAN DATOS RELEVANTES")) {
+            jTextArea4.setText(h[0][14].toString());
+            jTextArea4.setSelectionStart(0);
+            jTextArea4.setSelectionEnd(jTextArea4.getText().length());
+        } else {
+            jTextArea4.setText(h[0][14].toString());
+            jTextArea4.setForeground(Color.BLACK);
+        }
+        if (h[0][15].toString().equals("NO SE ENCUENTRAN DATOS RELEVANTES")) {
+            jTextArea5.setText(h[0][15].toString());
+            jTextArea5.setSelectionStart(0);
+            jTextArea5.setSelectionEnd(jTextArea5.getText().length());
+        } else {
+            jTextArea5.setText(h[0][15].toString());
+            jTextArea5.setForeground(Color.BLACK);
+        }
+        if (h[0][16].toString().equals("NO SE ENCUENTRAN DATOS RELEVANTES")) {
+            jTextArea6.setText(h[0][16].toString());
+            jTextArea6.setSelectionStart(0);
+            jTextArea6.setSelectionEnd(jTextArea6.getText().length());
+        } else {
+            jTextArea6.setText(h[0][16].toString());
+            jTextArea6.setForeground(Color.BLACK);
+        }
+        if (h[0][17].toString().equals("NO SE ENCUENTRAN DATOS RELEVANTES")) {
+            jTextArea7.setText(h[0][17].toString());
+            jTextArea7.setSelectionStart(0);
+            jTextArea7.setSelectionEnd(jTextArea7.getText().length());
+        } else {
+            jTextArea7.setText(h[0][17].toString());
+            jTextArea7.setForeground(Color.BLACK);
+        }
+        if (h[0][18].toString().equals("NO SE ENCUENTRAN DATOS RELEVANTES")) {
+            jTextArea8.setText(h[0][18].toString());
+            jTextArea8.setSelectionStart(0);
+            jTextArea8.setSelectionEnd(jTextArea8.getText().length());
+        } else {
+            jTextArea8.setText(h[0][18].toString());
+            jTextArea8.setForeground(Color.BLACK);
+        }
+        if (h[0][19].toString().equals("NO SE ENCUENTRAN DATOS RELEVANTES")) {
+            jTextArea9.setText(h[0][19].toString());
+            jTextArea9.setSelectionStart(0);
+            jTextArea9.setSelectionEnd(jTextArea9.getText().length());
+        } else {
+            jTextArea9.setText(h[0][19].toString());
+            jTextArea9.setForeground(Color.BLACK);
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JLabel jLabel10;
     javax.swing.JLabel jLabel11;
@@ -822,8 +1011,8 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JLabel jLabel8;
     javax.swing.JLabel jLabel9;
     javax.swing.JPanel jPanel1;
-    javax.swing.JScrollPane jScrollPane1;
     javax.swing.JScrollPane jScrollPane10;
+    javax.swing.JScrollPane jScrollPane11;
     javax.swing.JScrollPane jScrollPane2;
     javax.swing.JScrollPane jScrollPane3;
     javax.swing.JScrollPane jScrollPane4;
@@ -851,6 +1040,6 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JTextField jTextField7;
     javax.swing.JTextField jTextField8;
     javax.swing.JTextField jTextField9;
-    javax.swing.JTextPane jTextPane1;
+    javax.swing.JTextArea jTextPane1;
     // End of variables declaration//GEN-END:variables
 }

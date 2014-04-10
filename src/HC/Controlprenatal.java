@@ -8,12 +8,11 @@ import javax.persistence.EntityManagerFactory;
 import Clases.Actualizar;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author Camilo
  */
-public class Adulto extends javax.swing.JPanel {
+public class Controlprenatal extends javax.swing.JPanel {
 
     private final EntityManagerFactory factory;
     private final PypAdmAsistCon pypAdmAsistCon;
@@ -29,7 +28,7 @@ public class Adulto extends javax.swing.JPanel {
     Actualizar act = new Actualizar();
     String Estadofinal = "1";
 
-    public Adulto(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
+    public Controlprenatal(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.factory = factory;
         this.pypAdmAsistCon = pypAdmAsistCon;
@@ -146,9 +145,9 @@ public class Adulto extends javax.swing.JPanel {
         jPanel2.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel1.setText("Detección Temprana De Las Alteraciones Del Adulto");
+        jLabel1.setText("Control Prenatal");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(10, 21, 262, 13);
+        jLabel1.setBounds(10, 21, 83, 13);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("CONSULTA DE PRIMERA VEZ POR MEDICINA GENERAL");
@@ -584,7 +583,7 @@ public class Adulto extends javax.swing.JPanel {
 
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
         this.jPanel4.removeAll();
-        motivoc.jLabel3.setText("Detección Temprana De Las Alteraciones Del Adulto");
+        motivoc.jLabel3.setText("Control Prenatal Por Medicina General");
         new Clases.Explode(jPanel4, motivoc).play();
     }//GEN-LAST:event_jLabel2MouseReleased
 
@@ -631,7 +630,7 @@ public class Adulto extends javax.swing.JPanel {
                 sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
-                sav.newadulto(d);
+//                sav.newadulto(d);
                 sav.newagineco(d);
                 sav.neweventose(d);
                 sav.newexpf(d);

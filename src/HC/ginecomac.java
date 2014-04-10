@@ -73,6 +73,11 @@ public class ginecomac extends javax.swing.JPanel {
 
         jTextField9.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         jTextField9.setEnabled(false);
+        jTextField9.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField9FocusGained(evt);
+            }
+        });
 
         jCheckBox5.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox5.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
@@ -153,6 +158,11 @@ public class ginecomac extends javax.swing.JPanel {
 
         jTextField10.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         jTextField10.setEnabled(false);
+        jTextField10.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField10FocusGained(evt);
+            }
+        });
 
         jCheckBox7.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox7.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
@@ -252,6 +262,14 @@ public class ginecomac extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jCheckBox4MouseReleased
+
+    private void jTextField10FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField10FocusGained
+        jTextField10.selectAll();
+    }//GEN-LAST:event_jTextField10FocusGained
+
+    private void jTextField9FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField9FocusGained
+        jTextField9.selectAll();
+    }//GEN-LAST:event_jTextField9FocusGained
 
     public void actginecomac() {
         String q, w, e, r, t, y, j1, j2;
@@ -355,9 +373,9 @@ public class ginecomac extends javax.swing.JPanel {
             }
         }
         jTextField10.setText(h[0][18].toString());
-        if(h[0][19].toString().equals("0")){
+        if (h[0][19].toString().equals("0")) {
             jCheckBox7.setSelected(false);
-        }else{
+        } else {
             jCheckBox7.setSelected(true);
         }
         if (h[0][20].toString().equals("0")) {
@@ -410,9 +428,9 @@ public class ginecomac extends javax.swing.JPanel {
             }
         }
         jTextField9.setText(h[0][22].toString());
-        if(h[0][23].toString().equals("0")){
+        if (h[0][23].toString().equals("0")) {
             jCheckBox5.setSelected(false);
-        }else{
+        } else {
             jCheckBox5.setSelected(true);
         }
     }

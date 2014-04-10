@@ -145,6 +145,9 @@
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField9FocusGained"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBox5">
           <Properties>
@@ -303,6 +306,9 @@
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField10FocusGained"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBox7">
           <Properties>

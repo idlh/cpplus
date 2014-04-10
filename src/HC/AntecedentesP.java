@@ -29,6 +29,9 @@ public class AntecedentesP extends javax.swing.JPanel {
             gimac = new ginecomac(pypAdmAsistCon);
         }
         jPanel24.setBackground(Color.white);
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3){
+            jPanel19.setVisible(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -84,6 +87,8 @@ public class AntecedentesP extends javax.swing.JPanel {
         jPanel23 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
+        jPanel19 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(558, 345));
@@ -109,9 +114,9 @@ public class AntecedentesP extends javax.swing.JPanel {
         jTextArea1.setRows(5);
         jTextArea1.setText("No se encuentran datos");
         jTextArea1.setSelectionEnd(0);
-        jTextArea1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea1MouseReleased(evt);
+        jTextArea1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea1FocusGained(evt);
             }
         });
         jTextArea1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -158,9 +163,9 @@ public class AntecedentesP extends javax.swing.JPanel {
         jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
         jTextArea2.setText("No se encuentran datos");
-        jTextArea2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea2MouseReleased(evt);
+        jTextArea2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea2FocusGained(evt);
             }
         });
         jTextArea2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -207,9 +212,9 @@ public class AntecedentesP extends javax.swing.JPanel {
         jTextArea3.setLineWrap(true);
         jTextArea3.setRows(5);
         jTextArea3.setText("No se encuentran datos");
-        jTextArea3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea3MouseReleased(evt);
+        jTextArea3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea3FocusGained(evt);
             }
         });
         jTextArea3.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -256,9 +261,9 @@ public class AntecedentesP extends javax.swing.JPanel {
         jTextArea4.setLineWrap(true);
         jTextArea4.setRows(5);
         jTextArea4.setText("No se encuentran datos");
-        jTextArea4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea4MouseReleased(evt);
+        jTextArea4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea4FocusGained(evt);
             }
         });
         jTextArea4.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -323,9 +328,9 @@ public class AntecedentesP extends javax.swing.JPanel {
         jTextArea5.setLineWrap(true);
         jTextArea5.setRows(5);
         jTextArea5.setText("Ninguno");
-        jTextArea5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea5MouseReleased(evt);
+        jTextArea5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea5FocusGained(evt);
             }
         });
         jTextArea5.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -406,9 +411,9 @@ public class AntecedentesP extends javax.swing.JPanel {
         jTextArea6.setRows(5);
         jTextArea6.setText("Ninguno");
         jTextArea6.setToolTipText("");
-        jTextArea6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea6MouseReleased(evt);
+        jTextArea6.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea6FocusGained(evt);
             }
         });
         jTextArea6.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -470,9 +475,9 @@ public class AntecedentesP extends javax.swing.JPanel {
         jTextArea7.setLineWrap(true);
         jTextArea7.setRows(5);
         jTextArea7.setText("No se encuentran datos");
-        jTextArea7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea7MouseReleased(evt);
+        jTextArea7.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea7FocusGained(evt);
             }
         });
         jTextArea7.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -519,9 +524,9 @@ public class AntecedentesP extends javax.swing.JPanel {
         jTextArea8.setLineWrap(true);
         jTextArea8.setRows(5);
         jTextArea8.setText("No se encuentran datos");
-        jTextArea8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextArea8MouseReleased(evt);
+        jTextArea8.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea8FocusGained(evt);
             }
         });
         jTextArea8.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -584,7 +589,7 @@ public class AntecedentesP extends javax.swing.JPanel {
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -636,16 +641,47 @@ public class AntecedentesP extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel19.setBackground(new java.awt.Color(125, 164, 222));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 9)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("Obstetricos");
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel14MouseReleased(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel14MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel14MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                    .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                        .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -661,7 +697,9 @@ public class AntecedentesP extends javax.swing.JPanel {
                         .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(177, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(149, Short.MAX_VALUE))
                     .addComponent(jPanel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
@@ -703,95 +741,125 @@ public class AntecedentesP extends javax.swing.JPanel {
 
     private void jLabel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseEntered
         jPanel18.setBackground(new Color(255, 227, 255));
-        Adulto.jLabel4.setText("Generales");
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
+            HC.Adulto.jLabel4.setText("Generales");
+        } else {
+            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+                HC.Controlprenatal.jLabel4.setText("Generales");
+            }
+        }
     }//GEN-LAST:event_jLabel13MouseEntered
 
     private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
         jPanel23.setBackground(new Color(255, 227, 255));
-        Adulto.jLabel4.setText("Metodos Anticonceptivos");
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
+            HC.Adulto.jLabel4.setText("Metodos anticonceptivos");
+        } else {
+            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+                HC.Controlprenatal.jLabel4.setText("Metodos anticonceptivos");
+            }
+        }
     }//GEN-LAST:event_jLabel18MouseEntered
 
     private void jLabel13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseExited
         jPanel18.setBackground(new Color(125, 164, 222));
-        Adulto.jLabel4.setText("...");
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
+            HC.Adulto.jLabel4.setText("...");
+        } else {
+            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+                HC.Controlprenatal.jLabel4.setText("...");
+            }
+        }
     }//GEN-LAST:event_jLabel13MouseExited
 
     private void jLabel18MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseExited
         jPanel23.setBackground(new Color(125, 164, 222));
-        Adulto.jLabel4.setText("...");
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
+            HC.Adulto.jLabel4.setText("...");
+        } else {
+            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+                HC.Controlprenatal.jLabel4.setText("...");
+            }
+        }
     }//GEN-LAST:event_jLabel18MouseExited
-
-    private void jTextArea1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea1MouseReleased
-        jTextArea1.setSelectionStart(0);
-        jTextArea1.setSelectionEnd(jTextArea1.getText().length());
-    }//GEN-LAST:event_jTextArea1MouseReleased
 
     private void jTextArea1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyReleased
         jTextArea1.setForeground(Color.BLACK);
     }//GEN-LAST:event_jTextArea1KeyReleased
 
-    private void jTextArea2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea2MouseReleased
-        jTextArea2.setSelectionStart(0);
-        jTextArea2.setSelectionEnd(jTextArea2.getText().length());
-    }//GEN-LAST:event_jTextArea2MouseReleased
-
     private void jTextArea2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea2KeyReleased
         jTextArea2.setForeground(Color.BLACK);
     }//GEN-LAST:event_jTextArea2KeyReleased
-
-    private void jTextArea3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea3MouseReleased
-        jTextArea3.setSelectionStart(0);
-        jTextArea3.setSelectionEnd(jTextArea3.getText().length());
-    }//GEN-LAST:event_jTextArea3MouseReleased
 
     private void jTextArea3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea3KeyReleased
         jTextArea3.setForeground(Color.BLACK);
     }//GEN-LAST:event_jTextArea3KeyReleased
 
-    private void jTextArea4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea4MouseReleased
-        jTextArea4.setSelectionStart(0);
-        jTextArea4.setSelectionEnd(jTextArea4.getText().length());
-    }//GEN-LAST:event_jTextArea4MouseReleased
-
     private void jTextArea4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea4KeyReleased
         jTextArea4.setForeground(Color.BLACK);
     }//GEN-LAST:event_jTextArea4KeyReleased
-
-    private void jTextArea5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea5MouseReleased
-        jTextArea5.setSelectionStart(0);
-        jTextArea5.setSelectionEnd(jTextArea5.getText().length());
-    }//GEN-LAST:event_jTextArea5MouseReleased
 
     private void jTextArea5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea5KeyReleased
         jTextArea5.setForeground(Color.BLACK);
     }//GEN-LAST:event_jTextArea5KeyReleased
 
-    private void jTextArea6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea6MouseReleased
-        jTextArea6.setSelectionStart(0);
-        jTextArea6.setSelectionEnd(jTextArea6.getText().length());
-    }//GEN-LAST:event_jTextArea6MouseReleased
-
     private void jTextArea6KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea6KeyReleased
         jTextArea6.setForeground(Color.BLACK);
     }//GEN-LAST:event_jTextArea6KeyReleased
-
-    private void jTextArea7MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea7MouseReleased
-        jTextArea7.setSelectionStart(0);
-        jTextArea7.setSelectionEnd(jTextArea7.getText().length());
-    }//GEN-LAST:event_jTextArea7MouseReleased
 
     private void jTextArea7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea7KeyReleased
         jTextArea7.setForeground(Color.BLACK);
     }//GEN-LAST:event_jTextArea7KeyReleased
 
-    private void jTextArea8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea8MouseReleased
-        jTextArea8.setSelectionStart(0);
-        jTextArea8.setSelectionEnd(jTextArea8.getText().length());
-    }//GEN-LAST:event_jTextArea8MouseReleased
-
     private void jTextArea8KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea8KeyReleased
         jTextArea8.setForeground(Color.BLACK);
     }//GEN-LAST:event_jTextArea8KeyReleased
+
+    private void jTextArea1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusGained
+        jTextArea1.selectAll();
+    }//GEN-LAST:event_jTextArea1FocusGained
+
+    private void jTextArea2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea2FocusGained
+        jTextArea2.selectAll();
+    }//GEN-LAST:event_jTextArea2FocusGained
+
+    private void jTextArea3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea3FocusGained
+        jTextArea3.selectAll();
+    }//GEN-LAST:event_jTextArea3FocusGained
+
+    private void jTextArea4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea4FocusGained
+        jTextArea4.selectAll();
+    }//GEN-LAST:event_jTextArea4FocusGained
+
+    private void jTextArea5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea5FocusGained
+        jTextArea5.selectAll();
+    }//GEN-LAST:event_jTextArea5FocusGained
+
+    private void jTextArea6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea6FocusGained
+        jTextArea6.selectAll();
+    }//GEN-LAST:event_jTextArea6FocusGained
+
+    private void jTextArea7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea7FocusGained
+        jTextArea7.selectAll();
+    }//GEN-LAST:event_jTextArea7FocusGained
+
+    private void jTextArea8FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea8FocusGained
+        jTextArea8.selectAll();
+    }//GEN-LAST:event_jTextArea8FocusGained
+
+    private void jLabel14MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel14MouseReleased
+
+    private void jLabel14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseEntered
+        jPanel19.setBackground(new Color(255, 227, 255));
+        Controlprenatal.jLabel4.setText("Obstetricos");
+    }//GEN-LAST:event_jLabel14MouseEntered
+
+    private void jLabel14MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseExited
+        jPanel19.setBackground(new Color(125, 164, 222));
+        Controlprenatal.jLabel4.setText("...");
+    }//GEN-LAST:event_jLabel14MouseExited
 
     public void guardarantep() {
         gi.actuginecog();
@@ -948,6 +1016,7 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JLabel jLabel11;
     javax.swing.JLabel jLabel12;
     javax.swing.JLabel jLabel13;
+    javax.swing.JLabel jLabel14;
     javax.swing.JLabel jLabel18;
     javax.swing.JLabel jLabel2;
     javax.swing.JLabel jLabel3;
@@ -966,6 +1035,7 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JPanel jPanel16;
     javax.swing.JPanel jPanel17;
     javax.swing.JPanel jPanel18;
+    javax.swing.JPanel jPanel19;
     javax.swing.JPanel jPanel23;
     javax.swing.JPanel jPanel24;
     javax.swing.JPanel jPanel4;
