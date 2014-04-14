@@ -30,9 +30,9 @@ public class Actualizar {
                     + " SET `pyp_procedimiento`.`estado` = 0"
                     + " WHERE `pyp_procedimiento`.`id` = '" + id + "' AND `pyp_procedimiento`.`estado` = '1';");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a001 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a001 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a001 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a001 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -61,9 +61,9 @@ public class Actualizar {
             bd.preparedStatement.setString(11, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a002 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a002 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a002 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a002 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -98,9 +98,9 @@ public class Actualizar {
             bd.preparedStatement.setString(15, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a003 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a003 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a003 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a003 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -125,9 +125,9 @@ public class Actualizar {
             bd.preparedStatement.setString(9, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a004 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a004 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a004 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a004 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -161,9 +161,9 @@ public class Actualizar {
             bd.preparedStatement.setString(15, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a005 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a005 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a005 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a005 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -178,9 +178,9 @@ public class Actualizar {
             bd.preparedStatement.setString(2, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a006 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a006 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a006 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a006 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -220,9 +220,9 @@ public class Actualizar {
             bd.preparedStatement.setString(19, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a007 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a007 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a007 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a007 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -238,9 +238,9 @@ public class Actualizar {
             bd.preparedStatement.setString(2, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a009 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a009 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a009 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a009 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -257,9 +257,9 @@ public class Actualizar {
             bd.preparedStatement.setString(3, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a010r1 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a010r1 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a010r1 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a010r1 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -276,9 +276,9 @@ public class Actualizar {
             bd.preparedStatement.setString(3, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a010r2 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a010r2 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a010r2 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a010r2 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -295,9 +295,9 @@ public class Actualizar {
             bd.preparedStatement.setString(3, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a010r3 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a010r3 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a010r3 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a010r3 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -314,9 +314,9 @@ public class Actualizar {
             bd.preparedStatement.setString(3, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a010r4 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a010r4 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a010r4 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a010r4 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -332,9 +332,9 @@ public class Actualizar {
             bd.preparedStatement.setString(2, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a011 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a011 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a011 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a011 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -397,9 +397,9 @@ public class Actualizar {
             bd.preparedStatement.setString(3, dosis);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a012 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a012 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a012 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a012 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -421,9 +421,9 @@ public class Actualizar {
             bd.preparedStatement.setString(2, idcup);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a013 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a013 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a013 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a013 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -442,9 +442,9 @@ public class Actualizar {
             bd.preparedStatement.setString(2, idhis);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a014 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a014 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a014 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a014 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -495,17 +495,194 @@ public class Actualizar {
             bd.preparedStatement.setString(2, nombre);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a015 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a015 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a015 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a015 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
     }
 
     public String cargarpruebas(String id) {
-        return "SELECT COUNT(`pyp_pruebascomplementarias`.`id`) AS cantidad\n"
-                + "	FROM `pyp_pruebascomplementarias`\n"
+        return "SELECT COUNT(`pyp_pruebascomplementarias`.`id`) AS cantidad"
+                + "	FROM `pyp_pruebascomplementarias`"
                 + "	WHERE `pyp_pruebascomplementarias`.`id_infohisto` = '" + id + "';";
+    }
+
+    public void actobstetricos(String id, String fcu, String nmuertos, String nvivos, String viven, String muertossem,
+            String despuessem, String ultimoprevio, String embarazop, String embarazod, String complicaciones, String fracasomac) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareCall("UPDATE `database`.`pyp_materna`"
+                    + " INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_materna_obstetricos` "
+                    + "        ON (`pyp_materna_obstetricos`.`id_materna` = `pyp_materna`.`id`)"
+                    + "	SET `pyp_materna_obstetricos`.`fcuembarazo` = ?, `pyp_materna_obstetricos`.`nacidosmuertos` = ?,"
+                    + "	    `pyp_materna_obstetricos`.`nacidosvivos` = ?, `pyp_materna_obstetricos`.`viven` = ?,"
+                    + "	    `pyp_materna_obstetricos`.`muertos1sem` = ?, `pyp_materna_obstetricos`.`despues1sem` = ?,"
+                    + "	    `pyp_materna_obstetricos`.`ultimoprevio` = ?, `pyp_materna_obstetricos`.`embarazop` = ?,"
+                    + "	    `pyp_materna_obstetricos`.`embarazod` = ?, `pyp_materna_obstetricos`.`complicaciones` = ?,"
+                    + "	    `pyp_materna_obstetricos`.`fracasomac` = ?"
+                    + "	    WHERE (`pyp_historiac`.`id` = ?);");
+            bd.preparedStatement.setString(1, fcu);
+            bd.preparedStatement.setString(2, nmuertos);
+            bd.preparedStatement.setString(3, nvivos);
+            bd.preparedStatement.setString(4, viven);
+            bd.preparedStatement.setString(5, muertossem);
+            bd.preparedStatement.setString(6, despuessem);
+            bd.preparedStatement.setString(7, ultimoprevio);
+            bd.preparedStatement.setString(8, embarazop);
+            bd.preparedStatement.setString(9, embarazod);
+            bd.preparedStatement.setString(10, complicaciones);
+            bd.preparedStatement.setString(11, fracasomac);
+            bd.preparedStatement.setString(12, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a016 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a016 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public String cargarobtetricos(String id) {
+        return "SELECT"
+                + "     `pyp_materna_obstetricos`.`id`"
+                + "    , `pyp_materna_obstetricos`.`id_materna`"
+                + "    , DATE_FORMAT (`pyp_materna_obstetricos`.`fcuembarazo`, '%d/%m/%Y') AS `fcuembarazo`"
+                + "    , `pyp_materna_obstetricos`.`nacidosmuertos`"
+                + "    , `pyp_materna_obstetricos`.`nacidosvivos`"
+                + "    , `pyp_materna_obstetricos`.`viven`"
+                + "    , `pyp_materna_obstetricos`.`muertos1sem`"
+                + "    , `pyp_materna_obstetricos`.`despues1sem`"
+                + "    , `pyp_materna_obstetricos`.`ultimoprevio`"
+                + "    , `pyp_materna_obstetricos`.`embarazop`"
+                + "    , `pyp_materna_obstetricos`.`embarazod`"
+                + "    , `pyp_materna_obstetricos`.`complicaciones`"
+                + "    , `pyp_materna_obstetricos`.`fracasomac`"
+                + " FROM"
+                + "    `database`.`pyp_materna`"
+                + "    INNER JOIN `database`.`pyp_historiac` "
+                + "        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)"
+                + "    INNER JOIN `database`.`pyp_materna_obstetricos` "
+                + "        ON (`pyp_materna_obstetricos`.`id_materna` = `pyp_materna`.`id`)"
+                + " WHERE (`pyp_historiac`.`id` ='" + id + "');";
+    }
+
+    public void actgestaante(String id, String vdmenor, String vdmayor, String sullivan, String agshb,
+            String toxoplasma, String grupos, String sifilis, String antiprevia, String antiembarazo,
+            String antitevigente, String mesd1, String mesd2, String vihcon, String vihsoli) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_materna`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_materna_gestaactual` "
+                    + "        ON (`pyp_materna_gestaactual`.`id_materna` = `pyp_materna`.`id`)"
+                    + " SET `pyp_materna_gestaactual`.`vdrlmenor` = ?, `pyp_materna_gestaactual`.`vdrlmayor` = ?"
+                    + "    , `pyp_materna_gestaactual`.`tsullivan` = ?, `pyp_materna_gestaactual`.`agshb` = ?"
+                    + "    , `pyp_materna_gestaactual`.`toxoplasma` = ?, `pyp_materna_gestaactual`.`grupos`=?"
+                    + "    , `pyp_materna_gestaactual`.`sifilisfta` = ?, `pyp_materna_gestaactual`.`antiprevia`=?"
+                    + "    , `pyp_materna_gestaactual`.`antiembarazo` = ?, `pyp_materna_gestaactual`.`antitevigente`=?"
+                    + "    , `pyp_materna_gestaactual`.`mesd1`=?, `pyp_materna_gestaactual`.`mesd2`=?"
+                    + "    , `pyp_materna_gestaactual`.`vihconsej`=?, `pyp_materna_gestaactual`.`vihsolicitado`=?"
+                    + " WHERE (`pyp_historiac`.`id` =?);");
+            bd.preparedStatement.setString(1, vdmenor);
+            bd.preparedStatement.setString(2, vdmayor);
+            bd.preparedStatement.setString(3, sullivan);
+            bd.preparedStatement.setString(4, agshb);
+            bd.preparedStatement.setString(5, toxoplasma);
+            bd.preparedStatement.setString(6, grupos);
+            bd.preparedStatement.setString(7, sifilis);
+            bd.preparedStatement.setString(8, antiprevia);
+            bd.preparedStatement.setString(9, antiembarazo);
+            bd.preparedStatement.setString(10, antitevigente);
+            bd.preparedStatement.setString(11, mesd1);
+            bd.preparedStatement.setString(12, mesd2);
+            bd.preparedStatement.setString(13, vihcon);
+            bd.preparedStatement.setString(14, vihsoli);
+            bd.preparedStatement.setString(15, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a017 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a017 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public String cargargesta(String id) {
+        return "SELECT"
+                + "   `pyp_materna_gestaactual`.`id`"
+                + "    , `pyp_materna_gestaactual`.`id_materna`"
+                + "    ,`pyp_materna_gestaactual`.`vdrlmenor`"
+                + "    , `pyp_materna_gestaactual`.`vdrlmayor`"
+                + "    , `pyp_materna_gestaactual`.`tsullivan`"
+                + "    , `pyp_materna_gestaactual`.`agshb`"
+                + "    , `pyp_materna_gestaactual`.`toxoplasma`"
+                + "    , `pyp_materna_gestaactual`.`grupos`"
+                + "    , `pyp_materna_gestaactual`.`sifilisfta`"
+                + "    , `pyp_materna_gestaactual`.`antiprevia`"
+                + "    , `pyp_materna_gestaactual`.`antiembarazo`"
+                + "    , `pyp_materna_gestaactual`.`antitevigente`"
+                + "    , `pyp_materna_gestaactual`.`mesd1`"
+                + "    , `pyp_materna_gestaactual`.`mesd2`"
+                + "    , `pyp_materna_gestaactual`.`vihconsej`"
+                + "    , `pyp_materna_gestaactual`.`vihsolicitado`"
+                + "    , DATE_FORMAT(`pyp_materna_gestaactual`.`fpp`, '%d/%m/%Y') AS `FechaParto`"
+                + "    , `pyp_materna_gestaactual`.`egfum`"
+                + "    , `pyp_materna_gestaactual`.`egeco`"
+                + "    , `pyp_materna_gestaactual`.`eg`"
+                + "    , `pyp_materna_gestaactual`.`alturau`"
+                + "    , `pyp_materna_gestaactual`.`movfetales`"
+                + "    , `pyp_materna_gestaactual`.`fcf`"
+                + "    , `pyp_materna_gestaactual`.`presentacion`"
+                + "    , `pyp_materna_gestaactual`.`fe`"
+                + "    , `pyp_materna_gestaactual`.`folatos`"
+                + "    , `pyp_materna_gestaactual`.`calcio`"
+                + "FROM"
+                + "    `database`.`pyp_materna`"
+                + "    INNER JOIN `database`.`pyp_historiac` "
+                + "        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)"
+                + "    INNER JOIN `database`.`pyp_materna_gestaactual` "
+                + "        ON (`pyp_materna_gestaactual`.`id_materna` = `pyp_materna`.`id`)"
+                + "WHERE (`pyp_historiac`.`id` ='" + id + "');";
+    }
+
+    public void actgestafinal(String id, String fpp, String egfum, String egeco, String eg, String alturau,
+            String movfetales, String fcf, String presentacion, String fe, String folatos, String calcio) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareCall("UPDATE `database`.`pyp_materna`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_materna_gestaactual` "
+                    + "        ON (`pyp_materna_gestaactual`.`id_materna` = `pyp_materna`.`id`)"
+                    + " SET `pyp_materna_gestaactual`.`fpp` = ?, `pyp_materna_gestaactual`.`egfum` = ?"
+                    + "    , `pyp_materna_gestaactual`.`egeco` = ?, `pyp_materna_gestaactual`.`eg` = ?"
+                    + "    , `pyp_materna_gestaactual`.`alturau` = ?, `pyp_materna_gestaactual`.`movfetales` = ?"
+                    + "    , `pyp_materna_gestaactual`.`fcf` = ?, `pyp_materna_gestaactual`.`presentacion` = ?"
+                    + "    , `pyp_materna_gestaactual`.`fe` = ?, `pyp_materna_gestaactual`.`folatos` = ?"
+                    + "    , `pyp_materna_gestaactual`.`calcio` = ?"
+                    + " WHERE (`pyp_historiac`.`id` =?);");
+            bd.preparedStatement.setString(1, fpp);
+            bd.preparedStatement.setString(2, egfum);
+            bd.preparedStatement.setString(3, egeco);
+            bd.preparedStatement.setString(4, eg);
+            bd.preparedStatement.setString(5, alturau);
+            bd.preparedStatement.setString(6, movfetales);
+            bd.preparedStatement.setString(7, fcf);
+            bd.preparedStatement.setString(8, presentacion);
+            bd.preparedStatement.setString(9, fe);
+            bd.preparedStatement.setString(10, folatos);
+            bd.preparedStatement.setString(11, calcio);
+            bd.preparedStatement.setString(12, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a018 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a018 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 }
