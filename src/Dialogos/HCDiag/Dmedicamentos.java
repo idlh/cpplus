@@ -473,16 +473,16 @@ public class Dmedicamentos extends javax.swing.JDialog {
 
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9')) {
+        if ((car < '0' || car > '9') || jTextField3.getText().length() >= 5) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField3KeyTyped
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9') && jTextField2.getText().contains(".")) {
+        if ((car < '0' || car > '9') && jTextField2.getText().contains(".") || jTextField2.getText().length() >= 5) {
             evt.consume();
-        } else if ((car < '0' || car > '9') && (car != '.')) {
+        } else if ((car < '0' || car > '9') && (car != '.') || jTextField2.getText().length() >= 5) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField2KeyTyped
@@ -492,8 +492,7 @@ public class Dmedicamentos extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField2FocusGained
 
     private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
-        if (jTextField2.getText().length() >= 5) {
-            evt.setKeyChar((char) KeyEvent.VK_CLEAR);
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jTextArea1.requestFocus();
         }
     }//GEN-LAST:event_jTextField2KeyReleased
