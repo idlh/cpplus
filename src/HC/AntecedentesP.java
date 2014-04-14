@@ -14,6 +14,8 @@ public class AntecedentesP extends javax.swing.JPanel {
 
     public ginecogenerales gi = null;
     public ginecomac gimac = null;
+    public Obstetricos obs = null;
+    public Gestacionac gesta = null;
     private final PypAdmAsistCon pypAdmAsistCon;
     Actualizar act = new Actualizar();
     Save sav = new Save();
@@ -29,8 +31,17 @@ public class AntecedentesP extends javax.swing.JPanel {
             gimac = new ginecomac(pypAdmAsistCon);
         }
         jPanel24.setBackground(Color.white);
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3){
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 9) {
             jPanel19.setVisible(false);
+            jPanel20.setVisible(false);
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+            if (obs == null) {
+                obs = new Obstetricos(pypAdmAsistCon);
+            }
+            if (gesta == null) {
+                gesta = new Gestacionac(pypAdmAsistCon);
+            }
         }
     }
 
@@ -89,6 +100,8 @@ public class AntecedentesP extends javax.swing.JPanel {
         jPanel24 = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
+        jPanel20 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(558, 345));
@@ -663,11 +676,40 @@ public class AntecedentesP extends javax.swing.JPanel {
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+        );
+
+        jPanel20.setBackground(new java.awt.Color(125, 164, 222));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 9)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("Gestación Actual");
+        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel15MouseReleased(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel15MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel15MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+        );
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
@@ -681,7 +723,8 @@ public class AntecedentesP extends javax.swing.JPanel {
                         .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                         .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -699,7 +742,9 @@ public class AntecedentesP extends javax.swing.JPanel {
                         .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(149, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(121, Short.MAX_VALUE))
                     .addComponent(jPanel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
@@ -848,7 +893,8 @@ public class AntecedentesP extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextArea8FocusGained
 
     private void jLabel14MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseReleased
-        // TODO add your handling code here:
+        this.jPanel24.removeAll();
+        new Clases.Explode(jPanel24, obs).play();
     }//GEN-LAST:event_jLabel14MouseReleased
 
     private void jLabel14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseEntered
@@ -861,9 +907,28 @@ public class AntecedentesP extends javax.swing.JPanel {
         Controlprenatal.jLabel4.setText("...");
     }//GEN-LAST:event_jLabel14MouseExited
 
+    private void jLabel15MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseExited
+        jPanel20.setBackground(new Color(125, 164, 222));
+        Controlprenatal.jLabel4.setText("...");
+    }//GEN-LAST:event_jLabel15MouseExited
+
+    private void jLabel15MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseEntered
+        jPanel20.setBackground(new Color(255, 227, 255));
+        Controlprenatal.jLabel4.setText("Gestación Actual");
+    }//GEN-LAST:event_jLabel15MouseEntered
+
+    private void jLabel15MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseReleased
+        this.jPanel24.removeAll();
+        new Clases.Explode(jPanel24, gesta).play();
+    }//GEN-LAST:event_jLabel15MouseReleased
+
     public void guardarantep() {
         gi.actuginecog();
         gimac.actginecomac();
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+            obs.guardarobste();
+            gesta.guardgestaactual();
+        }
         String q, w, e, r, t, y;
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
@@ -1003,6 +1068,10 @@ public class AntecedentesP extends javax.swing.JPanel {
         }
         gi.cargarginecog();
         gimac.cargarginecom();
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+            obs.cargarobstetricos();
+            gesta.cargargesta();
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JCheckBox jCheckBox1;
@@ -1017,6 +1086,7 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JLabel jLabel12;
     javax.swing.JLabel jLabel13;
     javax.swing.JLabel jLabel14;
+    javax.swing.JLabel jLabel15;
     javax.swing.JLabel jLabel18;
     javax.swing.JLabel jLabel2;
     javax.swing.JLabel jLabel3;
@@ -1036,6 +1106,7 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JPanel jPanel17;
     javax.swing.JPanel jPanel18;
     javax.swing.JPanel jPanel19;
+    javax.swing.JPanel jPanel20;
     javax.swing.JPanel jPanel23;
     javax.swing.JPanel jPanel24;
     javax.swing.JPanel jPanel4;

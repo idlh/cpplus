@@ -630,10 +630,14 @@ public class Controlprenatal extends javax.swing.JPanel {
                 sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
-//                sav.newadulto(d);
                 sav.newagineco(d);
                 sav.neweventose(d);
                 sav.newexpf(d);
+                sav.newmaterna(d);
+                Object m[][] = Funciones.RetornarDatos(sav.idmaterna(d));
+                String mater = (m[0][0].toString());
+                sav.newobstetrico(mater);
+                sav.newgestaac(mater);
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 if (h[0][23].toString().equals("0")) {
                     motivoc.actualizardatos();
@@ -672,10 +676,14 @@ public class Controlprenatal extends javax.swing.JPanel {
                 sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
-                sav.newadulto(d);
                 sav.newagineco(d);
                 sav.neweventose(d);
                 sav.newexpf(d);
+                sav.newmaterna(d);                
+                Object m[][] = Funciones.RetornarDatos(sav.idmaterna(d));
+                String mater = (m[0][0].toString());
+                sav.newobstetrico(mater);
+                sav.newgestaac(mater);
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 int id = Integer.parseInt(h[0][23].toString());
                 if (id == 0) {

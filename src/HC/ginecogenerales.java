@@ -357,42 +357,42 @@ public class ginecogenerales extends javax.swing.JPanel {
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9')) {
+        if ((car < '0' || car > '9') || jTextField1.getText().length() >= 2) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9')) {
+        if ((car < '0' || car > '9') || jTextField2.getText().length() >= 2) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9')) {
+        if ((car < '0' || car > '9') || jTextField3.getText().length() >= 2) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField3KeyTyped
 
     private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9')) {
+        if ((car < '0' || car > '9') || jTextField4.getText().length() >= 2) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField4KeyTyped
 
     private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9')) {
+        if ((car < '0' || car > '9') || jTextField5.getText().length() >= 2) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField5KeyTyped
 
     private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9')) {
+        if ((car < '0' || car > '9') || jTextField9.getText().length() >= 2) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField9KeyTyped
