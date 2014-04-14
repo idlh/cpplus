@@ -105,9 +105,6 @@ public class Save {
     public void newposo(String id, String sum, String dosis, String canti, String dosisu, String via, String administracion, String user, String fecha, String estado) {
         try {
             bd.ConectarBasedeDatos();
-//            bd.sentencia.execute("INSERT INTO pyp_posologia (id_historiac, id_suministro, dosis_n, cantidad,"
-//                    + "dosis_u, via, administracion, usuario, fdigita, estado) VALUES ('" + id + "', '" + sum + "', '" + dosis + "',"
-//                    + "'" + canti + "', '" + dosisu + "', '" + via + "', '" + administracion + "', '" + user + "', '" + fecha + "', '" + estado + "')");
             bd.preparedStatement = bd.getConnection().prepareStatement("INSERT INTO pyp_posologia (id_historiac, id_suministro, dosis_n, cantidad,"
                     + "dosis_u, via, administracion, usuario, fdigita, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             bd.preparedStatement.setString(1, id);
@@ -163,6 +160,47 @@ public class Save {
             JOptionPane.showMessageDialog(null, "c008" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void newmaterna(String id) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.sentencia.execute("INSERT INTO pyp_materna (id_historia) VALUES ('" + id + "')");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c009" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c009" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public String idmaterna(String id) {
+        return "SELECT `pyp_materna`.`id`"
+                + "FROM `database`.`pyp_materna`"
+                + "WHERE (`pyp_materna`.`id_historia` ='" + id + "');";
+    }
+    
+    public void newobstetrico(String id){
+        try {
+            bd.ConectarBasedeDatos();
+            bd.sentencia.execute("INSERT INTO `pyp_materna_obstetricos` (`id_materna`) VALUES ('"+ id +"');");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c010" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c010" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    public void newgestaac(String id){
+        try {
+            bd.ConectarBasedeDatos();
+            bd.sentencia.execute("INSERT INTO `pyp_materna_gestaactual` (`id_materna`) VALUES ('"+ id +"');");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c011" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c011" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }
