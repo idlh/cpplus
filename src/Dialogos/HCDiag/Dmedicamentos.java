@@ -21,7 +21,7 @@ import javax.swing.table.TableRowSorter;
 public class Dmedicamentos extends javax.swing.JDialog {
 
     Clases.Cmedicamentos med = new Cmedicamentos();
-    public static DefaultTableModel modelo;
+    public DefaultTableModel modelo;
     int row;
 
     public Dmedicamentos(java.awt.Frame parent, boolean modal) {
@@ -279,14 +279,6 @@ public class Dmedicamentos extends javax.swing.JDialog {
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setFocusable(false);
         jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/finalc1.png"))); // NOI18N
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton2MouseExited(evt);
-            }
-        });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salirc2.png"))); // NOI18N
         jButton1.setToolTipText("Cancelar");
@@ -296,12 +288,6 @@ public class Dmedicamentos extends javax.swing.JDialog {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jButton1MouseReleased(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton1MouseExited(evt);
             }
         });
 
@@ -355,28 +341,12 @@ public class Dmedicamentos extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        HC.Adulto.jLabel4.setText("Cancelar");
-    }//GEN-LAST:event_jButton1MouseEntered
-
-    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        HC.Adulto.jLabel4.setText("...");
-    }//GEN-LAST:event_jButton1MouseExited
-
-    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
-        HC.Adulto.jLabel4.setText("...");
-    }//GEN-LAST:event_jButton2MouseExited
-
-    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
-        HC.Adulto.jLabel4.setText("Aceptar");
-    }//GEN-LAST:event_jButton2MouseEntered
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         Tmedicamentos.setModel(new DefaultTableModel());
     }//GEN-LAST:event_formWindowClosing
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-        this.hide();
+        this.dispose();
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
@@ -550,7 +520,7 @@ public class Dmedicamentos extends javax.swing.JDialog {
 
     public void obtenermedicamentos() {
         try {
-            med.getmedicamentos();
+            med.getmedicamentos(modelo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage().toString());
         }
