@@ -270,4 +270,15 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
+    
+    public void newplanificacion(String id) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.sentencia.execute("INSERT INTO `pyp_planificacionf` (`idhistoria`) VALUES ('" + id + "')");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c016" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c016" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 }
