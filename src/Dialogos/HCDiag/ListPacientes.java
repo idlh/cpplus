@@ -24,6 +24,9 @@ import javax.swing.table.DefaultTableModel;
 import modulo_pyp.Desktop;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import HC.Controlprenatal;
+import HC.Postparto;
+import HC.RecienNacido;
+import HC.Planificacion;
 
 /**
  *
@@ -40,6 +43,9 @@ public class ListPacientes extends javax.swing.JDialog {
     private PypAdmAsistCon pypAdmAsistCon;
     public Adulto adult;
     public Controlprenatal controlp;
+    public Postparto postparto;
+    public RecienNacido reciennacido;
+    public Planificacion planificacion;
 
     public ListPacientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -468,6 +474,36 @@ public class ListPacientes extends javax.swing.JDialog {
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(controlp);
             controlp.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
+            postparto = new Postparto(factory, pypAdmAsistCon);
+            postparto.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(postparto);
+            postparto.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
+            reciennacido = new RecienNacido(factory, pypAdmAsistCon);
+            reciennacido.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(reciennacido);
+            reciennacido.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
+            planificacion = new Planificacion(factory, pypAdmAsistCon);
+            planificacion.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(planificacion);
+            planificacion.setVisible(true);
             desktop.Contenedor_.validate();
             desktop.Contenedor_.repaint();
             this.dispose();
