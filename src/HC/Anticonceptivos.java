@@ -565,6 +565,47 @@ public class Anticonceptivos extends javax.swing.JPanel {
             }
         }
     }
+    
+    public void guardaranticonceptivos() {
+        actmedicamentos();
+        actprocedanti();
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        String da1, da2, da3;
+        if (jCheckBox1.isSelected() == true) {
+            da1 = "1";
+        } else {
+            da1 = "0";
+        }
+        if (jCheckBox2.isSelected() == true) {
+            da2 = "1";
+        } else {
+            da2 = "0";
+        }
+        if (jTextField1.getText().toString().equals("")) {
+            da3 = "0";
+        } else {
+            da3 = jTextField1.getText().toString();
+        }        
+        act.actanticonceptivos(d, da1, da2, da3);
+    }
+    
+    public void cargaranticonceptivos() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object pypdata[][] = Funciones.RetornarDatos(act.cargaranticonceptivos(d));
+        if (pypdata[0][2].toString().equals("1")) {
+            jCheckBox1.setSelected(true);
+        } else {
+            jCheckBox1.setSelected(false);
+        }
+        if (pypdata[0][3].toString().equals("1")) {
+            jCheckBox2.setSelected(true);
+        } else {
+            jCheckBox2.setSelected(false);
+        }
+        jTextField1.setText(pypdata[0][4].toString());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JTable Tabaantimedi;
