@@ -209,6 +209,15 @@ public class Dprocedimientos extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
+    
+    public void procanti(){
+        try {
+            mos.Mostrar_datosanti();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    
     public void procimage(){
         try {
             mos.Mostrar_datosI();
