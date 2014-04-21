@@ -685,4 +685,142 @@ public class Actualizar {
             JOptionPane.showMessageDialog(null, "a018 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
+
+    public void apgarparto(String id, String colorp, String fc, String reflejos, String tonom, String respiracion, String resultado) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("update `database`.`pyp_postparto`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_postparto`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + "SET `pyp_postparto`.`colorpiel` = ?, `pyp_postparto`.`frecucardiaca` = ?, `pyp_postparto`.`reflejos` = ?,"
+                    + "    `pyp_postparto`.`tonomuscular` = ?, `pyp_postparto`.`respiracion` = ?, `pyp_postparto`.`resultado` = ?"
+                    + "WHERE (`pyp_historiac`.`id` =?);");
+            bd.preparedStatement.setString(1, colorp);
+            bd.preparedStatement.setString(2, fc);
+            bd.preparedStatement.setString(3, reflejos);
+            bd.preparedStatement.setString(4, tonom);
+            bd.preparedStatement.setString(5, respiracion);
+            bd.preparedStatement.setString(6, resultado);
+            bd.preparedStatement.setString(7, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a019 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a019 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public void posparto(String id, String terminacion, String edad, String vacuancion, String agsph, String vih, String vdrl,
+            String feto, String partot, String hospi) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("update `database`.`pyp_postparto`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_postparto`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + " SET `pyp_postparto`.`terminacionparto` = ?, `pyp_postparto`.`edadgestaparto` = ?, `pyp_postparto`.`vacunaciont` = ?,"
+                    + "    `pyp_postparto`.`agsph` = ?, `pyp_postparto`.`vih` = ?, `pyp_postparto`.`vdrl` = ?, `pyp_postparto`.`feto` = ?,"
+                    + "    `pyp_postparto`.`partotraumado` = ?, `pyp_postparto`.`hospitaizacion` = ?"
+                    + " WHERE (`pyp_historiac`.`id` =?);");
+            bd.preparedStatement.setString(1, terminacion);
+            bd.preparedStatement.setString(2, edad);
+            bd.preparedStatement.setString(3, vacuancion);
+            bd.preparedStatement.setString(4, agsph);
+            bd.preparedStatement.setString(5, vih);
+            bd.preparedStatement.setString(6, vdrl);
+            bd.preparedStatement.setString(7, feto);
+            bd.preparedStatement.setString(8, partot);
+            bd.preparedStatement.setString(9, hospi);
+            bd.preparedStatement.setString(10, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a020 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a020 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public String cargarpostparto(String id) {
+        return "SELECT"
+                + "	`pyp_postparto`.*"
+                + " FROM"
+                + "    `database`.`pyp_postparto`"
+                + "    INNER JOIN `database`.`pyp_historiac` "
+                + "        ON (`pyp_postparto`.`idhistoria` = `pyp_historiac`.`id`)"
+                + " WHERE (`pyp_historiac`.`id` ='" + id + "');";
+    }
+
+    public void apgarrecien(String id, String colorp, String fc, String reflejos, String tonom, String respiracion, String resultado) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("update `database`.`pyp_recienniacido`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_recienniacido`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + "SET `pyp_recienniacido`.`colorpiel` = ?, `pyp_recienniacido`.`frecucardiaca` = ?, `pyp_recienniacido`.`reflejos` = ?,"
+                    + "    `pyp_recienniacido`.`tonomuscular` = ?, `pyp_recienniacido`.`respiracion` = ?, `pyp_recienniacido`.`resultado` = ?"
+                    + "WHERE (`pyp_historiac`.`id` =?);");
+            bd.preparedStatement.setString(1, colorp);
+            bd.preparedStatement.setString(2, fc);
+            bd.preparedStatement.setString(3, reflejos);
+            bd.preparedStatement.setString(4, tonom);
+            bd.preparedStatement.setString(5, respiracion);
+            bd.preparedStatement.setString(6, resultado);
+            bd.preparedStatement.setString(7, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a019 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a019 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public void actrecien(String id, String incmpatibilidad, String sufrimiento, String icteria, String patologia,
+            String partoprolongado, String partotraumatico, String hospitalizacion, String otros, float pesoalnacer,
+            float talla, String eg, float tsh, String terminap, String hemoclasificacion, String vdrl) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("update `database`.`pyp_recienniacido`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_recienniacido`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + " set `pyp_recienniacido`.`incompatibilidadrh` = ?"
+                    + "    , `pyp_recienniacido`.`sufrimientofetal` = ?, `pyp_recienniacido`.`icteria` = ?"
+                    + "    , `pyp_recienniacido`.`patologiascpn` = ?, `pyp_recienniacido`.`partoprolongado` = ?"
+                    + "    , `pyp_recienniacido`.`partotraumatico` = ?, `pyp_recienniacido`.`hospitalizacion` = ?"
+                    + "    , `pyp_recienniacido`.`otros` = ?, `pyp_recienniacido`.`pesoalnacer` = ?"
+                    + "    , `pyp_recienniacido`.`tallanacer` = ?, `pyp_recienniacido`.`egparto` = ?"
+                    + "    , `pyp_recienniacido`.`tshneonatal` = ?, `pyp_recienniacido`.`terminaparto` = ?"
+                    + "    , `pyp_recienniacido`.`hemoclasificacion` = ?, `pyp_recienniacido`.`vdrl` = ?"
+                    + " WHERE (`pyp_historiac`.`id` = ?);");
+            bd.preparedStatement.setString(1, incmpatibilidad);
+            bd.preparedStatement.setString(2, sufrimiento);
+            bd.preparedStatement.setString(3, icteria);
+            bd.preparedStatement.setString(4, patologia);
+            bd.preparedStatement.setString(5, partoprolongado);
+            bd.preparedStatement.setString(6, partotraumatico);
+            bd.preparedStatement.setString(7, hospitalizacion);
+            bd.preparedStatement.setString(8, otros);
+            bd.preparedStatement.setFloat(9, pesoalnacer);
+            bd.preparedStatement.setFloat(10, talla);
+            bd.preparedStatement.setString(11, eg);
+            bd.preparedStatement.setFloat(12, tsh);
+            bd.preparedStatement.setString(13, terminap);
+            bd.preparedStatement.setString(14, hemoclasificacion);
+            bd.preparedStatement.setString(15, vdrl);
+            bd.preparedStatement.setString(16, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a020 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a020 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public String cargarrecien(String id) {
+        return "SELECT"
+                + "`pyp_recienniacido`.*"
+                + "FROM"
+                + "    `database`.`pyp_recienniacido`"
+                + "    INNER JOIN `database`.`pyp_historiac`"
+                + "        ON (`pyp_recienniacido`.`idhistoria` = `pyp_historiac`.`id`)"
+                + "WHERE (`pyp_historiac`.`id` ='" + id + "');";
+    }
 }
