@@ -262,13 +262,23 @@ public class ProcedimientosM extends javax.swing.JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                Agregar_Registro(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0).toString(),
-                        pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
-                        pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
-                        pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
-                        "1"
-                );
-                pr.dispose();
+                Boolean validacion = false;
+                for (int k = 0; k < modelo.getRowCount(); k++) {
+                    if (((String) modelo.getValueAt(k, 0)).equals((String) pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0))) {
+                        validacion = true;
+                        break;
+                    }
+                }
+                if (validacion == false) {
+                    Agregar_Registro(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0).toString(),
+                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
+                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
+                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
+                            "1");
+                    pr.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ya el procedimiento fue agregado");
+                }
             }
         });
         pr.setVisible(true);
@@ -332,9 +342,8 @@ public class ProcedimientosM extends javax.swing.JPanel {
 
     public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5) {
         try {
-            DefaultTableModel temp = (DefaultTableModel) Tablemonitorizacion.getModel();
             Object nuevo[] = {r1, r2, r3, r4, r5};
-            temp.addRow(nuevo);
+            modelo.addRow(nuevo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, " :(  " + e.getMessage());
         }
@@ -345,7 +354,7 @@ public class ProcedimientosM extends javax.swing.JPanel {
             if (modelo.getValueAt(Tablemonitorizacion.getSelectedRow(), 4).equals("2")) {
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
-                act.actprocedimiento(d, modelo.getValueAt(Tablemonitorizacion.getSelectedRow(), 0).toString());
+                act.actprocedimiento(d, modelo.getValueAt(Tablemonitorizacion.getSelectedRow(), 0).toString(), "0");
                 modelo.removeRow(Tablemonitorizacion.getSelectedRow());
             } else {
                 if (modelo.getRowCount() > 0 && Tablemonitorizacion.getSelectedRow() > -1) {

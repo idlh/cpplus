@@ -395,10 +395,9 @@ public class Medicamentos extends javax.swing.JPanel {
     }
 
     public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5, String r6, String r7, String r8) {
-        try {
-            DefaultTableModel temp = (DefaultTableModel) Tablamedi.getModel();
+        try {            
             Object nuevo[] = {r1, r2, r3, r4, r5, r6, r7, r8};
-            temp.addRow(nuevo);
+            modelo.addRow(nuevo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, " :(  " + e.getMessage());
         }
