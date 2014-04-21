@@ -634,6 +634,7 @@ public class Planificacion extends javax.swing.JPanel {
                 sav.newagineco(d);
                 sav.neweventose(d);
                 sav.newexpf(d);
+                sav.newplanificacion(d);
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 if (h[0][23].toString().equals("0")) {
                     motivoc.actualizardatos();
@@ -675,6 +676,7 @@ public class Planificacion extends javax.swing.JPanel {
                 sav.newagineco(d);
                 sav.neweventose(d);
                 sav.newexpf(d);
+                sav.newplanificacion(d);
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 int id = Integer.parseInt(h[0][23].toString());
                 if (id == 0) {
