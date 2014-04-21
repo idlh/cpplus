@@ -472,10 +472,16 @@ public class OrdenesM extends javax.swing.JPanel {
         recomendaciones.actrecomendaciones();
         medicamentos.actmedicamentos();
         procedimientos.guardarprocedimientos();
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+            anticonceptivos.guardaranticonceptivos();
+        }
     }
 
     public void cargarordenesm() {
         recomendaciones.cargarrecom();
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+            anticonceptivos.cargaranticonceptivos();
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JLabel jLabel13;
