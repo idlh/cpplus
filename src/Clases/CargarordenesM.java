@@ -196,7 +196,7 @@ public class CargarordenesM {
                     + "	FROM `database`.`pyp_pruebascomplementarias`"
                     + "	WHERE `pyp_pruebascomplementarias`.`id_infohisto`='" + id + "' AND `pyp_pruebascomplementarias`.`estado` = 1;");
             if (bd.resultado != null) {
-                while(bd.resultado.next()){
+                while (bd.resultado.next()) {
                     modelo.addRow(s);
                     modelo.setValueAt(new JLabel(icon), c, 0);
                     modelo.setValueAt(new JLabel(icon2), c, 1);
@@ -214,7 +214,7 @@ public class CargarordenesM {
             JOptionPane.showMessageDialog(null, "tab004 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
+
     public void cargartablamedianti(DefaultTableModel modelo, String id) {
         try {
             bd.ConectarBasedeDatos();
@@ -257,7 +257,7 @@ public class CargarordenesM {
             bd.DesconectarBasedeDatos();
         }
     }
-    
+
     public void cargartablaanti(DefaultTableModel modelo, String id) {
         try {
             bd.ConectarBasedeDatos();

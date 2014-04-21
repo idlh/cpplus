@@ -411,14 +411,15 @@ public class Actualizar {
                 + " WHERE `pyp_eventose`.`Idhistoriac` = '" + id + "'";
     }
 
-    public void actprocedimiento(String id, String idcup) {
+    public void actprocedimiento(String id, String idcup, String esta) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_procedimiento`"
-                    + " SET `pyp_procedimiento`.`estado` = 0"
+                    + " SET `pyp_procedimiento`.`estado` = ?"
                     + " WHERE `pyp_procedimiento`.`id_historiapyp` = ? AND `pyp_procedimiento`.`id_cups` = ?;");
-            bd.preparedStatement.setString(1, id);
-            bd.preparedStatement.setString(2, idcup);
+            bd.preparedStatement.setString(1, esta);
+            bd.preparedStatement.setString(2, id);
+            bd.preparedStatement.setString(3, idcup);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a013 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
