@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author Camilo
  */
-public class Postparto extends javax.swing.JPanel {
+public class RecienNacido extends javax.swing.JPanel {
 
     private final EntityManagerFactory factory;
     private final PypAdmAsistCon pypAdmAsistCon;
@@ -29,7 +29,7 @@ public class Postparto extends javax.swing.JPanel {
     Actualizar act = new Actualizar();
     String Estadofinal = "1";
 
-    public Postparto(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
+    public RecienNacido(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.factory = factory;
         this.pypAdmAsistCon = pypAdmAsistCon;
@@ -146,9 +146,9 @@ public class Postparto extends javax.swing.JPanel {
         jPanel2.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel1.setText("Atencion del post-parto");
+        jLabel1.setText("Atencion del Recien Nacido");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(10, 21, 117, 13);
+        jLabel1.setBounds(10, 21, 134, 13);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("CONSULTA DE PRIMERA VEZ POR MEDICINA GENERAL");
@@ -584,7 +584,7 @@ public class Postparto extends javax.swing.JPanel {
 
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
         this.jPanel4.removeAll();
-        motivoc.jLabel3.setText("Atención Post-Parto");
+        motivoc.jLabel3.setText("Atencion del Recien Nacido");
         new Clases.Explode(jPanel4, motivoc).play();
     }//GEN-LAST:event_jLabel2MouseReleased
 
@@ -634,7 +634,7 @@ public class Postparto extends javax.swing.JPanel {
                 sav.newagineco(d);
                 sav.neweventose(d);
                 sav.newexpf(d);
-                sav.newparto(d);
+                sav.newrecien(d);
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 if (h[0][23].toString().equals("0")) {
                     motivoc.actualizardatos();
@@ -675,8 +675,8 @@ public class Postparto extends javax.swing.JPanel {
                 String d = (c[0][0].toString());
                 sav.newagineco(d);
                 sav.neweventose(d);
-                sav.newexpf(d);                
-                sav.newparto(d);
+                sav.newexpf(d);
+                sav.newrecien(d);
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 int id = Integer.parseInt(h[0][23].toString());
                 if (id == 0) {

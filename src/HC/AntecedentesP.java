@@ -5,6 +5,7 @@ import entity.PypAdmAsistCon;
 import Clases.Actualizar;
 import Clases.Save;
 import Clases.Funciones_AD;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -42,6 +43,12 @@ public class AntecedentesP extends javax.swing.JPanel {
             if (gesta == null) {
                 gesta = new Gestacionac(pypAdmAsistCon);
             }
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 11) {
+            jTabbedPane1.remove(jPanel2);
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 10) {
+            jTabbedPane1.remove(jPanel5);
         }
     }
 
@@ -102,6 +109,52 @@ public class AntecedentesP extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox();
+        jLabel20 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox();
+        jComboBox4 = new javax.swing.JComboBox();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jComboBox5 = new javax.swing.JComboBox();
+        jCheckBox7 = new javax.swing.JCheckBox();
+        jCheckBox8 = new javax.swing.JCheckBox();
+        jLabel23 = new javax.swing.JLabel();
+        jComboBox6 = new javax.swing.JComboBox();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jCheckBox9 = new javax.swing.JCheckBox();
+        jCheckBox10 = new javax.swing.JCheckBox();
+        jCheckBox11 = new javax.swing.JCheckBox();
+        jCheckBox12 = new javax.swing.JCheckBox();
+        jCheckBox13 = new javax.swing.JCheckBox();
+        jCheckBox14 = new javax.swing.JCheckBox();
+        jCheckBox15 = new javax.swing.JCheckBox();
+        jCheckBox16 = new javax.swing.JCheckBox();
+        jLabel24 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jComboBox8 = new javax.swing.JComboBox();
+        jLabel31 = new javax.swing.JLabel();
+        jComboBox9 = new javax.swing.JComboBox();
+        jLabel32 = new javax.swing.JLabel();
+        jComboBox10 = new javax.swing.JComboBox();
+        jLabel33 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel34 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(558, 345));
@@ -750,6 +803,395 @@ public class AntecedentesP extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Ginecobstetricos", jPanel17);
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Descripción último embarazo y parto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 10))); // NOI18N
+
+        jLabel16.setText("Via de terminación del parto:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Espontáneo", "Cesárea", "Forceps", "Espátula" }));
+        jComboBox1.setFocusable(false);
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
+
+        jLabel17.setText("Edad gestacional al momento del parto:");
+
+        jLabel19.setText("Vacunacion TD/TT/SR:");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Completa", "Incompleta", "Sin carnet" }));
+        jComboBox2.setSelectedIndex(2);
+        jComboBox2.setFocusable(false);
+
+        jLabel20.setText("AgSPH en CPN:");
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Positivo", "Negativo", "No realizado" }));
+        jComboBox3.setSelectedIndex(2);
+        jComboBox3.setFocusable(false);
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Positivo", "Negativo", "No realizado" }));
+        jComboBox4.setSelectedIndex(2);
+        jComboBox4.setFocusable(false);
+
+        jLabel21.setText("VIH en CPN:");
+
+        jLabel22.setText("VDRL 3 trimestre o periparto:");
+
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Reactiva", "No reactiva", "No realizado" }));
+        jComboBox5.setSelectedIndex(2);
+        jComboBox5.setFocusable(false);
+
+        jCheckBox7.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox7.setText("Parto traumatico");
+        jCheckBox7.setFocusable(false);
+
+        jCheckBox8.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox8.setText("Hospitalizacion posparto");
+        jCheckBox8.setFocusable(false);
+
+        jLabel23.setText("Feto:");
+
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vivo", "Muerto" }));
+        jComboBox6.setFocusable(false);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField1)
+                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox7)
+                            .addComponent(jCheckBox8))
+                        .addGap(31, 31, 31))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jComboBox6, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox5, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))
+                        .addGap(4, 4, 4)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel19)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jCheckBox7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox8)
+                        .addGap(24, 24, 24)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 8, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Parto", jPanel2);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Antecedentes Perinatología", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 10))); // NOI18N
+
+        jCheckBox9.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox9.setText("Sufrimiento fetal");
+        jCheckBox9.setFocusable(false);
+
+        jCheckBox10.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox10.setText("Incompatibilidad con Grupo o Rh");
+        jCheckBox10.setFocusable(false);
+
+        jCheckBox11.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox11.setText("Icteria Neonatal");
+        jCheckBox11.setFocusable(false);
+
+        jCheckBox12.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox12.setText("Parto Prolongado");
+        jCheckBox12.setFocusable(false);
+
+        jCheckBox13.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox13.setText("Patologías Maternas durante CPN");
+        jCheckBox13.setFocusable(false);
+
+        jCheckBox14.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox14.setText("Parto Traumático");
+        jCheckBox14.setFocusable(false);
+
+        jCheckBox15.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox15.setText("Requirió Hospitalización Posparto");
+        jCheckBox15.setFocusable(false);
+
+        jCheckBox16.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox16.setText("Otros");
+        jCheckBox16.setFocusable(false);
+
+        jLabel24.setText("Peso al nacer:");
+
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
+            }
+        });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField2KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
+
+        jLabel25.setText("Kg");
+
+        jLabel26.setText("Talla al nacer:");
+
+        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField3FocusGained(evt);
+            }
+        });
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField3KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
+
+        jLabel27.setText("Cm");
+
+        jLabel28.setText("EG en el parto:");
+
+        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField4FocusGained(evt);
+            }
+        });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField4KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
+
+        jLabel29.setText("Semanas");
+
+        jLabel30.setText("Via terminacion parto:");
+
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Espontáneo", "Cesárea", "Forceps", "Espátula" }));
+        jComboBox8.setFocusable(false);
+
+        jLabel31.setText("Hemoclasificación:");
+
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "O-", "O+", "A-", "A+", "B-", "B+", "AB-", "AB+" }));
+        jComboBox9.setSelectedIndex(1);
+        jComboBox9.setFocusable(false);
+
+        jLabel32.setText("VDRL Materno:");
+
+        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Reactivo", "No reactivo", "No se realizó" }));
+        jComboBox10.setFocusable(false);
+
+        jLabel33.setText("TSH Neonatal:");
+
+        jTextField5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField5FocusGained(evt);
+            }
+        });
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
+
+        jLabel34.setText("mU/ml");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextField2)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jCheckBox10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCheckBox15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCheckBox13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCheckBox12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCheckBox9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCheckBox14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCheckBox11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jCheckBox16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox8, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox9, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox10, 0, 1, Short.MAX_VALUE))))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox9)
+                            .addComponent(jCheckBox11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox12)
+                            .addComponent(jCheckBox14)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jCheckBox10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox13)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox15)
+                    .addComponent(jCheckBox16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel30)
+                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27)
+                    .addComponent(jLabel31)
+                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29)
+                    .addComponent(jLabel32)
+                    .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel33)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel34))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Perinatología", jPanel5);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -791,6 +1233,18 @@ public class AntecedentesP extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Generales");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Generales");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Generales");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Generales");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jLabel13MouseEntered
@@ -802,6 +1256,18 @@ public class AntecedentesP extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Metodos anticonceptivos");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Metodos anticonceptivos");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Metodos anticonceptivos");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Metodos anticonceptivos");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jLabel18MouseEntered
@@ -813,6 +1279,18 @@ public class AntecedentesP extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jLabel13MouseExited
@@ -824,6 +1302,18 @@ public class AntecedentesP extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jLabel18MouseExited
@@ -922,16 +1412,184 @@ public class AntecedentesP extends javax.swing.JPanel {
         new Clases.Explode(jPanel24, gesta).play();
     }//GEN-LAST:event_jLabel15MouseReleased
 
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9') || jTextField1.getText().length() >= 3) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9') && jTextField2.getText().contains(".") || jTextField2.getText().length() >= 5) {
+            evt.consume();
+        } else if ((car < '0' || car > '9') && (car != '.') || jTextField2.getText().length() >= 5) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField3.requestFocus();
+        }
+    }//GEN-LAST:event_jTextField2KeyReleased
+
+    private void jTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField4.requestFocus();
+        }
+    }//GEN-LAST:event_jTextField3KeyReleased
+
+    private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField5.requestFocus();
+        }
+    }//GEN-LAST:event_jTextField4KeyReleased
+
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        jTextField2.selectAll();
+    }//GEN-LAST:event_jTextField2FocusGained
+
+    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        jTextField3.selectAll();
+    }//GEN-LAST:event_jTextField3FocusGained
+
+    private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
+        jTextField4.selectAll();
+    }//GEN-LAST:event_jTextField4FocusGained
+
+    private void jTextField5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusGained
+        jTextField5.selectAll();
+    }//GEN-LAST:event_jTextField5FocusGained
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9') && jTextField3.getText().contains(".") || jTextField3.getText().length() >= 5) {
+            evt.consume();
+        } else if ((car < '0' || car > '9') && (car != '.') || jTextField3.getText().length() >= 5) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9') || jTextField4.getText().length() >= 2) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9') && jTextField5.getText().contains(".") || jTextField5.getText().length() >= 5) {
+            evt.consume();
+        } else if ((car < '0' || car > '9') && (car != '.') || jTextField5.getText().length() >= 5) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField5KeyTyped
+
     public void guardarantep() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
         gi.actuginecog();
         gimac.actginecomac();
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
             obs.guardarobste();
             gesta.guardgestaactual();
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+            String v, b, n, m, ñ, f, g, j, k;
+            v = String.valueOf(jComboBox1.getSelectedIndex());
+            if (jTextField1.getText().toString().equals("")) {
+                b = "0";
+            } else {
+                b = jTextField1.getText().toString();
+            }
+            n = String.valueOf(jComboBox2.getSelectedIndex());
+            m = String.valueOf(jComboBox3.getSelectedIndex());
+            ñ = String.valueOf(jComboBox4.getSelectedIndex());
+            f = String.valueOf(jComboBox5.getSelectedIndex());
+            g = String.valueOf(jComboBox6.getSelectedIndex());
+            if (jCheckBox7.isSelected() == false) {
+                j = "0";
+            } else {
+                j = "1";
+            }
+            if (jCheckBox8.isSelected() == false) {
+                k = "0";
+            } else {
+                k = "1";
+            }
+            act.posparto(d, v, b, n, m, ñ, f, g, j, k);
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+            String c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12;
+            float n1, n2, n3;
+            if (jCheckBox10.isSelected() == false) {
+                c1 = "0";
+            } else {
+                c1 = "1";
+            }
+            if (jCheckBox9.isSelected() == false) {
+                c2 = "0";
+            } else {
+                c2 = "1";
+            }
+            if (jCheckBox11.isSelected() == false) {
+                c3 = "0";
+            } else {
+                c3 = "1";
+            }
+            if (jCheckBox13.isSelected() == false) {
+                c4 = "0";
+            } else {
+                c4 = "1";
+            }
+            if (jCheckBox12.isSelected() == false) {
+                c5 = "0";
+            } else {
+                c5 = "1";
+            }
+            if (jCheckBox14.isSelected() == false) {
+                c6 = "0";
+            } else {
+                c6 = "1";
+            }
+            if (jCheckBox15.isSelected() == false) {
+                c7 = "0";
+            } else {
+                c7 = "1";
+            }
+            if (jCheckBox16.isSelected() == false) {
+                c8 = "0";
+            } else {
+                c8 = "1";
+            }
+            if (jTextField4.getText().toString().equals("")) {
+                c9 = "0";
+            } else {
+                c9 = jTextField4.getText().toString();
+            }
+            if (jTextField2.getText().equals("")) {
+                n1 = 0;
+            } else {
+                n1 = Float.parseFloat(jTextField2.getText().toString());
+            }
+            if (jTextField3.getText().equals("")) {
+                n2 = 0;
+            } else {
+                n2 = Float.parseFloat(jTextField3.getText().toString());
+            }
+            if (jTextField5.getText().equals("")) {
+                n3 = 0;
+            } else {
+                n3 = Float.parseFloat(jTextField5.getText().toString());
+            }
+            c10 = String.valueOf(jComboBox8.getSelectedIndex());
+            c11 = String.valueOf(jComboBox9.getSelectedIndex());
+            c12 = String.valueOf(jComboBox10.getSelectedIndex());
+            act.actrecien(d, c1, c2, c3, c4, c5, c6, c7, c8, n1, n2, c9, n3, c10, c11, c12);
+        }
         String q, w, e, r, t, y;
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
         if (jCheckBox1.isSelected() == true) {//hta
             q = "1";
         } else {
@@ -1072,14 +1730,103 @@ public class AntecedentesP extends javax.swing.JPanel {
             obs.cargarobstetricos();
             gesta.cargargesta();
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+            Object part[][] = Funciones.RetornarDatos(act.cargarpostparto(d));
+            jComboBox1.setSelectedIndex(Integer.parseInt(part[0][8].toString()));
+            jComboBox2.setSelectedIndex(Integer.parseInt(part[0][10].toString()));
+            jComboBox3.setSelectedIndex(Integer.parseInt(part[0][11].toString()));
+            jComboBox4.setSelectedIndex(Integer.parseInt(part[0][12].toString()));
+            jComboBox5.setSelectedIndex(Integer.parseInt(part[0][13].toString()));
+            jComboBox6.setSelectedIndex(Integer.parseInt(part[0][14].toString()));
+            jTextField1.setText(part[0][9].toString());
+            if (part[0][15].toString().equals("0")) {
+                jCheckBox7.setSelected(false);
+            } else {
+                jCheckBox7.setSelected(true);
+            }
+            if (part[0][16].toString().equals("0")) {
+                jCheckBox8.setSelected(false);
+            } else {
+                jCheckBox8.setSelected(true);
+            }
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+            Object recien[][] = Funciones.RetornarDatos(act.cargarrecien(d));
+            if (recien[0][8].toString().endsWith("0")) {
+                jCheckBox10.setSelected(false);
+            } else {
+                jCheckBox10.setSelected(true);
+            }
+            if (recien[0][9].toString().endsWith("0")) {
+                jCheckBox9.setSelected(false);
+            } else {
+                jCheckBox9.setSelected(true);
+            }
+            if (recien[0][10].toString().endsWith("0")) {
+                jCheckBox11.setSelected(false);
+            } else {
+                jCheckBox11.setSelected(true);
+            }
+            if (recien[0][11].toString().endsWith("0")) {
+                jCheckBox13.setSelected(false);
+            } else {
+                jCheckBox13.setSelected(true);
+            }
+            if (recien[0][12].toString().endsWith("0")) {
+                jCheckBox12.setSelected(false);
+            } else {
+                jCheckBox12.setSelected(true);
+            }
+            if (recien[0][13].toString().endsWith("0")) {
+                jCheckBox14.setSelected(false);
+            } else {
+                jCheckBox14.setSelected(true);
+            }
+            if (recien[0][14].toString().endsWith("0")) {
+                jCheckBox15.setSelected(false);
+            } else {
+                jCheckBox15.setSelected(true);
+            }
+            if (recien[0][15].toString().endsWith("0")) {
+                jCheckBox16.setSelected(false);
+            } else {
+                jCheckBox16.setSelected(true);
+            }
+            jTextField2.setText(recien[0][16].toString());
+            jTextField3.setText(recien[0][17].toString());
+            jTextField4.setText(recien[0][18].toString());
+            jTextField5.setText(recien[0][19].toString());
+            jComboBox8.setSelectedIndex(Integer.parseInt(recien[0][20].toString()));
+            jComboBox9.setSelectedIndex(Integer.parseInt(recien[0][21].toString()));
+            jComboBox10.setSelectedIndex(Integer.parseInt(recien[0][22].toString()));
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JCheckBox jCheckBox1;
+    javax.swing.JCheckBox jCheckBox10;
+    javax.swing.JCheckBox jCheckBox11;
+    javax.swing.JCheckBox jCheckBox12;
+    javax.swing.JCheckBox jCheckBox13;
+    javax.swing.JCheckBox jCheckBox14;
+    javax.swing.JCheckBox jCheckBox15;
+    javax.swing.JCheckBox jCheckBox16;
     javax.swing.JCheckBox jCheckBox2;
     javax.swing.JCheckBox jCheckBox3;
     javax.swing.JCheckBox jCheckBox4;
     javax.swing.JCheckBox jCheckBox5;
     javax.swing.JCheckBox jCheckBox6;
+    javax.swing.JCheckBox jCheckBox7;
+    javax.swing.JCheckBox jCheckBox8;
+    javax.swing.JCheckBox jCheckBox9;
+    javax.swing.JComboBox jComboBox1;
+    javax.swing.JComboBox jComboBox10;
+    javax.swing.JComboBox jComboBox2;
+    javax.swing.JComboBox jComboBox3;
+    javax.swing.JComboBox jComboBox4;
+    javax.swing.JComboBox jComboBox5;
+    javax.swing.JComboBox jComboBox6;
+    javax.swing.JComboBox jComboBox8;
+    javax.swing.JComboBox jComboBox9;
     javax.swing.JLabel jLabel1;
     javax.swing.JLabel jLabel10;
     javax.swing.JLabel jLabel11;
@@ -1087,9 +1834,27 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JLabel jLabel13;
     javax.swing.JLabel jLabel14;
     javax.swing.JLabel jLabel15;
+    javax.swing.JLabel jLabel16;
+    javax.swing.JLabel jLabel17;
     javax.swing.JLabel jLabel18;
+    javax.swing.JLabel jLabel19;
     javax.swing.JLabel jLabel2;
+    javax.swing.JLabel jLabel20;
+    javax.swing.JLabel jLabel21;
+    javax.swing.JLabel jLabel22;
+    javax.swing.JLabel jLabel23;
+    javax.swing.JLabel jLabel24;
+    javax.swing.JLabel jLabel25;
+    javax.swing.JLabel jLabel26;
+    javax.swing.JLabel jLabel27;
+    javax.swing.JLabel jLabel28;
+    javax.swing.JLabel jLabel29;
     javax.swing.JLabel jLabel3;
+    javax.swing.JLabel jLabel30;
+    javax.swing.JLabel jLabel31;
+    javax.swing.JLabel jLabel32;
+    javax.swing.JLabel jLabel33;
+    javax.swing.JLabel jLabel34;
     javax.swing.JLabel jLabel4;
     javax.swing.JLabel jLabel5;
     javax.swing.JLabel jLabel6;
@@ -1106,10 +1871,14 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JPanel jPanel17;
     javax.swing.JPanel jPanel18;
     javax.swing.JPanel jPanel19;
+    javax.swing.JPanel jPanel2;
     javax.swing.JPanel jPanel20;
     javax.swing.JPanel jPanel23;
     javax.swing.JPanel jPanel24;
+    javax.swing.JPanel jPanel3;
     javax.swing.JPanel jPanel4;
+    javax.swing.JPanel jPanel5;
+    javax.swing.JPanel jPanel6;
     javax.swing.JScrollPane jScrollPane17;
     javax.swing.JScrollPane jScrollPane18;
     javax.swing.JScrollPane jScrollPane19;
@@ -1127,5 +1896,10 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JTextArea jTextArea6;
     javax.swing.JTextArea jTextArea7;
     javax.swing.JTextArea jTextArea8;
+    javax.swing.JTextField jTextField1;
+    javax.swing.JTextField jTextField2;
+    javax.swing.JTextField jTextField3;
+    javax.swing.JTextField jTextField4;
+    javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }

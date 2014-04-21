@@ -45,6 +45,24 @@ public class DiagnosticosM extends javax.swing.JPanel {
             jTextField1.setEditable(false);
             ciep = 11968;
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+            cie = new Consultarcie10();
+            cie.llamar_cie("Z392");
+            jTextField1.setEditable(false);
+            ciep = 12008;
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+            cie = new Consultarcie10();
+            cie.llamar_cie("Z761");
+            jTextField1.setEditable(false);
+            ciep = 12251;
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+            cie = new Consultarcie10();
+            cie.llamar_cie("Z300");
+            jTextField1.setEditable(false);
+            ciep = 11947;
+        }
         jTextField2.setEditable(false);
         jTextField3.setEditable(false);
         jTextField4.setEditable(false);
@@ -110,6 +128,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/masc1.png"))); // NOI18N
         jButton3.setToolTipText("Añadir Dx relacionado 2");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setEnabled(false);
         jButton3.setFocusable(false);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/masc2.png"))); // NOI18N
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -135,6 +154,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/masc1.png"))); // NOI18N
         jButton4.setToolTipText("Añadir Dx relacionado 4");
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setEnabled(false);
         jButton4.setFocusable(false);
         jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/masc2.png"))); // NOI18N
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -152,6 +172,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/masc1.png"))); // NOI18N
         jButton5.setToolTipText("Añadir Dx relacionado 3");
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setEnabled(false);
         jButton5.setFocusable(false);
         jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/masc2.png"))); // NOI18N
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -259,6 +280,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
 //                modeloListCie10.addElement(cie10);
                 jTextField2.setText(cie101.getCodigo() + " - " + cie101.getDescripcion());
                 dc.dispose();
+                jButton3.setEnabled(true);
             }
         });
         dc.setVisible(true);
@@ -276,6 +298,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
 //                modeloListCie10.addElement(cie10);
                 jTextField3.setText(cie102.getCodigo() + " - " + cie102.getDescripcion());
                 dc.dispose();
+                jButton5.setEnabled(true);
             }
         });
         dc.setVisible(true);
@@ -293,6 +316,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
 //                modeloListCie10.addElement(cie10);
                 jTextField5.setText(cie103.getCodigo() + " - " + cie103.getDescripcion());
                 dc.dispose();
+                jButton4.setEnabled(true);
             }
         });
         dc.setVisible(true);
@@ -390,6 +414,18 @@ public class DiagnosticosM extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Añadir diagnostico");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Añadir diagnostico");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Añadir diagnostico");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Añadir diagnostico");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jButton2MouseEntered
@@ -400,6 +436,18 @@ public class DiagnosticosM extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jButton2MouseExited
@@ -410,6 +458,18 @@ public class DiagnosticosM extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Añadir diagnostico");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Añadir diagnostico");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Añadir diagnostico");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Añadir diagnostico");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jButton3MouseEntered
@@ -420,6 +480,18 @@ public class DiagnosticosM extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jButton3MouseExited
@@ -430,6 +502,18 @@ public class DiagnosticosM extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Añadir diagnostico");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Añadir diagnostico");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Añadir diagnostico");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Añadir diagnostico");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jButton5MouseEntered
@@ -440,6 +524,18 @@ public class DiagnosticosM extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jButton5MouseExited
@@ -450,6 +546,18 @@ public class DiagnosticosM extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Añadir diagnostico");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Añadir diagnostico");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Añadir diagnostico");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Añadir diagnostico");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jButton4MouseEntered
@@ -460,6 +568,18 @@ public class DiagnosticosM extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jButton4MouseExited

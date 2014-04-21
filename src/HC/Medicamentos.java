@@ -27,7 +27,7 @@ public class Medicamentos extends javax.swing.JPanel {
     int row;
     Save sav = new Save();
     Object datos[][];
-    public static DefaultTableModel modelo;
+    public DefaultTableModel modelo;
     String id, dosis, cantidad, dosisu, via, administracion, fc, fh;
     Actualizar act = new Actualizar();
     CargarordenesM tab = new CargarordenesM();
@@ -63,6 +63,8 @@ public class Medicamentos extends javax.swing.JPanel {
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/clip_board.png"))); // NOI18N
         jMenuItem1.setText("Ver");
+        jMenuItem1.setMaximumSize(new java.awt.Dimension(61, 22));
+        jMenuItem1.setMinimumSize(new java.awt.Dimension(61, 22));
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jMenuItem1MouseReleased(evt);
@@ -139,22 +141,20 @@ public class Medicamentos extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(272, 272, 272)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -186,11 +186,12 @@ public class Medicamentos extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -200,6 +201,18 @@ public class Medicamentos extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Añadir medicamento");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Añadir medicamento");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Añadir medicamento");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Añadir medicamento");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jButton1MouseEntered
@@ -210,6 +223,18 @@ public class Medicamentos extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jButton1MouseExited
@@ -220,6 +245,18 @@ public class Medicamentos extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Quitar medicamento");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Quitar medicamento");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Quitar medicamento");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Quitar medicamento");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jButton3MouseEntered
@@ -230,6 +267,18 @@ public class Medicamentos extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jButton3MouseExited

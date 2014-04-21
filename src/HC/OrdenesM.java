@@ -11,7 +11,8 @@ public class OrdenesM extends javax.swing.JPanel {
     public Procedimientos procedimientos = null;
     public Recomendaciones recomendaciones = null;
     public Medicamentos medicamentos = null;
-    
+    public Anticonceptivos anticonceptivos = null;
+
     public OrdenesM(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
@@ -27,8 +28,17 @@ public class OrdenesM extends javax.swing.JPanel {
         if (recomendaciones == null) {
             recomendaciones = new Recomendaciones(pypAdmAsistCon);
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 5) {
+            jPanel22.setVisible(false);
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+            jPanel22.setLocation(10, 154);
+            if (anticonceptivos == null) {
+                anticonceptivos = new Anticonceptivos(pypAdmAsistCon);
+            }
+        }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -40,6 +50,8 @@ public class OrdenesM extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jPanel22 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
 
@@ -157,6 +169,39 @@ public class OrdenesM extends javax.swing.JPanel {
         add(jPanel2);
         jPanel2.setBounds(10, 113, 124, 177);
 
+        jPanel22.setBackground(new java.awt.Color(125, 164, 222));
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 9)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/preservativos.png"))); // NOI18N
+        jLabel17.setText("Anticonceptivos");
+        jLabel17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel17MouseReleased(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel17MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel17MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+        );
+
+        add(jPanel22);
+        jPanel22.setBounds(200, 0, 124, 35);
+
         jPanel21.setBackground(new java.awt.Color(125, 164, 222));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 9)); // NOI18N
@@ -180,11 +225,15 @@ public class OrdenesM extends javax.swing.JPanel {
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         add(jPanel21);
@@ -197,6 +246,18 @@ public class OrdenesM extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Medicamentos");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Medicamentos");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Medicamentos");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Medicamentos");
+                        }
+                    }
+                }
             }
         }
         jPanel18.setBackground(new Color(255, 227, 255));
@@ -204,11 +265,23 @@ public class OrdenesM extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel13MouseEntered
 
     private void jLabel13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseExited
-       if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
             HC.Adulto.jLabel4.setText("...");
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
         jPanel18.setBackground(new Color(125, 164, 222));
@@ -220,6 +293,18 @@ public class OrdenesM extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Procedimientos");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Procedimientos");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Procedimientos");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Procedimientos");
+                        }
+                    }
+                }
             }
         }
         jPanel19.setBackground(new Color(255, 227, 255));
@@ -231,6 +316,18 @@ public class OrdenesM extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
         jPanel19.setBackground(new Color(125, 164, 222));
@@ -242,6 +339,18 @@ public class OrdenesM extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Recomendaciones");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Recomendaciones");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Recomendaciones");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Recomendaciones");
+                        }
+                    }
+                }
             }
         }
         jPanel21.setBackground(new Color(255, 227, 255));
@@ -253,6 +362,18 @@ public class OrdenesM extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
         jPanel21.setBackground(new Color(125, 164, 222));
@@ -265,9 +386,21 @@ public class OrdenesM extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 new Clases.Explode(Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1, medicamentos).play();
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1, medicamentos).play();
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        new Clases.Explode(Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1, medicamentos).play();
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            new Clases.Explode(Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1, medicamentos).play();
+                        }
+                    }
+                }
             }
         }
-        
+
     }//GEN-LAST:event_jLabel13MouseReleased
 
     private void jLabel14MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseReleased
@@ -280,32 +413,67 @@ public class OrdenesM extends javax.swing.JPanel {
             procedimientos.setVisible(true);
             this.jPanel2.validate();
             this.jPanel2.repaint();
+            if (jPanel22.isVisible() == true) {
+                jPanel22.setVisible(false);
+            }
         } else {
             this.jPanel2.removeAll();
             jPanel2.setVisible(false);
             jPanel21.setLocation(10, 113);
             this.jPanel1.validate();
             this.jPanel1.repaint();
+            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                jPanel22.setVisible(true);
+                jPanel22.setLocation(10, 154);
+            }
         }
     }//GEN-LAST:event_jLabel14MouseReleased
 
     private void jLabel16MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseReleased
         jPanel1.removeAll();
-         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
             new Clases.Explode(Modulo_PyP.d.listPacientes.adult.ordenesm.jPanel1, recomendaciones).play();
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-               new Clases.Explode(Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1, recomendaciones).play();
+                new Clases.Explode(Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1, recomendaciones).play();
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1, recomendaciones).play();
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        new Clases.Explode(Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1, recomendaciones).play();
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            new Clases.Explode(Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1, recomendaciones).play();
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jLabel16MouseReleased
-    
+
+    private void jLabel17MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseReleased
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+            new Clases.Explode(Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1, anticonceptivos).play();
+        }
+    }//GEN-LAST:event_jLabel17MouseReleased
+
+    private void jLabel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseEntered
+        jPanel22.setBackground(new Color(255, 227, 255));
+        HC.Planificacion.jLabel4.setText("Anticonceptivos");
+    }//GEN-LAST:event_jLabel17MouseEntered
+
+    private void jLabel17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseExited
+        jPanel22.setBackground(new Color(125, 164, 222));
+        HC.Planificacion.jLabel4.setText("...");
+    }//GEN-LAST:event_jLabel17MouseExited
+
     public void actordenesm() {
         recomendaciones.actrecomendaciones();
         medicamentos.actmedicamentos();
         procedimientos.guardarprocedimientos();
     }
-    
+
     public void cargarordenesm() {
         recomendaciones.cargarrecom();
     }
@@ -313,11 +481,13 @@ public class OrdenesM extends javax.swing.JPanel {
     javax.swing.JLabel jLabel13;
     javax.swing.JLabel jLabel14;
     javax.swing.JLabel jLabel16;
+    javax.swing.JLabel jLabel17;
     javax.swing.JLabel jLabel3;
     public javax.swing.JPanel jPanel1;
     javax.swing.JPanel jPanel18;
     javax.swing.JPanel jPanel19;
     javax.swing.JPanel jPanel2;
     javax.swing.JPanel jPanel21;
+    javax.swing.JPanel jPanel22;
     // End of variables declaration//GEN-END:variables
 }

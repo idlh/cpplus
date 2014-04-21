@@ -249,6 +249,18 @@ public class Procedimientos extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Monitorizacion");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Monitorizacion");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Monitorizacion");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Monitorizacion");
+                        }
+                    }
+                }
             }
         }
         jPanel19.setBackground(new Color(255, 227, 255));
@@ -260,6 +272,18 @@ public class Procedimientos extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
         jPanel19.setBackground(Color.white);
@@ -271,6 +295,18 @@ public class Procedimientos extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Procedimientos de Laboratorio");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Procedimientos de laboratorio");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Procedimientos de laboratorio");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Procedimientos de laboratorio");
+                        }
+                    }
+                }
             }
         }
         jPanel21.setBackground(new Color(255, 227, 255));
@@ -282,6 +318,18 @@ public class Procedimientos extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
         jPanel21.setBackground(Color.white);
@@ -293,6 +341,18 @@ public class Procedimientos extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Procedimientos Imagenología");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Procedimientos Imagenología");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Procedimientos Imagenología");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Procedimientos Imagenología");
+                        }
+                    }
+                }
             }
         }
         jPanel22.setBackground(new Color(255, 227, 255));
@@ -304,6 +364,18 @@ public class Procedimientos extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
         jPanel22.setBackground(Color.white);
@@ -315,6 +387,18 @@ public class Procedimientos extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Otros procedimientos");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Otros procedimientos");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Otros procedimientos");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Otros procedimientos");
+                        }
+                    }
+                }
             }
         }
         jPanel23.setBackground(new Color(255, 227, 255));
@@ -326,6 +410,18 @@ public class Procedimientos extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
         jPanel23.setBackground(Color.white);
@@ -337,6 +433,18 @@ public class Procedimientos extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("Quirurgicos");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("Quirurgicos");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("Quirurgicos");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("Quirurgicos");
+                        }
+                    }
+                }
             }
         }
         jPanel24.setBackground(new Color(255, 227, 255));
@@ -348,6 +456,18 @@ public class Procedimientos extends javax.swing.JPanel {
         } else {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 HC.Controlprenatal.jLabel4.setText("...");
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    HC.Postparto.jLabel4.setText("...");
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        HC.RecienNacido.jLabel4.setText("...");
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            HC.Planificacion.jLabel4.setText("...");
+                        }
+                    }
+                }
             }
         }
         jPanel24.setBackground(Color.white);
@@ -361,6 +481,20 @@ public class Procedimientos extends javax.swing.JPanel {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1.removeAll();
                 new Clases.Explode(Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1, procesosmonitorizacion).play();
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1.removeAll();
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1, procesosmonitorizacion).play();
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1.removeAll();
+                        new Clases.Explode(Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1, procesosmonitorizacion).play();
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            new Clases.Explode(Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1, procesosmonitorizacion).play();
+                        }
+                    }
+                }
             }
         }
 
@@ -374,6 +508,20 @@ public class Procedimientos extends javax.swing.JPanel {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1.removeAll();
                 new Clases.Explode(Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1, procesoslaboratorios).play();
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1.removeAll();
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1, procesoslaboratorios).play();
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1.removeAll();
+                        new Clases.Explode(Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1, procesoslaboratorios).play();
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            new Clases.Explode(Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1, procesoslaboratorios).play();
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jLabel16MouseReleased
@@ -386,6 +534,20 @@ public class Procedimientos extends javax.swing.JPanel {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1.removeAll();
                 new Clases.Explode(Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1, procesosimagenologia).play();
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1.removeAll();
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1, procesosimagenologia).play();
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1.removeAll();
+                        new Clases.Explode(Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1, procesosimagenologia).play();
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            new Clases.Explode(Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1, procesosimagenologia).play();
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jLabel17MouseReleased
@@ -398,6 +560,20 @@ public class Procedimientos extends javax.swing.JPanel {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1.removeAll();
                 new Clases.Explode(Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1, procesosquirurgicos).play();
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1.removeAll();
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1, procesosquirurgicos).play();
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1.removeAll();
+                        new Clases.Explode(Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1, procesosquirurgicos).play();
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            new Clases.Explode(Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1, procesosquirurgicos).play();
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jLabel19MouseReleased
@@ -410,6 +586,20 @@ public class Procedimientos extends javax.swing.JPanel {
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
                 Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1.removeAll();
                 new Clases.Explode(Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1, procesosotros).play();
+            } else {
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+                    Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1.removeAll();
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1, procesosotros).play();
+                } else {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+                        Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1.removeAll();
+                        new Clases.Explode(Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1, procesosotros).play();
+                    } else {
+                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+                            new Clases.Explode(Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1, procesosotros).play();
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jLabel18MouseReleased

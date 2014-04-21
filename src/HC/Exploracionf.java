@@ -28,7 +28,13 @@ public class Exploracionf extends javax.swing.JPanel {
         this.pypAdmAsistCon = pypAdmAsistCon;
         jTextField10.setEditable(false);
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 9) {
-            jTabbedPane1.remove(5);
+            jTabbedPane1.remove(jPanel2);
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 11 && pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 10) {
+            jTabbedPane1.remove(jPanel4);
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11 || pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+            selectApgar();
         }
     }
 
@@ -102,6 +108,19 @@ public class Exploracionf extends javax.swing.JPanel {
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox5 = new javax.swing.JCheckBox();
         jCheckBox6 = new javax.swing.JCheckBox();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox();
+        jLabel22 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox();
+        jLabel27 = new javax.swing.JLabel();
+        jComboBox5 = new javax.swing.JComboBox();
+        jComboBox6 = new javax.swing.JComboBox();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea5 = new javax.swing.JTextArea();
@@ -344,7 +363,7 @@ public class Exploracionf extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -667,7 +686,7 @@ public class Exploracionf extends javax.swing.JPanel {
                         .addComponent(jLabel34)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 46, Short.MAX_VALUE))
+                .addGap(10, 47, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -711,6 +730,141 @@ public class Exploracionf extends javax.swing.JPanel {
         );
 
         jTabbedPane1.addTab("Gestación actual", jPanel2);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel6.setText("Color de piel:");
+
+        jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todo Azul", "Extremidades Azules", "Normal" }));
+        jComboBox2.setFocusable(false);
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel7.setText("Frecuencia cardiaca:");
+
+        jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "Menos de 100", "Mas de 100" }));
+        jComboBox3.setFocusable(false);
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel22.setText("<html><p>Reflejos e irritabilidad:</p></html>");
+
+        jComboBox4.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin respuesta a estimulación", "Mueca/Llanto débil al ser estimulado", "Estornudos/Tos/Pataleo al ser estimulado" }));
+        jComboBox4.setFocusable(false);
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel27.setText("Tono muscular:");
+
+        jComboBox5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguna", "Alguna flexión", "Movimiento activo" }));
+        jComboBox5.setFocusable(false);
+        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox5ActionPerformed(evt);
+            }
+        });
+
+        jComboBox6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ausente", "Débil o irregular", "Fuerte" }));
+        jComboBox6.setFocusable(false);
+        jComboBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox6ActionPerformed(evt);
+            }
+        });
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel28.setText("Respiración:");
+
+        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel29.setText("Resultado:");
+
+        jLabel35.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel27)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel29)
+                    .addComponent(jLabel28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBox6, 0, 166, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel28)
+                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27)
+                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Apgar", jPanel4);
 
         jTabbedPane2.setFocusable(false);
 
@@ -837,7 +991,7 @@ public class Exploracionf extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -1138,6 +1292,26 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextField12.selectAll();
     }//GEN-LAST:event_jTextField12FocusGained
 
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        selectApgar();
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        selectApgar();
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        selectApgar();
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+        selectApgar();
+    }//GEN-LAST:event_jComboBox5ActionPerformed
+
+    private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
+        selectApgar();
+    }//GEN-LAST:event_jComboBox6ActionPerformed
+
     public void actexpf() {
         int tas, tad, fc, talla;
         float fr, temp, peso, imc;
@@ -1246,6 +1420,26 @@ public class Exploracionf extends javax.swing.JPanel {
             }
             y = String.valueOf(jComboBox1.getSelectedIndex());
             act.actgestafinal(d, fppu, q, w, u, i, o, p, y, e, r, t);
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+            String v, b, n, m, g, ñ;
+            v = String.valueOf(jComboBox2.getSelectedIndex());
+            b = String.valueOf(jComboBox3.getSelectedIndex());
+            n = String.valueOf(jComboBox4.getSelectedIndex());
+            m = String.valueOf(jComboBox5.getSelectedIndex());
+            g = String.valueOf(jComboBox6.getSelectedIndex());
+            ñ = jLabel35.getText().toString();
+            act.apgarparto(d, v, b, n, m, g, ñ);
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+            String v, b, n, m, g, ñ;
+            v = String.valueOf(jComboBox2.getSelectedIndex());
+            b = String.valueOf(jComboBox3.getSelectedIndex());
+            n = String.valueOf(jComboBox4.getSelectedIndex());
+            m = String.valueOf(jComboBox5.getSelectedIndex());
+            g = String.valueOf(jComboBox6.getSelectedIndex());
+            ñ = jLabel35.getText().toString();
+            act.apgarrecien(d, v, b, n, m, g, ñ);
         }
     }
 
@@ -1356,6 +1550,68 @@ public class Exploracionf extends javax.swing.JPanel {
                 jCheckBox6.setSelected(true);
             }
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
+            Object part[][] = Funciones.RetornarDatos(act.cargarpostparto(d));
+            jComboBox2.setSelectedIndex(Integer.parseInt(part[0][2].toString()));
+            jComboBox3.setSelectedIndex(Integer.parseInt(part[0][3].toString()));
+            jComboBox4.setSelectedIndex(Integer.parseInt(part[0][4].toString()));
+            jComboBox5.setSelectedIndex(Integer.parseInt(part[0][5].toString()));
+            jComboBox6.setSelectedIndex(Integer.parseInt(part[0][6].toString()));
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+            Object recien[][] = Funciones.RetornarDatos(act.cargarrecien(d));
+            jComboBox2.setSelectedIndex(Integer.parseInt(recien[0][2].toString()));
+            jComboBox3.setSelectedIndex(Integer.parseInt(recien[0][3].toString()));
+            jComboBox4.setSelectedIndex(Integer.parseInt(recien[0][4].toString()));
+            jComboBox5.setSelectedIndex(Integer.parseInt(recien[0][5].toString()));
+            jComboBox6.setSelectedIndex(Integer.parseInt(recien[0][6].toString()));
+        }
+    }
+
+    private void selectApgar() {
+        if (jComboBox2.getSelectedIndex() != -1 && jComboBox3.getSelectedIndex() != -1 && jComboBox4.getSelectedIndex() != -1
+                && jComboBox5.getSelectedIndex() != -1 && jComboBox6.getSelectedIndex() != -1) {
+            int apgar = 0;
+            switch (jComboBox2.getSelectedIndex()) {
+                case 1:
+                    apgar = apgar + 1;
+                    break;
+                case 2:
+                    apgar = apgar + 2;
+            }
+            switch (jComboBox3.getSelectedIndex()) {
+                case 1:
+                    apgar = apgar + 1;
+                    break;
+                case 2:
+                    apgar = apgar + 2;
+            }
+            switch (jComboBox4.getSelectedIndex()) {
+                case 1:
+                    apgar = apgar + 1;
+                    break;
+                case 2:
+                    apgar = apgar + 2;
+            }
+            switch (jComboBox5.getSelectedIndex()) {
+                case 1:
+                    apgar = apgar + 1;
+                    break;
+                case 2:
+                    apgar = apgar + 2;
+            }
+            switch (jComboBox6.getSelectedIndex()) {
+                case 1:
+                    apgar = apgar + 1;
+                    break;
+                case 2:
+                    apgar = apgar + 2;
+            }
+            jLabel35.setText(String.valueOf(apgar));
+        } else {
+            jLabel35.setText("");
+        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1365,6 +1621,11 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JCheckBox jCheckBox5;
     javax.swing.JCheckBox jCheckBox6;
     javax.swing.JComboBox jComboBox1;
+    javax.swing.JComboBox jComboBox2;
+    javax.swing.JComboBox jComboBox3;
+    javax.swing.JComboBox jComboBox4;
+    javax.swing.JComboBox jComboBox5;
+    javax.swing.JComboBox jComboBox6;
     com.toedter.calendar.JDateChooser jDateChooser1;
     javax.swing.JLabel jLabel1;
     javax.swing.JLabel jLabel10;
@@ -1380,23 +1641,31 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JLabel jLabel2;
     javax.swing.JLabel jLabel20;
     javax.swing.JLabel jLabel21;
+    javax.swing.JLabel jLabel22;
     javax.swing.JLabel jLabel23;
     javax.swing.JLabel jLabel24;
     javax.swing.JLabel jLabel25;
     javax.swing.JLabel jLabel26;
+    javax.swing.JLabel jLabel27;
+    javax.swing.JLabel jLabel28;
+    javax.swing.JLabel jLabel29;
     javax.swing.JLabel jLabel3;
     javax.swing.JLabel jLabel30;
     javax.swing.JLabel jLabel31;
     javax.swing.JLabel jLabel32;
     javax.swing.JLabel jLabel33;
     javax.swing.JLabel jLabel34;
+    javax.swing.JLabel jLabel35;
     javax.swing.JLabel jLabel4;
     javax.swing.JLabel jLabel5;
+    javax.swing.JLabel jLabel6;
+    javax.swing.JLabel jLabel7;
     javax.swing.JLabel jLabel8;
     javax.swing.JLabel jLabel9;
     javax.swing.JPanel jPanel1;
     javax.swing.JPanel jPanel2;
     javax.swing.JPanel jPanel3;
+    javax.swing.JPanel jPanel4;
     javax.swing.JScrollPane jScrollPane10;
     javax.swing.JScrollPane jScrollPane11;
     javax.swing.JScrollPane jScrollPane2;
