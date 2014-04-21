@@ -824,4 +824,31 @@ public class Actualizar {
                 + "        ON (`pyp_recienniacido`.`idhistoria` = `pyp_historiac`.`id`)"
                 + "WHERE (`pyp_historiac`.`id` ='" + id + "');";
     }
+
+    public void actanticonceptivos(String id, String eleccionifor, String preservativos, String cantidad) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_planificacionf`"
+                    + " SET `pyp_planificacionf`.`elecioninfor` = ?, `pyp_planificacionf`.`preservativos` = ?,"
+                    + "    `pyp_planificacionf`.`cantidadpre` = ?"
+                    + "    WHERE(`pyp_planificacionf`.`idhistoria` = ?)");
+            bd.preparedStatement.setString(1, eleccionifor);
+            bd.preparedStatement.setString(2, preservativos);
+            bd.preparedStatement.setString(3, cantidad);
+            bd.preparedStatement.setString(4, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a013 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a013 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public String cargaranticonceptivos(String id) {
+        return "SELECT *"
+                + "FROM `database`.`pyp_planificacionf`"
+                + "WHERE (`pyp_planificacionf`.`idhistoria`='" + id + "')";
+    }
 }
