@@ -851,4 +851,49 @@ public class Actualizar {
                 + "FROM `database`.`pyp_planificacionf`"
                 + "WHERE (`pyp_planificacionf`.`idhistoria`='" + id + "')";
     }
+
+    public void actjoven(String id, String desarrolloa, String desarrollovello, String valoracionv, String fechavv,
+            String valoraciono, String fechavo, String controlplaca, String sellantes, String fluor) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_joven`"
+                    + " SET `pyp_joven`.`desarrolloa`=?, `pyp_joven`.`desarrollovello`=?, `pyp_joven`.`valoracionv`=?,"
+                    + "    `pyp_joven`.`fechavv`=?, `pyp_joven`.`valoraciono`=?, `pyp_joven`.`fechavo`=?,"
+                    + "    `pyp_joven`.`controlplaca`=?, `pyp_joven`.`sellantes`=?, `pyp_joven`.`flour`=?"
+                    + "    WHERE(`pyp_joven`.`idhistoria`=?)");
+            bd.preparedStatement.setString(1, desarrolloa);
+            bd.preparedStatement.setString(2, desarrollovello);
+            bd.preparedStatement.setString(3, valoracionv);
+            bd.preparedStatement.setString(4, fechavv);
+            bd.preparedStatement.setString(5, valoraciono);
+            bd.preparedStatement.setString(6, fechavo);
+            bd.preparedStatement.setString(7, controlplaca);
+            bd.preparedStatement.setString(8, sellantes);
+            bd.preparedStatement.setString(9, fluor);
+            bd.preparedStatement.setString(10, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a014 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a014 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public String cargarjoven(String id) {
+        return "SELECT `pyp_joven`.`id`"
+                + "    , `pyp_joven`.`idhistoria`"
+                + "    , `pyp_joven`.`desarrolloa`"
+                + "    , `pyp_joven`.`desarrollovello`"
+                + "    , `pyp_joven`.`valoracionv`"
+                + "    , DATE_FORMAT(`pyp_joven`.`fechavv`, '%d/%m/%Y') AS fechavv"
+                + "    , `pyp_joven`.`valoraciono`"
+                + "    , DATE_FORMAT(`pyp_joven`.`fechavo`, '%d/%m/%Y') AS fechavo"
+                + "    , `pyp_joven`.`controlplaca`"
+                + "    , `pyp_joven`.`sellantes`"
+                + "    , `pyp_joven`.`flour`"
+                + " FROM `database`.`pyp_joven`"
+                + " WHERE (`pyp_joven`.`idhistoria`='" + id + "')";
+    }
 }
