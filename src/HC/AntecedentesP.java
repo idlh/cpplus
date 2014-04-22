@@ -1242,6 +1242,10 @@ public class AntecedentesP extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("Generales");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("Generales");
+                            }
                         }
                     }
                 }
@@ -1265,6 +1269,10 @@ public class AntecedentesP extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("Metodos anticonceptivos");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("Metodos anticonceptivos");
+                            }
                         }
                     }
                 }
@@ -1288,6 +1296,10 @@ public class AntecedentesP extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("...");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("...");
+                            }
                         }
                     }
                 }
@@ -1311,6 +1323,10 @@ public class AntecedentesP extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("...");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("...");
+                            }
                         }
                     }
                 }

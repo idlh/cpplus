@@ -28,6 +28,7 @@ public class ProcedimientosQ extends javax.swing.JPanel {
     Actualizar act = new Actualizar();
     CargarordenesM tab = new CargarordenesM();
     String est = "1";
+    int rowindex, columnindex;
 
     public ProcedimientosQ(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
@@ -181,6 +182,10 @@ public class ProcedimientosQ extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("Añadir procedimiento");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("Añadir procedimiento");
+                            }
                         }
                     }
                 }
@@ -203,6 +208,10 @@ public class ProcedimientosQ extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("...");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("...");
+                            }
                         }
                     }
                 }
@@ -225,6 +234,10 @@ public class ProcedimientosQ extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("Quitar procedimiento");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("Quitar procedimiento");
+                            }
                         }
                     }
                 }
@@ -247,6 +260,10 @@ public class ProcedimientosQ extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("...");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("...");
+                            }
                         }
                     }
                 }
@@ -261,7 +278,7 @@ public class ProcedimientosQ extends javax.swing.JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                 Boolean validacion = false;
+                Boolean validacion = false;
                 for (int k = 0; k < modelo.getRowCount(); k++) {
                     if (((String) modelo.getValueAt(k, 0)).equals((String) pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0))) {
                         validacion = true;
@@ -285,8 +302,8 @@ public class ProcedimientosQ extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void TablaquirurgicosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaquirurgicosMouseEntered
-        int rowindex = Tablaquirurgicos.rowAtPoint(evt.getPoint());
-        int columnindex = Tablaquirurgicos.columnAtPoint(evt.getPoint());
+        rowindex = Tablaquirurgicos.rowAtPoint(evt.getPoint());
+        columnindex = Tablaquirurgicos.columnAtPoint(evt.getPoint());
         Tablaquirurgicos.setToolTipText((String) Tablaquirurgicos.getValueAt(rowindex, columnindex));
     }//GEN-LAST:event_TablaquirurgicosMouseEntered
 
@@ -352,22 +369,22 @@ public class ProcedimientosQ extends javax.swing.JPanel {
     public void quitarrgistro() {
         if (modelo.getRowCount() > 0 && Tablaquirurgicos.getSelectedRow() > -1) {
             if (modelo.getValueAt(Tablaquirurgicos.getSelectedRow(), 4).equals("2")) {
-                Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
-                act.actprocedimiento(d, modelo.getValueAt(Tablaquirurgicos.getSelectedRow(), 0).toString(), "0");
-                modelo.removeRow(Tablaquirurgicos.getSelectedRow());
+                modelo.setValueAt("0", rowindex, 4);
+                est = "3";
             } else {
                 if (modelo.getRowCount() > 0 && Tablaquirurgicos.getSelectedRow() > -1) {
-                    modelo.removeRow(Tablaquirurgicos.getSelectedRow());
+                    if (modelo.getValueAt(Tablaquirurgicos.getSelectedRow(), 4).equals("1")) {
+                        modelo.removeRow(Tablaquirurgicos.getSelectedRow());
+                    }
                 }
             }
         }
     }
 
     public void actprocedquirur() {
-        if (est.toString().equals("2")) {
-            Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
             String d = (c[0][0].toString());
+            if (est.toString().equals("2")) {            
             for (int i = 0; i < modelo.getRowCount(); i++) {
                 if (modelo.getValueAt(i, 4).equals("1")) {
                     modelo.setValueAt("2", i, 4);
@@ -376,8 +393,18 @@ public class ProcedimientosQ extends javax.swing.JPanel {
                     );
                 }
             }
-            est = "1";
+        } else {
+            if (est.toString().equals("3")) {
+                for (int i = 0; i < modelo.getRowCount(); i++) {
+                    if (modelo.getValueAt(i, 4).equals("0")) {
+                        act.actprocedimiento(d, modelo.getValueAt(Tablaquirurgicos.getSelectedRow(), 0).toString(), "0");
+                    }
+                }
+            }
         }
+        est = "1";
+        Tablaquirurgicos.removeAll();
+        tabla();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

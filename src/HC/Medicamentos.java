@@ -210,6 +210,10 @@ public class Medicamentos extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("Añadir medicamento");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("Añadir medicamento");
+                            }
                         }
                     }
                 }
@@ -232,6 +236,10 @@ public class Medicamentos extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("...");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("...");
+                            }
                         }
                     }
                 }
@@ -254,6 +262,10 @@ public class Medicamentos extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("Quitar medicamento");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("Quitar medicamento");
+                            }
                         }
                     }
                 }
@@ -276,6 +288,10 @@ public class Medicamentos extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("...");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("...");
+                            }
                         }
                     }
                 }
@@ -395,7 +411,7 @@ public class Medicamentos extends javax.swing.JPanel {
     }
 
     public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5, String r6, String r7, String r8) {
-        try {            
+        try {
             Object nuevo[] = {r1, r2, r3, r4, r5, r6, r7, r8};
             modelo.addRow(nuevo);
         } catch (Exception e) {

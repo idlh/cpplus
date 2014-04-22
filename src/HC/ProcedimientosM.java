@@ -29,6 +29,7 @@ public class ProcedimientosM extends javax.swing.JPanel {
     public String idcolumna;
     CargarordenesM tab = new CargarordenesM();
     String est = "1";
+    int rowindex, columnindex;
 
     public ProcedimientosM(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
@@ -182,6 +183,10 @@ public class ProcedimientosM extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("Añadir procedimiento");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("Añadir procedimiento");
+                            }
                         }
                     }
                 }
@@ -204,6 +209,10 @@ public class ProcedimientosM extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("...");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("...");
+                            }
                         }
                     }
                 }
@@ -226,6 +235,10 @@ public class ProcedimientosM extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("Quitar procedimiento");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("Quitar procedimiento");
+                            }
                         }
                     }
                 }
@@ -248,6 +261,10 @@ public class ProcedimientosM extends javax.swing.JPanel {
                     } else {
                         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                             HC.Planificacion.jLabel4.setText("...");
+                        } else {
+                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+                                HC.Jovensano.jLabel4.setText("...");
+                            }
                         }
                     }
                 }
@@ -286,8 +303,8 @@ public class ProcedimientosM extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void TablemonitorizacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablemonitorizacionMouseEntered
-        int rowindex = Tablemonitorizacion.rowAtPoint(evt.getPoint());
-        int columnindex = Tablemonitorizacion.columnAtPoint(evt.getPoint());
+        rowindex = Tablemonitorizacion.rowAtPoint(evt.getPoint());
+        columnindex = Tablemonitorizacion.columnAtPoint(evt.getPoint());
         Tablemonitorizacion.setToolTipText((String) Tablemonitorizacion.getValueAt(rowindex, columnindex));
     }//GEN-LAST:event_TablemonitorizacionMouseEntered
 
@@ -352,22 +369,22 @@ public class ProcedimientosM extends javax.swing.JPanel {
     public void quitarrgistro() {
         if (modelo.getRowCount() > 0 && Tablemonitorizacion.getSelectedRow() > -1) {
             if (modelo.getValueAt(Tablemonitorizacion.getSelectedRow(), 4).equals("2")) {
-                Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
-                act.actprocedimiento(d, modelo.getValueAt(Tablemonitorizacion.getSelectedRow(), 0).toString(), "0");
-                modelo.removeRow(Tablemonitorizacion.getSelectedRow());
+                modelo.setValueAt("0", rowindex, 4);
+                est = "3";
             } else {
                 if (modelo.getRowCount() > 0 && Tablemonitorizacion.getSelectedRow() > -1) {
-                    modelo.removeRow(Tablemonitorizacion.getSelectedRow());
+                    if (modelo.getValueAt(Tablemonitorizacion.getSelectedRow(), 4).equals("1")) {
+                        modelo.removeRow(Tablemonitorizacion.getSelectedRow());
+                    }
                 }
             }
         }
     }
 
     public void actprocemon() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
         if (est.toString().equals("2")) {
-            Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-            String d = (c[0][0].toString());
             for (int i = 0; i < modelo.getRowCount(); i++) {
                 if (modelo.getValueAt(i, 4).equals("1")) {
                     modelo.setValueAt("2", i, 4);
@@ -375,8 +392,18 @@ public class ProcedimientosM extends javax.swing.JPanel {
                             pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString());
                 }
             }
-            est = "1";
+        } else {
+            if (est.toString().equals("3")) {
+                for (int i = 0; i < modelo.getRowCount(); i++) {
+                    if (modelo.getValueAt(i, 4).equals("0")) {
+                        act.actprocedimiento(d, modelo.getValueAt(Tablemonitorizacion.getSelectedRow(), 0).toString(), "0");
+                    }
+                }
+            }
         }
+        est = "1";
+        Tablemonitorizacion.removeAll();
+        tabla();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

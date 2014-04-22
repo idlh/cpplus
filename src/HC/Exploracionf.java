@@ -36,6 +36,51 @@ public class Exploracionf extends javax.swing.JPanel {
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11 || pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
             selectApgar();
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 1) {
+            jTabbedPane1.remove(jPanel5);
+        } else {
+            if (jCheckBox4.isSelected() == false) {
+                jDateChooser2.setEnabled(false);
+            } else {
+                jDateChooser2.setEnabled(true);
+            }
+            if (jCheckBox7.isSelected() == false) {
+                jDateChooser3.setEnabled(false);
+                jCheckBox8.setEnabled(false);
+                jCheckBox9.setEnabled(false);
+                jCheckBox10.setEnabled(false);
+            } else {
+                jDateChooser3.setEnabled(true);
+                jCheckBox8.setEnabled(true);
+                jCheckBox9.setEnabled(true);
+                jCheckBox10.setEnabled(true);
+            }
+            if (pypAdmAsistCon.getIdAgend().getIdPaciente().getGenero().toString().equals("F")) {
+                jLabel36.setText("Desarrollo Mamario:");
+                jComboBox7.addItem("Estadio 1 (S1)");
+                jComboBox7.addItem("Estadio 2 (S2)");
+                jComboBox7.addItem("Estadio 3 (S3)");
+                jComboBox7.addItem("Estadio 4 (S4)");
+                jComboBox7.addItem("Estadio 5 (S5)");
+                jComboBox8.addItem("Estadio 1 (P1)");
+                jComboBox8.addItem("Estadio 2 (P2)");
+                jComboBox8.addItem("Estadio 3 (P3)");
+                jComboBox8.addItem("Estadio 4 (P4)");
+                jComboBox8.addItem("Estadio 5 (P5)");
+            } else {
+                jLabel36.setText("Desarrollo Genital:");
+                jComboBox7.addItem("Estadio 1 (G1)");
+                jComboBox7.addItem("Estadio 2 (G2)");
+                jComboBox7.addItem("Estadio 3 (G3)");
+                jComboBox7.addItem("Estadio 4 (G4)");
+                jComboBox7.addItem("Estadio 5 (G5)");
+                jComboBox8.addItem("Estadio 1 (P1)");
+                jComboBox8.addItem("Estadio 2 (P2)");
+                jComboBox8.addItem("Estadio 3 (P3)");
+                jComboBox8.addItem("Estadio 4 (P4)");
+                jComboBox8.addItem("Estadio 5 (P5)");
+            }
+        }
     }
 
     /**
@@ -121,6 +166,22 @@ public class Exploracionf extends javax.swing.JPanel {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel36 = new javax.swing.JLabel();
+        jComboBox7 = new javax.swing.JComboBox();
+        jLabel37 = new javax.swing.JLabel();
+        jComboBox8 = new javax.swing.JComboBox();
+        jPanel6 = new javax.swing.JPanel();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jLabel38 = new javax.swing.JLabel();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jPanel7 = new javax.swing.JPanel();
+        jCheckBox7 = new javax.swing.JCheckBox();
+        jLabel39 = new javax.swing.JLabel();
+        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        jCheckBox8 = new javax.swing.JCheckBox();
+        jCheckBox9 = new javax.swing.JCheckBox();
+        jCheckBox10 = new javax.swing.JCheckBox();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea5 = new javax.swing.JTextArea();
@@ -136,11 +197,15 @@ public class Exploracionf extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(558, 345));
         setMinimumSize(new java.awt.Dimension(558, 345));
+        setPreferredSize(new java.awt.Dimension(558, 345));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Exploración Física");
 
         jTabbedPane1.setFocusable(false);
+        jTabbedPane1.setMaximumSize(new java.awt.Dimension(550, 183));
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(550, 183));
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(550, 183));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -363,7 +428,7 @@ public class Exploracionf extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -686,7 +751,7 @@ public class Exploracionf extends javax.swing.JPanel {
                         .addComponent(jLabel34)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 47, Short.MAX_VALUE))
+                .addGap(10, 38, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -829,7 +894,7 @@ public class Exploracionf extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox6, 0, 166, Short.MAX_VALUE))
+                    .addComponent(jComboBox6, 0, 157, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -866,7 +931,174 @@ public class Exploracionf extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Apgar", jPanel4);
 
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel36.setText("Desarrollo Mamario:");
+
+        jComboBox7.setFocusable(false);
+
+        jLabel37.setText("Desarrollo Vello Pubiano:");
+
+        jComboBox8.setFocusable(false);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Valoracion visual"));
+
+        jCheckBox4.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox4.setText("Valoracion visual");
+        jCheckBox4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox4.setFocusable(false);
+        jCheckBox4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox4MouseReleased(evt);
+            }
+        });
+
+        jLabel38.setText("Fecha:");
+
+        jDateChooser2.setFocusable(false);
+        jDateChooser2.setMaxSelectableDate(new java.util.Date(253370786462000L));
+        jDateChooser2.setMaximumSize(new java.awt.Dimension(95, 20));
+        jDateChooser2.setMinimumSize(new java.awt.Dimension(95, 20));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jCheckBox4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jCheckBox4)
+                .addComponent(jLabel38))
+            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Valoracion Oral"));
+
+        jCheckBox7.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox7.setText("Valoracion Oral");
+        jCheckBox7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox7.setFocusable(false);
+        jCheckBox7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox7MouseReleased(evt);
+            }
+        });
+
+        jLabel39.setText("Fecha:");
+
+        jDateChooser3.setFocusable(false);
+        jDateChooser3.setMaximumSize(new java.awt.Dimension(95, 20));
+        jDateChooser3.setMinimumSize(new java.awt.Dimension(95, 20));
+
+        jCheckBox8.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox8.setText("Control placa");
+        jCheckBox8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox8.setFocusable(false);
+
+        jCheckBox9.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox9.setText("Fluor");
+        jCheckBox9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox9.setFocusable(false);
+
+        jCheckBox10.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox10.setText("Sellantes");
+        jCheckBox10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox10.setFocusable(false);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox9)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox7)
+                            .addComponent(jCheckBox8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox10)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel39)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(10, 10, 10))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox7)
+                            .addComponent(jLabel39))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox8))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox10)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox8, 0, 145, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel36)
+                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel37)
+                            .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31))
+        );
+
+        jTabbedPane1.addTab("Tanner", jPanel5);
+
         jTabbedPane2.setFocusable(false);
+        jTabbedPane2.setPreferredSize(new java.awt.Dimension(550, 183));
 
         jTextArea5.setColumns(20);
         jTextArea5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -973,13 +1205,14 @@ public class Exploracionf extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPane2)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -991,7 +1224,7 @@ public class Exploracionf extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -1312,6 +1545,28 @@ public class Exploracionf extends javax.swing.JPanel {
         selectApgar();
     }//GEN-LAST:event_jComboBox6ActionPerformed
 
+    private void jCheckBox4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox4MouseReleased
+        if (jCheckBox4.isSelected() == true) {
+            jDateChooser2.setEnabled(true);
+        } else {
+            jDateChooser2.setEnabled(false);
+        }
+    }//GEN-LAST:event_jCheckBox4MouseReleased
+
+    private void jCheckBox7MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox7MouseReleased
+        if (jCheckBox7.isSelected() == false) {
+            jDateChooser3.setEnabled(false);
+            jCheckBox8.setEnabled(false);
+            jCheckBox9.setEnabled(false);
+            jCheckBox10.setEnabled(false);
+        } else {
+            jDateChooser3.setEnabled(true);
+            jCheckBox8.setEnabled(true);
+            jCheckBox9.setEnabled(true);
+            jCheckBox10.setEnabled(true);
+        }
+    }//GEN-LAST:event_jCheckBox7MouseReleased
+
     public void actexpf() {
         int tas, tad, fc, talla;
         float fr, temp, peso, imc;
@@ -1441,6 +1696,9 @@ public class Exploracionf extends javax.swing.JPanel {
             ñ = jLabel35.getText().toString();
             act.apgarrecien(d, v, b, n, m, g, ñ);
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+            tanner();
+        }
     }
 
     public void cargarexploracion() {
@@ -1566,6 +1824,9 @@ public class Exploracionf extends javax.swing.JPanel {
             jComboBox5.setSelectedIndex(Integer.parseInt(recien[0][5].toString()));
             jComboBox6.setSelectedIndex(Integer.parseInt(recien[0][6].toString()));
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
+            cargartanner();
+        }
     }
 
     private void selectApgar() {
@@ -1614,19 +1875,127 @@ public class Exploracionf extends javax.swing.JPanel {
 
     }
 
+    public void tanner() {
+        String va1, va2, va3, va4, va5, va6, va7, fc1, fc2;
+        va1 = String.valueOf(jComboBox7.getSelectedIndex());
+        va2 = String.valueOf(jComboBox8.getSelectedIndex());
+        String patron = "yyyy-MM-dd";
+        SimpleDateFormat formato = new SimpleDateFormat(patron);
+        Date fc1p = jDateChooser2.getDate();
+        Date fc2p = jDateChooser3.getDate();
+        if (fc1p != null) {
+            fc1 = formato.format(fc1p);
+        } else {
+            fc1 = "0001-01-01";
+        }
+        if (fc2p != null) {
+            fc2 = formato.format(fc2p);
+        } else {
+            fc2 = "0001-01-01";
+        }
+        if (jCheckBox4.isSelected() == false) {
+            va3 = "0";
+        } else {
+            va3 = "1";
+        }
+        if (jCheckBox7.isSelected() == false) {
+            va4 = "0";
+        } else {
+            va4 = "1";
+        }
+        if (jCheckBox8.isSelected() == false) {
+            va5 = "0";
+        } else {
+            va5 = "1";
+        }
+        if (jCheckBox9.isSelected() == false) {
+            va6 = "0";
+        } else {
+            va6 = "1";
+        }
+        if (jCheckBox10.isSelected() == false) {
+            va7 = "0";
+        } else {
+            va7 = "1";
+        }
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        act.actjoven(d, va1, va2, va3, fc1, va4, fc2, va5, va7, va6);
+    }
+
+    public void cargartanner() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object pypdata[][] = Funciones.RetornarDatos(act.cargarjoven(d));
+        jComboBox7.setSelectedIndex(Integer.parseInt(pypdata[0][2].toString()));
+        jComboBox8.setSelectedIndex(Integer.parseInt(pypdata[0][3].toString()));
+        if (pypdata[0][4].toString().equals("0")) {
+            jCheckBox4.setSelected(false);
+        } else {
+            jCheckBox4.setSelected(true);
+            jDateChooser2.setEnabled(true);
+        }
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date fecha = formato.parse(pypdata[0][5].toString());
+            jDateChooser2.setDate(fecha);
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Error al convertir la fecha valoracion visual " + e.getMessage());
+        }
+        if (pypdata[0][6].toString().equals("false")) {
+            jCheckBox7.setSelected(false);
+        } else {
+            jCheckBox7.setSelected(true);
+            jDateChooser3.setEnabled(true);
+            jCheckBox8.setEnabled(true);
+            jCheckBox9.setEnabled(true);
+            jCheckBox10.setEnabled(true);
+        }
+        try {
+            Date fecha2 = formato.parse(pypdata[0][7].toString());
+            jDateChooser3.setDate(fecha2);
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Error al convertir la fecha valoracion odontologica " + e.getMessage());
+        }
+        if (pypdata[0][8].toString().equals("false")) {
+            jCheckBox8.setSelected(false);
+        } else {
+            jCheckBox8.setSelected(true);
+        }
+        if (pypdata[0][10].toString().equals("false")) {
+            jCheckBox9.setSelected(false);
+        } else {
+            jCheckBox9.setSelected(true);
+        }
+        if (pypdata[0][9].toString().equals("false")) {
+            jCheckBox10.setSelected(false);
+        } else {
+            jCheckBox10.setSelected(true);
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JCheckBox jCheckBox1;
+    javax.swing.JCheckBox jCheckBox10;
     javax.swing.JCheckBox jCheckBox2;
     javax.swing.JCheckBox jCheckBox3;
+    javax.swing.JCheckBox jCheckBox4;
     javax.swing.JCheckBox jCheckBox5;
     javax.swing.JCheckBox jCheckBox6;
+    javax.swing.JCheckBox jCheckBox7;
+    javax.swing.JCheckBox jCheckBox8;
+    javax.swing.JCheckBox jCheckBox9;
     javax.swing.JComboBox jComboBox1;
     javax.swing.JComboBox jComboBox2;
     javax.swing.JComboBox jComboBox3;
     javax.swing.JComboBox jComboBox4;
     javax.swing.JComboBox jComboBox5;
     javax.swing.JComboBox jComboBox6;
+    javax.swing.JComboBox jComboBox7;
+    javax.swing.JComboBox jComboBox8;
     com.toedter.calendar.JDateChooser jDateChooser1;
+    com.toedter.calendar.JDateChooser jDateChooser2;
+    com.toedter.calendar.JDateChooser jDateChooser3;
     javax.swing.JLabel jLabel1;
     javax.swing.JLabel jLabel10;
     javax.swing.JLabel jLabel11;
@@ -1656,6 +2025,10 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JLabel jLabel33;
     javax.swing.JLabel jLabel34;
     javax.swing.JLabel jLabel35;
+    javax.swing.JLabel jLabel36;
+    javax.swing.JLabel jLabel37;
+    javax.swing.JLabel jLabel38;
+    javax.swing.JLabel jLabel39;
     javax.swing.JLabel jLabel4;
     javax.swing.JLabel jLabel5;
     javax.swing.JLabel jLabel6;
@@ -1666,6 +2039,9 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JPanel jPanel2;
     javax.swing.JPanel jPanel3;
     javax.swing.JPanel jPanel4;
+    javax.swing.JPanel jPanel5;
+    javax.swing.JPanel jPanel6;
+    javax.swing.JPanel jPanel7;
     javax.swing.JScrollPane jScrollPane10;
     javax.swing.JScrollPane jScrollPane11;
     javax.swing.JScrollPane jScrollPane2;

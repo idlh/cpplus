@@ -37,6 +37,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
     Dialogos.HCDiag.Mostrarmed mosmed;
     Dialogos.HCDiag.Dprocedimientos prog;
     String est = "1";
+    int columnindex, rowindex;
     
     public Anticonceptivos(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
@@ -47,6 +48,8 @@ public class Anticonceptivos extends javax.swing.JPanel {
         });
         if (jCheckBox2.isSelected() == false) {
             jTextField1.setEnabled(false);
+        } else {
+            jTextField1.setEnabled(true);
         }
     }
 
@@ -192,6 +195,11 @@ public class Anticonceptivos extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/medicine.png"))); // NOI18N
         jLabel3.setText("Metodos Suministrables o inyectables");
 
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+        });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField1KeyTyped(evt);
@@ -359,8 +367,8 @@ public class Anticonceptivos extends javax.swing.JPanel {
     }//GEN-LAST:event_jMenuItem2MouseReleased
 
     private void tablaantiqMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaantiqMouseEntered
-        int rowindex = tablaantiq.rowAtPoint(evt.getPoint());
-        int columnindex = tablaantiq.columnAtPoint(evt.getPoint());
+        rowindex = tablaantiq.rowAtPoint(evt.getPoint());
+        columnindex = tablaantiq.columnAtPoint(evt.getPoint());
         tablaantiq.setToolTipText((String) tablaantiq.getValueAt(rowindex, columnindex));
     }//GEN-LAST:event_tablaantiqMouseEntered
 
@@ -387,6 +395,10 @@ public class Anticonceptivos extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        jTextField1.selectAll();
+    }//GEN-LAST:event_jTextField1FocusGained
     
     public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5, String r6, String r7, String r8) {
         try {
@@ -536,9 +548,9 @@ public class Anticonceptivos extends javax.swing.JPanel {
     }
     
     public void actprocedanti() {
-        if (est.toString().equals("2")) {
-            Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
             String d = (c[0][0].toString());
+            if (est.toString().equals("2")) {            
             for (int i = 0; i < modelo.getRowCount(); i++) {
                 if (modelo.getValueAt(i, 4).equals("1")) {
                     modelo.setValueAt("2", i, 4);
@@ -547,20 +559,30 @@ public class Anticonceptivos extends javax.swing.JPanel {
                     );
                 }
             }
-            est = "1";
+        } else {
+            if (est.toString().equals("3")) {
+                for (int i = 0; i < modelo.getRowCount(); i++) {
+                    if (modelo.getValueAt(i, 4).equals("0")) {
+                        act.actprocedimiento(d, modelo.getValueAt(tablaantiq.getSelectedRow(), 0).toString(), "0");
+                    }
+                }
+            }
         }
+        est = "1";
+        tablaantiq.removeAll();
+        tabla();
     }
     
     public void quitarrgistroanti() {
         if (modelo.getRowCount() > 0 && tablaantiq.getSelectedRow() > -1) {
             if (modelo.getValueAt(tablaantiq.getSelectedRow(), 4).equals("2")) {
-                Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
-                act.actprocedimiento(d, modelo.getValueAt(tablaantiq.getSelectedRow(), 0).toString(), "0");
-                modelo.removeRow(tablaantiq.getSelectedRow());
+                modelo.setValueAt("0", rowindex, 4);
+                est = "3";
             } else {
                 if (modelo.getRowCount() > 0 && tablaantiq.getSelectedRow() > -1) {
-                    modelo.removeRow(tablaantiq.getSelectedRow());
+                    if (modelo.getValueAt(tablaantiq.getSelectedRow(), 4).equals("1")) {
+                        modelo.removeRow(tablaantiq.getSelectedRow());
+                    }
                 }
             }
         }

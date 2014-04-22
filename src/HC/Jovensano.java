@@ -148,7 +148,7 @@ public class Jovensano extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel1.setText("Detección Temprana De Las Alteraciones Del Desarrollo Del Joven");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(10, 21, 334, 13);
+        jLabel1.setBounds(10, 21, 340, 13);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("CONSULTA DE PRIMERA VEZ POR MEDICINA GENERAL");
@@ -233,7 +233,7 @@ public class Jovensano extends javax.swing.JPanel {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText(" ");
         jPanel2.add(jLabel9);
-        jLabel9.setBounds(294, 25, 250, 13);
+        jLabel9.setBounds(354, 25, 190, 13);
 
         jPanel11.setBackground(new java.awt.Color(255, 227, 255));
 
@@ -673,9 +673,9 @@ public class Jovensano extends javax.swing.JPanel {
                 sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
+                sav.newadulto(d);
                 sav.newagineco(d);
                 sav.neweventose(d);
-                sav.newexpf(d);
                 sav.newjoven(d);
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 int id = Integer.parseInt(h[0][23].toString());
