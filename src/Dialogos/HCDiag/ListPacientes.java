@@ -28,6 +28,11 @@ import HC.Postparto;
 import HC.RecienNacido;
 import HC.Planificacion;
 import HC.Jovensano;
+import HC.Hipertenso;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -48,6 +53,8 @@ public class ListPacientes extends javax.swing.JDialog {
     public RecienNacido reciennacido;
     public Planificacion planificacion;
     public Jovensano jovensano;
+    public Hipertenso hipertenso;
+    private Funciones_AD funciones;
 
     public ListPacientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -180,8 +187,6 @@ public class ListPacientes extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(674, 378));
@@ -317,15 +322,6 @@ public class ListPacientes extends javax.swing.JDialog {
         jLabel12.setMinimumSize(new java.awt.Dimension(234, 28));
         jLabel12.setPreferredSize(new java.awt.Dimension(234, 28));
 
-        jLabel13.setText("<html><p>Раннее выявление НАРУШЕНИЙ развития молодых (10-29 лет)</p></html>");
-        jLabel13.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel13.setMaximumSize(new java.awt.Dimension(234, 28));
-        jLabel13.setMinimumSize(new java.awt.Dimension(234, 28));
-        jLabel13.setPreferredSize(new java.awt.Dimension(234, 28));
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel14.setText(" Программа:");
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -344,10 +340,6 @@ public class ListPacientes extends javax.swing.JDialog {
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -389,11 +381,7 @@ public class ListPacientes extends javax.swing.JDialog {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -520,6 +508,16 @@ public class ListPacientes extends javax.swing.JDialog {
             desktop.Contenedor_.repaint();
             this.dispose();
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
+            hipertenso = new Hipertenso(factory, pypAdmAsistCon);
+            hipertenso.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(hipertenso);
+            hipertenso.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
@@ -533,7 +531,26 @@ public class ListPacientes extends javax.swing.JDialog {
             jLabel4.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getNumDoc());
             jLabel8.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getContratante().getNombreEntidad());
             jLabel12.setText("<html><p>" + pypAdmAsistCon.getIdAgend().getIdPrograma().getNombre() + "</p></html>");
-
+            Date fechap = null;
+            Date fechaa = pypAdmAsistCon.getIdAgend().getIdPaciente().getFechaNacimiento();
+            String patron = "dd-MM-yyyy";
+            SimpleDateFormat formato = new SimpleDateFormat(patron);
+            String fc = formato.format(fechaa);
+            try {
+                fechap = new SimpleDateFormat("dd-MM-yyyy").parse(fc);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(null, "fecha0001 " + e.getMessage().toString(), ListPacientes.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            }
+            Calendar fechaNacimiento = Calendar.getInstance();
+            Calendar fechaActual = Calendar.getInstance();
+            fechaNacimiento.setTime(fechap);
+            int año = fechaActual.get(Calendar.YEAR) - fechaNacimiento.get(Calendar.YEAR);
+            int mes = fechaActual.get(Calendar.MONTH) - fechaNacimiento.get(Calendar.MONTH);
+            int dia = fechaActual.get(Calendar.DATE) - fechaNacimiento.get(Calendar.DATE);
+            if (mes < 0 || (mes == 0 && dia < 0)) {
+                año--;
+            }
+            jLabel10.setText(String.valueOf(año + " Años"));
         }
     }//GEN-LAST:event_jTable1MouseReleased
 
@@ -544,8 +561,6 @@ public class ListPacientes extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

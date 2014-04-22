@@ -5,10 +5,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import Clases.Procedimientos;
-import HC.OrdenesM;
-import HC.ProcedimientosL;
-import java.awt.event.MouseAdapter;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,23 +12,25 @@ import javax.swing.JOptionPane;
  * @author Camilo
  */
 public class Dprocedimientos extends javax.swing.JDialog {
-    Clases.Procedimientos mos = new Clases.Procedimientos();    
+
+    Clases.Procedimientos mos = new Clases.Procedimientos();
     public static DefaultTableModel modelo;
-    public Dprocedimientos(java.awt.Frame parent, boolean modal) {        
+    int rowindex, columnindex;
+
+    public Dprocedimientos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         nombreloquesea();
     }
-    
-    private void nombreloquesea(){    
+
+    private void nombreloquesea() {
         getModelo();
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        Funciones_AD.setOcultarColumnas(jTable1, new int[]{0,1,3});
+        Funciones_AD.setOcultarColumnas(jTable1, new int[]{0, 1, 3});
         Funciones_AD.setSizeColumnas(jTable1, new int[]{1}, new int[]{450});
     }
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -124,6 +122,16 @@ public class Dprocedimientos extends javax.swing.JDialog {
             }
         ));
         jTable1.setFocusable(false);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTable1MouseEntered(evt);
+            }
+        });
+        jTable1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jTable1MouseMoved(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sigA0.PNG"))); // NOI18N
@@ -179,12 +187,12 @@ public class Dprocedimientos extends javax.swing.JDialog {
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         TableRowSorter sorter = new TableRowSorter(modelo);
-        sorter.setRowFilter (RowFilter.regexFilter(jTextField1.getText().toUpperCase()));
-        jTable1.setRowSorter (sorter);
+        sorter.setRowFilter(RowFilter.regexFilter(jTextField1.getText().toUpperCase()));
+        jTable1.setRowSorter(sorter);
     }//GEN-LAST:event_jTextField1KeyReleased
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-      jTable1.setModel(new DefaultTableModel());
+        jTable1.setModel(new DefaultTableModel());
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
@@ -195,76 +203,92 @@ public class Dprocedimientos extends javax.swing.JDialog {
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         this.toFront();
     }//GEN-LAST:event_formMouseDragged
-    public void procotros(){
+
+    private void jTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseEntered
+        rowindex = jTable1.rowAtPoint(evt.getPoint());
+        columnindex = jTable1.columnAtPoint(evt.getPoint());
+        jTable1.setToolTipText((String) jTable1.getValueAt(rowindex, columnindex));
+    }//GEN-LAST:event_jTable1MouseEntered
+
+    private void jTable1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseMoved
+        rowindex = jTable1.rowAtPoint(evt.getPoint());
+        columnindex = jTable1.columnAtPoint(evt.getPoint());
+        jTable1.setToolTipText((String) jTable1.getValueAt(rowindex, columnindex));
+    }//GEN-LAST:event_jTable1MouseMoved
+    public void procotros() {
         try {
             mos.Mostrar_datosO();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
-    public void procquirur(){
+
+    public void procquirur() {
         try {
             mos.Mostrar_datosQ();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
-    
-    public void procanti(){
+
+    public void procanti() {
         try {
             mos.Mostrar_datosanti();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
-    
-    public void procimage(){
+
+    public void procimage() {
         try {
             mos.Mostrar_datosI();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
-    public void proclab(){
+
+    public void proclab() {
         try {
             mos.Mostrar_datosL();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-                
+
     }
-    public void procMon(){
+
+    public void procMon() {
         try {
             mos.Mostrar_datosM();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
-     public void getModelo(){
-         modelo = new DefaultTableModel(
-                 null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria"}) {
-                     Class[] types = new Class[]{
-                         java.lang.String.class,
-                         java.lang.String.class,
-                         java.lang.String.class,
-                         java.lang.String.class
-                     };
-                     boolean[] canEdit = new boolean[]{
-                         false, false, false, false
-                     };
 
-                     @Override
-                     public Class getColumnClass(int columnIndex) {
-                         return types[columnIndex];
-                     }
+    public void getModelo() {
+        modelo = new DefaultTableModel(
+                null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria"}) {
+                    Class[] types = new Class[]{
+                        java.lang.String.class,
+                        java.lang.String.class,
+                        java.lang.String.class,
+                        java.lang.String.class
+                    };
+                    boolean[] canEdit = new boolean[]{
+                        false, false, false, false
+                    };
 
-                     @Override
-                     public boolean isCellEditable(int rowIndex, int colIndex) {
-                         return canEdit[colIndex];
-                     }
-                 };
-         jTable1.setModel(modelo);
-    }   
+                    @Override
+                    public Class getColumnClass(int columnIndex) {
+                        return types[columnIndex];
+                    }
+
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int colIndex) {
+                        return canEdit[colIndex];
+                    }
+                };
+        jTable1.setModel(modelo);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

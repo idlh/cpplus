@@ -18,6 +18,7 @@ public class DgCie10 extends javax.swing.JDialog {
     public DefaultTableModel modelo;
     private final EntityManagerFactory factory;
     private final Object dato[] = null;
+    int rowindex, columnindex;
 
     public DgCie10(java.awt.Frame parent, boolean modal, EntityManagerFactory factory) {
         super(parent, modal);
@@ -156,6 +157,16 @@ public class DgCie10 extends javax.swing.JDialog {
 
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTable1MouseEntered(evt);
+            }
+        });
+        jTable1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jTable1MouseMoved(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -217,6 +228,18 @@ public class DgCie10 extends javax.swing.JDialog {
         sorter.setRowFilter (RowFilter.regexFilter(jTextField1.getText().toUpperCase()));
         jTable1.setRowSorter (sorter);
     }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void jTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseEntered
+        rowindex = jTable1.rowAtPoint(evt.getPoint());
+        columnindex = jTable1.columnAtPoint(evt.getPoint());
+        jTable1.setToolTipText((String) jTable1.getValueAt(rowindex, columnindex));
+    }//GEN-LAST:event_jTable1MouseEntered
+
+    private void jTable1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseMoved
+        rowindex = jTable1.rowAtPoint(evt.getPoint());
+        columnindex = jTable1.columnAtPoint(evt.getPoint());
+        jTable1.setToolTipText((String) jTable1.getValueAt(rowindex, columnindex));
+    }//GEN-LAST:event_jTable1MouseMoved
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButton1;
