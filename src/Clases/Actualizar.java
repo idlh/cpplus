@@ -768,9 +768,9 @@ public class Actualizar {
             bd.preparedStatement.setString(7, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a019 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a021 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a019 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a021 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -809,9 +809,9 @@ public class Actualizar {
             bd.preparedStatement.setString(16, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a020 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a022 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a020 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a022 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -838,9 +838,9 @@ public class Actualizar {
             bd.preparedStatement.setString(4, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a013 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a023 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a013 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a023 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -873,9 +873,9 @@ public class Actualizar {
             bd.preparedStatement.setString(10, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a014 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a024 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a014 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a024 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
