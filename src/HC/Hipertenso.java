@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author Camilo
  */
-public class Planificacion extends javax.swing.JPanel {
+public class Hipertenso extends javax.swing.JPanel {
 
     private final EntityManagerFactory factory;
     private final PypAdmAsistCon pypAdmAsistCon;
@@ -29,7 +29,7 @@ public class Planificacion extends javax.swing.JPanel {
     Actualizar act = new Actualizar();
     String Estadofinal = "1";
 
-    public Planificacion(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
+    public Hipertenso(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.factory = factory;
         this.pypAdmAsistCon = pypAdmAsistCon;
@@ -146,9 +146,9 @@ public class Planificacion extends javax.swing.JPanel {
         jPanel2.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel1.setText("Atencion en Planificacion Familiar a Hombres y Mujeres");
+        jLabel1.setText("Hipertension Arterial");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(10, 21, 279, 13);
+        jLabel1.setBounds(10, 21, 107, 13);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("CONSULTA DE PRIMERA VEZ POR MEDICINA GENERAL");
@@ -584,7 +584,7 @@ public class Planificacion extends javax.swing.JPanel {
 
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
         this.jPanel4.removeAll();
-        motivoc.jLabel3.setText("Atencion en Planificacion Familiar a Hombres y Mujeres");
+        motivoc.jLabel3.setText("Hipertension Arterial");
         new Clases.Explode(jPanel4, motivoc).play();
     }//GEN-LAST:event_jLabel2MouseReleased
 
@@ -634,7 +634,6 @@ public class Planificacion extends javax.swing.JPanel {
                 sav.newagineco(d);
                 sav.neweventose(d);
                 sav.newexpf(d);
-                sav.newplanificacion(d);
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 if (h[0][23].toString().equals("0")) {
                     motivoc.actualizardatos();
@@ -676,7 +675,6 @@ public class Planificacion extends javax.swing.JPanel {
                 sav.newagineco(d);
                 sav.neweventose(d);
                 sav.newexpf(d);
-                sav.newplanificacion(d);
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 int id = Integer.parseInt(h[0][23].toString());
                 if (id == 0) {

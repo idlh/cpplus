@@ -1261,7 +1261,7 @@ public class Exploracionf extends javax.swing.JPanel {
 
     private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9') || jTextField1.getText().length() >= 3) {
+        if ((car < '0' || car > '9') || jTextField5.getText().length() >= 3) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField5KeyTyped
