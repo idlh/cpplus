@@ -27,6 +27,7 @@ import HC.Controlprenatal;
 import HC.Postparto;
 import HC.RecienNacido;
 import HC.Planificacion;
+import HC.Jovensano;
 
 /**
  *
@@ -46,6 +47,7 @@ public class ListPacientes extends javax.swing.JDialog {
     public Postparto postparto;
     public RecienNacido reciennacido;
     public Planificacion planificacion;
+    public Jovensano jovensano;
 
     public ListPacientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -504,6 +506,16 @@ public class ListPacientes extends javax.swing.JDialog {
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(planificacion);
             planificacion.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
+            jovensano = new Jovensano(factory, pypAdmAsistCon);
+            jovensano.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(jovensano);
+            jovensano.setVisible(true);
             desktop.Contenedor_.validate();
             desktop.Contenedor_.repaint();
             this.dispose();
