@@ -896,4 +896,40 @@ public class Actualizar {
                 + " FROM `database`.`pyp_joven`"
                 + " WHERE (`pyp_joven`.`idhistoria`='" + id + "')";
     }
+
+    public void acthta(String id, String hta, String htac, String dm1, String dm1c, String dm2, String dm2c, String dislipidemia,
+            String dislipidemiac, String estadio, String riesgo) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("update `database`.`pyp_hta`"
+                    + " set `pyp_hta`.`hta`=?, `pyp_hta`.`htac`=?, `pyp_hta`.`dm1`=?, `pyp_hta`.`dm1c`=?,"
+                    + "    `pyp_hta`.`dm2`=?, `pyp_hta`.`dm2c`=?, `pyp_hta`.`dislipidemia`=?, `pyp_hta`.`dislipidemiac`=?,"
+                    + "    `pyp_hta`.`estadio`=?, `pyp_hta`.`riesgo`=?"
+                    + "    where(`pyp_hta`.`idhistoria`=?)");
+            bd.preparedStatement.setString(1, hta);
+            bd.preparedStatement.setString(2, htac);
+            bd.preparedStatement.setString(3, dm1);
+            bd.preparedStatement.setString(4, dm1c);
+            bd.preparedStatement.setString(5, dm2);
+            bd.preparedStatement.setString(6, dm2c);
+            bd.preparedStatement.setString(7, dislipidemia);
+            bd.preparedStatement.setString(8, dislipidemiac);
+            bd.preparedStatement.setString(9, estadio);
+            bd.preparedStatement.setString(10, riesgo);
+            bd.preparedStatement.setString(11, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a025 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a025 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public String cargarhta(String id) {
+        return "SELECT * "
+                + "FROM `database`.`pyp_hta`"
+                + "WHERE(`pyp_hta`.`idhistoria`='" + id + "')";
+    }
 }
