@@ -261,6 +261,10 @@ public class Procedimientos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("Monitorizacion");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("Monitorizacion");
+                                }
                             }
                         }
                     }
@@ -288,6 +292,10 @@ public class Procedimientos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("...");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("...");
+                                }
                             }
                         }
                     }
@@ -315,6 +323,10 @@ public class Procedimientos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("Procedimientos de laboratorio");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("Procedimientos de laboratorio");
+                                }
                             }
                         }
                     }
@@ -342,6 +354,10 @@ public class Procedimientos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("...");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("...");
+                                }
                             }
                         }
                     }
@@ -369,6 +385,10 @@ public class Procedimientos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("Procedimientos Imagenología");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("Procedimientos Imagenología");
+                                }
                             }
                         }
                     }
@@ -396,6 +416,10 @@ public class Procedimientos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("...");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("...");
+                                }
                             }
                         }
                     }
@@ -423,6 +447,10 @@ public class Procedimientos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("Otros procedimientos");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("Otros procedimientos");
+                                }
                             }
                         }
                     }
@@ -450,6 +478,10 @@ public class Procedimientos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("...");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("...");
+                                }
                             }
                         }
                     }
@@ -477,6 +509,10 @@ public class Procedimientos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("Quirurgicos");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("Quirurgicos");
+                                }
                             }
                         }
                     }
@@ -504,6 +540,10 @@ public class Procedimientos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("...");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("...");
+                                }
                             }
                         }
                     }
@@ -535,6 +575,10 @@ public class Procedimientos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 new Clases.Explode(Modulo_PyP.d.listPacientes.jovensano.ordenesm.jPanel1, procesosmonitorizacion).play();
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    new Clases.Explode(Modulo_PyP.d.listPacientes.hipertenso.ordenesm.jPanel1, procesosmonitorizacion).play();
+                                }
                             }
                         }
                     }
@@ -566,6 +610,10 @@ public class Procedimientos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 new Clases.Explode(Modulo_PyP.d.listPacientes.jovensano.ordenesm.jPanel1, procesoslaboratorios).play();
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    new Clases.Explode(Modulo_PyP.d.listPacientes.hipertenso.ordenesm.jPanel1, procesoslaboratorios).play();
+                                }
                             }
                         }
                     }
@@ -596,6 +644,10 @@ public class Procedimientos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 new Clases.Explode(Modulo_PyP.d.listPacientes.jovensano.ordenesm.jPanel1, procesosimagenologia).play();
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    new Clases.Explode(Modulo_PyP.d.listPacientes.hipertenso.ordenesm.jPanel1, procesosimagenologia).play();
+                                }
                             }
                         }
                     }
@@ -626,6 +678,10 @@ public class Procedimientos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 new Clases.Explode(Modulo_PyP.d.listPacientes.jovensano.ordenesm.jPanel1, procesosquirurgicos).play();
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    new Clases.Explode(Modulo_PyP.d.listPacientes.hipertenso.ordenesm.jPanel1, procesosquirurgicos).play();
+                                }
                             }
                         }
                     }
@@ -656,6 +712,10 @@ public class Procedimientos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 new Clases.Explode(Modulo_PyP.d.listPacientes.jovensano.ordenesm.jPanel1, procesosotros).play();
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    new Clases.Explode(Modulo_PyP.d.listPacientes.hipertenso.ordenesm.jPanel1, procesosotros).play();
+                                }
                             }
                         }
                     }

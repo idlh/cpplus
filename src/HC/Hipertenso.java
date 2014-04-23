@@ -574,6 +574,7 @@ public class Hipertenso extends javax.swing.JPanel {
         jPanel17.setBackground(new Color(255, 227, 255));
     }//GEN-LAST:event_jLabel11MouseExited
 
+    
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
         jLabel4.setText("...");
     }//GEN-LAST:event_jButton1MouseExited
@@ -634,6 +635,7 @@ public class Hipertenso extends javax.swing.JPanel {
                 sav.newagineco(d);
                 sav.neweventose(d);
                 sav.newexpf(d);
+                sav.newhta(d);
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 if (h[0][23].toString().equals("0")) {
                     motivoc.actualizardatos();
@@ -675,6 +677,7 @@ public class Hipertenso extends javax.swing.JPanel {
                 sav.newagineco(d);
                 sav.neweventose(d);
                 sav.newexpf(d);
+                sav.newhta(d);
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 int id = Integer.parseInt(h[0][23].toString());
                 if (id == 0) {

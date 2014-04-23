@@ -185,6 +185,10 @@ public class ProcedimientosQ extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("Añadir procedimiento");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("Añadir procedimiento");
+                                }
                             }
                         }
                     }
@@ -211,6 +215,10 @@ public class ProcedimientosQ extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("...");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("...");
+                                }
                             }
                         }
                     }
@@ -237,6 +245,10 @@ public class ProcedimientosQ extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("Quitar procedimiento");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("Quitar procedimiento");
+                                }
                             }
                         }
                     }
@@ -263,6 +275,10 @@ public class ProcedimientosQ extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("...");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("...");
+                                }
                             }
                         }
                     }
@@ -383,8 +399,8 @@ public class ProcedimientosQ extends javax.swing.JPanel {
 
     public void actprocedquirur() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-            String d = (c[0][0].toString());
-            if (est.toString().equals("2")) {            
+        String d = (c[0][0].toString());
+        if (est.toString().equals("2")) {
             for (int i = 0; i < modelo.getRowCount(); i++) {
                 if (modelo.getValueAt(i, 4).equals("1")) {
                     modelo.setValueAt("2", i, 4);

@@ -81,6 +81,9 @@ public class Exploracionf extends javax.swing.JPanel {
                 jComboBox8.addItem("Estadio 5 (P5)");
             }
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 6) {
+            jTabbedPane1.remove(jPanel8);
+        }
     }
 
     /**
@@ -182,6 +185,20 @@ public class Exploracionf extends javax.swing.JPanel {
         jCheckBox8 = new javax.swing.JCheckBox();
         jCheckBox9 = new javax.swing.JCheckBox();
         jCheckBox10 = new javax.swing.JCheckBox();
+        jPanel8 = new javax.swing.JPanel();
+        jCheckBox11 = new javax.swing.JCheckBox();
+        jCheckBox12 = new javax.swing.JCheckBox();
+        jCheckBox13 = new javax.swing.JCheckBox();
+        jCheckBox14 = new javax.swing.JCheckBox();
+        jCheckBox15 = new javax.swing.JCheckBox();
+        jCheckBox16 = new javax.swing.JCheckBox();
+        jCheckBox17 = new javax.swing.JCheckBox();
+        jCheckBox18 = new javax.swing.JCheckBox();
+        jPanel9 = new javax.swing.JPanel();
+        jComboBox9 = new javax.swing.JComboBox();
+        jComboBox10 = new javax.swing.JComboBox();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea5 = new javax.swing.JTextArea();
@@ -203,9 +220,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jLabel3.setText("Exploración Física");
 
         jTabbedPane1.setFocusable(false);
-        jTabbedPane1.setMaximumSize(new java.awt.Dimension(550, 183));
-        jTabbedPane1.setMinimumSize(new java.awt.Dimension(550, 183));
-        jTabbedPane1.setPreferredSize(new java.awt.Dimension(550, 183));
+        jTabbedPane1.setMaximumSize(new java.awt.Dimension(550, 168));
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(550, 168));
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(550, 168));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -932,6 +949,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jTabbedPane1.addTab("Apgar", jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setMaximumSize(new java.awt.Dimension(545, 111));
+        jPanel5.setMinimumSize(new java.awt.Dimension(545, 111));
+        jPanel5.setPreferredSize(new java.awt.Dimension(545, 111));
 
         jLabel36.setText("Desarrollo Mamario:");
 
@@ -1097,6 +1117,140 @@ public class Exploracionf extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Tanner", jPanel5);
 
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setFocusable(false);
+        jPanel8.setMaximumSize(new java.awt.Dimension(545, 80));
+        jPanel8.setMinimumSize(new java.awt.Dimension(545, 80));
+        jPanel8.setPreferredSize(new java.awt.Dimension(545, 80));
+
+        jCheckBox11.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox11.setText("HTA");
+        jCheckBox11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox11.setFocusable(false);
+
+        jCheckBox12.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox12.setText("DM1");
+        jCheckBox12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox12.setFocusable(false);
+
+        jCheckBox13.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox13.setText("DM2");
+        jCheckBox13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox13.setFocusable(false);
+
+        jCheckBox14.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox14.setText("Dislipidemia");
+        jCheckBox14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox14.setFocusable(false);
+
+        jCheckBox15.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox15.setText("Controlado");
+        jCheckBox15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox15.setFocusable(false);
+
+        jCheckBox16.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox16.setText("Controlado");
+        jCheckBox16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox16.setFocusable(false);
+
+        jCheckBox17.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox17.setText("Controlado");
+        jCheckBox17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox17.setFocusable(false);
+
+        jCheckBox18.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox18.setText("Controlado");
+        jCheckBox18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox18.setFocusable(false);
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Evaluacion Cardiovascular"));
+
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Pre HTA", "1", "2" }));
+        jComboBox9.setFocusable(false);
+
+        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Bajo: < 10 %", "Moderado: 10 - 20 %", "Alto: > 20 %", "Muy Alto" }));
+        jComboBox10.setFocusable(false);
+
+        jLabel40.setText("Estadío:");
+
+        jLabel41.setText("Riesgo Cardiovascular:");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel40)
+                    .addComponent(jLabel41))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBox10, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel40))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel41))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox11, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox12, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox13, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox14))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox15)
+                    .addComponent(jCheckBox16)
+                    .addComponent(jCheckBox17)
+                    .addComponent(jCheckBox18))
+                .addGap(6, 6, 6)
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jCheckBox11)
+                        .addGap(7, 7, 7)
+                        .addComponent(jCheckBox12)
+                        .addGap(5, 5, 5)
+                        .addComponent(jCheckBox13)
+                        .addGap(6, 6, 6)
+                        .addComponent(jCheckBox14))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jCheckBox15)
+                        .addGap(7, 7, 7)
+                        .addComponent(jCheckBox16)
+                        .addGap(5, 5, 5)
+                        .addComponent(jCheckBox17)
+                        .addGap(6, 6, 6)
+                        .addComponent(jCheckBox18))))
+        );
+
+        jTabbedPane1.addTab("HTA", jPanel8);
+
         jTabbedPane2.setFocusable(false);
         jTabbedPane2.setPreferredSize(new java.awt.Dimension(550, 183));
 
@@ -1222,9 +1376,9 @@ public class Exploracionf extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -1626,7 +1780,7 @@ public class Exploracionf extends javax.swing.JPanel {
             if (fpp != null) {
                 fppu = formato.format(fpp);
             } else {
-                fppu = "0001-01-01";
+                fppu = "1845-01-01";
             }
             if (jCheckBox1.isSelected() == true) {
                 q = "1";
@@ -1698,6 +1852,9 @@ public class Exploracionf extends javax.swing.JPanel {
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
             tanner();
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+            acthta();
         }
     }
 
@@ -1827,6 +1984,9 @@ public class Exploracionf extends javax.swing.JPanel {
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
             cargartanner();
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+            cargarhta();
+        }
     }
 
     private void selectApgar() {
@@ -1886,7 +2046,7 @@ public class Exploracionf extends javax.swing.JPanel {
         if (fc1p != null) {
             fc1 = formato.format(fc1p);
         } else {
-            fc1 = "0001-01-01";
+            fc1 = "1845-01-01";
         }
         if (fc2p != null) {
             fc2 = formato.format(fc2p);
@@ -1974,9 +2134,114 @@ public class Exploracionf extends javax.swing.JPanel {
         }
     }
 
+    public void acthta() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        String var1, var2, var3, var4, var5, var6, var7, var8, var9, var10;
+        if (jCheckBox11.isSelected() == false) {
+            var1 = "0";
+        } else {
+            var1 = "1";
+        }
+        if (jCheckBox15.isSelected() == false) {
+            var2 = "0";
+        } else {
+            var2 = "1";
+        }
+        if (jCheckBox12.isSelected() == false) {
+            var3 = "0";
+        } else {
+            var3 = "1";
+        }
+        if (jCheckBox16.isSelected() == false) {
+            var4 = "0";
+        } else {
+            var4 = "1";
+        }
+        if (jCheckBox13.isSelected() == false) {
+            var5 = "0";
+        } else {
+            var5 = "1";
+        }
+        if (jCheckBox17.isSelected() == false) {
+            var6 = "0";
+        } else {
+            var6 = "1";
+        }
+        if (jCheckBox14.isSelected() == false) {
+            var7 = "0";
+        } else {
+            var7 = "1";
+        }
+        if (jCheckBox18.isSelected() == false) {
+            var8 = "0";
+        } else {
+            var8 = "1";
+        }
+        var9 = String.valueOf(jComboBox9.getSelectedIndex());
+        var10 = String.valueOf(jComboBox10.getSelectedIndex());
+        act.acthta(d, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10);
+    }
+
+    public void cargarhta() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object pypdata[][] = Funciones.RetornarDatos(act.cargarhta(d));
+        if (pypdata[0][2].toString().equals("0")) {
+            jCheckBox11.setSelected(false);
+        } else {
+            jCheckBox11.setSelected(true);
+        }
+        if (pypdata[0][3].toString().equals("0")) {
+            jCheckBox15.setSelected(false);
+        } else {
+            jCheckBox15.setSelected(true);
+        }
+        if (pypdata[0][4].toString().equals("0")) {
+            jCheckBox12.setSelected(false);
+        } else {
+            jCheckBox12.setSelected(true);
+        }
+        if (pypdata[0][5].toString().equals("0")) {
+            jCheckBox16.setSelected(false);
+        } else {
+            jCheckBox16.setSelected(true);
+        }
+        if (pypdata[0][6].toString().equals("0")) {
+            jCheckBox13.setSelected(false);
+        } else {
+            jCheckBox13.setSelected(true);
+        }
+        if (pypdata[0][7].toString().equals("0")) {
+            jCheckBox17.setSelected(false);
+        } else {
+            jCheckBox17.setSelected(true);
+        }
+        if (pypdata[0][8].toString().equals("0")) {
+            jCheckBox14.setSelected(false);
+        } else {
+            jCheckBox14.setSelected(true);
+        }
+        if (pypdata[0][9].toString().equals("0")) {
+            jCheckBox18.setSelected(false);
+        } else {
+            jCheckBox18.setSelected(true);
+        }
+        jComboBox9.setSelectedIndex(Integer.parseInt(pypdata[0][10].toString()));
+        jComboBox10.setSelectedIndex(Integer.parseInt(pypdata[0][11].toString()));
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JCheckBox jCheckBox1;
     javax.swing.JCheckBox jCheckBox10;
+    javax.swing.JCheckBox jCheckBox11;
+    javax.swing.JCheckBox jCheckBox12;
+    javax.swing.JCheckBox jCheckBox13;
+    javax.swing.JCheckBox jCheckBox14;
+    javax.swing.JCheckBox jCheckBox15;
+    javax.swing.JCheckBox jCheckBox16;
+    javax.swing.JCheckBox jCheckBox17;
+    javax.swing.JCheckBox jCheckBox18;
     javax.swing.JCheckBox jCheckBox2;
     javax.swing.JCheckBox jCheckBox3;
     javax.swing.JCheckBox jCheckBox4;
@@ -1986,6 +2251,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JCheckBox jCheckBox8;
     javax.swing.JCheckBox jCheckBox9;
     javax.swing.JComboBox jComboBox1;
+    javax.swing.JComboBox jComboBox10;
     javax.swing.JComboBox jComboBox2;
     javax.swing.JComboBox jComboBox3;
     javax.swing.JComboBox jComboBox4;
@@ -1993,6 +2259,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JComboBox jComboBox6;
     javax.swing.JComboBox jComboBox7;
     javax.swing.JComboBox jComboBox8;
+    javax.swing.JComboBox jComboBox9;
     com.toedter.calendar.JDateChooser jDateChooser1;
     com.toedter.calendar.JDateChooser jDateChooser2;
     com.toedter.calendar.JDateChooser jDateChooser3;
@@ -2030,6 +2297,8 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JLabel jLabel38;
     javax.swing.JLabel jLabel39;
     javax.swing.JLabel jLabel4;
+    javax.swing.JLabel jLabel40;
+    javax.swing.JLabel jLabel41;
     javax.swing.JLabel jLabel5;
     javax.swing.JLabel jLabel6;
     javax.swing.JLabel jLabel7;
@@ -2042,6 +2311,8 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JPanel jPanel5;
     javax.swing.JPanel jPanel6;
     javax.swing.JPanel jPanel7;
+    javax.swing.JPanel jPanel8;
+    javax.swing.JPanel jPanel9;
     javax.swing.JScrollPane jScrollPane10;
     javax.swing.JScrollPane jScrollPane11;
     javax.swing.JScrollPane jScrollPane2;

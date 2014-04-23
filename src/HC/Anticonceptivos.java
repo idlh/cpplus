@@ -605,7 +605,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
             da2 = "0";
         }
         if (jTextField1.getText().toString().equals("")) {
-            da3 = "0";
+            da3 = "998";
         } else {
             da3 = jTextField1.getText().toString();
         }        

@@ -213,6 +213,10 @@ public class Medicamentos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("Añadir medicamento");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("Añadir medicamento");
+                                }
                             }
                         }
                     }
@@ -239,6 +243,10 @@ public class Medicamentos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("...");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("...");
+                                }
                             }
                         }
                     }
@@ -265,6 +273,10 @@ public class Medicamentos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("Quitar medicamento");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("Quitar diagnostico");
+                                }
                             }
                         }
                     }
@@ -291,6 +303,10 @@ public class Medicamentos extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("...");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("...");
+                                }
                             }
                         }
                     }

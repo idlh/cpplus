@@ -258,6 +258,10 @@ public class OrdenesM extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("Medicamentos");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("Medicamentos");
+                                }
                             }
                         }
                     }
@@ -286,6 +290,10 @@ public class OrdenesM extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("...");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("...");
+                                }
                             }
                         }
                     }
@@ -313,6 +321,10 @@ public class OrdenesM extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("Procedimientos");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("Procedimientos");
+                                }
                             }
                         }
                     }
@@ -340,6 +352,10 @@ public class OrdenesM extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("...");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("...");
+                                }
                             }
                         }
                     }
@@ -367,6 +383,10 @@ public class OrdenesM extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("Recomendaciones");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("Recomendaciones");
+                                }
                             }
                         }
                     }
@@ -394,6 +414,10 @@ public class OrdenesM extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("...");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("...");
+                                }
                             }
                         }
                     }
@@ -422,6 +446,10 @@ public class OrdenesM extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 new Clases.Explode(Modulo_PyP.d.listPacientes.jovensano.ordenesm.jPanel1, medicamentos).play();
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    new Clases.Explode(Modulo_PyP.d.listPacientes.hipertenso.ordenesm.jPanel1, medicamentos).play();
+                                }
                             }
                         }
                     }
@@ -476,6 +504,10 @@ public class OrdenesM extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 new Clases.Explode(Modulo_PyP.d.listPacientes.jovensano.ordenesm.jPanel1, recomendaciones).play();
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    new Clases.Explode(Modulo_PyP.d.listPacientes.hipertenso.ordenesm.jPanel1, recomendaciones).play();
+                                }
                             }
                         }
                     }
