@@ -1245,6 +1245,10 @@ public class AntecedentesP extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("Generales");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("Generales");
+                                }
                             }
                         }
                     }
@@ -1272,6 +1276,10 @@ public class AntecedentesP extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("Metodos anticonceptivos");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("Metodos anticonceptivos");
+                                }
                             }
                         }
                     }
@@ -1299,6 +1307,10 @@ public class AntecedentesP extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("...");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("...");
+                                }
                             }
                         }
                     }
@@ -1326,6 +1338,10 @@ public class AntecedentesP extends javax.swing.JPanel {
                         } else {
                             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
                                 HC.Jovensano.jLabel4.setText("...");
+                            } else {
+                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
+                                    HC.Hipertenso.jLabel4.setText("...");
+                                }
                             }
                         }
                     }
@@ -1581,7 +1597,7 @@ public class AntecedentesP extends javax.swing.JPanel {
                 c8 = "1";
             }
             if (jTextField4.getText().toString().equals("")) {
-                c9 = "0";
+                c9 = "98";
             } else {
                 c9 = jTextField4.getText().toString();
             }
