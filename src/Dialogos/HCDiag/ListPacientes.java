@@ -6,7 +6,6 @@
 package Dialogos.HCDiag;
 
 import Clases.Funciones_AD;
-import HC.CrecDesarrollo;
 import HC.Adulto;
 import controller.PypAdmAsistConJpaController;
 import entity.PypAdmAsistCon;
@@ -46,7 +45,6 @@ public class ListPacientes extends javax.swing.JDialog {
     private EntityManagerFactory factory;
     private PypAdmAsistConJpaController paacjc;
     private final Object dato[] = null;
-    private CrecDesarrollo crecDesarrollo;
     private PypAdmAsistCon pypAdmAsistCon;
     public Adulto adult;
     public Controlprenatal controlp;
