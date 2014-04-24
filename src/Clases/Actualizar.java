@@ -932,4 +932,96 @@ public class Actualizar {
                 + "FROM `database`.`pyp_hta`"
                 + "WHERE(`pyp_hta`.`idhistoria`='" + id + "')";
     }
+
+    public void actvaloracion(String id, String valoracion) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_crecimiento`"
+                    + "SET `pyp_crecimiento`.`valoracion`=?"
+                    + "WHERE(`pyp_crecimiento`.`idhistoria`=?)");
+            bd.preparedStatement.setString(1, valoracion);
+            bd.preparedStatement.setString(2, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a026 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a026 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public String cargarcrecimiento(String id) {
+        return "SELECT *"
+                + "FROM `database`.`pyp_crecimiento`"
+                + "WHERE(`pyp_crecimiento`.`idhistoria`='" + id + "')";
+    }
+
+    public void actcrecimientoapgar(String id, String colorpiel, String frecuenciac, String reflejos, String tonomuscular,
+            String respiracion, String resultado) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_crecimiento`"
+                    + "SET `pyp_crecimiento`.`colorpiel`=?, `pyp_crecimiento`.`frecucardiaca`=?, `pyp_crecimiento`.`reflejos`=?,"
+                    + "    `pyp_crecimiento`.`tonomuscular`=?, `pyp_crecimiento`.`respiracion`=?, `pyp_crecimiento`.`resultado`=?"
+                    + "    WHERE(`pyp_crecimiento`.`idhistoria`=?)");
+            bd.preparedStatement.setString(1, colorpiel);
+            bd.preparedStatement.setString(2, frecuenciac);
+            bd.preparedStatement.setString(3, reflejos);
+            bd.preparedStatement.setString(4, tonomuscular);
+            bd.preparedStatement.setString(5, respiracion);
+            bd.preparedStatement.setString(6, resultado);
+            bd.preparedStatement.setString(7, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a027 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a027 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void actcrecimiento(String id, String incompatibilidad, String sufrimiento, String icteria, String patologiascpn, 
+            String partoprolongado, String partotraumatico, String hospitalizacion, String otros, float pesoalnacer, float tallanacer,
+            String egparto, float tshneonatal, String terminaparto, String hemoclasificacion, String vdrl, String alimentacion,
+            String lugarnacimiento, String embarazodeseado) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_crecimiento`"
+                    + " SET `pyp_crecimiento`.`incompatibilidadrh`=?, `pyp_crecimiento`.`sufrimientofetal`=?, `pyp_crecimiento`.`icteria`=?,"
+                    + "    `pyp_crecimiento`.`patologiascpn`=?, `pyp_crecimiento`.`partoprolongado`=?, `pyp_crecimiento`.`partotraumatico`=?,"
+                    + "    `pyp_crecimiento`.`hospitalizacion`=?, `pyp_crecimiento`.`otros`=?, `pyp_crecimiento`.`pesoalnacer`=?,"
+                    + "    `pyp_crecimiento`.`tallanacer`=?, `pyp_crecimiento`.`egparto`=?, `pyp_crecimiento`.`tshneonatal`=?,"
+                    + "    `pyp_crecimiento`.`terminaparto`=?, `pyp_crecimiento`.`hemoclasificacion`=?, `pyp_crecimiento`.`vdrl`=?,"
+                    + "    `pyp_crecimiento`.`alimentacion`=?, `pyp_crecimiento`.`lugarnacimiento`=?, `pyp_crecimiento`.`embarazodeseado`=?"
+                    + "    WHERE(`pyp_crecimiento`.`idhistoria`=?)");
+            bd.preparedStatement.setString(1, incompatibilidad);
+            bd.preparedStatement.setString(2, sufrimiento);
+            bd.preparedStatement.setString(3, icteria);
+            bd.preparedStatement.setString(4, patologiascpn);
+            bd.preparedStatement.setString(5, partoprolongado);
+            bd.preparedStatement.setString(6, partotraumatico);
+            bd.preparedStatement.setString(7, hospitalizacion);
+            bd.preparedStatement.setString(8, otros);
+            bd.preparedStatement.setFloat(9, pesoalnacer);
+            bd.preparedStatement.setFloat(10, tallanacer);
+            bd.preparedStatement.setString(11, egparto);
+            bd.preparedStatement.setFloat(12, tshneonatal);
+            bd.preparedStatement.setString(13, terminaparto);
+            bd.preparedStatement.setString(14, hemoclasificacion);
+            bd.preparedStatement.setString(15, vdrl);
+            bd.preparedStatement.setString(16, alimentacion);
+            bd.preparedStatement.setString(17, lugarnacimiento);
+            bd.preparedStatement.setString(18, embarazodeseado);
+            bd.preparedStatement.setString(19, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a028 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a028 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
 }

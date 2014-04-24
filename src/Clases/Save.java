@@ -305,4 +305,17 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
+    
+    public void newcrecimiento(String id) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.sentencia.execute("INSERT INTO pyp_crecimiento (idhistoria) VALUES ('" + id + "')");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c018" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c018" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
 }
