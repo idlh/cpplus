@@ -49,7 +49,7 @@ public class AntecedentesP extends javax.swing.JPanel {
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 10) {
             jTabbedPane1.remove(jPanel5);
-        }
+        }        
     }
 
     @SuppressWarnings("unchecked")
@@ -1098,22 +1098,13 @@ public class AntecedentesP extends javax.swing.JPanel {
                             .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jCheckBox10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jCheckBox15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jCheckBox13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                        .addComponent(jCheckBox10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jCheckBox12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBox9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(44, 44, 44)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jCheckBox14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBox11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jCheckBox16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1121,7 +1112,16 @@ public class AntecedentesP extends javax.swing.JPanel {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBox8, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBox9, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox10, 0, 1, Short.MAX_VALUE))))
+                            .addComponent(jComboBox10, 0, 1, Short.MAX_VALUE)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jCheckBox16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCheckBox12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCheckBox9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCheckBox14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCheckBox11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -1228,126 +1228,22 @@ public class AntecedentesP extends javax.swing.JPanel {
 
     private void jLabel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseEntered
         jPanel18.setBackground(new Color(255, 227, 255));
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("Generales");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("Generales");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("Generales");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("Generales");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("Generales");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("Generales");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("Generales");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        darayuda("Generales");
     }//GEN-LAST:event_jLabel13MouseEntered
 
     private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
         jPanel23.setBackground(new Color(255, 227, 255));
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("Metodos anticonceptivos");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("Metodos anticonceptivos");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("Metodos anticonceptivos");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("Metodos anticonceptivos");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("Metodos anticonceptivos");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("Metodos anticonceptivos");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("Metodos anticonceptivos");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        darayuda("Metodos Anticonceptivos");
     }//GEN-LAST:event_jLabel18MouseEntered
 
     private void jLabel13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseExited
         jPanel18.setBackground(new Color(125, 164, 222));
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("...");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("...");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("...");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("...");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("...");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("...");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("...");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        retornarayuda();
     }//GEN-LAST:event_jLabel13MouseExited
 
     private void jLabel18MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseExited
         jPanel23.setBackground(new Color(125, 164, 222));
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("...");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("...");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("...");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("...");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("...");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("...");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("...");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        retornarayuda();
     }//GEN-LAST:event_jLabel18MouseExited
 
     private void jTextArea1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyReleased
@@ -1831,6 +1727,64 @@ public class AntecedentesP extends javax.swing.JPanel {
             jComboBox8.setSelectedIndex(Integer.parseInt(recien[0][20].toString()));
             jComboBox9.setSelectedIndex(Integer.parseInt(recien[0][21].toString()));
             jComboBox10.setSelectedIndex(Integer.parseInt(recien[0][22].toString()));
+        }
+    }
+
+    private void retornarayuda() {
+        switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
+            case 3:
+                HC.Adulto.jLabel4.setText("...");
+                break;
+            case 9:
+                HC.Controlprenatal.jLabel4.setText("...");
+                break;
+            case 11:
+                HC.Postparto.jLabel4.setText("...");
+                break;
+            case 10:
+                HC.RecienNacido.jLabel4.setText("...");
+                break;
+            case 5:
+                HC.Planificacion.jLabel4.setText("...");
+                break;
+            case 1:
+                HC.Jovensano.jLabel4.setText("...");
+                break;
+            case 6:
+                HC.Hipertenso.jLabel4.setText("...");
+                break;
+            case 2:
+                HC.CYDesarrollo.jLabel4.setText("...");
+                break;
+        }
+    }
+
+    private void darayuda(String texto) {
+        switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
+            case 3:
+                HC.Adulto.jLabel4.setText(texto);
+                break;
+            case 9:
+                HC.Controlprenatal.jLabel4.setText(texto);
+                break;
+            case 11:
+                HC.Postparto.jLabel4.setText(texto);
+                break;
+            case 10:
+                HC.RecienNacido.jLabel4.setText(texto);
+                break;
+            case 5:
+                HC.Planificacion.jLabel4.setText(texto);
+                break;
+            case 1:
+                HC.Jovensano.jLabel4.setText(texto);
+                break;
+            case 6:
+                HC.Hipertenso.jLabel4.setText(texto);
+                break;
+            case 2:
+                HC.CYDesarrollo.jLabel4.setText(texto);
+                break;
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

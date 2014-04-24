@@ -1570,6 +1570,10 @@
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCheckBox11MouseReleased"/>
+                <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jCheckBox11ComponentShown"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCheckBox12">
               <Properties>
@@ -1582,6 +1586,10 @@
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCheckBox12MouseReleased"/>
+                <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jCheckBox12ComponentShown"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCheckBox13">
               <Properties>
@@ -1594,6 +1602,10 @@
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCheckBox13MouseReleased"/>
+                <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jCheckBox13ComponentShown"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCheckBox14">
               <Properties>
@@ -1606,6 +1618,10 @@
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCheckBox14MouseReleased"/>
+                <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jCheckBox14ComponentShown"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCheckBox15">
               <Properties>

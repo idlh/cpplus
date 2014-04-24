@@ -18,7 +18,7 @@ import Clases.Funciones_AD;
  * @author Camilo
  */
 public class DiagnosticosM extends javax.swing.JPanel {
-
+    
     private Clases.Consultarcie10 cie;
     private final EntityManagerFactory factory;
     private final PypAdmAsistCon pypAdmAsistCon;
@@ -27,7 +27,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
     Funciones_AD Funciones = new Funciones_AD();
     Save sav = new Save();
     Actualizar act = new Actualizar();
-
+    
     public DiagnosticosM(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.factory = factory;
@@ -75,13 +75,18 @@ public class DiagnosticosM extends javax.swing.JPanel {
             jTextField1.setEditable(false);
             ciep = 3181;
         }
-
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
+            cie = new Consultarcie10();
+            cie.llamar_cie("Z001");
+            jTextField1.setEditable(false);
+            ciep = 11796;
+        }
         jTextField2.setEditable(false);
         jTextField3.setEditable(false);
         jTextField4.setEditable(false);
         jTextField5.setEditable(false);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -285,12 +290,10 @@ public class DiagnosticosM extends javax.swing.JPanel {
     private void jButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseReleased
         final DgCie10 dc = new DgCie10((Frame) SwingUtilities.getWindowAncestor(this), true, factory);
         dc.jButton1.addActionListener(new ActionListener() {
-
+            
             @Override
             public void actionPerformed(ActionEvent e) {
-                cie101 = (StaticCie10) dc.modelo.getValueAt(dc.jTable1.getSelectedRow(), 0);//<html><p>"+ +"</p></html>
-//                jLabel3.setText("<html><p>["+cie10.getCodigo()+"] "+cie10.getDescripcion()+"</p></html>");
-//                modeloListCie10.addElement(cie10);
+                cie101 = (StaticCie10) dc.modelo.getValueAt(dc.jTable1.getSelectedRow(), 0);
                 jTextField2.setText(cie101.getCodigo() + " - " + cie101.getDescripcion());
                 dc.dispose();
                 jButton3.setEnabled(true);
@@ -303,12 +306,10 @@ public class DiagnosticosM extends javax.swing.JPanel {
     private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
         final DgCie10 dc = new DgCie10((Frame) SwingUtilities.getWindowAncestor(this), true, factory);
         dc.jButton1.addActionListener(new ActionListener() {
-
+            
             @Override
             public void actionPerformed(ActionEvent e) {
-                cie102 = (StaticCie10) dc.modelo.getValueAt(dc.jTable1.getSelectedRow(), 0);//<html><p>"+ +"</p></html>
-//                jLabel3.setText("<html><p>["+cie10.getCodigo()+"] "+cie10.getDescripcion()+"</p></html>");
-//                modeloListCie10.addElement(cie10);
+                cie102 = (StaticCie10) dc.modelo.getValueAt(dc.jTable1.getSelectedRow(), 0);
                 jTextField3.setText(cie102.getCodigo() + " - " + cie102.getDescripcion());
                 dc.dispose();
                 jButton5.setEnabled(true);
@@ -321,12 +322,10 @@ public class DiagnosticosM extends javax.swing.JPanel {
     private void jButton5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseReleased
         final DgCie10 dc = new DgCie10((Frame) SwingUtilities.getWindowAncestor(this), true, factory);
         dc.jButton1.addActionListener(new ActionListener() {
-
+            
             @Override
             public void actionPerformed(ActionEvent e) {
-                cie103 = (StaticCie10) dc.modelo.getValueAt(dc.jTable1.getSelectedRow(), 0);//<html><p>"+ +"</p></html>
-//                jLabel3.setText("<html><p>["+cie10.getCodigo()+"] "+cie10.getDescripcion()+"</p></html>");
-//                modeloListCie10.addElement(cie10);
+                cie103 = (StaticCie10) dc.modelo.getValueAt(dc.jTable1.getSelectedRow(), 0);
                 jTextField5.setText(cie103.getCodigo() + " - " + cie103.getDescripcion());
                 dc.dispose();
                 jButton4.setEnabled(true);
@@ -339,12 +338,10 @@ public class DiagnosticosM extends javax.swing.JPanel {
     private void jButton4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseReleased
         final DgCie10 dc = new DgCie10((Frame) SwingUtilities.getWindowAncestor(this), true, factory);
         dc.jButton1.addActionListener(new ActionListener() {
-
+            
             @Override
             public void actionPerformed(ActionEvent e) {
-                cie104 = (StaticCie10) dc.modelo.getValueAt(dc.jTable1.getSelectedRow(), 0);//<html><p>"+ +"</p></html>
-//                jLabel3.setText("<html><p>["+cie10.getCodigo()+"] "+cie10.getDescripcion()+"</p></html>");
-//                modeloListCie10.addElement(cie10);
+                cie104 = (StaticCie10) dc.modelo.getValueAt(dc.jTable1.getSelectedRow(), 0);
                 jTextField4.setText(cie104.getCodigo() + " - " + cie104.getDescripcion());
                 dc.dispose();
             }
@@ -352,7 +349,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
         dc.setVisible(true);
         est = 4;
     }//GEN-LAST:event_jButton4MouseReleased
-
+    
     public void actdx() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
@@ -390,7 +387,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
             act.actdx4(d, ciep, d4);
         }
     }
-
+    
     public void cargardx() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
@@ -422,243 +419,93 @@ public class DiagnosticosM extends javax.swing.JPanel {
     }
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("Añadir diagnostico");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("Añadir diagnostico");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("Añadir diagnostico");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("Añadir diagnostico");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("Añadir diagnostico");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("Añadir diagnostico");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("Añadir diagnostico");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        darayuda("Añadir Diagnostico");
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("...");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("...");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("...");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("...");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("...");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("...");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("...");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        retornarayuda();
     }//GEN-LAST:event_jButton2MouseExited
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("Añadir diagnostico");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("Añadir diagnostico");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("Añadir diagnostico");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("Añadir diagnostico");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("Añadir diagnostico");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("Añadir diagnostico");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("Añadir diagnostico");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        darayuda("Añadir Diagnostico");
     }//GEN-LAST:event_jButton3MouseEntered
 
     private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("...");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("...");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("...");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("...");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("...");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("...");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("...");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        retornarayuda();
     }//GEN-LAST:event_jButton3MouseExited
 
     private void jButton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseEntered
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("Añadir diagnostico");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("Añadir diagnostico");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("Añadir diagnostico");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("Añadir diagnostico");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("Añadir diagnostico");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("Añadir diagnostico");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("Añadir diagnostico");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        darayuda("Añadir Diagnostico");
     }//GEN-LAST:event_jButton5MouseEntered
 
     private void jButton5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseExited
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("...");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("...");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("...");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("...");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("...");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("...");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("...");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        retornarayuda();
     }//GEN-LAST:event_jButton5MouseExited
 
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("Añadir diagnostico");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("Añadir diagnostico");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("Añadir diagnostico");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("Añadir diagnostico");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("Añadir diagnostico");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("Añadir diagnostico");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("Añadir diagnostico");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        darayuda("Añadir Diagnostico");
     }//GEN-LAST:event_jButton4MouseEntered
 
-    private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("...");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+    private void retornarayuda() {
+        switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
+            case 3:
+                HC.Adulto.jLabel4.setText("...");
+                break;
+            case 9:
                 HC.Controlprenatal.jLabel4.setText("...");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("...");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("...");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("...");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("...");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("...");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+                break;
+            case 11:
+                HC.Postparto.jLabel4.setText("...");
+                break;
+            case 10:
+                HC.RecienNacido.jLabel4.setText("...");
+                break;
+            case 5:
+                HC.Planificacion.jLabel4.setText("...");
+                break;
+            case 1:
+                HC.Jovensano.jLabel4.setText("...");
+                break;
+            case 6:
+                HC.Hipertenso.jLabel4.setText("...");
+                break;
+            case 2:
+                HC.CYDesarrollo.jLabel4.setText("...");
+                break;
         }
+    }
+    
+    private void darayuda(String texto){
+        switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
+            case 3:
+                HC.Adulto.jLabel4.setText(texto);
+                break;
+            case 9:
+                HC.Controlprenatal.jLabel4.setText(texto);
+                break;
+            case 11:
+                HC.Postparto.jLabel4.setText(texto);
+                break;
+            case 10:
+                HC.RecienNacido.jLabel4.setText(texto);
+                break;
+            case 5:
+                HC.Planificacion.jLabel4.setText(texto);
+                break;
+            case 1:
+                HC.Jovensano.jLabel4.setText(texto);
+                break;
+            case 6:
+                HC.Hipertenso.jLabel4.setText(texto);
+                break;
+            case 2:
+                HC.CYDesarrollo.jLabel4.setText(texto);
+                break;
+        }
+    }
+    
+    private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
+        retornarayuda();
     }//GEN-LAST:event_jButton4MouseExited
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton jButton2;

@@ -169,123 +169,19 @@ public class ProcedimientosO extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("Añadir procedimiento");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("Añadir procedimiento");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("Añadir procedimiento");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("Añadir procedimiento");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("Añadir procedimiento");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("Añadir procedimiento");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("Añadir procedimiento");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        darayuda("Añadir Procedimiento");
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("...");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("...");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("...");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("...");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("...");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("...");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("...");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        retornarayuda();
     }//GEN-LAST:event_jButton1MouseExited
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("Quitar procedimiento");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("Quitar procedimiento");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("Quitar procedimiento");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("Quitar procedimiento");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("Quitar procedimiento");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("Quitar procedimiento");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("Quitar procedimiento");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        darayuda("Quitar Procedimiento");
     }//GEN-LAST:event_jButton3MouseEntered
 
     private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("...");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("...");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("...");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("...");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("...");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("...");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("...");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        retornarayuda();
     }//GEN-LAST:event_jButton3MouseExited
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
@@ -421,6 +317,64 @@ public class ProcedimientosO extends javax.swing.JPanel {
         est = "1";
         Trablaotrosprocedimientos.removeAll();
         tabla();
+    }
+
+    private void retornarayuda() {
+        switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
+            case 3:
+                HC.Adulto.jLabel4.setText("...");
+                break;
+            case 9:
+                HC.Controlprenatal.jLabel4.setText("...");
+                break;
+            case 11:
+                HC.Postparto.jLabel4.setText("...");
+                break;
+            case 10:
+                HC.RecienNacido.jLabel4.setText("...");
+                break;
+            case 5:
+                HC.Planificacion.jLabel4.setText("...");
+                break;
+            case 1:
+                HC.Jovensano.jLabel4.setText("...");
+                break;
+            case 6:
+                HC.Hipertenso.jLabel4.setText("...");
+                break;
+            case 2:
+                HC.CYDesarrollo.jLabel4.setText("...");
+                break;
+        }
+    }
+
+    private void darayuda(String texto) {
+        switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
+            case 3:
+                HC.Adulto.jLabel4.setText(texto);
+                break;
+            case 9:
+                HC.Controlprenatal.jLabel4.setText(texto);
+                break;
+            case 11:
+                HC.Postparto.jLabel4.setText(texto);
+                break;
+            case 10:
+                HC.RecienNacido.jLabel4.setText(texto);
+                break;
+            case 5:
+                HC.Planificacion.jLabel4.setText(texto);
+                break;
+            case 1:
+                HC.Jovensano.jLabel4.setText(texto);
+                break;
+            case 6:
+                HC.Hipertenso.jLabel4.setText(texto);
+                break;
+            case 2:
+                HC.CYDesarrollo.jLabel4.setText(texto);
+                break;
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JTable Trablaotrosprocedimientos;

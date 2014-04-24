@@ -2,6 +2,7 @@ package HC;
 
 import java.awt.Color;
 import entity.PypAdmAsistCon;
+import javax.swing.JPanel;
 import modulo_pyp.Modulo_PyP;
 
 public class OrdenesM extends javax.swing.JPanel {
@@ -241,222 +242,38 @@ public class OrdenesM extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseEntered
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("Medicamentos");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("Medicamentos");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("Medicamentos");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("Medicamentos");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("Medicamentos");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("Medicamentos");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("Medicamentos");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        darayuda("Medicamentos");
         jPanel18.setBackground(new Color(255, 227, 255));
 
     }//GEN-LAST:event_jLabel13MouseEntered
 
     private void jLabel13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseExited
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("...");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("...");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("...");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("...");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("...");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("...");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("...");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        retornarayuda();
         jPanel18.setBackground(new Color(125, 164, 222));
     }//GEN-LAST:event_jLabel13MouseExited
 
     private void jLabel14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseEntered
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("Procedimientos");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("Procedimientos");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("Procedimientos");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("Procedimientos");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("Procedimientos");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("Procedimientos");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("Procedimientos");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        darayuda("Procedimiento");
         jPanel19.setBackground(new Color(255, 227, 255));
     }//GEN-LAST:event_jLabel14MouseEntered
 
     private void jLabel14MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseExited
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("...");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("...");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("...");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("...");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("...");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("...");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("...");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        retornarayuda();
         jPanel19.setBackground(new Color(125, 164, 222));
     }//GEN-LAST:event_jLabel14MouseExited
 
     private void jLabel16MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseEntered
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("Recomendaciones");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("Recomendaciones");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("Recomendaciones");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("Recomendaciones");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("Recomendaciones");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("Recomendaciones");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("Recomendaciones");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        darayuda("Recomendaciones");
         jPanel21.setBackground(new Color(255, 227, 255));
     }//GEN-LAST:event_jLabel16MouseEntered
 
     private void jLabel16MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseExited
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            HC.Adulto.jLabel4.setText("...");
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                HC.Controlprenatal.jLabel4.setText("...");
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    HC.Postparto.jLabel4.setText("...");
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        HC.RecienNacido.jLabel4.setText("...");
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            HC.Planificacion.jLabel4.setText("...");
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                HC.Jovensano.jLabel4.setText("...");
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    HC.Hipertenso.jLabel4.setText("...");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        retornarayuda();
         jPanel21.setBackground(new Color(125, 164, 222));
     }//GEN-LAST:event_jLabel16MouseExited
 
     private void jLabel13MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseReleased
-        jPanel1.removeAll();
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            new Clases.Explode(Modulo_PyP.d.listPacientes.adult.ordenesm.jPanel1, medicamentos).play();
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                new Clases.Explode(Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1, medicamentos).play();
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    new Clases.Explode(Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1, medicamentos).play();
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        new Clases.Explode(Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1, medicamentos).play();
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            new Clases.Explode(Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1, medicamentos).play();
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                new Clases.Explode(Modulo_PyP.d.listPacientes.jovensano.ordenesm.jPanel1, medicamentos).play();
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    new Clases.Explode(Modulo_PyP.d.listPacientes.hipertenso.ordenesm.jPanel1, medicamentos).play();
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
+        explode(medicamentos);
     }//GEN-LAST:event_jLabel13MouseReleased
 
     private void jLabel14MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseReleased
@@ -486,34 +303,7 @@ public class OrdenesM extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel14MouseReleased
 
     private void jLabel16MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseReleased
-        jPanel1.removeAll();
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
-            new Clases.Explode(Modulo_PyP.d.listPacientes.adult.ordenesm.jPanel1, recomendaciones).play();
-        } else {
-            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-                new Clases.Explode(Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1, recomendaciones).play();
-            } else {
-                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-                    new Clases.Explode(Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1, recomendaciones).play();
-                } else {
-                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-                        new Clases.Explode(Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1, recomendaciones).play();
-                    } else {
-                        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-                            new Clases.Explode(Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1, recomendaciones).play();
-                        } else {
-                            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-                                new Clases.Explode(Modulo_PyP.d.listPacientes.jovensano.ordenesm.jPanel1, recomendaciones).play();
-                            } else {
-                                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-                                    new Clases.Explode(Modulo_PyP.d.listPacientes.hipertenso.ordenesm.jPanel1, recomendaciones).play();
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        explode(recomendaciones);
     }//GEN-LAST:event_jLabel16MouseReleased
 
     private void jLabel17MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseReleased
@@ -545,6 +335,94 @@ public class OrdenesM extends javax.swing.JPanel {
         recomendaciones.cargarrecom();
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
             anticonceptivos.cargaranticonceptivos();
+        }
+    }
+    
+    private void retornarayuda() {
+        switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
+            case 3:
+                HC.Adulto.jLabel4.setText("...");
+                break;
+            case 9:
+                HC.Controlprenatal.jLabel4.setText("...");
+                break;
+            case 11:
+                HC.Postparto.jLabel4.setText("...");
+                break;
+            case 10:
+                HC.RecienNacido.jLabel4.setText("...");
+                break;
+            case 5:
+                HC.Planificacion.jLabel4.setText("...");
+                break;
+            case 1:
+                HC.Jovensano.jLabel4.setText("...");
+                break;
+            case 6:
+                HC.Hipertenso.jLabel4.setText("...");
+                break;
+            case 2:
+                HC.CYDesarrollo.jLabel4.setText("...");
+                break;
+        }
+    }
+    
+    private void darayuda(String texto){
+        switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
+            case 3:
+                HC.Adulto.jLabel4.setText(texto);
+                break;
+            case 9:
+                HC.Controlprenatal.jLabel4.setText(texto);
+                break;
+            case 11:
+                HC.Postparto.jLabel4.setText(texto);
+                break;
+            case 10:
+                HC.RecienNacido.jLabel4.setText(texto);
+                break;
+            case 5:
+                HC.Planificacion.jLabel4.setText(texto);
+                break;
+            case 1:
+                HC.Jovensano.jLabel4.setText(texto);
+                break;
+            case 6:
+                HC.Hipertenso.jLabel4.setText(texto);
+                break;
+            case 2:
+                HC.CYDesarrollo.jLabel4.setText(texto);
+                break;
+        }
+    }
+    
+    private void explode(JPanel panel){
+        this.jPanel1.removeAll();
+        switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
+            case 3:
+                new Clases.Explode(Modulo_PyP.d.listPacientes.adult.ordenesm.jPanel1, panel).play();
+                break;
+            case 9:
+                new Clases.Explode(Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1, panel).play();
+                break;
+            case 11:
+                new Clases.Explode(Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1, panel).play();
+                break;
+            case 10:
+                new Clases.Explode(Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1, panel).play();
+                break;
+            case 5:
+                new Clases.Explode(Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1, panel).play();
+                break;
+            case 1:
+                new Clases.Explode(Modulo_PyP.d.listPacientes.jovensano.ordenesm.jPanel1, panel).play();
+                break;
+            case 6:
+                new Clases.Explode(Modulo_PyP.d.listPacientes.hipertenso.ordenesm.jPanel1, panel).play();
+                break;
+            case 2:
+                new Clases.Explode(Modulo_PyP.d.listPacientes.cydesarrollo.ordenesm.jPanel1, panel).play();
+                break;
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

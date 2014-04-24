@@ -1127,21 +1127,61 @@ public class Exploracionf extends javax.swing.JPanel {
         jCheckBox11.setText("HTA");
         jCheckBox11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox11.setFocusable(false);
+        jCheckBox11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox11MouseReleased(evt);
+            }
+        });
+        jCheckBox11.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jCheckBox11ComponentShown(evt);
+            }
+        });
 
         jCheckBox12.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox12.setText("DM1");
         jCheckBox12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox12.setFocusable(false);
+        jCheckBox12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox12MouseReleased(evt);
+            }
+        });
+        jCheckBox12.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jCheckBox12ComponentShown(evt);
+            }
+        });
 
         jCheckBox13.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox13.setText("DM2");
         jCheckBox13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox13.setFocusable(false);
+        jCheckBox13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox13MouseReleased(evt);
+            }
+        });
+        jCheckBox13.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jCheckBox13ComponentShown(evt);
+            }
+        });
 
         jCheckBox14.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox14.setText("Dislipidemia");
         jCheckBox14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox14.setFocusable(false);
+        jCheckBox14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox14MouseReleased(evt);
+            }
+        });
+        jCheckBox14.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jCheckBox14ComponentShown(evt);
+            }
+        });
 
         jCheckBox15.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox15.setText("Controlado");
@@ -1721,6 +1761,78 @@ public class Exploracionf extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jCheckBox7MouseReleased
 
+    private void jCheckBox11MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox11MouseReleased
+        if (jCheckBox11.isSelected() == true) {
+            jCheckBox15.setEnabled(true);
+        } else {
+            jCheckBox15.setSelected(false);
+            jCheckBox15.setEnabled(false);
+        }
+    }//GEN-LAST:event_jCheckBox11MouseReleased
+
+    private void jCheckBox12MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox12MouseReleased
+        if (jCheckBox12.isSelected() == false) {
+            jCheckBox16.setSelected(false);
+            jCheckBox16.setEnabled(false);
+        } else {
+            jCheckBox16.setEnabled(true);
+        }
+    }//GEN-LAST:event_jCheckBox12MouseReleased
+
+    private void jCheckBox13MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox13MouseReleased
+        if (jCheckBox13.isSelected() == false) {
+            jCheckBox17.setSelected(false);
+            jCheckBox17.setEnabled(false);
+        } else {
+            jCheckBox17.setEnabled(true);
+        }
+    }//GEN-LAST:event_jCheckBox13MouseReleased
+
+    private void jCheckBox14MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox14MouseReleased
+        if (jCheckBox14.isSelected() == false) {
+            jCheckBox18.setSelected(false);
+            jCheckBox18.setEnabled(false);
+        } else {
+            jCheckBox18.setEnabled(true);
+        }
+    }//GEN-LAST:event_jCheckBox14MouseReleased
+
+    private void jCheckBox11ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jCheckBox11ComponentShown
+        if (jCheckBox11.isSelected() == true) {
+            jCheckBox15.setEnabled(true);
+        } else {
+            jCheckBox15.setSelected(false);
+            jCheckBox15.setEnabled(false);
+        }
+    }//GEN-LAST:event_jCheckBox11ComponentShown
+
+    private void jCheckBox12ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jCheckBox12ComponentShown
+        if (jCheckBox12.isSelected() == false) {
+            jCheckBox16.setSelected(false);
+            jCheckBox16.setEnabled(false);
+        } else {
+            jCheckBox16.setEnabled(true);
+        }
+    }//GEN-LAST:event_jCheckBox12ComponentShown
+
+    private void jCheckBox13ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jCheckBox13ComponentShown
+        if (jCheckBox13.isSelected() == false) {
+            jCheckBox17.setSelected(false);
+            jCheckBox17.setEnabled(false);
+        } else {
+            jCheckBox17.setEnabled(true);
+        }
+    }//GEN-LAST:event_jCheckBox13ComponentShown
+
+    private void jCheckBox14ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jCheckBox14ComponentShown
+        if (jCheckBox14.isSelected() == false) {
+            jCheckBox18.setSelected(false);
+            jCheckBox18.setEnabled(false);
+        } else {
+            jCheckBox18.setEnabled(true);
+        }
+    }//GEN-LAST:event_jCheckBox14ComponentShown
+
     public void actexpf() {
         int tas, tad, fc, talla;
         float fr, temp, peso, imc;
@@ -2189,8 +2301,10 @@ public class Exploracionf extends javax.swing.JPanel {
         Object pypdata[][] = Funciones.RetornarDatos(act.cargarhta(d));
         if (pypdata[0][2].toString().equals("0")) {
             jCheckBox11.setSelected(false);
+            jCheckBox15.setEnabled(false);
         } else {
             jCheckBox11.setSelected(true);
+            jCheckBox15.setEnabled(true);
         }
         if (pypdata[0][3].toString().equals("0")) {
             jCheckBox15.setSelected(false);
@@ -2199,8 +2313,10 @@ public class Exploracionf extends javax.swing.JPanel {
         }
         if (pypdata[0][4].toString().equals("0")) {
             jCheckBox12.setSelected(false);
+            jCheckBox16.setEnabled(false);
         } else {
             jCheckBox12.setSelected(true);
+            jCheckBox15.setEnabled(true);
         }
         if (pypdata[0][5].toString().equals("0")) {
             jCheckBox16.setSelected(false);
@@ -2209,8 +2325,10 @@ public class Exploracionf extends javax.swing.JPanel {
         }
         if (pypdata[0][6].toString().equals("0")) {
             jCheckBox13.setSelected(false);
+            jCheckBox17.setEnabled(false);
         } else {
             jCheckBox13.setSelected(true);
+            jCheckBox17.setEnabled(false);
         }
         if (pypdata[0][7].toString().equals("0")) {
             jCheckBox17.setSelected(false);
@@ -2219,8 +2337,10 @@ public class Exploracionf extends javax.swing.JPanel {
         }
         if (pypdata[0][8].toString().equals("0")) {
             jCheckBox14.setSelected(false);
+            jCheckBox18.setEnabled(false);
         } else {
             jCheckBox14.setSelected(true);
+            jCheckBox18.setEnabled(true);
         }
         if (pypdata[0][9].toString().equals("0")) {
             jCheckBox18.setSelected(false);
