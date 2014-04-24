@@ -33,6 +33,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import HC.CYDesarrollo;
 
 /**
  *
@@ -54,7 +55,7 @@ public class ListPacientes extends javax.swing.JDialog {
     public Planificacion planificacion;
     public Jovensano jovensano;
     public Hipertenso hipertenso;
-    private Funciones_AD funciones;
+    public CYDesarrollo cydesarrollo;
 
     public ListPacientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -514,6 +515,16 @@ public class ListPacientes extends javax.swing.JDialog {
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(hipertenso);
             hipertenso.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
+            cydesarrollo = new CYDesarrollo(factory, pypAdmAsistCon);
+            cydesarrollo.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(cydesarrollo);
+            cydesarrollo.setVisible(true);
             desktop.Contenedor_.validate();
             desktop.Contenedor_.repaint();
             this.dispose();
