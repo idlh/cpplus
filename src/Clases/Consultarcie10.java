@@ -8,7 +8,7 @@ public class Consultarcie10 {
 
     Clases.BDConectar db = new Clases.BDConectar();
 
-    public void llamar_cie(String codigo){
+    public void llamar_cie(String codigo) {
         try {
             db.ConectarBasedeDatos();
             db.resultado = db.sentencia.executeQuery("SELECT CONCAT(`codigo`,' - ', `descripcion`) AS cie FROM `database`.`static_cie10` WHERE (`codigo` ='" + codigo + "');");
