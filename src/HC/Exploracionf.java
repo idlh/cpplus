@@ -6,11 +6,15 @@ import entity.PypAdmAsistCon;
 import Clases.Actualizar;
 import Clases.Funciones_AD;
 import Clases.Save;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
 
 /**
  *
@@ -30,10 +34,12 @@ public class Exploracionf extends javax.swing.JPanel {
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 9) {
             jTabbedPane1.remove(jPanel2);
         }
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 11 && pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 10) {
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 11 && pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 10
+                && pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 2) {
             jTabbedPane1.remove(jPanel4);
         }
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11 || pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11 || pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10
+                || pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
             selectApgar();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 1) {
@@ -84,6 +90,10 @@ public class Exploracionf extends javax.swing.JPanel {
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 6) {
             jTabbedPane1.remove(jPanel8);
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 2) {
+            jTabbedPane1.remove(jPanel10);
+        }
+        jTabbedPane1.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
     }
 
     /**
@@ -199,6 +209,11 @@ public class Exploracionf extends javax.swing.JPanel {
         jComboBox10 = new javax.swing.JComboBox();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea10 = new javax.swing.JTextArea();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel42 = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea5 = new javax.swing.JTextArea();
@@ -219,6 +234,8 @@ public class Exploracionf extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Exploración Física");
 
+        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        jTabbedPane1.setFocusTraversalPolicyProvider(true);
         jTabbedPane1.setFocusable(false);
         jTabbedPane1.setMaximumSize(new java.awt.Dimension(550, 168));
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(550, 168));
@@ -445,7 +462,7 @@ public class Exploracionf extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -560,7 +577,7 @@ public class Exploracionf extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(jTextArea2);
 
-        jTabbedPane1.addTab("Neurologico, oral y cara", jScrollPane3);
+        jTabbedPane1.addTab("Neurologico y cara", jScrollPane3);
 
         jTextArea3.setColumns(20);
         jTextArea3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -733,8 +750,8 @@ public class Exploracionf extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -749,10 +766,10 @@ public class Exploracionf extends javax.swing.JPanel {
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                    .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextField6)
                     .addComponent(jTextField12)
-                    .addComponent(jTextField3))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel30)
@@ -768,12 +785,12 @@ public class Exploracionf extends javax.swing.JPanel {
                         .addComponent(jLabel34)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 38, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -911,13 +928,13 @@ public class Exploracionf extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox6, 0, 157, Short.MAX_VALUE))
+                    .addComponent(jComboBox6, 0, 1, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -931,7 +948,7 @@ public class Exploracionf extends javax.swing.JPanel {
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel7)
-                        .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel29))
                     .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -943,7 +960,7 @@ public class Exploracionf extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Apgar", jPanel4);
@@ -1098,10 +1115,10 @@ public class Exploracionf extends javax.swing.JPanel {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel36)
@@ -1112,7 +1129,7 @@ public class Exploracionf extends javax.swing.JPanel {
                             .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31))
+                .addGap(23, 23, 23))
         );
 
         jTabbedPane1.addTab("Tanner", jPanel5);
@@ -1225,7 +1242,7 @@ public class Exploracionf extends javax.swing.JPanel {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel40)
                     .addComponent(jLabel41))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jComboBox10, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1290,6 +1307,78 @@ public class Exploracionf extends javax.swing.JPanel {
         );
 
         jTabbedPane1.addTab("HTA", jPanel8);
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTextArea10.setColumns(20);
+        jTextArea10.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextArea10.setForeground(new java.awt.Color(204, 204, 204));
+        jTextArea10.setLineWrap(true);
+        jTextArea10.setRows(5);
+        jTextArea10.setText("No se encuentran datos relevantes");
+        jTextArea10.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea10FocusGained(evt);
+            }
+        });
+        jTextArea10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea10KeyReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTextArea10);
+
+        jPanel11.setBackground(new java.awt.Color(255, 227, 255));
+
+        jLabel42.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Table.png"))); // NOI18N
+        jLabel42.setText("Cargar tablas de ayuda");
+        jLabel42.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel42.setFocusable(false);
+        jLabel42.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel42MouseReleased(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel42MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel42MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel42, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Valoracion CYD", null, jPanel10, "Valoracion Crecimiento y Desarrollo");
 
         jTabbedPane2.setFocusable(false);
         jTabbedPane2.setPreferredSize(new java.awt.Dimension(550, 183));
@@ -1833,6 +1922,38 @@ public class Exploracionf extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jCheckBox14ComponentShown
 
+    private void jLabel42MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel42MouseEntered
+        jPanel11.setBackground(new Color(125, 164, 222));
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
+            HC.CYDesarrollo.jLabel4.setText("Tablas Ayuda");
+        }
+    }//GEN-LAST:event_jLabel42MouseEntered
+
+    private void jLabel42MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel42MouseExited
+        jPanel11.setBackground(new Color(255, 227, 255));
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
+            HC.CYDesarrollo.jLabel4.setText("...");
+        }
+    }//GEN-LAST:event_jLabel42MouseExited
+
+    private void jLabel42MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel42MouseReleased
+        String clipa = getClass().getResource("/Recursos/Tablasayudavaloracion.pdf").getFile();
+        try {
+            File path = new File(clipa);
+            Desktop.getDesktop().open(path);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jLabel42MouseReleased
+
+    private void jTextArea10FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea10FocusGained
+        jTextArea10.selectAll();
+    }//GEN-LAST:event_jTextArea10FocusGained
+
+    private void jTextArea10KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea10KeyReleased
+        jTextArea10.setForeground(Color.black);
+    }//GEN-LAST:event_jTextArea10KeyReleased
+
     public void actexpf() {
         int tas, tad, fc, talla;
         float fr, temp, peso, imc;
@@ -1968,6 +2089,9 @@ public class Exploracionf extends javax.swing.JPanel {
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
             acthta();
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
+            actvaloracion();
+        }
     }
 
     public void cargarexploracion() {
@@ -2098,6 +2222,9 @@ public class Exploracionf extends javax.swing.JPanel {
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
             cargarhta();
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
+            cargarvaloracion();
         }
     }
 
@@ -2351,6 +2478,37 @@ public class Exploracionf extends javax.swing.JPanel {
         jComboBox10.setSelectedIndex(Integer.parseInt(pypdata[0][11].toString()));
     }
 
+    public void actvaloracion() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        act.actvaloracion(d, jTextArea10.getText().toUpperCase().toString());
+        String var1, var2, var3, var4, var5, var6;
+        var1 = String.valueOf(jComboBox2.getSelectedIndex());
+        var2 = String.valueOf(jComboBox3.getSelectedIndex());
+        var3 = String.valueOf(jComboBox4.getSelectedIndex());
+        var4 = String.valueOf(jComboBox5.getSelectedIndex());
+        var5 = String.valueOf(jComboBox6.getSelectedIndex());
+        var6 = jLabel35.getText().toString();
+        act.actcrecimientoapgar(d, var1, var2, var3, var4, var5, var6);
+    }
+
+    public void cargarvaloracion() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object pypdata[][] = Funciones.RetornarDatos(act.cargarcrecimiento(d));
+        if (pypdata[0][13].toString().equals("NO SE ENCUENTRAN DATOS RELEVANTES")) {
+            jTextArea10.setText(pypdata[0][26].toString());
+        } else {
+            jTextArea10.setText(pypdata[0][26].toString());
+            jTextArea10.setForeground(Color.BLACK);
+        }
+        jComboBox2.setSelectedIndex(Integer.parseInt(pypdata[0][2].toString()));
+        jComboBox3.setSelectedIndex(Integer.parseInt(pypdata[0][3].toString()));
+        jComboBox4.setSelectedIndex(Integer.parseInt(pypdata[0][4].toString()));
+        jComboBox5.setSelectedIndex(Integer.parseInt(pypdata[0][5].toString()));
+        jComboBox6.setSelectedIndex(Integer.parseInt(pypdata[0][6].toString()));
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JCheckBox jCheckBox1;
     javax.swing.JCheckBox jCheckBox10;
@@ -2419,12 +2577,15 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JLabel jLabel4;
     javax.swing.JLabel jLabel40;
     javax.swing.JLabel jLabel41;
+    javax.swing.JLabel jLabel42;
     javax.swing.JLabel jLabel5;
     javax.swing.JLabel jLabel6;
     javax.swing.JLabel jLabel7;
     javax.swing.JLabel jLabel8;
     javax.swing.JLabel jLabel9;
     javax.swing.JPanel jPanel1;
+    javax.swing.JPanel jPanel10;
+    javax.swing.JPanel jPanel11;
     javax.swing.JPanel jPanel2;
     javax.swing.JPanel jPanel3;
     javax.swing.JPanel jPanel4;
@@ -2433,6 +2594,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JPanel jPanel7;
     javax.swing.JPanel jPanel8;
     javax.swing.JPanel jPanel9;
+    javax.swing.JScrollPane jScrollPane1;
     javax.swing.JScrollPane jScrollPane10;
     javax.swing.JScrollPane jScrollPane11;
     javax.swing.JScrollPane jScrollPane2;
@@ -2446,6 +2608,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JTabbedPane jTabbedPane1;
     javax.swing.JTabbedPane jTabbedPane2;
     javax.swing.JTextArea jTextArea1;
+    javax.swing.JTextArea jTextArea10;
     javax.swing.JTextArea jTextArea2;
     javax.swing.JTextArea jTextArea3;
     javax.swing.JTextArea jTextArea4;
