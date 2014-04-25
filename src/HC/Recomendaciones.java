@@ -86,7 +86,7 @@ public class Recomendaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextArea1KeyReleased
 
     private void jTextArea1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusGained
-       jTextArea1.selectAll();
+        jTextArea1.selectAll();
     }//GEN-LAST:event_jTextArea1FocusGained
 
     public void actrecomendaciones() {
@@ -94,12 +94,15 @@ public class Recomendaciones extends javax.swing.JPanel {
         String d = (c[0][0].toString());
         act.actrecomendaciones(d, jTextArea1.getText().toUpperCase().toString());
     }
-    
-    public void cargarrecom(){
+
+    public void cargarrecom() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
         Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
-        jTextArea1.setText(h[0][26].toString());
+        if (!h[0][26].toString().equals("NINGUNA")) {
+            jTextArea1.setForeground(Color.BLACK);
+            jTextArea1.setText(h[0][26].toString());
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JLabel jLabel1;

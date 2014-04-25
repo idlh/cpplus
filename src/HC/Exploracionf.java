@@ -93,7 +93,7 @@ public class Exploracionf extends javax.swing.JPanel {
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 2) {
             jTabbedPane1.remove(jPanel10);
         }
-        jTabbedPane1.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
+        jTabbedPane1.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);        
     }
 
     /**
@@ -1589,35 +1589,7 @@ public class Exploracionf extends javax.swing.JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jTextPane1.requestFocus();
         }
-        float imc = 0;
-        String im = null;
-        imc = Float.parseFloat(jTextField9.getText()) / ((Float.parseFloat(jTextField8.getText()) * Float.parseFloat(jTextField8.getText())) / 100) * 100;
-        BigDecimal value = new BigDecimal(imc).setScale(2, BigDecimal.ROUND_HALF_UP);
-        im = String.valueOf(value);
-        if (imc < 19) {
-            jTextField10.setForeground(Color.red);
-            jLabel21.setText("Bajo peso");
-            jLabel21.setForeground(Color.red);
-        } else {
-            if (imc >= 19 && imc < 25) {
-                jTextField10.setForeground(new Color(0, 153, 204));
-                jLabel21.setText("Normal");
-                jLabel21.setForeground(new Color(0, 153, 204));
-            } else {
-                if (imc >= 25 && imc < 30) {
-                    jTextField10.setForeground(new Color(255, 102, 51));
-                    jLabel21.setText("Sobrepeso");
-                    jLabel21.setForeground(new Color(255, 102, 51));
-                } else {
-                    if (imc >= 30) {
-                        jTextField10.setForeground(Color.red);
-                        jLabel21.setText("Obesidad");
-                        jLabel21.setForeground(Color.RED);
-                    }
-                }
-            }
-        }
-        jTextField10.setText(im);
+        calcularimc();
     }//GEN-LAST:event_jTextField8KeyReleased
 
     private void jTextArea1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyReleased
@@ -2201,6 +2173,7 @@ public class Exploracionf extends javax.swing.JPanel {
                 jCheckBox6.setSelected(true);
             }
         }
+        calcularimc();
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
             Object part[][] = Funciones.RetornarDatos(act.cargarpostparto(d));
             jComboBox2.setSelectedIndex(Integer.parseInt(part[0][2].toString()));
@@ -2507,6 +2480,38 @@ public class Exploracionf extends javax.swing.JPanel {
         jComboBox4.setSelectedIndex(Integer.parseInt(pypdata[0][4].toString()));
         jComboBox5.setSelectedIndex(Integer.parseInt(pypdata[0][5].toString()));
         jComboBox6.setSelectedIndex(Integer.parseInt(pypdata[0][6].toString()));
+    }
+
+    private void calcularimc() {
+        float imc = 0;
+        String im = null;
+        imc = Float.parseFloat(jTextField9.getText()) / ((Float.parseFloat(jTextField8.getText()) * Float.parseFloat(jTextField8.getText())) / 100) * 100;
+        BigDecimal value = new BigDecimal(imc).setScale(2, BigDecimal.ROUND_HALF_UP);
+        im = String.valueOf(value);
+        if (imc < 19) {
+            jTextField10.setForeground(Color.red);
+            jLabel21.setText("Bajo peso");
+            jLabel21.setForeground(Color.red);
+        } else {
+            if (imc >= 19 && imc < 25) {
+                jTextField10.setForeground(new Color(0, 153, 204));
+                jLabel21.setText("Normal");
+                jLabel21.setForeground(new Color(0, 153, 204));
+            } else {
+                if (imc >= 25 && imc < 30) {
+                    jTextField10.setForeground(new Color(255, 102, 51));
+                    jLabel21.setText("Sobrepeso");
+                    jLabel21.setForeground(new Color(255, 102, 51));
+                } else {
+                    if (imc >= 30) {
+                        jTextField10.setForeground(Color.red);
+                        jLabel21.setText("Obesidad");
+                        jLabel21.setForeground(Color.RED);
+                    }
+                }
+            }
+        }
+        jTextField10.setText(im);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

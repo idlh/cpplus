@@ -322,9 +322,11 @@ public class PruebasComple extends javax.swing.JPanel {
         String d = (c[0][0].toString());
         Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
 //        Object a[][] = Funciones.RetornarDatos(act.cargarpruebas(d));
-        jTextArea1.setText(h[0][22].toString());
+        if (!h[0][22].toString().equals("NO SE ENCUENTRAN DATOS RELEVANTES")) {
+            jTextArea1.setForeground(Color.BLACK);
+            jTextArea1.setText(h[0][22].toString());
+        }
         cargarpru.cargartablapruebas(modeloAyudDiag, d);
-
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JTable Tablaconte;

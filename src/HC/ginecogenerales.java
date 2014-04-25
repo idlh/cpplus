@@ -477,7 +477,11 @@ public class ginecogenerales extends javax.swing.JPanel {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         try {
             Date fecha = formato.parse(h[0][2].toString());
-            jDateChooser1.setDate(fecha);
+            if (h[0][2].toString().equals("01/01/0001")) {
+                jDateChooser1.setDate(null);
+            } else {
+                jDateChooser1.setDate(fecha);
+            }
         } catch (ParseException e) {
             JOptionPane.showMessageDialog(null, "Error al convertir la fecha fum " + e.getMessage());
         }
@@ -489,7 +493,11 @@ public class ginecogenerales extends javax.swing.JPanel {
         jTextField5.setText(h[0][8].toString());
         try {
             Date fechafup = formato.parse(h[0][9].toString());
-            jDateChooser2.setDate(fechafup);
+            if (h[0][9].toString().equals("01/01/0001")) {
+                jDateChooser2.setDate(null);
+            } else {
+                jDateChooser2.setDate(fechafup);
+            }
         } catch (ParseException e) {
             JOptionPane.showMessageDialog(null, "Error al convertir la fecha fup " + e.getMessage().toString());
         }
