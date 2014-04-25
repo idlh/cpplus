@@ -23,7 +23,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
     private final EntityManagerFactory factory;
     private final PypAdmAsistCon pypAdmAsistCon;
     private StaticCie10 cie101, cie102, cie103, cie104;
-    int ciep = 0, est = 0;
+    int ciep = 0, est = 0, est2 = 0, est3 = 0, est4 = 0;
     Funciones_AD Funciones = new Funciones_AD();
     Save sav = new Save();
     Actualizar act = new Actualizar();
@@ -293,7 +293,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                cie101 = (StaticCie10) dc.modelo.getValueAt(dc.jTable1.getSelectedRow(), 0);
+                cie101 = (StaticCie10) dc.jTable1.getValueAt(dc.jTable1.getSelectedRow(), 0);
                 jTextField2.setText(cie101.getCodigo() + " - " + cie101.getDescripcion());
                 dc.dispose();
                 jButton3.setEnabled(true);
@@ -309,14 +309,14 @@ public class DiagnosticosM extends javax.swing.JPanel {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                cie102 = (StaticCie10) dc.modelo.getValueAt(dc.jTable1.getSelectedRow(), 0);
+                cie102 = (StaticCie10) dc.jTable1.getValueAt(dc.jTable1.getSelectedRow(), 0);
                 jTextField3.setText(cie102.getCodigo() + " - " + cie102.getDescripcion());
                 dc.dispose();
                 jButton5.setEnabled(true);
             }
         });
         dc.setVisible(true);
-        est = 2;
+        est2 = 2;
     }//GEN-LAST:event_jButton3MouseReleased
 
     private void jButton5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseReleased
@@ -325,14 +325,14 @@ public class DiagnosticosM extends javax.swing.JPanel {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                cie103 = (StaticCie10) dc.modelo.getValueAt(dc.jTable1.getSelectedRow(), 0);
+                cie103 = (StaticCie10) dc.jTable1.getValueAt(dc.jTable1.getSelectedRow(), 0);
                 jTextField5.setText(cie103.getCodigo() + " - " + cie103.getDescripcion());
                 dc.dispose();
                 jButton4.setEnabled(true);
             }
         });
         dc.setVisible(true);
-        est = 3;
+        est3 = 3;
     }//GEN-LAST:event_jButton5MouseReleased
 
     private void jButton4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseReleased
@@ -341,13 +341,13 @@ public class DiagnosticosM extends javax.swing.JPanel {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                cie104 = (StaticCie10) dc.modelo.getValueAt(dc.jTable1.getSelectedRow(), 0);
+                cie104 = (StaticCie10) dc.jTable1.getValueAt(dc.jTable1.getSelectedRow(), 0);
                 jTextField4.setText(cie104.getCodigo() + " - " + cie104.getDescripcion());
                 dc.dispose();
             }
         });
         dc.setVisible(true);
-        est = 4;
+        est4 = 4;
     }//GEN-LAST:event_jButton4MouseReleased
     
     public void actdx() {
@@ -362,7 +362,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
             }
             act.actdx1(d, ciep, d1);
         }
-        if (est == 2) {
+        if (est2 == 2) {
             if (jTextField3.getText().equals("")) {
                 d2 = 1;
             } else {
@@ -370,7 +370,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
             }
             act.actdx2(d, ciep, d2);
         }
-        if (est == 3) {
+        if (est3 == 3) {
             if (jTextField5.getText().equals("")) {
                 d3 = 1;
             } else {
@@ -378,7 +378,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
             }
             act.actdx3(d, ciep, d3);
         }
-        if (est == 4) {
+        if (est4 == 4) {
             if (jTextField4.getText().equals("")) {
                 d4 = 1;
             } else {
@@ -400,16 +400,19 @@ public class DiagnosticosM extends javax.swing.JPanel {
             jTextField2.setText("");
         } else {
             jTextField2.setText(r1[0][0].toString());
+            jButton3.setEnabled(true);
         }
         if (h[0][19].toString().equals("1")) {
             jTextField3.setText("");
         } else {
             jTextField3.setText(r2[0][0].toString());
+            jButton5.setEnabled(true);
         }
         if (h[0][20].toString().equals("1")) {
             jTextField5.setText("");
         } else {
             jTextField5.setText(r3[0][0].toString());
+            jButton4.setEnabled(true);
         }
         if (h[0][21].toString().equals("1")) {
             jTextField4.setText("");
