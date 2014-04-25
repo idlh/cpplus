@@ -157,6 +157,7 @@ public class DgCie10 extends javax.swing.JDialog {
 
             }
         ));
+        jTable1.setFocusable(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jTable1MouseEntered(evt);
