@@ -24,7 +24,7 @@ import Dialogos.HCDiag.Dprocedimientos;
  * @author Camilo
  */
 public class Anticonceptivos extends javax.swing.JPanel {
-    
+
     private final PypAdmAsistCon pypAdmAsistCon;
     Actualizar act = new Actualizar();
     Save sav = new Save();
@@ -38,7 +38,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
     Dialogos.HCDiag.Dprocedimientos prog;
     String est = "1";
     int columnindex, rowindex;
-    
+
     public Anticonceptivos(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
@@ -278,7 +278,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         final Dmedicamentosanti medi = new Dmedicamentosanti((Frame) SwingUtilities.getWindowAncestor(this), true);
         medi.jButton2.addActionListener(new ActionListener() {
-            
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (medi.jTextField2.getText().equals("")) {
@@ -326,7 +326,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
         final Dprocedimientos pr = new Dprocedimientos((Frame) SwingUtilities.getWindowAncestor(this), true);
         pr.procanti();
         pr.jButton3.addActionListener(new ActionListener() {
-            
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 Boolean validacion = false;
@@ -399,7 +399,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         jTextField1.selectAll();
     }//GEN-LAST:event_jTextField1FocusGained
-    
+
     public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5, String r6, String r7, String r8) {
         try {
             Object nuevo[] = {r1, r2, r3, r4, r5, r6, r7, r8};
@@ -408,7 +408,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, " :(  " + e.getMessage());
         }
     }
-    
+
     public void getModelo() {
         modelomedi = new DefaultTableModel(
                 null, new String[]{"Id", "Medicamento", "dosisf", "dosisff", "viaf", "observacion", "Cantidad sum", "estado"}) {
@@ -425,12 +425,12 @@ public class Anticonceptivos extends javax.swing.JPanel {
                     boolean[] canEdit = new boolean[]{
                         false, false, false, false, false, false, false, false
                     };
-                    
+
                     @Override
                     public Class getColumnClass(int columnIndex) {
                         return types[columnIndex];
                     }
-                    
+
                     @Override
                     public boolean isCellEditable(int rowIndex, int colIndex) {
                         return canEdit[colIndex];
@@ -438,7 +438,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
                 };
         Tabaantimedi.setModel(modelomedi);
     }
-    
+
     private void cargar() {
         getModelo();
         Tabaantimedi.getTableHeader().setReorderingAllowed(false);
@@ -454,7 +454,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
             tab.cargartablamedianti(modelomedi, d);
         }
     }
-    
+
     public void quitarrgistro() {
         if (modelomedi.getRowCount() > 0 && Tabaantimedi.getSelectedRow() > -1) {
             if (modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 7).equals("2")) {
@@ -469,7 +469,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
             }
         }
     }
-    
+
     public void actmedicamentos() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
@@ -491,7 +491,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
             }
         }
     }
-    
+
     public void Agregar_Registroanti(String r1, String r2, String r3, String r4, String r5) {
         try {
             Object nuevo[] = {r1, r2, r3, r4, r5};
@@ -500,7 +500,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, " :(  " + e.getMessage());
         }
     }
-    
+
     public void getModeloanti() {
         modelo = new DefaultTableModel(
                 null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria", "Estado"}) {
@@ -514,12 +514,12 @@ public class Anticonceptivos extends javax.swing.JPanel {
                     boolean[] canEdit = new boolean[]{
                         false, false, false, false, false
                     };
-                    
+
                     @Override
                     public Class getColumnClass(int columnIndex) {
                         return types[columnIndex];
                     }
-                    
+
                     @Override
                     public boolean isCellEditable(int rowIndex, int colIndex) {
                         return canEdit[colIndex];
@@ -527,7 +527,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
                 };
         tablaantiq.setModel(modelo);
     }
-    
+
     private void tabla() {
         try {
             getModeloanti();
@@ -546,11 +546,11 @@ public class Anticonceptivos extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "error: " + e.getMessage().toString(), ProcedimientosQ.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
+
     public void actprocedanti() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-            String d = (c[0][0].toString());
-            if (est.toString().equals("2")) {            
+        String d = (c[0][0].toString());
+        if (est.toString().equals("2")) {
             for (int i = 0; i < modelo.getRowCount(); i++) {
                 if (modelo.getValueAt(i, 4).equals("1")) {
                     modelo.setValueAt("2", i, 4);
@@ -572,7 +572,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
         tablaantiq.removeAll();
         tabla();
     }
-    
+
     public void quitarrgistroanti() {
         if (modelo.getRowCount() > 0 && tablaantiq.getSelectedRow() > -1) {
             if (modelo.getValueAt(tablaantiq.getSelectedRow(), 4).equals("2")) {
@@ -587,7 +587,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
             }
         }
     }
-    
+
     public void guardaranticonceptivos() {
         actmedicamentos();
         actprocedanti();
@@ -608,10 +608,10 @@ public class Anticonceptivos extends javax.swing.JPanel {
             da3 = "998";
         } else {
             da3 = jTextField1.getText().toString();
-        }        
+        }
         act.actanticonceptivos(d, da1, da2, da3);
     }
-    
+
     public void cargaranticonceptivos() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
@@ -626,7 +626,11 @@ public class Anticonceptivos extends javax.swing.JPanel {
         } else {
             jCheckBox2.setSelected(false);
         }
-        jTextField1.setText(pypdata[0][4].toString());
+        if (pypdata[0][4].toString().equals("998")) {
+            jTextField1.setText("");
+        } else {
+            jTextField1.setText(pypdata[0][4].toString());
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
