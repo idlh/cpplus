@@ -437,7 +437,7 @@ public class Actualizar {
                     + "    `database`.`pyp_historiac`"
                     + "    INNER JOIN `database`.`pyp_adm_asist_con` "
                     + "        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)"
-                    + " SET `pyp_historiac`.`estado`=1, `pyp_adm_asist_con`.`estado`=2"
+                    + " SET `pyp_historiac`.`estado`=1, `pyp_adm_asist_con`.`estado`=3"
                     + " WHERE `pyp_historiac`.`id` = ? AND `pyp_historiac`.`id_admisionpyp`=? AND `pyp_historiac`.`estado`=0;");
             bd.preparedStatement.setString(1, idhc);
             bd.preparedStatement.setString(2, idhis);
@@ -982,7 +982,7 @@ public class Actualizar {
         }
     }
 
-    public void actcrecimiento(String id, String incompatibilidad, String sufrimiento, String icteria, String patologiascpn, 
+    public void actcrecimiento(String id, String incompatibilidad, String sufrimiento, String icteria, String patologiascpn,
             String partoprolongado, String partotraumatico, String hospitalizacion, String otros, float pesoalnacer, float tallanacer,
             String egparto, float tshneonatal, String terminaparto, String hemoclasificacion, String vdrl, String alimentacion,
             String lugarnacimiento, String embarazodeseado) {
@@ -1022,6 +1022,52 @@ public class Actualizar {
             JOptionPane.showMessageDialog(null, "a028 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public String cargarante(String idpaciente) {
+        return "SELECT *"
+                + "FROM `database`.`info_ant_personales`"
+                + "WHERE `info_ant_personales`.`id_paciente` = '" + idpaciente + "'";
+    }
+
+    public String contarantecedente(String idpaciente) {
+        return "SELECT COUNT(*)"
+                + "FROM `database`.`info_ant_personales`"
+                + "WHERE `info_ant_personales`.`id_paciente` = '" + idpaciente + "'";
+    }
+
+    public void actinfoante(String idpaciente, String alergias, String ingresos, String traumatismos, String tratamientos, String dm,
+            String hta, String dislipidemia, String deschdd, String tabaco, String alcochol, String droga, String otrosh, String basal, String familiares) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`info_ant_personales` "
+                    + "SET  `info_ant_personales`.`alergias`=?, `info_ant_personales`.`ingresos_previos`=?,"
+                    + "	    `info_ant_personales`.`traumatismos`=?, `info_ant_personales`.`tratamientos`=?, `info_ant_personales`.`dm`=?, "
+                    + "	    `info_ant_personales`.`hta`=?, `info_ant_personales`.`dislipidemia`=?, `info_ant_personales`.`desc_hdd`=?,"
+                    + "	    `info_ant_personales`.`tabaco`=?, `info_ant_personales`.`alcohol`=?, `info_ant_personales`.`droga`=?, "
+                    + "	    `info_ant_personales`.`otros_habitos`=?, `info_ant_personales`.`situacion_basal`=?, `info_ant_personales`.`ant_familiares`=?"
+                    + "	    WHERE (`info_ant_personales`.`id_paciente`=?);");
+            bd.preparedStatement.setString(1, alergias);
+            bd.preparedStatement.setString(2, ingresos);
+            bd.preparedStatement.setString(3, traumatismos);
+            bd.preparedStatement.setString(4, tratamientos);
+            bd.preparedStatement.setString(5, dm);
+            bd.preparedStatement.setString(6, hta);
+            bd.preparedStatement.setString(7, dislipidemia);
+            bd.preparedStatement.setString(8, deschdd);
+            bd.preparedStatement.setString(9, tabaco);
+            bd.preparedStatement.setString(10, alcochol);
+            bd.preparedStatement.setString(11, droga);
+            bd.preparedStatement.setString(12, otrosh);
+            bd.preparedStatement.setString(13, basal);
+            bd.preparedStatement.setString(14, familiares);
+            bd.preparedStatement.setString(15, idpaciente);            
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a029 " + e.getMessage(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a029 " + e.getMessage(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }
