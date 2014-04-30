@@ -4,23 +4,23 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class Save {
-
+    
     Clases.BDConectar bd = new Clases.BDConectar();
-
+    
     public String contarhc(String id) {
         return "SELECT COUNT(*)"
                 + " FROM"
                 + " `database`.`pyp_historiac`"
                 + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "';";
     }
-
+    
     public String contarproce(String id) {
         return "SELECT COUNT(*)"
                 + "   FROM"
                 + "       `database`.`pyp_procedimiento`"
                 + "   WHERE `pyp_procedimiento`.`id_historiapyp`='" + id + "';";
     }
-
+    
     public void crearhcnueva(String idasis, String idp) {
         try {
             bd.ConectarBasedeDatos();
@@ -33,7 +33,7 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
-
+    
     public String seleccionaridhc(String id) {
         return "SELECT `pyp_historiac`.`id`"
                 + " FROM"
@@ -41,7 +41,7 @@ public class Save {
                 + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "' AND `pyp_historiac`.`estado` = 0"
                 + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1;";
     }
-
+    
     public String seleccionaridhcfinal(String id) {
         return "SELECT `pyp_historiac`.`id`"
                 + " FROM"
@@ -49,7 +49,7 @@ public class Save {
                 + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "'"
                 + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1;";
     }
-
+    
     public void newadulto(String id) {
         try {
             bd.ConectarBasedeDatos();
@@ -62,7 +62,7 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
-
+    
     public void newagineco(String id) {
         try {
             bd.ConectarBasedeDatos();
@@ -75,7 +75,7 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
-
+    
     public void neweventose(String id) {
         try {
             bd.ConectarBasedeDatos();
@@ -88,7 +88,7 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
-
+    
     public void newexpf(String id) {
         try {
             bd.ConectarBasedeDatos();
@@ -101,7 +101,7 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
-
+    
     public void newposo(String id, String sum, String dosis, String canti, String dosisu, String via, String administracion, String user, String fecha, String estado) {
         try {
             bd.ConectarBasedeDatos();
@@ -126,7 +126,7 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
-
+    
     public void newproce(String id, String idc, String idu, String estado) {
         try {
             bd.ConectarBasedeDatos();
@@ -144,7 +144,7 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
-
+    
     public void newpruebas(String id, String nombre, String ruta, String tipo) {
         try {
             bd.ConectarBasedeDatos();
@@ -162,7 +162,7 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
-
+    
     public void newmaterna(String id) {
         try {
             bd.ConectarBasedeDatos();
@@ -175,13 +175,13 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
-
+    
     public String idmaterna(String id) {
         return "SELECT `pyp_materna`.`id`"
                 + "FROM `database`.`pyp_materna`"
                 + "WHERE (`pyp_materna`.`id_historia` ='" + id + "');";
     }
-
+    
     public void newobstetrico(String id) {
         try {
             bd.ConectarBasedeDatos();
@@ -192,7 +192,7 @@ public class Save {
             JOptionPane.showMessageDialog(null, "c010" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
+    
     public void newgestaac(String id) {
         try {
             bd.ConectarBasedeDatos();
@@ -203,7 +203,7 @@ public class Save {
             JOptionPane.showMessageDialog(null, "c011" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
+    
     public void newparto(String id) {
         try {
             bd.ConectarBasedeDatos();
@@ -214,7 +214,7 @@ public class Save {
             JOptionPane.showMessageDialog(null, "c012" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
+    
     public void newrecien(String id) {
         try {
             bd.ConectarBasedeDatos();
@@ -225,7 +225,7 @@ public class Save {
             JOptionPane.showMessageDialog(null, "c013" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
+    
     public void newposoanti(String id, String sum, String dosis, String canti, String dosisu, String via, String administracion, String user, String fecha, String estado) {
         try {
             bd.ConectarBasedeDatos();
@@ -251,7 +251,7 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
-
+    
     public void newproceanti(String id, String idc, String idu, String estado) {
         try {
             bd.ConectarBasedeDatos();
@@ -270,7 +270,7 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
-
+    
     public void newplanificacion(String id) {
         try {
             bd.ConectarBasedeDatos();
@@ -281,7 +281,7 @@ public class Save {
             JOptionPane.showMessageDialog(null, "c016" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
+    
     public void newjoven(String id) {
         try {
             bd.ConectarBasedeDatos();
@@ -316,6 +316,38 @@ public class Save {
             JOptionPane.showMessageDialog(null, "c018" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
+        }
+    }
+    
+    public void newinfoante(String idpaciente, String alergias, String ingresos, String traumatismos, String tratamientos, String dm,
+            String hta, String dislipidemia, String deschdd, String tabaco, String alcochol, String droga, String otrosh, String basal, String familiares) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("INSERT INTO `database`.`info_ant_personales` (`info_ant_personales`.`id_paciente`, `info_ant_personales`.`alergias`,"
+                    + "	    `info_ant_personales`.`ingresos_previos`,`info_ant_personales`.`traumatismos`, `info_ant_personales`.`tratamientos`,"
+                    + "	    `info_ant_personales`.`dm`, `info_ant_personales`.`hta`, `info_ant_personales`.`dislipidemia`, `info_ant_personales`.`desc_hdd`,"
+                    + "	    `info_ant_personales`.`tabaco`, `info_ant_personales`.`alcohol`, `info_ant_personales`.`droga`, `info_ant_personales`.`otros_habitos`,"
+                    + "	    `info_ant_personales`.`situacion_basal`, `info_ant_personales`.`ant_familiares`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
+            bd.preparedStatement.setString(1, idpaciente);
+            bd.preparedStatement.setString(2, alergias);
+            bd.preparedStatement.setString(3, ingresos);
+            bd.preparedStatement.setString(4, traumatismos);
+            bd.preparedStatement.setString(5, tratamientos);
+            bd.preparedStatement.setString(6, dm);
+            bd.preparedStatement.setString(7, hta);
+            bd.preparedStatement.setString(8, dislipidemia);
+            bd.preparedStatement.setString(9, deschdd);
+            bd.preparedStatement.setString(10, tabaco);
+            bd.preparedStatement.setString(11, alcochol);
+            bd.preparedStatement.setString(12, droga);
+            bd.preparedStatement.setString(13, otrosh);
+            bd.preparedStatement.setString(14, basal);
+            bd.preparedStatement.setString(15, familiares);
+            bd.preparedStatement.execute();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c019" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c019" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }
