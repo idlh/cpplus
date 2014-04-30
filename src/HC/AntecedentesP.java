@@ -904,32 +904,33 @@ public class AntecedentesP extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBox1, 0, 84, Short.MAX_VALUE)
                             .addComponent(jTextField1)
                             .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox7)
                             .addComponent(jCheckBox8))
                         .addGap(31, 31, 31))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jComboBox6, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox5, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox4, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jComboBox6, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox5, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -954,6 +955,7 @@ public class AntecedentesP extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jCheckBox8)
                         .addGap(24, 24, 24)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
@@ -969,7 +971,7 @@ public class AntecedentesP extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -1949,6 +1951,18 @@ public class AntecedentesP extends javax.swing.JPanel {
         } else {
             y = "0";
         }
+        Object cont[][] = Funciones.RetornarDatos(act.contarantecedente(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString()));
+        if (cont[0][0].toString().equals("0")) {
+            sav.newinfoante(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString(), jTextArea1.getText().toUpperCase().toString(), jTextArea2.getText().toUpperCase().toString(),
+                    jTextArea3.getText().toUpperCase().toString(), jTextArea4.getText().toUpperCase().toString(),
+                    w, q, e, jTextArea5.getText().toUpperCase().toString(), r, t, y, jTextArea6.getText().toUpperCase().toString(),
+                    jTextArea7.getText().toUpperCase().toString(), jTextArea8.getText().toUpperCase().toString());
+        } else {
+            act.actinfoante(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString(), jTextArea1.getText().toUpperCase().toString(), jTextArea2.getText().toUpperCase().toString(),
+                    jTextArea3.getText().toUpperCase().toString(), jTextArea4.getText().toUpperCase().toString(),
+                    w, q, e, jTextArea5.getText().toUpperCase().toString(), r, t, y, jTextArea6.getText().toUpperCase().toString(),
+                    jTextArea7.getText().toUpperCase().toString(), jTextArea8.getText().toUpperCase().toString());
+        }
         act.actualizarantp(d, jTextArea1.getText().toUpperCase().toString(), jTextArea2.getText().toUpperCase().toString(),
                 jTextArea3.getText().toUpperCase().toString(), jTextArea4.getText().toUpperCase().toString(),
                 w, q, e, jTextArea5.getText().toUpperCase().toString(), r, t, y, jTextArea6.getText().toUpperCase().toString(),
@@ -1962,99 +1976,104 @@ public class AntecedentesP extends javax.swing.JPanel {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
         Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
-        if (h[0][2].toString().equals("NO SE ENCUENTRAN DATOS")) {
-            jTextArea1.setText(h[0][2].toString());
-            jTextArea1.setSelectionStart(0);
-            jTextArea1.setSelectionEnd(jTextArea1.getText().length());
+        Object car[][] = Funciones.RetornarDatos(act.contarantecedente(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString()));
+        if (car[0][0].toString().equals("0")) {
+            if (h[0][2].toString().equals("NO SE ENCUENTRAN DATOS")) {
+                jTextArea1.setText(h[0][2].toString());
+                jTextArea1.setSelectionStart(0);
+                jTextArea1.setSelectionEnd(jTextArea1.getText().length());
+            } else {
+                jTextArea1.setText(h[0][2].toString());
+                jTextArea1.setForeground(Color.BLACK);
+            }
+            if (h[0][3].toString().equals("NO SE ENCUENTRAN DATOS")) {
+                jTextArea2.setText(h[0][3].toString());
+                jTextArea2.setSelectionStart(0);
+                jTextArea2.setSelectionEnd(jTextArea2.getText().length());
+            } else {
+                jTextArea2.setText(h[0][3].toString());
+                jTextArea2.setForeground(Color.BLACK);
+            }
+            if (h[0][4].toString().equals("NO SE ENCUENTRAN DATOS")) {
+                jTextArea3.setText(h[0][4].toString());
+                jTextArea3.setSelectionStart(0);
+                jTextArea3.setSelectionEnd(jTextArea3.getText().length());
+            } else {
+                jTextArea3.setText(h[0][4].toString());
+                jTextArea3.setForeground(Color.BLACK);
+            }
+            if (h[0][5].toString().equals("NO SE ENCUENTRAN DATOS")) {
+                jTextArea4.setText(h[0][5].toString());
+                jTextArea4.setSelectionStart(0);
+                jTextArea4.setSelectionEnd(jTextArea4.getText().length());
+            } else {
+                jTextArea4.setText(h[0][5].toString());
+                jTextArea4.setForeground(Color.BLACK);
+            }
+            if (h[0][6].toString().equals("0")) {
+                jCheckBox2.setSelected(false);
+            } else {
+                jCheckBox2.setSelected(true);
+            }
+            if (h[0][7].toString().equals("0")) {
+                jCheckBox1.setSelected(false);
+            } else {
+                jCheckBox1.setSelected(true);
+            }
+            if (h[0][8].toString().equals("0")) {
+                jCheckBox3.setSelected(false);
+            } else {
+                jCheckBox3.setSelected(true);
+            }
+            if (h[0][9].toString().equals("NINGUNO")) {
+                jTextArea5.setText(h[0][9].toString());
+                jTextArea5.setSelectionStart(0);
+                jTextArea5.setSelectionEnd(jTextArea5.getText().length());
+            } else {
+                jTextArea5.setText(h[0][9].toString());
+                jTextArea5.setForeground(Color.BLACK);
+            }
+            if (h[0][10].toString().equals("0")) {
+                jCheckBox4.setSelected(false);
+            } else {
+                jCheckBox4.setSelected(true);
+            }
+            if (h[0][11].toString().equals("0")) {
+                jCheckBox5.setSelected(false);
+            } else {
+                jCheckBox5.setSelected(true);
+            }
+            if (h[0][12].toString().equals("0")) {
+                jCheckBox6.setSelected(false);
+            } else {
+                jCheckBox6.setSelected(true);
+            }
+            if (h[0][13].toString().equals("NINGUNO")) {
+                jTextArea6.setText(h[0][13].toString());
+                jTextArea6.setSelectionStart(0);
+                jTextArea6.setSelectionEnd(jTextArea6.getText().length());
+            } else {
+                jTextArea6.setText(h[0][13].toString());
+                jTextArea6.setForeground(Color.BLACK);
+            }
+            if (h[0][14].toString().equals("NO SE ENCUENTRAN DATOS")) {
+                jTextArea7.setText(h[0][14].toString());
+                jTextArea7.setSelectionStart(0);
+                jTextArea7.setSelectionEnd(jTextArea7.getText().length());
+            } else {
+                jTextArea7.setText(h[0][14].toString());
+                jTextArea7.setForeground(Color.BLACK);
+            }
+            if (h[0][15].toString().equals("NO SE ENCUENTRAN DATOS")) {
+                jTextArea8.setText(h[0][15].toString());
+                jTextArea8.setSelectionStart(0);
+                jTextArea8.setSelectionEnd(jTextArea8.getText().length());
+            } else {
+                jTextArea8.setText(h[0][15].toString());
+                jTextArea8.setForeground(Color.BLACK);
+            }
         } else {
-            jTextArea1.setText(h[0][2].toString());
-            jTextArea1.setForeground(Color.BLACK);
-        }
-        if (h[0][3].toString().equals("NO SE ENCUENTRAN DATOS")) {
-            jTextArea2.setText(h[0][3].toString());
-            jTextArea2.setSelectionStart(0);
-            jTextArea2.setSelectionEnd(jTextArea2.getText().length());
-        } else {
-            jTextArea2.setText(h[0][3].toString());
-            jTextArea2.setForeground(Color.BLACK);
-        }
-        if (h[0][4].toString().equals("NO SE ENCUENTRAN DATOS")) {
-            jTextArea3.setText(h[0][4].toString());
-            jTextArea3.setSelectionStart(0);
-            jTextArea3.setSelectionEnd(jTextArea3.getText().length());
-        } else {
-            jTextArea3.setText(h[0][4].toString());
-            jTextArea3.setForeground(Color.BLACK);
-        }
-        if (h[0][5].toString().equals("NO SE ENCUENTRAN DATOS")) {
-            jTextArea4.setText(h[0][5].toString());
-            jTextArea4.setSelectionStart(0);
-            jTextArea4.setSelectionEnd(jTextArea4.getText().length());
-        } else {
-            jTextArea4.setText(h[0][5].toString());
-            jTextArea4.setForeground(Color.BLACK);
-        }
-        if (h[0][6].toString().equals("0")) {
-            jCheckBox2.setSelected(false);
-        } else {
-            jCheckBox2.setSelected(true);
-        }
-        if (h[0][7].toString().equals("0")) {
-            jCheckBox1.setSelected(false);
-        } else {
-            jCheckBox1.setSelected(true);
-        }
-        if (h[0][8].toString().equals("0")) {
-            jCheckBox3.setSelected(false);
-        } else {
-            jCheckBox3.setSelected(true);
-        }
-        if (h[0][9].toString().equals("NINGUNO")) {
-            jTextArea5.setText(h[0][9].toString());
-            jTextArea5.setSelectionStart(0);
-            jTextArea5.setSelectionEnd(jTextArea5.getText().length());
-        } else {
-            jTextArea5.setText(h[0][9].toString());
-            jTextArea5.setForeground(Color.BLACK);
-        }
-        if (h[0][10].toString().equals("0")) {
-            jCheckBox4.setSelected(false);
-        } else {
-            jCheckBox4.setSelected(true);
-        }
-        if (h[0][11].toString().equals("0")) {
-            jCheckBox5.setSelected(false);
-        } else {
-            jCheckBox5.setSelected(true);
-        }
-        if (h[0][12].toString().equals("0")) {
-            jCheckBox6.setSelected(false);
-        } else {
-            jCheckBox6.setSelected(true);
-        }
-        if (h[0][13].toString().equals("NINGUNO")) {
-            jTextArea6.setText(h[0][13].toString());
-            jTextArea6.setSelectionStart(0);
-            jTextArea6.setSelectionEnd(jTextArea6.getText().length());
-        } else {
-            jTextArea6.setText(h[0][13].toString());
-            jTextArea6.setForeground(Color.BLACK);
-        }
-        if (h[0][14].toString().equals("NO SE ENCUENTRAN DATOS")) {
-            jTextArea7.setText(h[0][14].toString());
-            jTextArea7.setSelectionStart(0);
-            jTextArea7.setSelectionEnd(jTextArea7.getText().length());
-        } else {
-            jTextArea7.setText(h[0][14].toString());
-            jTextArea7.setForeground(Color.BLACK);
-        }
-        if (h[0][15].toString().equals("NO SE ENCUENTRAN DATOS")) {
-            jTextArea8.setText(h[0][15].toString());
-            jTextArea8.setSelectionStart(0);
-            jTextArea8.setSelectionEnd(jTextArea8.getText().length());
-        } else {
-            jTextArea8.setText(h[0][15].toString());
-            jTextArea8.setForeground(Color.BLACK);
+            cargarinfoante();
         }
         gi.cargarginecog();
         gimac.cargarginecom();
@@ -2335,6 +2354,107 @@ public class AntecedentesP extends javax.swing.JPanel {
         jComboBox13.setSelectedIndex(Integer.parseInt(pypdata[0][22].toString()));
         jComboBox7.setSelectedIndex(Integer.parseInt(pypdata[0][23].toString()));
         jTextField10.setText(pypdata[0][24].toString());
+    }
+
+    public void cargarinfoante() {
+        Object car[][] = Funciones.RetornarDatos(act.contarantecedente(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString()));
+        if (car[0][0].toString().equals("1")) {
+            Object dante[][] = Funciones.RetornarDatos(act.cargarante(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString()));
+            if (dante[0][2].toString().equals("NO SE ENCUENTRAN DATOS")) {
+                jTextArea1.setText(dante[0][2].toString());
+                jTextArea1.setSelectionStart(0);
+                jTextArea1.setSelectionEnd(jTextArea1.getText().length());
+            } else {
+                jTextArea1.setText(dante[0][2].toString());
+                jTextArea1.setForeground(Color.BLACK);
+            }
+            if (dante[0][3].toString().equals("NO SE ENCUENTRAN DATOS")) {
+                jTextArea2.setText(dante[0][3].toString());
+                jTextArea2.setSelectionStart(0);
+                jTextArea2.setSelectionEnd(jTextArea2.getText().length());
+            } else {
+                jTextArea2.setText(dante[0][3].toString());
+                jTextArea2.setForeground(Color.BLACK);
+            }
+            if (dante[0][4].toString().equals("NO SE ENCUENTRAN DATOS")) {
+                jTextArea3.setText(dante[0][4].toString());
+                jTextArea3.setSelectionStart(0);
+                jTextArea3.setSelectionEnd(jTextArea3.getText().length());
+            } else {
+                jTextArea3.setText(dante[0][4].toString());
+                jTextArea3.setForeground(Color.BLACK);
+            }
+            if (dante[0][5].toString().equals("NO SE ENCUENTRAN DATOS")) {
+                jTextArea4.setText(dante[0][5].toString());
+                jTextArea4.setSelectionStart(0);
+                jTextArea4.setSelectionEnd(jTextArea4.getText().length());
+            } else {
+                jTextArea4.setText(dante[0][5].toString());
+                jTextArea4.setForeground(Color.BLACK);
+            }
+            if (dante[0][6].toString().equals("false")) {
+                jCheckBox2.setSelected(false);
+            } else {
+                jCheckBox2.setSelected(true);
+            }
+            if (dante[0][7].toString().equals("false")) {
+                jCheckBox1.setSelected(false);
+            } else {
+                jCheckBox1.setSelected(true);
+            }
+            if (dante[0][8].toString().equals("false")) {
+                jCheckBox3.setSelected(false);
+            } else {
+                jCheckBox3.setSelected(true);
+            }
+            if (dante[0][9].toString().equals("NINGUNO")) {
+                jTextArea5.setText(dante[0][9].toString());
+                jTextArea5.setSelectionStart(0);
+                jTextArea5.setSelectionEnd(jTextArea5.getText().length());
+            } else {
+                jTextArea5.setText(dante[0][9].toString());
+                jTextArea5.setForeground(Color.BLACK);
+            }
+            if (dante[0][10].toString().equals("false")) {
+                jCheckBox4.setSelected(false);
+            } else {
+                jCheckBox4.setSelected(true);
+            }
+            if (dante[0][11].toString().equals("false")) {
+                jCheckBox5.setSelected(false);
+            } else {
+                jCheckBox5.setSelected(true);
+            }
+            if (dante[0][12].toString().equals("false")) {
+                jCheckBox6.setSelected(false);
+            } else {
+                jCheckBox6.setSelected(true);
+            }
+            if (dante[0][13].toString().equals("NINGUNO")) {
+                jTextArea6.setText(dante[0][13].toString());
+                jTextArea6.setSelectionStart(0);
+                jTextArea6.setSelectionEnd(jTextArea6.getText().length());
+            } else {
+                jTextArea6.setText(dante[0][13].toString());
+                jTextArea6.setForeground(Color.BLACK);
+            }
+            if (dante[0][14].toString().equals("NO SE ENCUENTRAN DATOS")) {
+                jTextArea7.setText(dante[0][14].toString());
+                jTextArea7.setSelectionStart(0);
+                jTextArea7.setSelectionEnd(jTextArea7.getText().length());
+            } else {
+                jTextArea7.setText(dante[0][14].toString());
+                jTextArea7.setForeground(Color.BLACK);
+            }
+            if (dante[0][15].toString().equals("NO SE ENCUENTRAN DATOS")) {
+                jTextArea8.setText(dante[0][15].toString());
+                jTextArea8.setSelectionStart(0);
+                jTextArea8.setSelectionEnd(jTextArea8.getText().length());
+            } else {
+                jTextArea8.setText(dante[0][15].toString());
+                jTextArea8.setForeground(Color.BLACK);
+            }
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JCheckBox jCheckBox1;

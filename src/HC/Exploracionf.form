@@ -295,7 +295,7 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel14">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cm"/>
+                <Property name="text" type="java.lang.String" value="M"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">

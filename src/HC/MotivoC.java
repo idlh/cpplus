@@ -67,12 +67,12 @@ public class MotivoC extends javax.swing.JPanel {
         });
 
         jCheckBox7.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox7.setText("Fracaso economico");
+        jCheckBox7.setText("Victima de maltrato");
         jCheckBox7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox7.setFocusable(false);
 
         jCheckBox6.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox6.setText("Deserción escolar");
+        jCheckBox6.setText("Gestación");
         jCheckBox6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox6.setFocusable(false);
 
@@ -82,7 +82,7 @@ public class MotivoC extends javax.swing.JPanel {
         jCheckBox8.setFocusable(false);
 
         jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setText("Separacion o divorcio");
+        jCheckBox1.setText("Violencia sexual");
         jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox1.setFocusable(false);
 
@@ -139,7 +139,7 @@ public class MotivoC extends javax.swing.JPanel {
                             .addComponent(jCheckBox4)
                             .addComponent(jCheckBox6)
                             .addComponent(jCheckBox5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox10)
                             .addComponent(jCheckBox8)

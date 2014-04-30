@@ -93,7 +93,7 @@ public class Exploracionf extends javax.swing.JPanel {
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 2) {
             jTabbedPane1.remove(jPanel10);
         }
-        jTabbedPane1.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);        
+        jTabbedPane1.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
     }
 
     /**
@@ -243,7 +243,7 @@ public class Exploracionf extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel14.setText("Cm");
+        jLabel14.setText("M");
 
         jLabel15.setText("°C");
 
@@ -1366,8 +1366,7 @@ public class Exploracionf extends javax.swing.JPanel {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1530,7 +1529,9 @@ public class Exploracionf extends javax.swing.JPanel {
 
     private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9') || jTextField8.getText().length() >= 3) {
+        if ((car < '0' || car > '9') && jTextField8.getText().contains(".") || jTextField8.getText().length() >= 5) {
+            evt.consume();
+        } else if ((car < '0' || car > '9') && (car != '.') || jTextField8.getText().length() >= 5) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField8KeyTyped
@@ -1814,6 +1815,10 @@ public class Exploracionf extends javax.swing.JPanel {
             jCheckBox8.setEnabled(false);
             jCheckBox9.setEnabled(false);
             jCheckBox10.setEnabled(false);
+            jCheckBox8.setSelected(false);
+            jCheckBox9.setSelected(false);
+            jCheckBox10.setSelected(false);
+            jDateChooser3.setDate(null);
         } else {
             jDateChooser3.setEnabled(true);
             jCheckBox8.setEnabled(true);
@@ -1957,7 +1962,7 @@ public class Exploracionf extends javax.swing.JPanel {
         if (jTextField8.getText().equals("")) {
             talla = 0;
         } else {
-            talla = Integer.parseInt(jTextField8.getText().toString());
+            talla = (int) Float.parseFloat(String.valueOf(Float.parseFloat(jTextField8.getText()) * 100));
         }
         if (jTextField9.getText().equals("")) {
             peso = 0;
@@ -2075,7 +2080,8 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextField4.setText(h[0][4].toString());
         jTextField5.setText(h[0][5].toString());
         jTextField7.setText(h[0][6].toString());
-        jTextField8.setText(h[0][7].toString());
+        float imcmetro = Float.valueOf(h[0][7].toString()) / 100;
+        jTextField8.setText(String.valueOf(imcmetro));
         jTextField9.setText(h[0][8].toString());
         jTextField10.setText(String.valueOf(h[0][9].toString()));
         jTextPane1.setText(h[0][10].toString());
@@ -2138,7 +2144,11 @@ public class Exploracionf extends javax.swing.JPanel {
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             try {
                 Date fecha = formato.parse(dato[0][16].toString());
-                jDateChooser1.setDate(fecha);
+                if (dato[0][16].toString().equals("01/01/1845")) {
+                    jDateChooser1.setDate(null);
+                } else {
+                    jDateChooser1.setDate(fecha);
+                }
             } catch (ParseException e) {
                 JOptionPane.showMessageDialog(null, "Error al convertir la fecha fpp " + e.getMessage());
             }
@@ -2173,7 +2183,9 @@ public class Exploracionf extends javax.swing.JPanel {
                 jCheckBox6.setSelected(true);
             }
         }
-        calcularimc();
+        if (!jTextField9.getText().equals("0.0") && !jTextField8.getText().equals("0")) {
+            calcularimc();
+        }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
             Object part[][] = Funciones.RetornarDatos(act.cargarpostparto(d));
             jComboBox2.setSelectedIndex(Integer.parseInt(part[0][2].toString()));
@@ -2310,7 +2322,11 @@ public class Exploracionf extends javax.swing.JPanel {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         try {
             Date fecha = formato.parse(pypdata[0][5].toString());
-            jDateChooser2.setDate(fecha);
+            if (pypdata[0][5].toString().equals("01/01/1845")) {
+                jDateChooser2.setDate(null);
+            } else {
+                jDateChooser2.setDate(fecha);
+            }
         } catch (ParseException e) {
             JOptionPane.showMessageDialog(null, "Error al convertir la fecha valoracion visual " + e.getMessage());
         }
@@ -2325,7 +2341,11 @@ public class Exploracionf extends javax.swing.JPanel {
         }
         try {
             Date fecha2 = formato.parse(pypdata[0][7].toString());
-            jDateChooser3.setDate(fecha2);
+            if (pypdata[0][7].toString().equals("01/01/0001")) {
+                jDateChooser3.setDate(null);
+            } else {
+                jDateChooser3.setDate(fecha2);
+            }
         } catch (ParseException e) {
             JOptionPane.showMessageDialog(null, "Error al convertir la fecha valoracion odontologica " + e.getMessage());
         }
@@ -2484,8 +2504,8 @@ public class Exploracionf extends javax.swing.JPanel {
 
     private void calcularimc() {
         float imc = 0;
-        String im = null;
-        imc = Float.parseFloat(jTextField9.getText()) / ((Float.parseFloat(jTextField8.getText()) * Float.parseFloat(jTextField8.getText())) / 100) * 100;
+        String im = null, imcnetro = jTextField8.getText();
+        imc = ((Float.parseFloat(jTextField9.getText()) / ((Float.parseFloat(imcnetro) * Float.parseFloat(imcnetro)) / 100) * 100) / 100) / 100;
         BigDecimal value = new BigDecimal(imc).setScale(2, BigDecimal.ROUND_HALF_UP);
         im = String.valueOf(value);
         if (imc < 19) {

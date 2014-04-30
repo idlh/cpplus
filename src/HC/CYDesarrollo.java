@@ -738,7 +738,8 @@ public class CYDesarrollo extends javax.swing.JPanel {
                 exploracionf.cargarexploracion();
                 pruebascomple.cargarpruebas();
             }
-        }
+        }        
+        antecedentesp.cargarinfoante();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -746,6 +746,7 @@ public class Controlprenatal extends javax.swing.JPanel {
                 pruebascomple.cargarpruebas();
             }
         }
+        antecedentesp.cargarinfoante();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

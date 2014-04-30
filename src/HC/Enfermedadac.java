@@ -102,7 +102,13 @@ public class Enfermedadac extends javax.swing.JPanel {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
         Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
-        jTextPane1.setText(h[0][16].toString());
+        if (!h[0][16].toString().equals("NINGUNO")) {
+            jTextPane1.setForeground(Color.black);
+            jTextPane1.setText(h[0][16].toString());
+        } else {
+            jTextPane1.setText(h[0][16].toString());
+        }
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JLabel jLabel3;

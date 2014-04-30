@@ -36,7 +36,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
     CargarordenesM tab = new CargarordenesM();
     Dialogos.HCDiag.Mostrarmed mosmed;
     Dialogos.HCDiag.Dprocedimientos prog;
-    String est = "1";
+    String est = "1", est2 = "1";
     int columnindex, rowindex;
 
     public Anticonceptivos(PypAdmAsistCon pypAdmAsistCon) {
@@ -320,6 +320,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
             }
         });
         medi.setVisible(true);
+        est2 = "2";
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
@@ -458,13 +459,13 @@ public class Anticonceptivos extends javax.swing.JPanel {
     public void quitarrgistro() {
         if (modelomedi.getRowCount() > 0 && Tabaantimedi.getSelectedRow() > -1) {
             if (modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 7).equals("2")) {
-                Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
-                act.actposologia(d, modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 0).toString(), modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 2).toString());
-                modelomedi.removeRow(Tabaantimedi.getSelectedRow());
+                modelomedi.setValueAt("0", row, 7);
+                est2 = "3";
             } else {
                 if (modelomedi.getRowCount() > 0 && Tabaantimedi.getSelectedRow() > -1) {
-                    modelomedi.removeRow(Tabaantimedi.getSelectedRow());
+                    if (modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 7).equals("1")) {
+                        modelomedi.removeRow(Tabaantimedi.getSelectedRow());
+                    }
                 }
             }
         }
@@ -481,15 +482,28 @@ public class Anticonceptivos extends javax.swing.JPanel {
         SimpleDateFormat formatoh = new SimpleDateFormat(patronh);
         fc = formato.format(fecha);
         fh = formatoh.format(hora);
-        for (int i = 0; i < modelomedi.getRowCount(); i++) {
-            if (modelomedi.getValueAt(i, 7).equals("1")) {
-                modelomedi.setValueAt("2", i, 7);
-                sav.newposoanti(d, modelomedi.getValueAt(i, 0).toString(), modelomedi.getValueAt(i, 2).toString(),
-                        modelomedi.getValueAt(i, 6).toString(), modelomedi.getValueAt(i, 3).toString(),
-                        modelomedi.getValueAt(i, 4).toString(), modelomedi.getValueAt(i, 5).toString().toUpperCase(),
-                        pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc + fh, modelomedi.getValueAt(i, 7).toString());
+        if (est2.toString().equals("2")) {
+            for (int i = 0; i < modelomedi.getRowCount(); i++) {
+                if (modelomedi.getValueAt(i, 7).equals("1")) {
+                    modelomedi.setValueAt("2", i, 7);
+                    sav.newposoanti(d, modelomedi.getValueAt(i, 0).toString(), modelomedi.getValueAt(i, 2).toString(),
+                            modelomedi.getValueAt(i, 6).toString(), modelomedi.getValueAt(i, 3).toString(),
+                            modelomedi.getValueAt(i, 4).toString(), modelomedi.getValueAt(i, 5).toString().toUpperCase(),
+                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc + fh, modelomedi.getValueAt(i, 7).toString());
+                }
+            }
+        } else {
+            if (est2.toString().equals("3")) {
+                for (int i = 0; i < modelomedi.getRowCount(); i++) {
+                    if (modelomedi.getValueAt(i, 7).equals("0")) {
+                        act.actposologia(d, modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 0).toString(), modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 2).toString());
+                    }
+                }
             }
         }
+        est2 = "1";
+        Tabaantimedi.removeAll();
+        cargar();
     }
 
     public void Agregar_Registroanti(String r1, String r2, String r3, String r4, String r5) {

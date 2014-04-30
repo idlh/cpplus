@@ -8,7 +8,6 @@ import javax.persistence.EntityManagerFactory;
 import Clases.Actualizar;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author Camilo
@@ -644,6 +643,7 @@ public class Adulto extends javax.swing.JPanel {
                     diagnosticosm.actdx();
                     ordenesm.actordenesm();
                     pruebascomple.actpruebasc();
+                    jLabel9.setText("Datos Guardados Satisfactoriamente");
                 }
             } else {
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
@@ -657,9 +657,9 @@ public class Adulto extends javax.swing.JPanel {
                     diagnosticosm.actdx();
                     ordenesm.actordenesm();
                     pruebascomple.actpruebasc();
+                    jLabel9.setText("Datos Guardados Satisfactoriamente");
                 }
             }
-            jLabel9.setText("Datos Guardados Satisfactoriamente");
         } else {
             JOptionPane.showMessageDialog(null, "La historia ya se encuentra finalizada");
         }
@@ -739,6 +739,7 @@ public class Adulto extends javax.swing.JPanel {
                 pruebascomple.cargarpruebas();
             }
         }
+        antecedentesp.cargarinfoante();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

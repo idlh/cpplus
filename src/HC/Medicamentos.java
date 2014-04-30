@@ -19,7 +19,7 @@ import Clases.Actualizar;
 import Clases.CargarordenesM;
 
 public class Medicamentos extends javax.swing.JPanel {
-    
+
     Clases.Cmedicamentos med = new Clases.Cmedicamentos();
     Dialogos.HCDiag.Mostrarmed mosmed;
     private PypAdmAsistCon pypAdmAsistCon;
@@ -31,7 +31,8 @@ public class Medicamentos extends javax.swing.JPanel {
     String id, dosis, cantidad, dosisu, via, administracion, fc, fh;
     Actualizar act = new Actualizar();
     CargarordenesM tab = new CargarordenesM();
-    
+    String est = "0";
+
     public Medicamentos(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
@@ -218,7 +219,7 @@ public class Medicamentos extends javax.swing.JPanel {
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         final Dmedicamentos medi = new Dmedicamentos((Frame) SwingUtilities.getWindowAncestor(this), true);
         medi.jButton2.addActionListener(new ActionListener() {
-            
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (medi.jTextField2.getText().equals("")) {
@@ -260,6 +261,7 @@ public class Medicamentos extends javax.swing.JPanel {
             }
         });
         medi.setVisible(true);
+        est = "2";
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
@@ -291,7 +293,7 @@ public class Medicamentos extends javax.swing.JPanel {
             tab.cargartablamedi(modelo, d);
         }
     }
-    
+
     public void getModelo() {
         modelo = new DefaultTableModel(
                 null, new String[]{"Id", "Medicamento", "dosisf", "dosisff", "viaf", "observacion", "Cantidad sum", "estado"}) {
@@ -308,12 +310,12 @@ public class Medicamentos extends javax.swing.JPanel {
                     boolean[] canEdit = new boolean[]{
                         false, false, false, false, false, false, false, false
                     };
-                    
+
                     @Override
                     public Class getColumnClass(int columnIndex) {
                         return types[columnIndex];
                     }
-                    
+
                     @Override
                     public boolean isCellEditable(int rowIndex, int colIndex) {
                         return canEdit[colIndex];
@@ -321,7 +323,7 @@ public class Medicamentos extends javax.swing.JPanel {
                 };
         Tablamedi.setModel(modelo);
     }
-    
+
     public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5, String r6, String r7, String r8) {
         try {
             Object nuevo[] = {r1, r2, r3, r4, r5, r6, r7, r8};
@@ -330,22 +332,22 @@ public class Medicamentos extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, " :(  " + e.getMessage());
         }
     }
-    
+
     public void quitarrgistro() {
         if (modelo.getRowCount() > 0 && Tablamedi.getSelectedRow() > -1) {
             if (modelo.getValueAt(Tablamedi.getSelectedRow(), 7).equals("2")) {
-                Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
-                act.actposologia(d, modelo.getValueAt(Tablamedi.getSelectedRow(), 0).toString(), modelo.getValueAt(Tablamedi.getSelectedRow(), 2).toString());
-                modelo.removeRow(Tablamedi.getSelectedRow());
+                modelo.setValueAt("0", row, 7);
+                est = "3";
             } else {
                 if (modelo.getRowCount() > 0 && Tablamedi.getSelectedRow() > -1) {
-                    modelo.removeRow(Tablamedi.getSelectedRow());
+                    if (modelo.getValueAt(Tablamedi.getSelectedRow(), 7).equals("1")) {
+                        modelo.removeRow(Tablamedi.getSelectedRow());
+                    }
                 }
             }
         }
     }
-    
+
     public void actmedicamentos() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
@@ -357,17 +359,30 @@ public class Medicamentos extends javax.swing.JPanel {
         SimpleDateFormat formatoh = new SimpleDateFormat(patronh);
         fc = formato.format(fecha);
         fh = formatoh.format(hora);
-        for (int i = 0; i < modelo.getRowCount(); i++) {
-            if (modelo.getValueAt(i, 7).equals("1")) {
-                modelo.setValueAt("2", i, 7);
-                sav.newposo(d, modelo.getValueAt(i, 0).toString(), modelo.getValueAt(i, 2).toString(),
-                        modelo.getValueAt(i, 6).toString(), modelo.getValueAt(i, 3).toString(),
-                        modelo.getValueAt(i, 4).toString(), modelo.getValueAt(i, 5).toString().toUpperCase(),
-                        pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc + fh, modelo.getValueAt(i, 7).toString());
+        if (est.toString().equals("2")) {
+            for (int i = 0; i < modelo.getRowCount(); i++) {
+                if (modelo.getValueAt(i, 7).equals("1")) {
+                    modelo.setValueAt("2", i, 7);
+                    sav.newposo(d, modelo.getValueAt(i, 0).toString(), modelo.getValueAt(i, 2).toString(),
+                            modelo.getValueAt(i, 6).toString(), modelo.getValueAt(i, 3).toString(),
+                            modelo.getValueAt(i, 4).toString(), modelo.getValueAt(i, 5).toString().toUpperCase(),
+                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc + fh, modelo.getValueAt(i, 7).toString());
+                }
+            }
+        } else {
+            if (est.toString().equals("3")) {
+                for (int i = 0; i < modelo.getRowCount(); i++) {
+                    if (modelo.getValueAt(i, 7).equals("0")) {
+                        act.actposologia(d, modelo.getValueAt(Tablamedi.getSelectedRow(), 0).toString(), modelo.getValueAt(Tablamedi.getSelectedRow(), 2).toString());
+                    }
+                }
             }
         }
+        est = "0";
+        Tablamedi.removeAll();
+        cargar();
     }
-    
+
     private void retornarayuda() {
         switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
             case 3:
@@ -396,7 +411,7 @@ public class Medicamentos extends javax.swing.JPanel {
                 break;
         }
     }
-    
+
     private void darayuda(String texto) {
         switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
             case 3:
