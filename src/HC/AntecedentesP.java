@@ -7,6 +7,10 @@ import Clases.Save;
 import Clases.Funciones_AD;
 import java.awt.event.KeyEvent;
 import javax.swing.JTabbedPane;
+import javax.swing.table.DefaultTableModel;
+import Clases.CargarordenesM;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -22,6 +26,8 @@ public class AntecedentesP extends javax.swing.JPanel {
     Actualizar act = new Actualizar();
     Save sav = new Save();
     Funciones_AD Funciones = new Funciones_AD();
+    private DefaultTableModel modelo, modelo2;
+    CargarordenesM tab = new CargarordenesM();
 
     public AntecedentesP(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
@@ -54,6 +60,8 @@ public class AntecedentesP extends javax.swing.JPanel {
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 2) {
             jTabbedPane1.remove(jPanel7);
         }
+        tabla();
+        tabla2();
         jTabbedPane1.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
     }
 
@@ -193,6 +201,14 @@ public class AntecedentesP extends javax.swing.JPanel {
         jLabel47 = new javax.swing.JLabel();
         jComboBox7 = new javax.swing.JComboBox();
         jCheckBox25 = new javax.swing.JCheckBox();
+        jPanel9 = new javax.swing.JPanel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel10 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaantemedi = new javax.swing.JTable();
+        jPanel21 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaanteprocedimiento = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(558, 345));
@@ -238,7 +254,7 @@ public class AntecedentesP extends javax.swing.JPanel {
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
+                    .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -289,8 +305,8 @@ public class AntecedentesP extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(0, 378, Short.MAX_VALUE))
-                    .addComponent(jScrollPane18, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
+                        .addGap(0, 388, Short.MAX_VALUE))
+                    .addComponent(jScrollPane18, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -338,8 +354,8 @@ public class AntecedentesP extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(0, 378, Short.MAX_VALUE))
-                    .addComponent(jScrollPane19, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
+                        .addGap(0, 388, Short.MAX_VALUE))
+                    .addComponent(jScrollPane19, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -387,8 +403,8 @@ public class AntecedentesP extends javax.swing.JPanel {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(0, 392, Short.MAX_VALUE))
-                    .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
+                        .addGap(0, 402, Short.MAX_VALUE))
+                    .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -462,8 +478,8 @@ public class AntecedentesP extends javax.swing.JPanel {
                                 .addComponent(jCheckBox3))
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
-                        .addGap(0, 330, Short.MAX_VALUE))
-                    .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
+                        .addGap(0, 340, Short.MAX_VALUE))
+                    .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
@@ -545,8 +561,8 @@ public class AntecedentesP extends javax.swing.JPanel {
                                 .addComponent(jCheckBox6))
                             .addComponent(jLabel8)
                             .addComponent(jLabel9))
-                        .addGap(0, 290, Short.MAX_VALUE))
-                    .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
+                        .addGap(0, 300, Short.MAX_VALUE))
+                    .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
@@ -601,8 +617,8 @@ public class AntecedentesP extends javax.swing.JPanel {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(jLabel10)
-                        .addGap(0, 385, Short.MAX_VALUE))
-                    .addComponent(jScrollPane23, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
+                        .addGap(0, 395, Short.MAX_VALUE))
+                    .addComponent(jScrollPane23, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
@@ -650,8 +666,8 @@ public class AntecedentesP extends javax.swing.JPanel {
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addComponent(jLabel11)
-                        .addGap(0, 335, Short.MAX_VALUE))
-                    .addComponent(jScrollPane24, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
+                        .addGap(0, 345, Short.MAX_VALUE))
+                    .addComponent(jScrollPane24, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
@@ -739,7 +755,7 @@ public class AntecedentesP extends javax.swing.JPanel {
         jPanel24.setLayout(jPanel24Layout);
         jPanel24Layout.setHorizontalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 334, Short.MAX_VALUE)
+            .addGap(0, 339, Short.MAX_VALUE)
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -797,7 +813,7 @@ public class AntecedentesP extends javax.swing.JPanel {
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -818,7 +834,7 @@ public class AntecedentesP extends javax.swing.JPanel {
                     .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel17Layout.setVerticalGroup(
@@ -921,7 +937,7 @@ public class AntecedentesP extends javax.swing.JPanel {
                             .addComponent(jComboBox1, 0, 84, Short.MAX_VALUE)
                             .addComponent(jTextField1)
                             .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox7)
                             .addComponent(jCheckBox8))
@@ -955,7 +971,6 @@ public class AntecedentesP extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jCheckBox8)
                         .addGap(24, 24, 24)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
@@ -1517,6 +1532,104 @@ public class AntecedentesP extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Perinatología", jPanel7);
 
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTabbedPane2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTabbedPane2.setFocusable(false);
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+
+        tablaantemedi.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tablaantemedi.setEnabled(false);
+        jScrollPane2.setViewportView(tablaantemedi);
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane2.addTab("Medicamentos", new javax.swing.ImageIcon(getClass().getResource("/Recursos/1389649412_Capsule.png")), jPanel10); // NOI18N
+
+        jPanel21.setBackground(new java.awt.Color(255, 255, 255));
+
+        tablaanteprocedimiento.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tablaanteprocedimiento.setEnabled(false);
+        jScrollPane1.setViewportView(tablaanteprocedimiento);
+
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel21Layout.setVerticalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane2.addTab("Procedimietos", new javax.swing.ImageIcon(getClass().getResource("/Recursos/paraclinicos.png")), jPanel21); // NOI18N
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane2)
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.getAccessibleContext().setAccessibleName("Procedimientos");
+        jTabbedPane2.getAccessibleContext().setAccessibleDescription("");
+
+        jTabbedPane1.addTab("Ordenes", jPanel9);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -1527,8 +1640,7 @@ public class AntecedentesP extends javax.swing.JPanel {
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(0, 384, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap(394, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2456,6 +2568,91 @@ public class AntecedentesP extends javax.swing.JPanel {
             }
         }
     }
+
+    public void getModelo() {
+        modelo = new DefaultTableModel(
+                null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria", "Estado"}) {
+                    Class[] types = new Class[]{
+                        java.lang.String.class,
+                        java.lang.String.class,
+                        java.lang.String.class,
+                        java.lang.String.class,
+                        java.lang.String.class
+                    };
+                    boolean[] canEdit = new boolean[]{
+                        false, false, false, false, false
+                    };
+
+                    @Override
+                    public Class getColumnClass(int columnIndex) {
+                        return types[columnIndex];
+                    }
+
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int colIndex) {
+                        return canEdit[colIndex];
+                    }
+                };
+        tablaanteprocedimiento.setModel(modelo);
+    }
+
+    private void tabla() {
+        try {
+            getModelo();
+            tablaanteprocedimiento.getTableHeader().setReorderingAllowed(false);
+            tablaanteprocedimiento.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            Funciones_AD.setOcultarColumnas(tablaanteprocedimiento, new int[]{0, 1, 3, 4});
+            Funciones_AD.setSizeColumnas(tablaanteprocedimiento, new int[]{1}, new int[]{385});
+            if (pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
+                jTabbedPane1.remove(jPanel9);
+            } else {
+                tab.cargaranteparaclinico(modelo, pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString());
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "error: " + e.getMessage().toString(), AntecedentesP.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public void getModelomedi() {
+        modelo2 = new DefaultTableModel(
+                null, new String[]{"Id", "Medicamento"}) {
+                    Class[] types = new Class[]{
+                        java.lang.String.class,
+                        java.lang.String.class
+                    };
+                    boolean[] canEdit = new boolean[]{
+                        false, false
+                    };
+
+                    @Override
+                    public Class getColumnClass(int columnIndex) {
+                        return types[columnIndex];
+                    }
+
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int colIndex) {
+                        return canEdit[colIndex];
+                    }
+                };
+        tablaantemedi.setModel(modelo2);
+    }
+    
+     private void tabla2() {
+        try {
+            getModelomedi();
+            tablaantemedi.getTableHeader().setReorderingAllowed(false);
+            tablaantemedi.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            Funciones_AD.setOcultarColumnas(tablaantemedi, new int[]{0});
+            Funciones_AD.setSizeColumnas(tablaantemedi, new int[]{1}, new int[]{385});
+            if (pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
+                jTabbedPane1.remove(jPanel9);
+            } else {
+                tab.cargarantemedicamento(modelo2, pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString());
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "error: " + e.getMessage().toString(), AntecedentesP.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JCheckBox jCheckBox1;
     javax.swing.JCheckBox jCheckBox10;
@@ -2543,6 +2740,7 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JLabel jLabel8;
     javax.swing.JLabel jLabel9;
     javax.swing.JPanel jPanel1;
+    javax.swing.JPanel jPanel10;
     javax.swing.JPanel jPanel11;
     javax.swing.JPanel jPanel12;
     javax.swing.JPanel jPanel13;
@@ -2554,6 +2752,7 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JPanel jPanel19;
     javax.swing.JPanel jPanel2;
     javax.swing.JPanel jPanel20;
+    javax.swing.JPanel jPanel21;
     javax.swing.JPanel jPanel23;
     javax.swing.JPanel jPanel24;
     javax.swing.JPanel jPanel3;
@@ -2562,15 +2761,19 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JPanel jPanel6;
     javax.swing.JPanel jPanel7;
     javax.swing.JPanel jPanel8;
+    javax.swing.JPanel jPanel9;
+    javax.swing.JScrollPane jScrollPane1;
     javax.swing.JScrollPane jScrollPane17;
     javax.swing.JScrollPane jScrollPane18;
     javax.swing.JScrollPane jScrollPane19;
+    javax.swing.JScrollPane jScrollPane2;
     javax.swing.JScrollPane jScrollPane20;
     javax.swing.JScrollPane jScrollPane21;
     javax.swing.JScrollPane jScrollPane22;
     javax.swing.JScrollPane jScrollPane23;
     javax.swing.JScrollPane jScrollPane24;
     javax.swing.JTabbedPane jTabbedPane1;
+    javax.swing.JTabbedPane jTabbedPane2;
     javax.swing.JTextArea jTextArea1;
     javax.swing.JTextArea jTextArea2;
     javax.swing.JTextArea jTextArea3;
@@ -2589,5 +2792,7 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JTextField jTextField7;
     javax.swing.JTextField jTextField8;
     javax.swing.JTextField jTextField9;
+    javax.swing.JTable tablaantemedi;
+    javax.swing.JTable tablaanteprocedimiento;
     // End of variables declaration//GEN-END:variables
 }

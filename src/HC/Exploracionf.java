@@ -94,6 +94,16 @@ public class Exploracionf extends javax.swing.JPanel {
             jTabbedPane1.remove(jPanel10);
         }
         jTabbedPane1.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
+        jTabbedPane2.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 5) {
+            jTabbedPane1.remove(jPanel12);
+            jTabbedPane2.remove(jPanel14);
+        } else {
+            if (pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
+                jTabbedPane1.remove(jPanel12);
+                jTabbedPane2.remove(jPanel14);
+            }
+        }
     }
 
     /**
@@ -214,6 +224,23 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea10 = new javax.swing.JTextArea();
         jPanel11 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel43 = new javax.swing.JLabel();
+        jTextField13 = new javax.swing.JTextField();
+        jCheckBox21 = new javax.swing.JCheckBox();
+        jPanel13 = new javax.swing.JPanel();
+        jCheckBox20 = new javax.swing.JCheckBox();
+        jCheckBox19 = new javax.swing.JCheckBox();
+        jCheckBox22 = new javax.swing.JCheckBox();
+        jCheckBox23 = new javax.swing.JCheckBox();
+        jCheckBox24 = new javax.swing.JCheckBox();
+        jCheckBox25 = new javax.swing.JCheckBox();
+        jCheckBox26 = new javax.swing.JCheckBox();
+        jCheckBox27 = new javax.swing.JCheckBox();
+        jCheckBox28 = new javax.swing.JCheckBox();
+        jCheckBox29 = new javax.swing.JCheckBox();
+        jCheckBox30 = new javax.swing.JCheckBox();
+        jCheckBox31 = new javax.swing.JCheckBox();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea5 = new javax.swing.JTextArea();
@@ -225,6 +252,14 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea8 = new javax.swing.JTextArea();
         jScrollPane10 = new javax.swing.JScrollPane();
         jTextArea9 = new javax.swing.JTextArea();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel44 = new javax.swing.JLabel();
+        jComboBox11 = new javax.swing.JComboBox();
+        jDateChooser4 = new com.toedter.calendar.JDateChooser();
+        jLabel45 = new javax.swing.JLabel();
+        jCheckBox32 = new javax.swing.JCheckBox();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jTextArea11 = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(558, 345));
@@ -240,6 +275,11 @@ public class Exploracionf extends javax.swing.JPanel {
         jTabbedPane1.setMaximumSize(new java.awt.Dimension(550, 168));
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(550, 168));
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(550, 168));
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseReleased(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1379,6 +1419,160 @@ public class Exploracionf extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Valoracion CYD", null, jPanel10, "Valoracion Crecimiento y Desarrollo");
 
+        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel43.setText("Metodo anterior:");
+
+        jCheckBox21.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox21.setText("Satisfacción");
+        jCheckBox21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox21.setFocusable(false);
+
+        jPanel13.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Efectos"));
+
+        jCheckBox20.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox20.setText("Cambios de comportamiento");
+        jCheckBox20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox20.setFocusable(false);
+
+        jCheckBox19.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox19.setText("Trastornos menstruales");
+        jCheckBox19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox19.setFocusable(false);
+
+        jCheckBox22.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox22.setText("Cefaleas");
+        jCheckBox22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox22.setFocusable(false);
+
+        jCheckBox23.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox23.setText("Mareos");
+        jCheckBox23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox23.setFocusable(false);
+
+        jCheckBox24.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox24.setText("Manchas en la piel");
+        jCheckBox24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox24.setFocusable(false);
+
+        jCheckBox25.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox25.setText("Molestia en las mamas");
+        jCheckBox25.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox25.setFocusable(false);
+
+        jCheckBox26.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox26.setText("Edemas");
+        jCheckBox26.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox26.setFocusable(false);
+
+        jCheckBox27.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox27.setText("Varices");
+        jCheckBox27.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox27.setFocusable(false);
+
+        jCheckBox28.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox28.setText("Expulsión dispositivo");
+        jCheckBox28.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox28.setFocusable(false);
+
+        jCheckBox29.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox29.setText("Dolor bajo vientre");
+        jCheckBox29.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox29.setFocusable(false);
+
+        jCheckBox30.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox30.setText("Flujo vaginal");
+        jCheckBox30.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox30.setFocusable(false);
+
+        jCheckBox31.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox31.setText("Sintomas urinarios");
+        jCheckBox31.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox31.setFocusable(false);
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jCheckBox20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jCheckBox28, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                    .addComponent(jCheckBox24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jCheckBox23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox20)
+                    .addComponent(jCheckBox24)
+                    .addComponent(jCheckBox26)
+                    .addComponent(jCheckBox22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox19)
+                    .addComponent(jCheckBox27)
+                    .addComponent(jCheckBox29)
+                    .addComponent(jCheckBox30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox25)
+                    .addComponent(jCheckBox28)
+                    .addComponent(jCheckBox23)
+                    .addComponent(jCheckBox31)))
+        );
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel43)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBox21)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel43)
+                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("MAC", jPanel12);
+
+        jTabbedPane2.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedPane2.setFocusable(false);
         jTabbedPane2.setPreferredSize(new java.awt.Dimension(550, 183));
 
@@ -1461,7 +1655,7 @@ public class Exploracionf extends javax.swing.JPanel {
         });
         jScrollPane9.setViewportView(jTextArea8);
 
-        jTabbedPane2.addTab("Endocrino - Metabolico", jScrollPane9);
+        jTabbedPane2.addTab("Endocrino", jScrollPane9);
 
         jTextArea9.setColumns(20);
         jTextArea9.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1482,6 +1676,78 @@ public class Exploracionf extends javax.swing.JPanel {
         jScrollPane10.setViewportView(jTextArea9);
 
         jTabbedPane2.addTab("Osteomuscular y Piel", jScrollPane10);
+
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel44.setText("Citologia:");
+
+        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No aplica", "Normal", "Anormal", " " }));
+        jComboBox11.setFocusable(false);
+
+        jLabel45.setText("Fecha:");
+
+        jCheckBox32.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox32.setText("Riesgo productivo");
+        jCheckBox32.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox32.setFocusable(false);
+
+        jTextArea11.setColumns(20);
+        jTextArea11.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextArea11.setForeground(new java.awt.Color(204, 204, 204));
+        jTextArea11.setLineWrap(true);
+        jTextArea11.setRows(5);
+        jTextArea11.setText("No se encuentran datos relevantes");
+        jTextArea11.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea11FocusGained(evt);
+            }
+        });
+        jTextArea11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea11KeyReleased(evt);
+            }
+        });
+        jScrollPane12.setViewportView(jTextArea11);
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane12)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(jLabel44)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel45)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox32)
+                        .addGap(0, 117, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel44)
+                            .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel45))
+                        .addComponent(jDateChooser4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCheckBox32))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Descripción", jPanel14);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -1506,8 +1772,8 @@ public class Exploracionf extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(3, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1931,6 +2197,20 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea10.setForeground(Color.black);
     }//GEN-LAST:event_jTextArea10KeyReleased
 
+    private void jTabbedPane1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseReleased
+        if (jTabbedPane1.getSelectedComponent() == jPanel12) {
+            jTabbedPane2.setSelectedComponent(jPanel14);
+        }
+    }//GEN-LAST:event_jTabbedPane1MouseReleased
+
+    private void jTextArea11KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea11KeyReleased
+        jTextArea11.setForeground(Color.black);
+    }//GEN-LAST:event_jTextArea11KeyReleased
+
+    private void jTextArea11FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea11FocusGained
+        jTextArea11.selectAll();
+    }//GEN-LAST:event_jTextArea11FocusGained
+
     public void actexpf() {
         int tas, tad, fc, talla;
         float fr, temp, peso, imc;
@@ -2068,6 +2348,11 @@ public class Exploracionf extends javax.swing.JPanel {
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
             actvaloracion();
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+            if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
+                actcontrolplani();
+            }
         }
     }
 
@@ -2210,6 +2495,11 @@ public class Exploracionf extends javax.swing.JPanel {
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
             cargarvaloracion();
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+            if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
+                cargarcontrolplani();
+            }
         }
     }
 
@@ -2534,6 +2824,194 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextField10.setText(im);
     }
 
+    private void actcontrolplani() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object dat[][] = Funciones.RetornarDatos(sav.selectidplanifica(d));
+        String va1, va2, va3, va4, va5, va6, va7, va8, va9, va10, va11, va12, va13, va14, va15, va16, va17, va18;
+        va1 = jTextField13.getText().toUpperCase();
+        if (jCheckBox21.isSelected() == false) {
+            va2 = "0";
+        } else {
+            va2 = "1";
+        }
+        if (jCheckBox20.isSelected() == false) {
+            va3 = "0";
+        } else {
+            va3 = "1";
+        }
+        if (jCheckBox19.isSelected() == false) {
+            va4 = "0";
+        } else {
+            va4 = "1";
+        }
+        if (jCheckBox25.isSelected() == false) {
+            va5 = "0";
+        } else {
+            va5 = "1";
+        }
+        if (jCheckBox24.isSelected() == false) {
+            va6 = "0";
+        } else {
+            va6 = "1";
+        }
+        if (jCheckBox29.isSelected() == false) {
+            va7 = "0";
+        } else {
+            va7 = "1";
+        }
+        if (jCheckBox28.isSelected() == false) {
+            va8 = "0";
+        } else {
+            va8 = "1";
+        }
+        if (jCheckBox26.isSelected() == false) {
+            va9 = "0";
+        } else {
+            va9 = "1";
+        }
+        if (jCheckBox27.isSelected() == false) {
+            va10 = "0";
+        } else {
+            va10 = "1";
+        }
+        if (jCheckBox23.isSelected() == false) {
+            va11 = "0";
+        } else {
+            va11 = "1";
+        }
+        if (jCheckBox22.isSelected() == false) {
+            va12 = "0";
+        } else {
+            va12 = "1";
+        }
+        if (jCheckBox30.isSelected() == false) {
+            va13 = "0";
+        } else {
+            va13 = "1";
+        }
+        if (jCheckBox31.isSelected() == false) {
+            va14 = "0";
+        } else {
+            va14 = "1";
+        }
+        va15 = String.valueOf(jComboBox11.getSelectedIndex());
+        String patron = "yyyy-MM-dd";
+        SimpleDateFormat formato = new SimpleDateFormat(patron);
+        Date fc1p = jDateChooser4.getDate();
+        if (fc1p != null) {
+            va16 = formato.format(fc1p);
+        } else {
+            va16 = "1845-01-01";
+        }
+        if (jCheckBox32.isSelected() == false) {
+            va17 = "0";
+        } else {
+            va17 = "1";
+        }
+        va18 = jTextArea11.getText().toUpperCase();
+        act.actcontrolplanif(dat[0][0].toString(), va1, va2, va3, va4, va5, va6, va7, va8, va9, va10, va11, va12, va13, va14, va15, va16, va17, va18);
+    }
+
+    private void cargarcontrolplani() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object datapyp[][] = Funciones.RetornarDatos(act.cargarcontrolplani(d));
+        if (datapyp[0][2].toString().equals("")) {
+            jTextField13.setText("");
+        } else {
+            jTextField13.setText(datapyp[0][2].toString());
+        }
+        if (datapyp[0][3].toString().equals("0")) {
+            jCheckBox21.setSelected(false);
+        } else {
+            jCheckBox21.setSelected(true);
+        }
+        if (datapyp[0][4].toString().equals("0")) {
+            jCheckBox20.setSelected(false);
+        } else {
+            jCheckBox20.setSelected(true);
+        }
+        if (datapyp[0][5].toString().equals("0")) {
+            jCheckBox19.setSelected(false);
+        } else {
+            jCheckBox19.setSelected(true);
+        }
+        if (datapyp[0][6].toString().equals("0")) {
+            jCheckBox25.setSelected(false);
+        } else {
+            jCheckBox25.setSelected(true);
+        }
+        if (datapyp[0][7].toString().equals("0")) {
+            jCheckBox24.setSelected(false);
+        } else {
+            jCheckBox24.setSelected(true);
+        }
+        if (datapyp[0][8].toString().equals("0")) {
+            jCheckBox29.setSelected(false);
+        } else {
+            jCheckBox29.setSelected(true);
+        }
+        if (datapyp[0][9].toString().equals("0")) {
+            jCheckBox28.setSelected(false);
+        } else {
+            jCheckBox28.setSelected(true);
+        }
+        if (datapyp[0][10].toString().equals("0")) {
+            jCheckBox26.setSelected(false);
+        } else {
+            jCheckBox26.setSelected(true);
+        }
+        if (datapyp[0][11].toString().equals("0")) {
+            jCheckBox27.setSelected(false);
+        } else {
+            jCheckBox27.setSelected(true);
+        }
+        if (datapyp[0][12].toString().equals("0")) {
+            jCheckBox23.setSelected(false);
+        } else {
+            jCheckBox23.setSelected(true);
+        }
+        if (datapyp[0][13].toString().equals("0")) {
+            jCheckBox22.setSelected(false);
+        } else {
+            jCheckBox22.setSelected(true);
+        }
+        if (datapyp[0][14].toString().equals("0")) {
+            jCheckBox30.setSelected(false);
+        } else {
+            jCheckBox20.setSelected(true);
+        }
+        if (datapyp[0][15].toString().equals("0")) {
+            jCheckBox31.setSelected(false);
+        } else {
+            jCheckBox31.setSelected(true);
+        }
+        jComboBox11.setSelectedIndex(Integer.parseInt(datapyp[0][16].toString()));
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date fecha = formato.parse(datapyp[0][17].toString());
+            if (datapyp[0][17].toString().equals("01/01/1845")) {
+                jDateChooser4.setDate(null);
+            } else {
+                jDateChooser4.setDate(fecha);
+            }
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Error al convertir la fecha de citologia " + e.getMessage());
+        }
+        if (datapyp[0][18].toString().equals("0")) {
+            jCheckBox32.setSelected(false);
+        } else {
+            jCheckBox32.setSelected(true);
+        }
+        if (!datapyp[0][19].toString().equals("NO SE ENCUENTRAN DATOS RELEVANTES")) {
+            jTextArea11.setText(datapyp[0][19].toString());
+            jTextArea11.setForeground(Color.black);
+        } else {
+            jTextArea11.setText(datapyp[0][19].toString());
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JCheckBox jCheckBox1;
     javax.swing.JCheckBox jCheckBox10;
@@ -2545,8 +3023,22 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JCheckBox jCheckBox16;
     javax.swing.JCheckBox jCheckBox17;
     javax.swing.JCheckBox jCheckBox18;
+    javax.swing.JCheckBox jCheckBox19;
     javax.swing.JCheckBox jCheckBox2;
+    javax.swing.JCheckBox jCheckBox20;
+    javax.swing.JCheckBox jCheckBox21;
+    javax.swing.JCheckBox jCheckBox22;
+    javax.swing.JCheckBox jCheckBox23;
+    javax.swing.JCheckBox jCheckBox24;
+    javax.swing.JCheckBox jCheckBox25;
+    javax.swing.JCheckBox jCheckBox26;
+    javax.swing.JCheckBox jCheckBox27;
+    javax.swing.JCheckBox jCheckBox28;
+    javax.swing.JCheckBox jCheckBox29;
     javax.swing.JCheckBox jCheckBox3;
+    javax.swing.JCheckBox jCheckBox30;
+    javax.swing.JCheckBox jCheckBox31;
+    javax.swing.JCheckBox jCheckBox32;
     javax.swing.JCheckBox jCheckBox4;
     javax.swing.JCheckBox jCheckBox5;
     javax.swing.JCheckBox jCheckBox6;
@@ -2555,6 +3047,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JCheckBox jCheckBox9;
     javax.swing.JComboBox jComboBox1;
     javax.swing.JComboBox jComboBox10;
+    javax.swing.JComboBox jComboBox11;
     javax.swing.JComboBox jComboBox2;
     javax.swing.JComboBox jComboBox3;
     javax.swing.JComboBox jComboBox4;
@@ -2566,6 +3059,7 @@ public class Exploracionf extends javax.swing.JPanel {
     com.toedter.calendar.JDateChooser jDateChooser1;
     com.toedter.calendar.JDateChooser jDateChooser2;
     com.toedter.calendar.JDateChooser jDateChooser3;
+    com.toedter.calendar.JDateChooser jDateChooser4;
     javax.swing.JLabel jLabel1;
     javax.swing.JLabel jLabel10;
     javax.swing.JLabel jLabel11;
@@ -2603,6 +3097,9 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JLabel jLabel40;
     javax.swing.JLabel jLabel41;
     javax.swing.JLabel jLabel42;
+    javax.swing.JLabel jLabel43;
+    javax.swing.JLabel jLabel44;
+    javax.swing.JLabel jLabel45;
     javax.swing.JLabel jLabel5;
     javax.swing.JLabel jLabel6;
     javax.swing.JLabel jLabel7;
@@ -2611,6 +3108,9 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JPanel jPanel1;
     javax.swing.JPanel jPanel10;
     javax.swing.JPanel jPanel11;
+    javax.swing.JPanel jPanel12;
+    javax.swing.JPanel jPanel13;
+    javax.swing.JPanel jPanel14;
     javax.swing.JPanel jPanel2;
     javax.swing.JPanel jPanel3;
     javax.swing.JPanel jPanel4;
@@ -2622,6 +3122,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JScrollPane jScrollPane1;
     javax.swing.JScrollPane jScrollPane10;
     javax.swing.JScrollPane jScrollPane11;
+    javax.swing.JScrollPane jScrollPane12;
     javax.swing.JScrollPane jScrollPane2;
     javax.swing.JScrollPane jScrollPane3;
     javax.swing.JScrollPane jScrollPane4;
@@ -2634,6 +3135,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JTabbedPane jTabbedPane2;
     javax.swing.JTextArea jTextArea1;
     javax.swing.JTextArea jTextArea10;
+    javax.swing.JTextArea jTextArea11;
     javax.swing.JTextArea jTextArea2;
     javax.swing.JTextArea jTextArea3;
     javax.swing.JTextArea jTextArea4;
@@ -2646,6 +3148,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JTextField jTextField10;
     javax.swing.JTextField jTextField11;
     javax.swing.JTextField jTextField12;
+    javax.swing.JTextField jTextField13;
     javax.swing.JTextField jTextField2;
     javax.swing.JTextField jTextField3;
     javax.swing.JTextField jTextField4;

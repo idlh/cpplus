@@ -289,8 +289,8 @@ public class Medicamentos extends javax.swing.JPanel {
         int b = Integer.parseInt(a[0][0].toString());
         if (b != 0) {
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-            String d = (c[0][0].toString());
-            tab.cargartablamedi(modelo, d);
+            String dro = (c[0][0].toString());
+            tab.cargartablamedi(modelo, dro);
         }
     }
 

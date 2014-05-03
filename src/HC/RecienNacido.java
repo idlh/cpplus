@@ -6,8 +6,9 @@ import entity.PypAdmAsistCon;
 import java.awt.Color;
 import javax.persistence.EntityManagerFactory;
 import Clases.Actualizar;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -34,6 +35,8 @@ public class RecienNacido extends javax.swing.JPanel {
         this.factory = factory;
         this.pypAdmAsistCon = pypAdmAsistCon;
         jPanel4.setBackground(Color.white);
+        jLabel9.setVisible(false);
+        jLabel12.setVisible(false);
         if (pruebascomple == null) {
             pruebascomple = new PruebasComple(pypAdmAsistCon);
         }
@@ -74,6 +77,7 @@ public class RecienNacido extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
@@ -231,9 +235,16 @@ public class RecienNacido extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 102, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText(" ");
+        jLabel9.setText("Datos guardados Satisfactoriamente");
         jPanel2.add(jLabel9);
         jLabel9.setBounds(294, 25, 250, 13);
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Historia finalizada Correctamente");
+        jPanel2.add(jLabel12);
+        jLabel12.setBounds(294, 25, 250, 13);
 
         jPanel11.setBackground(new java.awt.Color(255, 227, 255));
 
@@ -484,7 +495,6 @@ public class RecienNacido extends javax.swing.JPanel {
 
     private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
         jLabel4.setText("...");
-        jLabel9.setText(null);
     }//GEN-LAST:event_jButton3MouseExited
 
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
@@ -493,7 +503,6 @@ public class RecienNacido extends javax.swing.JPanel {
 
     private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
         jLabel4.setText("...");
-        jLabel9.setText(null);
     }//GEN-LAST:event_jButton4MouseExited
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
@@ -659,7 +668,8 @@ public class RecienNacido extends javax.swing.JPanel {
                     pruebascomple.actpruebasc();
                 }
             }
-            jLabel9.setText("Datos Guardados Satisfactoriamente");
+            jLabel9.setVisible(true);
+            Contar();
         } else {
             JOptionPane.showMessageDialog(null, "La historia ya se encuentra finalizada");
         }
@@ -691,7 +701,6 @@ public class RecienNacido extends javax.swing.JPanel {
                         ordenesm.actordenesm();
                         pruebascomple.actpruebasc();
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
-                        jLabel9.setText("La historia se ha finalizado Satisfactoriamente");
                         Estadofinal = "2";
                     }
                 }
@@ -712,10 +721,11 @@ public class RecienNacido extends javax.swing.JPanel {
                         ordenesm.actordenesm();
                         pruebascomple.actpruebasc();
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
-                        jLabel9.setText("La historia se ha finalizado Satisfactoriamente");
                         Estadofinal = "2";
                     }
                 }
+                jLabel12.setVisible(true);
+                Contar();
             }
         } else {
             JOptionPane.showMessageDialog(null, "La historia ya se encuentra finalizada");
@@ -741,6 +751,35 @@ public class RecienNacido extends javax.swing.JPanel {
         }
         antecedentesp.cargarinfoante();
     }
+    private Timer timer = new Timer();
+    private int segundos = 5;
+
+    class Contador extends TimerTask {
+
+        @Override
+        public void run() {
+            segundos--;
+            if (segundos == 0) {
+                Detener();
+                jLabel9.setVisible(false);
+                jLabel12.setVisible(false);
+            }
+        }
+    }
+
+    public void Contar() {
+        this.segundos = 5;
+        timer = new Timer();
+        timer.schedule(new Contador(), 0, 600);
+    }
+
+    public int getSegundos() {
+        return this.segundos;
+    }
+
+    public void Detener() {
+        timer.cancel();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton jButton1;
@@ -750,6 +789,7 @@ public class RecienNacido extends javax.swing.JPanel {
     javax.swing.JLabel jLabel1;
     javax.swing.JLabel jLabel10;
     javax.swing.JLabel jLabel11;
+    javax.swing.JLabel jLabel12;
     javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;
     public static javax.swing.JLabel jLabel4;
