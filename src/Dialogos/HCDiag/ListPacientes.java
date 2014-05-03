@@ -33,6 +33,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import HC.CYDesarrollo;
+import java.awt.Frame;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -125,7 +127,7 @@ public class ListPacientes extends javax.swing.JDialog {
         return model;
     }
 
-    private void ModeloListadoPaciente() {
+    public void ModeloListadoPaciente() {
         modelo = getModelo();
         jTable1.setModel(modelo);
         jTable1.getTableHeader().setReorderingAllowed(false);
@@ -138,10 +140,14 @@ public class ListPacientes extends javax.swing.JDialog {
         factory = Persistence.createEntityManagerFactory("EJB_CEPU", props);
         paacjc = new PypAdmAsistConJpaController(factory);
         List<PypAdmAsistCon> asistCon = null;
-        if (jRadioButton1.isSelected() == true && pypAdmAsistCon.getEstado() == 1) {
+        if (jRadioButton1.isSelected() == true) {
             //asignar el id del profecional de la tabla cmprofesionales
-            asistCon = paacjc.listPypAdmAsistCon(1);
+            jTable1.removeAll();
+            ModeloListadoPaciente();
+            asistCon = paacjc.listPypAdmAsistCon(2);
         } else {
+            jTable1.removeAll();
+            ModeloListadoPaciente();
             asistCon = paacjc.listPypAdmAsistCon();
         }
         if (asistCon != null) {
@@ -167,6 +173,7 @@ public class ListPacientes extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -186,6 +193,8 @@ public class ListPacientes extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(674, 378));
@@ -198,6 +207,12 @@ public class ListPacientes extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Listado de Pacientes");
 
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel15MouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -205,13 +220,19 @@ public class ListPacientes extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -230,16 +251,27 @@ public class ListPacientes extends javax.swing.JDialog {
         jPanel3.setOpaque(false);
 
         buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
         jRadioButton1.setText("Mis Pacientes");
-        jRadioButton1.setEnabled(false);
+        jRadioButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jRadioButton1.setFocusable(false);
         jRadioButton1.setOpaque(false);
+        jRadioButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jRadioButton1MouseReleased(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setSelected(true);
         jRadioButton2.setText("Todos los Pacientes");
+        jRadioButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jRadioButton2.setFocusable(false);
         jRadioButton2.setOpaque(false);
+        jRadioButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jRadioButton2MouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -321,6 +353,9 @@ public class ListPacientes extends javax.swing.JDialog {
         jLabel12.setMinimumSize(new java.awt.Dimension(234, 28));
         jLabel12.setPreferredSize(new java.awt.Dimension(234, 28));
 
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel13.setText("Tipo:");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -344,14 +379,18 @@ public class ListPacientes extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -380,7 +419,11 @@ public class ListPacientes extends javax.swing.JDialog {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -393,13 +436,12 @@ public class ListPacientes extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(313, 313, 313)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -410,8 +452,8 @@ public class ListPacientes extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -434,6 +476,78 @@ public class ListPacientes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+        if (pypAdmAsistCon.getEstado().toString().equals("3")) {
+            if (pypAdmAsistCon.getIdControlPro().getIdProfesional().getId() == 2) {
+                cargarprograma();
+            } else {
+                JOptionPane.showMessageDialog(null, "El paciente ya se encuentra en atencion");
+            }
+        } else {
+            cargarprograma();
+        }
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
+        if (jTable1.getSelectedRow() != -1) {
+            pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            jLabel3.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getNombre1() + " "
+                    + pypAdmAsistCon.getIdAgend().getIdPaciente().getNombre2() + " "
+                    + pypAdmAsistCon.getIdAgend().getIdPaciente().getApellido1() + " "
+                    + pypAdmAsistCon.getIdAgend().getIdPaciente().getApellido2());
+            jLabel6.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getTipoDoc());
+            jLabel4.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getNumDoc());
+            jLabel8.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getContratante().getNombreEntidad());
+            jLabel12.setText("<html><p>" + pypAdmAsistCon.getIdAgend().getIdPrograma().getNombre() + "</p></html>");
+            Date fechap = null;
+            Date fechaa = pypAdmAsistCon.getIdAgend().getIdPaciente().getFechaNacimiento();
+            String patron = "dd-MM-yyyy";
+            SimpleDateFormat formato = new SimpleDateFormat(patron);
+            String fc = formato.format(fechaa);
+            try {
+                fechap = new SimpleDateFormat("dd-MM-yyyy").parse(fc);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(null, "fecha0001 " + e.getMessage().toString(), ListPacientes.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            }
+            Calendar fechaNacimiento = Calendar.getInstance();
+            Calendar fechaActual = Calendar.getInstance();
+            fechaNacimiento.setTime(fechap);
+            int año = fechaActual.get(Calendar.YEAR) - fechaNacimiento.get(Calendar.YEAR);
+            int mes = fechaActual.get(Calendar.MONTH) - fechaNacimiento.get(Calendar.MONTH);
+            int dia = fechaActual.get(Calendar.DATE) - fechaNacimiento.get(Calendar.DATE);
+            if (mes < 0 || (mes == 0 && dia < 0)) {
+                año--;
+            }
+            jLabel10.setText(String.valueOf(año + " AÑOS"));
+            if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
+                jLabel14.setText("Consulta de control".toUpperCase());
+            } else {
+                jLabel14.setText("Consulta por primera vez".toUpperCase());
+            }
+        }
+    }//GEN-LAST:event_jTable1MouseReleased
+
+    private void jRadioButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MouseReleased
+        if (jRadioButton2.isSelected() == true) {
+            jRadioButton1.setSelected(false);
+        }
+        showPacientes();
+    }//GEN-LAST:event_jRadioButton2MouseReleased
+
+    private void jRadioButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton1MouseReleased
+        if (jRadioButton2.isSelected() == true) {
+            jRadioButton1.setSelected(false);
+        }
+        showPacientes();
+    }//GEN-LAST:event_jRadioButton1MouseReleased
+
+    private void jLabel15MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseReleased
+        final Configuracion list = new Configuracion((Frame) SwingUtilities.getWindowAncestor(this), true);
+        this.dispose();
+        list.setVisible(true);        
+    }//GEN-LAST:event_jLabel15MouseReleased
+
+    private void cargarprograma() {
         Desktop desktop = (Desktop) this.getParent();
         pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
@@ -451,7 +565,7 @@ public class ListPacientes extends javax.swing.JDialog {
             adult.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(adult);
-            adult.jLabel3.setText("Consulta de control");
+            adult.jLabel3.setText("Consulta de Control");
             adult.setVisible(true);
             desktop.Contenedor_.validate();
             desktop.Contenedor_.repaint();
@@ -497,6 +611,17 @@ public class ListPacientes extends javax.swing.JDialog {
             desktop.Contenedor_.repaint();
             this.dispose();
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
+            planificacion = new Planificacion(factory, pypAdmAsistCon);
+            planificacion.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(planificacion);
+            planificacion.jLabel3.setText("Consulta de Control");
+            planificacion.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
             jovensano = new Jovensano(factory, pypAdmAsistCon);
             jovensano.setBounds(0, 0, 745, 393);
@@ -527,42 +652,7 @@ public class ListPacientes extends javax.swing.JDialog {
             desktop.Contenedor_.repaint();
             this.dispose();
         }
-    }//GEN-LAST:event_jButton1MouseReleased
-
-    private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
-        if (jTable1.getSelectedRow() != -1) {
-            pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
-            jLabel3.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getNombre1() + " "
-                    + pypAdmAsistCon.getIdAgend().getIdPaciente().getNombre2() + " "
-                    + pypAdmAsistCon.getIdAgend().getIdPaciente().getApellido1() + " "
-                    + pypAdmAsistCon.getIdAgend().getIdPaciente().getApellido2());
-            jLabel6.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getTipoDoc());
-            jLabel4.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getNumDoc());
-            jLabel8.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getContratante().getNombreEntidad());
-            jLabel12.setText("<html><p>" + pypAdmAsistCon.getIdAgend().getIdPrograma().getNombre() + "</p></html>");
-            Date fechap = null;
-            Date fechaa = pypAdmAsistCon.getIdAgend().getIdPaciente().getFechaNacimiento();
-            String patron = "dd-MM-yyyy";
-            SimpleDateFormat formato = new SimpleDateFormat(patron);
-            String fc = formato.format(fechaa);
-            try {
-                fechap = new SimpleDateFormat("dd-MM-yyyy").parse(fc);
-            } catch (ParseException e) {
-                JOptionPane.showMessageDialog(null, "fecha0001 " + e.getMessage().toString(), ListPacientes.class.getName(), JOptionPane.INFORMATION_MESSAGE);
-            }
-            Calendar fechaNacimiento = Calendar.getInstance();
-            Calendar fechaActual = Calendar.getInstance();
-            fechaNacimiento.setTime(fechap);
-            int año = fechaActual.get(Calendar.YEAR) - fechaNacimiento.get(Calendar.YEAR);
-            int mes = fechaActual.get(Calendar.MONTH) - fechaNacimiento.get(Calendar.MONTH);
-            int dia = fechaActual.get(Calendar.DATE) - fechaNacimiento.get(Calendar.DATE);
-            if (mes < 0 || (mes == 0 && dia < 0)) {
-                año--;
-            }
-            jLabel10.setText(String.valueOf(año + " Años"));
-        }
-    }//GEN-LAST:event_jTable1MouseReleased
-
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
@@ -570,6 +660,9 @@ public class ListPacientes extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
