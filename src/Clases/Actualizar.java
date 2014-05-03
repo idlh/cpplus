@@ -437,7 +437,7 @@ public class Actualizar {
                     + "    `database`.`pyp_historiac`"
                     + "    INNER JOIN `database`.`pyp_adm_asist_con` "
                     + "        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)"
-                    + " SET `pyp_historiac`.`estado`=1, `pyp_adm_asist_con`.`estado`=3"
+                    + " SET `pyp_historiac`.`estado`=1, `pyp_adm_asist_con`.`estado`=2"
                     + " WHERE `pyp_historiac`.`id` = ? AND `pyp_historiac`.`id_admisionpyp`=? AND `pyp_historiac`.`estado`=0;");
             bd.preparedStatement.setString(1, idhc);
             bd.preparedStatement.setString(2, idhis);
@@ -1062,12 +1062,121 @@ public class Actualizar {
             bd.preparedStatement.setString(12, otrosh);
             bd.preparedStatement.setString(13, basal);
             bd.preparedStatement.setString(14, familiares);
-            bd.preparedStatement.setString(15, idpaciente);            
+            bd.preparedStatement.setString(15, idpaciente);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a029 " + e.getMessage(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "a029 " + e.getMessage(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public void actcontrolplanif(String id, String macante, String satisfaccion, String comportamiento, String trastornos, String molestiasmamas,
+            String manchaspiel, String dolorvientre, String expulsion, String edemas, String varices, String mareos, String cefaleas, String flujo,
+            String urinarios, String citologia, String fechacito, String riesgoproductivo, String descripcion) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_planificacion_control`"
+                    + " SET `pyp_planificacion_control`.`macante`=?, `pyp_planificacion_control`.`satisfaccion`=?, `pyp_planificacion_control`.`comprotamiento`=?,"
+                    + "    `pyp_planificacion_control`.`transtornos`=?, `pyp_planificacion_control`.`molestiamamas`=?, `pyp_planificacion_control`.`manchaspiel`=?,"
+                    + "    `pyp_planificacion_control`.`dolorvientre`=?, `pyp_planificacion_control`.`expulsion`=?, `pyp_planificacion_control`.`edemas`=?,"
+                    + "    `pyp_planificacion_control`.`varices`=?, `pyp_planificacion_control`.`mareos`=?, `pyp_planificacion_control`.`cefaleas`=?,"
+                    + "    `pyp_planificacion_control`.`flujo`=?, `pyp_planificacion_control`.`urinarios`=?, `pyp_planificacion_control`.`citologia`=?,"
+                    + "    `pyp_planificacion_control`.`fechacito`=?, `pyp_planificacion_control`.`riesgoproductivo`=?, `pyp_planificacion_control`.`descripcion`=?"
+                    + "    WHERE(`pyp_planificacion_control`.`idplanificacion`=?)");
+            bd.preparedStatement.setString(1, macante);
+            bd.preparedStatement.setString(2, satisfaccion);
+            bd.preparedStatement.setString(3, comportamiento);
+            bd.preparedStatement.setString(4, trastornos);
+            bd.preparedStatement.setString(5, molestiasmamas);
+            bd.preparedStatement.setString(6, manchaspiel);
+            bd.preparedStatement.setString(7, dolorvientre);
+            bd.preparedStatement.setString(8, expulsion);
+            bd.preparedStatement.setString(9, edemas);
+            bd.preparedStatement.setString(10, varices);
+            bd.preparedStatement.setString(11, mareos);
+            bd.preparedStatement.setString(12, cefaleas);
+            bd.preparedStatement.setString(13, flujo);
+            bd.preparedStatement.setString(14, urinarios);
+            bd.preparedStatement.setString(15, citologia);
+            bd.preparedStatement.setString(16, fechacito);
+            bd.preparedStatement.setString(17, riesgoproductivo);
+            bd.preparedStatement.setString(18, descripcion);
+            bd.preparedStatement.setString(19, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a030 " + e.getMessage(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a030 " + e.getMessage(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public String cargarcontrolplani(String id) {
+        return "SELECT"
+                + "    `pyp_planificacion_control`.`id`"
+                + "    , `pyp_planificacion_control`.`idplanificacion`"
+                + "    , `pyp_planificacion_control`.`macante`"
+                + "    , `pyp_planificacion_control`.`satisfaccion`"
+                + "    , `pyp_planificacion_control`.`comprotamiento`"
+                + "    , `pyp_planificacion_control`.`transtornos`"
+                + "    , `pyp_planificacion_control`.`molestiamamas`"
+                + "    , `pyp_planificacion_control`.`manchaspiel`"
+                + "    , `pyp_planificacion_control`.`dolorvientre`"
+                + "    , `pyp_planificacion_control`.`expulsion`"
+                + "    , `pyp_planificacion_control`.`edemas`"
+                + "    , `pyp_planificacion_control`.`varices`"
+                + "    , `pyp_planificacion_control`.`mareos`"
+                + "    , `pyp_planificacion_control`.`cefaleas`"
+                + "    , `pyp_planificacion_control`.`flujo`"
+                + "    , `pyp_planificacion_control`.`urinarios`"
+                + "    , `pyp_planificacion_control`.`citologia`"
+                + "    , DATE_FORMAT(`pyp_planificacion_control`.`fechacito`, '%d/%m/%Y') AS `fechacito`"
+                + "    , `pyp_planificacion_control`.`riesgoproductivo`"
+                + "    , `pyp_planificacion_control`.`descripcion`"
+                + "FROM"
+                + "    `database`.`pyp_planificacion_control`"
+                + "    INNER JOIN `database`.`pyp_planificacionf` "
+                + "        ON (`pyp_planificacion_control`.`idplanificacion` = `pyp_planificacionf`.`id`)"
+                + "    INNER JOIN `database`.`pyp_historiac` "
+                + "        ON (`pyp_planificacionf`.`idhistoria` = `pyp_historiac`.`id`)"
+                + "WHERE (`pyp_historiac`.`id` ='" + id + "');";
+    }
+    
+    public void guardadohc(String idhc, String idhis) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE"
+                    + "    `database`.`pyp_historiac`"
+                    + "    INNER JOIN `database`.`pyp_adm_asist_con` "
+                    + "        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)"
+                    + " SET `pyp_adm_asist_con`.`estado`=3"
+                    + " WHERE `pyp_historiac`.`id` = ? AND `pyp_historiac`.`id_admisionpyp`=? AND `pyp_historiac`.`estado`=0;");
+            bd.preparedStatement.setString(1, idhc);
+            bd.preparedStatement.setString(2, idhis);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a031 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a031 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    public void cambioestadohc(String idhc, String idhis) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE"
+                    + "    `database`.`pyp_historiac`"
+                    + "    INNER JOIN `database`.`pyp_adm_asist_con` "
+                    + "        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)"
+                    + " SET `pyp_adm_asist_con`.`estado`=1"
+                    + " WHERE `pyp_historiac`.`id` = ? AND `pyp_historiac`.`id_admisionpyp`=? AND `pyp_historiac`.`estado`=0;");
+            bd.preparedStatement.setString(1, idhc);
+            bd.preparedStatement.setString(2, idhis);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a031 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a031 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }

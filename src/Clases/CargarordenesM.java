@@ -298,4 +298,92 @@ public class CargarordenesM {
             bd.DesconectarBasedeDatos();
         }
     }
+
+    public void cargaranteparaclinico(DefaultTableModel modelo, String idpaciente) {
+        try {
+            bd.ConectarBasedeDatos();
+            c = 0;
+            Object s[] = null;
+            bd.resultado = bd.sentencia.executeQuery("SELECT"
+                    + "    `pyp_procedimiento`.`id_cups`"
+                    + "    , `config_cups`.`codigo`"
+                    + "    , `config_cups`.`de_subcategoria`"
+                    + "    , `static_estructura_cups`.`des_capitulo`"
+                    + "    , `pyp_procedimiento`.`estado`"
+                    + "FROM"
+                    + "    `database`.`pyp_procedimiento`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_procedimiento`.`id_historiapyp` = `pyp_historiac`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_adm_asist_con` "
+                    + "        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_adm_agend` "
+                    + "        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)"
+                    + "    INNER JOIN `database`.`info_paciente` "
+                    + "        ON (`pyp_adm_agend`.`id_paciente` = `info_paciente`.`id`)"
+                    + "    INNER JOIN `database`.`config_cups` "
+                    + "        ON (`pyp_procedimiento`.`id_cups` = `config_cups`.`id`)"
+                    + "    INNER JOIN `database`.`static_estructura_cups` "
+                    + "        ON (`config_cups`.`id_estructura_cups` = `static_estructura_cups`.`id`)"
+                    + "WHERE (`pyp_adm_agend`.`id_paciente` ='" + idpaciente + "'"
+                    + "    AND `pyp_procedimiento`.`estado` =2"
+                    + "    AND `pyp_historiac`.`estado` =1);");
+            if (bd.resultado != null) {
+                while (bd.resultado.next()) {
+                    modelo.addRow(s);
+                    modelo.setValueAt(bd.resultado.getString("id_cups"), c, 0);
+                    modelo.setValueAt(bd.resultado.getString("codigo"), c, 1);
+                    modelo.setValueAt(bd.resultado.getString("de_subcategoria"), c, 2);
+                    modelo.setValueAt(bd.resultado.getString("des_capitulo"), c, 3);
+                    modelo.setValueAt(bd.resultado.getString("estado"), c, 4);
+                    c++;
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "tab006 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "tab006 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void cargarantemedicamento(DefaultTableModel modelo, String idpaciente) {
+        try {
+            bd.ConectarBasedeDatos();
+            c = 0;
+            Object s[] = null;
+            bd.resultado = bd.sentencia.executeQuery("SELECT"
+                    + "    `pyp_posologia`.`id_suministro`"
+                    + "    , `sum_suministro`.`suministro`"
+                    + "FROM"
+                    + "    `database`.`pyp_historiac`"
+                    + "    INNER JOIN `database`.`pyp_adm_asist_con` "
+                    + "        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_adm_agend` "
+                    + "        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)"
+                    + "    INNER JOIN `database`.`info_paciente` "
+                    + "        ON (`pyp_adm_agend`.`id_paciente` = `info_paciente`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_posologia` "
+                    + "        ON (`pyp_posologia`.`id_historiac` = `pyp_historiac`.`id`)"
+                    + "    INNER JOIN `database`.`sum_suministro` "
+                    + "        ON (`pyp_posologia`.`id_suministro` = `sum_suministro`.`id`)"
+                    + "WHERE (`pyp_adm_agend`.`id_paciente` = '" + idpaciente + "'"
+                    + "    AND `pyp_historiac`.`estado` =1"
+                    + "    AND `pyp_posologia`.`estado` =2);");
+            if (bd.resultado != null) {
+                while (bd.resultado.next()) {
+                    modelo.addRow(s);
+                    modelo.setValueAt(bd.resultado.getString("id_suministro"), c, 0);
+                    modelo.setValueAt(bd.resultado.getString("suministro"), c, 1);
+                    c++;
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "tab007 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "tab007 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
 }
