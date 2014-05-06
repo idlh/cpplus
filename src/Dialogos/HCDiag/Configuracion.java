@@ -218,6 +218,7 @@ public class Configuracion extends javax.swing.JDialog {
 
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTable1.setFocusable(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -414,15 +415,25 @@ public class Configuracion extends javax.swing.JDialog {
 
     private void jButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseReleased
         pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
+        String d;
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 4) {
+            Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+            d = (c[0][0].toString());
+        } else {
+            Object c[][] = Funciones.RetornarDatos(sav.seleccionaridvisual(pypAdmAsistCon.getId().toString()));
+            d = (c[0][0].toString());
+        }
         String mensaje = "¿Desea habilitar historia a otro profesional? ";
         int entrada = JOptionPane.showConfirmDialog(null, mensaje, "Confirmar finalizacion", JOptionPane.YES_NO_OPTION);
         if (entrada == 0) {
             if (pypAdmAsistCon.getEstado().toString().equals("3")) {
-                act.cambioestadohc(d, pypAdmAsistCon.getId().toString());
+                if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 4) {
+                    act.cambioestadohc(d, pypAdmAsistCon.getId().toString());
+                } else {
+                    act.cambioestadovisual(d, pypAdmAsistCon.getId().toString());
+                }
             }
-            ListPacientes listPacientes = new ListPacientes((Frame) SwingUtilities.getWindowAncestor(this), true);            
+            ListPacientes listPacientes = new ListPacientes((Frame) SwingUtilities.getWindowAncestor(this), true);
             this.dispose();
             listPacientes.setVisible(true);
         }
