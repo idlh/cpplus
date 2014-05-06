@@ -13,6 +13,13 @@ public class Save {
                 + " `database`.`pyp_historiac`"
                 + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "';";
     }
+    
+    public String contarvisual(String id) {
+        return "SELECT COUNT(*)"
+                + " FROM"
+                + " `database`.`pyp_visual`"
+                + " WHERE `pyp_visual`.`idasistencia`='" + id + "';";
+    }
 
     public String contarproce(String id) {
         return "SELECT COUNT(*)"
@@ -33,6 +40,19 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
+    
+    public void crearvisualnueva(String idasis, String idp) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.sentencia.execute("INSERT INTO pyp_visual (idasistencia, usuariolog) VALUES ('" + idasis + "', '" + idp + "')");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c001.0 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c001.0 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
 
     public String seleccionaridhc(String id) {
         return "SELECT `pyp_historiac`.`id`"
@@ -41,6 +61,14 @@ public class Save {
                 + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "' AND `pyp_historiac`.`estado` = 0"
                 + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1;";
     }
+    
+    public String seleccionaridvisual(String id) {
+        return "SELECT `pyp_visual`.`id`"
+                + " FROM"
+                + " `database`.`pyp_visual`"
+                + " WHERE `pyp_visual`.`idasistencia`='" + id + "' AND `pyp_visual`.`estado` = 0"
+                + " GROUP BY `pyp_visual`.`id` DESC LIMIT 1;";
+    }
 
     public String seleccionaridhcfinal(String id) {
         return "SELECT `pyp_historiac`.`id`"
@@ -48,6 +76,14 @@ public class Save {
                 + " `database`.`pyp_historiac`"
                 + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "'"
                 + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1;";
+    }
+    
+     public String seleccionaridvisualfinal(String id) {
+        return "SELECT `pyp_visual`.`id`"
+                + " FROM"
+                + " `database`.`pyp_visual`"
+                + " WHERE `pyp_visual`.`idasistencia`='" + id + "'"
+                + " GROUP BY `pyp_visual`.`id` DESC LIMIT 1;";
     }
 
     public void newadulto(String id) {
@@ -356,7 +392,7 @@ public class Save {
                 + "FROM `database`.`pyp_planificacionf`"
                 + "WHERE (`pyp_planificacionf`.`idhistoria` = '" + id + "')";
     }
-    
+
     public void newplanicontrol(String id) {
         try {
             bd.ConectarBasedeDatos();
@@ -365,6 +401,25 @@ public class Save {
             JOptionPane.showMessageDialog(null, "c017" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "c017" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public String selectidhta(String id) {
+        return "SELECT `pyp_hta`.`id`"
+                + "FROM `database`.`pyp_hta`"
+                + "	WHERE (`pyp_hta`.`idhistoria` = '" + id + "')";
+    }
+
+    public void newhtacontrol(String id) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.sentencia.execute("INSERT INTO pyp_hta_control (idhta) VALUES ('" + id + "')");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c018" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c018" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }

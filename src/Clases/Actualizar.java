@@ -346,6 +346,12 @@ public class Actualizar {
                 + "  WHERE `pyp_historiac`.`id` = '" + id + "';";
     }
 
+    public String cargardatosvisual(String id) {
+        return "SELECT *"
+                + "  FROM `database`.`pyp_visual`"
+                + "  WHERE `pyp_visual`.`id` = '" + id + "';";
+    }
+
     public String cargarcierel1(String id) {
         return "SELECT"
                 + "    CONCAT(`static_cie10`.`codigo`,' - ', `static_cie10`.`descripcion`) AS dx1"
@@ -446,6 +452,25 @@ public class Actualizar {
             JOptionPane.showMessageDialog(null, "a014 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "a014 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public void finalizarvisual(String idhc, String idhis) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE"
+                    + "    `database`.`pyp_visual`"
+                    + "    INNER JOIN `database`.`pyp_adm_asist_con` "
+                    + "        ON (`pyp_visual`.`idasistencia` = `pyp_adm_asist_con`.`id`)"
+                    + " SET `pyp_visual`.`estado`=1, `pyp_adm_asist_con`.`estado`=2"
+                    + " WHERE `pyp_visual`.`id` = ? AND `pyp_visual`.`idasistencia`=? AND `pyp_visual`.`estado`=0;");
+            bd.preparedStatement.setString(1, idhc);
+            bd.preparedStatement.setString(2, idhis);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a014.1 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a014.1 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -1141,7 +1166,7 @@ public class Actualizar {
                 + "        ON (`pyp_planificacionf`.`idhistoria` = `pyp_historiac`.`id`)"
                 + "WHERE (`pyp_historiac`.`id` ='" + id + "');";
     }
-    
+
     public void guardadohc(String idhc, String idhis) {
         try {
             bd.ConectarBasedeDatos();
@@ -1160,7 +1185,26 @@ public class Actualizar {
             JOptionPane.showMessageDialog(null, "a031 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
+
+    public void guardadovisual(String idhc, String idhis) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE"
+                    + "    `database`.`pyp_visual`"
+                    + "    INNER JOIN `database`.`pyp_adm_asist_con` "
+                    + "        ON (`pyp_visual`.`idasistencia` = `pyp_adm_asist_con`.`id`)"
+                    + " SET `pyp_adm_asist_con`.`estado`=3"
+                    + " WHERE `pyp_visual`.`id` = ? AND `pyp_visual`.`idasistencia`=? AND `pyp_visual`.`estado`=0;");
+            bd.preparedStatement.setString(1, idhc);
+            bd.preparedStatement.setString(2, idhis);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a031 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a031 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
     public void cambioestadohc(String idhc, String idhis) {
         try {
             bd.ConectarBasedeDatos();
@@ -1177,6 +1221,91 @@ public class Actualizar {
             JOptionPane.showMessageDialog(null, "a031 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "a031 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+    public void cambioestadovisual(String idhc, String idhis) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE"
+                    + "    `database`.`pyp_visual`"
+                    + "    INNER JOIN `database`.`pyp_adm_asist_con` "
+                    + "        ON (`pyp_visual`.`idasistencia` = `pyp_adm_asist_con`.`id`)"
+                    + " SET `pyp_adm_asist_con`.`estado`=1"
+                    + " WHERE `pyp_visual`.`id` = ? AND `pyp_visual`.`idasistencia`=? AND `pyp_visual`.`estado`=0;");
+            bd.preparedStatement.setString(1, idhc);
+            bd.preparedStatement.setString(2, idhis);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a031 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a031 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void acthtacontrol(String id, String dieta, String ejercicio, String esecundarios, String tratamiento, String observacion) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_hta_control`"
+                    + "SET `pyp_hta_control`.`dieta` = ?, `pyp_hta_control`.`ejercicio` = ?,"
+                    + "    `pyp_hta_control`.`esecundarios` = ?, `pyp_hta_control`.`tratamiento` = ?,"
+                    + "    `pyp_hta_control`.`observacion` = ?"
+                    + "    WHERE `pyp_hta_control`.`idhta` = ?;");
+            bd.preparedStatement.setString(1, dieta);
+            bd.preparedStatement.setString(2, ejercicio);
+            bd.preparedStatement.setString(3, esecundarios);
+            bd.preparedStatement.setString(4, tratamiento);
+            bd.preparedStatement.setString(5, observacion);
+            bd.preparedStatement.setString(6, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a032 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a032 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public String cargarhtacontrol(String id) {
+        return "SELECT `pyp_hta_control`.*"
+                + "FROM"
+                + "    `database`.`pyp_hta`"
+                + "    INNER JOIN `database`.`pyp_historiac` "
+                + "        ON (`pyp_hta`.`idhistoria` = `pyp_historiac`.`id`)"
+                + "    INNER JOIN `database`.`pyp_hta_control` "
+                + "        ON (`pyp_hta_control`.`idhta` = `pyp_hta`.`id`)"
+                + "WHERE (`pyp_historiac`.`id` ='" + id + "');";
+    }
+
+    public void guardarvisual(String id, String idasis, String ojoderecho, String ojoizquierdo, String ambos, String ojoderecho2,
+            String ojoizquierdo2, String ambos2, String observacion, String usuario) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_visual`"
+                    + "SET `pyp_visual`.`ojoderecho`=?, `pyp_visual`.`ojoizquierdo`=?,"
+                    + "    `pyp_visual`.`ambos`=?, `pyp_visual`.`aojoderecho`=?,"
+                    + "    `pyp_visual`.`aojoizquierdo`=?, `pyp_visual`.`aambos`=?,"
+                    + "    `pyp_visual`.`observacion`=?, `pyp_visual`.`usuariolog`=?"
+                    + "    WHERE (`pyp_visual`.`id`=? AND `pyp_visual`.`idasistencia`=?)");
+            bd.preparedStatement.setString(1, ojoderecho);
+            bd.preparedStatement.setString(2, ojoizquierdo);
+            bd.preparedStatement.setString(3, ambos);
+            bd.preparedStatement.setString(4, ojoderecho2);
+            bd.preparedStatement.setString(5, ojoizquierdo2);
+            bd.preparedStatement.setString(6, ambos2);
+            bd.preparedStatement.setString(7, observacion);
+            bd.preparedStatement.setString(8, usuario);
+            bd.preparedStatement.setString(9, id);
+            bd.preparedStatement.setString(10, idasis);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a033 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a033 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }
