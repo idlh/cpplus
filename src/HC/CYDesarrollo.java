@@ -668,6 +668,11 @@ public class CYDesarrollo extends javax.swing.JPanel {
                     pruebascomple.actpruebasc();
                 }
             }
+            Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+            String d = (c[0][0].toString());
+            if (pypAdmAsistCon.getEstado().toString().equals("1")) {
+                act.guardadohc(d, pypAdmAsistCon.getId().toString());
+            }
             jLabel9.setVisible(true);
             Contar();
         } else {

@@ -668,13 +668,13 @@ public class Adulto extends javax.swing.JPanel {
                     pruebascomple.actpruebasc();
                 }
             }
-            jLabel9.setVisible(true);
-            Contar();
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
             String d = (c[0][0].toString());
             if (pypAdmAsistCon.getEstado().toString().equals("1")) {
                 act.guardadohc(d, pypAdmAsistCon.getId().toString());
             }
+            jLabel9.setVisible(true);
+            Contar();
         } else {
             JOptionPane.showMessageDialog(null, "La historia ya se encuentra finalizada");
         }

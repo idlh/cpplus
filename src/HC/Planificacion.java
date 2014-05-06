@@ -644,7 +644,7 @@ public class Planificacion extends javax.swing.JPanel {
                 sav.neweventose(d);
                 sav.newexpf(d);
                 sav.newplanificacion(d);
-                if(pypAdmAsistCon.getPrimeraVez().toString().equals("0")){
+                if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
                     Object dat[][] = Funciones.RetornarDatos(sav.selectidplanifica(d));
                     sav.newplanicontrol(dat[0][0].toString());
                 }
@@ -672,6 +672,11 @@ public class Planificacion extends javax.swing.JPanel {
                     pruebascomple.actpruebasc();
                 }
             }
+            Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+            String d = (c[0][0].toString());
+            if (pypAdmAsistCon.getEstado().toString().equals("1")) {
+                act.guardadohc(d, pypAdmAsistCon.getId().toString());
+            }
             jLabel9.setVisible(true);
             Contar();
         } else {
@@ -691,7 +696,7 @@ public class Planificacion extends javax.swing.JPanel {
                 sav.neweventose(d);
                 sav.newexpf(d);
                 sav.newplanificacion(d);
-                if(pypAdmAsistCon.getPrimeraVez().toString().equals("0")){
+                if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
                     Object dat[][] = Funciones.RetornarDatos(sav.selectidplanifica(d));
                     sav.newplanicontrol(dat[0][0].toString());
                 }

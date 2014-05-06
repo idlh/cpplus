@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
+import modulo_pyp.Modulo_PyP;
 
 /**
  *
@@ -89,6 +90,11 @@ public class Exploracionf extends javax.swing.JPanel {
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 6) {
             jTabbedPane1.remove(jPanel8);
+            jTabbedPane1.remove(jPanel15);
+        } else {
+            if (pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
+                jTabbedPane1.remove(jPanel15);
+            }
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 2) {
             jTabbedPane1.remove(jPanel10);
@@ -241,6 +247,15 @@ public class Exploracionf extends javax.swing.JPanel {
         jCheckBox29 = new javax.swing.JCheckBox();
         jCheckBox30 = new javax.swing.JCheckBox();
         jCheckBox31 = new javax.swing.JCheckBox();
+        jPanel15 = new javax.swing.JPanel();
+        jLabel46 = new javax.swing.JLabel();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jTextArea12 = new javax.swing.JTextArea();
+        jPanel16 = new javax.swing.JPanel();
+        jCheckBox37 = new javax.swing.JCheckBox();
+        jCheckBox36 = new javax.swing.JCheckBox();
+        jCheckBox34 = new javax.swing.JCheckBox();
+        jCheckBox33 = new javax.swing.JCheckBox();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea5 = new javax.swing.JTextArea();
@@ -1572,6 +1587,110 @@ public class Exploracionf extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("MAC", jPanel12);
 
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel46.setText("Observaciones");
+
+        jTextArea12.setColumns(20);
+        jTextArea12.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextArea12.setForeground(new java.awt.Color(204, 204, 204));
+        jTextArea12.setLineWrap(true);
+        jTextArea12.setRows(5);
+        jTextArea12.setText("Ninguna");
+        jTextArea12.setPreferredSize(new java.awt.Dimension(164, 90));
+        jTextArea12.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea12FocusGained(evt);
+            }
+        });
+        jTextArea12.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea12KeyReleased(evt);
+            }
+        });
+        jScrollPane13.setViewportView(jTextArea12);
+
+        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Tratamiento"));
+        jPanel16.setPreferredSize(new java.awt.Dimension(233, 130));
+
+        jCheckBox37.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox37.setText("Cumple dieta");
+        jCheckBox37.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox37.setFocusable(false);
+
+        jCheckBox36.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox36.setText("Cumple ejercicio");
+        jCheckBox36.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox36.setFocusable(false);
+
+        jCheckBox34.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox34.setText("Efectos secundarios");
+        jCheckBox34.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox34.setFocusable(false);
+
+        jCheckBox33.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox33.setText("Conoce y toma bien su tratamiento");
+        jCheckBox33.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox33.setFocusable(false);
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jCheckBox33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jCheckBox37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox33))
+        );
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addComponent(jLabel46)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addComponent(jLabel46)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Tratamiento", jPanel15);
+
         jTabbedPane2.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedPane2.setFocusable(false);
         jTabbedPane2.setPreferredSize(new java.awt.Dimension(550, 183));
@@ -2211,6 +2330,14 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea11.selectAll();
     }//GEN-LAST:event_jTextArea11FocusGained
 
+    private void jTextArea12KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea12KeyReleased
+        jTextArea12.setForeground(Color.black);
+    }//GEN-LAST:event_jTextArea12KeyReleased
+
+    private void jTextArea12FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea12FocusGained
+        jTextArea12.selectAll();
+    }//GEN-LAST:event_jTextArea12FocusGained
+
     public void actexpf() {
         int tas, tad, fc, talla;
         float fr, temp, peso, imc;
@@ -2345,6 +2472,9 @@ public class Exploracionf extends javax.swing.JPanel {
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
             acthta();
+            if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
+                guardarhtacontrol();
+            }
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
             actvaloracion();
@@ -2492,6 +2622,9 @@ public class Exploracionf extends javax.swing.JPanel {
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
             cargarhta();
+            if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
+                cargarhtacontrol();
+            }
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
             cargarvaloracion();
@@ -3012,6 +3145,66 @@ public class Exploracionf extends javax.swing.JPanel {
         }
     }
 
+    private void guardarhtacontrol() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object data[][] = Funciones.RetornarDatos(sav.selectidhta(d));
+        String vr1, vr2, vr3, vr4;
+        if (jCheckBox37.isSelected() == false) {
+            vr1 = "0";
+        } else {
+            vr1 = "1";
+        }
+        if (jCheckBox36.isSelected() == false) {
+            vr2 = "0";
+        } else {
+            vr2 = "1";
+        }
+        if (jCheckBox34.isSelected() == false) {
+            vr3 = "0";
+        } else {
+            vr3 = "1";
+        }
+        if (jCheckBox33.isSelected() == false) {
+            vr4 = "0";
+        } else {
+            vr4 = "1";
+        }
+        act.acthtacontrol(data[0][0].toString(), vr1, vr2, vr3, vr4, jTextArea12.getText().toUpperCase().toString());
+    }
+
+    private void cargarhtacontrol() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object pypdata[][] = Funciones.RetornarDatos(act.cargarhtacontrol(d));
+        if (pypdata[0][2].toString().equals("0")) {
+            jCheckBox37.setSelected(false);
+        } else {
+            jCheckBox37.setSelected(true);
+        }
+        if (pypdata[0][3].toString().equals("0")) {
+            jCheckBox36.setSelected(false);
+        } else {
+            jCheckBox36.setSelected(true);
+        }
+        if (pypdata[0][4].toString().equals("0")) {
+            jCheckBox34.setSelected(false);
+        } else {
+            jCheckBox34.setSelected(true);
+        }
+        if (pypdata[0][5].toString().equals("0")) {
+            jCheckBox33.setSelected(false);
+        } else {
+            jCheckBox33.setSelected(true);
+        }
+        if (pypdata[0][6].toString().equals("NINGUNA")) {
+            jTextArea12.setText(pypdata[0][6].toString());
+        } else {
+            jTextArea12.setText(pypdata[0][6].toString());
+            jTextArea12.setForeground(Color.black);
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JCheckBox jCheckBox1;
     javax.swing.JCheckBox jCheckBox10;
@@ -3039,6 +3232,10 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JCheckBox jCheckBox30;
     javax.swing.JCheckBox jCheckBox31;
     javax.swing.JCheckBox jCheckBox32;
+    javax.swing.JCheckBox jCheckBox33;
+    javax.swing.JCheckBox jCheckBox34;
+    javax.swing.JCheckBox jCheckBox36;
+    javax.swing.JCheckBox jCheckBox37;
     javax.swing.JCheckBox jCheckBox4;
     javax.swing.JCheckBox jCheckBox5;
     javax.swing.JCheckBox jCheckBox6;
@@ -3100,6 +3297,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JLabel jLabel43;
     javax.swing.JLabel jLabel44;
     javax.swing.JLabel jLabel45;
+    javax.swing.JLabel jLabel46;
     javax.swing.JLabel jLabel5;
     javax.swing.JLabel jLabel6;
     javax.swing.JLabel jLabel7;
@@ -3111,6 +3309,8 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JPanel jPanel12;
     javax.swing.JPanel jPanel13;
     javax.swing.JPanel jPanel14;
+    javax.swing.JPanel jPanel15;
+    javax.swing.JPanel jPanel16;
     javax.swing.JPanel jPanel2;
     javax.swing.JPanel jPanel3;
     javax.swing.JPanel jPanel4;
@@ -3123,6 +3323,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JScrollPane jScrollPane10;
     javax.swing.JScrollPane jScrollPane11;
     javax.swing.JScrollPane jScrollPane12;
+    javax.swing.JScrollPane jScrollPane13;
     javax.swing.JScrollPane jScrollPane2;
     javax.swing.JScrollPane jScrollPane3;
     javax.swing.JScrollPane jScrollPane4;
@@ -3136,6 +3337,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JTextArea jTextArea1;
     javax.swing.JTextArea jTextArea10;
     javax.swing.JTextArea jTextArea11;
+    javax.swing.JTextArea jTextArea12;
     javax.swing.JTextArea jTextArea2;
     javax.swing.JTextArea jTextArea3;
     javax.swing.JTextArea jTextArea4;

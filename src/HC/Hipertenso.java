@@ -645,6 +645,10 @@ public class Hipertenso extends javax.swing.JPanel {
                 sav.neweventose(d);
                 sav.newexpf(d);
                 sav.newhta(d);
+                if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
+                    Object data[][] = Funciones.RetornarDatos(sav.selectidhta(d));
+                    sav.newhtacontrol(data[0][0].toString());
+                }
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 if (h[0][23].toString().equals("0")) {
                     motivoc.actualizardatos();
@@ -669,6 +673,11 @@ public class Hipertenso extends javax.swing.JPanel {
                     pruebascomple.actpruebasc();
                 }
             }
+            Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+            String d = (c[0][0].toString());
+            if (pypAdmAsistCon.getEstado().toString().equals("1")) {
+                act.guardadohc(d, pypAdmAsistCon.getId().toString());
+            }
             jLabel9.setVisible(true);
             Contar();
         } else {
@@ -688,6 +697,10 @@ public class Hipertenso extends javax.swing.JPanel {
                 sav.neweventose(d);
                 sav.newexpf(d);
                 sav.newhta(d);
+                if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
+                    Object data[][] = Funciones.RetornarDatos(sav.selectidhta(d));
+                    sav.newhtacontrol(data[0][0].toString());
+                }
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 int id = Integer.parseInt(h[0][23].toString());
                 if (id == 0) {
