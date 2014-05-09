@@ -503,6 +503,28 @@ public class Actualizar {
                 + " WHERE `pyp_antecedentesg`.`id_historiac` = '" + id + "'";
     }
 
+    public String cargaranteg(String idpaciente) {
+        return "SELECT "
+                + "	`pyp_info_antecedentesg`.`id`"
+                + "      , `pyp_info_antecedentesg`.`idpaciente`"
+                + "      , DATE_FORMAT(`pyp_info_antecedentesg`.`FUM`, '%d/%m/%Y') AS `FUM`"
+                + "      , `pyp_info_antecedentesg`.`Ciclos`"
+                + "      , `pyp_info_antecedentesg`.`gestas`"
+                + "      , `pyp_info_antecedentesg`.`partos`"
+                + "      , `pyp_info_antecedentesg`.`abortos`"
+                + "      , `pyp_info_antecedentesg`.`cesareas`"
+                + "      , `pyp_info_antecedentesg`.`vaginales`"
+                + "      , DATE_FORMAT(`pyp_info_antecedentesg`.`FUP`, '%d/%m/%Y') AS `FUP`"
+                + "      , `pyp_info_antecedentesg`.`menarquia`"
+                + "      , `pyp_info_antecedentesg`.`edadinicio`"
+                + "      , `pyp_info_antecedentesg`.`vidasexualac`"
+                + "      , `pyp_info_antecedentesg`.`relacionescon`"
+                + "      , `pyp_info_antecedentesg`.`parejaestable`"
+                + "      , `pyp_info_antecedentesg`.`usopreservativo`"
+                + "      FROM `database`.`pyp_info_antecedentesg`"
+                + "      WHERE `pyp_info_antecedentesg`.`idpaciente` = '" + idpaciente + "'";
+    }
+
     public String cargarexploracion(String id) {
         return "SELECT *"
                 + "  FROM"
@@ -958,14 +980,19 @@ public class Actualizar {
                 + "WHERE(`pyp_hta`.`idhistoria`='" + id + "')";
     }
 
-    public void actvaloracion(String id, String valoracion) {
+    public void actvaloracion(String id, String meses, String mg, String mfa, String al, String ps, String total) {
         try {
             bd.ConectarBasedeDatos();
-            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_crecimiento`"
-                    + "SET `pyp_crecimiento`.`valoracion`=?"
-                    + "WHERE(`pyp_crecimiento`.`idhistoria`=?)");
-            bd.preparedStatement.setString(1, valoracion);
-            bd.preparedStatement.setString(2, id);
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_crecimiento_eadmeses`"
+                    + "SET `pyp_crecimiento_eadmeses`.`meses`=?, `pyp_crecimiento_eadmeses`.`mg`=?, `pyp_crecimiento_eadmeses`.`mfa`=?, `pyp_crecimiento_eadmeses`.`al`=?, `pyp_crecimiento_eadmeses`.`ps`=?, `pyp_crecimiento_eadmeses`.`total`=?"
+                    + "WHERE(`pyp_crecimiento_eadmeses`.`idhistoria`=?)");
+            bd.preparedStatement.setString(1, meses);
+            bd.preparedStatement.setString(2, mg);
+            bd.preparedStatement.setString(3, mfa);
+            bd.preparedStatement.setString(4, al);
+            bd.preparedStatement.setString(5, ps);
+            bd.preparedStatement.setString(6, total);
+            bd.preparedStatement.setString(7, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a026 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -1060,6 +1087,12 @@ public class Actualizar {
         return "SELECT COUNT(*)"
                 + "FROM `database`.`info_ant_personales`"
                 + "WHERE `info_ant_personales`.`id_paciente` = '" + idpaciente + "'";
+    }
+
+    public String contarginecog(String id) {
+        return "SELECT COUNT(*)"
+                + "FROM `database`.`pyp_info_antecedentesg`"
+                + "WHERE `pyp_info_antecedentesg`.`idpaciente` = '" + id + "'";
     }
 
     public void actinfoante(String idpaciente, String alergias, String ingresos, String traumatismos, String tratamientos, String dm,
@@ -1225,6 +1258,7 @@ public class Actualizar {
             bd.DesconectarBasedeDatos();
         }
     }
+
     public void cambioestadovisual(String idhc, String idhis) {
         try {
             bd.ConectarBasedeDatos();
@@ -1306,6 +1340,131 @@ public class Actualizar {
             JOptionPane.showMessageDialog(null, "a033 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "a033 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public String cargarmeses(String id) {
+        return "SELECT *"
+                + "FROM `database`.`pyp_crecimiento_eadmeses`"
+                + "WHERE(`pyp_crecimiento_eadmeses`.`idhistoria` = '" + id + "');";
+    }
+
+    public String cargaraños(String id) {
+        return "SELECT *"
+                + "FROM `pyp_crecimiento_eadaños`"
+                + "WHERE(`pyp_crecimiento_eadaños`.`idhistoria` = '" + id + "');";
+    }
+
+    public void actvaloracionaños(String id, String meses, String mg, String mfa, String al, String ps) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_crecimiento_eadaños`"
+                    + "SET `pyp_crecimiento_eadaños`.`edad`=?, `pyp_crecimiento_eadaños`.`mg`=?, `pyp_crecimiento_eadaños`.`mfa`=?, `pyp_crecimiento_eadaños`.`al`=?, `pyp_crecimiento_eadaños`.`ps`=?"
+                    + "WHERE(`pyp_crecimiento_eadaños`.`idhistoria`=?)");
+            bd.preparedStatement.setString(1, meses);
+            bd.preparedStatement.setString(2, mg);
+            bd.preparedStatement.setString(3, mfa);
+            bd.preparedStatement.setString(4, al);
+            bd.preparedStatement.setString(5, ps);
+            bd.preparedStatement.setString(7, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a034 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a034 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public String cargarganancia(String id) {
+        return "SELECT"
+                + "    `pyp_explofisica`.`peso`"
+                + "FROM"
+                + "    `database`.`pyp_explofisica`"
+                + "    INNER JOIN `database`.`pyp_historiac` "
+                + "        ON (`pyp_explofisica`.`idhistoriac` = `pyp_historiac`.`id`)"
+                + "    INNER JOIN `database`.`pyp_adm_asist_con` "
+                + "        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)"
+                + "    INNER JOIN `database`.`pyp_adm_agend` "
+                + "        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)"
+                + "    INNER JOIN `database`.`info_paciente` "
+                + "        ON (`pyp_adm_agend`.`id_paciente` = `info_paciente`.`id`)"
+                + "WHERE (`info_paciente`.`id` = '" + id + "'"
+                + "    AND `pyp_historiac`.`estado` =1)"
+                + "GROUP BY `pyp_explofisica`.`id` DESC LIMIT 1;";
+    }
+
+    public void controlmaterno(String id, String fecha, String ganancia, String ncontrol) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_contolmaterno`"
+                    + "	SET `pyp_contolmaterno`.`fecha` = ?, `pyp_contolmaterno`.`ganancia`=?,"
+                    + "	    `pyp_contolmaterno`.`ncontrol`=?"
+                    + "	    WHERE(`pyp_contolmaterno`.`idhistoria` = ?);");
+            bd.preparedStatement.setString(1, fecha);
+            bd.preparedStatement.setString(2, ganancia);
+            bd.preparedStatement.setString(3, ncontrol);
+            bd.preparedStatement.setString(4, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a035 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a035 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public String cargarcantidadcontrol(String id) {
+        return "SELECT"
+                + "    COUNT(`pyp_adm_asist_con`.`id`)"
+                + "FROM"
+                + "    `database`.`pyp_adm_asist_con`"
+                + "    INNER JOIN `database`.`pyp_adm_agend` "
+                + "        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)"
+                + "WHERE (`pyp_adm_asist_con`.`estado` =2"
+                + "    AND `pyp_adm_agend`.`id_paciente` ='" + id + "'"
+                + "    AND `pyp_adm_agend`.`id_programa` =9);";
+    }
+
+    public String cargargananciam(String id) {
+        return "SELECT *"
+                + "FROM `database`.`pyp_contolmaterno`"
+                + "WHERE (`pyp_contolmaterno`.`idhistoria` ='" + id + "');";
+    }
+
+    public void actualizarginecoginfo(String id, String fum, String ciclos, String gestas, String partos, String abortos, String cesareas,
+            String vaginales, String fup, String menarquia, String edadinicio, String vidasexual, String relacionescon, String parejaestable,
+            String usopreservativo) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_info_antecedentesg` "
+                    + "SET `pyp_info_antecedentesg`.`FUM`=?, `pyp_info_antecedentesg`.`Ciclos`=?, `pyp_info_antecedentesg`.`gestas`=?,"
+                    + "	   `pyp_info_antecedentesg`.`partos`=?, `pyp_info_antecedentesg`.`abortos`=?, `pyp_info_antecedentesg`.`cesareas`=?, `pyp_info_antecedentesg`.`vaginales`=?,"
+                    + "	   `pyp_info_antecedentesg`.`FUP`=?, `pyp_info_antecedentesg`.`menarquia`=?, `pyp_info_antecedentesg`.`edadinicio`=?, `pyp_info_antecedentesg`.`vidasexualac`=?,"
+                    + "	   `pyp_info_antecedentesg`.`relacionescon`=?, `pyp_info_antecedentesg`.`parejaestable`=?, `pyp_info_antecedentesg`.`usopreservativo`=?"
+                    + "	WHERE(`pyp_info_antecedentesg`.`idpaciente` =?);");
+            bd.preparedStatement.setString(1, fum);
+            bd.preparedStatement.setString(2, ciclos);
+            bd.preparedStatement.setString(3, gestas);
+            bd.preparedStatement.setString(4, partos);
+            bd.preparedStatement.setString(5, abortos);
+            bd.preparedStatement.setString(6, cesareas);
+            bd.preparedStatement.setString(7, vaginales);
+            bd.preparedStatement.setString(8, fup);
+            bd.preparedStatement.setString(9, menarquia);
+            bd.preparedStatement.setString(10, edadinicio);
+            bd.preparedStatement.setString(11, vidasexual);
+            bd.preparedStatement.setString(12, relacionescon);
+            bd.preparedStatement.setString(13, parejaestable);
+            bd.preparedStatement.setString(14, usopreservativo);
+            bd.preparedStatement.setString(15, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a036 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a036 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
         }
     }
 }

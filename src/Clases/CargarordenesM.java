@@ -386,4 +386,48 @@ public class CargarordenesM {
             bd.DesconectarBasedeDatos();
         }
     }
+
+    public void cargarcontrolp(DefaultTableModel modelo, String id) {
+        try {
+            bd.ConectarBasedeDatos();
+            c = 0;
+            Object s[] = null;
+            bd.resultado = bd.sentencia.executeQuery("SELECT"
+                    + "    DATE_FORMAT(`pyp_contolmaterno`.`fecha`, '%d/%m/%Y') AS `fecha`"
+                    + "    , `pyp_explofisica`.`peso`"
+                    + "    , `pyp_explofisica`.`imc`"
+                    + "    , `pyp_contolmaterno`.`ganancia`"
+                    + "    , `pyp_contolmaterno`.`ncontrol` AS `control`"
+                    + "FROM"
+                    + "    `database`.`pyp_explofisica`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_explofisica`.`idhistoriac` = `pyp_historiac`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_contolmaterno` "
+                    + "        ON (`pyp_contolmaterno`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_adm_asist_con` "
+                    + "        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_adm_agend` "
+                    + "        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)"
+                    + "    INNER JOIN `database`.`info_paciente` "
+                    + "        ON (`pyp_adm_agend`.`id_paciente` = `info_paciente`.`id`)"
+                    + "WHERE (`info_paciente`.`id` =  '" + id + "' AND `pyp_historiac`.`estado` =1);");
+            if (bd.resultado != null) {
+                while (bd.resultado.next()) {
+                    modelo.addRow(s);
+                    modelo.setValueAt(bd.resultado.getString("fecha"), c, 0);
+                    modelo.setValueAt(bd.resultado.getString("peso"), c, 1);
+                    modelo.setValueAt(bd.resultado.getString("imc"), c, 2);
+                    modelo.setValueAt(bd.resultado.getString("ganancia"), c, 3);
+                    modelo.setValueAt(bd.resultado.getString("control"), c, 4);
+                    c++;
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "tab008 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "tab008 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
 }

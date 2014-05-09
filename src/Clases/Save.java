@@ -13,7 +13,7 @@ public class Save {
                 + " `database`.`pyp_historiac`"
                 + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "';";
     }
-    
+
     public String contarvisual(String id) {
         return "SELECT COUNT(*)"
                 + " FROM"
@@ -40,7 +40,7 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
-    
+
     public void crearvisualnueva(String idasis, String idp) {
         try {
             bd.ConectarBasedeDatos();
@@ -61,7 +61,7 @@ public class Save {
                 + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "' AND `pyp_historiac`.`estado` = 0"
                 + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1;";
     }
-    
+
     public String seleccionaridvisual(String id) {
         return "SELECT `pyp_visual`.`id`"
                 + " FROM"
@@ -77,8 +77,8 @@ public class Save {
                 + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "'"
                 + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1;";
     }
-    
-     public String seleccionaridvisualfinal(String id) {
+
+    public String seleccionaridvisualfinal(String id) {
         return "SELECT `pyp_visual`.`id`"
                 + " FROM"
                 + " `database`.`pyp_visual`"
@@ -223,9 +223,9 @@ public class Save {
             bd.ConectarBasedeDatos();
             bd.sentencia.execute("INSERT INTO `pyp_materna_obstetricos` (`id_materna`) VALUES ('" + id + "');");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "c010" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c010" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "c010" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c010" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -234,9 +234,9 @@ public class Save {
             bd.ConectarBasedeDatos();
             bd.sentencia.execute("INSERT INTO `pyp_materna_gestaactual` (`id_materna`) VALUES ('" + id + "');");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "c011" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c011" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "c011" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c011" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -245,9 +245,9 @@ public class Save {
             bd.ConectarBasedeDatos();
             bd.sentencia.execute("INSERT INTO `pyp_postparto` (`idhistoria`) VALUES ('" + id + "')");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "c012" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c012" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "c012" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c012" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -256,9 +256,9 @@ public class Save {
             bd.ConectarBasedeDatos();
             bd.sentencia.execute("INSERT INTO `pyp_recienniacido` (`idhistoria`) VALUES ('" + id + "')");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "c013" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c013" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "c013" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c013" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -280,9 +280,9 @@ public class Save {
             bd.preparedStatement.setString(11, "1");
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "c014" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c014" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "c014" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c014" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -299,9 +299,9 @@ public class Save {
             bd.preparedStatement.setString(5, "1");
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "c015" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c015" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "c015" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c015" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -312,9 +312,9 @@ public class Save {
             bd.ConectarBasedeDatos();
             bd.sentencia.execute("INSERT INTO `pyp_planificacionf` (`idhistoria`) VALUES ('" + id + "')");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "c016" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c016" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "c016" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c016" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -323,9 +323,9 @@ public class Save {
             bd.ConectarBasedeDatos();
             bd.sentencia.execute("INSERT INTO `pyp_joven` (`idhistoria`) VALUES ('" + id + "')");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "c016" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c016" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "c016" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c016" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -334,9 +334,9 @@ public class Save {
             bd.ConectarBasedeDatos();
             bd.sentencia.execute("INSERT INTO pyp_hta (idhistoria) VALUES ('" + id + "')");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "c017" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c017" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "c017" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c017" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -347,9 +347,9 @@ public class Save {
             bd.ConectarBasedeDatos();
             bd.sentencia.execute("INSERT INTO pyp_crecimiento (idhistoria) VALUES ('" + id + "')");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "c018" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c018" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "c018" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c018" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -381,9 +381,9 @@ public class Save {
             bd.preparedStatement.setString(15, familiares);
             bd.preparedStatement.execute();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "c019" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c019 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "c019" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c019 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -398,9 +398,9 @@ public class Save {
             bd.ConectarBasedeDatos();
             bd.sentencia.execute("INSERT INTO pyp_planificacion_control (idplanificacion) VALUES ('" + id + "')");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "c017" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c020 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "c017" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c020 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -417,11 +417,84 @@ public class Save {
             bd.ConectarBasedeDatos();
             bd.sentencia.execute("INSERT INTO pyp_hta_control (idhta) VALUES ('" + id + "')");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "c018" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c021 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "c018" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "c021 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void newcrecimientomeses(String id) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.sentencia.execute("INSERT INTO pyp_crecimiento_eadmeses (idhistoria) VALUES ('" + id + "')");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c022 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c022 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void newcrecimientoaños(String id) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.sentencia.execute("INSERT INTO pyp_crecimiento_eadaños (idhistoria) VALUES ('" + id + "')");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c023 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c023 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void controlp(String id) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.sentencia.execute("INSERT INTO pyp_contolmaterno (idhistoria) VALUES ('" + id + "')");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c024 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c024 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void newginecog(String idpaciente, String fum, String ciclos, String gestas, String partos, String abortos, String cesareas,
+            String vaginales, String fup, String menarquia, String edadinicio, String vidasexual, String relacionescon, String parejaestable,
+            String usopreservativo) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("INSERT INTO `database`.`pyp_info_antecedentesg` (`pyp_info_antecedentesg`.`idpaciente`,"
+                    + "	`pyp_info_antecedentesg`.`FUM`, `pyp_info_antecedentesg`.`Ciclos`, `pyp_info_antecedentesg`.`gestas`,"
+                    + "	`pyp_info_antecedentesg`.`partos`, `pyp_info_antecedentesg`.`abortos`, `pyp_info_antecedentesg`.`cesareas`, `pyp_info_antecedentesg`.`vaginales`,"
+                    + "	`pyp_info_antecedentesg`.`FUP`, `pyp_info_antecedentesg`.`menarquia`, `pyp_info_antecedentesg`.`edadinicio`, `pyp_info_antecedentesg`.`vidasexualac`,"
+                    + "	`pyp_info_antecedentesg`.`relacionescon`, `pyp_info_antecedentesg`.`parejaestable`, `pyp_info_antecedentesg`.`usopreservativo`) VALUES ("
+                    + "	?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
+            bd.preparedStatement.setString(1, idpaciente);
+            bd.preparedStatement.setString(2, fum);
+            bd.preparedStatement.setString(3, ciclos);
+            bd.preparedStatement.setString(4, gestas);
+            bd.preparedStatement.setString(5, partos);
+            bd.preparedStatement.setString(6, abortos);
+            bd.preparedStatement.setString(7, cesareas);
+            bd.preparedStatement.setString(8, vaginales);
+            bd.preparedStatement.setString(9, fup);
+            bd.preparedStatement.setString(10, menarquia);
+            bd.preparedStatement.setString(11, edadinicio);
+            bd.preparedStatement.setString(12, vidasexual);
+            bd.preparedStatement.setString(13, relacionescon);
+            bd.preparedStatement.setString(14, parejaestable);
+            bd.preparedStatement.setString(15, usopreservativo);
+            bd.preparedStatement.execute();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c025 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c025 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }
