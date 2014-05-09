@@ -58,7 +58,7 @@ public class ListPacientes extends javax.swing.JDialog {
     public Hipertenso hipertenso;
     public CYDesarrollo cydesarrollo;
     public AgudezaV agudeza;
-    public int año = 0;
+    public int año = 0, mes = 0, edad;
 
     public ListPacientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -529,12 +529,20 @@ public class ListPacientes extends javax.swing.JDialog {
             Calendar fechaActual = Calendar.getInstance();
             fechaNacimiento.setTime(fechap);
             año = fechaActual.get(Calendar.YEAR) - fechaNacimiento.get(Calendar.YEAR);
-            int mes = fechaActual.get(Calendar.MONTH) - fechaNacimiento.get(Calendar.MONTH);
+            mes = fechaActual.get(Calendar.MONTH) - fechaNacimiento.get(Calendar.MONTH);
             int dia = fechaActual.get(Calendar.DATE) - fechaNacimiento.get(Calendar.DATE);
             if (mes < 0 || (mes == 0 && dia < 0)) {
                 año--;
             }
-            jLabel10.setText(String.valueOf(año + " AÑOS"));
+            if (año > 5) {
+                jLabel10.setText(String.valueOf(año + " AÑOS"));
+            } else {
+                edad = (año * 12) + mes;
+                if (edad < 0) {
+                    edad = edad * (-2);
+                }
+                jLabel10.setText(String.valueOf(edad + " MES(ES)"));
+            }
             if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
                 jLabel14.setText("Consulta de control".toUpperCase());
             } else {
@@ -598,6 +606,17 @@ public class ListPacientes extends javax.swing.JDialog {
             desktop.Contenedor_.repaint();
             this.dispose();
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
+            controlp = new Controlprenatal(factory, pypAdmAsistCon);
+            controlp.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(controlp);
+            controlp.jLabel3.setText("Consulta de Control");
+            controlp.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
             postparto = new Postparto(factory, pypAdmAsistCon);
             postparto.setBounds(0, 0, 745, 393);
@@ -649,6 +668,17 @@ public class ListPacientes extends javax.swing.JDialog {
             desktop.Contenedor_.repaint();
             this.dispose();
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
+            jovensano = new Jovensano(factory, pypAdmAsistCon);
+            jovensano.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(jovensano);
+            jovensano.jLabel3.setText("Consulta de Control");
+            jovensano.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
             hipertenso = new Hipertenso(factory, pypAdmAsistCon);
             hipertenso.setBounds(0, 0, 745, 393);
@@ -675,6 +705,17 @@ public class ListPacientes extends javax.swing.JDialog {
             cydesarrollo.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(cydesarrollo);
+            cydesarrollo.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
+            cydesarrollo = new CYDesarrollo(factory, pypAdmAsistCon);
+            cydesarrollo.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(cydesarrollo);
+            cydesarrollo.jLabel3.setText("Consulta de Control");
             cydesarrollo.setVisible(true);
             desktop.Contenedor_.validate();
             desktop.Contenedor_.repaint();
