@@ -813,7 +813,7 @@ public class AntecedentesP extends javax.swing.JPanel {
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -826,14 +826,13 @@ public class AntecedentesP extends javax.swing.JPanel {
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                        .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(jPanel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -2065,20 +2064,20 @@ public class AntecedentesP extends javax.swing.JPanel {
         }
         Object cont[][] = Funciones.RetornarDatos(act.contarantecedente(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString()));
         if (cont[0][0].toString().equals("0")) {
-            sav.newinfoante(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString(), jTextArea1.getText().toUpperCase().toString(), jTextArea2.getText().toUpperCase().toString(),
-                    jTextArea3.getText().toUpperCase().toString(), jTextArea4.getText().toUpperCase().toString(),
-                    w, q, e, jTextArea5.getText().toUpperCase().toString(), r, t, y, jTextArea6.getText().toUpperCase().toString(),
-                    jTextArea7.getText().toUpperCase().toString(), jTextArea8.getText().toUpperCase().toString());
+            sav.newinfoante(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString(), jTextArea1.getText().toUpperCase(), jTextArea2.getText().toUpperCase(),
+                    jTextArea3.getText().toUpperCase(), jTextArea4.getText().toUpperCase(),
+                    w, q, e, jTextArea5.getText().toUpperCase(), r, t, y, jTextArea6.getText().toUpperCase(),
+                    jTextArea7.getText().toUpperCase(), jTextArea8.getText().toUpperCase());
         } else {
-            act.actinfoante(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString(), jTextArea1.getText().toUpperCase().toString(), jTextArea2.getText().toUpperCase().toString(),
-                    jTextArea3.getText().toUpperCase().toString(), jTextArea4.getText().toUpperCase().toString(),
-                    w, q, e, jTextArea5.getText().toUpperCase().toString(), r, t, y, jTextArea6.getText().toUpperCase().toString(),
-                    jTextArea7.getText().toUpperCase().toString(), jTextArea8.getText().toUpperCase().toString());
+            act.actinfoante(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString(), jTextArea1.getText().toUpperCase(), jTextArea2.getText().toUpperCase(),
+                    jTextArea3.getText().toUpperCase(), jTextArea4.getText().toUpperCase(),
+                    w, q, e, jTextArea5.getText().toUpperCase(), r, t, y, jTextArea6.getText().toUpperCase(),
+                    jTextArea7.getText().toUpperCase(), jTextArea8.getText().toUpperCase());
         }
-        act.actualizarantp(d, jTextArea1.getText().toUpperCase().toString(), jTextArea2.getText().toUpperCase().toString(),
-                jTextArea3.getText().toUpperCase().toString(), jTextArea4.getText().toUpperCase().toString(),
-                w, q, e, jTextArea5.getText().toUpperCase().toString(), r, t, y, jTextArea6.getText().toUpperCase().toString(),
-                jTextArea7.getText().toUpperCase().toString(), jTextArea8.getText().toUpperCase().toString());
+        act.actualizarantp(d, jTextArea1.getText().toUpperCase(), jTextArea2.getText().toUpperCase(),
+                jTextArea3.getText().toUpperCase(), jTextArea4.getText().toUpperCase(),
+                w, q, e, jTextArea5.getText().toUpperCase(), r, t, y, jTextArea6.getText().toUpperCase(),
+                jTextArea7.getText().toUpperCase(), jTextArea8.getText().toUpperCase());
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
             actcrecimiento();
         }

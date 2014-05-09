@@ -339,7 +339,7 @@ public class visual extends javax.swing.JPanel {
         va5 = jTextField5.getText();
         va6 = jTextField6.getText();
         act.guardarvisual(d, pypAdmAsistCon.getId().toString(), va1, va2, va3, va4, va5, va6,
-                jTextArea1.getText().toUpperCase().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
+                jTextArea1.getText().toUpperCase(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
     }
 
     public void cargarvisual() {

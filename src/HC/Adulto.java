@@ -628,8 +628,8 @@ public class Adulto extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel11MouseReleased
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-        this.jPanel4.removeAll();
-        this.jPanel4.repaint();
+        modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
+        modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased

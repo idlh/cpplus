@@ -29,6 +29,7 @@ public class Controlprenatal extends javax.swing.JPanel {
     DiagnosticosM diagnosticosm = null;
     Actualizar act = new Actualizar();
     String Estadofinal = "1";
+    public float peso = 0;
 
     public Controlprenatal(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
@@ -628,8 +629,8 @@ public class Controlprenatal extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel11MouseReleased
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-        this.jPanel4.removeAll();
-        this.jPanel4.repaint();
+        modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
+        modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
@@ -644,6 +645,7 @@ public class Controlprenatal extends javax.swing.JPanel {
                 sav.neweventose(d);
                 sav.newexpf(d);
                 sav.newmaterna(d);
+                sav.controlp(d);
                 Object m[][] = Funciones.RetornarDatos(sav.idmaterna(d));
                 String mater = (m[0][0].toString());
                 sav.newobstetrico(mater);
@@ -696,6 +698,7 @@ public class Controlprenatal extends javax.swing.JPanel {
                 sav.neweventose(d);
                 sav.newexpf(d);
                 sav.newmaterna(d);
+                sav.controlp(d);
                 Object m[][] = Funciones.RetornarDatos(sav.idmaterna(d));
                 String mater = (m[0][0].toString());
                 sav.newobstetrico(mater);
@@ -763,6 +766,11 @@ public class Controlprenatal extends javax.swing.JPanel {
             }
         }
         antecedentesp.cargarinfoante();
+        antecedentesp.gi.cargarinfoanteg();
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
+            Object dt[][] = Funciones.RetornarDatos(act.cargarganancia(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString()));
+            peso = Float.valueOf(dt[0][0].toString());
+        }
     }
     private Timer timer = new Timer();
     private int segundos = 5;

@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author Camilo
  */
 public class CYDesarrollo extends javax.swing.JPanel {
-
+    
     private final EntityManagerFactory factory;
     private final PypAdmAsistCon pypAdmAsistCon;
     Funciones_AD Funciones = new Funciones_AD();
@@ -29,7 +29,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
     DiagnosticosM diagnosticosm = null;
     Actualizar act = new Actualizar();
     String Estadofinal = "1";
-
+    
     public CYDesarrollo(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.factory = factory;
@@ -60,7 +60,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
         }
         crearhc();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -628,8 +628,8 @@ public class CYDesarrollo extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel11MouseReleased
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-        this.jPanel4.removeAll();
-        this.jPanel4.repaint();
+        modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
+        modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
@@ -644,6 +644,11 @@ public class CYDesarrollo extends javax.swing.JPanel {
                 sav.neweventose(d);
                 sav.newexpf(d);
                 sav.newcrecimiento(d);
+                if (modulo_pyp.Modulo_PyP.d.listPacientes.año <= 5) {
+                    sav.newcrecimientomeses(d);
+                } else {
+                    sav.newcrecimientoaños(d);
+                }
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 if (h[0][23].toString().equals("0")) {
                     motivoc.actualizardatos();
@@ -736,7 +741,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "La historia ya se encuentra finalizada");
         }
     }//GEN-LAST:event_jButton4MouseReleased
-
+    
     private void crearhc() {
         Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
         int b = Integer.parseInt(a[0][0].toString());
@@ -758,9 +763,9 @@ public class CYDesarrollo extends javax.swing.JPanel {
     }
     private Timer timer = new Timer();
     private int segundos = 5;
-
+    
     class Contador extends TimerTask {
-
+        
         @Override
         public void run() {
             segundos--;
@@ -771,17 +776,17 @@ public class CYDesarrollo extends javax.swing.JPanel {
             }
         }
     }
-
+    
     public void Contar() {
         this.segundos = 5;
         timer = new Timer();
         timer.schedule(new Contador(), 0, 600);
     }
-
+    
     public int getSegundos() {
         return this.segundos;
     }
-
+    
     public void Detener() {
         timer.cancel();
     }

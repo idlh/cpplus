@@ -13,6 +13,9 @@ import Clases.Save;
 import entity.PypAdmAsistCon;
 import Clases.Actualizar;
 import Clases.CargarordenesM;
+import Clases.IconCellRendererlabel;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -28,7 +31,9 @@ public class ProcedimientosL extends javax.swing.JPanel {
     Actualizar act = new Actualizar();
     CargarordenesM tab = new CargarordenesM();
     String est = "1";
-    int rowindex, columnindex;
+    int rowindex;
+    ImageIcon icon = null;
+    Object[] fila = new Object[2];
 
     public ProcedimientosL(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
@@ -50,6 +55,9 @@ public class ProcedimientosL extends javax.swing.JPanel {
         Tablalaboratorio = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -114,6 +122,18 @@ public class ProcedimientosL extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_blue.png"))); // NOI18N
+        jLabel2.setText("Sin guardar");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_green.png"))); // NOI18N
+        jLabel3.setText("Guardado");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_red.png"))); // NOI18N
+        jLabel4.setText("Eliminado");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -121,9 +141,15 @@ public class ProcedimientosL extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,10 +160,18 @@ public class ProcedimientosL extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)))))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/lab.png"))); // NOI18N
@@ -204,6 +238,13 @@ public class ProcedimientosL extends javax.swing.JPanel {
                             pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
                             "1");
                     pr.dispose();
+                    for (int u = 0; u < modelo.getRowCount(); u++) {
+                        if (modelo.getValueAt(u, 4).equals("1")) {
+                            icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_blue.png"));
+                            modelo.setValueAt(fila[0] = new JLabel(icon), u, 5);
+                            Tablalaboratorio.setDefaultRenderer(Object.class, new IconCellRendererlabel());
+                        }
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "Ya el procedimiento fue agregado");
                 }
@@ -215,8 +256,7 @@ public class ProcedimientosL extends javax.swing.JPanel {
 
     private void TablalaboratorioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablalaboratorioMouseEntered
         rowindex = Tablalaboratorio.rowAtPoint(evt.getPoint());
-        columnindex = Tablalaboratorio.columnAtPoint(evt.getPoint());
-        Tablalaboratorio.setToolTipText((String) Tablalaboratorio.getValueAt(rowindex, columnindex));
+        Tablalaboratorio.setToolTipText((String) Tablalaboratorio.getValueAt(rowindex, 2));
     }//GEN-LAST:event_TablalaboratorioMouseEntered
 
     private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
@@ -228,13 +268,20 @@ public class ProcedimientosL extends javax.swing.JPanel {
             Tablalaboratorio.getTableHeader().setReorderingAllowed(false);
             Tablalaboratorio.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             Funciones_AD.setOcultarColumnas(Tablalaboratorio, new int[]{0, 1, 3, 4});
-            Funciones_AD.setSizeColumnas(Tablalaboratorio, new int[]{1}, new int[]{450});
+            Funciones_AD.setSizeColumnas(Tablalaboratorio, new int[]{2, 5}, new int[]{336, 20});
             Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
             int b = Integer.parseInt(a[0][0].toString());
             if (b != 0) {
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
                 tab.cargartabla(modelo, d, "17");
+                for (int u = 0; u < modelo.getRowCount(); u++) {
+                    if (modelo.getValueAt(u, 4).equals("2")) {
+                        icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_green.png"));
+                        modelo.setValueAt(fila[0] = new JLabel(icon), u, 5);
+                        Tablalaboratorio.setDefaultRenderer(Object.class, new IconCellRendererlabel());
+                    }
+                }
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "error: " + e.getMessage().toString(), ProcedimientosL.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -243,8 +290,9 @@ public class ProcedimientosL extends javax.swing.JPanel {
 
     public void getModelo() {
         modelo = new DefaultTableModel(
-                null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria", "Estado"}) {
+                null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria", "Estado", ""}) {
                     Class[] types = new Class[]{
+                        java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
@@ -252,7 +300,7 @@ public class ProcedimientosL extends javax.swing.JPanel {
                         java.lang.String.class
                     };
                     boolean[] canEdit = new boolean[]{
-                        false, false, false, false, false
+                        false, false, false, false, false, false
                     };
 
                     @Override
@@ -281,6 +329,13 @@ public class ProcedimientosL extends javax.swing.JPanel {
         if (modelo.getRowCount() > 0 && Tablalaboratorio.getSelectedRow() > -1) {
             if (modelo.getValueAt(Tablalaboratorio.getSelectedRow(), 4).equals("2")) {
                 modelo.setValueAt("0", rowindex, 4);
+                for (int u = 0; u < modelo.getRowCount(); u++) {
+                    if (modelo.getValueAt(u, 4).equals("0")) {
+                        icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_red.png"));
+                        modelo.setValueAt(fila[0] = new JLabel(icon), u, 5);
+                        Tablalaboratorio.setDefaultRenderer(Object.class, new IconCellRendererlabel());
+                    }
+                }
                 est = "3";
             } else {
                 if (modelo.getRowCount() > 0 && Tablalaboratorio.getSelectedRow() > -1) {
@@ -379,6 +434,9 @@ public class ProcedimientosL extends javax.swing.JPanel {
     javax.swing.JButton jButton1;
     javax.swing.JButton jButton3;
     javax.swing.JLabel jLabel1;
+    javax.swing.JLabel jLabel2;
+    javax.swing.JLabel jLabel3;
+    javax.swing.JLabel jLabel4;
     javax.swing.JPanel jPanel1;
     javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

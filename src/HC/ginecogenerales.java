@@ -464,67 +464,146 @@ public class ginecogenerales extends javax.swing.JPanel {
         } else {
             fup = "0001-01-01";
         }
-        act.actualizarginecog(d, fum, jTextField10.getText().toUpperCase().toString(), jTextField1.getText().toUpperCase().toString(),
-                jTextField2.getText().toUpperCase().toString(), jTextField3.getText().toUpperCase().toString(),
-                jTextField4.getText().toUpperCase().toString(), jTextField5.getText().toUpperCase().toString(), fup,
-                jTextField7.getText().toUpperCase().toString(), jTextField9.getText().toUpperCase().toString(), q, r, w, e);
+        Object cont[][] = Funciones.RetornarDatos(act.contarginecog(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString()));
+        if (cont[0][0].toString().equals("0")) {
+            sav.newginecog(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString(),
+                    fum, jTextField10.getText().toUpperCase(), jTextField1.getText().toUpperCase(),
+                    jTextField2.getText().toUpperCase(), jTextField3.getText().toUpperCase(),
+                    jTextField4.getText().toUpperCase(), jTextField5.getText().toUpperCase(), fup,
+                    jTextField7.getText().toUpperCase(), jTextField9.getText().toUpperCase(), q, r, w, e);
+        } else {
+            act.actualizarginecoginfo(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString(),
+                    fum, jTextField10.getText().toUpperCase(), jTextField1.getText().toUpperCase(),
+                    jTextField2.getText().toUpperCase(), jTextField3.getText().toUpperCase(),
+                    jTextField4.getText().toUpperCase(), jTextField5.getText().toUpperCase(), fup,
+                    jTextField7.getText().toUpperCase(), jTextField9.getText().toUpperCase(), q, r, w, e);
+        }
+        act.actualizarginecog(d, fum, jTextField10.getText().toUpperCase(), jTextField1.getText().toUpperCase(),
+                jTextField2.getText().toUpperCase(), jTextField3.getText().toUpperCase(),
+                jTextField4.getText().toUpperCase(), jTextField5.getText().toUpperCase(), fup,
+                jTextField7.getText().toUpperCase(), jTextField9.getText().toUpperCase(), q, r, w, e);
     }
 
     public void cargarginecog() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
         Object h[][] = Funciones.RetornarDatos(act.cargarantecedentesg(d));
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date fecha = formato.parse(h[0][2].toString());
-            if (h[0][2].toString().equals("01/01/0001")) {
-                jDateChooser1.setDate(null);
-            } else {
-                jDateChooser1.setDate(fecha);
+        Object car[][] = Funciones.RetornarDatos(act.contarginecog(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString()));
+        if (car[0][0].toString().equals("0")) {
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            try {
+                Date fecha = formato.parse(h[0][2].toString());
+                if (h[0][2].toString().equals("01/01/0001")) {
+                    jDateChooser1.setDate(null);
+                } else {
+                    jDateChooser1.setDate(fecha);
+                }
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(null, "Error al convertir la fecha fum " + e.getMessage());
             }
-        } catch (ParseException e) {
-            JOptionPane.showMessageDialog(null, "Error al convertir la fecha fum " + e.getMessage());
-        }
-        jTextField10.setText(h[0][3].toString());
-        jTextField1.setText(h[0][4].toString());
-        jTextField2.setText(h[0][5].toString());
-        jTextField3.setText(h[0][6].toString());
-        jTextField4.setText(h[0][7].toString());
-        jTextField5.setText(h[0][8].toString());
-        try {
-            Date fechafup = formato.parse(h[0][9].toString());
-            if (h[0][9].toString().equals("01/01/0001")) {
-                jDateChooser2.setDate(null);
-            } else {
-                jDateChooser2.setDate(fechafup);
+            jTextField10.setText(h[0][3].toString());
+            jTextField1.setText(h[0][4].toString());
+            jTextField2.setText(h[0][5].toString());
+            jTextField3.setText(h[0][6].toString());
+            jTextField4.setText(h[0][7].toString());
+            jTextField5.setText(h[0][8].toString());
+            try {
+                Date fechafup = formato.parse(h[0][9].toString());
+                if (h[0][9].toString().equals("01/01/0001")) {
+                    jDateChooser2.setDate(null);
+                } else {
+                    jDateChooser2.setDate(fechafup);
+                }
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(null, "Error al convertir la fecha fup " + e.getMessage().toString());
             }
-        } catch (ParseException e) {
-            JOptionPane.showMessageDialog(null, "Error al convertir la fecha fup " + e.getMessage().toString());
-        }
-        jTextField7.setText(h[0][10].toString());
-        jTextField9.setText(h[0][11].toString());
-        if (h[0][12].toString().equals("0")) {
-            jCheckBox1.setSelected(false);
-        } else {
-            jCheckBox1.setSelected(true);
-        }
-        if (h[0][14].toString().equals("0")) {
-            jCheckBox2.setSelected(false);
-        } else {
-            jCheckBox2.setSelected(true);
-        }
-        if (h[0][15].toString().equals("0")) {
-            jCheckBox3.setSelected(false);
-        } else {
-            jCheckBox3.setSelected(true);
-        }
-        if (h[0][14].toString().equals("0")) {
-            jComboBox1.setSelectedIndex(0);
-        } else {
-            if (h[0][14].toString().equals("1")) {
-                jComboBox1.setSelectedIndex(1);
+            jTextField7.setText(h[0][10].toString());
+            jTextField9.setText(h[0][11].toString());
+            if (h[0][12].toString().equals("0")) {
+                jCheckBox1.setSelected(false);
             } else {
-                jComboBox1.setSelectedIndex(2);
+                jCheckBox1.setSelected(true);
+            }
+            if (h[0][14].toString().equals("0")) {
+                jCheckBox2.setSelected(false);
+            } else {
+                jCheckBox2.setSelected(true);
+            }
+            if (h[0][15].toString().equals("0")) {
+                jCheckBox3.setSelected(false);
+            } else {
+                jCheckBox3.setSelected(true);
+            }
+            if (h[0][14].toString().equals("0")) {
+                jComboBox1.setSelectedIndex(0);
+            } else {
+                if (h[0][14].toString().equals("1")) {
+                    jComboBox1.setSelectedIndex(1);
+                } else {
+                    jComboBox1.setSelectedIndex(2);
+                }
+            }
+        } else {
+            cargarinfoanteg();
+        }
+    }
+
+    public void cargarinfoanteg() {
+        Object car[][] = Funciones.RetornarDatos(act.contarginecog(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString()));
+        if (car[0][0].toString().equals("1")) {
+            Object h[][] = Funciones.RetornarDatos(act.cargaranteg(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString()));
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            try {
+                Date fecha = formato.parse(h[0][2].toString());
+                if (h[0][2].toString().equals("01/01/0001")) {
+                    jDateChooser1.setDate(null);
+                } else {
+                    jDateChooser1.setDate(fecha);
+                }
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(null, "Error al convertir la fecha fum " + e.getMessage());
+            }
+            jTextField10.setText(h[0][3].toString());
+            jTextField1.setText(h[0][4].toString());
+            jTextField2.setText(h[0][5].toString());
+            jTextField3.setText(h[0][6].toString());
+            jTextField4.setText(h[0][7].toString());
+            jTextField5.setText(h[0][8].toString());
+            try {
+                Date fechafup = formato.parse(h[0][9].toString());
+                if (h[0][9].toString().equals("01/01/0001")) {
+                    jDateChooser2.setDate(null);
+                } else {
+                    jDateChooser2.setDate(fechafup);
+                }
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(null, "Error al convertir la fecha fup " + e.getMessage().toString());
+            }
+            jTextField7.setText(h[0][10].toString());
+            jTextField9.setText(h[0][11].toString());
+            if (h[0][12].toString().equals("0")) {
+                jCheckBox1.setSelected(false);
+            } else {
+                jCheckBox1.setSelected(true);
+            }
+            if (h[0][14].toString().equals("0")) {
+                jCheckBox2.setSelected(false);
+            } else {
+                jCheckBox2.setSelected(true);
+            }
+            if (h[0][15].toString().equals("0")) {
+                jCheckBox3.setSelected(false);
+            } else {
+                jCheckBox3.setSelected(true);
+            }
+            if (h[0][14].toString().equals("0")) {
+                jComboBox1.setSelectedIndex(0);
+            } else {
+                if (h[0][14].toString().equals("1")) {
+                    jComboBox1.setSelectedIndex(1);
+                } else {
+                    jComboBox1.setSelectedIndex(2);
+                }
             }
         }
     }
