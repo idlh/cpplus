@@ -92,8 +92,8 @@ public class Configuracion extends javax.swing.JDialog {
         props.put("javax.persistence.jdbc.driver", parametros.get(3));
     }
 
-    private DefaultTableModel getModelo() {
-        DefaultTableModel model = new DefaultTableModel(
+    public void getModelo() {
+        modelo = new DefaultTableModel(
                 null, new String[]{"Asistencia", "TD", "Documento", "Nombre"}) {
                     Class[] types = new Class[]{
                         PypAdmAsistCon.class,
@@ -115,16 +115,15 @@ public class Configuracion extends javax.swing.JDialog {
                         return canEdit[colIndex];
                     }
                 };
-        return model;
+        jTable1.setModel(modelo);
     }
 
     private void ModeloListadoPaciente() {
-        modelo = getModelo();
-        jTable1.setModel(modelo);
+        getModelo();
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Funciones_AD.setOcultarColumnas(jTable1, new int[]{0});
-        Funciones_AD.setSizeColumnas(jTable1, new int[]{1, 2}, new int[]{30, 80});
+        Funciones_AD.setSizeColumnas(jTable1, new int[]{1, 2, 3}, new int[]{30, 80, 198});
     }
 
     private void showPacientes() {

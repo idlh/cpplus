@@ -59,12 +59,12 @@ public class ListPacientes extends javax.swing.JDialog {
     public CYDesarrollo cydesarrollo;
     public AgudezaV agudeza;
     public int año = 0, mes = 0, edad;
+    public String progam, name;
 
     public ListPacientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         ParametrosBD();
-        ModeloListadoPaciente();
         showPacientes();
     }
 
@@ -104,8 +104,8 @@ public class ListPacientes extends javax.swing.JDialog {
         props.put("javax.persistence.jdbc.driver", parametros.get(3));
     }
 
-    private DefaultTableModel getModelo() {
-        DefaultTableModel model = new DefaultTableModel(
+    public void getModelo() {
+        modelo = new DefaultTableModel(
                 null, new String[]{"Asistencia", "TD", "Documento", "Nombre"}) {
                     Class[] types = new Class[]{
                         PypAdmAsistCon.class,
@@ -127,16 +127,15 @@ public class ListPacientes extends javax.swing.JDialog {
                         return canEdit[colIndex];
                     }
                 };
-        return model;
+        jTable1.setModel(modelo);
     }
 
     public void ModeloListadoPaciente() {
-        modelo = getModelo();
-        jTable1.setModel(modelo);
+        getModelo();
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Funciones_AD.setOcultarColumnas(jTable1, new int[]{0});
-        Funciones_AD.setSizeColumnas(jTable1, new int[]{1, 2}, new int[]{30, 80});
+        Funciones_AD.setSizeColumnas(jTable1, new int[]{1, 2, 3}, new int[]{30, 80, 198});
     }
 
     private void showPacientes() {
@@ -147,7 +146,7 @@ public class ListPacientes extends javax.swing.JDialog {
             //asignar el id del profecional de la tabla cmprofesionales
             jTable1.removeAll();
             ModeloListadoPaciente();
-            asistCon = paacjc.listPypAdmAsistCon(4);
+            asistCon = paacjc.listPypAdmAsistCon(2);
         } else {
             jTable1.removeAll();
             ModeloListadoPaciente();
@@ -492,15 +491,19 @@ public class ListPacientes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-        pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
-        if (pypAdmAsistCon.getEstado().toString().equals("3")) {
-            if (pypAdmAsistCon.getIdControlPro().getIdProfesional().getId() == 4) {
-                cargarprograma();
+        if (modelo.getRowCount() > 0 && jTable1.getSelectedRow() > -1) {
+            pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            if (pypAdmAsistCon.getEstado().toString().equals("3")) {
+                if (pypAdmAsistCon.getIdControlPro().getIdProfesional().getId() == 2) {
+                    cargarprograma();
+                } else {
+                    JOptionPane.showMessageDialog(null, "El paciente ya se encuentra en atencion");
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "El paciente ya se encuentra en atencion");
+                cargarprograma();
             }
         } else {
-            cargarprograma();
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un paciente.");
         }
     }//GEN-LAST:event_jButton1MouseReleased
 
@@ -511,10 +514,12 @@ public class ListPacientes extends javax.swing.JDialog {
                     + pypAdmAsistCon.getIdAgend().getIdPaciente().getNombre2() + " "
                     + pypAdmAsistCon.getIdAgend().getIdPaciente().getApellido1() + " "
                     + pypAdmAsistCon.getIdAgend().getIdPaciente().getApellido2());
+            name = pypAdmAsistCon.getIdAgend().getIdPaciente().getNombre1() + " " + pypAdmAsistCon.getIdAgend().getIdPaciente().getApellido1();
             jLabel6.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getTipoDoc());
             jLabel4.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getNumDoc());
             jLabel8.setText(pypAdmAsistCon.getIdAgend().getIdPaciente().getContratante().getNombreEntidad());
             jLabel12.setText("<html><p>" + pypAdmAsistCon.getIdAgend().getIdPrograma().getNombre() + "</p></html>");
+            progam = pypAdmAsistCon.getIdAgend().getIdPrograma().getNombre();
             Date fechap = null;
             Date fechaa = pypAdmAsistCon.getIdAgend().getIdPaciente().getFechaNacimiento();
             String patron = "dd-MM-yyyy";
@@ -523,7 +528,7 @@ public class ListPacientes extends javax.swing.JDialog {
             try {
                 fechap = new SimpleDateFormat("dd-MM-yyyy").parse(fc);
             } catch (ParseException e) {
-                JOptionPane.showMessageDialog(null, "fecha0001 " + e.getMessage().toString(), ListPacientes.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "fecha0001 " + e.getMessage(), ListPacientes.class.getName(), JOptionPane.INFORMATION_MESSAGE);
             }
             Calendar fechaNacimiento = Calendar.getInstance();
             Calendar fechaActual = Calendar.getInstance();
