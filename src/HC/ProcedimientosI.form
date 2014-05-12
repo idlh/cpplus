@@ -144,6 +144,7 @@
                 </Property>
               </Properties>
               <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TablaimagenologiaMouseReleased"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TablaimagenologiaMouseEntered"/>
               </Events>
             </Component>

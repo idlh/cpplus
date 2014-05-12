@@ -6,9 +6,12 @@ import entity.PypAdmAsistCon;
 import java.awt.Color;
 import javax.persistence.EntityManagerFactory;
 import Clases.Actualizar;
+import Dialogos.HCDiag.Imprimir;
+import java.awt.Frame;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -184,6 +187,9 @@ public class Jovensano extends javax.swing.JPanel {
         jButton2.setFocusable(false);
         jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/impc1.png"))); // NOI18N
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton2MouseReleased(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton2MouseEntered(evt);
             }
@@ -727,6 +733,11 @@ public class Jovensano extends javax.swing.JPanel {
                         pruebascomple.actpruebasc();
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
+                        String mensaje2 = "¿Desea imprimir la historia clinica? ";
+                        int entrada2 = JOptionPane.showConfirmDialog(null, mensaje2, "Confirmar finalizacion", JOptionPane.YES_NO_OPTION);
+                        if (entrada2 == 0) {
+                            imprimirhis();
+                        }
                     }
                 }
                 jLabel12.setVisible(true);
@@ -736,6 +747,10 @@ public class Jovensano extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "La historia ya se encuentra finalizada");
         }
     }//GEN-LAST:event_jButton4MouseReleased
+
+    private void jButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseReleased
+        imprimirhis();
+    }//GEN-LAST:event_jButton2MouseReleased
 
     private void crearhc() {
         Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
@@ -755,6 +770,7 @@ public class Jovensano extends javax.swing.JPanel {
             }
         }
         antecedentesp.cargarinfoante();
+        antecedentesp.gi.cargarinfoanteg();
     }
 
     private Timer timer = new Timer();
@@ -785,6 +801,12 @@ public class Jovensano extends javax.swing.JPanel {
 
     public void Detener() {
         timer.cancel();
+    }
+    
+    public void imprimirhis() {
+        final Imprimir imp = new Imprimir((Frame) SwingUtilities.getWindowAncestor(this), true);
+        imp.setLocationRelativeTo(null);
+        imp.setVisible(true);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton jButton1;

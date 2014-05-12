@@ -218,40 +218,17 @@ public class ProcedimientosL extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3MouseExited
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-        final Dprocedimientos pr = new Dprocedimientos((Frame) SwingUtilities.getWindowAncestor(this), true);
-        pr.proclab();
-        pr.jButton3.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Boolean validacion = false;
-                for (int k = 0; k < modelo.getRowCount(); k++) {
-                    if (((String) modelo.getValueAt(k, 0)).equals((String) pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0))) {
-                        validacion = true;
-                        break;
-                    }
-                }
-                if (validacion == false) {
-                    Agregar_Registro(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0).toString(),
-                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
-                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
-                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
-                            "1");
-                    pr.dispose();
-                    for (int u = 0; u < modelo.getRowCount(); u++) {
-                        if (modelo.getValueAt(u, 4).equals("1")) {
-                            icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_blue.png"));
-                            modelo.setValueAt(fila[0] = new JLabel(icon), u, 5);
-                            Tablalaboratorio.setDefaultRenderer(Object.class, new IconCellRendererlabel());
-                        }
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Ya el procedimiento fue agregado");
-                }
+        if (Tablalaboratorio.getSelectedRow() > -1) {
+            if (Tablalaboratorio.getValueAt(Tablalaboratorio.getSelectedRow(), 4).toString().equals("0")) {
+                Tablalaboratorio.setValueAt("2", Tablalaboratorio.getSelectedRow(), 4);
+                icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_green.png"));
+                modelo.setValueAt(fila[0] = new JLabel(icon), Tablalaboratorio.getSelectedRow(), 5);
+            } else {
+                pasarprocedimientos();
             }
-        });
-        pr.setVisible(true);
-        est = "2";
+        } else {
+            pasarprocedimientos();
+        }
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void TablalaboratorioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablalaboratorioMouseEntered
@@ -328,13 +305,11 @@ public class ProcedimientosL extends javax.swing.JPanel {
     public void quitarrgistro() {
         if (modelo.getRowCount() > 0 && Tablalaboratorio.getSelectedRow() > -1) {
             if (modelo.getValueAt(Tablalaboratorio.getSelectedRow(), 4).equals("2")) {
-                modelo.setValueAt("0", rowindex, 4);
-                for (int u = 0; u < modelo.getRowCount(); u++) {
-                    if (modelo.getValueAt(u, 4).equals("0")) {
-                        icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_red.png"));
-                        modelo.setValueAt(fila[0] = new JLabel(icon), u, 5);
-                        Tablalaboratorio.setDefaultRenderer(Object.class, new IconCellRendererlabel());
-                    }
+                modelo.setValueAt("0", Tablalaboratorio.getSelectedRow(), 4);
+                if (modelo.getValueAt(Tablalaboratorio.getSelectedRow(), 4).equals("0")) {
+                    icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_red.png"));
+                    modelo.setValueAt(fila[0] = new JLabel(icon), Tablalaboratorio.getSelectedRow(), 5);
+                    Tablalaboratorio.setDefaultRenderer(Object.class, new IconCellRendererlabel());
                 }
                 est = "3";
             } else {
@@ -428,6 +403,43 @@ public class ProcedimientosL extends javax.swing.JPanel {
                 HC.CYDesarrollo.jLabel4.setText(texto);
                 break;
         }
+    }
+
+    private void pasarprocedimientos() {
+        final Dprocedimientos pr = new Dprocedimientos((Frame) SwingUtilities.getWindowAncestor(this), true);
+        pr.proclab();
+        pr.jButton3.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Boolean validacion = false;
+                for (int k = 0; k < modelo.getRowCount(); k++) {
+                    if (((String) modelo.getValueAt(k, 0)).equals((String) pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0))) {
+                        validacion = true;
+                        break;
+                    }
+                }
+                if (validacion == false) {
+                    Agregar_Registro(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0).toString(),
+                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
+                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
+                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
+                            "1");
+                    pr.dispose();
+                    for (int u = 0; u < modelo.getRowCount(); u++) {
+                        if (modelo.getValueAt(u, 4).equals("1")) {
+                            icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_blue.png"));
+                            modelo.setValueAt(fila[0] = new JLabel(icon), u, 5);
+                            Tablalaboratorio.setDefaultRenderer(Object.class, new IconCellRendererlabel());
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ya el procedimiento fue agregado");
+                }
+            }
+        });
+        pr.setVisible(true);
+        est = "2";
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTable Tablalaboratorio;

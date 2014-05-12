@@ -218,40 +218,17 @@ public class ProcedimientosQ extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3MouseExited
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-        final Dprocedimientos pr = new Dprocedimientos((Frame) SwingUtilities.getWindowAncestor(this), true);
-        pr.procquirur();
-        pr.jButton3.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Boolean validacion = false;
-                for (int k = 0; k < modelo.getRowCount(); k++) {
-                    if (((String) modelo.getValueAt(k, 0)).equals((String) pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0))) {
-                        validacion = true;
-                        break;
-                    }
-                }
-                if (validacion == false) {
-                    Agregar_Registro(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0).toString(),
-                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
-                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
-                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
-                            "1");
-                    pr.dispose();
-                    for (int u = 0; u < modelo.getRowCount(); u++) {
-                        if (modelo.getValueAt(u, 4).equals("1")) {
-                            icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_blue.png"));
-                            modelo.setValueAt(fila[0] = new JLabel(icon), u, 5);
-                            Tablaquirurgicos.setDefaultRenderer(Object.class, new IconCellRendererlabel());
-                        }
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Ya el procedimiento fue agregado");
-                }
+        if (Tablaquirurgicos.getSelectedRow() > -1) {
+            if (Tablaquirurgicos.getValueAt(Tablaquirurgicos.getSelectedRow(), 4).toString().equals("0")) {
+                Tablaquirurgicos.setValueAt("2", Tablaquirurgicos.getSelectedRow(), 4);
+                icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_green.png"));
+                modelo.setValueAt(fila[0] = new JLabel(icon), Tablaquirurgicos.getSelectedRow(), 5);
+            } else {
+                pasarprocedimientos();
             }
-        });
-        pr.setVisible(true);
-        est = "2";
+        } else {
+            pasarprocedimientos();
+        }
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void TablaquirurgicosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaquirurgicosMouseEntered
@@ -329,13 +306,11 @@ public class ProcedimientosQ extends javax.swing.JPanel {
     public void quitarrgistro() {
         if (modelo.getRowCount() > 0 && Tablaquirurgicos.getSelectedRow() > -1) {
             if (modelo.getValueAt(Tablaquirurgicos.getSelectedRow(), 4).equals("2")) {
-                modelo.setValueAt("0", rowindex, 4);
-                for (int u = 0; u < modelo.getRowCount(); u++) {
-                    if (modelo.getValueAt(u, 4).equals("0")) {
-                        icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_red.png"));
-                        modelo.setValueAt(fila[0] = new JLabel(icon), u, 5);
-                        Tablaquirurgicos.setDefaultRenderer(Object.class, new IconCellRendererlabel());
-                    }
+                modelo.setValueAt("0", Tablaquirurgicos.getSelectedRow(), 4);
+                if (modelo.getValueAt(Tablaquirurgicos.getSelectedRow(), 4).equals("0")) {
+                    icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_red.png"));
+                    modelo.setValueAt(fila[0] = new JLabel(icon), Tablaquirurgicos.getSelectedRow(), 5);
+                    Tablaquirurgicos.setDefaultRenderer(Object.class, new IconCellRendererlabel());
                 }
                 est = "3";
             } else {
@@ -430,6 +405,43 @@ public class ProcedimientosQ extends javax.swing.JPanel {
                 HC.CYDesarrollo.jLabel4.setText(texto);
                 break;
         }
+    }
+
+    private void pasarprocedimientos() {
+        final Dprocedimientos pr = new Dprocedimientos((Frame) SwingUtilities.getWindowAncestor(this), true);
+        pr.procquirur();
+        pr.jButton3.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Boolean validacion = false;
+                for (int k = 0; k < modelo.getRowCount(); k++) {
+                    if (((String) modelo.getValueAt(k, 0)).equals((String) pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0))) {
+                        validacion = true;
+                        break;
+                    }
+                }
+                if (validacion == false) {
+                    Agregar_Registro(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0).toString(),
+                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
+                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
+                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
+                            "1");
+                    pr.dispose();
+                    for (int u = 0; u < modelo.getRowCount(); u++) {
+                        if (modelo.getValueAt(u, 4).equals("1")) {
+                            icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_blue.png"));
+                            modelo.setValueAt(fila[0] = new JLabel(icon), u, 5);
+                            Tablaquirurgicos.setDefaultRenderer(Object.class, new IconCellRendererlabel());
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ya el procedimiento fue agregado");
+                }
+            }
+        });
+        pr.setVisible(true);
+        est = "2";
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JTable Tablaquirurgicos;
