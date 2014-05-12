@@ -1359,14 +1359,14 @@ public class Actualizar {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_crecimiento_eadaños`"
-                    + "SET `pyp_crecimiento_eadaños`.`edad`=?, `pyp_crecimiento_eadaños`.`mg`=?, `pyp_crecimiento_eadaños`.`mfa`=?, `pyp_crecimiento_eadaños`.`al`=?, `pyp_crecimiento_eadaños`.`ps`=?"
+                    + "SET `pyp_crecimiento_eadaños`.`edad`=?, `pyp_crecimiento_eadaños`.`mg`=?, `pyp_crecimiento_eadaños`.`mfa`=?, `pyp_crecimiento_eadaños`.`dl`=?, `pyp_crecimiento_eadaños`.`ps`=?"
                     + "WHERE(`pyp_crecimiento_eadaños`.`idhistoria`=?)");
             bd.preparedStatement.setString(1, meses);
             bd.preparedStatement.setString(2, mg);
             bd.preparedStatement.setString(3, mfa);
             bd.preparedStatement.setString(4, al);
             bd.preparedStatement.setString(5, ps);
-            bd.preparedStatement.setString(7, id);
+            bd.preparedStatement.setString(6, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a034 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
