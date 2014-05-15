@@ -8,6 +8,8 @@ import javax.persistence.EntityManagerFactory;
 import Clases.Actualizar;
 import Dialogos.HCDiag.Imprimir;
 import java.awt.Frame;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
@@ -647,13 +649,17 @@ public class Hipertenso extends javax.swing.JPanel {
                 sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
-                sav.newagineco(d);
-                sav.neweventose(d);
-                sav.newexpf(d);
-                sav.newhta(d);
+                Date fecha = pypAdmAsistCon.getFecha();
+                String patron = "yyyy-MM-dd", fc;
+                SimpleDateFormat formato = new SimpleDateFormat(patron);
+                fc = formato.format(fecha);
+                sav.newagineco(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.neweventose(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.newexpf(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.newhta(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
                 if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
                     Object data[][] = Funciones.RetornarDatos(sav.selectidhta(d));
-                    sav.newhtacontrol(data[0][0].toString());
+                    sav.newhtacontrol(data[0][0].toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
                 }
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 if (h[0][23].toString().equals("0")) {
@@ -699,13 +705,17 @@ public class Hipertenso extends javax.swing.JPanel {
                 sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
-                sav.newagineco(d);
-                sav.neweventose(d);
-                sav.newexpf(d);
-                sav.newhta(d);
+                Date fecha = pypAdmAsistCon.getFecha();
+                String patron = "yyyy-MM-dd", fc;
+                SimpleDateFormat formato = new SimpleDateFormat(patron);
+                fc = formato.format(fecha);
+                sav.newagineco(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.neweventose(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.newexpf(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.newhta(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
                 if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
                     Object data[][] = Funciones.RetornarDatos(sav.selectidhta(d));
-                    sav.newhtacontrol(data[0][0].toString());
+                    sav.newhtacontrol(data[0][0].toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
                 }
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 int id = Integer.parseInt(h[0][23].toString());
@@ -810,7 +820,7 @@ public class Hipertenso extends javax.swing.JPanel {
     public void Detener() {
         timer.cancel();
     }
-    
+
     public void imprimirhis() {
         final Imprimir imp = new Imprimir((Frame) SwingUtilities.getWindowAncestor(this), true);
         imp.setLocationRelativeTo(null);

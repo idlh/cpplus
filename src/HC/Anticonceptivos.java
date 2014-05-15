@@ -564,12 +564,16 @@ public class Anticonceptivos extends javax.swing.JPanel {
     public void actprocedanti() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
+        Date fecha = pypAdmAsistCon.getFecha();
+        String patron = "yyyy-MM-dd", fc;
+        SimpleDateFormat formato = new SimpleDateFormat(patron);
+        fc = formato.format(fecha);
         if (est.toString().equals("2")) {
             for (int i = 0; i < modelo.getRowCount(); i++) {
                 if (modelo.getValueAt(i, 4).equals("1")) {
                     modelo.setValueAt("2", i, 4);
                     sav.newproceanti(d, modelo.getValueAt(i, 0).toString(),
-                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString()
+                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString(), fc
                     );
                 }
             }

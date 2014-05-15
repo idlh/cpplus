@@ -10,6 +10,8 @@ import entity.PypAdmAsistCon;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -339,12 +341,16 @@ public class ProcedimientosI extends javax.swing.JPanel {
     public void actproceimage() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
+        Date fecha = pypAdmAsistCon.getFecha();
+        String patron = "yyyy-MM-dd", fc;
+        SimpleDateFormat formato = new SimpleDateFormat(patron);
+        fc = formato.format(fecha);
         if (est.toString().equals("2")) {
             for (int i = 0; i < modelo.getRowCount(); i++) {
                 if (modelo.getValueAt(i, 4).toString().equals("1")) {
                     modelo.setValueAt("2", i, 4);
                     sav.newproce(d, modelo.getValueAt(i, 0).toString(),
-                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString());
+                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString(), fc);
                 }
             }
         } else {

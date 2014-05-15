@@ -1,15 +1,17 @@
 package HC;
 
+import Clases.Actualizar;
 import Clases.Funciones_AD;
 import Clases.Save;
+import Dialogos.HCDiag.Imprimir;
 import entity.PypAdmAsistCon;
 import java.awt.Color;
-import javax.persistence.EntityManagerFactory;
-import Clases.Actualizar;
-import Dialogos.HCDiag.Imprimir;
 import java.awt.Frame;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.persistence.EntityManagerFactory;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -325,7 +327,11 @@ public class AgudezaV extends javax.swing.JPanel {
             Object a[][] = Funciones.RetornarDatos(sav.contarvisual(pypAdmAsistCon.getId().toString()));
             int b = Integer.parseInt(a[0][0].toString());
             if (b == 0) {
-                sav.crearvisualnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
+                Date fecha = pypAdmAsistCon.getFecha();
+                String patron = "yyyy-MM-dd", fc;
+                SimpleDateFormat formato = new SimpleDateFormat(patron);
+                fc = formato.format(fecha);
+                sav.crearvisualnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridvisual(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
                 Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(d));
@@ -358,7 +364,11 @@ public class AgudezaV extends javax.swing.JPanel {
             int b = Integer.parseInt(a[0][0].toString());
             if (b == 0) {
                 sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
-                sav.crearvisualnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
+                Date fecha = pypAdmAsistCon.getFecha();
+                String patron = "yyyy-MM-dd", fc;
+                SimpleDateFormat formato = new SimpleDateFormat(patron);
+                fc = formato.format(fecha);
+                sav.crearvisualnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridvisual(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
                 Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(d));

@@ -693,6 +693,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea3.setColumns(20);
         jTextArea3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jTextArea3.setForeground(new java.awt.Color(204, 204, 204));
+        jTextArea3.setLineWrap(true);
         jTextArea3.setRows(5);
         jTextArea3.setText("No se encuentran datos relevantes");
         jTextArea3.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -712,6 +713,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea4.setColumns(20);
         jTextArea4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jTextArea4.setForeground(new java.awt.Color(204, 204, 204));
+        jTextArea4.setLineWrap(true);
         jTextArea4.setRows(5);
         jTextArea4.setText("No se encuentran datos relevantes");
         jTextArea4.addFocusListener(new java.awt.event.FocusAdapter() {

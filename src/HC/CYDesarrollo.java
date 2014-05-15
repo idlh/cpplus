@@ -8,6 +8,8 @@ import javax.persistence.EntityManagerFactory;
 import Clases.Actualizar;
 import Dialogos.HCDiag.Imprimir;
 import java.awt.Frame;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
@@ -18,7 +20,7 @@ import javax.swing.SwingUtilities;
  * @author Camilo
  */
 public class CYDesarrollo extends javax.swing.JPanel {
-    
+
     private final EntityManagerFactory factory;
     private final PypAdmAsistCon pypAdmAsistCon;
     Funciones_AD Funciones = new Funciones_AD();
@@ -32,7 +34,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
     DiagnosticosM diagnosticosm = null;
     Actualizar act = new Actualizar();
     String Estadofinal = "1";
-    
+
     public CYDesarrollo(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.factory = factory;
@@ -63,7 +65,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
         }
         crearhc();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -646,14 +648,18 @@ public class CYDesarrollo extends javax.swing.JPanel {
                 sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
-                sav.newagineco(d);
-                sav.neweventose(d);
-                sav.newexpf(d);
-                sav.newcrecimiento(d);
+                Date fecha = pypAdmAsistCon.getFecha();
+                String patron = "yyyy-MM-dd", fc;
+                SimpleDateFormat formato = new SimpleDateFormat(patron);
+                fc = formato.format(fecha);
+                sav.newagineco(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.neweventose(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.newexpf(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.newcrecimiento(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
                 if (modulo_pyp.Modulo_PyP.d.listPacientes.año <= 5) {
-                    sav.newcrecimientomeses(d);
+                    sav.newcrecimientomeses(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
                 } else {
-                    sav.newcrecimientoaños(d);
+                    sav.newcrecimientoaños(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
                 }
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 if (h[0][23].toString().equals("0")) {
@@ -699,10 +705,19 @@ public class CYDesarrollo extends javax.swing.JPanel {
                 sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
-                sav.newagineco(d);
-                sav.neweventose(d);
-                sav.newexpf(d);
-                sav.newcrecimiento(d);
+                Date fecha = pypAdmAsistCon.getFecha();
+                String patron = "yyyy-MM-dd", fc;
+                SimpleDateFormat formato = new SimpleDateFormat(patron);
+                fc = formato.format(fecha);
+                sav.newagineco(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.neweventose(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.newexpf(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.newcrecimiento(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                if (modulo_pyp.Modulo_PyP.d.listPacientes.año <= 5) {
+                    sav.newcrecimientomeses(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                } else {
+                    sav.newcrecimientoaños(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                }
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 int id = Integer.parseInt(h[0][23].toString());
                 if (id == 0) {
@@ -756,7 +771,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
     private void jButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseReleased
         imprimirhis();
     }//GEN-LAST:event_jButton2MouseReleased
-    
+
     private void crearhc() {
         Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
         int b = Integer.parseInt(a[0][0].toString());
@@ -779,9 +794,9 @@ public class CYDesarrollo extends javax.swing.JPanel {
     }
     private Timer timer = new Timer();
     private int segundos = 5;
-    
+
     class Contador extends TimerTask {
-        
+
         @Override
         public void run() {
             segundos--;
@@ -792,17 +807,17 @@ public class CYDesarrollo extends javax.swing.JPanel {
             }
         }
     }
-    
+
     public void Contar() {
         this.segundos = 5;
         timer = new Timer();
         timer.schedule(new Contador(), 0, 600);
     }
-    
+
     public int getSegundos() {
         return this.segundos;
     }
-    
+
     public void Detener() {
         timer.cancel();
     }

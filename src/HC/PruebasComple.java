@@ -16,6 +16,8 @@ import Clases.Save;
 import Clases.Actualizar;
 import java.awt.Color;
 import Clases.CargarordenesM;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class PruebasComple extends javax.swing.JPanel {
 
@@ -307,11 +309,15 @@ public class PruebasComple extends javax.swing.JPanel {
     public void actpruebasc() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
+        Date fecha = pypAdmAsistCon.getFecha();
+        String patron = "yyyy-MM-dd", fc;
+        SimpleDateFormat formato = new SimpleDateFormat(patron);
+        fc = formato.format(fecha);
         act.acthallasgo(d, jTextArea1.getText().toUpperCase().toString());
         for (int i = 0; i < Tablaconte.getRowCount(); i++) {
             if (modeloAyudDiag.getValueAt(i, 6).toString().equals("0")) {
                 sav.newpruebas(d, modeloAyudDiag.getValueAt(i, 2).toString(), modeloAyudDiag.getValueAt(i, 5).toString(),
-                        modeloAyudDiag.getValueAt(i, 4).toString());
+                        modeloAyudDiag.getValueAt(i, 4).toString(), fc);
                 modeloAyudDiag.setValueAt("1", i, 6);
             }
         }
