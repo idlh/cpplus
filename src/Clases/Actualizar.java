@@ -739,7 +739,7 @@ public class Actualizar {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("update `database`.`pyp_postparto`"
                     + "    INNER JOIN `database`.`pyp_historiac` "
-                    + "        ON (`pyp_postparto`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + "        ON (`pyp_postparto`.`id_historiac` = `pyp_historiac`.`id`)"
                     + "SET `pyp_postparto`.`colorpiel` = ?, `pyp_postparto`.`frecucardiaca` = ?, `pyp_postparto`.`reflejos` = ?,"
                     + "    `pyp_postparto`.`tonomuscular` = ?, `pyp_postparto`.`respiracion` = ?, `pyp_postparto`.`resultado` = ?"
                     + "WHERE (`pyp_historiac`.`id` =?);");
@@ -764,7 +764,7 @@ public class Actualizar {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("update `database`.`pyp_postparto`"
                     + "    INNER JOIN `database`.`pyp_historiac` "
-                    + "        ON (`pyp_postparto`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + "        ON (`pyp_postparto`.`id_historiac` = `pyp_historiac`.`id`)"
                     + " SET `pyp_postparto`.`terminacionparto` = ?, `pyp_postparto`.`edadgestaparto` = ?, `pyp_postparto`.`vacunaciont` = ?,"
                     + "    `pyp_postparto`.`agsph` = ?, `pyp_postparto`.`vih` = ?, `pyp_postparto`.`vdrl` = ?, `pyp_postparto`.`feto` = ?,"
                     + "    `pyp_postparto`.`partotraumado` = ?, `pyp_postparto`.`hospitaizacion` = ?"
@@ -793,7 +793,7 @@ public class Actualizar {
                 + " FROM"
                 + "    `database`.`pyp_postparto`"
                 + "    INNER JOIN `database`.`pyp_historiac` "
-                + "        ON (`pyp_postparto`.`idhistoria` = `pyp_historiac`.`id`)"
+                + "        ON (`pyp_postparto`.`id_historiac` = `pyp_historiac`.`id`)"
                 + " WHERE (`pyp_historiac`.`id` ='" + id + "');";
     }
 

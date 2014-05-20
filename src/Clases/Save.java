@@ -28,10 +28,10 @@ public class Save {
                 + "   WHERE `pyp_procedimiento`.`id_historiapyp`='" + id + "';";
     }
 
-    public void crearhcnueva(String idasis, String idp) {
+    public void crearhcnueva(String idasis, String idp, String dxp) {
         try {
             bd.ConectarBasedeDatos();
-            bd.sentencia.execute("INSERT INTO pyp_historiac (id_admisionpyp, usuariolog) VALUES ('" + idasis + "', '" + idp + "')");
+            bd.sentencia.execute("INSERT INTO pyp_historiac (id_admisionpyp, usuariolog, diagnosticos) VALUES ('" + idasis + "', '" + idp + "', '" + dxp + "')");
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "c001 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
@@ -190,7 +190,7 @@ public class Save {
             bd.preparedStatement.setString(2, nombre);
             bd.preparedStatement.setString(3, ruta);
             bd.preparedStatement.setString(4, tipo);
-            bd.preparedStatement.setString(4, fecha);
+            bd.preparedStatement.setString(5, fecha);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "c008" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -245,7 +245,7 @@ public class Save {
     public void newparto(String id, String usuario, String fecha) {
         try {
             bd.ConectarBasedeDatos();
-            bd.sentencia.execute("INSERT INTO `pyp_postparto` (`idhistoria`, userlog, fecha) VALUES ('" + id + "', '" + usuario + "', '" + fecha + "')");
+            bd.sentencia.execute("INSERT INTO `pyp_postparto` (`id_historiac`, userlog, fecha) VALUES ('" + id + "', '" + usuario + "', '" + fecha + "')");
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "c012" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
@@ -444,7 +444,7 @@ public class Save {
     public void newcrecimientoaños(String id, String usuario, String fecha) {
         try {
             bd.ConectarBasedeDatos();
-            bd.sentencia.execute("INSERT INTO pyp_crecimiento_eadaños (idhistoria, userlog, fecha) VALUES ('" + id + "'. '" + usuario + "', '" + fecha + "')");
+            bd.sentencia.execute("INSERT INTO pyp_crecimiento_eadaños (idhistoria, userlog, fecha) VALUES ('" + id + "', '" + usuario + "', '" + fecha + "')");
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "c023 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
