@@ -1,12 +1,18 @@
 package Clases;
 
 import com.itextpdf.text.pdf.PdfReader;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
 
 /**
  *
@@ -16,7 +22,7 @@ public class Imprimirreporte {
 
     private String idhc, nombrereport, codigo, servicio, version;
     private Connection conexion;
-    public File tempfile;
+    public File tempFile;
 
     public String getIdhc() {
         return idhc;
@@ -74,8 +80,15 @@ public class Imprimirreporte {
             parametro.put("servicio", getServicio());
             parametro.put("codigo", getCodigo());
             parametro.put("version", getVersion());
-            JasperPrint informe = JasperFillManager.fillReport(System.getProperty("user.dir")+"/Reportes/Epicrisis.jasper", parametro, getConexion());
+            JasperPrint informe = JasperFillManager.fillReport(System.getProperty("user.dir") + "/src/Reporte_pyp/historia_pyp.jasper", parametro, getConexion());            
+            JRExporter exporter = new JRPdfExporter();
+            exporter.setParameter(JRExporterParameter.JASPER_PRINT, informe);
+            tempFile = File.createTempFile("Historia", ".pdf");
+            exporter.setParameter(JRExporterParameter.OUTPUT_FILE, tempFile);
+            exporter.exportReport();
+            return new PdfReader(tempFile.getAbsolutePath());
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error General Lanzando Reporte Descripcion: Pparameter001406-1 " +e.getMessage());
             return null;
         }
     }
