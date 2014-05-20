@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="diagnosticos" language="groovy" pageWidth="532" pageHeight="76" orientation="Landscape" columnWidth="532" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idhistoria" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+    `static_cie10`.`descripcion` AS `dxprincipal`
+    , `static_cie10_1`.`descripcion` AS `dx1`
+    , `static_cie10_2`.`descripcion` AS `dx2`
+    , `static_cie10_3`.`descripcion` AS `dx3`
+    , `static_cie10_4`.`descripcion` AS `dx4`
+    , `static_cie10`.`codigo` AS `dxpcodig`
+    , `static_cie10_1`.`codigo` AS `dx1codigo`
+    , `static_cie10_2`.`codigo` AS `dx2codigo`
+    , `static_cie10_3`.`codigo` AS `dx3codigo`
+    , `static_cie10_4`.`codigo` AS `dx4codigo`
+FROM
+    `database`.`pyp_historiac`
+    INNER JOIN `database`.`static_cie10`
+        ON (`pyp_historiac`.`diagnosticos` = `static_cie10`.`id`)
+    INNER JOIN `database`.`static_cie10` AS `static_cie10_1`
+        ON (`static_cie10_1`.`id` = `pyp_historiac`.`diagnosticorel1`)
+    INNER JOIN `database`.`static_cie10` AS `static_cie10_2`
+        ON (`static_cie10_2`.`id` = `pyp_historiac`.`diagnosticorel2`)
+    INNER JOIN `database`.`static_cie10` AS `static_cie10_3`
+        ON (`static_cie10_3`.`id` = `pyp_historiac`.`diagnosticorel3`)
+    INNER JOIN `database`.`static_cie10` AS `static_cie10_4`
+        ON (`static_cie10_4`.`id` = `pyp_historiac`.`diagnosticorel4`)
+WHERE (`pyp_historiac`.`id` =$P{idhistoria}
+    AND `pyp_historiac`.`estado` =1);]]>
+	</queryString>
+	<field name="dxprincipal" class="java.lang.String"/>
+	<field name="dx1" class="java.lang.String"/>
+	<field name="dx2" class="java.lang.String"/>
+	<field name="dx3" class="java.lang.String"/>
+	<field name="dx4" class="java.lang.String"/>
+	<field name="dxpcodig" class="java.lang.String"/>
+	<field name="dx1codigo" class="java.lang.String"/>
+	<field name="dx2codigo" class="java.lang.String"/>
+	<field name="dx3codigo" class="java.lang.String"/>
+	<field name="dx4codigo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="76">
+			<rectangle radius="10">
+				<reportElement x="0" y="7" width="530" height="67"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="0" width="100" height="12"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="218" y="0" width="100" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIAGNOSTICOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="14" width="80" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIAGNOSTICO PRINCIPAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="99" y="14" width="20" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dxpcodig}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="119" y="14" width="399" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" - "+$F{dxprincipal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="19" y="26" width="80" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIAGNOSTICO REL 1:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="38" width="80" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIAGNOSTICO REL 2:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="50" width="80" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIAGNOSTICO REL 3:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="62" width="80" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIAGNOSTICO REL 4:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="99" y="26" width="20" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dx1codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="99" y="38" width="20" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dx2codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="99" y="50" width="20" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dx3codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="99" y="62" width="20" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dx4codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="119" y="26" width="399" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" - "+$F{dx1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="119" y="38" width="399" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" - "+$F{dx2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="119" y="50" width="399" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" - "+$F{dx3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="119" y="62" width="399" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" - "+$F{dx4}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="25" width="530" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

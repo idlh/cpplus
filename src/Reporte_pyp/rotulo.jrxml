@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rotulo" pageWidth="527" pageHeight="85" whenNoDataType="AllSectionsNoDetail" columnWidth="527" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.9487171000000025"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1" pattern=""/>
+	<parameter name="codigo" class="java.lang.String"/>
+	<parameter name="version" class="java.lang.String"/>
+	<parameter name="servicio" class="java.lang.String"/>
+	<parameter name="NameReport" class="java.lang.String"/>
+	<variable name="vCodigo" class="java.lang.String">
+		<variableExpression><![CDATA[$P{codigo}]]></variableExpression>
+		<initialValueExpression><![CDATA[$P{codigo}]]></initialValueExpression>
+	</variable>
+	<variable name="vVersion" class="java.lang.String">
+		<variableExpression><![CDATA[$P{version}]]></variableExpression>
+		<initialValueExpression><![CDATA[$P{version}]]></initialValueExpression>
+	</variable>
+	<variable name="vServicio" class="java.lang.String">
+		<variableExpression><![CDATA[$P{servicio}]]></variableExpression>
+		<initialValueExpression><![CDATA[$P{servicio}]]></initialValueExpression>
+	</variable>
+	<variable name="vNameReport" class="java.lang.String">
+		<variableExpression><![CDATA[$P{NameReport}]]></variableExpression>
+		<initialValueExpression><![CDATA[$P{NameReport}]]></initialValueExpression>
+	</variable>
+	<title>
+		<band height="85">
+			<image>
+				<reportElement mode="Transparent" x="0" y="0" width="527" height="85"/>
+				<imageExpression><![CDATA["rotulImg.png"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement mode="Transparent" x="158" y="32" width="101" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="158" y="52" width="101" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="259" y="32" width="43" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="302" y="32" width="156" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="458" y="32" width="60" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="259" y="52" width="43" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="302" y="52" width="156" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="458" y="52" width="60" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="158" y="32" width="101" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código del formato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="259" y="32" width="43" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Versión]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="32" width="156" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Servicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="458" y="32" width="60" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pagina]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="158" y="12" width="360" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vNameReport}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="52" width="156" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vServicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="259" y="52" width="43" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vVersion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="52" width="101" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vCodigo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="68" y="4" width="98" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÍNICA PAJONAL LIMITADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="14" width="98" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Diagonal 20 C N° 12-68]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="24" width="98" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[gerencia@clinicapajonal.com.co]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="34" width="98" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[NIT: 811002429-7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="44" width="98" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[PBX: 8397700]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="54" width="98" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[www.clinicapajonal.com.co]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="exploracion postparto" language="groovy" pageWidth="532" pageHeight="51" orientation="Landscape" columnWidth="532" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idhistoria" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+    `pyp_recienniacido`.`colorpiel`
+    , `pyp_recienniacido`.`frecucardiaca`
+    , `pyp_recienniacido`.`reflejos`
+    , `pyp_recienniacido`.`tonomuscular`
+    , `pyp_recienniacido`.`respiracion`
+    , `pyp_recienniacido`.`resultado`
+FROM
+    `database`.`pyp_recienniacido`
+    INNER JOIN `database`.`pyp_historiac`
+        ON (`pyp_recienniacido`.`idhistoria` = `pyp_historiac`.`id`)
+WHERE (`pyp_historiac`.`id` =$P{idhistoria}
+    AND `pyp_historiac`.`estado` =1);]]>
+	</queryString>
+	<field name="colorpiel" class="java.lang.Integer"/>
+	<field name="frecucardiaca" class="java.lang.Integer"/>
+	<field name="reflejos" class="java.lang.Integer"/>
+	<field name="tonomuscular" class="java.lang.Integer"/>
+	<field name="respiracion" class="java.lang.Integer"/>
+	<field name="resultado" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="51" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="7" y="6" width="523" height="43"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="13" y="13" width="51" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COLOR DE PIEL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="64" y="13" width="70" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{colorpiel}== 0 ? "TODO AZUL" :
+($F{colorpiel}== 1 ? "EXTREMIDADES AZULES" : "NORMAL")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="134" y="13" width="76" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FRECUENCIA CARDIACA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="210" y="13" width="50" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{frecucardiaca}==0 ? "0" :
+($F{frecucardiaca}== 1 ? "MENOS DE 100" : "MAS DE 100")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="260" y="13" width="88" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REFLEJOS E IRRITABILIDAD:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="348" y="13" width="131" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reflejos}==0? "SIN RESPUESTA A ESTIMULACION" :
+($F{reflejos}==1? "MUECA / LLANTO DÉBIL AL SER ESTIMULADO" : "ESTORNUDOS / TOS / PATALEO AL SER ESTIMULADO")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="25" width="61" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TONO MUSCULAR:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="74" y="25" width="100" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tonomuscular}==0? "NINGUNA" :
+($F{tonomuscular}==1 ? "ALGUNA FLEXIÓN" : "MOVIMIENTO ACTIVO")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="174" y="25" width="47" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESPIRACION:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="221" y="25" width="60" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{respiracion}==0?"AUSENTE":
+($F{respiracion}==1?"DEBIL O IRREGULAR":"FUERTE")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="37" width="41" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESULTADO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="54" y="37" width="20" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{resultado}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Calibri" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[APGAR]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

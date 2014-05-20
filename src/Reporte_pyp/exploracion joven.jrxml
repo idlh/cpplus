@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="exploracion joven" language="groovy" pageWidth="532" pageHeight="40" orientation="Landscape" columnWidth="532" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="sexo" class="java.lang.String"/>
+	<parameter name="idhistoria" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+    `pyp_joven`.`desarrolloa`
+    , `pyp_joven`.`desarrollovello`
+    , `pyp_joven`.`valoracionv`
+    , DATE_FORMAT(`pyp_joven`.`fechavv`, '%d/%m/%Y') AS `fechavv`
+    , `pyp_joven`.`valoraciono`
+    , DATE_FORMAT(`pyp_joven`.`fechavo`, '%d/%m/%Y') AS `fechavo`
+    , `pyp_joven`.`controlplaca`
+    , `pyp_joven`.`sellantes`
+    , `pyp_joven`.`flour`
+FROM
+    `database`.`pyp_joven`
+    INNER JOIN `database`.`pyp_historiac`
+        ON (`pyp_joven`.`idhistoria` = `pyp_historiac`.`id`)
+WHERE (`pyp_historiac`.`estado` =1
+    AND `pyp_historiac`.`id` =$P{idhistoria});]]>
+	</queryString>
+	<field name="valoracionv" class="java.lang.Boolean"/>
+	<field name="valoraciono" class="java.lang.Boolean"/>
+	<field name="controlplaca" class="java.lang.Boolean"/>
+	<field name="sellantes" class="java.lang.Boolean"/>
+	<field name="flour" class="java.lang.Boolean"/>
+	<field name="desarrolloa" class="java.lang.Integer"/>
+	<field name="desarrollovello" class="java.lang.Integer"/>
+	<field name="fechavv" class="java.lang.String"/>
+	<field name="fechavo" class="java.lang.String"/>
+	<variable name="validacion" class="java.lang.String">
+		<variableExpression><![CDATA[$P{sexo}.equals("M") ? "DESARROLLO GENITAL:" : "DESARROLLO MAMARIO:"]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="7" y="6" width="523" height="32"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="13" y="14" width="80" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{validacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="14" width="45" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{desarrolloa} == 0 ? "ESTADIO 1 (S1)" :
+    ($F{desarrolloa} == 1 ? "ESTADIO 2 (S2)" :
+        ($F{desarrolloa} == 2 ? "ESTADIO 3 (S3)" :
+            ($F{desarrolloa} == 3 ? "ESTADIO 4 (S4)" : "ESTADIO 5 (S5)"))))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="138" y="14" width="100" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESARROLLO VELLO PUBIANO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="238" y="14" width="45" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desarrollovello}== 0 ? "ESTADIO 1 (P1)" :
+    ($F{desarrollovello} == 1 ? "ESTADIO 2 (P2)" :
+        ($F{desarrollovello} == 2 ? "ESTADIO 3 (P3)" :
+            ($F{desarrollovello} == 3 ? "ESTADIO 4 (P4)" : "ESTADIO 5 (P5)" )))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="283" y="14" width="71" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALORACION VISUAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="354" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valoracionv}.equals(true) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="369" y="14" width="91" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA VALORACION VISUAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="460" y="14" width="60" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechavv}.equals("01/01/1845") ? "" : $F{fechavv}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="26" width="66" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALORACION ORAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="79" y="26" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valoraciono}.equals(true) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="94" y="26" width="86" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA VALORACION ORAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="180" y="26" width="60" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechavo}.equals("01/01/1845") ? "" : $F{fechavo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="240" y="26" width="56" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTROL PLACA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="296" y="26" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{controlplaca}.equals(true) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="311" y="26" width="43" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SELLANTES:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="354" y="26" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sellantes}.equals(true) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="369" y="26" width="26" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FLUOR:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="395" y="26" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{flour}.equals(true) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TANNER]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="exploracion hta" language="groovy" pageWidth="532" pageHeight="39" orientation="Landscape" columnWidth="532" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idhistoria" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+    `pyp_hta`.`hta`
+    , `pyp_hta`.`htac`
+    , `pyp_hta`.`dm1`
+    , `pyp_hta`.`dm1c`
+    , `pyp_hta`.`dm2`
+    , `pyp_hta`.`dm2c`
+    , `pyp_hta`.`dislipidemia`
+    , `pyp_hta`.`dislipidemiac`
+    , `pyp_hta`.`estadio`
+    , `pyp_hta`.`riesgo`
+FROM
+    `database`.`pyp_hta`
+    INNER JOIN `database`.`pyp_historiac`
+        ON (`pyp_hta`.`idhistoria` = `pyp_historiac`.`id`)
+WHERE (`pyp_historiac`.`id` =$P{idhistoria}
+    AND `pyp_historiac`.`estado` =1);]]>
+	</queryString>
+	<field name="hta" class="java.lang.Integer"/>
+	<field name="htac" class="java.lang.Integer"/>
+	<field name="dm1" class="java.lang.Integer"/>
+	<field name="dm1c" class="java.lang.Integer"/>
+	<field name="dm2" class="java.lang.Integer"/>
+	<field name="dm2c" class="java.lang.Integer"/>
+	<field name="dislipidemia" class="java.lang.Integer"/>
+	<field name="dislipidemiac" class="java.lang.Integer"/>
+	<field name="estadio" class="java.lang.Integer"/>
+	<field name="riesgo" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="39" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="7" y="6" width="523" height="31"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="13" y="13" width="19" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HTA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="32" y="13" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hta}.equals(1) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="47" y="13" width="49" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTROLADO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="96" y="13" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{htac}.equals(1) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="111" y="13" width="19" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DM1:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="13" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dm1}.equals(1) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="145" y="13" width="49" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTROLADO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="194" y="13" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dm1c} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="243" y="13" width="49" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTROLADO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="13" width="19" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DM2:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="228" y="13" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dm2} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="292" y="13" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dm2c} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="307" y="13" width="49" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DISLIPIDEMIA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="356" y="13" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dislipidemia} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="13" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dislipidemiac}== 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="371" y="13" width="49" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTROLADO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="13" width="31" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTADIO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="466" y="13" width="40" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{estadio} == 0 ? "NINGUNO" :
+    ($F{estadio} == 1 ? "PRE HTA" :
+        ($F{estadio} == 2 ? "1" : "2")))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="25" width="87" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RIESGO CARDIOVASCULAR:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="25" width="50" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{riesgo}==0 ? "NINGUNO" :
+    ($F{riesgo}==1 ? "BAJO: < 10%" :
+        ($F{riesgo}==2 ? "MODERADO: 10 - 20 %" :
+            ($F{riesgo}== 3 ? "ALTO: > 20%" : "MUY ALTO"))))]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HTA]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
