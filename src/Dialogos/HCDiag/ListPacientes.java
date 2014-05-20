@@ -36,6 +36,7 @@ import HC.CYDesarrollo;
 import HC.AgudezaV;
 import java.awt.Frame;
 import javax.swing.SwingUtilities;
+import Clases.Save;
 
 /**
  *
@@ -59,7 +60,9 @@ public class ListPacientes extends javax.swing.JDialog {
     public CYDesarrollo cydesarrollo;
     public AgudezaV agudeza;
     public int año = 0, mes = 0, edad;
-    public String progam, name;
+    public String progam, name, idhc;
+    Save sav = new Save();
+    Funciones_AD Funciones = new Funciones_AD();
 
     public ListPacientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -554,6 +557,9 @@ public class ListPacientes extends javax.swing.JDialog {
                 jLabel14.setText("Consulta por primera vez".toUpperCase());
             }
             jLabel17.setText(pypAdmAsistCon.getIdControlPro().getIdProfesional().getIdDescripcionLogin().getNombres() + " " + pypAdmAsistCon.getIdControlPro().getIdProfesional().getIdDescripcionLogin().getApellidos());
+                Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+                String d = (c[0][0].toString());
+                idhc = d;
         }
     }//GEN-LAST:event_jTable1MouseReleased
 
