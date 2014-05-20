@@ -146,7 +146,7 @@ public class ListPacientes extends javax.swing.JDialog {
             //asignar el id del profecional de la tabla cmprofesionales
             jTable1.removeAll();
             ModeloListadoPaciente();
-            asistCon = paacjc.listPypAdmAsistCon(2);
+            asistCon = paacjc.listPypAdmAsistCon(4);
         } else {
             jTable1.removeAll();
             ModeloListadoPaciente();
@@ -494,7 +494,7 @@ public class ListPacientes extends javax.swing.JDialog {
         if (modelo.getRowCount() > 0 && jTable1.getSelectedRow() > -1) {
             pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
             if (pypAdmAsistCon.getEstado().toString().equals("3")) {
-                if (pypAdmAsistCon.getIdControlPro().getIdProfesional().getId() == 2) {
+                if (pypAdmAsistCon.getIdControlPro().getIdProfesional().getId() == 4) {
                     cargarprograma();
                 } else {
                     JOptionPane.showMessageDialog(null, "El paciente ya se encuentra en atencion");
