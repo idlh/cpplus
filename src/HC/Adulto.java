@@ -723,11 +723,7 @@ public class Adulto extends javax.swing.JPanel {
                         pruebascomple.actpruebasc();
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
-                        String mensaje2 = "¿Desea imprimir la historia clinica? ";
-                        int entrada2 = JOptionPane.showConfirmDialog(null, mensaje2, "Confirmar finalizacion", JOptionPane.YES_NO_OPTION);
-                        if (entrada2 == 0) {
-                            imprimirhis();
-                        }
+                        imprimirhis();
                     }
                 }
             } else {
@@ -748,11 +744,7 @@ public class Adulto extends javax.swing.JPanel {
                         pruebascomple.actpruebasc();
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
-                        String mensaje2 = "¿Desea imprimir la historia clinica? ";
-                        int entrada2 = JOptionPane.showConfirmDialog(null, mensaje2, "Confirmar finalizacion", JOptionPane.YES_NO_OPTION);
-                        if (entrada2 == 0) {
-                            imprimirhis();
-                        }
+                        imprimirhis();
                     }
                 }
                 jLabel12.setVisible(true);
