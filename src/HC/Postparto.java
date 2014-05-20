@@ -646,7 +646,7 @@ public class Postparto extends javax.swing.JPanel {
             Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
             int b = Integer.parseInt(a[0][0].toString());
             if (b == 0) {
-                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
+                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), String.valueOf(diagnosticosm.ciep));
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
                 Date fecha = pypAdmAsistCon.getFecha();
@@ -698,7 +698,7 @@ public class Postparto extends javax.swing.JPanel {
             Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
             int b = Integer.parseInt(a[0][0].toString());
             if (b == 0) {
-                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
+                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), String.valueOf(diagnosticosm.ciep));
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
                 Date fecha = pypAdmAsistCon.getFecha();
@@ -724,6 +724,11 @@ public class Postparto extends javax.swing.JPanel {
                         pruebascomple.actpruebasc();
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
+                        String mensaje2 = "¿Desea imprimir la historia clinica? ";
+                        int entrada2 = JOptionPane.showConfirmDialog(null, mensaje2, "Confirmar finalizacion", JOptionPane.YES_NO_OPTION);
+                        if (entrada2 == 0) {
+                            imprimirhis();
+                        }
                     }
                 }
             } else {
@@ -760,7 +765,11 @@ public class Postparto extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4MouseReleased
 
     private void jButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseReleased
-        imprimirhis();
+        if (Estadofinal.equals("2")) {
+            imprimirhis();
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe finalizar para poder imprimir la historia");
+        }
     }//GEN-LAST:event_jButton2MouseReleased
 
     private void crearhc() {

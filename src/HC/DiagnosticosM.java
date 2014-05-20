@@ -23,7 +23,8 @@ public class DiagnosticosM extends javax.swing.JPanel {
     private final EntityManagerFactory factory;
     private final PypAdmAsistCon pypAdmAsistCon;
     private StaticCie10 cie101, cie102, cie103, cie104;
-    int ciep = 0, est = 0, est2 = 0, est3 = 0, est4 = 0;
+    int est = 0, est2 = 0, est3 = 0, est4 = 0;
+    public int ciep = 0;
     Funciones_AD Funciones = new Funciones_AD();
     Save sav = new Save();
     Actualizar act = new Actualizar();

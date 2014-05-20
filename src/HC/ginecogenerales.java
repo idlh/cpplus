@@ -524,6 +524,7 @@ public class ginecogenerales extends javax.swing.JPanel {
             } else {
                 jCheckBox1.setSelected(true);
             }
+            jComboBox1.setSelectedIndex(Integer.parseInt(h[0][13].toString()));
             if (h[0][14].toString().equals("0")) {
                 jCheckBox2.setSelected(false);
             } else {
@@ -533,16 +534,7 @@ public class ginecogenerales extends javax.swing.JPanel {
                 jCheckBox3.setSelected(false);
             } else {
                 jCheckBox3.setSelected(true);
-            }
-            if (h[0][14].toString().equals("0")) {
-                jComboBox1.setSelectedIndex(0);
-            } else {
-                if (h[0][14].toString().equals("1")) {
-                    jComboBox1.setSelectedIndex(1);
-                } else {
-                    jComboBox1.setSelectedIndex(2);
-                }
-            }
+            }            
         } else {
             cargarinfoanteg();
         }
@@ -550,7 +542,7 @@ public class ginecogenerales extends javax.swing.JPanel {
 
     public void cargarinfoanteg() {
         Object car[][] = Funciones.RetornarDatos(act.contarginecog(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString()));
-        if (car[0][0].toString().equals("1")) {
+        if (!car[0][0].toString().equals("0")) {
             Object h[][] = Funciones.RetornarDatos(act.cargaranteg(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString()));
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             try {
@@ -586,6 +578,7 @@ public class ginecogenerales extends javax.swing.JPanel {
             } else {
                 jCheckBox1.setSelected(true);
             }
+            jComboBox1.setSelectedIndex(Integer.parseInt(h[0][13].toString()));
             if (h[0][14].toString().equals("0")) {
                 jCheckBox2.setSelected(false);
             } else {
@@ -595,15 +588,6 @@ public class ginecogenerales extends javax.swing.JPanel {
                 jCheckBox3.setSelected(false);
             } else {
                 jCheckBox3.setSelected(true);
-            }
-            if (h[0][14].toString().equals("0")) {
-                jComboBox1.setSelectedIndex(0);
-            } else {
-                if (h[0][14].toString().equals("1")) {
-                    jComboBox1.setSelectedIndex(1);
-                } else {
-                    jComboBox1.setSelectedIndex(2);
-                }
             }
         }
     }

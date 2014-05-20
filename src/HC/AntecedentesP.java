@@ -970,7 +970,6 @@ public class AntecedentesP extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jCheckBox8)
                         .addGap(24, 24, 24)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel20)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -986,7 +985,7 @@ public class AntecedentesP extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -1001,7 +1000,7 @@ public class AntecedentesP extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 48, Short.MAX_VALUE))
         );
 
@@ -1389,6 +1388,7 @@ public class AntecedentesP extends javax.swing.JPanel {
 
         jCheckBox25.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox25.setText("Embarazo deseado");
+        jCheckBox25.setFocusable(false);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -2603,11 +2603,7 @@ public class AntecedentesP extends javax.swing.JPanel {
             tablaanteprocedimiento.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             Funciones_AD.setOcultarColumnas(tablaanteprocedimiento, new int[]{0, 1, 3, 4});
             Funciones_AD.setSizeColumnas(tablaanteprocedimiento, new int[]{1}, new int[]{385});
-            if (pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-                jTabbedPane1.remove(jPanel9);
-            } else {
-                tab.cargaranteparaclinico(modelo, pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString());
-            }
+            tab.cargaranteparaclinico(modelo, pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "error: " + e.getMessage().toString(), AntecedentesP.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
@@ -2636,19 +2632,15 @@ public class AntecedentesP extends javax.swing.JPanel {
                 };
         tablaantemedi.setModel(modelo2);
     }
-    
-     private void tabla2() {
+
+    private void tabla2() {
         try {
             getModelomedi();
             tablaantemedi.getTableHeader().setReorderingAllowed(false);
             tablaantemedi.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             Funciones_AD.setOcultarColumnas(tablaantemedi, new int[]{0});
             Funciones_AD.setSizeColumnas(tablaantemedi, new int[]{1}, new int[]{385});
-            if (pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-                jTabbedPane1.remove(jPanel9);
-            } else {
                 tab.cargarantemedicamento(modelo2, pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString());
-            }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "error: " + e.getMessage().toString(), AntecedentesP.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }

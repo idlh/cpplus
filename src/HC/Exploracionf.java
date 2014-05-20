@@ -106,6 +106,30 @@ public class Exploracionf extends javax.swing.JPanel {
             if (pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
                 jTabbedPane1.remove(jPanel15);
             }
+            if (jCheckBox11.isSelected() == true) {
+                jCheckBox15.setEnabled(true);
+            } else {
+                jCheckBox15.setSelected(false);
+                jCheckBox15.setEnabled(false);
+            }
+            if (jCheckBox12.isSelected() == false) {
+                jCheckBox16.setSelected(false);
+                jCheckBox16.setEnabled(false);
+            } else {
+                jCheckBox16.setEnabled(true);
+            }
+            if (jCheckBox13.isSelected() == false) {
+                jCheckBox17.setSelected(false);
+                jCheckBox17.setEnabled(false);
+            } else {
+                jCheckBox17.setEnabled(true);
+            }
+            if (jCheckBox14.isSelected() == false) {
+                jCheckBox18.setSelected(false);
+                jCheckBox18.setEnabled(false);
+            } else {
+                jCheckBox18.setEnabled(true);
+            }
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 2) {
             jTabbedPane1.remove(jPanel10);
@@ -2299,14 +2323,18 @@ public class Exploracionf extends javax.swing.JPanel {
                 jTextField21.setText(String.valueOf(value));
             }
         }
-        calcularimc();
+        if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0) {
+            calcularimc();
+        }
     }//GEN-LAST:event_jTextField9KeyReleased
 
     private void jTextField8KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jTextPane1.requestFocus();
         }
-        calcularimc();
+        if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0) {
+            calcularimc();
+        }
     }//GEN-LAST:event_jTextField8KeyReleased
 
     private void jTextArea1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyReleased
@@ -3016,7 +3044,9 @@ public class Exploracionf extends javax.swing.JPanel {
             jTextField21.setText(awq[0][3].toString());
         }
         if (!jTextField9.getText().equals("0.0") && !jTextField8.getText().equals("0")) {
-            calcularimc();
+            if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0) {
+                calcularimc();
+            }
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
             Object part[][] = Funciones.RetornarDatos(act.cargarpostparto(d));
