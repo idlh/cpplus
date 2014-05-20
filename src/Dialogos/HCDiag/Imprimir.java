@@ -1,10 +1,29 @@
 package Dialogos.HCDiag;
 
+import Clases.BDConectar;
+import Clases.Funciones_AD;
+import Clases.Imprimirreporte;
+import Clases.Save;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfCopyFields;
+import com.itextpdf.text.pdf.PdfReader;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Camilo
  */
 public class Imprimir extends javax.swing.JDialog {
+
+    Imprimirreporte imp = new Imprimirreporte();
+    Funciones_AD Funciones = new Funciones_AD();
 
     /**
      * Creates new form Imprimir
@@ -64,6 +83,11 @@ public class Imprimir extends javax.swing.JDialog {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/finalc1.png"))); // NOI18N
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusable(false);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,6 +127,32 @@ public class Imprimir extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        try {
+            PdfReader reader = null;
+            File archivoTemporal;
+            archivoTemporal = File.createTempFile("Historia", ".pdf");
+            BDConectar bd = new BDConectar();
+            bd.ConectarBasedeDatos();
+            imp.setIdhc(modulo_pyp.Modulo_PyP.d.listPacientes.idhc);
+            imp.setNombrereport(modulo_pyp.Modulo_PyP.d.listPacientes.progam);
+            imp.setCodigo("PP-F01-1420");
+            imp.setConexion(bd.conexion);
+            imp.setServicio("P Y P");
+            imp.setVersion("1.0");
+            reader = imp.Imprimirhistoria();
+            bd.DesconectarBasedeDatos();
+            imp.tempFile.deleteOnExit();
+            PdfCopyFields copy = new PdfCopyFields(new FileOutputStream(archivoTemporal));
+            if(reader!=null) copy.addDocument(reader);
+            copy.close();
+            Desktop.getDesktop().open(archivoTemporal);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "r001 " + e.getMessage(), Imprimir.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+        this.dispose();
+    }//GEN-LAST:event_jButton1MouseReleased
 
     /**
      * @param args the command line arguments
