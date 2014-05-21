@@ -24,6 +24,7 @@ public class Imprimir extends javax.swing.JDialog {
 
     Imprimirreporte imp = new Imprimirreporte();
     Funciones_AD Funciones = new Funciones_AD();
+    String id;
 
     /**
      * Creates new form Imprimir
@@ -36,6 +37,7 @@ public class Imprimir extends javax.swing.JDialog {
                 + " del (la) paciente: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.name + "</b>" + ", presione el boton aceptar para continuar..." + "\n"
                 + "</div>\n"
                 + "</html>");
+        idhisto();
     }
 
     /**
@@ -135,7 +137,7 @@ public class Imprimir extends javax.swing.JDialog {
             archivoTemporal = File.createTempFile("Historia", ".pdf");
             BDConectar bd = new BDConectar();
             bd.ConectarBasedeDatos();
-            imp.setIdhc(modulo_pyp.Modulo_PyP.d.listPacientes.idhc);
+            imp.setIdhc(id);
             imp.setNombrereport(modulo_pyp.Modulo_PyP.d.listPacientes.progam);
             imp.setCodigo("PP-F01-1420");
             imp.setConexion(bd.conexion);
@@ -145,7 +147,9 @@ public class Imprimir extends javax.swing.JDialog {
             bd.DesconectarBasedeDatos();
             imp.tempFile.deleteOnExit();
             PdfCopyFields copy = new PdfCopyFields(new FileOutputStream(archivoTemporal));
-            if(reader!=null) copy.addDocument(reader);
+            if (reader != null) {
+                copy.addDocument(reader);
+            }
             copy.close();
             Desktop.getDesktop().open(archivoTemporal);
         } catch (Exception e) {
@@ -196,6 +200,40 @@ public class Imprimir extends javax.swing.JDialog {
         });
     }
 
+    private void idhisto() {
+        switch (modulo_pyp.Modulo_PyP.d.listPacientes.idprograma) {
+            case 3:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.adult.idhc;
+                break;
+            case 9:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.controlp.idhc;
+                break;
+            case 11:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.postparto.idhc;
+                break;
+            case 10:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.reciennacido.idhc;
+                break;
+            case 5:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.planificacion.idhc;
+                break;
+            case 1:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.jovensano.idhc;
+                break;
+            case 6:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.hipertenso.idhc;
+                break;
+            case 2:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.cydesarrollo.idhc;
+                break;
+            case 4:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.agudeza.idhc;
+                break;
+            case 7:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.diabetes.idhc;
+                break;
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton jButton1;
     javax.swing.JLabel jLabel1;
