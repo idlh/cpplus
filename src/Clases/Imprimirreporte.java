@@ -75,12 +75,17 @@ public class Imprimirreporte {
     public PdfReader Imprimirhistoria() {
         try {
             Map parametro = new HashMap();
+            JasperPrint informe;
             parametro.put("idhistoria", getIdhc());
             parametro.put("nombrereporte", getNombrereport());
             parametro.put("servicio", getServicio());
             parametro.put("codigo", getCodigo());
             parametro.put("version", getVersion());
-            JasperPrint informe = JasperFillManager.fillReport(System.getProperty("user.dir") + "/src/Reporte_pyp/historia_pyp.jasper", parametro, getConexion());            
+            if (modulo_pyp.Modulo_PyP.d.listPacientes.idprograma != 4) {
+                informe = JasperFillManager.fillReport(System.getProperty("user.dir") + "/src/Reporte_pyp/historia_pyp.jasper", parametro, getConexion());
+            } else {
+                informe = JasperFillManager.fillReport(System.getProperty("user.dir") + "/src/Reporte_pyp/visual.jasper", parametro, getConexion());
+            }
             JRExporter exporter = new JRPdfExporter();
             exporter.setParameter(JRExporterParameter.JASPER_PRINT, informe);
             tempFile = File.createTempFile("Historia", ".pdf");
@@ -88,7 +93,7 @@ public class Imprimirreporte {
             exporter.exportReport();
             return new PdfReader(tempFile.getAbsolutePath());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Error General Lanzando Reporte Descripcion: Pparameter001406-1 " +e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error General Lanzando Reporte Descripcion: Pparameter001406-1 " + e.getMessage());
             return null;
         }
     }
