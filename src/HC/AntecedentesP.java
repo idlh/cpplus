@@ -2294,6 +2294,9 @@ public class AntecedentesP extends javax.swing.JPanel {
             case 2:
                 HC.CYDesarrollo.jLabel4.setText("...");
                 break;
+            case 7: 
+                HC.Diabetes.jLabel4.setText("...");
+                break;
         }
     }
 
@@ -2322,6 +2325,9 @@ public class AntecedentesP extends javax.swing.JPanel {
                 break;
             case 2:
                 HC.CYDesarrollo.jLabel4.setText(texto);
+                break;
+            case 7:
+                HC.Diabetes.jLabel4.setText(texto);
                 break;
         }
     }

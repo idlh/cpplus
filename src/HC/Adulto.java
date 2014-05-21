@@ -34,6 +34,7 @@ public class Adulto extends javax.swing.JPanel {
     DiagnosticosM diagnosticosm = null;
     Actualizar act = new Actualizar();
     String Estadofinal = "1";
+    public String idhc;
 
     public Adulto(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
@@ -119,7 +120,7 @@ public class Adulto extends javax.swing.JPanel {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 345, Short.MAX_VALUE)
         );
 
         jPanel9.setBackground(new java.awt.Color(255, 227, 255));
@@ -474,7 +475,7 @@ public class Adulto extends javax.swing.JPanel {
                         .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addGap(25, 25, 25))))
         );
@@ -723,6 +724,7 @@ public class Adulto extends javax.swing.JPanel {
                         pruebascomple.actpruebasc();
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
+                        idhc = d;
                         imprimirhis();
                     }
                 }
@@ -744,6 +746,7 @@ public class Adulto extends javax.swing.JPanel {
                         pruebascomple.actpruebasc();
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
+                        idhc = d;
                         imprimirhis();
                     }
                 }

@@ -35,6 +35,7 @@ public class Controlprenatal extends javax.swing.JPanel {
     Actualizar act = new Actualizar();
     String Estadofinal = "1";
     public float peso = 0;
+    public String idhc;
 
     public Controlprenatal(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
@@ -734,6 +735,7 @@ public class Controlprenatal extends javax.swing.JPanel {
                         pruebascomple.actpruebasc();
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
+                        idhc = d;
                         imprimirhis();
                     }
                 }
@@ -755,6 +757,7 @@ public class Controlprenatal extends javax.swing.JPanel {
                         pruebascomple.actpruebasc();
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
+                        idhc = d;
                         imprimirhis();
                     }
                 }

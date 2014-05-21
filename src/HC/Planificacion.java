@@ -34,6 +34,7 @@ public class Planificacion extends javax.swing.JPanel {
     DiagnosticosM diagnosticosm = null;
     Actualizar act = new Actualizar();
     String Estadofinal = "1";
+    public String idhc;
 
     public Planificacion(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
@@ -731,6 +732,7 @@ public class Planificacion extends javax.swing.JPanel {
                         pruebascomple.actpruebasc();
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
+                        idhc = d;
                         imprimirhis();
                     }
                 }
@@ -752,6 +754,7 @@ public class Planificacion extends javax.swing.JPanel {
                         pruebascomple.actpruebasc();
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
+                        idhc = d;
                         imprimirhis();
                     }
                 }

@@ -19,7 +19,7 @@ import javax.swing.SwingUtilities;
  *
  * @author Camilo
  */
-public class CYDesarrollo extends javax.swing.JPanel {
+public class Diabetes extends javax.swing.JPanel {
 
     private final EntityManagerFactory factory;
     private final PypAdmAsistCon pypAdmAsistCon;
@@ -36,7 +36,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
     String Estadofinal = "1";
     public String idhc;
 
-    public CYDesarrollo(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
+    public Diabetes(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.factory = factory;
         this.pypAdmAsistCon = pypAdmAsistCon;
@@ -120,7 +120,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 345, Short.MAX_VALUE)
         );
 
         jPanel9.setBackground(new java.awt.Color(255, 227, 255));
@@ -156,9 +156,9 @@ public class CYDesarrollo extends javax.swing.JPanel {
         jPanel2.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel1.setText("Detección Temprana De Las Alteraciones Del Crecimiento Y Desarrollo");
+        jLabel1.setText("Diabetes Juvenil y Del Adulto");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(10, 21, 360, 13);
+        jLabel1.setBounds(10, 21, 150, 13);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("CONSULTA DE PRIMERA VEZ POR MEDICINA GENERAL");
@@ -246,14 +246,14 @@ public class CYDesarrollo extends javax.swing.JPanel {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Datos guardados Satisfactoriamente");
         jPanel2.add(jLabel9);
-        jLabel9.setBounds(374, 25, 181, 13);
+        jLabel9.setBounds(294, 25, 250, 13);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 102, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Historia finalizada Correctamente");
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(374, 25, 169, 13);
+        jLabel12.setBounds(294, 25, 250, 13);
 
         jPanel11.setBackground(new java.awt.Color(255, 227, 255));
 
@@ -475,7 +475,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
                         .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addGap(25, 25, 25))))
         );
@@ -602,7 +602,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
 
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
         this.jPanel4.removeAll();
-        motivoc.jLabel3.setText("Detección Temprana De Las Alteraciones Del Crecimiento Y Desarrollo");
+        motivoc.jLabel3.setText("Diabetes Juvenil y Del Adulto");
         new Clases.Explode(jPanel4, motivoc).play();
     }//GEN-LAST:event_jLabel2MouseReleased
 
@@ -656,12 +656,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
                 sav.newagineco(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
                 sav.neweventose(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
                 sav.newexpf(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                sav.newcrecimiento(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                if (modulo_pyp.Modulo_PyP.d.listPacientes.año <= 5) {
-                    sav.newcrecimientomeses(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                } else {
-                    sav.newcrecimientoaños(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                }
+                sav.newdm(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 if (h[0][23].toString().equals("0")) {
                     motivoc.actualizardatos();
@@ -713,12 +708,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
                 sav.newagineco(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
                 sav.neweventose(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
                 sav.newexpf(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                sav.newcrecimiento(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                if (modulo_pyp.Modulo_PyP.d.listPacientes.año <= 5) {
-                    sav.newcrecimientomeses(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                } else {
-                    sav.newcrecimientoaños(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                }
+                sav.newdm(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
                 int id = Integer.parseInt(h[0][23].toString());
                 if (id == 0) {
@@ -831,6 +821,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
         imp.setLocationRelativeTo(null);
         imp.setVisible(true);
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton jButton1;
     javax.swing.JButton jButton2;

@@ -28,6 +28,7 @@ public class AgudezaV extends javax.swing.JPanel {
     visual agudeza = null;
     Actualizar act = new Actualizar();
     String Estadofinal = "1";
+    public String idhc;
 
     public AgudezaV(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
@@ -360,10 +361,9 @@ public class AgudezaV extends javax.swing.JPanel {
 
     private void jButton4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseReleased
         if (Estadofinal.equals("1")) {
-            Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
+            Object a[][] = Funciones.RetornarDatos(sav.contarvisual(pypAdmAsistCon.getId().toString()));
             int b = Integer.parseInt(a[0][0].toString());
-            if (b == 0) {
-                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), "11803");
+            if (b == 0) {               
                 Date fecha = pypAdmAsistCon.getFecha();
                 String patron = "yyyy-MM-dd", fc;
                 SimpleDateFormat formato = new SimpleDateFormat(patron);
@@ -380,6 +380,7 @@ public class AgudezaV extends javax.swing.JPanel {
                         agudeza.actualizardatos();
                         act.finalizarvisual(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
+                        idhc = d;
                         imprimirhis();
                     }
                 }
@@ -395,6 +396,7 @@ public class AgudezaV extends javax.swing.JPanel {
                         agudeza.actualizardatos();
                         act.finalizarvisual(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
+                        idhc = d;
                         imprimirhis();
                     }
                 }
