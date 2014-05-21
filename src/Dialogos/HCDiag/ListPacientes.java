@@ -28,6 +28,7 @@ import HC.RecienNacido;
 import HC.Planificacion;
 import HC.Jovensano;
 import HC.Hipertenso;
+import HC.Diabetes;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -43,7 +44,7 @@ import Clases.Save;
  * @author Alvaro Monsalve
  */
 public class ListPacientes extends javax.swing.JDialog {
-
+    
     Properties props = new Properties();
     private DefaultTableModel modelo;
     private EntityManagerFactory factory;
@@ -59,18 +60,19 @@ public class ListPacientes extends javax.swing.JDialog {
     public Hipertenso hipertenso;
     public CYDesarrollo cydesarrollo;
     public AgudezaV agudeza;
-    public int año = 0, mes = 0, edad;
-    public String progam, name, idhc;
+    public Diabetes diabetes;
+    public int año = 0, mes = 0, edad, idprograma;
+    public String progam, name;
     Save sav = new Save();
     Funciones_AD Funciones = new Funciones_AD();
-
+    
     public ListPacientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         ParametrosBD();
         showPacientes();
     }
-
+    
     private List<String> referenceUser() {
         List<String> parametros = new ArrayList<String>();
         FileReader lector = null;
@@ -82,7 +84,7 @@ public class ListPacientes extends javax.swing.JDialog {
             String texto = null;
             System.out.println(clipa);
             lector = new FileReader(clipa);
-
+            
             BufferedReader contenido = new BufferedReader(lector);
             while ((texto = contenido.readLine()) != null) {
                 parametros.add(s.decrypt(texto));
@@ -98,7 +100,7 @@ public class ListPacientes extends javax.swing.JDialog {
         }
         return parametros;
     }
-
+    
     private void ParametrosBD() {
         List<String> parametros = referenceUser();
         props.put("javax.persistence.jdbc.user", parametros.get(0));
@@ -106,7 +108,7 @@ public class ListPacientes extends javax.swing.JDialog {
         props.put("javax.persistence.jdbc.url", parametros.get(2));
         props.put("javax.persistence.jdbc.driver", parametros.get(3));
     }
-
+    
     public void getModelo() {
         modelo = new DefaultTableModel(
                 null, new String[]{"Asistencia", "TD", "Documento", "Nombre"}) {
@@ -119,12 +121,12 @@ public class ListPacientes extends javax.swing.JDialog {
                     boolean[] canEdit = new boolean[]{
                         false, false, false, false
                     };
-
+                    
                     @Override
                     public Class getColumnClass(int columnIndex) {
                         return types[columnIndex];
                     }
-
+                    
                     @Override
                     public boolean isCellEditable(int rowIndex, int colIndex) {
                         return canEdit[colIndex];
@@ -132,7 +134,7 @@ public class ListPacientes extends javax.swing.JDialog {
                 };
         jTable1.setModel(modelo);
     }
-
+    
     public void ModeloListadoPaciente() {
         getModelo();
         jTable1.getTableHeader().setReorderingAllowed(false);
@@ -140,7 +142,7 @@ public class ListPacientes extends javax.swing.JDialog {
         Funciones_AD.setOcultarColumnas(jTable1, new int[]{0});
         Funciones_AD.setSizeColumnas(jTable1, new int[]{1, 2, 3}, new int[]{30, 80, 198});
     }
-
+    
     private void showPacientes() {
         factory = Persistence.createEntityManagerFactory("EJB_CEPU", props);
         paacjc = new PypAdmAsistConJpaController(factory);
@@ -169,7 +171,7 @@ public class ListPacientes extends javax.swing.JDialog {
             }
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -556,10 +558,8 @@ public class ListPacientes extends javax.swing.JDialog {
             } else {
                 jLabel14.setText("Consulta por primera vez".toUpperCase());
             }
-            jLabel17.setText(pypAdmAsistCon.getIdControlPro().getIdProfesional().getIdDescripcionLogin().getNombres() + " " + pypAdmAsistCon.getIdControlPro().getIdProfesional().getIdDescripcionLogin().getApellidos());
-                Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
-                idhc = d;
+            jLabel17.setText(pypAdmAsistCon.getIdControlPro().getIdProfesional().getIdDescripcionLogin().getNombres() + " " + pypAdmAsistCon.getIdControlPro().getIdProfesional().getIdDescripcionLogin().getApellidos());            
+            idprograma = pypAdmAsistCon.getIdAgend().getIdPrograma().getId();
         }
     }//GEN-LAST:event_jTable1MouseReleased
 
@@ -582,7 +582,7 @@ public class ListPacientes extends javax.swing.JDialog {
         this.dispose();
         list.setVisible(true);
     }//GEN-LAST:event_jLabel15MouseReleased
-
+    
     private void cargarprograma() {
         Desktop desktop = (Desktop) this.getParent();
         pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
@@ -738,6 +738,27 @@ public class ListPacientes extends javax.swing.JDialog {
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(agudeza);
             agudeza.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 7 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
+            diabetes = new Diabetes(factory, pypAdmAsistCon);
+            diabetes.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(diabetes);
+            diabetes.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 7 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
+            diabetes = new Diabetes(factory, pypAdmAsistCon);
+            diabetes.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(diabetes);
+            diabetes.jLabel3.setText("Consulta de Control");
+            diabetes.setVisible(true);
             desktop.Contenedor_.validate();
             desktop.Contenedor_.repaint();
             this.dispose();
