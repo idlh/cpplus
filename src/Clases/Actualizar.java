@@ -979,6 +979,12 @@ public class Actualizar {
                 + "FROM `database`.`pyp_hta`"
                 + "WHERE(`pyp_hta`.`idhistoria`='" + id + "')";
     }
+    
+    public String cargardm(String id) {
+        return "SELECT * "
+                + "FROM `database`.`pyp_dm`"
+                + "WHERE(`pyp_dm`.`idhistoria`='" + id + "')";
+    }
 
     public void actvaloracion(String id, String meses, String mg, String mfa, String al, String ps, String total) {
         try {
@@ -1463,6 +1469,45 @@ public class Actualizar {
             JOptionPane.showMessageDialog(null, "a036 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "a036 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void actdm(String id, String hta, String htac, String dm1, String dm1c, String dm2, String dm2c, String dislipidemia,
+            String dislipidemiac, String dieta, String ejercicio, String esecundarios, String tratamiento, String observacion, String glucometria,
+            String trat) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_dm`"
+                    + "SET `pyp_dm`.`hta` = ?, `pyp_dm`.`htac` = ?, `pyp_dm`.`dm1` = ?,"
+                    + "    `pyp_dm`.`dm1c` = ?, `pyp_dm`.`dm2` = ?, `pyp_dm`.`dm2c` = ?,"
+                    + "    `pyp_dm`.`dislipidemia` = ?, `pyp_dm`.`dislipidemiac` = ?,"
+                    + "    `pyp_dm`.`dieta` = ?, `pyp_dm`.`ejercicio` = ?, `pyp_dm`.`esecundarios` =?,"
+                    + "    `pyp_dm`.`glucometria` = ?, `pyp_dm`.`trat` = ?, `pyp_dm`.`tratamiento` =?,"
+                    + "    `pyp_dm`.`observacion` = ?"
+                    + "    WHERE (`pyp_dm`.`idhistoria` = ?)");
+            bd.preparedStatement.setString(1, hta);
+            bd.preparedStatement.setString(2, htac);
+            bd.preparedStatement.setString(3, dm1);
+            bd.preparedStatement.setString(4, dm1c);
+            bd.preparedStatement.setString(5, dm2);
+            bd.preparedStatement.setString(6, dm2c);
+            bd.preparedStatement.setString(7, dislipidemia);
+            bd.preparedStatement.setString(8, dislipidemiac);
+            bd.preparedStatement.setString(9, dieta);
+            bd.preparedStatement.setString(10, ejercicio);
+            bd.preparedStatement.setString(11, esecundarios);
+            bd.preparedStatement.setString(12, glucometria);
+            bd.preparedStatement.setString(13, trat);
+            bd.preparedStatement.setString(14, tratamiento);
+            bd.preparedStatement.setString(15, observacion);
+            bd.preparedStatement.setString(16, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a025 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a025 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
