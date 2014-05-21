@@ -92,7 +92,7 @@ WHERE (`pyp_historiac`.`estado` =1
 				<textElement verticalAlignment="Middle">
 					<font fontName="Calibri" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{valoracionv}.equals(true) ? "X" : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{valoracionv}.equals(true) ? "SI" : "NO"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="369" y="14" width="91" height="10"/>
@@ -120,7 +120,7 @@ WHERE (`pyp_historiac`.`estado` =1
 				<textElement verticalAlignment="Middle">
 					<font fontName="Calibri" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{valoraciono}.equals(true) ? "X" : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{valoraciono}.equals(true) ? "SI" : "NO"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="94" y="26" width="86" height="10"/>

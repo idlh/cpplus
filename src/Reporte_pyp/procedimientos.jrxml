@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="procedimientos" language="groovy" pageWidth="532" pageHeight="66" orientation="Landscape" columnWidth="532" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="procedimientos" language="groovy" pageWidth="532" pageHeight="43" orientation="Landscape" columnWidth="532" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -85,9 +85,9 @@ WHERE (`pyp_historiac`.`id` =$P{idhistoria}
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="66" splitType="Stretch">
+		<band height="43" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 1" isPrintRepeatedValues="false" x="0" y="16" width="532" height="50" isRemoveLineWhenBlank="true"/>
+				<reportElement key="table 1" isPrintRepeatedValues="false" x="0" y="16" width="532" height="25" isRemoveLineWhenBlank="true"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="procedimientos">
 						<datasetParameter name="idhistoria">

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="admision" language="groovy" pageWidth="532" pageHeight="54" orientation="Landscape" columnWidth="532" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="admision" language="groovy" pageWidth="532" pageHeight="50" orientation="Landscape" columnWidth="532" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="idhistoria" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
-      `pyp_adm_asist_con`.`id` AS `Nadmision`
+    `pyp_adm_asist_con`.`id` AS `Nadmision`
     , DATE_FORMAT(`pyp_adm_asist_con`.`fecha`, '%d/%m/%Y') AS `fecha`
     , DATE_FORMAT(`pyp_adm_asist_con`.`hora`, '%H:%i') AS `hora`
     , `pyp_adm_admision`.`edad_admision`
@@ -14,16 +14,14 @@
     , `pyp_adm_admision`.`estado_ingreso`
     , `pyp_adm_admision`.`medio_ingreso`
     , `pyp_adm_admision`.`observacion`
-
 FROM
-    `database`.`pyp_historiac`
+    `database`.`pyp_visual`
     INNER JOIN `database`.`pyp_adm_asist_con`
-        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)
-    INNER JOIN `database`.`pyp_adm_agend`
-        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)
+        ON (`pyp_visual`.`idasistencia` = `pyp_adm_asist_con`.`id`)
     INNER JOIN `database`.`pyp_adm_admision`
         ON (`pyp_adm_admision`.`id_Asistcon` = `pyp_adm_asist_con`.`id`)
-WHERE (`pyp_historiac`.`id` =$P{idhistoria} AND `pyp_historiac`.`estado`=1);]]>
+WHERE (`pyp_visual`.`id` =$P{idhistoria}
+    AND `pyp_visual`.`estado` =1);]]>
 	</queryString>
 	<field name="Nadmision" class="java.lang.Long"/>
 	<field name="fecha" class="java.lang.String"/>
@@ -46,9 +44,9 @@ WHERE (`pyp_historiac`.`id` =$P{idhistoria} AND `pyp_historiac`.`estado`=1);]]>
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="53" splitType="Stretch">
+		<band height="50" splitType="Stretch">
 			<rectangle radius="10">
-				<reportElement x="0" y="6" width="532" height="47"/>
+				<reportElement x="0" y="6" width="532" height="42"/>
 				<graphicElement>
 					<pen lineWidth="0.25" lineColor="#666666"/>
 				</graphicElement>
@@ -137,14 +135,14 @@ WHERE (`pyp_historiac`.`id` =$P{idhistoria} AND `pyp_historiac`.`estado`=1);]]>
 				<textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="78" y="42" width="443" height="10"/>
+				<reportElement x="78" y="36" width="443" height="10"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Calibri" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{observacion}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="13" y="42" width="65" height="10"/>
+				<reportElement x="13" y="36" width="65" height="10"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Calibri" size="7" isBold="true"/>
 				</textElement>
