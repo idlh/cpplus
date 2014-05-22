@@ -672,6 +672,8 @@ public class Controlprenatal extends javax.swing.JPanel {
                     diagnosticosm.actdx();
                     ordenesm.actordenesm();
                     pruebascomple.actpruebasc();
+                    jLabel9.setVisible(true);
+                    Contar();
                 }
             } else {
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
@@ -685,6 +687,8 @@ public class Controlprenatal extends javax.swing.JPanel {
                     diagnosticosm.actdx();
                     ordenesm.actordenesm();
                     pruebascomple.actpruebasc();
+                    jLabel9.setVisible(true);
+                    Contar();
                 }
             }
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
@@ -692,8 +696,6 @@ public class Controlprenatal extends javax.swing.JPanel {
             if (pypAdmAsistCon.getEstado().toString().equals("1")) {
                 act.guardadohc(d, pypAdmAsistCon.getId().toString());
             }
-            jLabel9.setVisible(true);
-            Contar();
         } else {
             JOptionPane.showMessageDialog(null, "La historia ya se encuentra finalizada");
         }
@@ -735,6 +737,8 @@ public class Controlprenatal extends javax.swing.JPanel {
                         pruebascomple.actpruebasc();
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
+                        jLabel12.setVisible(true);
+                        Contar();
                         idhc = d;
                         imprimirhis();
                     }
@@ -757,12 +761,12 @@ public class Controlprenatal extends javax.swing.JPanel {
                         pruebascomple.actpruebasc();
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
+                        jLabel12.setVisible(true);
+                        Contar();
                         idhc = d;
                         imprimirhis();
                     }
                 }
-                jLabel12.setVisible(true);
-                Contar();
             }
         } else {
             JOptionPane.showMessageDialog(null, "La historia ya se encuentra finalizada");

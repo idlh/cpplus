@@ -338,6 +338,8 @@ public class AgudezaV extends javax.swing.JPanel {
                 Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(d));
                 if (h[0][10].toString().equals("0")) {
                     agudeza.actualizardatos();
+                    jLabel9.setVisible(true);
+                    Contar();
                 }
             } else {
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridvisual(pypAdmAsistCon.getId().toString()));
@@ -345,6 +347,8 @@ public class AgudezaV extends javax.swing.JPanel {
                 Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(d));
                 if (h[0][10].toString().equals("0")) {
                     agudeza.actualizardatos();
+                    jLabel9.setVisible(true);
+                    Contar();
                 }
             }
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridvisual(pypAdmAsistCon.getId().toString()));
@@ -352,8 +356,6 @@ public class AgudezaV extends javax.swing.JPanel {
             if (pypAdmAsistCon.getEstado().toString().equals("1")) {
                 act.guardadovisual(d, pypAdmAsistCon.getId().toString());
             }
-            jLabel9.setVisible(true);
-            Contar();
         } else {
             JOptionPane.showMessageDialog(null, "La historia ya se encuentra finalizada");
         }
@@ -363,7 +365,7 @@ public class AgudezaV extends javax.swing.JPanel {
         if (Estadofinal.equals("1")) {
             Object a[][] = Funciones.RetornarDatos(sav.contarvisual(pypAdmAsistCon.getId().toString()));
             int b = Integer.parseInt(a[0][0].toString());
-            if (b == 0) {               
+            if (b == 0) {
                 Date fecha = pypAdmAsistCon.getFecha();
                 String patron = "yyyy-MM-dd", fc;
                 SimpleDateFormat formato = new SimpleDateFormat(patron);
@@ -380,6 +382,8 @@ public class AgudezaV extends javax.swing.JPanel {
                         agudeza.actualizardatos();
                         act.finalizarvisual(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
+                        jLabel12.setVisible(true);
+                        Contar();
                         idhc = d;
                         imprimirhis();
                     }
@@ -396,12 +400,12 @@ public class AgudezaV extends javax.swing.JPanel {
                         agudeza.actualizardatos();
                         act.finalizarvisual(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
+                        jLabel12.setVisible(true);
+                        Contar();
                         idhc = d;
                         imprimirhis();
                     }
                 }
-                jLabel12.setVisible(true);
-                Contar();
             }
         } else {
             JOptionPane.showMessageDialog(null, "La historia ya se encuentra finalizada");
