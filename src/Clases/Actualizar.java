@@ -1397,7 +1397,7 @@ public class Actualizar {
                 + "    INNER JOIN `database`.`info_paciente` "
                 + "        ON (`pyp_adm_agend`.`id_paciente` = `info_paciente`.`id`)"
                 + "WHERE (`info_paciente`.`id` = '" + id + "'"
-                + "    AND `pyp_historiac`.`estado` =1)"
+                + "    AND `pyp_historiac`.`estado` =1 AND `pyp_adm_agend`.`id_programa` = 9)"
                 + "GROUP BY `pyp_explofisica`.`id` DESC LIMIT 1;";
     }
 
