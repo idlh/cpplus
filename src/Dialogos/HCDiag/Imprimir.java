@@ -3,17 +3,13 @@ package Dialogos.HCDiag;
 import Clases.BDConectar;
 import Clases.Funciones_AD;
 import Clases.Imprimirreporte;
-import Clases.Save;
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfCopyFields;
 import com.itextpdf.text.pdf.PdfReader;
 import java.awt.Desktop;
+import java.awt.Dialog;
+import java.awt.event.KeyEvent;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,7 +30,7 @@ public class Imprimir extends javax.swing.JDialog {
         initComponents();
         jLabel2.setText("<html>\n"
                 + "<div style=\"width:250;\">" + "  Si desea imprimir la historia clinica referente al programa de: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.progam + "</b>"
-                + " del (la) paciente: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.name + "</b>" + ", presione el boton aceptar para continuar..." + "\n"
+                + " del (la) paciente: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.name + "</b>" + ", presione el boton aceptar o pulse enter para continuar..." + "\n"
                 + "</div>\n"
                 + "</html>");
         idhisto();
@@ -56,7 +52,13 @@ public class Imprimir extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -131,33 +133,18 @@ public class Imprimir extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-        try {
-            PdfReader reader = null;
-            File archivoTemporal;
-            archivoTemporal = File.createTempFile("Historia", ".pdf");
-            BDConectar bd = new BDConectar();
-            bd.ConectarBasedeDatos();
-            imp.setIdhc(id);
-            imp.setNombrereport(modulo_pyp.Modulo_PyP.d.listPacientes.progam);
-            imp.setCodigo("PP-F01-1420");
-            imp.setConexion(bd.conexion);
-            imp.setServicio("P Y P");
-            imp.setVersion("1.0");
-            reader = imp.Imprimirhistoria();
-            bd.DesconectarBasedeDatos();
-            imp.tempFile.deleteOnExit();
-            PdfCopyFields copy = new PdfCopyFields(new FileOutputStream(archivoTemporal));
-            if (reader != null) {
-                copy.addDocument(reader);
-            }
-            copy.close();
-            Desktop.getDesktop().open(archivoTemporal);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "r001 " + e.getMessage(), Imprimir.class.getName(), JOptionPane.INFORMATION_MESSAGE);
-        }
-        this.dispose();
+        hiloreporte ut = new hiloreporte(this);
+        Thread thread = new Thread(ut);
+        thread.start();
     }//GEN-LAST:event_jButton1MouseReleased
 
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            hiloreporte ut = new hiloreporte(this);
+            Thread thread = new Thread(ut);
+            thread.start();
+        }
+    }//GEN-LAST:event_formKeyPressed
     /**
      * @param args the command line arguments
      */
@@ -232,6 +219,44 @@ public class Imprimir extends javax.swing.JDialog {
             case 7:
                 id = modulo_pyp.Modulo_PyP.d.listPacientes.diabetes.idhc;
                 break;
+        }
+    }
+
+    private class hiloreporte extends Thread {
+
+        Dialog form = null;
+
+        public hiloreporte(Dialog form) {
+            this.form = form;
+        }
+
+        @Override
+        public void run() {
+            try {
+                PdfReader reader = null;
+                File archivoTemporal;
+                archivoTemporal = File.createTempFile("Historia", ".pdf");
+                BDConectar bd = new BDConectar();
+                bd.ConectarBasedeDatos();
+                imp.setIdhc(id);
+                imp.setNombrereport(modulo_pyp.Modulo_PyP.d.listPacientes.progam);
+                imp.setCodigo("PP-F01-1420");
+                imp.setConexion(bd.conexion);
+                imp.setServicio("P Y P");
+                imp.setVersion("1.0");
+                reader = imp.Imprimirhistoria();
+                bd.DesconectarBasedeDatos();
+                imp.tempFile.deleteOnExit();
+                PdfCopyFields copy = new PdfCopyFields(new FileOutputStream(archivoTemporal));
+                if (reader != null) {
+                    copy.addDocument(reader);
+                }
+                copy.close();
+                Desktop.getDesktop().open(archivoTemporal);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "r001 " + e.getMessage(), Imprimir.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            }
+            ((Imprimir) form).dispose();
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
