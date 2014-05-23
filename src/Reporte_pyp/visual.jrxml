@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="historia pyp" pageWidth="612" pageHeight="792" columnWidth="532" leftMargin="40" rightMargin="40" topMargin="40" bottomMargin="40">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="255"/>
+	<property name="ireport.y" value="285"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -340,7 +340,7 @@ WHERE (`pyp_visual`.`id` =$P{idhistoria}
 				<textFieldExpression><![CDATA[$V{zona}]]></textFieldExpression>
 			</textField>
 			<subreport>
-				<reportElement x="0" y="66" width="532" height="35"/>
+				<reportElement isPrintRepeatedValues="false" x="0" y="66" width="532" height="35" isRemoveLineWhenBlank="true"/>
 				<subreportParameter name="idhisto">
 					<subreportParameterExpression><![CDATA[$P{idhistoria}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -350,7 +350,7 @@ WHERE (`pyp_visual`.`id` =$P{idhistoria}
 		</band>
 		<band height="56">
 			<subreport>
-				<reportElement x="0" y="4" width="532" height="50"/>
+				<reportElement isPrintRepeatedValues="false" x="0" y="4" width="532" height="50" isRemoveLineWhenBlank="true"/>
 				<subreportParameter name="idhistoria">
 					<subreportParameterExpression><![CDATA[$P{idhistoria}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -437,7 +437,7 @@ WHERE (`pyp_visual`.`id` =$P{idhistoria}
 				<textElement verticalAlignment="Middle">
 					<font fontName="Calibri" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ojoderecho}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ojoderecho}+"  PIES"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="121" y="28" width="52" height="10"/>
@@ -451,7 +451,7 @@ WHERE (`pyp_visual`.`id` =$P{idhistoria}
 				<textElement verticalAlignment="Middle">
 					<font fontName="Calibri" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ojoizquierdo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ojoizquierdo}+"  PIES"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="238" y="28" width="52" height="10"/>
@@ -465,7 +465,7 @@ WHERE (`pyp_visual`.`id` =$P{idhistoria}
 				<textElement verticalAlignment="Middle">
 					<font fontName="Calibri" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ambos}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ambos}+"  PIES"]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="0" y="46" width="532" height="1"/>
@@ -512,21 +512,21 @@ WHERE (`pyp_visual`.`id` =$P{idhistoria}
 				<textElement verticalAlignment="Middle">
 					<font fontName="Calibri" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{aojoderecho}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{aojoderecho}+"  PIES"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="173" y="53" width="40" height="10"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Calibri" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{aojoizquierdo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{aojoizquierdo}+"  PIES"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="290" y="53" width="40" height="10"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Calibri" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{aambos}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{aambos}+"  PIES"]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="0" y="73" width="532" height="1"/>

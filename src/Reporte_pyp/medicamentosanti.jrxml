@@ -63,7 +63,8 @@ FROM
         ON (`pyp_posologia`.`id_suministro` = `sum_suministro`.`id`)
 WHERE (`pyp_historiac`.`id` =$P{idhistoria}
     AND `pyp_historiac`.`estado` =1
-    AND `pyp_posologia`.`tipo` =1);]]>
+    AND `pyp_posologia`.`tipo` =1
+    AND `pyp_posologia`.`estado` = 2);]]>
 		</queryString>
 		<field name="suministro" class="java.lang.String"/>
 		<field name="dosis_n" class="java.lang.Float"/>
@@ -89,7 +90,8 @@ FROM
         ON (`pyp_posologia`.`id_suministro` = `sum_suministro`.`id`)
 WHERE (`pyp_historiac`.`id` =$P{idhistoria}
     AND `pyp_historiac`.`estado` =1
-    AND `pyp_posologia`.`tipo` =1);]]>
+    AND `pyp_posologia`.`tipo` =1
+    AND `pyp_posologia`.`estado` = 2);]]>
 	</queryString>
 	<field name="suministro" class="java.lang.String"/>
 	<field name="dosis_n" class="java.lang.Float"/>

@@ -39,7 +39,8 @@ FROM
         ON (`pyp_procedimiento`.`id_cups` = `config_cups`.`id`)
 WHERE (`pyp_historiac`.`id` = $P{idhistoria}
     AND `pyp_historiac`.`estado` =1
-    AND `pyp_procedimiento`.`tipo` =1);]]>
+    AND `pyp_procedimiento`.`tipo` =1
+    AND `pyp_procedimiento`.`estado` = 2);]]>
 		</queryString>
 		<field name="codigo" class="java.lang.String"/>
 		<field name="de_subcategoria" class="java.lang.String"/>
@@ -57,7 +58,8 @@ FROM
         ON (`pyp_procedimiento`.`id_cups` = `config_cups`.`id`)
 WHERE (`pyp_historiac`.`id` = $P{idhistoria}
     AND `pyp_historiac`.`estado` =1
-    AND `pyp_procedimiento`.`tipo` =1) LIMIT 1;]]>
+    AND `pyp_procedimiento`.`tipo` =1
+    AND `pyp_procedimiento`.`estado` = 2);]]>
 	</queryString>
 	<field name="codigo" class="java.lang.String"/>
 	<field name="de_subcategoria" class="java.lang.String"/>
