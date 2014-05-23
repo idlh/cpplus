@@ -2485,10 +2485,14 @@ public class Exploracionf extends javax.swing.JPanel {
                 float pes = Float.parseFloat(jTextField9.getText()) - modulo_pyp.Modulo_PyP.d.listPacientes.controlp.peso;
                 BigDecimal value = new BigDecimal(pes).setScale(2, BigDecimal.ROUND_HALF_UP);
                 jTextField21.setText(String.valueOf(value));
+                if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0 && !jTextField3.getText().equals("")) {
+                    calcularimcembarazo();
+                }
             }
-        }
-        if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0) {
-            calcularimc();
+        } else {
+            if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0) {
+                calcularimc();
+            }
         }
     }//GEN-LAST:event_jTextField9KeyReleased
 
@@ -2496,8 +2500,19 @@ public class Exploracionf extends javax.swing.JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jTextPane1.requestFocus();
         }
-        if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0) {
-            calcularimc();
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+            if (!jTextField9.getText().equals("") && modulo_pyp.Modulo_PyP.d.listPacientes.controlp.peso != 0) {
+                float pes = Float.parseFloat(jTextField9.getText()) - modulo_pyp.Modulo_PyP.d.listPacientes.controlp.peso;
+                BigDecimal value = new BigDecimal(pes).setScale(2, BigDecimal.ROUND_HALF_UP);
+                jTextField21.setText(String.valueOf(value));
+                if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0 && !jTextField3.getText().equals("")) {
+                    calcularimcembarazo();
+                }
+            }
+        } else {
+            if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0) {
+                calcularimc();
+            }
         }
     }//GEN-LAST:event_jTextField8KeyReleased
 
@@ -2658,6 +2673,9 @@ public class Exploracionf extends javax.swing.JPanel {
     private void jTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jTextField6.requestFocus();
+        }
+        if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0 && !jTextField3.getText().equals("")) {
+            calcularimcembarazo();
         }
     }//GEN-LAST:event_jTextField3KeyReleased
 
@@ -3665,25 +3683,235 @@ public class Exploracionf extends javax.swing.JPanel {
                     * Float.parseFloat(imcnetro)) / 100) * 100) / 100) / 100;
             BigDecimal value = new BigDecimal(imc).setScale(2, BigDecimal.ROUND_HALF_UP);
             im = String.valueOf(value);
-            if (imc < 19) {
+            if (imc < 16) {
                 jTextField10.setForeground(Color.red);
-                jLabel21.setText("Bajo peso");
+                jLabel21.setText("Delgadez severa");
                 jLabel21.setForeground(Color.red);
             } else {
-                if (imc >= 19 && imc < 25) {
-                    jTextField10.setForeground(new Color(0, 153, 204));
-                    jLabel21.setText("Normal");
-                    jLabel21.setForeground(new Color(0, 153, 204));
+                if (imc >= 16 && imc < 17) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Delgadez moderada");
+                    jLabel21.setForeground(Color.red);
                 } else {
-                    if (imc >= 25 && imc < 30) {
-                        jTextField10.setForeground(new Color(255, 102, 51));
-                        jLabel21.setText("Sobrepeso");
-                        jLabel21.setForeground(new Color(255, 102, 51));
+                    if (imc >= 17 && imc <= 18.49) {
+                        jTextField10.setForeground(Color.red);
+                        jLabel21.setText("Delgadez aceptable");
+                        jLabel21.setForeground(Color.red);
+                    }
+                    if (imc >= 18.50 && imc < 19) {
+                        jTextField10.setForeground(Color.red);
+                        jLabel21.setText("Infrapeso");
+                        jLabel21.setForeground(Color.red);
                     } else {
-                        if (imc >= 30) {
-                            jTextField10.setForeground(Color.red);
-                            jLabel21.setText("Obesidad");
-                            jLabel21.setForeground(Color.RED);
+                        if (imc >= 19 && imc < 25) {
+                            jTextField10.setForeground(new Color(0, 153, 204));
+                            jLabel21.setText("Normal");
+                            jLabel21.setForeground(new Color(0, 153, 204));
+                        } else {
+                            if (imc >= 25 && imc < 30) {
+                                jTextField10.setForeground(new Color(255, 102, 51));
+                                jLabel21.setText("Sobrepeso");
+                                jLabel21.setForeground(new Color(255, 102, 51));
+                            } else {
+                                if (imc == 30) {
+                                    jTextField10.setForeground(Color.red);
+                                    jLabel21.setText("Obesidad");
+                                    jLabel21.setForeground(Color.RED);
+                                } else {
+                                    if (imc > 30 && imc < 35) {
+                                        jTextField10.setForeground(Color.red);
+                                        jLabel21.setText("Obeso tipo I");
+                                        jLabel21.setForeground(Color.red);
+                                    } else {
+                                        if (imc >= 35 && imc < 40) {
+                                            jTextField10.setForeground(Color.red);
+                                            jLabel21.setText("Obeso tipo II");
+                                            jLabel21.setForeground(Color.red);
+                                        } else {
+                                            if (imc > 40) {
+                                                jTextField10.setForeground(Color.red);
+                                                jLabel21.setText("Obeso tipo III");
+                                                jLabel21.setForeground(Color.red);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            jTextField10.setText(im);
+        }
+    }
+
+    private void calcularimcembarazo() {
+        if (!jTextField9.getText().equals("") && !jTextField8.getText().equals("")) {
+            float imc = 0;
+            String im = null, imcnetro = jTextField8.getText();
+            imc = ((Float.parseFloat(jTextField9.getText()) / ((Float.parseFloat(imcnetro)
+                    * Float.parseFloat(imcnetro)) / 100) * 100) / 100) / 100;
+            BigDecimal value = new BigDecimal(imc).setScale(2, BigDecimal.ROUND_HALF_UP);
+            im = String.valueOf(value);
+            if (!jTextField3.getText().equals("")) {
+                if (imc < 20 && Integer.parseInt(jTextField3.getText()) < 10) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Enflaquecida");
+                    jLabel21.setForeground(Color.red);
+                } else {
+                    if ((imc >= 20 && imc < 26) && Integer.parseInt(jTextField3.getText()) < 10) {
+                        jTextField10.setForeground(new Color(0, 153, 204));
+                        jLabel21.setText("Normal");
+                        jLabel21.setForeground(new Color(0, 153, 204));
+                    } else {
+                        if ((imc >= 26 && imc < 31) && Integer.parseInt(jTextField3.getText()) < 10) {
+                            jTextField10.setForeground(new Color(255, 102, 51));
+                            jLabel21.setText("Sobrepeso");
+                            jLabel21.setForeground(new Color(255, 102, 51));
+                        } else {
+                            if (imc >= 31 && Integer.parseInt(jTextField3.getText()) < 10) {
+                                jTextField10.setForeground(Color.red);//
+                                jLabel21.setText("Obesidad");
+                                jLabel21.setForeground(Color.RED);
+                            }
+                        }
+                    }
+                }
+                if (imc < 20.5 && (Integer.parseInt(jTextField3.getText()) >= 10 && Integer.parseInt(jTextField3.getText()) < 15)) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Enflaquecida");
+                    jLabel21.setForeground(Color.red);
+                } else {
+                    if ((imc >= 20.5 && imc < 26.5) && (Integer.parseInt(jTextField3.getText()) >= 10 && Integer.parseInt(jTextField3.getText()) < 15)) {
+                        jTextField10.setForeground(new Color(0, 153, 204));
+                        jLabel21.setText("Normal");
+                        jLabel21.setForeground(new Color(0, 153, 204));
+                    } else {
+                        if ((imc >= 26.5 && imc < 31.5) && (Integer.parseInt(jTextField3.getText()) >= 10 && Integer.parseInt(jTextField3.getText()) < 15)) {
+                            jTextField10.setForeground(new Color(255, 102, 51));
+                            jLabel21.setText("Sobrepeso");
+                            jLabel21.setForeground(new Color(255, 102, 51));
+                        } else {
+                            if (imc >= 31.5 && (Integer.parseInt(jTextField3.getText()) >= 10 && Integer.parseInt(jTextField3.getText()) < 15)) {
+                                jTextField10.setForeground(Color.red);
+                                jLabel21.setText("Obesidad");
+                                jLabel21.setForeground(Color.RED);
+                            }
+                        }
+                    }
+                }                
+                if (imc < 21 && (Integer.parseInt(jTextField3.getText()) >= 15 && Integer.parseInt(jTextField3.getText()) < 20)) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Enflaquecida");
+                    jLabel21.setForeground(Color.red);
+                } else {
+                    if ((imc >= 21 && imc < 27) && (Integer.parseInt(jTextField3.getText()) >= 15 && Integer.parseInt(jTextField3.getText()) < 20)) {
+                        jTextField10.setForeground(new Color(0, 153, 204));
+                        jLabel21.setText("Normal");
+                        jLabel21.setForeground(new Color(0, 153, 204));
+                    } else {
+                        if ((imc >= 27 && imc < 32) && (Integer.parseInt(jTextField3.getText()) >= 15 && Integer.parseInt(jTextField3.getText()) < 20)) {
+                            jTextField10.setForeground(new Color(255, 102, 51));
+                            jLabel21.setText("Sobrepeso");
+                            jLabel21.setForeground(new Color(255, 102, 51));
+                        } else {
+                            if (imc >= 32 && (Integer.parseInt(jTextField3.getText()) >= 15 && Integer.parseInt(jTextField3.getText()) < 20)) {
+                                jTextField10.setForeground(Color.red);
+                                jLabel21.setText("Obesidad");
+                                jLabel21.setForeground(Color.RED);
+                            }
+                        }
+                    }
+                }
+                if (imc < 21.5 && (Integer.parseInt(jTextField3.getText()) >= 20 && Integer.parseInt(jTextField3.getText()) < 25)) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Enflaquecida");
+                    jLabel21.setForeground(Color.red);
+                } else {
+                    if ((imc >= 21.5 && imc < 27.5) && (Integer.parseInt(jTextField3.getText()) >= 20 && Integer.parseInt(jTextField3.getText()) < 25)) {
+                        jTextField10.setForeground(new Color(0, 153, 204));
+                        jLabel21.setText("Normal");
+                        jLabel21.setForeground(new Color(0, 153, 204));
+                    } else {
+                        if ((imc >= 27.5 && imc < 32.5) && (Integer.parseInt(jTextField3.getText()) >= 20 && Integer.parseInt(jTextField3.getText()) < 25)) {
+                            jTextField10.setForeground(new Color(255, 102, 51));
+                            jLabel21.setText("Sobrepeso");
+                            jLabel21.setForeground(new Color(255, 102, 51));
+                        } else {
+                            if (imc >= 32.5 && (Integer.parseInt(jTextField3.getText()) >= 20 && Integer.parseInt(jTextField3.getText()) < 25)) {
+                                jTextField10.setForeground(Color.red);
+                                jLabel21.setText("Obesidad");
+                                jLabel21.setForeground(Color.RED);
+                            }
+                        }
+                    }
+                }
+                if (imc < 22.5 && (Integer.parseInt(jTextField3.getText()) >= 25 && Integer.parseInt(jTextField3.getText()) < 30)) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Enflaquecida");
+                    jLabel21.setForeground(Color.red);
+                } else {
+                    if ((imc >= 22.5 && imc < 28.5) && (Integer.parseInt(jTextField3.getText()) >= 25 && Integer.parseInt(jTextField3.getText()) < 30)) {
+                        jTextField10.setForeground(new Color(0, 153, 204));
+                        jLabel21.setText("Normal");
+                        jLabel21.setForeground(new Color(0, 153, 204));
+                    } else {
+                        if ((imc >= 28.5 && imc < 33.5) && (Integer.parseInt(jTextField3.getText()) >= 25 && Integer.parseInt(jTextField3.getText()) < 30)) {
+                            jTextField10.setForeground(new Color(255, 102, 51));
+                            jLabel21.setText("Sobrepeso");
+                            jLabel21.setForeground(new Color(255, 102, 51));
+                        } else {
+                            if (imc >= 33.5 && (Integer.parseInt(jTextField3.getText()) >= 25 && Integer.parseInt(jTextField3.getText()) < 30)) {
+                                jTextField10.setForeground(Color.red);
+                                jLabel21.setText("Obesidad");
+                                jLabel21.setForeground(Color.RED);
+                            }
+                        }
+                    }
+                }
+                if (imc < 23.5 && (Integer.parseInt(jTextField3.getText()) >= 30 && Integer.parseInt(jTextField3.getText()) < 35)) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Enflaquecida");
+                    jLabel21.setForeground(Color.red);
+                } else {
+                    if ((imc >= 23.5 && imc < 29.5) && (Integer.parseInt(jTextField3.getText()) >= 30 && Integer.parseInt(jTextField3.getText()) < 35)) {
+                        jTextField10.setForeground(new Color(0, 153, 204));
+                        jLabel21.setText("Normal");
+                        jLabel21.setForeground(new Color(0, 153, 204));
+                    } else {
+                        if ((imc >= 29.5 && imc < 34.5) && (Integer.parseInt(jTextField3.getText()) >= 30 && Integer.parseInt(jTextField3.getText()) < 35)) {
+                            jTextField10.setForeground(new Color(255, 102, 51));
+                            jLabel21.setText("Sobrepeso");
+                            jLabel21.setForeground(new Color(255, 102, 51));
+                        } else {
+                            if (imc >= 34.5 && (Integer.parseInt(jTextField3.getText()) >= 30 && Integer.parseInt(jTextField3.getText()) < 35)) {
+                                jTextField10.setForeground(Color.red);
+                                jLabel21.setText("Obesidad");
+                                jLabel21.setForeground(Color.RED);
+                            }
+                        }
+                    }
+                }
+                if (imc < 24.5 && (Integer.parseInt(jTextField3.getText()) >= 35 && Integer.parseInt(jTextField3.getText()) < 40)) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Enflaquecida");
+                    jLabel21.setForeground(Color.red);
+                } else {
+                    if ((imc >= 24.5 && imc < 30.5) && (Integer.parseInt(jTextField3.getText()) >= 35 && Integer.parseInt(jTextField3.getText()) < 40)) {
+                        jTextField10.setForeground(new Color(0, 153, 204));
+                        jLabel21.setText("Normal");
+                        jLabel21.setForeground(new Color(0, 153, 204));
+                    } else {
+                        if ((imc >= 30.5 && imc < 35.5) && (Integer.parseInt(jTextField3.getText()) >= 35 && Integer.parseInt(jTextField3.getText()) < 40)) {
+                            jTextField10.setForeground(new Color(255, 102, 51));
+                            jLabel21.setText("Sobrepeso");
+                            jLabel21.setForeground(new Color(255, 102, 51));
+                        } else {
+                            if (imc >= 35.5 && (Integer.parseInt(jTextField3.getText()) >= 35 && Integer.parseInt(jTextField3.getText()) < 40)) {
+                                jTextField10.setForeground(Color.red);
+                                jLabel21.setText("Obesidad");
+                                jLabel21.setForeground(Color.RED);
+                            }
                         }
                     }
                 }
