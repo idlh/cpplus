@@ -134,7 +134,7 @@ public class Actualizar {
     }
 
     public void actualizarantp(String id, String alerg, String ingprev, String trau, String trat, String dm, String hta, String displi,
-            String despato, String tabaco, String alcohol, String droga, String deshab, String stub, String antf) {
+            String despato, String tabaco, String alcohol, String droga, String deshab, String stub, String antf, String user) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_historiac`"
@@ -142,7 +142,7 @@ public class Actualizar {
                     + "    `pyp_historiac`.`tratamientos` = ?, `pyp_historiac`.`dm` =?, `pyp_historiac`.`hta` = ?,"
                     + "    `pyp_historiac`.`dislipidemia` = ?, `pyp_historiac`.`des_patologicos` = ?, `pyp_historiac`.`tabaco` = ?,"
                     + "    `pyp_historiac`.`alcohol` = ?, `pyp_historiac`.`droga` = ?, `pyp_historiac`.`des_habitos` = ?,"
-                    + "    `pyp_historiac`.`situacionbasal` = ?, `pyp_historiac`.`ant_familiares` = ?"
+                    + "    `pyp_historiac`.`situacionbasal` = ?, `pyp_historiac`.`ant_familiares` = ?, `pyp_historiac`.`usuariolog` = ?"
                     + "    WHERE `pyp_historiac`.`id` = ?;");
             bd.preparedStatement.setString(1, alerg);
             bd.preparedStatement.setString(2, ingprev);
@@ -158,7 +158,8 @@ public class Actualizar {
             bd.preparedStatement.setString(12, deshab);
             bd.preparedStatement.setString(13, stub);
             bd.preparedStatement.setString(14, antf);
-            bd.preparedStatement.setString(15, id);
+            bd.preparedStatement.setString(15, user);
+            bd.preparedStatement.setString(16, id);            
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a005 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
