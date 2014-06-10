@@ -68,8 +68,10 @@ public ListPacientes listPacientes;
         jPanel3.add(jLabel8);
         jLabel8.setBounds(0, 0, 980, 60);
 
+        Contenedor_.setBackground(new java.awt.Color(255, 255, 255));
         Contenedor_.setLayout(null);
 
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(null);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/37.png"))); // NOI18N
