@@ -234,4 +234,22 @@ public class Funciones_AD {
         }
         return obj;
     }
+    
+    public Boolean Validar_CampoHora(String Hora) {
+        boolean b;
+        char[] a = Hora.toString().toCharArray();
+        String[] c = Hora.split(":");
+        if ((a[0] == ' ') || (a[1] == ' ') || (a[2] == ' ')
+                || (a[3] == ' ') || (a[4] == ' ')
+                || (getInteger(c[0]) > 24) || (getInteger(c[1]) > 59)) {
+            b = false;
+        } else {
+            b = true;
+        }
+        return b;
+    }
+    
+    
+    
+    
 }

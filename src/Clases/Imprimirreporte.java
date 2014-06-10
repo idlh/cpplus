@@ -66,17 +66,17 @@ public class Imprimirreporte {
         this.conexion = conexion;
     }
 
-    public PdfReader Imprimirhistoria() {
-        try {
-            Map parametro = new HashMap();
-            parametro.put("idhistoria", getIdhc());
-            parametro.put("nombrereporte", getNombrereport());
-            parametro.put("servicio", getServicio());
-            parametro.put("codigo", getCodigo());
-            parametro.put("version", getVersion());
-            JasperPrint informe = JasperFillManager.fillReport(System.getProperty("user.dir")+"/Reportes/Epicrisis.jasper", parametro, getConexion());
-        } catch (Exception e) {
-            return null;
-        }
-    }
+//    public PdfReader Imprimirhistoria() {
+//        try {
+//            Map parametro = new HashMap();
+//            parametro.put("idhistoria", getIdhc());
+//            parametro.put("nombrereporte", getNombrereport());
+//            parametro.put("servicio", getServicio());
+//            parametro.put("codigo", getCodigo());
+//            parametro.put("version", getVersion());
+//            JasperPrint informe = JasperFillManager.fillReport(System.getProperty("user.dir")+"/Reportes/Epicrisis.jasper", parametro, getConexion());
+//        } catch (Exception e) {
+//            return null;
+//        }
+//    }
 }

@@ -135,8 +135,8 @@ String filtro;
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/cerrar.png"))); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel3MouseReleased(evt);
             }
         });
         jPanel1.add(jLabel3);
@@ -163,8 +163,8 @@ String filtro;
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Aceptar-ok.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel6MouseReleased(evt);
             }
         });
         jPanel1.add(jLabel6);
@@ -174,8 +174,8 @@ String filtro;
         jLabel7.setToolTipText("Realize una busqueda");
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel7MouseReleased(evt);
             }
         });
         jPanel1.add(jLabel7);
@@ -198,32 +198,6 @@ String filtro;
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        Clases.Declaraciones_AD.CContenedor.area.remove(Clases.Declaraciones_AD.CContenedor.area.getSelectedComponent());
-    }//GEN-LAST:event_jLabel3MouseClicked
-
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        if(jDateChooser1.getDateEditor().getDate() != null){
-            Clear_Table();
-            Search_A();
-            }else{
-            jLabel8.setVisible(true); 
-            jLabel8.setText("Por favor ingrese una fecha");
-        }
-    }//GEN-LAST:event_jLabel7MouseClicked
-
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        if(tabla.getRowCount()!=0){
-           Declaraciones_AD.Confirmar.Agend = (PypAdmAgend) tabla.getValueAt(tabla.getSelectedRow(), 0);
-           Declaraciones_AD.Confirmar.jLabel13.setText(""+tabla.getValueAt(tabla.getSelectedRow(), 1));
-           Declaraciones_AD.Confirmar.jLabel12.setText(""+tabla.getValueAt(tabla.getSelectedRow(), 2));           
-           Declaraciones_AD.Confirmar.show();
-        }else{
-           jLabel8.setVisible(true); 
-           jLabel8.setText("Por favor realize una busqueda"); 
-        }
-    }//GEN-LAST:event_jLabel6MouseClicked
-
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         jTextField1.addKeyListener(new KeyAdapter() {
         public void keyReleased(final KeyEvent e) {
@@ -240,6 +214,37 @@ String filtro;
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         jLabel8.setVisible(false);
     }//GEN-LAST:event_formComponentShown
+
+    private void jLabel6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseReleased
+        if(tabla.getRowCount()>0){
+             if(tabla.getSelectedRowCount()>0){
+           Declaraciones_AD.Confirmar.Agend = (PypAdmAgend) tabla.getValueAt(tabla.getSelectedRow(), 0);
+           Declaraciones_AD.Confirmar.jLabel13.setText(""+tabla.getValueAt(tabla.getSelectedRow(), 1));
+           Declaraciones_AD.Confirmar.jLabel12.setText(""+tabla.getValueAt(tabla.getSelectedRow(), 2));           
+           Declaraciones_AD.Confirmar.show();
+        }else{
+           jLabel8.setVisible(true); 
+           jLabel8.setText("Por favor seleccione un registro"); 
+        }
+        }else{
+            jLabel8.setVisible(true); 
+           jLabel8.setText("Por favor realize una busqueda"); 
+        }
+    }//GEN-LAST:event_jLabel6MouseReleased
+
+    private void jLabel7MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseReleased
+         if(jDateChooser1.getDateEditor().getDate() != null){
+          Clear_Table();
+          Search_A();
+          }else{
+          jLabel8.setVisible(true); 
+          jLabel8.setText("Por favor ingrese una fecha");
+        }
+    }//GEN-LAST:event_jLabel7MouseReleased
+
+    private void jLabel3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseReleased
+        Clases.Declaraciones_AD.CContenedor.area.remove(Clases.Declaraciones_AD.CContenedor.area.getSelectedComponent());
+    }//GEN-LAST:event_jLabel3MouseReleased
      public void filtro() {
     trsfiltro.setRowFilter(RowFilter.regexFilter(jTextField1.getText(), 2));
     }
@@ -299,7 +304,7 @@ String filtro;
                 modelo.addRow(M);
                 f = Listado.get(i).getFecha();  
                 h = Listado.get(i).getHora();
-                nombre= Listado.get(i).getIdPaciente().getNombre1()+" "+Listado.get(i).getIdPaciente().getNombre1()+
+                nombre= Listado.get(i).getIdPaciente().getNombre1()+" "+Listado.get(i).getIdPaciente().getNombre2()+
                 " "+Listado.get(i).getIdPaciente().getApellido1()+" "+Listado.get(i).getIdPaciente().getApellido2();       
                 modelo.setValueAt(Listado.get(i), u, 0);   
                 modelo.setValueAt(Listado.get(i).getIdPaciente().getNumDoc(), u, 1);
