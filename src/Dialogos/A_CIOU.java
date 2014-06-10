@@ -4,10 +4,8 @@
  */
 package Dialogos;
 
-import Administrativo.C_Agendar;
-import Clases.Declaraciones_AD;
-import Controladores.PypAdmProgramasJpaController;
-import Entidades.PypAdmProgramas;
+import Controladores.PypCiouJpaController;
+import Entidades.PypCiou;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -21,19 +19,19 @@ import javax.swing.table.TableRowSorter;
  *
  * @author IdlhDeveloper
  */
-public class A_Programas extends javax.swing.JDialog {
-
-Clases.Funciones_AD Funciones_AD = new Clases.Funciones_AD();
+public class A_CIOU extends javax.swing.JDialog {
+PypCiouJpaController Control_CIOU = new PypCiouJpaController();
+Clases.Funciones_AD Funciones = new Clases.Funciones_AD();
 private TableRowSorter trsfiltro; 
 String filtro;
     /**
-     * Creates new form A_Programas
+     * Creates new form A_CIOU
      */
-    public A_Programas(java.awt.Frame parent, boolean modal) {
+    public A_CIOU(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        CrearModelo();
         setLocationRelativeTo(this);
+        jLabel5.setVisible(false);
     }
 
     /**
@@ -49,19 +47,15 @@ String filtro;
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        filtrar = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        filtrar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -77,47 +71,37 @@ String filtro;
 
             }
         ));
-        tabla.setSelectionBackground(new java.awt.Color(153, 204, 255));
-        tabla.setSelectionForeground(new java.awt.Color(102, 102, 102));
-        tabla.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                tablaMouseMoved(evt);
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tablaMouseReleased(evt);
             }
         });
         jScrollPane1.setViewportView(tabla);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 100, 370, 270);
+        jScrollPane1.setBounds(10, 112, 590, 370);
 
-        jPanel2.setBackground(new java.awt.Color(138, 207, 244));
+        jPanel2.setBackground(new java.awt.Color(124, 199, 33));
         jPanel2.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Programas Promoción y Prevención de la Salud");
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(10, 10, 280, 14);
-
-        jLabel2.setText("Seleccione un ítem y presione el botón en la parte inferior.");
+        jLabel2.setText("Selecciona un ítem y presiona el botón de la derecha.");
         jPanel2.add(jLabel2);
         jLabel2.setBounds(10, 22, 290, 14);
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 0, 390, 50);
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setText("Código de acuerdo a la Clasificación Internacional de Ocupaciones");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(10, 10, 390, 14);
 
-        filtrar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                filtrarKeyTyped(evt);
-            }
-        });
-        jPanel1.add(filtrar);
-        filtrar.setBounds(10, 70, 370, 20);
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(0, 0, 610, 60);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 610, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,68 +109,59 @@ String filtro;
         );
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(0, 50, 400, 10);
+        jPanel3.setBounds(0, 60, 610, 10);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Aceptar-ok.png"))); // NOI18N
-        jLabel3.setToolTipText("Aceptar");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+        filtrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                filtrarKeyTyped(evt);
             }
         });
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(340, 370, 42, 43);
+        jPanel1.add(filtrar);
+        filtrar.setBounds(80, 80, 300, 20);
 
-        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel4.setMaximumSize(new java.awt.Dimension(156, 14));
-        jLabel4.setMinimumSize(new java.awt.Dimension(156, 14));
-        jLabel4.setPreferredSize(new java.awt.Dimension(156, 14));
+        jLabel3.setText("Busqueda:");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(19, 80, 51, 20);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/okey.png"))); // NOI18N
+        jLabel4.setText("Aceptar");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel4MouseReleased(evt);
+            }
+        });
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, 384, 320, 30);
+        jLabel4.setBounds(524, 90, 70, 20);
+
+        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel5.setText("Por favor seleccione un ítem.");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(10, 486, 390, 14);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-       Clear_Table1();
-       Cargar_Programas();
-    }//GEN-LAST:event_formWindowOpened
-
-    private void tablaMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseMoved
-       int rowIndex = tabla.rowAtPoint(evt.getPoint());
-       int colIndex = tabla.columnAtPoint(evt.getPoint());
-       tabla.setToolTipText("<html>\n" +
-       "<div style=\"width:200;\">"+(String)tabla.getValueAt(rowIndex, colIndex)+"</div>\n" +
-       "\n" +
-       "</html>");
-    }//GEN-LAST:event_tablaMouseMoved
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        if(tabla.getSelectedRowCount()!=0){
-            jLabel4.setText("");
-            modulo_pyp.Modulo_PyP.d.Agendar.programa = (PypAdmProgramas) tabla.getValueAt(tabla.getSelectedRow(), 0);
-            C_Agendar.jTextField2.setText(""+tabla.getValueAt(tabla.getSelectedRow(), 1));
-            C_Agendar.jLabel15.setText("");
-            C_Agendar.jLabel15.setVisible(false);
-            modulo_pyp.Modulo_PyP.d.Agendar.validar_programa();
-            this.dispose();
+    private void jLabel4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseReleased
+        if(tabla.getSelectedRowCount()>0){
+           modulo_pyp.Modulo_PyP.d.Agendar.U.SelecCIOU = (PypCiou) tabla.getValueAt(tabla.getSelectedRow(), 0);
+           modulo_pyp.Modulo_PyP.d.Agendar.U.jTextField7.setText(""+tabla.getValueAt(tabla.getSelectedRow(), 2));
+           this.dispose();
         }else{
-           jLabel4.setText("Por favor seleccione un registro."); 
+            jLabel5.setVisible(true);
         }
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_jLabel4MouseReleased
 
     private void filtrarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtrarKeyTyped
         filtrar.addKeyListener(new KeyAdapter() {
@@ -200,8 +175,13 @@ String filtro;
         trsfiltro = new TableRowSorter(modelo);
         tabla.setRowSorter(trsfiltro);
     }//GEN-LAST:event_filtrarKeyTyped
-        public void filtro() {
-        trsfiltro.setRowFilter(RowFilter.regexFilter(filtrar.getText(), 1));
+
+    private void tablaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseReleased
+        jLabel5.setVisible(false);
+    }//GEN-LAST:event_tablaMouseReleased
+    public void filtro() {
+    filtro = filtrar.getText();
+    trsfiltro.setRowFilter(RowFilter.regexFilter(filtrar.getText(), 2));
     }  
     /**
      * @param args the command line arguments
@@ -220,20 +200,20 @@ String filtro;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(A_Programas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(A_CIOU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(A_Programas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(A_CIOU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(A_Programas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(A_CIOU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(A_Programas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(A_CIOU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                A_Programas dialog = new A_Programas(new javax.swing.JFrame(), true);
+                A_CIOU dialog = new A_CIOU(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -245,17 +225,19 @@ String filtro;
         });
     }
     public static DefaultTableModel modelo;
-     private void CrearModelo(){
+     public void CrearModelo(){
          try {
              modelo = (new DefaultTableModel(
                 null, new String [] {
-                "id","Programa"}){
+                "id","Codigo",
+                "Descripcion"}){
                 Class[] types = new Class [] {
+                java.lang.String.class,
                 java.lang.String.class,
                 java.lang.String.class
                 };
                 boolean[] canEdit = new boolean [] {
-                false,false
+                false,false,false
                 };
                 @Override
                 public Class getColumnClass(int columnIndex) {
@@ -267,42 +249,37 @@ String filtro;
                 }
             });
           tabla.setModel(modelo);
-          Funciones_AD.ocultarColumnas(tabla, new int[] {0});
+          Funciones.ocultarColumnas(tabla, new int [] {0});
           tabla.getTableHeader().setReorderingAllowed(false);
           tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+          tabla.getColumnModel().getColumn(1).setPreferredWidth(50);
+          tabla.getColumnModel().getColumn(1).setMaxWidth(50);
          } catch (Exception e) {
-             JOptionPane.showMessageDialog(null, e.toString()+" error");
+             JOptionPane.showMessageDialog(null,e.toString()+ " error2");
             }     
-        }
-        public void Cargar_Programas(){
-            try {
-              Object M[]=null;
-              int u=0;
-              List<PypAdmProgramas> Programas;
-              PypAdmProgramasJpaController Control_Programas_PYP = new PypAdmProgramasJpaController();
-              Programas=Control_Programas_PYP.find_Programas();
-                for (int i = 0; i < Programas.size(); i++) {
-                    modelo.addRow(M);
-                    modelo.setValueAt(Programas.get(i), u, 0);
-                    modelo.setValueAt(Programas.get(i).getNombre(), u, 1);
-                    u=u+1;
-                }
-             }catch (Exception e){
-               JOptionPane.showMessageDialog(null, e.getMessage()); 
-            }
-        }
-        public void Clear_Table1(){
-        for (int i = 0; i < tabla.getRowCount(); i++) {
-           modelo.removeRow(i);
-           i-=1;
-       }
-      }
+        } 
+     public void Cargar_CIOU(){
+         try {
+           Object O[]=null;
+           List<PypCiou>CIOU=null;
+           CIOU=Control_CIOU.find_CIOU();
+             for (int i = 0; i < CIOU.size(); i++) {
+              modelo.addRow(O);
+              modelo.setValueAt(CIOU.get(i), i, 0);
+              modelo.setValueAt(CIOU.get(i).getCodigo(), i, 1);
+              modelo.setValueAt(CIOU.get(i).getNombre(), i, 2);   
+             }
+         } catch (Exception e) {
+             JOptionPane.showMessageDialog(this, e.getMessage());
+         }
+     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField filtrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

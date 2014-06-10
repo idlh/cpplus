@@ -4,6 +4,18 @@
  */
 package Dialogos;
 
+
+//import Controladores.InfoDepartamentosJpaController;
+import Controladores.InfoDepartamentosJpaController;
+import Controladores.InfoMunicipiosJpaController;
+import Controladores.InfoPacienteJpaController;
+import Entidades.InfoDepartamentos;
+import Entidades.InfoEntidades;
+import Entidades.InfoMunicipios;
+import Entidades.InfoPaciente;
+import Entidades.PypCiou;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,8 +23,23 @@ import javax.swing.JOptionPane;
  * @author IdlhDeveloper
  */
 public class A_Administrador_Usuarios extends javax.swing.JDialog {
+Clases.Funciones_AD Funciones = new Clases.Funciones_AD();   
+public InfoEntidades entidad;
+Dialogos.A_Entidades Entidades = new Dialogos.A_Entidades(null, true);
+Dialogos.A_CIOU CIUO = new Dialogos.A_CIOU(null, true);
+InfoDepartamentosJpaController Control_Dep = new InfoDepartamentosJpaController();
+InfoMunicipiosJpaController Control_Mun = new InfoMunicipiosJpaController();
+DefaultComboBoxModel dcd = new DefaultComboBoxModel();
+DefaultComboBoxModel dcm = new DefaultComboBoxModel();
+InfoMunicipios MunSeleccionado=null;
+InfoDepartamentos DepSel = null;
+List<InfoDepartamentos> infoDep = null;
+List<InfoMunicipios> infoMun = null;
+InfoPacienteJpaController Control_Paciente = new InfoPacienteJpaController();
+InfoPaciente Paciente = new InfoPaciente();
+public PypCiou SelecCIOU=null;
 
-    /**
+/**
      * Creates new form A_Administrador_Usuarios
      */
     public A_Administrador_Usuarios(java.awt.Frame parent, boolean modal) {
@@ -48,7 +75,6 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         jTextField6 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel12 = new javax.swing.JLabel();
@@ -73,8 +99,6 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         jTextField11 = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         jTextField12 = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jComboBox7 = new javax.swing.JComboBox();
         jLabel25 = new javax.swing.JLabel();
@@ -84,8 +108,19 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jComboBox9 = new javax.swing.JComboBox();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jTextField14 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -109,36 +144,84 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         jLabel3.setText("Identificación:");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(20, 80, 80, 20);
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField1);
         jTextField1.setBounds(100, 80, 120, 20);
 
         jLabel4.setText("HC:");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(240, 110, 70, 20);
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField2);
         jTextField2.setBounds(310, 110, 120, 20);
 
         jLabel5.setText("1er Nombre:");
         jPanel1.add(jLabel5);
         jLabel5.setBounds(20, 140, 80, 20);
+
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField3KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField3);
         jTextField3.setBounds(100, 140, 120, 20);
 
         jLabel6.setText("2do Nombre:");
         jPanel1.add(jLabel6);
         jLabel6.setBounds(240, 140, 70, 20);
+
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField4KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField4);
         jTextField4.setBounds(310, 140, 120, 20);
 
         jLabel7.setText("1er Apellido:");
         jPanel1.add(jLabel7);
         jLabel7.setBounds(20, 170, 80, 20);
+
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField5KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField5);
         jTextField5.setBounds(100, 170, 120, 20);
 
         jLabel8.setText("2do Apellido:");
         jPanel1.add(jLabel8);
         jLabel8.setBounds(240, 170, 70, 20);
+
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField6KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField6);
         jTextField6.setBounds(310, 170, 120, 20);
 
@@ -150,12 +233,6 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         jPanel1.add(jComboBox1);
         jComboBox1.setBounds(100, 108, 39, 20);
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/buscar.png"))); // NOI18N
-        jLabel10.setToolTipText("Buscar");
-        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jLabel10);
-        jLabel10.setBounds(230, 71, 30, 30);
-
         jLabel11.setText("Fecha Nac:");
         jPanel1.add(jLabel11);
         jLabel11.setBounds(20, 200, 80, 20);
@@ -166,11 +243,11 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
 
         jLabel12.setText("Estrato:");
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(240, 230, 70, 20);
+        jLabel12.setBounds(240, 200, 50, 20);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6" }));
         jPanel1.add(jComboBox2);
-        jComboBox2.setBounds(310, 230, 40, 20);
+        jComboBox2.setBounds(310, 200, 40, 20);
 
         jLabel13.setText("Estado Civil:");
         jPanel1.add(jLabel13);
@@ -186,13 +263,23 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
 
         jTextField7.setEditable(false);
         jTextField7.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField7.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jTextField7MouseMoved(evt);
+            }
+        });
         jPanel1.add(jTextField7);
-        jTextField7.setBounds(100, 260, 330, 20);
+        jTextField7.setBounds(100, 260, 300, 20);
 
-        jLabel15.setText("Dpto Nac:");
+        jLabel15.setText("Dpto Rec:");
         jPanel1.add(jLabel15);
         jLabel15.setBounds(20, 290, 80, 20);
 
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jComboBox4);
         jComboBox4.setBounds(100, 290, 120, 20);
 
@@ -200,12 +287,28 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         jPanel1.add(jLabel16);
         jLabel16.setBounds(240, 290, 60, 20);
 
+        jComboBox5.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox5ItemStateChanged(evt);
+            }
+        });
+        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox5ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jComboBox5);
-        jComboBox5.setBounds(300, 290, 130, 20);
+        jComboBox5.setBounds(310, 290, 120, 20);
 
         jLabel17.setText("Email:");
         jPanel1.add(jLabel17);
         jLabel17.setBounds(20, 320, 80, 20);
+
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField8KeyReleased(evt);
+            }
+        });
         jPanel1.add(jTextField8);
         jTextField8.setBounds(100, 320, 330, 20);
 
@@ -220,6 +323,12 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         jLabel19.setText("Barrio/Vda:");
         jPanel1.add(jLabel19);
         jLabel19.setBounds(240, 350, 60, 20);
+
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField9KeyReleased(evt);
+            }
+        });
         jPanel1.add(jTextField9);
         jTextField9.setBounds(299, 350, 130, 20);
 
@@ -237,44 +346,38 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
 
         jLabel22.setText("Contratante:");
         jPanel1.add(jLabel22);
-        jLabel22.setBounds(20, 410, 70, 20);
+        jLabel22.setBounds(20, 440, 70, 20);
 
         jTextField12.setEditable(false);
         jTextField12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jTextField12);
-        jTextField12.setBounds(100, 410, 330, 20);
-
-        jLabel23.setText("Edad:");
-        jPanel1.add(jLabel23);
-        jLabel23.setBounds(240, 200, 28, 20);
-        jPanel1.add(jTextField13);
-        jTextField13.setBounds(310, 200, 80, 20);
+        jTextField12.setBounds(100, 440, 300, 20);
 
         jLabel24.setText("Tipo Afiliación:");
         jPanel1.add(jLabel24);
-        jLabel24.setBounds(20, 440, 80, 20);
+        jLabel24.setBounds(20, 470, 80, 20);
 
         jComboBox7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "COTIZANTE", "BENEFICIARIO", "ADICIONAL", "OTROS" }));
         jPanel1.add(jComboBox7);
-        jComboBox7.setBounds(100, 440, 120, 20);
+        jComboBox7.setBounds(100, 470, 120, 20);
 
         jLabel25.setText("Nivel:");
         jPanel1.add(jLabel25);
-        jLabel25.setBounds(240, 440, 27, 20);
+        jLabel25.setBounds(240, 470, 27, 20);
 
         jComboBox8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
         jPanel1.add(jComboBox8);
-        jComboBox8.setBounds(300, 440, 40, 20);
+        jComboBox8.setBounds(300, 470, 40, 20);
 
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/guardar-big.png"))); // NOI18N
         jLabel26.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel26.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel26MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel26MouseReleased(evt);
             }
         });
         jPanel1.add(jLabel26);
-        jLabel26.setBounds(290, 470, 42, 40);
+        jLabel26.setBounds(290, 510, 42, 40);
 
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/cerrar.png"))); // NOI18N
         jLabel27.setToolTipText("Cerrar");
@@ -285,7 +388,7 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
             }
         });
         jPanel1.add(jLabel27);
-        jLabel27.setBounds(390, 470, 42, 40);
+        jLabel27.setBounds(390, 510, 42, 40);
 
         jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/reload-limpiar.png"))); // NOI18N
         jLabel28.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -295,12 +398,12 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
             }
         });
         jPanel1.add(jLabel28);
-        jLabel28.setBounds(340, 470, 42, 40);
+        jLabel28.setBounds(340, 510, 42, 40);
 
         jLabel29.setForeground(new java.awt.Color(255, 0, 0));
         jLabel29.setPreferredSize(new java.awt.Dimension(40, 14));
         jPanel1.add(jLabel29);
-        jLabel29.setBounds(30, 490, 260, 14);
+        jLabel29.setBounds(20, 492, 270, 14);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -316,15 +419,56 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         jPanel1.add(jPanel3);
         jPanel3.setBounds(0, 50, 450, 10);
 
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/burcarc1.png"))); // NOI18N
+        jLabel30.setToolTipText("Consultar Entidad");
+        jLabel30.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel30MouseReleased(evt);
+            }
+        });
+        jPanel1.add(jLabel30);
+        jLabel30.setBounds(410, 440, 20, 20);
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/burcarc1.png"))); // NOI18N
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel10MouseReleased(evt);
+            }
+        });
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(410, 260, 20, 20);
+
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino" }));
+        jPanel1.add(jComboBox9);
+        jComboBox9.setBounds(313, 230, 117, 20);
+
+        jLabel31.setText("Genero:");
+        jPanel1.add(jLabel31);
+        jLabel31.setBounds(240, 230, 70, 20);
+
+        jLabel32.setText("Dirección:");
+        jPanel1.add(jLabel32);
+        jLabel32.setBounds(20, 410, 50, 14);
+
+        jTextField14.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField14KeyReleased(evt);
+            }
+        });
+        jPanel1.add(jTextField14);
+        jTextField14.setBounds(100, 410, 330, 20);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
         );
 
         pack();
@@ -338,10 +482,118 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         Limpiar();
     }//GEN-LAST:event_jLabel28MouseClicked
 
-    private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked
-        Registrar_HV();
-    }//GEN-LAST:event_jLabel26MouseClicked
+    private void jLabel26MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseReleased
+       Registrar_HV();
+    }//GEN-LAST:event_jLabel26MouseReleased
 
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+       jLabel29.setText("");
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+       jLabel29.setText("");
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+       jLabel29.setText("");
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+       jLabel29.setText("");
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+       jLabel29.setText("");
+    }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+       jLabel29.setText("");
+    }//GEN-LAST:event_jTextField6KeyTyped
+
+    private void jLabel30MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseReleased
+        Entidades.CrearModelo();
+        Entidades.Cargar_Entidades();
+        Entidades.show();
+    }//GEN-LAST:event_jLabel30MouseReleased
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        if (jComboBox4.getSelectedIndex() != -1) {
+            for (int i = 0; i < infoDep.size(); i++) {
+                if (infoDep.get(i).getNombre().toString().equals(jComboBox4.getSelectedItem().toString())) {
+                    DepSel = infoDep.get(i);
+                    break;
+                }
+            }
+            Cargar_municipio(DepSel);
+        }
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        Cargar_departamento();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jLabel10MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseReleased
+        CIUO.CrearModelo();
+        CIUO.Cargar_CIOU();
+        CIUO.show();
+    }//GEN-LAST:event_jLabel10MouseReleased
+
+    private void jTextField7MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField7MouseMoved
+        jTextField7.setToolTipText("<html>\n"
+                + "<div style=\"width:200;\">" + jTextField7.getText().toString() + "</div>\n"
+                + "\n"
+                + "</html>");
+    }//GEN-LAST:event_jTextField7MouseMoved
+
+    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+         
+    }//GEN-LAST:event_jComboBox5ActionPerformed
+
+    private void jComboBox5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox5ItemStateChanged
+        
+    }//GEN-LAST:event_jComboBox5ItemStateChanged
+
+    private void jTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyReleased
+       String cadena = (jTextField3.getText()).toUpperCase();
+        jTextField3.setText(cadena);
+        repaint();
+    }//GEN-LAST:event_jTextField3KeyReleased
+
+    private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
+        String cadena = (jTextField4.getText()).toUpperCase();
+        jTextField4.setText(cadena);
+        repaint();
+    }//GEN-LAST:event_jTextField4KeyReleased
+
+    private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
+        String cadena = (jTextField5.getText()).toUpperCase();
+        jTextField5.setText(cadena);
+        repaint();
+    }//GEN-LAST:event_jTextField5KeyReleased
+
+    private void jTextField6KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyReleased
+        String cadena = (jTextField6.getText()).toUpperCase();
+        jTextField6.setText(cadena);
+        repaint();
+    }//GEN-LAST:event_jTextField6KeyReleased
+
+    private void jTextField8KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyReleased
+        String cadena = (jTextField8.getText()).toUpperCase();
+        jTextField8.setText(cadena);
+        repaint();
+    }//GEN-LAST:event_jTextField8KeyReleased
+
+    private void jTextField9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyReleased
+        String cadena = (jTextField9.getText()).toUpperCase();
+        jTextField9.setText(cadena);
+        repaint();
+    }//GEN-LAST:event_jTextField9KeyReleased
+
+    private void jTextField14KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField14KeyReleased
+        String cadena = (jTextField14.getText()).toUpperCase();
+        jTextField14.setText(cadena);
+        repaint();
+    }//GEN-LAST:event_jTextField14KeyReleased
     /**
      * @param args the command line arguments
      */
@@ -384,33 +636,92 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         });
     }
     private void Registrar_HV(){
-        try {
+          try {
+          char g='M';
+          char zr='U';
+          getMun();
+          char se[];
+          char ta[] = null;
+          char nv[] = null;
           if(!jTextField1.getText().isEmpty()){
               if(!jTextField2.getText().isEmpty()){
-               if(!jTextField3.getText().isEmpty()){
-                 if(!jTextField5.getText().isEmpty()){
-                   
-
-                  
+                if(!jTextField3.getText().isEmpty()){
+                  if(!jTextField5.getText().isEmpty()){
+                     if(getDocumento()==0){
+                       Paciente.setTipoDoc(jComboBox1.getSelectedItem().toString());  
+                       Paciente.setNumDoc(jTextField1.getText());
+                       Paciente.setHc(jTextField2.getText());
+                       Paciente.setNombre1(jTextField3.getText());
+                       Paciente.setNombre2(jTextField4.getText());
+                       Paciente.setApellido1(jTextField5.getText());
+                       Paciente.setApellido2(jTextField6.getText());
+                       String fech = Funciones.getFecha(jDateChooser1);
+                       Paciente.setFechaNacimiento(Funciones.stringToDate(fech));
+                       if(jComboBox9.getSelectedIndex()==0){
+                           g='M';
+                       }else{
+                           g='F';
+                       }
+                       Paciente.setGenero(g);
+                       Paciente.setEstadoCivil(jComboBox3.getSelectedItem().toString());
+                       Paciente.setIdPaisNac(41);
+                       Paciente.setIdPaisRes(41);
+                       Paciente.setIdDptoNac(fech);
+                       Paciente.setIdDptoNac(DepSel.getId().toString());
+                       Paciente.setIdDptoRes(DepSel.getId().toString());
+                       Paciente.setIdMunNac(MunSeleccionado.getId().toString());
+                       Paciente.setIdMunRes(MunSeleccionado.getId().toString());
+                       Paciente.setBarrioOVereda(jTextField9.getText());
+                       if(jComboBox6.getSelectedIndex()==0){
+                           zr='U';
+                       }else{
+                           zr='R';
+                       }
+                       Paciente.setZonaRes(zr);
+                       Paciente.setDireccionPpal(jTextField14.getText());
+                       se=jComboBox2.getSelectedItem().toString().toCharArray();
+                       Paciente.setEstratoSe(se[0]);
+                       Paciente.setTelefono(jTextField10.getText());
+                       Paciente.setNumCelular(jTextField11.getText());
+                       Paciente.setMail(jTextField8.getText());
+                       Paciente.setRaza("NO APLICA");
+                       Paciente.setEtnia("NO APLICA");
+                       Paciente.setContratante(entidad);
+                       ta=String.valueOf(jComboBox7.getSelectedIndex()).toString().toCharArray();
+                       Paciente.setTipoAfiliacion(ta[0]);
+                       nv=String.valueOf(jComboBox8.getSelectedIndex()).toString().toCharArray();
+                       Paciente.setNivel(nv[0]);
+                       Paciente.setEstado('1');
+                       Paciente.setCiou(SelecCIOU.getId());
+                       Control_Paciente.create(Paciente);
+                       Limpiar();
+                       this.dispose();
+                   }else{
+                     jLabel29.setText("Ya existe un usuario con esta identificación"); 
+                     jTextField1.requestFocusInWindow();
+                   }
                 }else{
-                jLabel29.setText("Por favor ingrese el primer apellido");   
-                jTextField5.requestFocusInWindow();
+                 jLabel29.setText("Por favor ingrese el primer apellido");   
+                 jTextField5.requestFocusInWindow();
                }
                }else{
-              jLabel29.setText("Por favor ingrese el primer nombre");   
-              jTextField3.requestFocusInWindow();
+                jLabel29.setText("Por favor ingrese el primer nombre");   
+                jTextField3.requestFocusInWindow();
               }   
              }else{
-              jLabel29.setText("Por favor ingrese el numero de HC");   
-             jTextField2.requestFocusInWindow();
+               jLabel29.setText("Por favor ingrese el numero de HC");   
+               jTextField2.requestFocusInWindow();
             }
             }else{
-            jLabel29.setText("Por favor ingrese una identificación");   
-           jTextField1.requestFocusInWindow();
-          }
-         }catch (Exception e){
-            JOptionPane.showMessageDialog(this,"Error general HV - ADPYP001"+e.getMessage());
-       }
+             jLabel29.setText("Por favor ingrese una identificación");   
+             jTextField1.requestFocusInWindow();
+          } 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
+    private int getDocumento(){
+        return Integer.parseInt(""+Control_Paciente.getCountPersona(jTextField1.getText()));
     }
     private void Limpiar(){
         jTextField1.setText("");
@@ -430,8 +741,44 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
         jTextField10.setText("");
         jTextField11.setText("");
         jTextField12.setText("");
+        jTextField14.setText("");
         jComboBox7.setSelectedIndex(0);
         jComboBox8.setSelectedIndex(0);
+    }
+    public void Cargar_departamento(){
+        try {
+        infoDep=Control_Dep.find_DepartamentosCOL();
+        jComboBox4.setModel(dcd);
+        for (int i = 0; i < infoDep.size(); i++) {
+            dcd.addElement(infoDep.get(i).getNombre());
+          }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
+    public void Cargar_municipio(InfoDepartamentos d){
+        try {
+          dcm.removeAllElements(); 
+          infoMun=Control_Mun.find_municipio(d);
+          jComboBox5.setModel(dcm);
+          for (int i = 0; i < infoMun.size(); i++) {
+                dcm.addElement(infoMun.get(i).getNombre());
+           }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
+    private void getMun(){
+        try {
+               for (int i = 0; i < infoMun.size(); i++) {
+                 if(infoMun.get(i).getNombre().toString().equals(jComboBox5.getSelectedItem().toString())){
+                     MunSeleccionado = infoMun.get(i);
+                     break;
+                 }
+             }            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox jComboBox1;
@@ -442,6 +789,7 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
     private javax.swing.JComboBox jComboBox6;
     private javax.swing.JComboBox jComboBox7;
     private javax.swing.JComboBox jComboBox8;
+    private javax.swing.JComboBox jComboBox9;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -458,7 +806,6 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -466,6 +813,9 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -478,14 +828,14 @@ public class A_Administrador_Usuarios extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
+    public javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    public javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables

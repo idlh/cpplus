@@ -320,7 +320,7 @@ public class A_Profesionales extends javax.swing.JDialog {
                     fi = Profesional.get(i).getFechaInicio();
                     ff = Profesional.get(i).getFechaFin();
                     modelo.setValueAt(Profesional.get(i), u, 0);
-                    Nombre_pro = Profesional.get(i).getIdProfesional().getIdDescripcionLogin().getNombres()+" "+Profesional.get(i).getIdProfesional().getIdDescripcionLogin().getNombres();
+                    Nombre_pro = Profesional.get(i).getIdProfesional().getIdDescripcionLogin().getNombres()+" "+Profesional.get(i).getIdProfesional().getIdDescripcionLogin().getApellidos();
                     modelo.setValueAt(Nombre_pro, u, 1);
                     modelo.setValueAt(Funciones_AD.Formatear_Fecha_object(fi), u, 2);
                     modelo.setValueAt(Funciones_AD.Formatear_Fecha_object(ff), u, 3);

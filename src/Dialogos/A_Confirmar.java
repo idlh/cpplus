@@ -154,8 +154,8 @@ Utilidades.Nat n = new Utilidades.Nat();
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/cerrar.png"))); // NOI18N
         jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel8MouseReleased(evt);
             }
         });
         jPanel1.add(jLabel8);
@@ -164,8 +164,8 @@ Utilidades.Nat n = new Utilidades.Nat();
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/guardar-big.png"))); // NOI18N
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel9MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel9MouseReleased(evt);
             }
         });
         jPanel1.add(jLabel9);
@@ -222,8 +222,8 @@ Utilidades.Nat n = new Utilidades.Nat();
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/buscar.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel6MouseReleased(evt);
             }
         });
         jPanel4.add(jLabel6);
@@ -305,6 +305,7 @@ Utilidades.Nat n = new Utilidades.Nat();
         jRadioButton4.setBounds(80, 200, 90, 23);
 
         jLabel17.setText("Medios?:");
+        jLabel17.setToolTipText("Si el paciente ingreso por sus propios medios");
         jPanel4.add(jLabel17);
         jLabel17.setBounds(10, 200, 60, 20);
 
@@ -411,20 +412,6 @@ Utilidades.Nat n = new Utilidades.Nat();
      
     }//GEN-LAST:event_jFormattedTextField5KeyReleased
 
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        Limpiar();
-        this.dispose();
-    }//GEN-LAST:event_jLabel8MouseClicked
-
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        Profesionales.show();
-    }//GEN-LAST:event_jLabel6MouseClicked
-
-    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        // TODO add your handling code here:
-        Confirmar();
-    }//GEN-LAST:event_jLabel9MouseClicked
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         Limpiar();
     }//GEN-LAST:event_formWindowClosing
@@ -455,6 +442,19 @@ Utilidades.Nat n = new Utilidades.Nat();
             jPanel6.setVisible(false);
         }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jLabel9MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseReleased
+        Confirmar();
+    }//GEN-LAST:event_jLabel9MouseReleased
+
+    private void jLabel8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseReleased
+        Limpiar();
+        this.dispose();
+    }//GEN-LAST:event_jLabel8MouseReleased
+
+    private void jLabel6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseReleased
+         Profesionales.show();
+    }//GEN-LAST:event_jLabel6MouseReleased
 
     /**
      * @param args the command line arguments
@@ -498,10 +498,10 @@ Utilidades.Nat n = new Utilidades.Nat();
         });
     }
     private void Confirmar(){
-        try {
+         try {
          String f=null;
          if(jDateChooser1.getDateEditor().getDate() !=null){
-             if(!jFormattedTextField5.getText().equals("  :  ")){
+             if(Funciones.Validar_CampoHora(jFormattedTextField5.getText()) == true){
                  if(!jTextField1.getText().equals("")){
                      
                     Confirmar.setIdAgend(Agend);
