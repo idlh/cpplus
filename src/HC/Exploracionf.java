@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import entity.PypAdmAsistCon;
 import Clases.Actualizar;
 import Clases.Funciones_AD;
+import Clases.FuncionesC;
 import Clases.Save;
 import java.awt.Desktop;
 import java.io.File;
@@ -30,6 +31,7 @@ public class Exploracionf extends javax.swing.JPanel {
     Save sav = new Save();
     Funciones_AD Funciones = new Funciones_AD();
     CargarordenesM tab = new CargarordenesM();
+    FuncionesC FuncionesC = new FuncionesC();
     private DefaultTableModel modelo;
 
     public Exploracionf(PypAdmAsistCon pypAdmAsistCon) {
@@ -39,7 +41,9 @@ public class Exploracionf extends javax.swing.JPanel {
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 9) {
             jTabbedPane1.remove(jPanel2);
             jTabbedPane2.remove(jPanel18);
+            jLabel64.setVisible(false);
         } else {
+            jLabel21.setVisible(false);
             tabla();
             if (jTabbedPane1.getSelectedComponent() == jPanel1) {
                 jTabbedPane2.setSelectedComponent(jPanel18);
@@ -180,6 +184,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jScrollPane11 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextArea();
         jLabel21 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -310,6 +315,8 @@ public class Exploracionf extends javax.swing.JPanel {
         jLabel55 = new javax.swing.JLabel();
         jLabel56 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
+        jPanel20 = new javax.swing.JPanel();
+        jLabel65 = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         jCheckBox35 = new javax.swing.JCheckBox();
         jCheckBox38 = new javax.swing.JCheckBox();
@@ -373,14 +380,22 @@ public class Exploracionf extends javax.swing.JPanel {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(null);
 
         jLabel14.setText("M");
+        jPanel1.add(jLabel14);
+        jLabel14.setBounds(131, 87, 20, 14);
 
         jLabel15.setText("°C");
+        jPanel1.add(jLabel15);
+        jLabel15.setBounds(131, 62, 30, 14);
 
         jTextField7.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField7FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField7FocusLost(evt);
             }
         });
         jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -391,10 +406,15 @@ public class Exploracionf extends javax.swing.JPanel {
                 jTextField7KeyTyped(evt);
             }
         });
+        jPanel1.add(jTextField7);
+        jTextField7.setBounds(37, 59, 90, 20);
 
         jTextField8.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField8FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField8FocusLost(evt);
             }
         });
         jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -405,6 +425,8 @@ public class Exploracionf extends javax.swing.JPanel {
                 jTextField8KeyTyped(evt);
             }
         });
+        jPanel1.add(jTextField8);
+        jTextField8.setBounds(37, 84, 90, 20);
 
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -419,16 +441,27 @@ public class Exploracionf extends javax.swing.JPanel {
                 jTextField1KeyTyped(evt);
             }
         });
+        jPanel1.add(jTextField1);
+        jTextField1.setBounds(37, 8, 90, 20);
 
         jLabel8.setText("TaS:");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(10, 11, 22, 14);
 
         jLabel16.setText("Talla:");
+        jPanel1.add(jLabel16);
+        jLabel16.setBounds(10, 87, 30, 14);
 
         jLabel9.setText("resp/m");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(131, 37, 40, 14);
 
         jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField4FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField4FocusLost(evt);
             }
         });
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -439,22 +472,39 @@ public class Exploracionf extends javax.swing.JPanel {
                 jTextField4KeyTyped(evt);
             }
         });
+        jPanel1.add(jTextField4);
+        jTextField4.setBounds(37, 34, 90, 20);
 
         jLabel2.setText("mmHg");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(131, 11, 30, 14);
 
         jLabel10.setText("FR:");
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(10, 37, 17, 14);
 
         jLabel17.setText("T:");
+        jPanel1.add(jLabel17);
+        jLabel17.setBounds(10, 62, 10, 14);
 
         jLabel11.setText("FC:");
+        jPanel1.add(jLabel11);
+        jLabel11.setBounds(181, 37, 17, 14);
 
         jLabel18.setText("Kg");
+        jPanel1.add(jLabel18);
+        jLabel18.setBounds(321, 62, 30, 14);
 
         jLabel19.setText("Peso:");
+        jPanel1.add(jLabel19);
+        jLabel19.setBounds(181, 62, 27, 14);
 
         jTextField9.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField9FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField9FocusLost(evt);
             }
         });
         jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -465,10 +515,16 @@ public class Exploracionf extends javax.swing.JPanel {
                 jTextField9KeyTyped(evt);
             }
         });
+        jPanel1.add(jTextField9);
+        jTextField9.setBounds(225, 59, 90, 20);
 
         jLabel12.setText("TaD:");
+        jPanel1.add(jLabel12);
+        jLabel12.setBounds(181, 11, 23, 14);
 
         jLabel20.setText("IMC:");
+        jPanel1.add(jLabel20);
+        jLabel20.setBounds(181, 87, 30, 14);
 
         jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -483,10 +539,16 @@ public class Exploracionf extends javax.swing.JPanel {
                 jTextField2KeyTyped(evt);
             }
         });
+        jPanel1.add(jTextField2);
+        jTextField2.setBounds(225, 8, 90, 20);
 
         jLabel4.setText("mmHg");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(319, 11, 30, 14);
 
         jLabel13.setText("ppm");
+        jPanel1.add(jLabel13);
+        jLabel13.setBounds(319, 37, 40, 14);
 
         jTextField5.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -501,10 +563,16 @@ public class Exploracionf extends javax.swing.JPanel {
                 jTextField5KeyTyped(evt);
             }
         });
+        jPanel1.add(jTextField5);
+        jTextField5.setBounds(225, 34, 90, 20);
 
         jTextField10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jPanel1.add(jTextField10);
+        jTextField10.setBounds(225, 84, 90, 20);
 
         jLabel5.setText("Otros:");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(365, 0, 39, 14);
 
         jTextPane1.setColumns(20);
         jTextPane1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -524,149 +592,20 @@ public class Exploracionf extends javax.swing.JPanel {
         });
         jScrollPane11.setViewportView(jTextPane1);
 
+        jPanel1.add(jScrollPane11);
+        jScrollPane11.setBounds(365, 17, 166, 87);
+
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel21.setText("...");
+        jPanel1.add(jLabel21);
+        jLabel21.setBounds(181, 110, 134, 14);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(5, 5, 5)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(10, 10, 10)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addGap(17, 17, 17)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addGap(17, 17, 17)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(3, 3, 3)
-                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(3, 3, 3)
-                                    .addComponent(jLabel12))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)))
-                            .addGap(6, 6, 6)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(3, 3, 3)
-                                    .addComponent(jLabel11))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13)))
-                            .addGap(5, 5, 5)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(3, 3, 3)
-                                    .addComponent(jLabel19))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel18)))
-                            .addGap(5, 5, 5)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel20)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(3, 3, 3)
-                                    .addComponent(jLabel8))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2)))
-                            .addGap(6, 6, 6)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(3, 3, 3)
-                                    .addComponent(jLabel10))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9)))
-                            .addGap(5, 5, 5)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(3, 3, 3)
-                                    .addComponent(jLabel17))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel15)))
-                            .addGap(5, 5, 5)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(3, 3, 3)
-                                    .addComponent(jLabel16))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel14))))))
-                .addGap(6, 6, 6)
-                .addComponent(jLabel21))
-        );
+        jLabel64.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel64.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel64.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel64.setText("Debe ingresar la edad gestacional en la pestaña 'Gestacion Actual' para calcular el IMC");
+        jPanel1.add(jLabel64);
+        jLabel64.setBounds(10, 110, 520, 14);
 
         jTabbedPane1.addTab("Constantes", jPanel1);
 
@@ -1919,6 +1858,37 @@ public class Exploracionf extends javax.swing.JPanel {
 
         jLabel57.setText("Personal social:");
 
+        jPanel20.setBackground(new java.awt.Color(255, 227, 255));
+
+        jLabel65.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel65.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Table.png"))); // NOI18N
+        jLabel65.setText("Cargar tablas de ayuda");
+        jLabel65.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel65.setFocusable(false);
+        jLabel65.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel65MouseReleased(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel65MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel65MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel65, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+        );
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
@@ -1926,11 +1896,6 @@ public class Exploracionf extends javax.swing.JPanel {
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addComponent(jLabel53)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -1946,16 +1911,25 @@ public class Exploracionf extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel57, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
+                            .addComponent(jLabel57, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(jPanel17Layout.createSequentialGroup()
+                        .addComponent(jLabel53)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel53)
-                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel53)
+                        .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel54)
@@ -1964,14 +1938,185 @@ public class Exploracionf extends javax.swing.JPanel {
                     .addComponent(jLabel57))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
                     .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                    .addComponent(jScrollPane16)
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
                     .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))
                 .addGap(4, 4, 4))
         );
 
         jTabbedPane1.addTab("Valoracion CYD", jPanel17);
+
+        jPanel19.setBackground(new java.awt.Color(255, 255, 255));
+
+        jCheckBox35.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox35.setText("Controlado");
+        jCheckBox35.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox35.setFocusable(false);
+
+        jCheckBox38.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox38.setText("Controlado");
+        jCheckBox38.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox38.setFocusable(false);
+
+        jCheckBox39.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox39.setText("Dislipidemia");
+        jCheckBox39.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox39.setFocusable(false);
+        jCheckBox39.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox39MouseReleased(evt);
+            }
+        });
+
+        jCheckBox40.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox40.setText("DM2");
+        jCheckBox40.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox40.setFocusable(false);
+        jCheckBox40.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox40MouseReleased(evt);
+            }
+        });
+
+        jCheckBox41.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox41.setText("DM1");
+        jCheckBox41.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox41.setFocusable(false);
+        jCheckBox41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox41MouseReleased(evt);
+            }
+        });
+
+        jCheckBox42.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox42.setText("HTA");
+        jCheckBox42.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox42.setFocusable(false);
+        jCheckBox42.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox42MouseReleased(evt);
+            }
+        });
+
+        jCheckBox43.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox43.setText("Controlado");
+        jCheckBox43.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox43.setFocusable(false);
+
+        jCheckBox44.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox44.setText("Controlado");
+        jCheckBox44.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox44.setFocusable(false);
+
+        jLabel61.setText("Glucometría:");
+
+        jTextField22.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField22FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField22FocusLost(evt);
+            }
+        });
+        jTextField22.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField22KeyTyped(evt);
+            }
+        });
+
+        jLabel62.setText("mg/dL");
+
+        jLabel63.setText("Tratamiento:");
+
+        jTextArea16.setColumns(20);
+        jTextArea16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextArea16.setForeground(new java.awt.Color(204, 204, 204));
+        jTextArea16.setLineWrap(true);
+        jTextArea16.setRows(5);
+        jTextArea16.setText("Ninguno");
+        jTextArea16.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea16FocusGained(evt);
+            }
+        });
+        jTextArea16.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea16KeyReleased(evt);
+            }
+        });
+        jScrollPane18.setViewportView(jTextArea16);
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox42, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox41, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox40, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox39))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel19Layout.createSequentialGroup()
+                            .addComponent(jCheckBox35)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel63))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel19Layout.createSequentialGroup()
+                            .addComponent(jCheckBox38)
+                            .addGap(51, 51, 51)
+                            .addComponent(jLabel61)))
+                    .addComponent(jCheckBox43)
+                    .addComponent(jCheckBox44))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addComponent(jTextField22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel62))
+                    .addComponent(jScrollPane18, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addComponent(jCheckBox42)
+                        .addGap(5, 5, 5)
+                        .addComponent(jCheckBox41)
+                        .addGap(5, 5, 5)
+                        .addComponent(jCheckBox40)
+                        .addGap(6, 6, 6)
+                        .addComponent(jCheckBox39))
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox38)
+                            .addComponent(jLabel61)
+                            .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel62))
+                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel19Layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jCheckBox35)
+                                    .addComponent(jLabel63))
+                                .addGap(5, 5, 5)
+                                .addComponent(jCheckBox43)
+                                .addGap(6, 6, 6)
+                                .addComponent(jCheckBox44)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel19Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(jScrollPane18, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                                .addContainerGap())))))
+        );
+
+        jTabbedPane1.addTab("DM", jPanel19);
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -2416,18 +2561,18 @@ public class Exploracionf extends javax.swing.JPanel {
 
     private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9') && jTextField4.getText().contains(".") || jTextField4.getText().length() >= 5) {
+        if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".") || ((javax.swing.JTextField) evt.getSource()).getText().contains(",")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
-        } else if ((car < '0' || car > '9') && (car != '.') || jTextField4.getText().length() >= 5) {
+        } else if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".") || ((javax.swing.JTextField) evt.getSource()).getText().contains(",")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField4KeyTyped
 
     private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9') && jTextField8.getText().contains(".") || jTextField8.getText().length() >= 5) {
+        if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".") || ((javax.swing.JTextField) evt.getSource()).getText().contains(",")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
-        } else if ((car < '0' || car > '9') && (car != '.') || jTextField8.getText().length() >= 5) {
+        } else if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".") || ((javax.swing.JTextField) evt.getSource()).getText().contains(",")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField8KeyTyped
@@ -2500,20 +2645,6 @@ public class Exploracionf extends javax.swing.JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jTextPane1.requestFocus();
         }
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-            if (!jTextField9.getText().equals("") && modulo_pyp.Modulo_PyP.d.listPacientes.controlp.peso != 0) {
-                float pes = Float.parseFloat(jTextField9.getText()) - modulo_pyp.Modulo_PyP.d.listPacientes.controlp.peso;
-                BigDecimal value = new BigDecimal(pes).setScale(2, BigDecimal.ROUND_HALF_UP);
-                jTextField21.setText(String.valueOf(value));
-                if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0 && !jTextField3.getText().equals("")) {
-                    calcularimcembarazo();
-                }
-            }
-        } else {
-            if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0) {
-                calcularimc();
-            }
-        }
     }//GEN-LAST:event_jTextField8KeyReleased
 
     private void jTextArea1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyReleased
@@ -2554,18 +2685,18 @@ public class Exploracionf extends javax.swing.JPanel {
 
     private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9') && jTextField9.getText().contains(".") || jTextField9.getText().length() >= 5) {
+        if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".") || ((javax.swing.JTextField) evt.getSource()).getText().contains(",")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
-        } else if ((car < '0' || car > '9') && (car != '.') || jTextField9.getText().length() >= 5) {
+        } else if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".") || ((javax.swing.JTextField) evt.getSource()).getText().contains(",")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField9KeyTyped
 
     private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9') && jTextField7.getText().contains(".") || jTextField7.getText().length() >= 5) {
+        if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".") || ((javax.swing.JTextField) evt.getSource()).getText().contains(",")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
-        } else if ((car < '0' || car > '9') && (car != '.') || jTextField7.getText().length() >= 5) {
+        } else if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".") || ((javax.swing.JTextField) evt.getSource()).getText().contains(",")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField7KeyTyped
@@ -3012,12 +3143,94 @@ public class Exploracionf extends javax.swing.JPanel {
 
     private void jTextField22KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField22KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9') && jTextField22.getText().contains(".") || jTextField22.getText().length() >= 5) {
+        if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".") || ((javax.swing.JTextField) evt.getSource()).getText().contains(",")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
-        } else if ((car < '0' || car > '9') && (car != '.') || jTextField22.getText().length() >= 5) {
+        } else if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".") || ((javax.swing.JTextField) evt.getSource()).getText().contains(",")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField22KeyTyped
+
+    private void jTextField7FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusLost
+        if (((javax.swing.JTextField) evt.getSource()).getText().contains(",")) {
+            ((javax.swing.JTextField) evt.getSource()).setText(FuncionesC.FormatDecimal(((javax.swing.JTextField) evt.getSource()).getText()));
+        }
+    }//GEN-LAST:event_jTextField7FocusLost
+
+    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
+        if (((javax.swing.JTextField) evt.getSource()).getText().contains(",")) {
+            ((javax.swing.JTextField) evt.getSource()).setText(FuncionesC.FormatDecimal(((javax.swing.JTextField) evt.getSource()).getText()));
+        }
+    }//GEN-LAST:event_jTextField4FocusLost
+
+    private void jTextField9FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField9FocusLost
+        if (((javax.swing.JTextField) evt.getSource()).getText().contains(",")) {
+            ((javax.swing.JTextField) evt.getSource()).setText(FuncionesC.FormatDecimal(((javax.swing.JTextField) evt.getSource()).getText()));
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+            if (!jTextField9.getText().equals("") && modulo_pyp.Modulo_PyP.d.listPacientes.controlp.peso != 0) {
+                float pes = Float.parseFloat(jTextField9.getText()) - modulo_pyp.Modulo_PyP.d.listPacientes.controlp.peso;
+                BigDecimal value = new BigDecimal(pes).setScale(2, BigDecimal.ROUND_HALF_UP);
+                jTextField21.setText(String.valueOf(value));
+                if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0 && !jTextField3.getText().equals("")) {
+                    calcularimcembarazo();
+                }
+            }
+        } else {
+            if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0) {
+                calcularimc();
+            }
+        }
+    }//GEN-LAST:event_jTextField9FocusLost
+
+    private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
+        if (((javax.swing.JTextField) evt.getSource()).getText().contains(",")) {
+            ((javax.swing.JTextField) evt.getSource()).setText(FuncionesC.FormatDecimal(((javax.swing.JTextField) evt.getSource()).getText()));
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+            if (!jTextField9.getText().equals("") && modulo_pyp.Modulo_PyP.d.listPacientes.controlp.peso != 0) {
+                float pes = Float.parseFloat(jTextField9.getText()) - modulo_pyp.Modulo_PyP.d.listPacientes.controlp.peso;
+                BigDecimal value = new BigDecimal(pes).setScale(2, BigDecimal.ROUND_HALF_UP);
+                jTextField21.setText(String.valueOf(value));
+                if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0 && !jTextField3.getText().equals("")) {
+                    calcularimcembarazo();
+                }
+            }
+        } else {
+            if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0) {
+                calcularimc();
+            }
+        }
+    }//GEN-LAST:event_jTextField8FocusLost
+
+    private void jTextField22FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField22FocusLost
+         if (((javax.swing.JTextField) evt.getSource()).getText().contains(",")) {
+            ((javax.swing.JTextField) evt.getSource()).setText(FuncionesC.FormatDecimal(((javax.swing.JTextField) evt.getSource()).getText()));
+        }
+    }//GEN-LAST:event_jTextField22FocusLost
+
+    private void jLabel65MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel65MouseReleased
+        String clipa = getClass().getResource("/Recursos/Tablasayudavaloracion.pdf").getFile();
+        try {
+            File path = new File(clipa);
+            Desktop.getDesktop().open(path);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jLabel65MouseReleased
+
+    private void jLabel65MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel65MouseEntered
+        jPanel20.setBackground(new Color(125, 164, 222));
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
+            HC.CYDesarrollo.jLabel4.setText("Tablas Ayuda");
+        }
+    }//GEN-LAST:event_jLabel65MouseEntered
+
+    private void jLabel65MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel65MouseExited
+        jPanel20.setBackground(new Color(255, 227, 255));
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
+            HC.CYDesarrollo.jLabel4.setText("...");
+        }
+    }//GEN-LAST:event_jLabel65MouseExited
 
     public void actexpf() {
         int tas, tad, fc, talla;
@@ -3676,6 +3889,8 @@ public class Exploracionf extends javax.swing.JPanel {
     }
 
     private void calcularimc() {
+        jLabel64.setVisible(false);
+        jLabel21.setVisible(true);
         if (!jTextField9.getText().equals("") && !jTextField8.getText().equals("")) {
             float imc = 0;
             String im = null, imcnetro = jTextField8.getText();
@@ -3746,6 +3961,8 @@ public class Exploracionf extends javax.swing.JPanel {
     }
 
     private void calcularimcembarazo() {
+        jLabel64.setVisible(false);
+        jLabel21.setVisible(true);
         if (!jTextField9.getText().equals("") && !jTextField8.getText().equals("")) {
             float imc = 0;
             String im = null, imcnetro = jTextField8.getText();
@@ -3799,7 +4016,7 @@ public class Exploracionf extends javax.swing.JPanel {
                             }
                         }
                     }
-                }                
+                }
                 if (imc < 21 && (Integer.parseInt(jTextField3.getText()) >= 15 && Integer.parseInt(jTextField3.getText()) < 20)) {
                     jTextField10.setForeground(Color.red);
                     jLabel21.setText("Enflaquecida");
@@ -4521,6 +4738,8 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JLabel jLabel61;
     javax.swing.JLabel jLabel62;
     javax.swing.JLabel jLabel63;
+    javax.swing.JLabel jLabel64;
+    javax.swing.JLabel jLabel65;
     javax.swing.JLabel jLabel7;
     javax.swing.JLabel jLabel8;
     javax.swing.JLabel jLabel9;
@@ -4536,6 +4755,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JPanel jPanel18;
     javax.swing.JPanel jPanel19;
     javax.swing.JPanel jPanel2;
+    javax.swing.JPanel jPanel20;
     javax.swing.JPanel jPanel3;
     javax.swing.JPanel jPanel4;
     javax.swing.JPanel jPanel5;
