@@ -45,7 +45,7 @@ import java.awt.Color;
  * @author Alvaro Monsalve
  */
 public class ListPacientes extends javax.swing.JDialog {
-    
+
     Properties props = new Properties();
     private DefaultTableModel modelo;
     private EntityManagerFactory factory;
@@ -73,7 +73,7 @@ public class ListPacientes extends javax.swing.JDialog {
         ParametrosBD();
         showPacientes();        
     }
-    
+
     private List<String> referenceUser() {
         List<String> parametros = new ArrayList<String>();
         FileReader lector = null;
@@ -85,7 +85,7 @@ public class ListPacientes extends javax.swing.JDialog {
             String texto = null;
             System.out.println(clipa);
             lector = new FileReader(clipa);
-            
+
             BufferedReader contenido = new BufferedReader(lector);
             while ((texto = contenido.readLine()) != null) {
                 parametros.add(s.decrypt(texto));
@@ -101,7 +101,7 @@ public class ListPacientes extends javax.swing.JDialog {
         }
         return parametros;
     }
-    
+
     private void ParametrosBD() {
         List<String> parametros = referenceUser();
         props.put("javax.persistence.jdbc.user", parametros.get(0));
@@ -113,7 +113,7 @@ public class ListPacientes extends javax.swing.JDialog {
 //        props.put("javax.persistence.jdbc.url", "jdbc:mysql://localhost/database");
 //        props.put("javax.persistence.jdbc.driver", "com.mysql.jdbc.Driver");
     }
-    
+
     public void getModelo() {
         modelo = new DefaultTableModel(
                 null, new String[]{"Asistencia", "TD", "Documento", "Nombre"}) {
@@ -126,12 +126,12 @@ public class ListPacientes extends javax.swing.JDialog {
                     boolean[] canEdit = new boolean[]{
                         false, false, false, false
                     };
-                    
+
                     @Override
                     public Class getColumnClass(int columnIndex) {
                         return types[columnIndex];
                     }
-                    
+
                     @Override
                     public boolean isCellEditable(int rowIndex, int colIndex) {
                         return canEdit[colIndex];
@@ -139,7 +139,7 @@ public class ListPacientes extends javax.swing.JDialog {
                 };
         jTable1.setModel(modelo);
     }
-    
+
     public void ModeloListadoPaciente() {
         getModelo();
         jTable1.getTableHeader().setReorderingAllowed(false);
@@ -147,7 +147,7 @@ public class ListPacientes extends javax.swing.JDialog {
         Funciones_AD.setOcultarColumnas(jTable1, new int[]{0});
         Funciones_AD.setSizeColumnas(jTable1, new int[]{1, 2, 3}, new int[]{30, 80, 198});
     }
-    
+
     private void showPacientes() {
         factory = Persistence.createEntityManagerFactory("EJB_CEPU", props);
         paacjc = new PypAdmAsistConJpaController(factory);
@@ -176,7 +176,7 @@ public class ListPacientes extends javax.swing.JDialog {
             }
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -587,7 +587,7 @@ public class ListPacientes extends javax.swing.JDialog {
         this.dispose();
         list.setVisible(true);
     }//GEN-LAST:event_jLabel15MouseReleased
-    
+
     private void cargarprograma() {
         Desktop desktop = (Desktop) this.getParent();
         pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
