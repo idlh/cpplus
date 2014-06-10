@@ -2079,7 +2079,7 @@ public class AntecedentesP extends javax.swing.JPanel {
         act.actualizarantp(d, jTextArea1.getText().toUpperCase(), jTextArea2.getText().toUpperCase(),
                 jTextArea3.getText().toUpperCase(), jTextArea4.getText().toUpperCase(),
                 w, q, e, jTextArea5.getText().toUpperCase(), r, t, y, jTextArea6.getText().toUpperCase(),
-                jTextArea7.getText().toUpperCase(), jTextArea8.getText().toUpperCase());
+                jTextArea7.getText().toUpperCase(), jTextArea8.getText().toUpperCase(), "40");
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
             actcrecimiento();
         }

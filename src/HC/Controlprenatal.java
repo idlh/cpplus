@@ -733,7 +733,7 @@ public class Controlprenatal extends javax.swing.JPanel {
             Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
             int b = Integer.parseInt(a[0][0].toString());
             if (b == 0) {
-                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), String.valueOf(diagnosticosm.ciep));
+                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), "40", String.valueOf(diagnosticosm.ciep));
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
                 Date fecha = pypAdmAsistCon.getFecha();
@@ -792,7 +792,7 @@ public class Controlprenatal extends javax.swing.JPanel {
             Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
             int b = Integer.parseInt(a[0][0].toString());
             if (b == 0) {
-                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), String.valueOf(diagnosticosm.ciep));
+                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), "40", String.valueOf(diagnosticosm.ciep));
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
                 Date fecha = pypAdmAsistCon.getFecha();
@@ -826,6 +826,11 @@ public class Controlprenatal extends javax.swing.JPanel {
                         jLabel12.setVisible(true);
                         Contar();
                         idhc = d;
+                        Object poso[][] = Funciones.RetornarDatos(sav.recetam(d));
+                        String cantiposo = poso[0][0].toString();
+                        if (!cantiposo.equals("0")) {
+                            sav.newreceta(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), "1", "1");
+                        }
                         imprimirhis();
                     }
                 }
@@ -850,6 +855,11 @@ public class Controlprenatal extends javax.swing.JPanel {
                         jLabel12.setVisible(true);
                         Contar();
                         idhc = d;
+                        Object poso[][] = Funciones.RetornarDatos(sav.recetam(d));
+                        String cantiposo = poso[0][0].toString();
+                        if (!cantiposo.equals("0")) {
+                            sav.newreceta(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), "1", "1");
+                        }
                         imprimirhis();
                     }
                 }

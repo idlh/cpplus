@@ -819,6 +819,11 @@ public class Planificacion extends javax.swing.JPanel {
                         jLabel12.setVisible(true);
                         Contar();
                         idhc = d;
+                        Object poso[][] = Funciones.RetornarDatos(sav.recetam(d));
+                        String cantiposo = poso[0][0].toString();
+                        if (!cantiposo.equals("0")) {
+                            sav.newreceta(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), "1", "1");
+                        }
                         imprimirhis();
                     }
                 }
@@ -843,6 +848,11 @@ public class Planificacion extends javax.swing.JPanel {
                         jLabel12.setVisible(true);
                         Contar();
                         idhc = d;
+                        Object poso[][] = Funciones.RetornarDatos(sav.recetam(d));
+                        String cantiposo = poso[0][0].toString();
+                        if (!cantiposo.equals("0")) {
+                            sav.newreceta(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), "1", "1");
+                        }
                         imprimirhis();
                     }
                 }

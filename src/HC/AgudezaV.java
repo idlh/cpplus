@@ -406,7 +406,7 @@ public class AgudezaV extends javax.swing.JPanel {
                 String patron = "yyyy-MM-dd", fc;
                 SimpleDateFormat formato = new SimpleDateFormat(patron);
                 fc = formato.format(fecha);
-                sav.crearvisualnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.crearvisualnueva(pypAdmAsistCon.getId().toString(), "40", fc);
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridvisual(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
                 Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(d));
@@ -444,7 +444,7 @@ public class AgudezaV extends javax.swing.JPanel {
                 String patron = "yyyy-MM-dd", fc;
                 SimpleDateFormat formato = new SimpleDateFormat(patron);
                 fc = formato.format(fecha);
-                sav.crearvisualnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.crearvisualnueva(pypAdmAsistCon.getId().toString(), "40", fc);
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridvisual(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
                 Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(d));
