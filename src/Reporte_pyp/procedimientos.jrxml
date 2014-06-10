@@ -79,7 +79,7 @@ FROM
 WHERE (`pyp_historiac`.`id` =$P{idhistoria}
     AND `pyp_historiac`.`estado` =1
     AND `pyp_procedimiento`.`tipo` =0
-    AND `pyp_procedimiento`.`estado` = 2);]]>
+    AND `pyp_procedimiento`.`estado` = 2) LIMIT 1;]]>
 	</queryString>
 	<field name="codigo" class="java.lang.String"/>
 	<field name="de_subcategoria" class="java.lang.String"/>
