@@ -1,6 +1,7 @@
 package Dialogos.HCDiag;
 
 import Clases.Funciones_AD;
+import java.awt.Color;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -134,14 +135,22 @@ public class Dprocedimientos extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sigA0.PNG"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sgte2.png"))); // NOI18N
         jButton3.setContentAreaFilled(false);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setFocusable(false);
         jButton3.setMaximumSize(new java.awt.Dimension(36, 36));
         jButton3.setMinimumSize(new java.awt.Dimension(36, 36));
         jButton3.setPreferredSize(new java.awt.Dimension(36, 36));
-        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sigA1.png"))); // NOI18N
+        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sgte.png"))); // NOI18N
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton3MouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -155,7 +164,7 @@ public class Dprocedimientos extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 10, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -167,8 +176,8 @@ public class Dprocedimientos extends javax.swing.JDialog {
                 .addGap(6, 6, 6)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -215,6 +224,16 @@ public class Dprocedimientos extends javax.swing.JDialog {
         columnindex = jTable1.columnAtPoint(evt.getPoint());
         jTable1.setToolTipText((String) jTable1.getValueAt(rowindex, columnindex));
     }//GEN-LAST:event_jTable1MouseMoved
+
+    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
+        jPanel2.setBackground(new Color(125, 164, 222));
+        jLabel1.setForeground(Color.white);
+    }//GEN-LAST:event_jButton3MouseEntered
+
+    private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
+        jPanel2.setBackground(new Color(255,227,255));
+        jLabel1.setForeground(Color.black);
+    }//GEN-LAST:event_jButton3MouseExited
     public void procotros() {
         try {
             mos.Mostrar_datosO();

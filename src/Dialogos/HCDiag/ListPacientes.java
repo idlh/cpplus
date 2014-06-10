@@ -38,13 +38,14 @@ import HC.AgudezaV;
 import java.awt.Frame;
 import javax.swing.SwingUtilities;
 import Clases.Save;
+import java.awt.Color;
 
 /**
  *
  * @author Alvaro Monsalve
  */
 public class ListPacientes extends javax.swing.JDialog {
-    
+
     Properties props = new Properties();
     private DefaultTableModel modelo;
     private EntityManagerFactory factory;
@@ -65,14 +66,14 @@ public class ListPacientes extends javax.swing.JDialog {
     public String progam, name;
     Save sav = new Save();
     Funciones_AD Funciones = new Funciones_AD();
-    
+
     public ListPacientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         ParametrosBD();
-        showPacientes();
+        showPacientes();        
     }
-    
+
     private List<String> referenceUser() {
         List<String> parametros = new ArrayList<String>();
         FileReader lector = null;
@@ -84,7 +85,7 @@ public class ListPacientes extends javax.swing.JDialog {
             String texto = null;
             System.out.println(clipa);
             lector = new FileReader(clipa);
-            
+
             BufferedReader contenido = new BufferedReader(lector);
             while ((texto = contenido.readLine()) != null) {
                 parametros.add(s.decrypt(texto));
@@ -100,15 +101,19 @@ public class ListPacientes extends javax.swing.JDialog {
         }
         return parametros;
     }
-    
+
     private void ParametrosBD() {
         List<String> parametros = referenceUser();
         props.put("javax.persistence.jdbc.user", parametros.get(0));
         props.put("javax.persistence.jdbc.password", parametros.get(1));
         props.put("javax.persistence.jdbc.url", parametros.get(2));
         props.put("javax.persistence.jdbc.driver", parametros.get(3));
+//        props.put("javax.persistence.jdbc.user", "root");
+//        props.put("javax.persistence.jdbc.password", "root");
+//        props.put("javax.persistence.jdbc.url", "jdbc:mysql://localhost/database");
+//        props.put("javax.persistence.jdbc.driver", "com.mysql.jdbc.Driver");
     }
-    
+
     public void getModelo() {
         modelo = new DefaultTableModel(
                 null, new String[]{"Asistencia", "TD", "Documento", "Nombre"}) {
@@ -121,12 +126,12 @@ public class ListPacientes extends javax.swing.JDialog {
                     boolean[] canEdit = new boolean[]{
                         false, false, false, false
                     };
-                    
+
                     @Override
                     public Class getColumnClass(int columnIndex) {
                         return types[columnIndex];
                     }
-                    
+
                     @Override
                     public boolean isCellEditable(int rowIndex, int colIndex) {
                         return canEdit[colIndex];
@@ -134,7 +139,7 @@ public class ListPacientes extends javax.swing.JDialog {
                 };
         jTable1.setModel(modelo);
     }
-    
+
     public void ModeloListadoPaciente() {
         getModelo();
         jTable1.getTableHeader().setReorderingAllowed(false);
@@ -142,7 +147,7 @@ public class ListPacientes extends javax.swing.JDialog {
         Funciones_AD.setOcultarColumnas(jTable1, new int[]{0});
         Funciones_AD.setSizeColumnas(jTable1, new int[]{1, 2, 3}, new int[]{30, 80, 198});
     }
-    
+
     private void showPacientes() {
         factory = Persistence.createEntityManagerFactory("EJB_CEPU", props);
         paacjc = new PypAdmAsistConJpaController(factory);
@@ -151,7 +156,7 @@ public class ListPacientes extends javax.swing.JDialog {
             //asignar el id del profecional de la tabla cmprofesionales
             jTable1.removeAll();
             ModeloListadoPaciente();
-            asistCon = paacjc.listPypAdmAsistCon(4);
+            asistCon = paacjc.listPypAdmAsistCon(40);
         } else {
             jTable1.removeAll();
             ModeloListadoPaciente();
@@ -171,7 +176,7 @@ public class ListPacientes extends javax.swing.JDialog {
             }
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -245,11 +250,11 @@ public class ListPacientes extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sigA0.PNG"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sgte2.png"))); // NOI18N
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusable(false);
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sigA1.png"))); // NOI18N
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sgte.png"))); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jButton1MouseReleased(evt);
@@ -460,7 +465,7 @@ public class ListPacientes extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -473,7 +478,7 @@ public class ListPacientes extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -499,7 +504,7 @@ public class ListPacientes extends javax.swing.JDialog {
         if (modelo.getRowCount() > 0 && jTable1.getSelectedRow() > -1) {
             pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
             if (pypAdmAsistCon.getEstado().toString().equals("3")) {
-                if (pypAdmAsistCon.getIdControlPro().getIdProfesional().getId() == 4) {
+                if (pypAdmAsistCon.getIdControlPro().getIdProfesional().getId() == 40) {
                     cargarprograma();
                 } else {
                     JOptionPane.showMessageDialog(null, "El paciente ya se encuentra en atencion");
@@ -558,7 +563,7 @@ public class ListPacientes extends javax.swing.JDialog {
             } else {
                 jLabel14.setText("Consulta por primera vez".toUpperCase());
             }
-            jLabel17.setText(pypAdmAsistCon.getIdControlPro().getIdProfesional().getIdDescripcionLogin().getNombres() + " " + pypAdmAsistCon.getIdControlPro().getIdProfesional().getIdDescripcionLogin().getApellidos());            
+            jLabel17.setText(pypAdmAsistCon.getIdControlPro().getIdProfesional().getIdDescripcionLogin().getNombres() + " " + pypAdmAsistCon.getIdControlPro().getIdProfesional().getIdDescripcionLogin().getApellidos());
             idprograma = pypAdmAsistCon.getIdAgend().getIdPrograma().getId();
         }
     }//GEN-LAST:event_jTable1MouseReleased
@@ -582,7 +587,7 @@ public class ListPacientes extends javax.swing.JDialog {
         this.dispose();
         list.setVisible(true);
     }//GEN-LAST:event_jLabel15MouseReleased
-    
+
     private void cargarprograma() {
         Desktop desktop = (Desktop) this.getParent();
         pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);

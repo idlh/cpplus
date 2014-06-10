@@ -7,12 +7,14 @@ package Dialogos.HCDiag;
 
 import Clases.Cmedicamentos;
 import Clases.Funciones_AD;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import Clases.FuncionesC;
 
 /**
  *
@@ -23,6 +25,7 @@ public class Dmedicamentosanti extends javax.swing.JDialog {
     Clases.Cmedicamentos med = new Cmedicamentos();
     public DefaultTableModel modelo;
     int row;
+    FuncionesC FuncionesC = new FuncionesC();
 
     public Dmedicamentosanti(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -180,6 +183,9 @@ public class Dmedicamentosanti extends javax.swing.JDialog {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField2FocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField2FocusLost(evt);
+            }
         });
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -279,6 +285,14 @@ public class Dmedicamentosanti extends javax.swing.JDialog {
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setFocusable(false);
         jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/finalc1.png"))); // NOI18N
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton2MouseExited(evt);
+            }
+        });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salirc2.png"))); // NOI18N
         jButton1.setToolTipText("Cancelar");
@@ -288,6 +302,12 @@ public class Dmedicamentosanti extends javax.swing.JDialog {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jButton1MouseReleased(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
             }
         });
 
@@ -450,9 +470,9 @@ public class Dmedicamentosanti extends javax.swing.JDialog {
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9') && jTextField2.getText().contains(".") || jTextField2.getText().length() >= 5) {
+        if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".") || ((javax.swing.JTextField) evt.getSource()).getText().contains(",")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
-        } else if ((car < '0' || car > '9') && (car != '.') || jTextField2.getText().length() >= 5) {
+        } else if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".") || ((javax.swing.JTextField) evt.getSource()).getText().contains(",")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField2KeyTyped
@@ -466,6 +486,32 @@ public class Dmedicamentosanti extends javax.swing.JDialog {
             jTextArea1.requestFocus();
         }
     }//GEN-LAST:event_jTextField2KeyReleased
+
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+        jPanel2.setBackground(new Color(125, 164, 222));
+        jLabel1.setForeground(Color.white);
+    }//GEN-LAST:event_jButton2MouseEntered
+
+    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
+        jPanel2.setBackground(new Color(255,227,255));
+        jLabel1.setForeground(Color.black);
+    }//GEN-LAST:event_jButton2MouseExited
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        jPanel2.setBackground(new Color(125, 164, 222));
+        jLabel1.setForeground(Color.white);
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        jPanel2.setBackground(new Color(255,227,255));
+        jLabel1.setForeground(Color.black);
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+        if (((javax.swing.JTextField) evt.getSource()).getText().contains(",")) {
+            ((javax.swing.JTextField) evt.getSource()).setText(FuncionesC.FormatDecimal(((javax.swing.JTextField) evt.getSource()).getText()));
+        }
+    }//GEN-LAST:event_jTextField2FocusLost
 
     /**
      * @param args the cordenesmmand line arguments
