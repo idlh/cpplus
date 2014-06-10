@@ -176,6 +176,7 @@ public class Adulto extends javax.swing.JPanel {
         jPanel2.add(jLabel3);
         jLabel3.setBounds(10, 2, 327, 15);
 
+        jButton1.setBackground(new java.awt.Color(255, 227, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salirc2.png"))); // NOI18N
         jButton1.setToolTipText("Salir");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -195,6 +196,7 @@ public class Adulto extends javax.swing.JPanel {
         jPanel2.add(jButton1);
         jButton1.setBounds(700, 2, 38, 38);
 
+        jButton2.setBackground(new java.awt.Color(255, 227, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/impc2.png"))); // NOI18N
         jButton2.setToolTipText("Imprimir");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -214,6 +216,7 @@ public class Adulto extends javax.swing.JPanel {
         jPanel2.add(jButton2);
         jButton2.setBounds(654, 2, 38, 38);
 
+        jButton3.setBackground(new java.awt.Color(255, 227, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/savec2.png"))); // NOI18N
         jButton3.setToolTipText("Guardar");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -233,6 +236,7 @@ public class Adulto extends javax.swing.JPanel {
         jPanel2.add(jButton3);
         jButton3.setBounds(562, 2, 38, 38);
 
+        jButton4.setBackground(new java.awt.Color(255, 227, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/finalc2.png"))); // NOI18N
         jButton4.setToolTipText("Finalizar");
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -536,71 +540,85 @@ public class Adulto extends javax.swing.JPanel {
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
         jLabel4.setText("Motivo de Consulta");
         jPanel9.setBackground(new Color(125, 164, 222));
+        jLabel2.setForeground(Color.white);
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
         jLabel4.setText("...");
         jPanel9.setBackground(new Color(255, 227, 255));
+        jLabel2.setForeground(Color.black);
     }//GEN-LAST:event_jLabel2MouseExited
 
     private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
         jLabel4.setText("Antecedentes Personales");
         jPanel11.setBackground(new Color(125, 164, 222));
+        jLabel5.setForeground(Color.white);
     }//GEN-LAST:event_jLabel5MouseEntered
 
     private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
         jLabel4.setText("...");
         jPanel11.setBackground(new Color(255, 227, 255));
+        jLabel5.setForeground(Color.black);
     }//GEN-LAST:event_jLabel5MouseExited
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
         jLabel4.setText("Enfermedad Actual");
         jPanel12.setBackground(new Color(125, 164, 222));
+        jLabel6.setForeground(Color.white);
     }//GEN-LAST:event_jLabel6MouseEntered
 
     private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseExited
         jLabel4.setText("...");
         jPanel12.setBackground(new Color(255, 227, 255));
+        jLabel6.setForeground(Color.black);
     }//GEN-LAST:event_jLabel6MouseExited
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
         jLabel4.setText("Exploración Física");
         jPanel13.setBackground(new Color(125, 164, 222));
+        jLabel7.setForeground(Color.white);
     }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
         jLabel4.setText("...");
         jPanel13.setBackground(new Color(255, 227, 255));
+        jLabel7.setForeground(Color.black);
     }//GEN-LAST:event_jLabel7MouseExited
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
         jLabel4.setText("Pruebas Complementarias");
         jPanel14.setBackground(new Color(125, 164, 222));
+        jLabel8.setForeground(Color.white);
     }//GEN-LAST:event_jLabel8MouseEntered
 
     private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
         jLabel4.setText("...");
         jPanel14.setBackground(new Color(255, 227, 255));
+        jLabel8.setForeground(Color.black);
     }//GEN-LAST:event_jLabel8MouseExited
 
     private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
         jLabel4.setText("Diagnostico Medico");
         jPanel16.setBackground(new Color(125, 164, 222));
+        jLabel10.setForeground(Color.white);
     }//GEN-LAST:event_jLabel10MouseEntered
 
     private void jLabel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseExited
         jLabel4.setText("...");
         jPanel16.setBackground(new Color(255, 227, 255));
+        jLabel10.setForeground(Color.black);
     }//GEN-LAST:event_jLabel10MouseExited
 
     private void jLabel11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseEntered
         jLabel4.setText("Ordenes Medicas");
         jPanel17.setBackground(new Color(125, 164, 222));
+        jLabel11.setForeground(Color.white);
     }//GEN-LAST:event_jLabel11MouseEntered
 
     private void jLabel11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseExited
         jLabel4.setText("...");
         jPanel17.setBackground(new Color(255, 227, 255));
+        jLabel11.setForeground(Color.black);
     }//GEN-LAST:event_jLabel11MouseExited
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
@@ -728,7 +746,7 @@ public class Adulto extends javax.swing.JPanel {
             Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
             int b = Integer.parseInt(a[0][0].toString());
             if (b == 0) {
-                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), String.valueOf(diagnosticosm.ciep));
+                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), "40", String.valueOf(diagnosticosm.ciep));
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
                 Date fecha = pypAdmAsistCon.getFecha();
@@ -782,7 +800,7 @@ public class Adulto extends javax.swing.JPanel {
             Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
             int b = Integer.parseInt(a[0][0].toString());
             if (b == 0) {
-                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), String.valueOf(diagnosticosm.ciep));
+                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), "40", String.valueOf(diagnosticosm.ciep));
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
                 Date fecha = pypAdmAsistCon.getFecha();
@@ -809,6 +827,11 @@ public class Adulto extends javax.swing.JPanel {
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
                         idhc = d;
+                        Object poso[][] = Funciones.RetornarDatos(sav.recetam(d));
+                        String cantiposo = poso[0][0].toString();
+                        if (!cantiposo.equals("0")) {
+                            sav.newreceta(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), "1", "1");
+                        }
                         imprimirhis();
                     }
                 }
@@ -833,6 +856,11 @@ public class Adulto extends javax.swing.JPanel {
                         jLabel12.setVisible(true);
                         Contar();
                         idhc = d;
+                        Object poso[][] = Funciones.RetornarDatos(sav.recetam(d));
+                        String cantiposo = poso[0][0].toString();
+                        if (!cantiposo.equals("0")) {
+                            sav.newreceta(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), "1", "1");
+                        }
                         imprimirhis();
                     }
                 }
@@ -841,8 +869,8 @@ public class Adulto extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "La historia ya se encuentra finalizada");
         }
     }
-    
-    private void salir(){
+
+    private void salir() {
         modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
         modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
     }

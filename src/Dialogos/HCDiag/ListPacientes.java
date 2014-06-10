@@ -38,6 +38,7 @@ import HC.AgudezaV;
 import java.awt.Frame;
 import javax.swing.SwingUtilities;
 import Clases.Save;
+import java.awt.Color;
 
 /**
  *
@@ -65,12 +66,12 @@ public class ListPacientes extends javax.swing.JDialog {
     public String progam, name;
     Save sav = new Save();
     Funciones_AD Funciones = new Funciones_AD();
-    
+
     public ListPacientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         ParametrosBD();
-        showPacientes();
+        showPacientes();        
     }
     
     private List<String> referenceUser() {
@@ -107,6 +108,10 @@ public class ListPacientes extends javax.swing.JDialog {
         props.put("javax.persistence.jdbc.password", parametros.get(1));
         props.put("javax.persistence.jdbc.url", parametros.get(2));
         props.put("javax.persistence.jdbc.driver", parametros.get(3));
+//        props.put("javax.persistence.jdbc.user", "root");
+//        props.put("javax.persistence.jdbc.password", "root");
+//        props.put("javax.persistence.jdbc.url", "jdbc:mysql://localhost/database");
+//        props.put("javax.persistence.jdbc.driver", "com.mysql.jdbc.Driver");
     }
     
     public void getModelo() {
@@ -151,7 +156,7 @@ public class ListPacientes extends javax.swing.JDialog {
             //asignar el id del profecional de la tabla cmprofesionales
             jTable1.removeAll();
             ModeloListadoPaciente();
-            asistCon = paacjc.listPypAdmAsistCon(4);
+            asistCon = paacjc.listPypAdmAsistCon(40);
         } else {
             jTable1.removeAll();
             ModeloListadoPaciente();
@@ -245,11 +250,11 @@ public class ListPacientes extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sigA0.PNG"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sgte2.png"))); // NOI18N
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusable(false);
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sigA1.png"))); // NOI18N
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sgte.png"))); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jButton1MouseReleased(evt);
@@ -460,7 +465,7 @@ public class ListPacientes extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -473,7 +478,7 @@ public class ListPacientes extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -499,7 +504,7 @@ public class ListPacientes extends javax.swing.JDialog {
         if (modelo.getRowCount() > 0 && jTable1.getSelectedRow() > -1) {
             pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
             if (pypAdmAsistCon.getEstado().toString().equals("3")) {
-                if (pypAdmAsistCon.getIdControlPro().getIdProfesional().getId() == 4) {
+                if (pypAdmAsistCon.getIdControlPro().getIdProfesional().getId() == 40) {
                     cargarprograma();
                 } else {
                     JOptionPane.showMessageDialog(null, "El paciente ya se encuentra en atencion");
@@ -558,7 +563,7 @@ public class ListPacientes extends javax.swing.JDialog {
             } else {
                 jLabel14.setText("Consulta por primera vez".toUpperCase());
             }
-            jLabel17.setText(pypAdmAsistCon.getIdControlPro().getIdProfesional().getIdDescripcionLogin().getNombres() + " " + pypAdmAsistCon.getIdControlPro().getIdProfesional().getIdDescripcionLogin().getApellidos());            
+            jLabel17.setText(pypAdmAsistCon.getIdControlPro().getIdProfesional().getIdDescripcionLogin().getNombres() + " " + pypAdmAsistCon.getIdControlPro().getIdProfesional().getIdDescripcionLogin().getApellidos());
             idprograma = pypAdmAsistCon.getIdAgend().getIdPrograma().getId();
         }
     }//GEN-LAST:event_jTable1MouseReleased

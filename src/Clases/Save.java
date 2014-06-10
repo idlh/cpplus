@@ -513,4 +513,27 @@ public class Save {
             bd.DesconectarBasedeDatos();
         }
     }
+
+    public String recetam(String id) {
+        return "SELECT COUNT(*)"
+                + "FROM"
+                + "    `database`.`pyp_posologia`"
+                + "    INNER JOIN `database`.`pyp_historiac` "
+                + "        ON (`pyp_posologia`.`id_historiac` = `pyp_historiac`.`id`)"
+                + "WHERE (`pyp_posologia`.`id_historiac` ='" + id + "');";
+    }
+
+    public void newreceta(String historia, String usuario, String tipo, String estado) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.sentencia.execute("INSERT INTO pyp_receta_medica (id_historiapyp, id_decription_login, tipo, estado) VALUES "
+                    + "('" + historia + "','" + usuario + "', '" + tipo + "', '" + estado + "')");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c027" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c027" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
 }
