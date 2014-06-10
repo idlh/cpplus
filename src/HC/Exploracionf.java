@@ -101,35 +101,16 @@ public class Exploracionf extends javax.swing.JPanel {
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 6) {
             jTabbedPane1.remove(jPanel8);
-            jTabbedPane1.remove(jPanel15);
+            if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 7) {
+                jTabbedPane1.remove(jPanel15);
+            }
         } else {
             if (pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
                 jTabbedPane1.remove(jPanel15);
             }
-            if (jCheckBox11.isSelected() == true) {
-                jCheckBox15.setEnabled(true);
-            } else {
-                jCheckBox15.setSelected(false);
-                jCheckBox15.setEnabled(false);
-            }
-            if (jCheckBox12.isSelected() == false) {
-                jCheckBox16.setSelected(false);
-                jCheckBox16.setEnabled(false);
-            } else {
-                jCheckBox16.setEnabled(true);
-            }
-            if (jCheckBox13.isSelected() == false) {
-                jCheckBox17.setSelected(false);
-                jCheckBox17.setEnabled(false);
-            } else {
-                jCheckBox17.setEnabled(true);
-            }
-            if (jCheckBox14.isSelected() == false) {
-                jCheckBox18.setSelected(false);
-                jCheckBox18.setEnabled(false);
-            } else {
-                jCheckBox18.setEnabled(true);
-            }
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 7) {
+            jTabbedPane1.remove(jPanel19);
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 2) {
             jTabbedPane1.remove(jPanel10);
@@ -329,6 +310,21 @@ public class Exploracionf extends javax.swing.JPanel {
         jLabel55 = new javax.swing.JLabel();
         jLabel56 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
+        jPanel19 = new javax.swing.JPanel();
+        jCheckBox35 = new javax.swing.JCheckBox();
+        jCheckBox38 = new javax.swing.JCheckBox();
+        jCheckBox39 = new javax.swing.JCheckBox();
+        jCheckBox40 = new javax.swing.JCheckBox();
+        jCheckBox41 = new javax.swing.JCheckBox();
+        jCheckBox42 = new javax.swing.JCheckBox();
+        jCheckBox43 = new javax.swing.JCheckBox();
+        jCheckBox44 = new javax.swing.JCheckBox();
+        jLabel61 = new javax.swing.JLabel();
+        jTextField22 = new javax.swing.JTextField();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
+        jScrollPane18 = new javax.swing.JScrollPane();
+        jTextArea16 = new javax.swing.JTextArea();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea5 = new javax.swing.JTextArea();
@@ -1977,6 +1973,174 @@ public class Exploracionf extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Valoracion CYD", jPanel17);
 
+        jPanel19.setBackground(new java.awt.Color(255, 255, 255));
+
+        jCheckBox35.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox35.setText("Controlado");
+        jCheckBox35.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox35.setFocusable(false);
+
+        jCheckBox38.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox38.setText("Controlado");
+        jCheckBox38.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox38.setFocusable(false);
+
+        jCheckBox39.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox39.setText("Dislipidemia");
+        jCheckBox39.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox39.setFocusable(false);
+        jCheckBox39.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox39MouseReleased(evt);
+            }
+        });
+
+        jCheckBox40.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox40.setText("DM2");
+        jCheckBox40.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox40.setFocusable(false);
+        jCheckBox40.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox40MouseReleased(evt);
+            }
+        });
+
+        jCheckBox41.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox41.setText("DM1");
+        jCheckBox41.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox41.setFocusable(false);
+        jCheckBox41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox41MouseReleased(evt);
+            }
+        });
+
+        jCheckBox42.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox42.setText("HTA");
+        jCheckBox42.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox42.setFocusable(false);
+        jCheckBox42.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCheckBox42MouseReleased(evt);
+            }
+        });
+
+        jCheckBox43.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox43.setText("Controlado");
+        jCheckBox43.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox43.setFocusable(false);
+
+        jCheckBox44.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox44.setText("Controlado");
+        jCheckBox44.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox44.setFocusable(false);
+
+        jLabel61.setText("Glucometría:");
+
+        jTextField22.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField22FocusGained(evt);
+            }
+        });
+        jTextField22.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField22KeyTyped(evt);
+            }
+        });
+
+        jLabel62.setText("mg/dL");
+
+        jLabel63.setText("Tratamiento:");
+
+        jTextArea16.setColumns(20);
+        jTextArea16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextArea16.setForeground(new java.awt.Color(204, 204, 204));
+        jTextArea16.setLineWrap(true);
+        jTextArea16.setRows(5);
+        jTextArea16.setText("Ninguno");
+        jTextArea16.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea16FocusGained(evt);
+            }
+        });
+        jTextArea16.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea16KeyReleased(evt);
+            }
+        });
+        jScrollPane18.setViewportView(jTextArea16);
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox42, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox41, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox40, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox39))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel19Layout.createSequentialGroup()
+                            .addComponent(jCheckBox35)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel63))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel19Layout.createSequentialGroup()
+                            .addComponent(jCheckBox38)
+                            .addGap(51, 51, 51)
+                            .addComponent(jLabel61)))
+                    .addComponent(jCheckBox43)
+                    .addComponent(jCheckBox44))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addComponent(jTextField22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel62))
+                    .addComponent(jScrollPane18, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addComponent(jCheckBox42)
+                        .addGap(5, 5, 5)
+                        .addComponent(jCheckBox41)
+                        .addGap(5, 5, 5)
+                        .addComponent(jCheckBox40)
+                        .addGap(6, 6, 6)
+                        .addComponent(jCheckBox39))
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox38)
+                            .addComponent(jLabel61)
+                            .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel62))
+                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel19Layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jCheckBox35)
+                                    .addComponent(jLabel63))
+                                .addGap(5, 5, 5)
+                                .addComponent(jCheckBox43)
+                                .addGap(6, 6, 6)
+                                .addComponent(jCheckBox44)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel19Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(jScrollPane18, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                                .addContainerGap())))))
+        );
+
+        jTabbedPane1.addTab("DM", jPanel19);
+
         jTabbedPane2.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedPane2.setFocusable(false);
         jTabbedPane2.setPreferredSize(new java.awt.Dimension(550, 183));
@@ -2321,10 +2485,14 @@ public class Exploracionf extends javax.swing.JPanel {
                 float pes = Float.parseFloat(jTextField9.getText()) - modulo_pyp.Modulo_PyP.d.listPacientes.controlp.peso;
                 BigDecimal value = new BigDecimal(pes).setScale(2, BigDecimal.ROUND_HALF_UP);
                 jTextField21.setText(String.valueOf(value));
+                if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0 && !jTextField3.getText().equals("")) {
+                    calcularimcembarazo();
+                }
             }
-        }
-        if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0) {
-            calcularimc();
+        } else {
+            if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0) {
+                calcularimc();
+            }
         }
     }//GEN-LAST:event_jTextField9KeyReleased
 
@@ -2332,8 +2500,19 @@ public class Exploracionf extends javax.swing.JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jTextPane1.requestFocus();
         }
-        if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0) {
-            calcularimc();
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
+            if (!jTextField9.getText().equals("") && modulo_pyp.Modulo_PyP.d.listPacientes.controlp.peso != 0) {
+                float pes = Float.parseFloat(jTextField9.getText()) - modulo_pyp.Modulo_PyP.d.listPacientes.controlp.peso;
+                BigDecimal value = new BigDecimal(pes).setScale(2, BigDecimal.ROUND_HALF_UP);
+                jTextField21.setText(String.valueOf(value));
+                if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0 && !jTextField3.getText().equals("")) {
+                    calcularimcembarazo();
+                }
+            }
+        } else {
+            if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0) {
+                calcularimc();
+            }
         }
     }//GEN-LAST:event_jTextField8KeyReleased
 
@@ -2494,6 +2673,9 @@ public class Exploracionf extends javax.swing.JPanel {
     private void jTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jTextField6.requestFocus();
+        }
+        if (!jTextField8.getText().equals("") && Float.parseFloat(jTextField8.getText()) > 0 && !jTextField3.getText().equals("")) {
+            calcularimcembarazo();
         }
     }//GEN-LAST:event_jTextField3KeyReleased
 
@@ -2780,6 +2962,63 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextField18.selectAll();
     }//GEN-LAST:event_jTextField18FocusGained
 
+    private void jCheckBox39MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox39MouseReleased
+        if (jCheckBox39.isSelected() == true) {
+            jCheckBox44.setEnabled(true);
+        } else {
+            jCheckBox44.setSelected(false);
+            jCheckBox44.setEnabled(false);
+        }
+    }//GEN-LAST:event_jCheckBox39MouseReleased
+
+    private void jCheckBox40MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox40MouseReleased
+        if (jCheckBox40.isSelected() == true) {
+            jCheckBox43.setEnabled(true);
+        } else {
+            jCheckBox43.setSelected(false);
+            jCheckBox43.setEnabled(false);
+        }
+    }//GEN-LAST:event_jCheckBox40MouseReleased
+
+    private void jCheckBox41MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox41MouseReleased
+        if (jCheckBox41.isSelected() == true) {
+            jCheckBox35.setEnabled(true);
+        } else {
+            jCheckBox35.setSelected(false);
+            jCheckBox35.setEnabled(false);
+        }
+    }//GEN-LAST:event_jCheckBox41MouseReleased
+
+    private void jCheckBox42MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox42MouseReleased
+        if (jCheckBox42.isSelected() == true) {
+            jCheckBox38.setEnabled(true);
+        } else {
+            jCheckBox38.setSelected(false);
+            jCheckBox38.setEnabled(false);
+        }
+    }//GEN-LAST:event_jCheckBox42MouseReleased
+
+    private void jTextArea16FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea16FocusGained
+        jTextArea16.selectAll();
+    }//GEN-LAST:event_jTextArea16FocusGained
+
+    private void jTextField22FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField22FocusGained
+        jTextArea16.selectAll();
+    }//GEN-LAST:event_jTextField22FocusGained
+
+    private void jTextArea16KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea16KeyReleased
+        jTextArea16.setForeground(Color.black);
+    }//GEN-LAST:event_jTextArea16KeyReleased
+
+    private void jTextField22KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField22KeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9') && jTextField22.getText().contains(".") || jTextField22.getText().length() >= 5) {
+            evt.consume();
+        } else if ((car < '0' || car > '9') && (car != '.') || jTextField22.getText().length() >= 5) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField22KeyTyped
+
     public void actexpf() {
         int tas, tad, fc, talla;
         float fr, temp, peso, imc;
@@ -2927,21 +3166,56 @@ public class Exploracionf extends javax.swing.JPanel {
                 actcontrolplani();
             }
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 7) {
+            actdm();
+        }
     }
 
     public void cargarexploracion() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
         String d = (c[0][0].toString());
         Object h[][] = Funciones.RetornarDatos(act.cargarexploracion(d));
-        jTextField1.setText(h[0][2].toString());
-        jTextField2.setText(h[0][3].toString());
-        jTextField4.setText(h[0][4].toString());
-        jTextField5.setText(h[0][5].toString());
-        jTextField7.setText(h[0][6].toString());
-        float imcmetro = Float.valueOf(h[0][7].toString()) / 100;
-        jTextField8.setText(String.valueOf(imcmetro));
-        jTextField9.setText(h[0][8].toString());
-        jTextField10.setText(String.valueOf(h[0][9].toString()));
+        if (h[0][2].toString().equals("0")) {
+            jTextField1.setText("");
+        } else {
+            jTextField1.setText(h[0][2].toString());
+        }
+        if (h[0][3].toString().equals("0")) {
+            jTextField2.setText("");
+        } else {
+            jTextField2.setText(h[0][3].toString());
+        }
+        if (h[0][4].toString().equals("0.0")) {
+            jTextField4.setText("");
+        } else {
+            jTextField4.setText(h[0][4].toString());
+        }
+        if (h[0][5].toString().equals("0")) {
+            jTextField5.setText("");
+        } else {
+            jTextField5.setText(h[0][5].toString());
+        }
+        if (h[0][6].toString().equals("0.0")) {
+            jTextField7.setText("");
+        } else {
+            jTextField7.setText(h[0][6].toString());
+        }
+        if (h[0][7].toString().equals("0")) {
+            jTextField8.setText("");
+        } else {
+            float imcmetro = Float.valueOf(h[0][7].toString()) / 100;
+            jTextField8.setText(String.valueOf(imcmetro));
+        }
+        if (h[0][8].toString().equals("0.0")) {
+            jTextField9.setText("");
+        } else {
+            jTextField9.setText(h[0][8].toString());
+        }
+        if (h[0][9].toString().equals("0.0")) {
+            jTextField10.setText("");
+        } else {
+            jTextField10.setText(String.valueOf(h[0][9].toString()));
+        }
         jTextPane1.setText(h[0][10].toString());
         if (h[0][11].toString().equals("NO SE ENCUENTRAN DATOS RELEVANTES")) {
             jTextArea1.setText(h[0][11].toString());
@@ -3081,6 +3355,9 @@ public class Exploracionf extends javax.swing.JPanel {
                 cargarcontrolplani();
             }
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 7) {
+            cargardm();
+        }
     }
 
     private void selectApgar() {
@@ -3145,7 +3422,7 @@ public class Exploracionf extends javax.swing.JPanel {
         if (fc2p != null) {
             fc2 = formato.format(fc2p);
         } else {
-            fc2 = "0001-01-01";
+            fc2 = "1845-01-01";
         }
         if (jCheckBox4.isSelected() == false) {
             va3 = "0";
@@ -3406,25 +3683,235 @@ public class Exploracionf extends javax.swing.JPanel {
                     * Float.parseFloat(imcnetro)) / 100) * 100) / 100) / 100;
             BigDecimal value = new BigDecimal(imc).setScale(2, BigDecimal.ROUND_HALF_UP);
             im = String.valueOf(value);
-            if (imc < 19) {
+            if (imc < 16) {
                 jTextField10.setForeground(Color.red);
-                jLabel21.setText("Bajo peso");
+                jLabel21.setText("Delgadez severa");
                 jLabel21.setForeground(Color.red);
             } else {
-                if (imc >= 19 && imc < 25) {
-                    jTextField10.setForeground(new Color(0, 153, 204));
-                    jLabel21.setText("Normal");
-                    jLabel21.setForeground(new Color(0, 153, 204));
+                if (imc >= 16 && imc < 17) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Delgadez moderada");
+                    jLabel21.setForeground(Color.red);
                 } else {
-                    if (imc >= 25 && imc < 30) {
-                        jTextField10.setForeground(new Color(255, 102, 51));
-                        jLabel21.setText("Sobrepeso");
-                        jLabel21.setForeground(new Color(255, 102, 51));
+                    if (imc >= 17 && imc <= 18.49) {
+                        jTextField10.setForeground(Color.red);
+                        jLabel21.setText("Delgadez aceptable");
+                        jLabel21.setForeground(Color.red);
+                    }
+                    if (imc >= 18.50 && imc < 19) {
+                        jTextField10.setForeground(Color.red);
+                        jLabel21.setText("Infrapeso");
+                        jLabel21.setForeground(Color.red);
                     } else {
-                        if (imc >= 30) {
-                            jTextField10.setForeground(Color.red);
-                            jLabel21.setText("Obesidad");
-                            jLabel21.setForeground(Color.RED);
+                        if (imc >= 19 && imc < 25) {
+                            jTextField10.setForeground(new Color(0, 153, 204));
+                            jLabel21.setText("Normal");
+                            jLabel21.setForeground(new Color(0, 153, 204));
+                        } else {
+                            if (imc >= 25 && imc < 30) {
+                                jTextField10.setForeground(new Color(255, 102, 51));
+                                jLabel21.setText("Sobrepeso");
+                                jLabel21.setForeground(new Color(255, 102, 51));
+                            } else {
+                                if (imc == 30) {
+                                    jTextField10.setForeground(Color.red);
+                                    jLabel21.setText("Obesidad");
+                                    jLabel21.setForeground(Color.RED);
+                                } else {
+                                    if (imc > 30 && imc < 35) {
+                                        jTextField10.setForeground(Color.red);
+                                        jLabel21.setText("Obeso tipo I");
+                                        jLabel21.setForeground(Color.red);
+                                    } else {
+                                        if (imc >= 35 && imc < 40) {
+                                            jTextField10.setForeground(Color.red);
+                                            jLabel21.setText("Obeso tipo II");
+                                            jLabel21.setForeground(Color.red);
+                                        } else {
+                                            if (imc > 40) {
+                                                jTextField10.setForeground(Color.red);
+                                                jLabel21.setText("Obeso tipo III");
+                                                jLabel21.setForeground(Color.red);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            jTextField10.setText(im);
+        }
+    }
+
+    private void calcularimcembarazo() {
+        if (!jTextField9.getText().equals("") && !jTextField8.getText().equals("")) {
+            float imc = 0;
+            String im = null, imcnetro = jTextField8.getText();
+            imc = ((Float.parseFloat(jTextField9.getText()) / ((Float.parseFloat(imcnetro)
+                    * Float.parseFloat(imcnetro)) / 100) * 100) / 100) / 100;
+            BigDecimal value = new BigDecimal(imc).setScale(2, BigDecimal.ROUND_HALF_UP);
+            im = String.valueOf(value);
+            if (!jTextField3.getText().equals("")) {
+                if (imc < 20 && Integer.parseInt(jTextField3.getText()) < 10) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Enflaquecida");
+                    jLabel21.setForeground(Color.red);
+                } else {
+                    if ((imc >= 20 && imc < 26) && Integer.parseInt(jTextField3.getText()) < 10) {
+                        jTextField10.setForeground(new Color(0, 153, 204));
+                        jLabel21.setText("Normal");
+                        jLabel21.setForeground(new Color(0, 153, 204));
+                    } else {
+                        if ((imc >= 26 && imc < 31) && Integer.parseInt(jTextField3.getText()) < 10) {
+                            jTextField10.setForeground(new Color(255, 102, 51));
+                            jLabel21.setText("Sobrepeso");
+                            jLabel21.setForeground(new Color(255, 102, 51));
+                        } else {
+                            if (imc >= 31 && Integer.parseInt(jTextField3.getText()) < 10) {
+                                jTextField10.setForeground(Color.red);//
+                                jLabel21.setText("Obesidad");
+                                jLabel21.setForeground(Color.RED);
+                            }
+                        }
+                    }
+                }
+                if (imc < 20.5 && (Integer.parseInt(jTextField3.getText()) >= 10 && Integer.parseInt(jTextField3.getText()) < 15)) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Enflaquecida");
+                    jLabel21.setForeground(Color.red);
+                } else {
+                    if ((imc >= 20.5 && imc < 26.5) && (Integer.parseInt(jTextField3.getText()) >= 10 && Integer.parseInt(jTextField3.getText()) < 15)) {
+                        jTextField10.setForeground(new Color(0, 153, 204));
+                        jLabel21.setText("Normal");
+                        jLabel21.setForeground(new Color(0, 153, 204));
+                    } else {
+                        if ((imc >= 26.5 && imc < 31.5) && (Integer.parseInt(jTextField3.getText()) >= 10 && Integer.parseInt(jTextField3.getText()) < 15)) {
+                            jTextField10.setForeground(new Color(255, 102, 51));
+                            jLabel21.setText("Sobrepeso");
+                            jLabel21.setForeground(new Color(255, 102, 51));
+                        } else {
+                            if (imc >= 31.5 && (Integer.parseInt(jTextField3.getText()) >= 10 && Integer.parseInt(jTextField3.getText()) < 15)) {
+                                jTextField10.setForeground(Color.red);
+                                jLabel21.setText("Obesidad");
+                                jLabel21.setForeground(Color.RED);
+                            }
+                        }
+                    }
+                }                
+                if (imc < 21 && (Integer.parseInt(jTextField3.getText()) >= 15 && Integer.parseInt(jTextField3.getText()) < 20)) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Enflaquecida");
+                    jLabel21.setForeground(Color.red);
+                } else {
+                    if ((imc >= 21 && imc < 27) && (Integer.parseInt(jTextField3.getText()) >= 15 && Integer.parseInt(jTextField3.getText()) < 20)) {
+                        jTextField10.setForeground(new Color(0, 153, 204));
+                        jLabel21.setText("Normal");
+                        jLabel21.setForeground(new Color(0, 153, 204));
+                    } else {
+                        if ((imc >= 27 && imc < 32) && (Integer.parseInt(jTextField3.getText()) >= 15 && Integer.parseInt(jTextField3.getText()) < 20)) {
+                            jTextField10.setForeground(new Color(255, 102, 51));
+                            jLabel21.setText("Sobrepeso");
+                            jLabel21.setForeground(new Color(255, 102, 51));
+                        } else {
+                            if (imc >= 32 && (Integer.parseInt(jTextField3.getText()) >= 15 && Integer.parseInt(jTextField3.getText()) < 20)) {
+                                jTextField10.setForeground(Color.red);
+                                jLabel21.setText("Obesidad");
+                                jLabel21.setForeground(Color.RED);
+                            }
+                        }
+                    }
+                }
+                if (imc < 21.5 && (Integer.parseInt(jTextField3.getText()) >= 20 && Integer.parseInt(jTextField3.getText()) < 25)) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Enflaquecida");
+                    jLabel21.setForeground(Color.red);
+                } else {
+                    if ((imc >= 21.5 && imc < 27.5) && (Integer.parseInt(jTextField3.getText()) >= 20 && Integer.parseInt(jTextField3.getText()) < 25)) {
+                        jTextField10.setForeground(new Color(0, 153, 204));
+                        jLabel21.setText("Normal");
+                        jLabel21.setForeground(new Color(0, 153, 204));
+                    } else {
+                        if ((imc >= 27.5 && imc < 32.5) && (Integer.parseInt(jTextField3.getText()) >= 20 && Integer.parseInt(jTextField3.getText()) < 25)) {
+                            jTextField10.setForeground(new Color(255, 102, 51));
+                            jLabel21.setText("Sobrepeso");
+                            jLabel21.setForeground(new Color(255, 102, 51));
+                        } else {
+                            if (imc >= 32.5 && (Integer.parseInt(jTextField3.getText()) >= 20 && Integer.parseInt(jTextField3.getText()) < 25)) {
+                                jTextField10.setForeground(Color.red);
+                                jLabel21.setText("Obesidad");
+                                jLabel21.setForeground(Color.RED);
+                            }
+                        }
+                    }
+                }
+                if (imc < 22.5 && (Integer.parseInt(jTextField3.getText()) >= 25 && Integer.parseInt(jTextField3.getText()) < 30)) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Enflaquecida");
+                    jLabel21.setForeground(Color.red);
+                } else {
+                    if ((imc >= 22.5 && imc < 28.5) && (Integer.parseInt(jTextField3.getText()) >= 25 && Integer.parseInt(jTextField3.getText()) < 30)) {
+                        jTextField10.setForeground(new Color(0, 153, 204));
+                        jLabel21.setText("Normal");
+                        jLabel21.setForeground(new Color(0, 153, 204));
+                    } else {
+                        if ((imc >= 28.5 && imc < 33.5) && (Integer.parseInt(jTextField3.getText()) >= 25 && Integer.parseInt(jTextField3.getText()) < 30)) {
+                            jTextField10.setForeground(new Color(255, 102, 51));
+                            jLabel21.setText("Sobrepeso");
+                            jLabel21.setForeground(new Color(255, 102, 51));
+                        } else {
+                            if (imc >= 33.5 && (Integer.parseInt(jTextField3.getText()) >= 25 && Integer.parseInt(jTextField3.getText()) < 30)) {
+                                jTextField10.setForeground(Color.red);
+                                jLabel21.setText("Obesidad");
+                                jLabel21.setForeground(Color.RED);
+                            }
+                        }
+                    }
+                }
+                if (imc < 23.5 && (Integer.parseInt(jTextField3.getText()) >= 30 && Integer.parseInt(jTextField3.getText()) < 35)) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Enflaquecida");
+                    jLabel21.setForeground(Color.red);
+                } else {
+                    if ((imc >= 23.5 && imc < 29.5) && (Integer.parseInt(jTextField3.getText()) >= 30 && Integer.parseInt(jTextField3.getText()) < 35)) {
+                        jTextField10.setForeground(new Color(0, 153, 204));
+                        jLabel21.setText("Normal");
+                        jLabel21.setForeground(new Color(0, 153, 204));
+                    } else {
+                        if ((imc >= 29.5 && imc < 34.5) && (Integer.parseInt(jTextField3.getText()) >= 30 && Integer.parseInt(jTextField3.getText()) < 35)) {
+                            jTextField10.setForeground(new Color(255, 102, 51));
+                            jLabel21.setText("Sobrepeso");
+                            jLabel21.setForeground(new Color(255, 102, 51));
+                        } else {
+                            if (imc >= 34.5 && (Integer.parseInt(jTextField3.getText()) >= 30 && Integer.parseInt(jTextField3.getText()) < 35)) {
+                                jTextField10.setForeground(Color.red);
+                                jLabel21.setText("Obesidad");
+                                jLabel21.setForeground(Color.RED);
+                            }
+                        }
+                    }
+                }
+                if (imc < 24.5 && (Integer.parseInt(jTextField3.getText()) >= 35 && Integer.parseInt(jTextField3.getText()) < 40)) {
+                    jTextField10.setForeground(Color.red);
+                    jLabel21.setText("Enflaquecida");
+                    jLabel21.setForeground(Color.red);
+                } else {
+                    if ((imc >= 24.5 && imc < 30.5) && (Integer.parseInt(jTextField3.getText()) >= 35 && Integer.parseInt(jTextField3.getText()) < 40)) {
+                        jTextField10.setForeground(new Color(0, 153, 204));
+                        jLabel21.setText("Normal");
+                        jLabel21.setForeground(new Color(0, 153, 204));
+                    } else {
+                        if ((imc >= 30.5 && imc < 35.5) && (Integer.parseInt(jTextField3.getText()) >= 35 && Integer.parseInt(jTextField3.getText()) < 40)) {
+                            jTextField10.setForeground(new Color(255, 102, 51));
+                            jLabel21.setText("Sobrepeso");
+                            jLabel21.setForeground(new Color(255, 102, 51));
+                        } else {
+                            if (imc >= 35.5 && (Integer.parseInt(jTextField3.getText()) >= 35 && Integer.parseInt(jTextField3.getText()) < 40)) {
+                                jTextField10.setForeground(Color.red);
+                                jLabel21.setText("Obesidad");
+                                jLabel21.setForeground(Color.RED);
+                            }
                         }
                     }
                 }
@@ -3754,6 +4241,166 @@ public class Exploracionf extends javax.swing.JPanel {
         }
         act.controlmaterno(d, fc, gan, cont);
     }
+
+    private void actdm() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        String var1, var2, var3, var4, var5, var6, var7, var8, var9, var10;
+        if (jCheckBox42.isSelected() == false) {
+            var1 = "0";
+        } else {
+            var1 = "1";
+        }
+        if (jCheckBox38.isSelected() == false) {
+            var2 = "0";
+        } else {
+            var2 = "1";
+        }
+        if (jCheckBox41.isSelected() == false) {
+            var3 = "0";
+        } else {
+            var3 = "1";
+        }
+        if (jCheckBox35.isSelected() == false) {
+            var4 = "0";
+        } else {
+            var4 = "1";
+        }
+        if (jCheckBox40.isSelected() == false) {
+            var5 = "0";
+        } else {
+            var5 = "1";
+        }
+        if (jCheckBox43.isSelected() == false) {
+            var6 = "0";
+        } else {
+            var6 = "1";
+        }
+        if (jCheckBox39.isSelected() == false) {
+            var7 = "0";
+        } else {
+            var7 = "1";
+        }
+        if (jCheckBox44.isSelected() == false) {
+            var8 = "0";
+        } else {
+            var8 = "1";
+        }
+        String vr1, vr2, vr3, vr4;
+        if (jCheckBox37.isSelected() == false) {
+            vr1 = "0";
+        } else {
+            vr1 = "1";
+        }
+        if (jCheckBox36.isSelected() == false) {
+            vr2 = "0";
+        } else {
+            vr2 = "1";
+        }
+        if (jCheckBox34.isSelected() == false) {
+            vr3 = "0";
+        } else {
+            vr3 = "1";
+        }
+        if (jCheckBox33.isSelected() == false) {
+            vr4 = "0";
+        } else {
+            vr4 = "1";
+        }
+        if (jTextField22.getText() == null) {
+            var9 = "0";
+        } else {
+            var9 = jTextField22.getText();
+        }
+        var10 = jTextArea16.getText().toUpperCase();
+        act.actdm(d, var1, var2, var3, var4, var5, var6, var7, var8, vr1, vr2, vr3, vr4, jTextArea12.getText().toUpperCase(), var9, var10);
+    }
+
+    private void cargardm() {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        Object pypdata[][] = Funciones.RetornarDatos(act.cargardm(d));
+        if (pypdata[0][2].toString().equals("0")) {
+            jCheckBox42.setSelected(false);
+            jCheckBox38.setEnabled(false);
+        } else {
+            jCheckBox42.setSelected(true);
+            jCheckBox38.setEnabled(true);
+        }
+        if (pypdata[0][3].toString().equals("0")) {
+            jCheckBox38.setSelected(false);
+        } else {
+            jCheckBox38.setSelected(true);
+        }
+        if (pypdata[0][4].toString().equals("0")) {
+            jCheckBox41.setSelected(false);
+            jCheckBox35.setEnabled(false);
+        } else {
+            jCheckBox41.setSelected(true);
+            jCheckBox35.setEnabled(true);
+        }
+        if (pypdata[0][5].toString().equals("0")) {
+            jCheckBox35.setSelected(false);
+        } else {
+            jCheckBox35.setSelected(true);
+        }
+        if (pypdata[0][6].toString().equals("0")) {
+            jCheckBox40.setSelected(false);
+            jCheckBox43.setEnabled(false);
+        } else {
+            jCheckBox40.setSelected(true);
+            jCheckBox43.setEnabled(true);
+        }
+        if (pypdata[0][7].toString().equals("0")) {
+            jCheckBox43.setSelected(false);
+        } else {
+            jCheckBox43.setSelected(true);
+        }
+        if (pypdata[0][8].toString().equals("0")) {
+            jCheckBox39.setSelected(false);
+            jCheckBox44.setEnabled(false);
+        } else {
+            jCheckBox39.setSelected(true);
+            jCheckBox44.setEnabled(true);
+        }
+        if (pypdata[0][9].toString().equals("0")) {
+            jCheckBox44.setSelected(false);
+        } else {
+            jCheckBox44.setSelected(true);
+        }
+        if (pypdata[0][10].toString().equals("0")) {
+            jCheckBox37.setSelected(false);
+        } else {
+            jCheckBox37.setSelected(true);
+        }
+        if (pypdata[0][11].toString().equals("0")) {
+            jCheckBox36.setSelected(false);
+        } else {
+            jCheckBox36.setSelected(true);
+        }
+        if (pypdata[0][12].toString().equals("0")) {
+            jCheckBox34.setSelected(false);
+        } else {
+            jCheckBox34.setSelected(true);
+        }
+        if (pypdata[0][15].toString().equals("0")) {
+            jCheckBox33.setSelected(false);
+        } else {
+            jCheckBox33.setSelected(true);
+        }
+        if (pypdata[0][16].toString().equals("NINGUNA")) {
+            jTextArea12.setText(pypdata[0][16].toString());
+        } else {
+            jTextArea12.setText(pypdata[0][16].toString());
+            jTextArea12.setForeground(Color.black);
+        }
+        jTextField22.setText(pypdata[0][13].toString());
+        if (!pypdata[0][14].toString().equals("NINGUNO")) {
+            jTextArea16.setForeground(Color.black);
+            jTextArea16.setText(pypdata[0][14].toString());
+        }
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JCheckBox jCheckBox1;
     javax.swing.JCheckBox jCheckBox10;
@@ -3783,9 +4430,17 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JCheckBox jCheckBox32;
     javax.swing.JCheckBox jCheckBox33;
     javax.swing.JCheckBox jCheckBox34;
+    javax.swing.JCheckBox jCheckBox35;
     javax.swing.JCheckBox jCheckBox36;
     javax.swing.JCheckBox jCheckBox37;
+    javax.swing.JCheckBox jCheckBox38;
+    javax.swing.JCheckBox jCheckBox39;
     javax.swing.JCheckBox jCheckBox4;
+    javax.swing.JCheckBox jCheckBox40;
+    javax.swing.JCheckBox jCheckBox41;
+    javax.swing.JCheckBox jCheckBox42;
+    javax.swing.JCheckBox jCheckBox43;
+    javax.swing.JCheckBox jCheckBox44;
     javax.swing.JCheckBox jCheckBox5;
     javax.swing.JCheckBox jCheckBox6;
     javax.swing.JCheckBox jCheckBox7;
@@ -3863,6 +4518,9 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JLabel jLabel59;
     javax.swing.JLabel jLabel6;
     javax.swing.JLabel jLabel60;
+    javax.swing.JLabel jLabel61;
+    javax.swing.JLabel jLabel62;
+    javax.swing.JLabel jLabel63;
     javax.swing.JLabel jLabel7;
     javax.swing.JLabel jLabel8;
     javax.swing.JLabel jLabel9;
@@ -3876,6 +4534,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JPanel jPanel16;
     javax.swing.JPanel jPanel17;
     javax.swing.JPanel jPanel18;
+    javax.swing.JPanel jPanel19;
     javax.swing.JPanel jPanel2;
     javax.swing.JPanel jPanel3;
     javax.swing.JPanel jPanel4;
@@ -3893,6 +4552,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JScrollPane jScrollPane15;
     javax.swing.JScrollPane jScrollPane16;
     javax.swing.JScrollPane jScrollPane17;
+    javax.swing.JScrollPane jScrollPane18;
     javax.swing.JScrollPane jScrollPane2;
     javax.swing.JScrollPane jScrollPane3;
     javax.swing.JScrollPane jScrollPane4;
@@ -3911,6 +4571,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JTextArea jTextArea13;
     javax.swing.JTextArea jTextArea14;
     javax.swing.JTextArea jTextArea15;
+    javax.swing.JTextArea jTextArea16;
     javax.swing.JTextArea jTextArea2;
     javax.swing.JTextArea jTextArea3;
     javax.swing.JTextArea jTextArea4;
@@ -3933,6 +4594,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JTextField jTextField2;
     javax.swing.JTextField jTextField20;
     javax.swing.JTextField jTextField21;
+    javax.swing.JTextField jTextField22;
     javax.swing.JTextField jTextField3;
     javax.swing.JTextField jTextField4;
     javax.swing.JTextField jTextField5;

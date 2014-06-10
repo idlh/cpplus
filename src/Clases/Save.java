@@ -500,4 +500,17 @@ public class Save {
             JOptionPane.showMessageDialog(null, "c025 " + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
+
+    public void newdm(String id, String usuario, String fecha) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.sentencia.execute("INSERT INTO pyp_dm (idhistoria, userlog, fecha) VALUES ('" + id + "', '" + usuario + "', '" + fecha + "')");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c026" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c026" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
 }

@@ -337,7 +337,7 @@ public class OrdenesM extends javax.swing.JPanel {
             anticonceptivos.cargaranticonceptivos();
         }
     }
-    
+
     private void retornarayuda() {
         switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
             case 3:
@@ -364,10 +364,13 @@ public class OrdenesM extends javax.swing.JPanel {
             case 2:
                 HC.CYDesarrollo.jLabel4.setText("...");
                 break;
+            case 7:
+                HC.Diabetes.jLabel4.setText("...");
+                break;
         }
     }
-    
-    private void darayuda(String texto){
+
+    private void darayuda(String texto) {
         switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
             case 3:
                 HC.Adulto.jLabel4.setText(texto);
@@ -393,10 +396,13 @@ public class OrdenesM extends javax.swing.JPanel {
             case 2:
                 HC.CYDesarrollo.jLabel4.setText(texto);
                 break;
+            case 7:
+                HC.Diabetes.jLabel4.setText(texto);
+                break;
         }
     }
-    
-    private void explode(JPanel panel){
+
+    private void explode(JPanel panel) {
         this.jPanel1.removeAll();
         switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
             case 3:
@@ -423,6 +429,8 @@ public class OrdenesM extends javax.swing.JPanel {
             case 2:
                 new Clases.Explode(Modulo_PyP.d.listPacientes.cydesarrollo.ordenesm.jPanel1, panel).play();
                 break;
+            case 7:
+                new Clases.Explode(Modulo_PyP.d.listPacientes.diabetes.ordenesm.jPanel1, panel).play();
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

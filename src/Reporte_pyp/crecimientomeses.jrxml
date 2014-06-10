@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="crecimientomeses" language="groovy" pageWidth="532" pageHeight="26" orientation="Landscape" columnWidth="532" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idhistoria" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+    `pyp_crecimiento_eadmeses`.`mfa`
+    , `pyp_crecimiento_eadmeses`.`al`
+    , `pyp_crecimiento_eadmeses`.`ps`
+    , `pyp_crecimiento_eadmeses`.`total`
+    , `pyp_crecimiento_eadmeses`.`mg`
+FROM
+    `database`.`pyp_crecimiento_eadmeses`
+    INNER JOIN `database`.`pyp_historiac`
+        ON (`pyp_crecimiento_eadmeses`.`idhistoria` = `pyp_historiac`.`id`)
+WHERE (`pyp_historiac`.`id` =$P{idhistoria}
+    AND `pyp_historiac`.`estado` =1);]]>
+	</queryString>
+	<field name="mfa" class="java.lang.String"/>
+	<field name="al" class="java.lang.String"/>
+	<field name="ps" class="java.lang.String"/>
+	<field name="total" class="java.lang.String"/>
+	<field name="mg" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<line>
+				<reportElement x="6" y="7" width="523" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALORACION CRECIMIENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="14" width="72" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MOTRICIDAD GRUESA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="85" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mg}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="100" y="14" width="107" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MOTRICIDAD FINO ADAPTATIVA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="207" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mfa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="222" y="14" width="77" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AUDICION Y LENGUAJE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="299" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{al}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="314" y="14" width="60" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERSONAL SOCIAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="374" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ps}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="389" y="14" width="25" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="414" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="responsable" language="groovy" pageWidth="530" pageHeight="36" orientation="Landscape" columnWidth="530" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idhisto" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+    `pyp_adm_resp`.`identificacion`
+    , `pyp_adm_resp`.`nombres`
+    , `pyp_adm_resp`.`parentesco`
+    , `pyp_adm_resp`.`telefono`
+FROM
+    `database`.`pyp_historiac`
+    INNER JOIN `database`.`pyp_adm_asist_con`
+        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)
+    INNER JOIN `database`.`pyp_adm_agend`
+        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)
+    INNER JOIN `database`.`pyp_adm_admision`
+        ON (`pyp_adm_admision`.`id_Asistcon` = `pyp_adm_asist_con`.`id`)
+    INNER JOIN `database`.`pyp_adm_resp`
+        ON (`pyp_adm_resp`.`id_admpyp` = `pyp_adm_admision`.`id`)
+WHERE (`pyp_historiac`.`id` =$P{idhisto} AND `pyp_historiac`.`estado`=1);]]>
+	</queryString>
+	<field name="identificacion" class="java.lang.String"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="parentesco" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<variable name="parestesco" class="java.lang.String">
+		<variableExpression><![CDATA[($F{parentesco}=="0" ? "PADRE" :
+    ($F{parentesco}=="1" ? "MADRE" :
+        ($F{parentesco}=="2" ? "HIJO" :
+            ($F{parentesco}=="3" ? "HERMANO" :
+                ($F{parentesco}=="4" ? "ESPOS0" :
+                    ($F{parentesco}=="5" ? "ESPOSA" :
+                        ($F{parentesco}=="6" ? "TIO" :
+                            ($F{parentesco}=="7" ? "SOBRINO" :
+                                ($F{parentesco}=="8" ? "UNION LIBRE": "OTRO")))))))))]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="6" width="530" height="29"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="0" width="100" height="12"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="218" y="0" width="100" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS RESPONSABLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="13" width="48" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="23" width="48" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARENTESCO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="23" width="48" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TELEFONO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="13" width="48" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOCUMENTO:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="61" y="13" width="100" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="61" y="23" width="100" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{parestesco}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="333" y="13" width="100" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{identificacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="333" y="23" width="100" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

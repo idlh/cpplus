@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="antecedentes recien nacido" language="groovy" pageWidth="532" pageHeight="76" orientation="Landscape" columnWidth="532" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idhistoria" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+    `pyp_recienniacido`.`incompatibilidadrh`
+    , `pyp_recienniacido`.`sufrimientofetal`
+    , `pyp_recienniacido`.`icteria`
+    , `pyp_recienniacido`.`patologiascpn`
+    , `pyp_recienniacido`.`partoprolongado`
+    , `pyp_recienniacido`.`partotraumatico`
+    , `pyp_recienniacido`.`hospitalizacion`
+    , `pyp_recienniacido`.`otros`
+    , `pyp_recienniacido`.`pesoalnacer`
+    , `pyp_recienniacido`.`tallanacer`
+    , `pyp_recienniacido`.`egparto`
+    , `pyp_recienniacido`.`terminaparto`
+    , `pyp_recienniacido`.`tshneonatal`
+    , `pyp_recienniacido`.`hemoclasificacion`
+    , `pyp_recienniacido`.`vdrl`
+FROM
+    `database`.`pyp_recienniacido`
+    INNER JOIN `database`.`pyp_historiac`
+        ON (`pyp_recienniacido`.`idhistoria` = `pyp_historiac`.`id`)
+WHERE (`pyp_historiac`.`id` =$P{idhistoria}
+    AND `pyp_historiac`.`estado` =1);]]>
+	</queryString>
+	<field name="incompatibilidadrh" class="java.lang.Integer"/>
+	<field name="sufrimientofetal" class="java.lang.Integer"/>
+	<field name="icteria" class="java.lang.Integer"/>
+	<field name="patologiascpn" class="java.lang.Integer"/>
+	<field name="partoprolongado" class="java.lang.Integer"/>
+	<field name="partotraumatico" class="java.lang.Integer"/>
+	<field name="hospitalizacion" class="java.lang.Integer"/>
+	<field name="otros" class="java.lang.Integer"/>
+	<field name="pesoalnacer" class="java.lang.Float"/>
+	<field name="tallanacer" class="java.lang.Float"/>
+	<field name="egparto" class="java.lang.Long"/>
+	<field name="terminaparto" class="java.lang.Integer"/>
+	<field name="tshneonatal" class="java.lang.Float"/>
+	<field name="hemoclasificacion" class="java.lang.Integer"/>
+	<field name="vdrl" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="76" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="7" y="7" width="523" height="67"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="13" y="14" width="92" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INCOMPATIBILIDAD CON RH:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="105" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incompatibilidadrh} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="120" y="14" width="65" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUFRIMIENTO FETAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="185" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sufrimientofetal} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="14" width="63" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ICTERIA NEONATAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="263" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{icteria} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="278" y="14" width="125" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PATOLOGIAS MATERNAS DURANTE CPN:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="403" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{patologiascpn} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="418" y="14" width="69" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTO PROLONGADO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="487" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{partoprolongado} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="26" width="69" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTO TRAUMATICO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="26" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{partotraumatico} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="97" y="26" width="128" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REQUIRIO HOSPITALIZACION POSTPARTO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="225" y="26" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hospitalizacion} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="38" width="54" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PESO AL NACER:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="50" width="54" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TALLA AL NACER:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="38" width="54" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EG EN EL PARTO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="50" width="54" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TSH NEONATAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="67" y="38" width="60" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pesoalnacer}+"  Kg"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="67" y="50" width="60" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tallanacer}+"  Cm"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="38" width="60" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{egparto}+ "  Semanas"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="50" width="60" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tshneonatal}+"  mU/ml"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="240" y="50" width="108" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HEMOCLASIFICACION:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="38" width="108" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VIA DE TERMINACION DEL PARTO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="62" width="54" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VDRL MATERNO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="348" y="38" width="45" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{terminaparto} == 0 ? "ESPONTÁNEO" :
+    ($F{terminaparto} == 1 ? "CESÁREA" :
+        ($F{terminaparto} == 2 ? "FORCEPS" : "ESPÁTULA")))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="348" y="50" width="45" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{hemoclasificacion} == 0 ? "O-" :
+    ($F{hemoclasificacion} == 1 ? "O+" :
+        ($F{hemoclasificacion} == 2 ? "A-" :
+            ($F{hemoclasificacion} == 3 ? "A+" :
+                ($F{hemoclasificacion} == 4 ? "B-" :
+                    ($F{hemoclasificacion} == 5 ? "B+" :
+                        ($F{hemoclasificacion} == 6 ? "AB-" : "AB+")))))))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="67" y="62" width="45" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vdrl} == 0 ? "REACTIVO" :
+($F{vdrl} == 1 ? "NO REACTIVO" : "NO SE REALIZO")]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERINATOLOGIA]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

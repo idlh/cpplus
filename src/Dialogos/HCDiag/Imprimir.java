@@ -1,10 +1,26 @@
 package Dialogos.HCDiag;
 
+import Clases.BDConectar;
+import Clases.Funciones_AD;
+import Clases.Imprimirreporte;
+import com.itextpdf.text.pdf.PdfCopyFields;
+import com.itextpdf.text.pdf.PdfReader;
+import java.awt.Desktop;
+import java.awt.Dialog;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileOutputStream;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Camilo
  */
 public class Imprimir extends javax.swing.JDialog {
+
+    Imprimirreporte imp = new Imprimirreporte();
+    Funciones_AD Funciones = new Funciones_AD();
+    String id;
 
     /**
      * Creates new form Imprimir
@@ -14,9 +30,10 @@ public class Imprimir extends javax.swing.JDialog {
         initComponents();
         jLabel2.setText("<html>\n"
                 + "<div style=\"width:250;\">" + "  Si desea imprimir la historia clinica referente al programa de: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.progam + "</b>"
-                + " del (la) paciente: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.name + "</b>" + ", presione el boton aceptar para continuar..." + "\n"
+                + " del (la) paciente: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.name + "</b>" + ", presione el boton aceptar o pulse enter para continuar..." + "\n"
                 + "</div>\n"
                 + "</html>");
+        idhisto();
     }
 
     /**
@@ -35,7 +52,13 @@ public class Imprimir extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -64,6 +87,11 @@ public class Imprimir extends javax.swing.JDialog {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/finalc1.png"))); // NOI18N
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusable(false);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,6 +132,19 @@ public class Imprimir extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        hiloreporte ut = new hiloreporte(this);
+        Thread thread = new Thread(ut);
+        thread.start();
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            hiloreporte ut = new hiloreporte(this);
+            Thread thread = new Thread(ut);
+            thread.start();
+        }
+    }//GEN-LAST:event_formKeyPressed
     /**
      * @param args the command line arguments
      */
@@ -146,6 +187,78 @@ public class Imprimir extends javax.swing.JDialog {
         });
     }
 
+    private void idhisto() {
+        switch (modulo_pyp.Modulo_PyP.d.listPacientes.idprograma) {
+            case 3:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.adult.idhc;
+                break;
+            case 9:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.controlp.idhc;
+                break;
+            case 11:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.postparto.idhc;
+                break;
+            case 10:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.reciennacido.idhc;
+                break;
+            case 5:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.planificacion.idhc;
+                break;
+            case 1:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.jovensano.idhc;
+                break;
+            case 6:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.hipertenso.idhc;
+                break;
+            case 2:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.cydesarrollo.idhc;
+                break;
+            case 4:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.agudeza.idhc;
+                break;
+            case 7:
+                id = modulo_pyp.Modulo_PyP.d.listPacientes.diabetes.idhc;
+                break;
+        }
+    }
+
+    private class hiloreporte extends Thread {
+
+        Dialog form = null;
+
+        public hiloreporte(Dialog form) {
+            this.form = form;
+        }
+
+        @Override
+        public void run() {
+            try {
+                PdfReader reader = null;
+                File archivoTemporal;
+                archivoTemporal = File.createTempFile("Historia", ".pdf");
+                BDConectar bd = new BDConectar();
+                bd.ConectarBasedeDatos();
+                imp.setIdhc(id);
+                imp.setNombrereport(modulo_pyp.Modulo_PyP.d.listPacientes.progam);
+                imp.setCodigo("PP-F01-1420");
+                imp.setConexion(bd.conexion);
+                imp.setServicio("P Y P");
+                imp.setVersion("1.0");
+                reader = imp.Imprimirhistoria();
+                bd.DesconectarBasedeDatos();
+                imp.tempFile.deleteOnExit();
+                PdfCopyFields copy = new PdfCopyFields(new FileOutputStream(archivoTemporal));
+                if (reader != null) {
+                    copy.addDocument(reader);
+                }
+                copy.close();
+                Desktop.getDesktop().open(archivoTemporal);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "r001 " + e.getMessage(), Imprimir.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            }
+            ((Imprimir) form).dispose();
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton jButton1;
     javax.swing.JLabel jLabel1;

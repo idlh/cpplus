@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="admision" language="groovy" pageWidth="532" pageHeight="50" orientation="Landscape" columnWidth="532" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idhistoria" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+      `pyp_adm_asist_con`.`id` AS `Nadmision`
+    , DATE_FORMAT(`pyp_adm_asist_con`.`fecha`, '%d/%m/%Y') AS `fecha`
+    , DATE_FORMAT(`pyp_adm_asist_con`.`hora`, '%H:%i') AS `hora`
+    , `pyp_adm_admision`.`edad_admision`
+    , `pyp_adm_admision`.`causa_externa`
+    , `pyp_adm_admision`.`estado_ingreso`
+    , `pyp_adm_admision`.`medio_ingreso`
+    , `pyp_adm_admision`.`observacion`
+
+FROM
+    `database`.`pyp_historiac`
+    INNER JOIN `database`.`pyp_adm_asist_con`
+        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)
+    INNER JOIN `database`.`pyp_adm_agend`
+        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)
+    INNER JOIN `database`.`pyp_adm_admision`
+        ON (`pyp_adm_admision`.`id_Asistcon` = `pyp_adm_asist_con`.`id`)
+WHERE (`pyp_historiac`.`id` =$P{idhistoria} AND `pyp_historiac`.`estado`=1);]]>
+	</queryString>
+	<field name="Nadmision" class="java.lang.Long"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="hora" class="java.lang.String"/>
+	<field name="edad_admision" class="java.lang.String"/>
+	<field name="causa_externa" class="java.lang.String"/>
+	<field name="estado_ingreso" class="java.lang.String"/>
+	<field name="medio_ingreso" class="java.lang.String"/>
+	<field name="observacion" class="java.lang.String"/>
+	<variable name="causaexterna" class="java.lang.String">
+		<variableExpression><![CDATA[$F{causa_externa}=="15" ? "OTRO" : ""]]></variableExpression>
+	</variable>
+	<variable name="estadoingreso" class="java.lang.String">
+		<variableExpression><![CDATA[$F{estado_ingreso}=="0" ? "CONCIENTE" : ($F{estado_ingreso}=="1" ? "INCONCIENTE" : "OTRO")]]></variableExpression>
+	</variable>
+	<variable name="medio" class="java.lang.String">
+		<variableExpression><![CDATA[$F{medio_ingreso}=="0" ? "NO" : "SI"]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="6" width="532" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="218" y="0" width="100" height="12"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="218" y="0" width="100" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS ADMISION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="16" width="65" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAUSA EXTERNA:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="78" y="16" width="100" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{causaexterna}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="26" width="65" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTADO INGRESO:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="78" y="26" width="100" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{estadoingreso}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="218" y="16" width="65" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA INGRESO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="218" y="26" width="65" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROPIO INGRESO:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="283" y="16" width="100" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="283" y="26" width="100" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{medio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="397" y="16" width="65" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA INGRESO:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="462" y="16" width="59" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="78" y="36" width="443" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{observacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="36" width="65" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OBSERVACIONES:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="397" y="26" width="65" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° DE ADMISION:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="462" y="26" width="59" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nadmision}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

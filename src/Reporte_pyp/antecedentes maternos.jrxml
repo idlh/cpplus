@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="antecedentes maternos" language="groovy" pageWidth="532" pageHeight="132" orientation="Landscape" columnWidth="532" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idhistoria" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+    DATE_FORMAT(`pyp_materna_obstetricos`.`fcuembarazo`, '%d/%m/%Y') AS `fcuembarazo`
+    , `pyp_materna_obstetricos`.`nacidosmuertos`
+    , `pyp_materna_obstetricos`.`nacidosvivos`
+    , `pyp_materna_obstetricos`.`viven`
+    , `pyp_materna_obstetricos`.`muertos1sem`
+    , `pyp_materna_obstetricos`.`despues1sem`
+    , `pyp_materna_obstetricos`.`ultimoprevio`
+    , `pyp_materna_obstetricos`.`embarazop`
+    , `pyp_materna_obstetricos`.`embarazod`
+    , `pyp_materna_obstetricos`.`complicaciones`
+    , `pyp_materna_obstetricos`.`fracasomac`
+    , `pyp_materna_gestaactual`.`vdrlmenor`
+    , `pyp_materna_gestaactual`.`vdrlmayor`
+    , `pyp_materna_gestaactual`.`tsullivan`
+    , `pyp_materna_gestaactual`.`agshb`
+    , `pyp_materna_gestaactual`.`toxoplasma`
+    , `pyp_materna_gestaactual`.`grupos`
+    , `pyp_materna_gestaactual`.`sifilisfta`
+    , `pyp_materna_gestaactual`.`antiprevia`
+    , `pyp_materna_gestaactual`.`antiembarazo`
+    , `pyp_materna_gestaactual`.`antitevigente`
+    , `pyp_materna_gestaactual`.`mesd1`
+    , `pyp_materna_gestaactual`.`mesd2`
+    , `pyp_materna_gestaactual`.`vihconsej`
+    , `pyp_materna_gestaactual`.`vihsolicitado`
+FROM
+    `database`.`pyp_materna_obstetricos`
+    INNER JOIN `database`.`pyp_materna`
+        ON (`pyp_materna_obstetricos`.`id_materna` = `pyp_materna`.`id`)
+    INNER JOIN `database`.`pyp_materna_gestaactual`
+        ON (`pyp_materna_gestaactual`.`id_materna` = `pyp_materna`.`id`)
+    INNER JOIN `database`.`pyp_historiac`
+        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)
+WHERE (`pyp_historiac`.`id` =$P{idhistoria}
+    AND `pyp_historiac`.`estado` =1);]]>
+	</queryString>
+	<field name="fcuembarazo" class="java.lang.String"/>
+	<field name="nacidosmuertos" class="java.lang.Long"/>
+	<field name="nacidosvivos" class="java.lang.Long"/>
+	<field name="viven" class="java.lang.Long"/>
+	<field name="muertos1sem" class="java.lang.Long"/>
+	<field name="despues1sem" class="java.lang.Long"/>
+	<field name="ultimoprevio" class="java.lang.Integer"/>
+	<field name="embarazop" class="java.lang.Integer"/>
+	<field name="embarazod" class="java.lang.Integer"/>
+	<field name="complicaciones" class="java.lang.Integer"/>
+	<field name="fracasomac" class="java.lang.Integer"/>
+	<field name="vdrlmenor" class="java.lang.Integer"/>
+	<field name="vdrlmayor" class="java.lang.Integer"/>
+	<field name="tsullivan" class="java.lang.Integer"/>
+	<field name="agshb" class="java.lang.Integer"/>
+	<field name="toxoplasma" class="java.lang.Integer"/>
+	<field name="grupos" class="java.lang.Integer"/>
+	<field name="sifilisfta" class="java.lang.Boolean"/>
+	<field name="antiprevia" class="java.lang.Boolean"/>
+	<field name="antiembarazo" class="java.lang.Boolean"/>
+	<field name="antitevigente" class="java.lang.Boolean"/>
+	<field name="mesd1" class="java.lang.Long"/>
+	<field name="mesd2" class="java.lang.Long"/>
+	<field name="vihconsej" class="java.lang.Boolean"/>
+	<field name="vihsolicitado" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="78" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="7" y="7" width="523" height="70"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="13" y="16" width="100" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FIN DEL EMBARAZO ANTERIOR:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="113" y="16" width="63" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fcuembarazo}.equals("01/01/0001") ? "NO APLICA" : $F{fcuembarazo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="28" width="67" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NACIDOS MUERTOS:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="28" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nacidosmuertos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="40" width="67" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NACIDOS VIVOS:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="40" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nacidosvivos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="52" width="67" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VIVEN:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="52" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{viven}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="113" y="28" width="106" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MUERTOS 1RA SEMANA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="219" y="28" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{muertos1sem}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="113" y="40" width="106" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MUERTOS DESPUES 1RA SEMANA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="219" y="40" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{despues1sem}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="248" y="28" width="55" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ULTIMO PREVIO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="303" y="28" width="60" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{ultimoprevio} == 0 ? "< 2500 g" :
+    ($F{ultimoprevio} == 1 ? "> 4000 g" :
+        ($F{ultimoprevio} ==2 ? "GEMELARES" : "NINGUNO")))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="382" y="28" width="75" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMBARAZO PLANEADO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="457" y="28" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{embarazop} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="382" y="40" width="75" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMBARAZO DESEADO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="457" y="40" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{embarazod} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="64" width="67" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COMPLICACIONES:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="64" width="83" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{complicaciones} == 0 ? "TRABAJO DE PARTO PRETERMINO" :
+    ($F{complicaciones} == 1 ? "PREECLAMPSIA" :
+        ($F{complicaciones} == 2 ? "ECLAMPSIA" :
+            ($F{complicaciones} == 3 ? "DIABETES GESTACIONAL" :
+                ($F{complicaciones} == 4 ? "RPMO" :
+                    ($F{complicaciones} == 5 ? "AMENAZA DE ABORTO" :
+                        ($F{complicaciones} == 6 ? "HEMORRAGIA 3ER TRIMESTRE" :
+                            ($F{complicaciones} == 7 ? "PARTO DIFICIL" : "NINGUNO"))))))))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="167" y="64" width="52" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FRACASO MAC:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="219" y="64" width="131" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{fracasomac} == 0 ? "NO APLICA" :
+    ($F{fracasomac} == 1 ? "ANTICONCEPTIVOS ORALES COMBINADOS" :
+        ($F{fracasomac} == 2 ? "ANTICONCEPTIVOS INYECTABLES COMBINADOS" :
+            ($F{fracasomac} == 3 ? "INYECTABLE SÓLO PROGESTÁGENOS" :
+                ($F{fracasomac} == 4 ? "PÍLDORAS SÓLO PROGESTÁGENOS" :
+                    ($F{fracasomac} == 5 ? "PRESERVATIVO" :
+                        ($F{fracasomac} == 6 ? "DEFINITIVOS" :
+                            ($F{fracasomac} == 7 ? "DIU" :
+                                ($F{fracasomac} == 8 ? "JADELL" :
+                                    ($F{fracasomac} == 9 ? "OTROS" : "NO USABA"))))))))))]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OBSTETRICOS]]></text>
+			</staticText>
+		</band>
+		<band height="54">
+			<rectangle radius="10">
+				<reportElement x="7" y="7" width="523" height="44"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="13" y="15" width="67" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VDRL/RPR < 20 SEM:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="15" width="33" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{vdrlmenor} == 0 ? "NEGATIVO" :
+    ($F{vdrlmenor} == 1 ? "POSITIVO" : "NO SE HIZO"))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="113" y="15" width="67" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VDRL/RPR >20 SEM:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="180" y="15" width="33" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vdrlmayor} == 0 ? "NEGATIVO" :
+    ($F{vdrlmayor} == 1 ? "POSITIVO" : "NO SE HIZO")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="213" y="15" width="61" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TEST O' SULLIVAN:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="274" y="15" width="29" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{tsullivan} == 0 ? "- 135" :
+    ($F{tsullivan} == 1 ? "135 - 199" :
+        ($F{tsullivan} == 2 ? "> 200" : "NINGUNO")))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="303" y="15" width="28" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AGSHB:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="331" y="15" width="30" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{agshb} == 0 ? "NEGATIVO" :
+($F{agshb} == 1 ? "POSITIVO" : "NO APLICA")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="363" y="15" width="63" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LGT TOXOPLASMA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="426" y="15" width="30" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{toxoplasma} == 0 ? "NEGATIVO" :
+($F{toxoplasma} == 1 ? "POSITIVO" : "NO APLICA")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="27" width="67" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRUPO SANGUINEO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="27" width="20" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{grupos} == 0 ? "O-" :
+    ($F{grupos} == 1 ? "O+" :
+        ($F{grupos} == 2 ? "A-" :
+            ($F{grupos} == 3 ? "A+" :
+                ($F{grupos} == 4 ? "B-" :
+                    ($F{grupos} == 5 ? "B+" :
+                        ($F{grupos} == 6 ? "AB-" : "AB+")))))))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="100" y="27" width="76" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANTITETANICA VIGENTE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="27" width="28" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOSIS 1:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="219" y="27" width="10" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mesd1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="229" y="27" width="28" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOSIS 2:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="257" y="27" width="10" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mesd2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="27" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{antitevigente}.equals(true) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="267" y="27" width="75" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANTIRUBEOLA PREVIA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="342" y="27" width="10" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{antiprevia}.equals(true) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="352" y="27" width="92" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANTIRUBEOLA EN EMBARAZO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="444" y="27" width="10" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{antiembarazo}.equals(true) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="456" y="27" width="50" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIFILIS POR FTA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="506" y="27" width="10" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sifilisfta}.equals(true) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="39" width="53" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VIH CONSEJERIA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="67" y="39" width="10" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vihconsej}.equals(true) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="77" y="39" width="53" height="10"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VIH SOLICITADO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="39" width="10" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vihsolicitado}.equals(true) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GESTA ACTUAL]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

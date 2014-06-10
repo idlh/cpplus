@@ -82,6 +82,12 @@ public class DiagnosticosM extends javax.swing.JPanel {
             jTextField1.setEditable(false);
             ciep = 11796;
         }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 7) {
+            cie = new Consultarcie10();
+            cie.llamar_cie("E119");
+            jTextField1.setEditable(false);
+            ciep = 1739;
+        }
         jTextField2.setEditable(false);
         jTextField3.setEditable(false);
         jTextField4.setEditable(false);
