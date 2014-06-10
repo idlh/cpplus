@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="historia pyp" pageWidth="612" pageHeight="792" columnWidth="532" leftMargin="40" rightMargin="40" topMargin="40" bottomMargin="40">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="2631"/>
+	<property name="ireport.y" value="423"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -161,7 +161,7 @@ FROM
     INNER JOIN `database`.`pyp_adm_control_profesionales`
         ON (`pyp_adm_asist_con`.`id_control_pro` = `pyp_adm_control_profesionales`.`id`)
     INNER JOIN `database`.`cm_profesionales`
-        ON (`pyp_adm_control_profesionales`.`id_profesional` = `cm_profesionales`.`id`)
+        ON (`pyp_historiac`.`usuariolog` = `cm_profesionales`.`id`)
     INNER JOIN `database`.`config_decripcion_login`
         ON (`cm_profesionales`.`id_descripcion_login` = `config_decripcion_login`.`id`)
     INNER JOIN `database`.`pyp_adm_admision`
@@ -515,6 +515,160 @@ WHERE (`pyp_historiac`.`id` =$P{idhistoria} AND `pyp_historiac`.`estado`=1);]]>
 				</textElement>
 				<textFieldExpression><![CDATA["-"+$F{programa} + ($F{primera_vez}.equals("0") ?
     " - CONSULTA DE CONTROL" : " - CON SULTA DE PRIMERA VEZ")]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="50">
+			<line>
+				<reportElement x="0" y="6" width="532" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#666666"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="13" y="2" width="100" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EVENTOS ESTRESANTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="14" width="66" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VIOLENCIA SEXUAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="79" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sepodivorcio} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="95" y="14" width="82" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMBARAZO ADOLECENTE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="177" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EmbarazoA} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="192" y="14" width="78" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VICTIMA DE MALTRATO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="270" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FracasoE} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="285" y="14" width="78" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONFLICTO CONYUGAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="363" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ConflictoC} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="378" y="14" width="101" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SALIDA DE UN HIJO DEL HOGAR:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="479" y="14" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Salidahijo} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="26" width="84" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIFICULTADES LABORALES:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="97" y="26" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DificultadesL} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="113" y="26" width="68" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MUERTE DE UN HIJO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="181" y="26" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Muertehijo} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="196" y="26" width="41" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GESTACION:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="237" y="26" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{decersionE} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="252" y="26" width="26" height="10"/>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OTROS:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="279" y="26" width="15" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{otros} == 1 ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="13" y="38" width="511" height="10" isRemoveLineWhenBlank="true"/>
+				<textElement>
+					<font fontName="Calibri" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totros}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="28">
