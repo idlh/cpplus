@@ -11,6 +11,8 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileOutputStream;
 import javax.swing.JOptionPane;
+import Clases.Save;
+import net.sf.jasperreports.engine.util.FileBufferedOutputStream;
 
 /**
  *
@@ -21,6 +23,7 @@ public class Imprimir extends javax.swing.JDialog {
     Imprimirreporte imp = new Imprimirreporte();
     Funciones_AD Funciones = new Funciones_AD();
     String id;
+    Save sav = new Save();
 
     /**
      * Creates new form Imprimir
@@ -29,8 +32,8 @@ public class Imprimir extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         jLabel2.setText("<html>\n"
-                + "<div style=\"width:250;\">" + "  Si desea imprimir la historia clinica referente al programa de: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.progam + "</b>"
-                + " del (la) paciente: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.name + "</b>" + ", presione el boton aceptar o pulse enter para continuar..." + "\n"
+                + "<div style=\"width:250;\">" + "  A continuacion se imprimira la historia clinica referente al programa de: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.progam + "</b>"
+                + " y la receta medica(en caso de que exista) del (la) paciente: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.name + "</b>" + ", presione el boton aceptar o pulse enter para continuar..." + "\n"
                 + "</div>\n"
                 + "</html>");
         idhisto();
@@ -233,8 +236,8 @@ public class Imprimir extends javax.swing.JDialog {
         @Override
         public void run() {
             try {
-                PdfReader reader = null;
-                File archivoTemporal;
+                PdfReader reader = null, reader2 = null;
+                File archivoTemporal, archivotemp;
                 archivoTemporal = File.createTempFile("Historia", ".pdf");
                 BDConectar bd = new BDConectar();
                 bd.ConectarBasedeDatos();
@@ -253,6 +256,28 @@ public class Imprimir extends javax.swing.JDialog {
                 }
                 copy.close();
                 Desktop.getDesktop().open(archivoTemporal);
+                //recetario                
+                Object poso[][] = Funciones.RetornarDatos(sav.recetam(id));
+                String cantiposo = poso[0][0].toString();
+                if (!cantiposo.equals("0")) {
+                    archivotemp = File.createTempFile("Recetario", ".pdf");
+                    bd.ConectarBasedeDatos();
+                    imp.setNombrereceta("RECETA MEDICA");
+                    imp.setIdhc(id);
+                    imp.setCodigo("PP-F01-1420");
+                    imp.setConexion(bd.conexion);
+                    imp.setServicio("P Y P");
+                    imp.setVersion("1.0");
+                    reader2 = imp.Imprimirrecetario();
+                    bd.DesconectarBasedeDatos();
+                    imp.tempFiler.deleteOnExit();
+                    PdfCopyFields copyr = new PdfCopyFields(new FileOutputStream(archivotemp));
+                    if (reader2 != null) {
+                        copyr.addDocument(reader2);
+                    }
+                    copyr.close();
+                    Desktop.getDesktop().open(archivotemp);
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "r001 " + e.getMessage(), Imprimir.class.getName(), JOptionPane.INFORMATION_MESSAGE);
             }
