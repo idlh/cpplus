@@ -20,9 +20,17 @@ import net.sf.jasperreports.engine.export.JRPdfExporter;
  */
 public class Imprimirreporte {
 
-    private String idhc, nombrereport, codigo, servicio, version;
+    private String idhc, nombrereport, codigo, servicio, version, nombrereceta;
     private Connection conexion;
-    public File tempFile;
+    public File tempFile, tempFiler;
+
+    public String getNombrereceta() {
+        return nombrereceta;
+    }
+
+    public void setNombrereceta(String nombrereceta) {
+        this.nombrereceta = nombrereceta;
+    }
 
     public String getIdhc() {
         return idhc;
@@ -94,6 +102,27 @@ public class Imprimirreporte {
             return new PdfReader(tempFile.getAbsolutePath());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error General Lanzando Reporte Descripcion: Pparameter001406-1 " + e.getMessage());
+            return null;
+        }
+    }
+
+    public PdfReader Imprimirrecetario() {
+        try {
+            Map parametro = new HashMap();
+            JasperPrint informe;
+            parametro.put("idhistoria", getIdhc());
+            parametro.put("nombrereporte", getNombrereceta());
+            parametro.put("servicio", getServicio());
+            parametro.put("codigo", getCodigo());
+            parametro.put("version", getVersion());
+            informe = JasperFillManager.fillReport(System.getProperty("user.dir") + "/src/Reporte_pyp/recetario.jasper", parametro, getConexion());
+            JRExporter exporter = new JRPdfExporter();
+            exporter.setParameter(JRExporterParameter.JASPER_PRINT, informe);
+            tempFiler = File.createTempFile("Recetario", ".pdf");
+            exporter.setParameter(JRExporterParameter.OUTPUT_FILE, tempFile);
+            exporter.exportReport();
+            return new PdfReader(tempFile.getAbsolutePath());
+        } catch (Exception e) {
             return null;
         }
     }
