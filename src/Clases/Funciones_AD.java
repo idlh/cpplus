@@ -248,8 +248,4 @@ public class Funciones_AD {
         }
         return b;
     }
-    
-    
-    
-    
 }

@@ -58,16 +58,20 @@ public class Save {
         return "SELECT `pyp_historiac`.`id`"
                 + " FROM"
                 + " `database`.`pyp_historiac`"
-                + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "' AND `pyp_historiac`.`estado` = 0"
-                + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1;";
+                + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "' "
+//                + "AND `pyp_historiac`.`estado` = 0"
+//                + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1"
+                + ";";
     }
 
     public String seleccionaridvisual(String id) {
         return "SELECT `pyp_visual`.`id`"
                 + " FROM"
                 + " `database`.`pyp_visual`"
-                + " WHERE `pyp_visual`.`idasistencia`='" + id + "' AND `pyp_visual`.`estado` = 0"
-                + " GROUP BY `pyp_visual`.`id` DESC LIMIT 1;";
+                + " WHERE `pyp_visual`.`idasistencia`='" + id + "' "
+//                + "AND `pyp_visual`.`estado` = 0"
+//                + " GROUP BY `pyp_visual`.`id` DESC LIMIT 1"
+                + ";";
     }
 
     public String seleccionaridhcfinal(String id) {

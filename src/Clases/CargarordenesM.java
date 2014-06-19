@@ -1,5 +1,6 @@
 package Clases;
 
+import Dialogos.HCDiag.Dprocedimientos;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -426,6 +427,45 @@ public class CargarordenesM {
             JOptionPane.showMessageDialog(null, "tab008 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "tab008 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void cargarhistorias(DefaultTableModel model, Integer idprograma) {
+        try {
+            bd.ConectarBasedeDatos();
+            c = 0;
+            Object s[] = null;
+            bd.resultado = bd.sentencia.executeQuery("SELECT "
+                    + "    `info_paciente`.`tipo_doc` "
+                    + "    , `info_paciente`.`num_doc` "
+                    + "    , CONCAT(`info_paciente`.`nombre1`,' ', `info_paciente`.`apellido1`)AS nombre "
+                    + "    , DATE_FORMAT(CONCAT(`pyp_adm_asist_con`.`fecha`,' ', `pyp_adm_asist_con`.`hora`), '%d/%m/%Y %H:%i') AS Fecha "
+                    + "    ,`pyp_adm_asist_con`.`id`"
+                    + "FROM "
+                    + "    `database`.`pyp_adm_asist_con` "
+                    + "    INNER JOIN `database`.`pyp_adm_agend` "
+                    + "        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`) "
+                    + "    INNER JOIN `database`.`info_paciente` "
+                    + "        ON (`pyp_adm_agend`.`id_paciente` = `info_paciente`.`id`) "
+                    + "WHERE (`pyp_adm_agend`.`id_programa` ='" + idprograma + "'"
+                    + "    AND `pyp_adm_asist_con`.`estado` =2);");
+            if (bd.resultado != null) {
+                while (bd.resultado.next()) {
+                    model.addRow(s);
+                    model.setValueAt(bd.resultado.getString("id"), c, 0);
+                    model.setValueAt(bd.resultado.getString("tipo_doc"), c, 1);
+                    model.setValueAt(bd.resultado.getString("num_doc"), c, 2);
+                    model.setValueAt(bd.resultado.getString("nombre"), c, 3);
+                    model.setValueAt(bd.resultado.getString("Fecha"), c, 4);
+                    c++;
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "tab009 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "tab009 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }

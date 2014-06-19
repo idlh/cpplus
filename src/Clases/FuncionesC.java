@@ -35,4 +35,26 @@ public class FuncionesC {
         }
         return numero;
     }
+    
+    public String[] llenarCombo(String sql, String[] lista, javax.swing.JComboBox combo) {
+        try {
+            BDConectar bd = new BDConectar();
+            bd.ConectarBasedeDatos();
+            bd.resultado =  bd.sentencia.executeQuery(sql);
+            bd.resultado.last();
+            lista = new String[bd.resultado.getRow()];
+            int i = 0;
+            bd.resultado.beforeFirst();
+            while (bd.resultado.next()) {
+                lista[i] = bd.resultado.getString(1);
+                combo.addItem(bd.resultado.getString(2));
+                i++;
+            }
+            bd.resultado.close();
+            bd.DesconectarBasedeDatos();
+        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Error cargando Lista , - Detalles del Error: " + e.getMessage(), "Clipa+ . Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return lista;
+    }
 }

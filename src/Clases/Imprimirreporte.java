@@ -89,10 +89,18 @@ public class Imprimirreporte {
             parametro.put("servicio", getServicio());
             parametro.put("codigo", getCodigo());
             parametro.put("version", getVersion());
-            if (modulo_pyp.Modulo_PyP.d.listPacientes.idprograma != 4) {
-                informe = JasperFillManager.fillReport(System.getProperty("user.dir") + "/src/Reporte_pyp/historia_pyp.jasper", parametro, getConexion());
-            } else {
-                informe = JasperFillManager.fillReport(System.getProperty("user.dir") + "/src/Reporte_pyp/visual.jasper", parametro, getConexion());
+            if (modulo_pyp.Modulo_PyP.d.est.equals("1")) {
+                if (modulo_pyp.Modulo_PyP.d.listPacientes.idprograma != 4) {
+                    informe = JasperFillManager.fillReport(System.getProperty("user.dir") + "/src/Reporte_pyp/historia_pyp.jasper", parametro, getConexion());
+                } else {
+                    informe = JasperFillManager.fillReport(System.getProperty("user.dir") + "/src/Reporte_pyp/visual.jasper", parametro, getConexion());
+                }
+            }else{
+                if (modulo_pyp.Modulo_PyP.d.panelc.historias.idprograma != 4) {
+                    informe = JasperFillManager.fillReport(System.getProperty("user.dir") + "/src/Reporte_pyp/historia_pyp.jasper", parametro, getConexion());
+                } else {
+                    informe = JasperFillManager.fillReport(System.getProperty("user.dir") + "/src/Reporte_pyp/visual.jasper", parametro, getConexion());
+                }
             }
             JRExporter exporter = new JRPdfExporter();
             exporter.setParameter(JRExporterParameter.JASPER_PRINT, informe);
