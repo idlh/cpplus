@@ -6,12 +6,20 @@ package modulo_pyp;
 
 import Clases.Declaraciones_AD;
 import Dialogos.HCDiag.ListPacientes;
+import Portable.Portablep;
 import javax.swing.JOptionPane;
+import Administrativo.Panelconfig.Panelconfigadm;
+
 public class Desktop extends javax.swing.JFrame {
-Clases.Declaraciones_AD Declaraciones = new Clases.Declaraciones_AD();
-public Administrativo.C_Agendar Agendar = new Administrativo.C_Agendar();
-public Administrativo.C_Confirmar Confirmar = new Administrativo.C_Confirmar();
-public ListPacientes listPacientes;
+
+    Clases.Declaraciones_AD Declaraciones = new Clases.Declaraciones_AD();
+    public Administrativo.C_Agendar Agendar = new Administrativo.C_Agendar();
+    public Administrativo.C_Confirmar Confirmar = new Administrativo.C_Confirmar();
+    public ListPacientes listPacientes;
+    Portablep port = null;
+    public Panelconfigadm panelc = new Panelconfigadm();
+    public String est = "0";
+
     /**
      * Creates new form Desktop
      */
@@ -41,9 +49,10 @@ public ListPacientes listPacientes;
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -119,22 +128,60 @@ public ListPacientes listPacientes;
         jPanel5.add(jLabel4);
         jLabel4.setBounds(20, 4, 170, 20);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Menu_Izquierdo.png"))); // NOI18N
-        jPanel5.add(jLabel1);
-        jLabel1.setBounds(0, 0, 203, 304);
-
-        jLabel2.setText("jLabel2");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/atencion.png"))); // NOI18N
+        jLabel2.setText(" Pacientes para Atencion");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jLabel2MouseReleased(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
+            }
         });
         jPanel5.add(jLabel2);
-        jLabel2.setBounds(10, 310, 34, 30);
+        jLabel2.setBounds(20, 125, 160, 20);
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/atencion portable.png"))); // NOI18N
+        jLabel3.setText("Atencion Portable");
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel3MouseReleased(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3MouseExited(evt);
+            }
+        });
         jPanel5.add(jLabel3);
-        jLabel3.setBounds(54, 310, 34, 30);
+        jLabel3.setBounds(20, 157, 160, 20);
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/admin.png"))); // NOI18N
+        jLabel11.setText("Administrativo");
+        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel11MouseReleased(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel11MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel11MouseExited(evt);
+            }
+        });
+        jPanel5.add(jLabel11);
+        jLabel11.setBounds(20, 190, 160, 20);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Menu_Izquierdo.png"))); // NOI18N
+        jPanel5.add(jLabel1);
+        jLabel1.setBounds(0, 0, 203, 304);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -182,7 +229,7 @@ public ListPacientes listPacientes;
     }//GEN-LAST:event_jLabel5MouseExited
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
-       jLabel9.setLocation(20, 62);
+        jLabel9.setLocation(20, 62);
     }//GEN-LAST:event_jLabel9MouseEntered
 
     private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
@@ -195,54 +242,101 @@ public ListPacientes listPacientes;
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-       Lanzar_Asistencia();
+        Lanzar_Asistencia();
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
         listPacientes = new ListPacientes(this, true);
         listPacientes.setVisible(true);
+        est = "1";
     }//GEN-LAST:event_jLabel2MouseReleased
-    private void Lanzar_Agend(){
-        try {        
-            if(Contenedor_.getComponentCount()==0){
-                Load_Contenedor();
-                Declaraciones_AD.CContenedor.area.addTab("Agendar Pacientes",Agendar);
-                Declaraciones_AD.CContenedor.area.setSelectedComponent(Agendar);
-                Agendar.repaint();
-                Agendar.validate();
-                }else{
-                Declaraciones_AD.CContenedor.area.addTab("Agendar Pacientes",Agendar);
-                Declaraciones_AD.CContenedor.area.setSelectedComponent(Agendar);
-                Agendar.repaint();
-                Agendar.validate();
-                }
-                Declaraciones_AD.CContenedor.area.repaint();
-                Declaraciones_AD.CContenedor.area.validate();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-    }
-    private void Lanzar_Asistencia(){
+
+    private void jLabel3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseReleased
+        port = new Portablep();
+        Contenedor_.removeAll();
+        port.panelprincipal.setBounds(0, 0, 745, 393);
+        Contenedor_.add(port.panelprincipal);
+        port.panelprincipal.setVisible(true);
+        Contenedor_.repaint();
+        Contenedor_.validate();
+    }//GEN-LAST:event_jLabel3MouseReleased
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        jLabel2.setLocation(20, 123);
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        jLabel2.setLocation(20, 125);
+    }//GEN-LAST:event_jLabel2MouseExited
+
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+        jLabel3.setLocation(20, 155);
+    }//GEN-LAST:event_jLabel3MouseEntered
+
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+        jLabel3.setLocation(20, 157);
+    }//GEN-LAST:event_jLabel3MouseExited
+
+    private void jLabel11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseEntered
+        jLabel11.setLocation(20, 188);
+    }//GEN-LAST:event_jLabel11MouseEntered
+
+    private void jLabel11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseExited
+        jLabel11.setLocation(20, 190);
+    }//GEN-LAST:event_jLabel11MouseExited
+
+    private void jLabel11MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseReleased
+        Contenedor_.removeAll();
+        panelc.setBounds(0, 0, 745, 393);
+        Contenedor_.add(panelc);
+        this.repaint();
+        Contenedor_.repaint();
+        Contenedor_.validate();
+        est = "2";
+    }//GEN-LAST:event_jLabel11MouseReleased
+    private void Lanzar_Agend() {
         try {
-            if(Contenedor_.getComponentCount()==0){
-               Load_Contenedor();
-               Declaraciones_AD.CContenedor.area.addTab("Confirmar Asistencia", Confirmar);
-               Declaraciones_AD.CContenedor.area.setSelectedComponent(Confirmar);
-               Agendar.repaint();
-               Agendar.validate();
-            }else{
-               Declaraciones_AD.CContenedor.area.addTab("Confirmar Asistencia", Confirmar);
-               Declaraciones_AD.CContenedor.area.setSelectedComponent(Confirmar);
-               Agendar.repaint();
-               Agendar.validate(); 
+            if (Contenedor_.getComponentCount() == 0) {
+                Load_Contenedor();
+                Declaraciones_AD.CContenedor.area.addTab("Agendar Pacientes", Agendar);
+                Declaraciones_AD.CContenedor.area.setSelectedComponent(Agendar);
+                Agendar.repaint();
+                Agendar.validate();
+            } else {
+                Declaraciones_AD.CContenedor.area.addTab("Agendar Pacientes", Agendar);
+                Declaraciones_AD.CContenedor.area.setSelectedComponent(Agendar);
+                Agendar.repaint();
+                Agendar.validate();
             }
             Declaraciones_AD.CContenedor.area.repaint();
             Declaraciones_AD.CContenedor.area.validate();
         } catch (Exception e) {
-           JOptionPane.showMessageDialog(this, e.getMessage()); 
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
-    private void Load_Contenedor(){
+
+    private void Lanzar_Asistencia() {
+        try {
+            if (Contenedor_.getComponentCount() == 0) {
+                Load_Contenedor();
+                Declaraciones_AD.CContenedor.area.addTab("Confirmar Asistencia", Confirmar);
+                Declaraciones_AD.CContenedor.area.setSelectedComponent(Confirmar);
+                Agendar.repaint();
+                Agendar.validate();
+            } else {
+                Declaraciones_AD.CContenedor.area.addTab("Confirmar Asistencia", Confirmar);
+                Declaraciones_AD.CContenedor.area.setSelectedComponent(Confirmar);
+                Agendar.repaint();
+                Agendar.validate();
+            }
+            Declaraciones_AD.CContenedor.area.repaint();
+            Declaraciones_AD.CContenedor.area.validate();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
+
+    private void Load_Contenedor() {
         Contenedor_.removeAll();
         Declaraciones_AD.CContenedor.setBounds(0, 0, 745, 393);
         Contenedor_.add(Declaraciones_AD.CContenedor);
@@ -254,6 +348,7 @@ public ListPacientes listPacientes;
     public javax.swing.JPanel Contenedor_;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
