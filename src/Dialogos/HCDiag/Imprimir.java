@@ -31,11 +31,21 @@ public class Imprimir extends javax.swing.JDialog {
     public Imprimir(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        jLabel2.setText("<html>\n"
-                + "<div style=\"width:250;\">" + "  A continuacion se imprimira la historia clinica referente al programa de: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.progam + "</b>"
-                + " y la receta medica(en caso de que exista) del (la) paciente: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.name + "</b>" + ", presione el boton aceptar o pulse enter para continuar..." + "\n"
-                + "</div>\n"
-                + "</html>");
+        if (modulo_pyp.Modulo_PyP.d.est.equals("1")) {
+            jLabel2.setText("<html>\n"
+                    + "<div style=\"width:250;\">" + "  A continuacion se imprimira la historia clinica referente al programa de: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.progam + "</b>"
+                    + " y la receta medica(en caso de que exista) del (la) paciente: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.name + "</b>" + ", presione el boton aceptar o pulse enter para continuar..." + "\n"
+                    + "</div>\n"
+                    + "</html>");
+        } else {
+            if (modulo_pyp.Modulo_PyP.d.est.equals("2")) {
+                jLabel2.setText("<html>\n"
+                        + "<div style=\"width:250;\">" + "  A continuacion se imprimira la historia clinica referente al programa de: " + "<b>" + modulo_pyp.Modulo_PyP.d.panelc.historias.progam + "</b>"
+                        + " y la receta medica(en caso de que exista) del (la) paciente: " + "<b>" + modulo_pyp.Modulo_PyP.d.panelc.historias.name + "</b>" + ", presione el boton aceptar o pulse enter para continuar..." + "\n"
+                        + "</div>\n"
+                        + "</html>");
+            }
+        }
         idhisto();
     }
 
@@ -56,6 +66,9 @@ public class Imprimir extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setMaximumSize(new java.awt.Dimension(282, 250));
+        setMinimumSize(new java.awt.Dimension(282, 250));
+        setPreferredSize(new java.awt.Dimension(282, 250));
         setResizable(false);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -64,6 +77,9 @@ public class Imprimir extends javax.swing.JDialog {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMaximumSize(new java.awt.Dimension(282, 250));
+        jPanel1.setMinimumSize(new java.awt.Dimension(282, 250));
+        jPanel1.setPreferredSize(new java.awt.Dimension(282, 250));
 
         jPanel2.setBackground(new java.awt.Color(125, 164, 222));
 
@@ -78,7 +94,7 @@ public class Imprimir extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,10 +119,10 @@ public class Imprimir extends javax.swing.JDialog {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 222, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -115,7 +131,7 @@ public class Imprimir extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -129,7 +145,7 @@ public class Imprimir extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, Short.MAX_VALUE)
         );
 
         pack();
@@ -191,37 +207,72 @@ public class Imprimir extends javax.swing.JDialog {
     }
 
     private void idhisto() {
-        switch (modulo_pyp.Modulo_PyP.d.listPacientes.idprograma) {
-            case 3:
-                id = modulo_pyp.Modulo_PyP.d.listPacientes.adult.idhc;
-                break;
-            case 9:
-                id = modulo_pyp.Modulo_PyP.d.listPacientes.controlp.idhc;
-                break;
-            case 11:
-                id = modulo_pyp.Modulo_PyP.d.listPacientes.postparto.idhc;
-                break;
-            case 10:
-                id = modulo_pyp.Modulo_PyP.d.listPacientes.reciennacido.idhc;
-                break;
-            case 5:
-                id = modulo_pyp.Modulo_PyP.d.listPacientes.planificacion.idhc;
-                break;
-            case 1:
-                id = modulo_pyp.Modulo_PyP.d.listPacientes.jovensano.idhc;
-                break;
-            case 6:
-                id = modulo_pyp.Modulo_PyP.d.listPacientes.hipertenso.idhc;
-                break;
-            case 2:
-                id = modulo_pyp.Modulo_PyP.d.listPacientes.cydesarrollo.idhc;
-                break;
-            case 4:
-                id = modulo_pyp.Modulo_PyP.d.listPacientes.agudeza.idhc;
-                break;
-            case 7:
-                id = modulo_pyp.Modulo_PyP.d.listPacientes.diabetes.idhc;
-                break;
+        if (modulo_pyp.Modulo_PyP.d.est.equals("1")) {
+            switch (modulo_pyp.Modulo_PyP.d.listPacientes.idprograma) {
+                case 3:
+                    id = modulo_pyp.Modulo_PyP.d.listPacientes.adult.idhc;
+                    break;
+                case 9:
+                    id = modulo_pyp.Modulo_PyP.d.listPacientes.controlp.idhc;
+                    break;
+                case 11:
+                    id = modulo_pyp.Modulo_PyP.d.listPacientes.postparto.idhc;
+                    break;
+                case 10:
+                    id = modulo_pyp.Modulo_PyP.d.listPacientes.reciennacido.idhc;
+                    break;
+                case 5:
+                    id = modulo_pyp.Modulo_PyP.d.listPacientes.planificacion.idhc;
+                    break;
+                case 1:
+                    id = modulo_pyp.Modulo_PyP.d.listPacientes.jovensano.idhc;
+                    break;
+                case 6:
+                    id = modulo_pyp.Modulo_PyP.d.listPacientes.hipertenso.idhc;
+                    break;
+                case 2:
+                    id = modulo_pyp.Modulo_PyP.d.listPacientes.cydesarrollo.idhc;
+                    break;
+                case 4:
+                    id = modulo_pyp.Modulo_PyP.d.listPacientes.agudeza.idhc;
+                    break;
+                case 7:
+                    id = modulo_pyp.Modulo_PyP.d.listPacientes.diabetes.idhc;
+                    break;
+            }
+        } else {
+            switch (modulo_pyp.Modulo_PyP.d.panelc.historias.idprograma) {
+                case 3:
+                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.adult.idhc;
+                    break;
+                case 9:
+                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.controlp.idhc;
+                    break;
+                case 11:
+                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.postparto.idhc;
+                    break;
+                case 10:
+                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.reciennacido.idhc;
+                    break;
+                case 5:
+                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.planificacion.idhc;
+                    break;
+                case 1:
+                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.jovensano.idhc;
+                    break;
+                case 6:
+                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.hipertenso.idhc;
+                    break;
+                case 2:
+                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.cydesarrollo.idhc;
+                    break;
+                case 4:
+                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.agudeza.idhc;
+                    break;
+                case 7:
+                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.diabetes.idhc;
+                    break;
+            }
         }
     }
 
@@ -242,7 +293,13 @@ public class Imprimir extends javax.swing.JDialog {
                 BDConectar bd = new BDConectar();
                 bd.ConectarBasedeDatos();
                 imp.setIdhc(id);
-                imp.setNombrereport(modulo_pyp.Modulo_PyP.d.listPacientes.progam);
+                if (modulo_pyp.Modulo_PyP.d.est.equals("1")) {
+                    imp.setNombrereport(modulo_pyp.Modulo_PyP.d.listPacientes.progam);
+                } else {
+                    if (modulo_pyp.Modulo_PyP.d.est.equals("2")) {
+                        imp.setNombrereport(modulo_pyp.Modulo_PyP.d.panelc.historias.progam);
+                    }
+                }
                 imp.setCodigo("PP-F01-1420");
                 imp.setConexion(bd.conexion);
                 imp.setServicio("P Y P");
@@ -259,19 +316,33 @@ public class Imprimir extends javax.swing.JDialog {
                 //recetario                
                 Object poso[][] = Funciones.RetornarDatos(sav.recetam(id));
                 String cantiposo = poso[0][0].toString();
+                System.out.println(cantiposo);
                 if (!cantiposo.equals("0")) {
+                    System.out.println("a");
                     archivotemp = File.createTempFile("Recetario", ".pdf");
+                    System.out.println("b");
                     bd.ConectarBasedeDatos();
+                    System.out.println("c");
                     imp.setNombrereceta("RECETA MEDICA");
+                    System.out.println("d");
                     imp.setIdhc(id);
+                    System.out.println("e");
                     imp.setCodigo("PP-F01-1420");
+                    System.out.println("f");
                     imp.setConexion(bd.conexion);
+                    System.out.println("g");
                     imp.setServicio("P Y P");
+                    System.out.println("h");
                     imp.setVersion("1.0");
+                    System.out.println("i");
                     reader2 = imp.Imprimirrecetario();
+                    System.out.println("j");
                     bd.DesconectarBasedeDatos();
+                    System.out.println("k");
                     imp.tempFiler.deleteOnExit();
+                    System.out.println("l");
                     PdfCopyFields copyr = new PdfCopyFields(new FileOutputStream(archivotemp));
+                    System.out.println("m");
                     if (reader2 != null) {
                         copyr.addDocument(reader2);
                     }

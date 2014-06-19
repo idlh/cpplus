@@ -38,7 +38,7 @@ import HC.AgudezaV;
 import java.awt.Frame;
 import javax.swing.SwingUtilities;
 import Clases.Save;
-import java.awt.Color;
+import java.awt.Dialog;
 
 /**
  *
@@ -71,14 +71,14 @@ public class ListPacientes extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         ParametrosBD();
-        showPacientes();        
+        showPacientes();
     }
 
     private List<String> referenceUser() {
         List<String> parametros = new ArrayList<String>();
         FileReader lector = null;
         try {
-            String clipa = getClass().getResource("/Recursos/config.clipa").getFile();
+            String clipa = System.getProperty("user.dir") + "/src/Recursos/config.clipa";
             String pass = "2f5OKp8g";
             StandardPBEStringEncryptor s = new StandardPBEStringEncryptor();
             s.setPassword(pass);
@@ -185,7 +185,6 @@ public class ListPacientes extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -221,12 +220,6 @@ public class ListPacientes extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Listado de Pacientes");
 
-        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabel15MouseReleased(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -234,19 +227,13 @@ public class ListPacientes extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(273, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -505,7 +492,9 @@ public class ListPacientes extends javax.swing.JDialog {
             pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
             if (pypAdmAsistCon.getEstado().toString().equals("3")) {
                 if (pypAdmAsistCon.getIdControlPro().getIdProfesional().getId() == 40) {
-                    cargarprograma();
+                    hiloprograma ut = new hiloprograma(this);
+                    Thread thread = new Thread(ut);
+                    thread.start();
                 } else {
                     JOptionPane.showMessageDialog(null, "El paciente ya se encuentra en atencion");
                 }
@@ -581,12 +570,6 @@ public class ListPacientes extends javax.swing.JDialog {
         }
         showPacientes();
     }//GEN-LAST:event_jRadioButton1MouseReleased
-
-    private void jLabel15MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseReleased
-        final Configuracion list = new Configuracion((Frame) SwingUtilities.getWindowAncestor(this), true);
-        this.dispose();
-        list.setVisible(true);
-    }//GEN-LAST:event_jLabel15MouseReleased
 
     private void cargarprograma() {
         Desktop desktop = (Desktop) this.getParent();
@@ -769,6 +752,25 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
     }
+
+    private class hiloprograma extends Thread {
+
+        Dialog form = null;
+
+        public hiloprograma(Dialog form) {
+            this.form = form;
+        }
+
+        @Override
+        public void run() {
+            try {
+                cargarprograma();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "cargar programa " + e.getMessage(), Imprimir.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            }
+            ((ListPacientes) form).dispose();
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
@@ -778,7 +780,6 @@ public class ListPacientes extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
