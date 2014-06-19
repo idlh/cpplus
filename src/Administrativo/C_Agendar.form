@@ -34,6 +34,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -257,11 +258,11 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Hora:"/>
+            <Property name="text" type="java.lang.String" value="Escolaridad:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="310" y="160" width="40" height="20"/>
+              <AbsoluteConstraints x="410" y="160" width="60" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -574,6 +575,45 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="jLabel23">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Hora:"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="310" y="160" width="40" height="20"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBox1">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="13">
+                <StringItem index="0" value="No Definido"/>
+                <StringItem index="1" value="Preescolar"/>
+                <StringItem index="2" value="B&#xe1;sica Primaria"/>
+                <StringItem index="3" value="B&#xe1;sica Secundaria"/>
+                <StringItem index="4" value="Media Acad&#xe9;mica o Cl&#xe1;sica"/>
+                <StringItem index="5" value="Media T&#xe9;cnica"/>
+                <StringItem index="6" value="Normalista"/>
+                <StringItem index="7" value="T&#xe9;cnica Profesional"/>
+                <StringItem index="8" value="Tecnol&#xf3;gia"/>
+                <StringItem index="9" value="Profesional"/>
+                <StringItem index="10" value="Especializaci&#xf3;n"/>
+                <StringItem index="11" value="Maestr&#xed;a"/>
+                <StringItem index="12" value="Doctorado"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="480" y="160" width="150" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

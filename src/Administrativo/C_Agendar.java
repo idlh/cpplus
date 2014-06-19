@@ -96,6 +96,8 @@ public class C_Agendar extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -104,6 +106,7 @@ public class C_Agendar extends javax.swing.JPanel {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setFocusable(false);
         jPanel1.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(138, 207, 244));
@@ -217,9 +220,9 @@ public class C_Agendar extends javax.swing.JPanel {
         jLabel7.setBounds(30, 160, 80, 20);
 
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel8.setText("Hora:");
+        jLabel8.setText("Escolaridad:");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(310, 160, 40, 20);
+        jLabel8.setBounds(410, 160, 60, 20);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/cerrar.png"))); // NOI18N
         jLabel9.setToolTipText("Cerrar");
@@ -349,6 +352,15 @@ public class C_Agendar extends javax.swing.JPanel {
 
         jPanel1.add(jPanel6);
         jPanel6.setBounds(350, 190, 390, 120);
+
+        jLabel23.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel23.setText("Hora:");
+        jPanel1.add(jLabel23);
+        jLabel23.setBounds(310, 160, 40, 20);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No Definido", "Preescolar", "Básica Primaria", "Básica Secundaria", "Media Académica o Clásica", "Media Técnica", "Normalista", "Técnica Profesional", "Tecnológia", "Profesional", "Especialización", "Maestría", "Doctorado" }));
+        jPanel1.add(jComboBox1);
+        jComboBox1.setBounds(480, 160, 150, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -565,6 +577,7 @@ public class C_Agendar extends javax.swing.JPanel {
                         Declaraciones.RAgendas.setIdPrograma(programa);
                         Declaraciones.RAgendas.setFecha(Funciones.stringToDate(Funciones.getFecha_Jcalendar(jCalendar1)));
                         Declaraciones.RAgendas.setHora(Funciones.getHora(jFormattedTextField3.getText()));
+                        Declaraciones.RAgendas.setEscolaridad((short) (jComboBox1.getSelectedIndex()+1));
                         Declaraciones.RAgendas.setEstado('1');
                         Agenda.create(Declaraciones.RAgendas);
                         jLabel16.setVisible(true);
@@ -622,6 +635,7 @@ public class C_Agendar extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JCalendar jCalendar1;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -638,6 +652,7 @@ public class C_Agendar extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
