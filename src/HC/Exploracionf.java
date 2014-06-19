@@ -2402,9 +2402,9 @@ public class Exploracionf extends javax.swing.JPanel {
 
     private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
         char car = evt.getKeyChar();
-        if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".") || ((javax.swing.JTextField) evt.getSource()).getText().contains(",")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
+        if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
-        } else if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".") || ((javax.swing.JTextField) evt.getSource()).getText().contains(",")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
+        } else if ((car < '0' || car > '9') && (car != '.' ) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField8KeyTyped
@@ -3001,9 +3001,6 @@ public class Exploracionf extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField9FocusLost
 
     private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
-        if (((javax.swing.JTextField) evt.getSource()).getText().contains(",")) {
-            ((javax.swing.JTextField) evt.getSource()).setText(FuncionesC.FormatDecimal(((javax.swing.JTextField) evt.getSource()).getText()));
-        }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
             if (!jTextField9.getText().equals("") && modulo_pyp.Modulo_PyP.d.listPacientes.controlp.peso != 0) {
                 float pes = Float.parseFloat(jTextField9.getText()) - modulo_pyp.Modulo_PyP.d.listPacientes.controlp.peso;
@@ -3021,7 +3018,7 @@ public class Exploracionf extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField8FocusLost
 
     private void jTextField22FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField22FocusLost
-         if (((javax.swing.JTextField) evt.getSource()).getText().contains(",")) {
+        if (((javax.swing.JTextField) evt.getSource()).getText().contains(",")) {
             ((javax.swing.JTextField) evt.getSource()).setText(FuncionesC.FormatDecimal(((javax.swing.JTextField) evt.getSource()).getText()));
         }
     }//GEN-LAST:event_jTextField22FocusLost

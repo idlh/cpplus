@@ -688,16 +688,16 @@ public class Adulto extends javax.swing.JPanel {
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
             String d = (c[0][0].toString());
             Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
-            if (h[0][23].toString().equals("0")) {
-                antecedentesp.cargarancedentes();
-                enfermedadac.cargardatosenf();
-                diagnosticosm.cargardx();
-                ordenesm.cargarordenesm();
-                motivoc.cargareventose();
-                exploracionf.cargarexploracion();
-                pruebascomple.cargarpruebas();
-            }
+//            if (h[0][23].toString().equals("0")) {
+            antecedentesp.cargarancedentes();
+            enfermedadac.cargardatosenf();
+            diagnosticosm.cargardx();
+            ordenesm.cargarordenesm();
+            motivoc.cargareventose();
+            exploracionf.cargarexploracion();
+            pruebascomple.cargarpruebas();
         }
+//        }
         antecedentesp.cargarinfoante();
         antecedentesp.gi.cargarinfoanteg();
     }
@@ -732,7 +732,11 @@ public class Adulto extends javax.swing.JPanel {
     }
 
     public void imprimirhis() {
-        if (Estadofinal.equals("2")) {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        idhc = d;
+        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+        if (h[0][23].toString().equals("1")) {
             final Imprimir imp = new Imprimir((Frame) SwingUtilities.getWindowAncestor(this), true);
             imp.setLocationRelativeTo(null);
             imp.setVisible(true);
@@ -773,17 +777,17 @@ public class Adulto extends javax.swing.JPanel {
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
-                if (h[0][23].toString().equals("0")) {
-                    motivoc.actualizardatos();
-                    antecedentesp.guardarantep();
-                    enfermedadac.actualizarenfac();
-                    exploracionf.actexpf();
-                    diagnosticosm.actdx();
-                    ordenesm.actordenesm();
-                    pruebascomple.actpruebasc();
-                    jLabel9.setVisible(true);
-                    Contar();
-                }
+//                if (h[0][23].toString().equals("0")) {
+                motivoc.actualizardatos();
+                antecedentesp.guardarantep();
+                enfermedadac.actualizarenfac();
+                exploracionf.actexpf();
+                diagnosticosm.actdx();
+                ordenesm.actordenesm();
+                pruebascomple.actpruebasc();
+                jLabel9.setVisible(true);
+                Contar();
+//                }
             }
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
             String d = (c[0][0].toString());
@@ -826,7 +830,6 @@ public class Adulto extends javax.swing.JPanel {
                         pruebascomple.actpruebasc();
                         act.finalizarhc(d, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
-                        idhc = d;
                         Object poso[][] = Funciones.RetornarDatos(sav.recetam(d));
                         String cantiposo = poso[0][0].toString();
                         if (!cantiposo.equals("0")) {
@@ -855,7 +858,6 @@ public class Adulto extends javax.swing.JPanel {
                         Estadofinal = "2";
                         jLabel12.setVisible(true);
                         Contar();
-                        idhc = d;
                         Object poso[][] = Funciones.RetornarDatos(sav.recetam(d));
                         String cantiposo = poso[0][0].toString();
                         if (!cantiposo.equals("0")) {

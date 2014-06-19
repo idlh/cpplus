@@ -176,6 +176,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
         jPanel2.add(jLabel3);
         jLabel3.setBounds(10, 2, 327, 15);
 
+        jButton1.setBackground(new java.awt.Color(255, 227, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salirc2.png"))); // NOI18N
         jButton1.setToolTipText("Salir");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -195,6 +196,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
         jPanel2.add(jButton1);
         jButton1.setBounds(700, 2, 38, 38);
 
+        jButton2.setBackground(new java.awt.Color(255, 227, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/impc2.png"))); // NOI18N
         jButton2.setToolTipText("Imprimir");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -214,6 +216,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
         jPanel2.add(jButton2);
         jButton2.setBounds(654, 2, 38, 38);
 
+        jButton3.setBackground(new java.awt.Color(255, 227, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/savec2.png"))); // NOI18N
         jButton3.setToolTipText("Guardar");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -233,6 +236,7 @@ public class CYDesarrollo extends javax.swing.JPanel {
         jPanel2.add(jButton3);
         jButton3.setBounds(562, 2, 38, 38);
 
+        jButton4.setBackground(new java.awt.Color(255, 227, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/finalc2.png"))); // NOI18N
         jButton4.setToolTipText("Finalizar");
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -670,15 +674,15 @@ public class CYDesarrollo extends javax.swing.JPanel {
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
             String d = (c[0][0].toString());
             Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
-            if (h[0][23].toString().equals("0")) {
-                antecedentesp.cargarancedentes();
-                enfermedadac.cargardatosenf();
-                diagnosticosm.cargardx();
-                ordenesm.cargarordenesm();
-                motivoc.cargareventose();
-                exploracionf.cargarexploracion();
-                pruebascomple.cargarpruebas();
-            }
+//            if (h[0][23].toString().equals("0")) {
+            antecedentesp.cargarancedentes();
+            enfermedadac.cargardatosenf();
+            diagnosticosm.cargardx();
+            ordenesm.cargarordenesm();
+            motivoc.cargareventose();
+            exploracionf.cargarexploracion();
+            pruebascomple.cargarpruebas();
+//            }
         }
         antecedentesp.cargarinfoante();
         antecedentesp.gi.cargarinfoanteg();
@@ -714,7 +718,11 @@ public class CYDesarrollo extends javax.swing.JPanel {
     }
 
     public void imprimirhis() {
-        if (Estadofinal.equals("2")) {
+        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
+        String d = (c[0][0].toString());
+        idhc = d;
+        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+        if (h[0][23].toString().equals("1")) {
             final Imprimir imp = new Imprimir((Frame) SwingUtilities.getWindowAncestor(this), true);
             imp.setLocationRelativeTo(null);
             imp.setVisible(true);
@@ -760,17 +768,17 @@ public class CYDesarrollo extends javax.swing.JPanel {
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
                 String d = (c[0][0].toString());
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
-                if (h[0][23].toString().equals("0")) {
-                    motivoc.actualizardatos();
-                    antecedentesp.guardarantep();
-                    enfermedadac.actualizarenfac();
-                    exploracionf.actexpf();
-                    diagnosticosm.actdx();
-                    ordenesm.actordenesm();
-                    pruebascomple.actpruebasc();
-                    jLabel9.setVisible(true);
-                    Contar();
-                }
+//                if (h[0][23].toString().equals("0")) {
+                motivoc.actualizardatos();
+                antecedentesp.guardarantep();
+                enfermedadac.actualizarenfac();
+                exploracionf.actexpf();
+                diagnosticosm.actdx();
+                ordenesm.actordenesm();
+                pruebascomple.actpruebasc();
+                jLabel9.setVisible(true);
+                Contar();
+//                }
             }
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
             String d = (c[0][0].toString());
@@ -820,7 +828,6 @@ public class CYDesarrollo extends javax.swing.JPanel {
                         Estadofinal = "2";
                         jLabel12.setVisible(true);
                         Contar();
-                        idhc = d;
                         Object poso[][] = Funciones.RetornarDatos(sav.recetam(d));
                         String cantiposo = poso[0][0].toString();
                         if (!cantiposo.equals("0")) {
@@ -849,7 +856,6 @@ public class CYDesarrollo extends javax.swing.JPanel {
                         Estadofinal = "2";
                         jLabel12.setVisible(true);
                         Contar();
-                        idhc = d;
                         Object poso[][] = Funciones.RetornarDatos(sav.recetam(d));
                         String cantiposo = poso[0][0].toString();
                         if (!cantiposo.equals("0")) {

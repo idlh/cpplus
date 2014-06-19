@@ -33,7 +33,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
         initComponents();
         this.factory = factory;
         this.pypAdmAsistCon = pypAdmAsistCon;
-        pypAdmAsistCon = (PypAdmAsistCon) Dialogos.HCDiag.ListPacientes.jTable1.getValueAt(Dialogos.HCDiag.ListPacientes.jTable1.getSelectedRow(), 0);
+//         pypAdmAsistCon = (PypAdmAsistCon) Dialogos.HCDiag.ListPacientes.jTable1.getValueAt(Dialogos.HCDiag.ListPacientes.jTable1.getSelectedRow(), 0);
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3) {
             cie = new Consultarcie10();
             cie.llamar_cie("Z108");

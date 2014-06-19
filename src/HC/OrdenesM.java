@@ -308,7 +308,7 @@ public class OrdenesM extends javax.swing.JPanel {
 
     private void jLabel17MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseReleased
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-            new Clases.Explode(Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1, anticonceptivos).play();
+            new Clases.Explode(jPanel1, anticonceptivos).play();
         }
     }//GEN-LAST:event_jLabel17MouseReleased
 
@@ -404,34 +404,7 @@ public class OrdenesM extends javax.swing.JPanel {
 
     private void explode(JPanel panel) {
         this.jPanel1.removeAll();
-        switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
-            case 3:
-                new Clases.Explode(Modulo_PyP.d.listPacientes.adult.ordenesm.jPanel1, panel).play();
-                break;
-            case 9:
-                new Clases.Explode(Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1, panel).play();
-                break;
-            case 11:
-                new Clases.Explode(Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1, panel).play();
-                break;
-            case 10:
-                new Clases.Explode(Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1, panel).play();
-                break;
-            case 5:
-                new Clases.Explode(Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1, panel).play();
-                break;
-            case 1:
-                new Clases.Explode(Modulo_PyP.d.listPacientes.jovensano.ordenesm.jPanel1, panel).play();
-                break;
-            case 6:
-                new Clases.Explode(Modulo_PyP.d.listPacientes.hipertenso.ordenesm.jPanel1, panel).play();
-                break;
-            case 2:
-                new Clases.Explode(Modulo_PyP.d.listPacientes.cydesarrollo.ordenesm.jPanel1, panel).play();
-                break;
-            case 7:
-                new Clases.Explode(Modulo_PyP.d.listPacientes.diabetes.ordenesm.jPanel1, panel).play();
-        }
+        new Clases.Explode(jPanel1, panel).play();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JLabel jLabel13;

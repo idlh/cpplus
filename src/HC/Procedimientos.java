@@ -387,43 +387,86 @@ public class Procedimientos extends javax.swing.JPanel {
     }
 
     private void explode(JPanel panel) {
-        switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
-            case 3:
-                Modulo_PyP.d.listPacientes.adult.ordenesm.jPanel1.removeAll();
-                new Clases.Explode(Modulo_PyP.d.listPacientes.adult.ordenesm.jPanel1, panel).play();
-                break;
-            case 9:
-                Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1.removeAll();
-                new Clases.Explode(Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1, panel).play();
-                break;
-            case 11:
-                Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1.removeAll();
-                new Clases.Explode(Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1, panel).play();
-                break;
-            case 10:
-                Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1.removeAll();
-                new Clases.Explode(Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1, panel).play();
-                break;
-            case 5:
-                Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1.removeAll();
-                new Clases.Explode(Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1, panel).play();
-                break;
-            case 1:
-                Modulo_PyP.d.listPacientes.jovensano.ordenesm.jPanel1.removeAll();
-                new Clases.Explode(Modulo_PyP.d.listPacientes.jovensano.ordenesm.jPanel1, panel).play();
-                break;
-            case 6:
-                Modulo_PyP.d.listPacientes.hipertenso.ordenesm.jPanel1.removeAll();
-                new Clases.Explode(Modulo_PyP.d.listPacientes.hipertenso.ordenesm.jPanel1, panel).play();
-                break;
-            case 2:
-                Modulo_PyP.d.listPacientes.cydesarrollo.ordenesm.jPanel1.removeAll();
-                new Clases.Explode(Modulo_PyP.d.listPacientes.cydesarrollo.ordenesm.jPanel1, panel).play();
-                break;
-            case 7:
-                Modulo_PyP.d.listPacientes.diabetes.ordenesm.jPanel1.removeAll();
-                new Clases.Explode(Modulo_PyP.d.listPacientes.diabetes.ordenesm.jPanel1, panel).play();
-                break;
+        if (Modulo_PyP.d.est.equals("1")) {
+            switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
+                case 3:
+                    Modulo_PyP.d.listPacientes.adult.ordenesm.jPanel1.removeAll();
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.adult.ordenesm.jPanel1, panel).play();
+                    break;
+                case 9:
+                    Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1.removeAll();
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.controlp.ordenesm.jPanel1, panel).play();
+                    break;
+                case 11:
+                    Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1.removeAll();
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.postparto.ordenesm.jPanel1, panel).play();
+                    break;
+                case 10:
+                    Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1.removeAll();
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.reciennacido.ordenesm.jPanel1, panel).play();
+                    break;
+                case 5:
+                    Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1.removeAll();
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.planificacion.ordenesm.jPanel1, panel).play();
+                    break;
+                case 1:
+                    Modulo_PyP.d.listPacientes.jovensano.ordenesm.jPanel1.removeAll();
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.jovensano.ordenesm.jPanel1, panel).play();
+                    break;
+                case 6:
+                    Modulo_PyP.d.listPacientes.hipertenso.ordenesm.jPanel1.removeAll();
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.hipertenso.ordenesm.jPanel1, panel).play();
+                    break;
+                case 2:
+                    Modulo_PyP.d.listPacientes.cydesarrollo.ordenesm.jPanel1.removeAll();
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.cydesarrollo.ordenesm.jPanel1, panel).play();
+                    break;
+                case 7:
+                    Modulo_PyP.d.listPacientes.diabetes.ordenesm.jPanel1.removeAll();
+                    new Clases.Explode(Modulo_PyP.d.listPacientes.diabetes.ordenesm.jPanel1, panel).play();
+                    break;
+            }
+        } else {
+            if (Modulo_PyP.d.est.equals("2")) {
+                switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
+                    case 3:
+                        Modulo_PyP.d.panelc.historias.adult.ordenesm.jPanel1.removeAll();
+                        new Clases.Explode(Modulo_PyP.d.panelc.historias.adult.ordenesm.jPanel1, panel).play();
+                        break;
+                    case 9:
+                        Modulo_PyP.d.panelc.historias.controlp.ordenesm.jPanel1.removeAll();
+                        new Clases.Explode(Modulo_PyP.d.panelc.historias.controlp.ordenesm.jPanel1, panel).play();
+                        break;
+                    case 11:
+                        Modulo_PyP.d.panelc.historias.postparto.ordenesm.jPanel1.removeAll();
+                        new Clases.Explode(Modulo_PyP.d.panelc.historias.postparto.ordenesm.jPanel1, panel).play();
+                        break;
+                    case 10:
+                        Modulo_PyP.d.panelc.historias.reciennacido.ordenesm.jPanel1.removeAll();
+                        new Clases.Explode(Modulo_PyP.d.panelc.historias.reciennacido.ordenesm.jPanel1, panel).play();
+                        break;
+                    case 5:
+                        Modulo_PyP.d.panelc.historias.planificacion.ordenesm.jPanel1.removeAll();
+                        new Clases.Explode(Modulo_PyP.d.panelc.historias.planificacion.ordenesm.jPanel1, panel).play();
+                        break;
+                    case 1:
+                        Modulo_PyP.d.panelc.historias.jovensano.ordenesm.jPanel1.removeAll();
+                        new Clases.Explode(Modulo_PyP.d.panelc.historias.jovensano.ordenesm.jPanel1, panel).play();
+                        break;
+                    case 6:
+                        Modulo_PyP.d.panelc.historias.hipertenso.ordenesm.jPanel1.removeAll();
+                        new Clases.Explode(Modulo_PyP.d.panelc.historias.hipertenso.ordenesm.jPanel1, panel).play();
+                        break;
+                    case 2:
+                        Modulo_PyP.d.panelc.historias.cydesarrollo.ordenesm.jPanel1.removeAll();
+                        new Clases.Explode(Modulo_PyP.d.panelc.historias.cydesarrollo.ordenesm.jPanel1, panel).play();
+                        break;
+                    case 7:
+                        Modulo_PyP.d.panelc.historias.diabetes.ordenesm.jPanel1.removeAll();
+                        new Clases.Explode(Modulo_PyP.d.panelc.historias.diabetes.ordenesm.jPanel1, panel).play();
+                        break;
+                }
+            }
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
