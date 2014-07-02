@@ -59,8 +59,8 @@ public class Save {
                 + " FROM"
                 + " `database`.`pyp_historiac`"
                 + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "' "
-//                + "AND `pyp_historiac`.`estado` = 0"
-//                + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1"
+                //                + "AND `pyp_historiac`.`estado` = 0"
+                //                + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1"
                 + ";";
     }
 
@@ -69,8 +69,8 @@ public class Save {
                 + " FROM"
                 + " `database`.`pyp_visual`"
                 + " WHERE `pyp_visual`.`idasistencia`='" + id + "' "
-//                + "AND `pyp_visual`.`estado` = 0"
-//                + " GROUP BY `pyp_visual`.`id` DESC LIMIT 1"
+                //                + "AND `pyp_visual`.`estado` = 0"
+                //                + " GROUP BY `pyp_visual`.`id` DESC LIMIT 1"
                 + ";";
     }
 
@@ -538,6 +538,68 @@ public class Save {
             JOptionPane.showMessageDialog(null, "c027" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void nuevaconfig(String idparametro, String tipo, String valor) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("INSERT INTO `database`.`config_rel4505` (`config_rel4505`.`idparametro`, `config_rel4505`.`tipo`, `config_rel4505`.`valor`) VALUES (?,?,?);");
+            bd.preparedStatement.setString(1, idparametro);
+            bd.preparedStatement.setString(2, tipo);
+            bd.preparedStatement.setString(3, valor);
+            bd.preparedStatement.execute();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c028" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c028" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public String cargarpramen(String id) {
+        return "SELECT"
+                + "      `config_rel4505`.`id`"
+                + "      , `config_rel4505`.`idparametro`"
+                + "      , `config_parametros`.`parametro`"
+                + "      , `config_parametros`.`nombre`"
+                + "      , `config_rel4505`.`tipo`"
+                + "      , `config_rel4505`.`valor`"
+                + "      FROM"
+                + "          `database`.`config_rel4505`"
+                + "           INNER JOIN `database`.`config_parametros` "
+                + "                    ON (`config_rel4505`.`idparametro` = `config_parametros`.`id`)"
+                + "           WHERE (`config_rel4505`.`estado` = 1 AND `config_rel4505`.`id` = '" + id + "');";
+    }
+
+    public void modifparam(String id, String tipo, String valor) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`config_rel4505`"
+                    + "SET `config_rel4505`.`tipo` = ?, `config_rel4505`.`valor` = ?"
+                    + "WHERE `config_rel4505`.`id` = ?;");
+            bd.preparedStatement.setString(1, tipo);
+            bd.preparedStatement.setString(2, valor);
+            bd.preparedStatement.setString(3, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c029" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c029" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public void deshabilitarparam(String id) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`config_rel4505`"
+                    + " SET `config_rel4505`.`estado` = 0"
+                    + " WHERE `config_rel4505`.`id` = ?;");
+            bd.preparedStatement.setString(1, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c030" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c030" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }

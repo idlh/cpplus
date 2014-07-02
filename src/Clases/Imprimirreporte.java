@@ -95,7 +95,7 @@ public class Imprimirreporte {
                 } else {
                     informe = JasperFillManager.fillReport(System.getProperty("user.dir") + "/src/Reporte_pyp/visual.jasper", parametro, getConexion());
                 }
-            }else{
+            } else {
                 if (modulo_pyp.Modulo_PyP.d.panelc.historias.idprograma != 4) {
                     informe = JasperFillManager.fillReport(System.getProperty("user.dir") + "/src/Reporte_pyp/historia_pyp.jasper", parametro, getConexion());
                 } else {
@@ -131,6 +131,7 @@ public class Imprimirreporte {
             exporter.exportReport();
             return new PdfReader(tempFile.getAbsolutePath());
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "clase reporte receta " + e.getMessage(), Imprimirreporte.class.getName(), JOptionPane.INFORMATION_MESSAGE);
             return null;
         }
     }

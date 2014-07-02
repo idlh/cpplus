@@ -470,4 +470,96 @@ public class CargarordenesM {
             bd.DesconectarBasedeDatos();
         }
     }
+
+    public void cargartablaconfig(DefaultTableModel modelo) {
+        try {
+            bd.ConectarBasedeDatos();
+            c = 0;
+            String tipo = null;
+            Object s[] = null;
+            bd.resultado = bd.sentencia.executeQuery("SELECT"
+                    + "    `config_rel4505`.`id`"
+                    + "    , `config_rel4505`.`idparametro`"
+                    + "    , `config_parametros`.`parametro`"
+                    + "    , `config_parametros`.`nombre`"
+                    + "    , `config_rel4505`.`tipo`"
+                    + "    , `config_rel4505`.`valor`"
+                    + "FROM"
+                    + "    `database`.`config_rel4505`"
+                    + "    INNER JOIN `database`.`config_parametros` "
+                    + "        ON (`config_rel4505`.`idparametro` = `config_parametros`.`id`)"
+                    + "WHERE (`config_rel4505`.`estado` = 1);");
+            if (bd.resultado != null) {
+                while (bd.resultado.next()) {
+                    modelo.addRow(s);
+                    modelo.setValueAt(bd.resultado.getString("id"), c, 0);
+                    modelo.setValueAt(bd.resultado.getString("idparametro"), c, 1);
+                    modelo.setValueAt(bd.resultado.getString("parametro"), c, 2);
+                    modelo.setValueAt(bd.resultado.getString("nombre"), c, 3);
+                    if (bd.resultado.getString("tipo").equals("0")) {
+                        tipo = "DIAGNOSTICO";
+                    } else {
+                        if (bd.resultado.getString("tipo").equals("1")) {
+                            tipo = "MEDICAMENTO";
+                        } else {
+                            if (bd.resultado.getString("tipo").equals("2")) {
+                                tipo = "PROCEDIMIENTO";
+                            } else {
+                                if (bd.resultado.getString("tipo").equals("3")) {
+                                    tipo = "DATO PERSONAL";
+                                } else {
+                                    if (bd.resultado.getString("tipo").equals("4")) {
+                                        tipo = "OTRO";
+                                    } else {
+                                        tipo = bd.resultado.getString("tipo");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    modelo.setValueAt(tipo, c, 4);
+                    modelo.setValueAt(bd.resultado.getString("valor"), c, 5);
+                    c++;
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "tab010 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "tab010 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void cargartablaparametros(DefaultTableModel modelo) {
+        try {
+            bd.ConectarBasedeDatos();
+            c = 0;
+            String tipo = null;
+            Object s[] = null;
+            bd.resultado = bd.sentencia.executeQuery("SELECT"
+                    + "    `id`"
+                    + "    , `parametro`"
+                    + "    , `nombre`"
+                    + "    , `estado`"
+                    + "FROM"
+                    + "    `database`.`config_parametros`;");
+            if (bd.resultado != null) {
+                while (bd.resultado.next()) {
+                    modelo.addRow(s);
+                    modelo.setValueAt(bd.resultado.getString("id"), c, 0);
+                    modelo.setValueAt(bd.resultado.getString("parametro"), c, 1);
+                    modelo.setValueAt(bd.resultado.getString("nombre"), c, 2);
+                    modelo.setValueAt(bd.resultado.getString("estado"), c, 3);
+                    c++;
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "tab011 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "tab011 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
 }
