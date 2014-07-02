@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author Camilo
  */
 public class configparametros extends javax.swing.JPanel {
-
+    
     private DefaultTableModel modelo;
     CargarordenesM cargart = new CargarordenesM();
     Save sav = new Save();
@@ -161,10 +161,10 @@ public class configparametros extends javax.swing.JPanel {
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         final Creacionpara param = new Creacionpara((Frame) SwingUtilities.getWindowAncestor(this), true);
         param.jButton2.addActionListener(new ActionListener() {
-
+            
             @Override
             public void actionPerformed(ActionEvent e) {
-                sav.nuevaconfig(param.jLabel1.getText(), String.valueOf(param.jComboBox1.getSelectedIndex()), param.jTextField2.getText());
+                sav.nuevaconfig(param.jLabel1.getText(), String.valueOf(param.jComboBox1.getSelectedIndex()), param.jTextField2.getText(), param.jTextField3.getText());
                 jTable1.removeAll();
                 tabla();
                 param.dispose();
@@ -182,11 +182,12 @@ public class configparametros extends javax.swing.JPanel {
             param.jComboBox1.setSelectedIndex(Integer.parseInt(data[0][4].toString()));
             param.jTextField2.setText(data[0][5].toString());
             param.jLabel1.setText(data[0][1].toString());
+            param.jTextField3.setText(data[0][6].toString());
             param.jButton2.addActionListener(new ActionListener() {
-
+                
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    sav.modifparam(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), 0)), String.valueOf(param.jComboBox1.getSelectedIndex()), param.jTextField2.getText());
+                    sav.modifparam(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), 0)), String.valueOf(param.jComboBox1.getSelectedIndex()), param.jTextField2.getText(), param.jTextField3.getText());
                     jTable1.removeAll();
                     tabla();
                     param.dispose();
@@ -213,28 +214,29 @@ public class configparametros extends javax.swing.JPanel {
         modulo_pyp.Modulo_PyP.d.panelc.Cprincipal.removeAll();
         modulo_pyp.Modulo_PyP.d.panelc.Cprincipal.repaint();
     }//GEN-LAST:event_jButton4MouseReleased
-
+    
     public void getModelo() {
         modelo = new DefaultTableModel(
-                null, new String[]{"Id", "Idparametro", "Parametro", "Nombre Parametro", "Tipo", "Valor"}) {
+                null, new String[]{"Id", "Idparametro", "Parametro", "Nombre Parametro", "Tipo", "Valor", "Validacion"}) {
                     Class[] types = new Class[]{
                         java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
+                        java.lang.String.class,
                         java.lang.String.class
-
+                    
                     };
                     boolean[] canEdit = new boolean[]{
-                        false, false, false, false, false, false
+                        false, false, false, false, false, false, false
                     };
-
+                    
                     @Override
                     public Class getColumnClass(int columnIndex) {
                         return types[columnIndex];
                     }
-
+                    
                     @Override
                     public boolean isCellEditable(int rowIndex, int colIndex) {
                         return canEdit[colIndex];
@@ -242,12 +244,12 @@ public class configparametros extends javax.swing.JPanel {
                 };
         jTable1.setModel(modelo);
     }
-
+    
     private void tabla() {
         getModelo();
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        Funciones_AD.setOcultarColumnas(jTable1, new int[]{0, 1, 2});
+        Funciones_AD.setOcultarColumnas(jTable1, new int[]{0, 1, 2, 6});
         Funciones_AD.setSizeColumnas(jTable1, new int[]{3, 4, 5}, new int[]{330, 97, 115});
         cargart.cargartablaconfig(modelo);
     }

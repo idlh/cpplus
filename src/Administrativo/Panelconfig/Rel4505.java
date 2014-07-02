@@ -247,7 +247,9 @@ public class Rel4505 extends javax.swing.JPanel {
                 archivo.createNewFile();
                 System.out.println(archivo.getAbsolutePath());
                 FileWriter escribir = new FileWriter(archivo, true);
-                String apellido2, nombre2, etnia = "ND", gestacion = null, sifilis = null, htagesta = null, hipot = null, genero = null, escolaridad = null;
+                String apellido2, nombre2, etnia = "ND", gestacion = null, sifilis = null, htagesta = null, hipot = null, genero = null, escolaridad = null, sintomr = null, tuberculosis = null,
+                        lepra = null, nutri = null;
+                boolean valorv = false;
                 for (int b = 0; b < datames.length; b++) {
                     if (datames[b][5].toString().equals("")) {
                         apellido2 = "NONE";
@@ -281,43 +283,138 @@ public class Rel4505 extends javax.swing.JPanel {
                     }
                     escolaridad = datames[b][12].toString();
                     for (int i = 0; i < dataparam.length; i++) {
-                        if (datames[0][9].toString().equals("M")) {
+                        if (datames[b][9].toString().equals("M")) {
                             gestacion = "0";
-                            htagesta = "0";
-                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                sifilis = "2";
-                            } else {
-                                sifilis = "0";
-                            }
                         } else {
-                            if (datames[0][13].toString().equals("1")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    sifilis = "1";
-                                    htagesta = "1";
-                                } else {
-                                    sifilis = "3";
-                                    htagesta = "2";
-                                }
+                            if (datames[b][13].toString().equals("0")) {
+                                gestacion = "2";
                             } else {
-                                sifilis = "0";
-                                htagesta = "0";
+                                gestacion = "1";
                             }
                         }
                     }
-                    //Hipotiroidismo congenito --> quedas ahi...
+                    //Sifilis
+                    for (int i = 0; i < dataparam.length; i++) {
+                        if (dataparam[i][1].toString().equals("21")) {
+                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                if (!datames[b][9].toString().equals("M")) {
+                                    sifilis = dataparam[i][6].toString();
+                                    break;
+                                } else {
+                                    sifilis = "0";
+                                }
+                            } else {
+                                sifilis = "3";
+                            }
+                        } else {
+                            sifilis = "0";
+                        }
+                    }
+                    //Hipertencion por gestacion
+                    for (int i = 0; i < dataparam.length; i++) {
+                        if (dataparam[i][1].toString().equals("22")) {
+                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                if (!datames[b][9].toString().equals("M")) {
+                                    htagesta = dataparam[i][6].toString();
+                                    break;
+                                } else {
+                                    htagesta = "0";
+                                }
+                            } else {
+                                htagesta = "2";
+                            }
+                        } else {
+                            htagesta = "0";
+                        }
+                    }
+                    //Hipotiroidismo
+                    for (int i = 0; i < dataparam.length; i++) {
+                        if (dataparam[i][1].toString().equals("23")) {
+                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                if (datames[b][1].toString().equals("10")) {
+                                    hipot = dataparam[i][6].toString();
+                                    break;
+                                } else {
+                                    hipot = "0";
+                                }
+                            } else {
+                                hipot = "2";
+                            }
+                        } else {
+                            hipot = "0";
+                        }
+                    }
+                    //Sintomatico Respiratorio
+                    for (int i = 0; i < dataparam.length; i++) {
+                        if (dataparam[i][1].toString().equals("24")) {
+                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                sintomr = dataparam[i][6].toString();
+                                break;
+                            } else {
+                                sintomr = "2";
+                            }
+                        } else {
+                            sintomr = "2";
+                        }
+                    }
+                    //tuberculosis
+                    for (int i = 0; i < dataparam.length; i++) {
+                        if (dataparam[i][1].toString().equals("25")) {
+                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                tuberculosis = dataparam[i][6].toString();
+                                break;
+                            } else {
+                                tuberculosis = "2";
+                            }
+                        } else {
+                            tuberculosis = "0";
+                        }
+                    }
+                    //Lepra
+                    for (int i = 0; i < dataparam.length; i++) {
+                        if (dataparam[i][1].toString().equals("26")) {
+                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                lepra = dataparam[i][6].toString();
+                                break;
+                            } else {
+                                lepra = "3";
+                            }
+                        } else {
+                            lepra = "3";
+                        }
+                    }
+                    //Obesidad o desnutricion
+                    for (int i = 0; i < dataparam.length; i++) {
+                        if (dataparam[i][1].toString().equals("27")) {
+                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                nutri = dataparam[i][6].toString();
+                                break;
+                            } else {
+                                nutri = "3";
+                            }
+                        } else {
+                            nutri = "3";
+                        }
+                    }
                     escribir.write(datames[b][0].toString() + "|1|999||||2|" + (b + 1) + "|051540381702|" + datames[b][2] + "|" + datames[b][3] + "|" + datames[b][4] + "|" + apellido2
-                            + "|" + datames[b][6] + "|" + nombre2 + "|" + datames[b][8] + "|" + genero + "|" + etnia + "|9999|" + escolaridad + "|" + gestacion + "|" + sifilis + "|"
-                            + htagesta + "|" + hipot + ln);
-                    //Hipotiroidismo congenito --> quedas ahi...
+                            + "|" + datames[b][6] + "|" + nombre2 + "|" + datames[b][8] + "|" + datames[b][9] + "|" + etnia + "|9999|" + escolaridad + "|" + gestacion + "|" + sifilis + "|"
+                            + htagesta + "|" + hipot + "|" + sintomr + "|" + tuberculosis + "|" + lepra + "|" + nutri + ln);
                 }
                 escribir.close();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error creacion archivo 4505: " + e.getMessage(), Rel4505.class.getName(), JOptionPane.INFORMATION_MESSAGE);
             }
         }
-        if (jCheckBox2.isSelected() == true) {
+
+        if (jCheckBox2.isSelected()
+                == true) {
             fecini = formato.format(jDateChooser3.getDate());
             fecfin = formato.format(jDateChooser4.getDate());
             Object datatri[][] = Funtions.RetornarDatos(act.rel4505tri(jComboBox1.getSelectedItem().toString(), fecini, fecfin));
