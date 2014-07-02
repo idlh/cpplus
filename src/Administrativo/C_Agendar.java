@@ -523,6 +523,7 @@ public class C_Agendar extends javax.swing.JPanel {
         paciente = null;
         verify = 0;
         jPanel6.setVisible(false);
+        jComboBox1.setSelectedIndex(0);
     }
 
     private void Search() {

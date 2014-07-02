@@ -125,6 +125,7 @@ String filtro;
 
             }
         ));
+        tabla.setFocusable(false);
         tabla.setSelectionBackground(new java.awt.Color(153, 204, 255));
         tabla.setSelectionForeground(new java.awt.Color(102, 102, 102));
         jScrollPane1.setViewportView(tabla);
