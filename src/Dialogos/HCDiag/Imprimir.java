@@ -31,6 +31,7 @@ public class Imprimir extends javax.swing.JDialog {
     public Imprimir(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        jLabel3.setVisible(false);
         if (modulo_pyp.Modulo_PyP.d.est.equals("1")) {
             jLabel2.setText("<html>\n"
                     + "<div style=\"width:250;\">" + "  A continuacion se imprimira la historia clinica referente al programa de: " + "<b>" + modulo_pyp.Modulo_PyP.d.listPacientes.progam + "</b>"
@@ -63,6 +64,7 @@ public class Imprimir extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -112,6 +114,8 @@ public class Imprimir extends javax.swing.JDialog {
             }
         });
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/cargando.gif"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -120,9 +124,10 @@ public class Imprimir extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -133,7 +138,9 @@ public class Imprimir extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -152,6 +159,7 @@ public class Imprimir extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        jLabel3.setVisible(true);
         hiloreporte ut = new hiloreporte(this);
         Thread thread = new Thread(ut);
         thread.start();
@@ -159,6 +167,7 @@ public class Imprimir extends javax.swing.JDialog {
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jLabel3.setVisible(true);
             hiloreporte ut = new hiloreporte(this);
             Thread thread = new Thread(ut);
             thread.start();
@@ -313,36 +322,23 @@ public class Imprimir extends javax.swing.JDialog {
                 }
                 copy.close();
                 Desktop.getDesktop().open(archivoTemporal);
-                //recetario                
+                //recetario             
                 Object poso[][] = Funciones.RetornarDatos(sav.recetam(id));
                 String cantiposo = poso[0][0].toString();
                 System.out.println(cantiposo);
                 if (!cantiposo.equals("0")) {
-                    System.out.println("a");
                     archivotemp = File.createTempFile("Recetario", ".pdf");
-                    System.out.println("b");
                     bd.ConectarBasedeDatos();
-                    System.out.println("c");
                     imp.setNombrereceta("RECETA MEDICA");
-                    System.out.println("d");
                     imp.setIdhc(id);
-                    System.out.println("e");
                     imp.setCodigo("PP-F01-1420");
-                    System.out.println("f");
                     imp.setConexion(bd.conexion);
-                    System.out.println("g");
                     imp.setServicio("P Y P");
-                    System.out.println("h");
                     imp.setVersion("1.0");
-                    System.out.println("i");
                     reader2 = imp.Imprimirrecetario();
-                    System.out.println("j");
                     bd.DesconectarBasedeDatos();
-                    System.out.println("k");
                     imp.tempFiler.deleteOnExit();
-                    System.out.println("l");
                     PdfCopyFields copyr = new PdfCopyFields(new FileOutputStream(archivotemp));
-                    System.out.println("m");
                     if (reader2 != null) {
                         copyr.addDocument(reader2);
                     }
@@ -353,12 +349,13 @@ public class Imprimir extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "r001 " + e.getMessage(), Imprimir.class.getName(), JOptionPane.INFORMATION_MESSAGE);
             }
             ((Imprimir) form).dispose();
-        }
+        } 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton jButton1;
     javax.swing.JLabel jLabel1;
     javax.swing.JLabel jLabel2;
+    javax.swing.JLabel jLabel3;
     javax.swing.JPanel jPanel1;
     javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

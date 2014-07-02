@@ -62,6 +62,7 @@ public class A_Profesionales extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -125,6 +126,7 @@ public class A_Profesionales extends javax.swing.JDialog {
 
             }
         ));
+        tabla2.setFocusable(false);
         tabla2.setSelectionBackground(new java.awt.Color(153, 204, 255));
         tabla2.setSelectionForeground(new java.awt.Color(102, 102, 102));
         tabla2.addMouseListener(new java.awt.event.MouseAdapter() {

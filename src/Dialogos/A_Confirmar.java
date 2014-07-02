@@ -13,7 +13,9 @@ import Entidades.PypAdmAgend;
 import Entidades.PypAdmAsistCon;
 import Entidades.PypAdmControlProfesionales;
 import Entidades.PypAdmResp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,18 +23,20 @@ import javax.swing.JOptionPane;
  * @author IdlhDeveloper
  */
 public class A_Confirmar extends javax.swing.JDialog {
-Dialogos.A_Profesionales Profesionales = new Dialogos.A_Profesionales(null, rootPaneCheckingEnabled);
-public PypAdmAgend Agend=null;
-public PypAdmControlProfesionales Profesional=null;
-public PypAdmAsistCon Confirmar = new PypAdmAsistCon();
-PypAdmAdmision Admision = new PypAdmAdmision();
-PypAdmResp Responsable = new PypAdmResp();
-Clases.Funciones_AD Funciones = new Clases.Funciones_AD();
-PypAdmAgendJpaController Control_Agend = new PypAdmAgendJpaController();
-PypAdmAsistConJpaController Control_Asistencia = new PypAdmAsistConJpaController();
-PypAdmRespJpaController Control_resp = new PypAdmRespJpaController();
-PypAdmAdmisionJpaController Control_admision = new PypAdmAdmisionJpaController();
-Utilidades.Nat n = new Utilidades.Nat();
+
+    Dialogos.A_Profesionales Profesionales = new Dialogos.A_Profesionales(null, rootPaneCheckingEnabled);
+    public PypAdmAgend Agend = null;
+    public PypAdmControlProfesionales Profesional = null;
+    public PypAdmAsistCon Confirmar = new PypAdmAsistCon();
+    PypAdmAdmision Admision = new PypAdmAdmision();
+    PypAdmResp Responsable = new PypAdmResp();
+    Clases.Funciones_AD Funciones = new Clases.Funciones_AD();
+    PypAdmAgendJpaController Control_Agend = new PypAdmAgendJpaController();
+    PypAdmAsistConJpaController Control_Asistencia = new PypAdmAsistConJpaController();
+    PypAdmRespJpaController Control_resp = new PypAdmRespJpaController();
+    PypAdmAdmisionJpaController Control_admision = new PypAdmAdmisionJpaController();
+    Utilidades.Nat n = new Utilidades.Nat();
+
     /**
      * Creates new form A_Confirmar
      */
@@ -111,6 +115,7 @@ Utilidades.Nat n = new Utilidades.Nat();
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -409,7 +414,7 @@ Utilidades.Nat n = new Utilidades.Nat();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jFormattedTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField5KeyReleased
-     
+
     }//GEN-LAST:event_jFormattedTextField5KeyReleased
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -417,28 +422,28 @@ Utilidades.Nat n = new Utilidades.Nat();
     }//GEN-LAST:event_formWindowClosing
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-       
-        if(jCheckBox1.isVisible()==true){
+
+        if (jCheckBox1.isVisible() == true) {
             jCheckBox1.setVisible(false);
-        }else{
+        } else {
             jCheckBox1.setVisible(true);
         }
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         jComboBox2.setEnabled(true);
-        if(jCheckBox1.isSelected()){
+        if (jCheckBox1.isSelected()) {
             //--
-        }else{
+        } else {
             jCheckBox1.setVisible(false);
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        if(jCheckBox2.isSelected()){
+        if (jCheckBox2.isSelected()) {
             jPanel6.setVisible(true);
             jTextField2.requestFocusInWindow();
-        }else{
+        } else {
             jPanel6.setVisible(false);
         }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
@@ -453,7 +458,7 @@ Utilidades.Nat n = new Utilidades.Nat();
     }//GEN-LAST:event_jLabel8MouseReleased
 
     private void jLabel6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseReleased
-         Profesionales.show();
+        Profesionales.show();
     }//GEN-LAST:event_jLabel6MouseReleased
 
     /**
@@ -497,107 +502,117 @@ Utilidades.Nat n = new Utilidades.Nat();
             }
         });
     }
-    private void Confirmar(){
-         try {
-         String f=null;
-         if(jDateChooser1.getDateEditor().getDate() !=null){
-             if(Funciones.Validar_CampoHora(jFormattedTextField5.getText()) == true){
-                 if(!jTextField1.getText().equals("")){
-                     
-                    Confirmar.setIdAgend(Agend);
-                    Confirmar.setIdControlPro(Profesional);
-                    Confirmar.setPrimeraVez(getPrimerVez());
-                    f = Funciones.getFecha(jDateChooser1);
-                    Confirmar.setFecha(Funciones.stringToDate(f));
-                    Confirmar.setHora(Funciones.getHora(jFormattedTextField5.getText()));
-                    Confirmar.setEstado('1');
-                    Control_Asistencia.create(Confirmar);
-                    Agend.setEstado('2');
-                    Control_Agend.edit(Agend);
-                    
-                    Admision.setIdAsistcon(Confirmar);
-                    Date d = Agend.getIdPaciente().getFechaNacimiento();
-                    String ff = Funciones.Format_Fecha_GUION(d);
-                    Admision.setEdadAdmision(ff);
-                    Admision.setCausaExterna(Funciones.getCausaEX(jComboBox2.getSelectedItem().toString()));
-                    Admision.setEstadoIngreso(getEstadoIng());
-                    Admision.setMedioIngreso(getMedio());
-                    Admision.setObservacion(Observacion());
-                    Admision.setEstado('1');
-                    Control_admision.create(Admision);
-                    
-                    if(jCheckBox2.isSelected()){
-                    Responsable.setIdAdmpyp(Admision);    
-                    Responsable.setIdentificacion(jTextField2.getText());
-                    Responsable.setNombres(jTextField3.getText());
-                    Responsable.setParentesco(getParentesco());
-                    Responsable.setTelefono(jTextField4.getText());
-                    Responsable.setEstado('1'); 
-                    Control_resp.create(Responsable);
-                    }else{
-                      //--  
+
+    private void Confirmar() {
+        try {
+            String f = null;
+            if (jDateChooser1.getDateEditor().getDate() != null) {
+                if (Funciones.Validar_CampoHora(jFormattedTextField5.getText()) == true) {
+                    if (!jTextField1.getText().equals("")) {
+
+                        Confirmar.setIdAgend(Agend);
+                        Confirmar.setIdControlPro(Profesional);
+                        Confirmar.setPrimeraVez(getPrimerVez());
+                        f = Funciones.getFecha(jDateChooser1);
+                        Confirmar.setFecha(Funciones.stringToDate(f));
+                        Confirmar.setHora(Funciones.getHora(jFormattedTextField5.getText()));
+                        Confirmar.setEstado('1');
+                        Confirmar.getIdAgend().setEstado('2');
+                        Control_Asistencia.create(Confirmar);
+                        List<PypAdmAsistCon> ag = new ArrayList<PypAdmAsistCon>();
+                        ag.add(Confirmar);
+                        Agend.setPypAdmAsistConList(ag);
+                        Agend.setEstado('2');
+                        
+                        Control_Agend.edit(Agend);
+                        Admision.setIdAsistcon(Confirmar);
+                        Date d = Agend.getIdPaciente().getFechaNacimiento();
+                        String ff = Funciones.Format_Fecha_GUION(d);
+                        Admision.setEdadAdmision(ff);
+                        Admision.setCausaExterna(Funciones.getCausaEX(jComboBox2.getSelectedItem().toString()));
+                        Admision.setEstadoIngreso(getEstadoIng());
+                        Admision.setMedioIngreso(getMedio());
+                        Admision.setObservacion(Observacion());
+                        Admision.setEstado('1');
+                        Control_admision.create(Admision);
+
+                        if (jCheckBox2.isSelected()) {
+                            Responsable.setIdAdmpyp(Admision);
+                            Responsable.setIdentificacion(jTextField2.getText());
+                            Responsable.setNombres(jTextField3.getText());
+                            Responsable.setParentesco(getParentesco());
+                            Responsable.setTelefono(jTextField4.getText());
+                            Responsable.setEstado('1');
+                            Control_resp.create(Responsable);
+                        } else {
+                            //--  
+                        }
+
+                        modulo_pyp.Modulo_PyP.d.Confirmar.Clear_Table();
+                        modulo_pyp.Modulo_PyP.d.Confirmar.Search_A();
+                        Limpiar();
+                        this.dispose();
+
+                    } else {
+                        jLabel11.setText("Por favor seleccione un profesional");
+                        jTextField1.requestFocusInWindow();
                     }
-                    
-                    modulo_pyp.Modulo_PyP.d.Confirmar.Clear_Table();
-                    modulo_pyp.Modulo_PyP.d.Confirmar.Search_A();
-                    Limpiar();
-                    this.dispose();  
-                     
-                   }else{
-                  jLabel11.setText("Por favor seleccione un profesional");     
-                 jTextField1.requestFocusInWindow();
-                 }
-               }else{
-               jLabel11.setText("Por favor ingrese una hora");  
-              jFormattedTextField5.requestFocusInWindow();
-             }
-            }else{
-            jLabel11.setText("Por favor ingrese una fecha");
-           jDateChooser1.getDateEditor().getUiComponent().requestFocusInWindow();
-         } 
+                } else {
+                    jLabel11.setText("Por favor ingrese una hora");
+                    jFormattedTextField5.requestFocusInWindow();
+                }
+            } else {
+                jLabel11.setText("Por favor ingrese una fecha");
+                jDateChooser1.getDateEditor().getUiComponent().requestFocusInWindow();
+            }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-      }
+            JOptionPane.showMessageDialog(this, "lasdfsa " + e.getMessage());
+        }
     }
-    private char getPrimerVez(){
+
+    private char getPrimerVez() {
         char v = '0';
-        if(RadioSI.isSelected()){
-          v='1';  
-        }else if(RadioNO.isSelected()){
-          v='0';  
+        if (RadioSI.isSelected()) {
+            v = '1';
+        } else if (RadioNO.isSelected()) {
+            v = '0';
         }
         return v;
     }
-    private char getEstadoIng(){
+
+    private char getEstadoIng() {
         char f = 'C';
-        if(jRadioButton1.isSelected()){
-           f = 'C'; 
-        }else if(jRadioButton2.isSelected()){
-           f = 'I'; 
-        }else if(jRadioButton3.isSelected()){
-           f = 'M'; 
+        if (jRadioButton1.isSelected()) {
+            f = 'C';
+        } else if (jRadioButton2.isSelected()) {
+            f = 'I';
+        } else if (jRadioButton3.isSelected()) {
+            f = 'M';
         }
         return f;
     }
-    private char getMedio(){
+
+    private char getMedio() {
         char m = '1';
-        if(jRadioButton4.isSelected()){
+        if (jRadioButton4.isSelected()) {
             m = '1';
-        }else if(jRadioButton5.isSelected()){
+        } else if (jRadioButton5.isSelected()) {
             m = '0';
         }
         return m;
     }
-    private String Observacion(){
+
+    private String Observacion() {
         String Obs;
-        if(jTextArea1.getText().isEmpty()){
+        if (jTextArea1.getText().isEmpty()) {
             Obs = "N/A";
-        }else{
+        } else {
             Obs = jTextArea1.getText();
         }
         return Obs;
     }
-    private void Limpiar(){
+
+    private void Limpiar() {
         jDateChooser1.setDate(null);
         jFormattedTextField5.setText(null);
         jTextField1.setText("");
@@ -613,26 +628,27 @@ Utilidades.Nat n = new Utilidades.Nat();
         jPanel6.setVisible(false);
         jCheckBox2.setSelected(false);
     }
-    private char getParentesco(){
+
+    private char getParentesco() {
         char par = 'P';
-        if(jComboBox1.getSelectedIndex()==0){
-           par = 'P'; 
-        }else if(jComboBox1.getSelectedIndex()==1){
-           par = 'M';
-        }else if(jComboBox1.getSelectedIndex()==2){
-           par = 'H';
-        }else if(jComboBox1.getSelectedIndex()==3){
-           par = 'N';
-        }else if(jComboBox1.getSelectedIndex()==4){
-           par = 'E';
-        }else if(jComboBox1.getSelectedIndex()==5){
-           par = 'T';
-        }else if(jComboBox1.getSelectedIndex()==6){
-           par = 'S';
-        }else if(jComboBox1.getSelectedIndex()==7){
-           par = 'U';
-        }else if(jComboBox1.getSelectedIndex()==8){
-           par = 'O';
+        if (jComboBox1.getSelectedIndex() == 0) {
+            par = 'P';
+        } else if (jComboBox1.getSelectedIndex() == 1) {
+            par = 'M';
+        } else if (jComboBox1.getSelectedIndex() == 2) {
+            par = 'H';
+        } else if (jComboBox1.getSelectedIndex() == 3) {
+            par = 'N';
+        } else if (jComboBox1.getSelectedIndex() == 4) {
+            par = 'E';
+        } else if (jComboBox1.getSelectedIndex() == 5) {
+            par = 'T';
+        } else if (jComboBox1.getSelectedIndex() == 6) {
+            par = 'S';
+        } else if (jComboBox1.getSelectedIndex() == 7) {
+            par = 'U';
+        } else if (jComboBox1.getSelectedIndex() == 8) {
+            par = 'O';
         }
         return par;
     }
