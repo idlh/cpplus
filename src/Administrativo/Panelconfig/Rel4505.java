@@ -498,7 +498,7 @@ public class Rel4505 extends javax.swing.JPanel {
                             + cervix + "|" + seno + "|" + ln);
                 }
                 escribir.close();
-            } catch (Exception e) {
+            } catch (Exception e) { 
                 JOptionPane.showMessageDialog(null, "Error creacion archivo 4505: " + e.getMessage(), Rel4505.class.getName(), JOptionPane.INFORMATION_MESSAGE);
             }
         }
