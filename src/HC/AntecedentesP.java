@@ -2366,7 +2366,7 @@ public class AntecedentesP extends javax.swing.JPanel {
         if (jCheckBox22.isSelected() == false) {
             c6 = "0";
         } else {
-            c6 = "1";
+            c6 = "1"; 
         }
         if (jCheckBox23.isSelected() == false) {
             c7 = "0";
@@ -2378,19 +2378,19 @@ public class AntecedentesP extends javax.swing.JPanel {
         } else {
             c8 = "1";
         }
-        if (jTextField8.getText().toString().equals("")) {
-            c9 = "98";
+        if (jTextField8.getText().toString().equals("")) { 
+            c9 = "99";
         } else {
             c9 = jTextField8.getText().toString();
-        }
-        if (jTextField6.getText().equals("")) {
-            n1 = 0;
-        } else {
+        } 
+        if (jTextField6.getText().equals("")) { 
+            n1 = 0; 
+        } else { 
             n1 = Float.parseFloat(jTextField6.getText().toString());
         }
         if (jTextField7.getText().equals("")) {
             n2 = 0;
-        } else {
+        } else { 
             n2 = Float.parseFloat(jTextField7.getText().toString());
         }
         if (jTextField9.getText().equals("")) {
