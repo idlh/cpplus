@@ -541,13 +541,14 @@ public class Save {
         }
     }
 
-    public void nuevaconfig(String idparametro, String tipo, String valor) {
+    public void nuevaconfig(String idparametro, String tipo, String valor, String validacion) {
         try {
             bd.ConectarBasedeDatos();
-            bd.preparedStatement = bd.getConnection().prepareStatement("INSERT INTO `database`.`config_rel4505` (`config_rel4505`.`idparametro`, `config_rel4505`.`tipo`, `config_rel4505`.`valor`) VALUES (?,?,?);");
+            bd.preparedStatement = bd.getConnection().prepareStatement("INSERT INTO `database`.`config_rel4505` (`config_rel4505`.`idparametro`, `config_rel4505`.`tipo`, `config_rel4505`.`valor`, `config_rel4505`.`validacion`) VALUES (?,?,?,?);");
             bd.preparedStatement.setString(1, idparametro);
             bd.preparedStatement.setString(2, tipo);
             bd.preparedStatement.setString(3, valor);
+            bd.preparedStatement.setString(4, validacion);
             bd.preparedStatement.execute();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "c028" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -564,6 +565,7 @@ public class Save {
                 + "      , `config_parametros`.`nombre`"
                 + "      , `config_rel4505`.`tipo`"
                 + "      , `config_rel4505`.`valor`"
+                + "      , `config_rel4505`.`validacion`"
                 + "      FROM"
                 + "          `database`.`config_rel4505`"
                 + "           INNER JOIN `database`.`config_parametros` "
@@ -571,15 +573,16 @@ public class Save {
                 + "           WHERE (`config_rel4505`.`estado` = 1 AND `config_rel4505`.`id` = '" + id + "');";
     }
 
-    public void modifparam(String id, String tipo, String valor) {
+    public void modifparam(String id, String tipo, String valor, String validacion) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`config_rel4505`"
-                    + "SET `config_rel4505`.`tipo` = ?, `config_rel4505`.`valor` = ?"
+                    + "SET `config_rel4505`.`tipo` = ?, `config_rel4505`.`valor` = ?,   `config_rel4505`.`validacion` = ?"
                     + "WHERE `config_rel4505`.`id` = ?;");
             bd.preparedStatement.setString(1, tipo);
             bd.preparedStatement.setString(2, valor);
-            bd.preparedStatement.setString(3, id);
+            bd.preparedStatement.setString(3, validacion);
+            bd.preparedStatement.setString(4, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "c029" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);

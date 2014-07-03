@@ -484,6 +484,7 @@ public class CargarordenesM {
                     + "    , `config_parametros`.`nombre`"
                     + "    , `config_rel4505`.`tipo`"
                     + "    , `config_rel4505`.`valor`"
+                    + "    , `config_rel4505`.`validacion`"
                     + "FROM"
                     + "    `database`.`config_rel4505`"
                     + "    INNER JOIN `database`.`config_parametros` "
@@ -519,6 +520,7 @@ public class CargarordenesM {
                     }
                     modelo.setValueAt(tipo, c, 4);
                     modelo.setValueAt(bd.resultado.getString("valor"), c, 5);
+                    modelo.setValueAt(bd.resultado.getString("validacion"), c, 6);
                     c++;
                 }
             }
