@@ -11,7 +11,10 @@ import Clases.Funciones_AD;
 import com.toedter.calendar.JDateChooser;
 import java.io.File;
 import java.io.FileWriter;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
@@ -154,23 +157,23 @@ public class Rel4505 extends javax.swing.JPanel {
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jCheckBox2)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jDateChooser4, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)))
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(jLabel8))
                         .addContainerGap(174, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -248,7 +251,7 @@ public class Rel4505 extends javax.swing.JPanel {
                 System.out.println(archivo.getAbsolutePath());
                 FileWriter escribir = new FileWriter(archivo, true);
                 String apellido2, nombre2, etnia = "ND", gestacion = null, sifilis = null, htagesta = null, hipot = null, genero = null, escolaridad = null, sintomr = null, tuberculosis = null,
-                        lepra = null, nutri = null;
+                        lepra = null, nutri = null, maltrato = null, abusos = null, infecciones = null, mental = null, cervix = null, seno = null;
                 boolean valorv = false;
                 for (int b = 0; b < datames.length; b++) {
                     if (datames[b][5].toString().equals("")) {
@@ -403,9 +406,96 @@ public class Rel4505 extends javax.swing.JPanel {
                             nutri = "3";
                         }
                     }
+                    //Victima de maltrato
+                    for (int i = 0; i < dataparam.length; i++) {
+                        if (dataparam[i][1].toString().equals("28")) {
+                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                int año = 0;
+                                String ed[] = datames[b][28].toString().split(" ");
+                                String an = ed[0];
+                                año = Integer.parseInt(an);
+                                if (año < 18) {
+                                    maltrato = dataparam[i][6].toString();
+                                    break;
+                                } else {
+                                    if (!datames[b][9].toString().equals("M")) {
+                                        maltrato = dataparam[i][6].toString();
+                                        break;
+                                    } else {
+                                        maltrato = "0";
+                                    }
+                                }
+                            } else {
+                                maltrato = "3";
+                            }
+                        }
+                    }
+                    //Victima de violencia sexual
+                    for (int i = 0; i < dataparam.length; i++) {
+                        if (dataparam[i][1].toString().equals("29")) {
+                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                abusos = dataparam[i][6].toString();
+                                break;
+                            } else {
+                                abusos = "2";
+                            }
+                        }
+                    }
+                    //Infecciones sexuales
+                    for (int i = 0; i < dataparam.length; i++) {
+                        if (dataparam[i][1].toString().equals("30")) {
+                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                infecciones = dataparam[i][6].toString();
+                                break;
+                            } else {
+                                infecciones = "2";
+                            }
+                        }
+                    }
+                    //Enfermedad mental
+                    for (int i = 0; i < dataparam.length; i++) {
+                        if (dataparam[i][1].toString().equals("31")) {
+                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                mental = dataparam[i][6].toString();
+                            } else {
+                                mental = "7";
+                            }
+                        }
+                    }
+                    //Cancer de cervix
+                    for (int i = 0; i < dataparam.length; i++) {
+                        if (dataparam[i][1].toString().equals("32")) {
+                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                if (!datames[b][9].toString().equals("M")) {
+                                    cervix = dataparam[i][6].toString();
+                                } else {
+                                    cervix = "0";
+                                }
+                            } else {
+                                cervix = "2";
+                            }
+                        }
+                    }
+                    //Cancer de seno
+                    for (int i = 0; i < dataparam.length; i++) {
+                        if (dataparam[i][1].toString().equals("33")) {
+                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                seno = dataparam[i][6].toString();
+                            } else {
+                                seno = "2";
+                            }
+                        }
+                    }
                     escribir.write(datames[b][0].toString() + "|1|999||||2|" + (b + 1) + "|051540381702|" + datames[b][2] + "|" + datames[b][3] + "|" + datames[b][4] + "|" + apellido2
                             + "|" + datames[b][6] + "|" + nombre2 + "|" + datames[b][8] + "|" + datames[b][9] + "|" + etnia + "|9999|" + escolaridad + "|" + gestacion + "|" + sifilis + "|"
-                            + htagesta + "|" + hipot + "|" + sintomr + "|" + tuberculosis + "|" + lepra + "|" + nutri + ln);
+                            + htagesta + "|" + hipot + "|" + sintomr + "|" + tuberculosis + "|" + lepra + "|" + nutri + "|" + maltrato + "|" + abusos + "|" + infecciones + "|" + mental + "|"
+                            + cervix + "|" + seno + "|" + ln);
                 }
                 escribir.close();
             } catch (Exception e) {
@@ -413,8 +503,7 @@ public class Rel4505 extends javax.swing.JPanel {
             }
         }
 
-        if (jCheckBox2.isSelected()
-                == true) {
+        if (jCheckBox2.isSelected() == true) {
             fecini = formato.format(jDateChooser3.getDate());
             fecfin = formato.format(jDateChooser4.getDate());
             Object datatri[][] = Funtions.RetornarDatos(act.rel4505tri(jComboBox1.getSelectedItem().toString(), fecini, fecfin));
@@ -457,8 +546,6 @@ public class Rel4505 extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton jButton1;
-    javax.swing.JButton jButton4;
-    javax.swing.JButton jButton5;
     javax.swing.JButton jButton6;
     javax.swing.JCheckBox jCheckBox1;
     javax.swing.JCheckBox jCheckBox2;
