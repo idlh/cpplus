@@ -251,7 +251,7 @@ public class Rel4505 extends javax.swing.JPanel {
                 System.out.println(archivo.getAbsolutePath());
                 FileWriter escribir = new FileWriter(archivo, true);
                 String apellido2, nombre2, etnia = "ND", gestacion = null, sifilis = null, htagesta = null, hipot = null, genero = null, escolaridad = null, sintomr = null, tuberculosis = null,
-                        lepra = null, nutri = null, maltrato = null, abusos = null, infecciones = null, mental = null, cervix = null, seno = null;
+                        lepra = null, nutri = null, maltrato = null, abusos = null, infecciones = null, mental = null, cervix = null, seno = null, fluorosis = null;
                 boolean valorv = false;
                 for (int b = 0; b < datames.length; b++) {
                     if (datames[b][5].toString().equals("")) {
@@ -495,10 +495,10 @@ public class Rel4505 extends javax.swing.JPanel {
                     escribir.write(datames[b][0].toString() + "|1|999||||2|" + (b + 1) + "|051540381702|" + datames[b][2] + "|" + datames[b][3] + "|" + datames[b][4] + "|" + apellido2
                             + "|" + datames[b][6] + "|" + nombre2 + "|" + datames[b][8] + "|" + datames[b][9] + "|" + etnia + "|9999|" + escolaridad + "|" + gestacion + "|" + sifilis + "|"
                             + htagesta + "|" + hipot + "|" + sintomr + "|" + tuberculosis + "|" + lepra + "|" + nutri + "|" + maltrato + "|" + abusos + "|" + infecciones + "|" + mental + "|"
-                            + cervix + "|" + seno + "|" + ln);
+                            + cervix + "|" + seno + "|" + fluorosis + "|" + ln);
                 }
                 escribir.close();
-            } catch (Exception e) { 
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error creacion archivo 4505: " + e.getMessage(), Rel4505.class.getName(), JOptionPane.INFORMATION_MESSAGE);
             }
         }
