@@ -17,6 +17,7 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -37,6 +38,7 @@ public class Rel4505 extends javax.swing.JPanel {
         actdescheck(jCheckBox1, jDateChooser1, jDateChooser2);
         actdescheck(jCheckBox2, jDateChooser3, jDateChooser4);
         CargarEntidad();
+        jLabel2.setVisible(false);
     }
 
     /**
@@ -63,6 +65,7 @@ public class Rel4505 extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jButton6 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(562, 345));
@@ -145,6 +148,8 @@ public class Rel4505 extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/cargando.gif"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -176,8 +181,9 @@ public class Rel4505 extends javax.swing.JPanel {
                                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(jLabel8))
                         .addContainerGap(174, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,7 +228,9 @@ public class Rel4505 extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(59, 59, 59)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -236,290 +244,10 @@ public class Rel4505 extends javax.swing.JPanel {
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-        String ruta = System.getProperty("user.home") + "/Desktop";
-        final String ln = System.getProperty("line.separator");
-        String patron = "yyyy-MM-dd", fecini, fecfin;
-        SimpleDateFormat formato = new SimpleDateFormat(patron);
-        if (jCheckBox1.isSelected() == true) {
-            fecini = formato.format(jDateChooser1.getDate());
-            fecfin = formato.format(jDateChooser2.getDate());
-            Object datames[][] = Funtions.RetornarDatos(act.rel4505mes(jComboBox1.getSelectedItem().toString(), fecini, fecfin));
-            Object dataparam[][] = Funtions.RetornarDatos(act.cargarparam());
-            try {
-                File archivo = new File(ruta, "Reporte4505 " + jComboBox1.getSelectedItem() + " Mensual.txt");
-                archivo.createNewFile();
-                System.out.println(archivo.getAbsolutePath());
-                FileWriter escribir = new FileWriter(archivo, true);
-                String apellido2, nombre2, etnia = "ND", gestacion = null, sifilis = null, htagesta = null, hipot = null, genero = null, escolaridad = null, sintomr = null, tuberculosis = null,
-                        lepra = null, nutri = null, maltrato = null, abusos = null, infecciones = null, mental = null, cervix = null, seno = null, fluorosis = null;
-                boolean valorv = false;
-                for (int b = 0; b < datames.length; b++) {
-                    if (datames[b][5].toString().equals("")) {
-                        apellido2 = "NONE";
-                    } else {
-                        apellido2 = datames[b][5].toString();
-                    }
-                    if (datames[b][7].toString().equals("")) {
-                        nombre2 = "NONE";
-                    } else {
-                        nombre2 = datames[b][7].toString();
-                    }
-                    genero = datames[b][9].toString();
-                    if (datames[b][10].toString().equals("INDIGENA") || datames[b][11].toString().equals("INDIGENA")) {
-                        etnia = "1";
-                    } else {
-                        if (datames[b][10].toString().equals("ROM") || datames[b][11].toString().equals("ROM")) {
-                            etnia = "2";
-                        } else {
-                            if (datames[b][10].toString().equals("RAIZAL") || datames[b][11].toString().equals("RAIZAL")) {
-                                etnia = "3";
-                            } else {
-                                if (datames[b][10].toString().equals("AFROCOLOMBIANO") || datames[b][11].toString().equals("AFROCOLOMBIANO")) {
-                                    etnia = "5";
-                                } else {
-                                    if (datames[b][10].toString().equals("NO APLICA") || datames[b][11].toString().equals("NO APLICA")) {
-                                        etnia = "6";
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    escolaridad = datames[b][12].toString();
-                    for (int i = 0; i < dataparam.length; i++) {
-                        if (datames[b][9].toString().equals("M")) {
-                            gestacion = "0";
-                        } else {
-                            if (datames[b][13].toString().equals("0")) {
-                                gestacion = "2";
-                            } else {
-                                gestacion = "1";
-                            }
-                        }
-                    }
-                    //Sifilis
-                    for (int i = 0; i < dataparam.length; i++) {
-                        if (dataparam[i][1].toString().equals("21")) {
-                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                if (!datames[b][9].toString().equals("M")) {
-                                    sifilis = dataparam[i][6].toString();
-                                    break;
-                                } else {
-                                    sifilis = "0";
-                                }
-                            } else {
-                                sifilis = "3";
-                            }
-                        } else {
-                            sifilis = "0";
-                        }
-                    }
-                    //Hipertencion por gestacion
-                    for (int i = 0; i < dataparam.length; i++) {
-                        if (dataparam[i][1].toString().equals("22")) {
-                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                if (!datames[b][9].toString().equals("M")) {
-                                    htagesta = dataparam[i][6].toString();
-                                    break;
-                                } else {
-                                    htagesta = "0";
-                                }
-                            } else {
-                                htagesta = "2";
-                            }
-                        } else {
-                            htagesta = "0";
-                        }
-                    }
-                    //Hipotiroidismo
-                    for (int i = 0; i < dataparam.length; i++) {
-                        if (dataparam[i][1].toString().equals("23")) {
-                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                if (datames[b][1].toString().equals("10")) {
-                                    hipot = dataparam[i][6].toString();
-                                    break;
-                                } else {
-                                    hipot = "0";
-                                }
-                            } else {
-                                hipot = "2";
-                            }
-                        } else {
-                            hipot = "0";
-                        }
-                    }
-                    //Sintomatico Respiratorio
-                    for (int i = 0; i < dataparam.length; i++) {
-                        if (dataparam[i][1].toString().equals("24")) {
-                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                sintomr = dataparam[i][6].toString();
-                                break;
-                            } else {
-                                sintomr = "2";
-                            }
-                        } else {
-                            sintomr = "2";
-                        }
-                    }
-                    //tuberculosis
-                    for (int i = 0; i < dataparam.length; i++) {
-                        if (dataparam[i][1].toString().equals("25")) {
-                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                tuberculosis = dataparam[i][6].toString();
-                                break;
-                            } else {
-                                tuberculosis = "2";
-                            }
-                        } else {
-                            tuberculosis = "0";
-                        }
-                    }
-                    //Lepra
-                    for (int i = 0; i < dataparam.length; i++) {
-                        if (dataparam[i][1].toString().equals("26")) {
-                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                lepra = dataparam[i][6].toString();
-                                break;
-                            } else {
-                                lepra = "3";
-                            }
-                        } else {
-                            lepra = "3";
-                        }
-                    }
-                    //Obesidad o desnutricion
-                    for (int i = 0; i < dataparam.length; i++) {
-                        if (dataparam[i][1].toString().equals("27")) {
-                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                nutri = dataparam[i][6].toString();
-                                break;
-                            } else {
-                                nutri = "3";
-                            }
-                        } else {
-                            nutri = "3";
-                        }
-                    }
-                    //Victima de maltrato
-                    for (int i = 0; i < dataparam.length; i++) {
-                        if (dataparam[i][1].toString().equals("28")) {
-                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                int año = 0;
-                                String ed[] = datames[b][28].toString().split(" ");
-                                String an = ed[0];
-                                año = Integer.parseInt(an);
-                                if (año < 18) {
-                                    maltrato = dataparam[i][6].toString();
-                                    break;
-                                } else {
-                                    if (!datames[b][9].toString().equals("M")) {
-                                        maltrato = dataparam[i][6].toString();
-                                        break;
-                                    } else {
-                                        maltrato = "0";
-                                    }
-                                }
-                            } else {
-                                maltrato = "3";
-                            }
-                        }
-                    }
-                    //Victima de violencia sexual
-                    for (int i = 0; i < dataparam.length; i++) {
-                        if (dataparam[i][1].toString().equals("29")) {
-                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                abusos = dataparam[i][6].toString();
-                                break;
-                            } else {
-                                abusos = "2";
-                            }
-                        }
-                    }
-                    //Infecciones sexuales
-                    for (int i = 0; i < dataparam.length; i++) {
-                        if (dataparam[i][1].toString().equals("30")) {
-                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                infecciones = dataparam[i][6].toString();
-                                break;
-                            } else {
-                                infecciones = "2";
-                            }
-                        }
-                    }
-                    //Enfermedad mental
-                    for (int i = 0; i < dataparam.length; i++) {
-                        if (dataparam[i][1].toString().equals("31")) {
-                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                mental = dataparam[i][6].toString();
-                            } else {
-                                mental = "7";
-                            }
-                        }
-                    }
-                    //Cancer de cervix
-                    for (int i = 0; i < dataparam.length; i++) {
-                        if (dataparam[i][1].toString().equals("32")) {
-                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                if (!datames[b][9].toString().equals("M")) {
-                                    cervix = dataparam[i][6].toString();
-                                } else {
-                                    cervix = "0";
-                                }
-                            } else {
-                                cervix = "2";
-                            }
-                        }
-                    }
-                    //Cancer de seno
-                    for (int i = 0; i < dataparam.length; i++) {
-                        if (dataparam[i][1].toString().equals("33")) {
-                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                seno = dataparam[i][6].toString();
-                            } else {
-                                seno = "2";
-                            }
-                        }
-                    }
-                    escribir.write(datames[b][0].toString() + "|1|999||||2|" + (b + 1) + "|051540381702|" + datames[b][2] + "|" + datames[b][3] + "|" + datames[b][4] + "|" + apellido2
-                            + "|" + datames[b][6] + "|" + nombre2 + "|" + datames[b][8] + "|" + datames[b][9] + "|" + etnia + "|9999|" + escolaridad + "|" + gestacion + "|" + sifilis + "|"
-                            + htagesta + "|" + hipot + "|" + sintomr + "|" + tuberculosis + "|" + lepra + "|" + nutri + "|" + maltrato + "|" + abusos + "|" + infecciones + "|" + mental + "|"
-                            + cervix + "|" + seno + "|" + fluorosis + "|" + ln);
-                }
-                escribir.close();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error creacion archivo 4505: " + e.getMessage(), Rel4505.class.getName(), JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-
-        if (jCheckBox2.isSelected() == true) {
-            fecini = formato.format(jDateChooser3.getDate());
-            fecfin = formato.format(jDateChooser4.getDate());
-            Object datatri[][] = Funtions.RetornarDatos(act.rel4505tri(jComboBox1.getSelectedItem().toString(), fecini, fecfin));
-            try {
-                File archivo = new File(ruta, "Reporte4505 " + jComboBox1.getSelectedItem() + " Trimestral.txt");
-                archivo.createNewFile();
-                System.out.println(archivo.getAbsolutePath());
-                FileWriter escribir = new FileWriter(archivo, true);
-                for (int b = 0; b < datatri.length; b++) {
-                    escribir.write("programa" + "|1|999||||" + ln);
-                }
-                escribir.close();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error creacion archivo 4505: " + e.getMessage(), Rel4505.class.getName(), JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
+        jLabel2.setVisible(true);
+        hiloreporte ut = new hiloreporte(this);
+        Thread thread = new Thread(ut);
+        thread.start();
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseReleased
@@ -544,6 +272,338 @@ public class Rel4505 extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
+
+    private class hiloreporte extends Thread {
+
+        JPanel form = null;
+
+        public hiloreporte(JPanel form) {
+            this.form = form;
+        }
+
+        @Override
+        public void run() {
+            String ruta = System.getProperty("user.home") + "/Desktop";
+            final String ln = System.getProperty("line.separator");
+            String patron = "yyyy-MM-dd", fecini = null, fecfin = null;
+            SimpleDateFormat formato = new SimpleDateFormat(patron);
+            if (jCheckBox1.isSelected() == true) {
+                fecini = formato.format(jDateChooser1.getDate());
+                fecfin = formato.format(jDateChooser2.getDate());
+                Object datames[][] = Funtions.RetornarDatos(act.rel4505mes(jComboBox1.getSelectedItem().toString(), fecini, fecfin));
+                Object dataparam[][] = Funtions.RetornarDatos(act.cargarparam());
+                try {
+                    File archivo = new File(ruta, "Reporte4505 " + jComboBox1.getSelectedItem() + " Mensual.txt");
+                    if (archivo.exists()) {
+                        archivo.delete();
+                        archivo.createNewFile();
+                    } else {
+                        archivo.createNewFile();
+                    }
+                    System.out.println(archivo.getAbsolutePath());
+                    FileWriter escribir = new FileWriter(archivo, true);
+                    String apellido2, nombre2, etnia = "ND", gestacion = null, sifilis = null, htagesta = null, hipot = null, genero = null, escolaridad = null, sintomr = null, tuberculosis = null,
+                            lepra = null, nutri = null, maltrato = null, abusos = null, infecciones = null, mental = null, cervix = null, seno = null, fluorosis = null, fechapeso = null, peso = null,
+                            talla = null, fechatalla = null, fechapparto = null, egparto = null, bgc = null, hepatitisb = null, pentavalente = null, polio = null, dpt = null, rotavirus = null,
+                            neumococo = null, influenza = null, fiebreA = null, hepatitisA = null, tripev = null, vph = null, tdtt = null, placab = null;
+                    boolean valorv = false;
+                    for (int b = 0; b < datames.length; b++) {
+                        if (datames[b][5].toString().equals("")) {
+                            apellido2 = "NONE";
+                        } else {
+                            apellido2 = datames[b][5].toString();
+                        }
+                        if (datames[b][7].toString().equals("")) {
+                            nombre2 = "NONE";
+                        } else {
+                            nombre2 = datames[b][7].toString();
+                        }
+                        genero = datames[b][9].toString();
+                        if (datames[b][10].toString().equals("INDIGENA") || datames[b][11].toString().equals("INDIGENA")) {
+                            etnia = "1";
+                        } else {
+                            if (datames[b][10].toString().equals("ROM") || datames[b][11].toString().equals("ROM")) {
+                                etnia = "2";
+                            } else {
+                                if (datames[b][10].toString().equals("RAIZAL") || datames[b][11].toString().equals("RAIZAL")) {
+                                    etnia = "3";
+                                } else {
+                                    if (datames[b][10].toString().equals("AFROCOLOMBIANO") || datames[b][11].toString().equals("AFROCOLOMBIANO")) {
+                                        etnia = "5";
+                                    } else {
+                                        if (datames[b][10].toString().equals("NO APLICA") || datames[b][11].toString().equals("NO APLICA")) {
+                                            etnia = "6";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        escolaridad = datames[b][12].toString();
+                        for (int i = 0; i < dataparam.length; i++) {
+                            if (datames[b][9].toString().equals("M")) {
+                                gestacion = "0";
+                            } else {
+                                if (datames[b][13].toString().equals("0")) {
+                                    gestacion = "2";
+                                } else {
+                                    gestacion = "1";
+                                }
+                            }
+                        }
+                        //Sifilis
+                        for (int i = 0; i < dataparam.length; i++) {
+                            if (dataparam[i][1].toString().equals("21")) {
+                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                    if (!datames[b][9].toString().equals("M")) {
+                                        sifilis = dataparam[i][6].toString();
+                                        break;
+                                    } else {
+                                        sifilis = "0";
+                                    }
+                                } else {
+                                    sifilis = "3";
+                                }
+                            } else {
+                                sifilis = "0";
+                            }
+                        }
+                        //Hipertencion por gestacion
+                        for (int i = 0; i < dataparam.length; i++) {
+                            if (dataparam[i][1].toString().equals("22")) {
+                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                    if (!datames[b][9].toString().equals("M")) {
+                                        htagesta = dataparam[i][6].toString();
+                                        break;
+                                    } else {
+                                        htagesta = "0";
+                                    }
+                                } else {
+                                    htagesta = "2";
+                                }
+                            } else {
+                                htagesta = "0";
+                            }
+                        }
+                        //Hipotiroidismo
+                        for (int i = 0; i < dataparam.length; i++) {
+                            if (dataparam[i][1].toString().equals("23")) {
+                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                    if (datames[b][1].toString().equals("10")) {
+                                        hipot = dataparam[i][6].toString();
+                                        break;
+                                    } else {
+                                        hipot = "0";
+                                    }
+                                } else {
+                                    hipot = "2";
+                                }
+                            } else {
+                                hipot = "0";
+                            }
+                        }
+                        //Sintomatico Respiratorio
+                        for (int i = 0; i < dataparam.length; i++) {
+                            if (dataparam[i][1].toString().equals("24")) {
+                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                    sintomr = dataparam[i][6].toString();
+                                    break;
+                                } else {
+                                    sintomr = "2";
+                                }
+                            } else {
+                                sintomr = "2";
+                            }
+                        }
+                        //tuberculosis
+                        for (int i = 0; i < dataparam.length; i++) {
+                            if (dataparam[i][1].toString().equals("25")) {
+                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                    tuberculosis = dataparam[i][6].toString();
+                                    break;
+                                } else {
+                                    tuberculosis = "2";
+                                }
+                            } else {
+                                tuberculosis = "0";
+                            }
+                        }
+                        //Lepra
+                        for (int i = 0; i < dataparam.length; i++) {
+                            if (dataparam[i][1].toString().equals("26")) {
+                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                    lepra = dataparam[i][6].toString();
+                                    break;
+                                } else {
+                                    lepra = "3";
+                                }
+                            } else {
+                                lepra = "3";
+                            }
+                        }
+                        //Obesidad o desnutricion
+                        for (int i = 0; i < dataparam.length; i++) {
+                            if (dataparam[i][1].toString().equals("27")) {
+                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                    nutri = dataparam[i][6].toString();
+                                    break;
+                                } else {
+                                    nutri = "3";
+                                }
+                            } else {
+                                nutri = "3";
+                            }
+                        }
+                        //Victima de maltrato
+                        for (int i = 0; i < dataparam.length; i++) {
+                            if (dataparam[i][1].toString().equals("28")) {
+                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                    int año = 0;
+                                    String ed[] = datames[b][28].toString().split(" ");
+                                    String an = ed[0];
+                                    año = Integer.parseInt(an);
+                                    if (año < 18) {
+                                        maltrato = dataparam[i][6].toString();
+                                        break;
+                                    } else {
+                                        if (!datames[b][9].toString().equals("M")) {
+                                            maltrato = dataparam[i][6].toString();
+                                            break;
+                                        } else {
+                                            maltrato = "0";
+                                        }
+                                    }
+                                } else {
+                                    maltrato = "3";
+                                }
+                            }
+                        }
+                        //Victima de violencia sexual
+                        for (int i = 0; i < dataparam.length; i++) {
+                            if (dataparam[i][1].toString().equals("29")) {
+                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                    abusos = dataparam[i][6].toString();
+                                    break;
+                                } else {
+                                    abusos = "2";
+                                }
+                            }
+                        }
+                        //Infecciones sexuales
+                        for (int i = 0; i < dataparam.length; i++) {
+                            if (dataparam[i][1].toString().equals("30")) {
+                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                    infecciones = dataparam[i][6].toString();
+                                    break;
+                                } else {
+                                    infecciones = "2";
+                                }
+                            }
+                        }
+                        //Enfermedad mental
+                        for (int i = 0; i < dataparam.length; i++) {
+                            if (dataparam[i][1].toString().equals("31")) {
+                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                    mental = dataparam[i][6].toString();
+                                } else {
+                                    mental = "7";
+                                }
+                            }
+                        }
+                        //Cancer de cervix
+                        for (int i = 0; i < dataparam.length; i++) {
+                            if (dataparam[i][1].toString().equals("32")) {
+                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                    if (!datames[b][9].toString().equals("M")) {
+                                        cervix = dataparam[i][6].toString();
+                                    } else {
+                                        cervix = "0";
+                                    }
+                                } else {
+                                    cervix = "2";
+                                }
+                            }
+                        }
+                        //Cancer de seno
+                        for (int i = 0; i < dataparam.length; i++) {
+                            if (dataparam[i][1].toString().equals("33")) {
+                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                    seno = dataparam[i][6].toString();
+                                } else {
+                                    seno = "2";
+                                }
+                            }
+                        }
+                        if (datames[b][19].toString().equals("0.0")) {
+                            fechapeso = "1800-01-01";
+                            peso = "999";
+                        } else {
+                            fechapeso = datames[b][18].toString();
+                            String de[] = datames[b][19].toString().split("\\.");
+                            peso = de[0];
+                        }
+                        if (datames[b][20].toString().equals("0")) {
+                            fechatalla = "1845-01-01";
+                            talla = "999";
+                        } else {
+                            fechatalla = datames[b][18].toString();
+                            talla = datames[b][20].toString();
+                        }
+                        if (datames[b][21] == null) {
+                            fechapparto = "1845-01-01";
+                        } else {
+                            fechapparto = datames[b][21].toString();
+                        }
+                        if (datames[b][22] == null) {
+                            egparto = "98";
+                        } else {
+                            egparto = datames[b][22].toString();
+                        }
+                        escribir.write(datames[b][0].toString() + "|1|999||||2|" + (b + 1) + "|051540381702|" + datames[b][2] + "|" + datames[b][3] + "|" + datames[b][4] + "|" + apellido2
+                                + "|" + datames[b][6] + "|" + nombre2 + "|" + datames[b][8] + "|" + datames[b][9] + "|" + etnia + "|9999|" + escolaridad + "|" + gestacion + "|" + sifilis + "|"
+                                + htagesta + "|" + hipot + "|" + sintomr + "|" + tuberculosis + "|" + lepra + "|" + nutri + "|" + maltrato + "|" + abusos + "|" + infecciones + "|" + mental + "|"
+                                + cervix + "|" + seno + "|" + fluorosis + "|" + fechapeso + "|" + peso + "|" + fechatalla + "|" + talla + "|" + fechapparto + "|" + egparto + "|" + bgc + "|"
+                                + hepatitisb + "|" + pentavalente + "|" + polio + "|" + dpt + "|" + rotavirus + "|" + neumococo + "|" + influenza + "|" + fiebreA + "|" + hepatitisA + "|"
+                                + tripev + "|" + vph + "|" + tdtt + "|" + placab + "|" + ln);
+                    }
+                    escribir.close();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error creacion archivo 4505: " + e.getMessage(), Rel4505.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+
+            if (jCheckBox2.isSelected() == true) {
+                fecini = formato.format(jDateChooser3.getDate());
+                fecfin = formato.format(jDateChooser4.getDate());
+                Object datatri[][] = Funtions.RetornarDatos(act.rel4505tri(jComboBox1.getSelectedItem().toString(), fecini, fecfin));
+                try {
+                    File archivo = new File(ruta, "Reporte4505 " + jComboBox1.getSelectedItem() + " Trimestral.txt");
+                    archivo.createNewFile();
+                    System.out.println(archivo.getAbsolutePath());
+                    FileWriter escribir = new FileWriter(archivo, true);
+                    for (int b = 0; b < datatri.length; b++) {
+                        escribir.write("programa" + "|1|999||||" + ln);
+                    }
+                    escribir.close();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error creacion archivo 4505: " + e.getMessage(), Rel4505.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+            jLabel2.setVisible(false);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton jButton1;
     javax.swing.JButton jButton6;
@@ -555,6 +615,7 @@ public class Rel4505 extends javax.swing.JPanel {
     com.toedter.calendar.JDateChooser jDateChooser3;
     com.toedter.calendar.JDateChooser jDateChooser4;
     javax.swing.JLabel jLabel1;
+    javax.swing.JLabel jLabel2;
     javax.swing.JLabel jLabel4;
     javax.swing.JLabel jLabel5;
     javax.swing.JLabel jLabel6;
