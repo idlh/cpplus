@@ -33,7 +33,7 @@ public class OrdenesM extends javax.swing.JPanel {
             jPanel22.setVisible(false);
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-            jPanel22.setLocation(10, 154);
+            jPanel22.setLocation(10, 153);
             if (anticonceptivos == null) {
                 anticonceptivos = new Anticonceptivos(pypAdmAsistCon);
             }
@@ -297,7 +297,7 @@ public class OrdenesM extends javax.swing.JPanel {
             this.jPanel1.repaint();
             if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
                 jPanel22.setVisible(true);
-                jPanel22.setLocation(10, 154);
+                jPanel22.setLocation(10, 153);
             }
         }
     }//GEN-LAST:event_jLabel14MouseReleased

@@ -203,19 +203,18 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextField3 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jTextField12 = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox5 = new javax.swing.JCheckBox();
         jCheckBox6 = new javax.swing.JCheckBox();
+        jComboBox12 = new javax.swing.JComboBox();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox();
@@ -760,20 +759,6 @@ public class Exploracionf extends javax.swing.JPanel {
             }
         });
 
-        jTextField11.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField11FocusGained(evt);
-            }
-        });
-        jTextField11.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField11KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField11KeyTyped(evt);
-            }
-        });
-
         jLabel25.setText("Mov. Fetales:");
 
         jLabel26.setText("FCF:");
@@ -792,8 +777,6 @@ public class Exploracionf extends javax.swing.JPanel {
         jLabel30.setText("Semanas");
 
         jLabel31.setText("Cm");
-
-        jLabel32.setText("Movimientos");
 
         jLabel33.setText("ppm");
 
@@ -818,6 +801,9 @@ public class Exploracionf extends javax.swing.JPanel {
         jCheckBox6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox6.setFocusable(false);
 
+        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negativo", "Positivo" }));
+        jComboBox12.setFocusable(false);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -838,17 +824,18 @@ public class Exploracionf extends javax.swing.JPanel {
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField6)
-                    .addComponent(jTextField12)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel30)
-                    .addComponent(jLabel31)
-                    .addComponent(jLabel32)
-                    .addComponent(jLabel33))
-                .addGap(11, 11, 11)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField6)
+                            .addComponent(jTextField12)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel30)
+                            .addComponent(jLabel31)
+                            .addComponent(jLabel33)))
+                    .addComponent(jComboBox12, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCheckBox6)
                     .addComponent(jCheckBox5)
@@ -879,10 +866,9 @@ public class Exploracionf extends javax.swing.JPanel {
                             .addComponent(jCheckBox3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel25)
-                            .addComponent(jLabel32)
-                            .addComponent(jCheckBox5))
+                            .addComponent(jCheckBox5)
+                            .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2404,7 +2390,7 @@ public class Exploracionf extends javax.swing.JPanel {
         char car = evt.getKeyChar();
         if ((car < '0' || car > '9') && (((javax.swing.JTextField) evt.getSource()).getText().contains(".")) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
-        } else if ((car < '0' || car > '9') && (car != '.' ) || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
+        } else if ((car < '0' || car > '9') && (car != '.') || ((javax.swing.JTextField) evt.getSource()).getText().length() >= 5) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField8KeyTyped
@@ -2605,13 +2591,6 @@ public class Exploracionf extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTextField6KeyTyped
 
-    private void jTextField11KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyTyped
-        char car = evt.getKeyChar();
-        if ((car < '0' || car > '9') || jTextField11.getText().length() >= 3) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_jTextField11KeyTyped
-
     private void jTextField12KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField12KeyTyped
         char car = evt.getKeyChar();
         if ((car < '0' || car > '9') || jTextField12.getText().length() >= 3) {
@@ -2630,15 +2609,9 @@ public class Exploracionf extends javax.swing.JPanel {
 
     private void jTextField6KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            jTextField11.requestFocus();
-        }
-    }//GEN-LAST:event_jTextField6KeyReleased
-
-    private void jTextField11KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jTextField12.requestFocus();
         }
-    }//GEN-LAST:event_jTextField11KeyReleased
+    }//GEN-LAST:event_jTextField6KeyReleased
 
     private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
         jTextField3.selectAll();
@@ -2647,10 +2620,6 @@ public class Exploracionf extends javax.swing.JPanel {
     private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
         jTextField6.selectAll();
     }//GEN-LAST:event_jTextField6FocusGained
-
-    private void jTextField11FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField11FocusGained
-        jTextField11.selectAll();
-    }//GEN-LAST:event_jTextField11FocusGained
 
     private void jTextField12FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField12FocusGained
         jTextField12.selectAll();
@@ -3143,18 +3112,13 @@ public class Exploracionf extends javax.swing.JPanel {
             } else {
                 i = jTextField6.getText().toString();
             }
-            if (jTextField11.getText().equals("")) {
-                o = "0";
-            } else {
-                o = jTextField11.getText().toString();
-            }
             if (jTextField12.getText().equals("")) {
                 p = "0";
             } else {
                 p = jTextField12.getText().toString();
             }
             y = String.valueOf(jComboBox1.getSelectedIndex());
-            act.actgestafinal(d, fppu, q, w, u, i, o, p, y, e, r, t);
+            act.actgestafinal(d, fppu, q, w, u, i, String.valueOf(jComboBox12.getSelectedIndex()), p, y, e, r, t);
             guardarcontrolm();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
@@ -3324,7 +3288,11 @@ public class Exploracionf extends javax.swing.JPanel {
             }
             jTextField3.setText(dato[0][19].toString());
             jTextField6.setText(dato[0][20].toString());
-            jTextField11.setText(dato[0][21].toString());
+            if (dato[0][21].toString().equals("0")) {
+                jComboBox12.setSelectedIndex(0);
+            } else {
+                jComboBox12.setSelectedIndex(1);
+            }
             jTextField12.setText(dato[0][22].toString());
             jComboBox1.setSelectedIndex(Integer.parseInt(dato[0][23].toString()));
             if (dato[0][24].toString().equals("false")) {
@@ -4481,6 +4449,7 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JComboBox jComboBox1;
     javax.swing.JComboBox jComboBox10;
     javax.swing.JComboBox jComboBox11;
+    javax.swing.JComboBox jComboBox12;
     javax.swing.JComboBox jComboBox2;
     javax.swing.JComboBox jComboBox3;
     javax.swing.JComboBox jComboBox4;
@@ -4518,7 +4487,6 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JLabel jLabel3;
     javax.swing.JLabel jLabel30;
     javax.swing.JLabel jLabel31;
-    javax.swing.JLabel jLabel32;
     javax.swing.JLabel jLabel33;
     javax.swing.JLabel jLabel34;
     javax.swing.JLabel jLabel35;
@@ -4617,7 +4585,6 @@ public class Exploracionf extends javax.swing.JPanel {
     javax.swing.JTextArea jTextArea9;
     javax.swing.JTextField jTextField1;
     javax.swing.JTextField jTextField10;
-    javax.swing.JTextField jTextField11;
     javax.swing.JTextField jTextField12;
     javax.swing.JTextField jTextField13;
     javax.swing.JTextField jTextField14;

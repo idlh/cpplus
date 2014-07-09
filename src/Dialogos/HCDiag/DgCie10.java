@@ -4,6 +4,8 @@ import Clases.Funciones_AD;
 import controller.StaticCie10JpaController;
 import entity.StaticCie10;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.swing.ListSelectionModel;
@@ -124,9 +126,6 @@ public class DgCie10 extends javax.swing.JDialog {
         jButton1.setPreferredSize(new java.awt.Dimension(36, 36));
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sgte.png"))); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jButton1MouseReleased(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton1MouseEntered(evt);
             }
@@ -220,19 +219,6 @@ public class DgCie10 extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-//        Desktop desktop =(Desktop) this.getParent();
-//        desktop.Contenedor_.removeAll();
-//        crecDesarrollo = new CrecDesarrollo();
-//        crecDesarrollo.setBounds(0, 0, 745, 393);
-//        desktop.Contenedor_.removeAll();
-//        desktop.Contenedor_.add(crecDesarrollo);
-//        crecDesarrollo.setVisible(true);
-//        desktop.Contenedor_.validate();
-//        desktop.Contenedor_.repaint();
-//        this.dispose();
-    }//GEN-LAST:event_jButton1MouseReleased
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         TableRowSorter sorter = new TableRowSorter(modelo);

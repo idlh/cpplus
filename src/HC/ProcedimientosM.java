@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import Dialogos.HCDiag.PrpProcedimiento;
 
 /**
  *
@@ -35,7 +36,7 @@ public class ProcedimientosM extends javax.swing.JPanel {
     CargarordenesM tab = new CargarordenesM();
     String est = "1";
     int rowindex;
-    ImageIcon icon = null;
+    ImageIcon icon = null, icono2 = null, icono3 = null;
     Object[] fila = new Object[2];
 
     public ProcedimientosM(PypAdmAsistCon pypAdmAsistCon) {
@@ -53,6 +54,8 @@ public class ProcedimientosM extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        Justificaciones = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tablemonitorizacion = new javax.swing.JTable();
@@ -62,6 +65,16 @@ public class ProcedimientosM extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+
+        Justificaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/clip_board.png"))); // NOI18N
+        Justificaciones.setText("Justificaciones");
+        Justificaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Justificaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                JustificacionesMouseReleased(evt);
+            }
+        });
+        jPopupMenu1.add(Justificaciones);
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(408, 297));
@@ -82,6 +95,7 @@ public class ProcedimientosM extends javax.swing.JPanel {
 
             }
         ));
+        Tablemonitorizacion.setComponentPopupMenu(jPopupMenu1);
         Tablemonitorizacion.setFocusable(false);
         Tablemonitorizacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -242,12 +256,39 @@ public class ProcedimientosM extends javax.swing.JPanel {
     private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
         quitarrgistro();
     }//GEN-LAST:event_jButton3MouseReleased
+
+    private void JustificacionesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JustificacionesMouseReleased
+        final PrpProcedimiento procedi = new PrpProcedimiento((Frame) SwingUtilities.getWindowAncestor(this), true);
+        icono2 = new javax.swing.ImageIcon(getClass().getResource("/Recursos/savec2.png"));
+        icono3 = new javax.swing.ImageIcon(getClass().getResource("/Recursos/savec1.png"));
+        procedi.jButton1.setIcon(icono2);
+        procedi.jButton1.setRolloverIcon(icono3);
+        procedi.jLabel2.setText("<html>\n"
+                + "<div style=\"width:380;\">" + String.valueOf(Tablemonitorizacion.getValueAt(Tablemonitorizacion.getSelectedRow(), 2)) + "\n"
+                + "</div>\n"
+                + "\n"
+                + "</html>");
+        procedi.jTextArea1.setText(modelo.getValueAt(Tablemonitorizacion.getSelectedRow(), 6).toString());
+        procedi.jButton1.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {                
+                modelo.setValueAt(procedi.jTextArea1.getText().toUpperCase(), Tablemonitorizacion.getSelectedRow(), 6);
+                icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_blue.png"));
+                modelo.setValueAt(fila[0] = new JLabel(icon), Tablemonitorizacion.getSelectedRow(), 5);
+                Tablemonitorizacion.setDefaultRenderer(Object.class, new IconCellRendererlabel());
+                procedi.dispose();
+            }
+        });
+        procedi.setLocationRelativeTo(null);
+        procedi.setVisible(true);
+    }//GEN-LAST:event_JustificacionesMouseReleased
     private void tabla() {
         try {
             getModelo();
             Tablemonitorizacion.getTableHeader().setReorderingAllowed(false);
             Tablemonitorizacion.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-            Funciones_AD.setOcultarColumnas(Tablemonitorizacion, new int[]{0, 1, 3, 4});
+            Funciones_AD.setOcultarColumnas(Tablemonitorizacion, new int[]{0, 1, 3, 4, 6});
             Funciones_AD.setSizeColumnas(Tablemonitorizacion, new int[]{2, 5}, new int[]{336, 20});
             Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
             int b = Integer.parseInt(a[0][0].toString());
@@ -270,8 +311,10 @@ public class ProcedimientosM extends javax.swing.JPanel {
 
     public void getModelo() {
         modelo = new DefaultTableModel(
-                null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria", "Estado", ""}) {
+                null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria", "Estado", "", "Justificacion", "idp"}) {
                     Class[] types = new Class[]{
+                        java.lang.String.class,
+                        java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
@@ -280,7 +323,7 @@ public class ProcedimientosM extends javax.swing.JPanel {
                         java.lang.String.class
                     };
                     boolean[] canEdit = new boolean[]{
-                        false, false, false, false, false, false
+                        false, false, false, false, false, false, false, false
                     };
 
                     @Override
@@ -296,9 +339,9 @@ public class ProcedimientosM extends javax.swing.JPanel {
         Tablemonitorizacion.setModel(modelo);
     }
 
-    public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5) {
+    public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5, ImageIcon icon, String r6) {
         try {
-            Object nuevo[] = {r1, r2, r3, r4, r5};
+            Object nuevo[] = {r1, r2, r3, r4, r5, icon, r6};
             modelo.addRow(nuevo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, " :(  " + e.getMessage());
@@ -332,12 +375,17 @@ public class ProcedimientosM extends javax.swing.JPanel {
         String patron = "yyyy-MM-dd", fc;
         SimpleDateFormat formato = new SimpleDateFormat(patron);
         fc = formato.format(fecha);
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            if (modelo.getValueAt(i, 4).toString().equals("2")) {
+                act.actobservacionp(modelo.getValueAt(i, 7).toString(), modelo.getValueAt(i, 6).toString());
+            }
+        }
         if (est.toString().equals("2")) {
             for (int i = 0; i < modelo.getRowCount(); i++) {
                 if (modelo.getValueAt(i, 4).equals("1")) {
                     modelo.setValueAt("2", i, 4);
                     sav.newproce(d, modelo.getValueAt(i, 0).toString(),
-                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString(), fc);
+                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString(), fc, modelo.getValueAt(i, 6).toString().toUpperCase());
                 }
             }
         } else {
@@ -357,7 +405,7 @@ public class ProcedimientosM extends javax.swing.JPanel {
     private void retornarayuda() {
         switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
             case 3:
-                HC.Adulto.jLabel4.setText("...");
+                HC.Adulto.jLabel4.setText("..."); 
                 break;
             case 9:
                 HC.Controlprenatal.jLabel4.setText("...");
@@ -427,19 +475,38 @@ public class ProcedimientosM extends javax.swing.JPanel {
                     }
                 }
                 if (validacion == false) {
-                    Agregar_Registro(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0).toString(),
-                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
-                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
-                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
-                            "1");
-                    pr.dispose();
-                    for (int u = 0; u < modelo.getRowCount(); u++) {
-                        if (modelo.getValueAt(u, 4).equals("1")) {
-                            icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_blue.png"));
-                            modelo.setValueAt(fila[0] = new JLabel(icon), u, 5);
-                            Tablemonitorizacion.setDefaultRenderer(Object.class, new IconCellRendererlabel());
+                    final PrpProcedimiento procedi = new PrpProcedimiento(null, true);
+                    procedi.jLabel2.setText("<html>\n"
+                            + "<div style=\"width:380;\">" + String.valueOf(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2)) + "\n"
+                            + "</div>\n"
+                            + "\n"
+                            + "</html>");
+                    procedi.jButton1.addActionListener(new ActionListener() {
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            if (!procedi.jTextArea1.getText().equals("")) {
+                                icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_blue.png"));
+                                Agregar_Registro(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0).toString(),
+                                        pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
+                                        pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
+                                        pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
+                                        "1", icon, procedi.jTextArea1.getText());
+                                pr.dispose();
+                                for (int u = 0; u < modelo.getRowCount(); u++) {
+                                    if (modelo.getValueAt(u, 4).equals("1")) {
+                                        modelo.setValueAt(fila[0] = new JLabel(icon), u, 5);
+                                        Tablemonitorizacion.setDefaultRenderer(Object.class, new IconCellRendererlabel());
+                                    }
+                                }
+                                procedi.dispose();
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Debe existir una justificacion para que pueda ordenarse el procedimiento");
+                            }
                         }
-                    }
+                    });
+                    procedi.setLocationRelativeTo(null);
+                    procedi.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Ya el procedimiento fue agregado");
                 }
@@ -449,6 +516,7 @@ public class ProcedimientosM extends javax.swing.JPanel {
         est = "2";
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    javax.swing.JMenuItem Justificaciones;
     javax.swing.JTable Tablemonitorizacion;
     javax.swing.JButton jButton1;
     javax.swing.JButton jButton3;
@@ -457,6 +525,7 @@ public class ProcedimientosM extends javax.swing.JPanel {
     javax.swing.JLabel jLabel3;
     javax.swing.JLabel jLabel4;
     javax.swing.JPanel jPanel1;
+    javax.swing.JPopupMenu jPopupMenu1;
     javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

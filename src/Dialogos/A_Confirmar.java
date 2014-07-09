@@ -115,6 +115,7 @@ public class A_Confirmar extends javax.swing.JDialog {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setFocusable(false);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -198,6 +199,8 @@ public class A_Confirmar extends javax.swing.JDialog {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(null);
+
+        jDateChooser1.setFocusable(false);
         jPanel4.add(jDateChooser1);
         jDateChooser1.setBounds(80, 20, 95, 20);
 
@@ -251,6 +254,7 @@ public class A_Confirmar extends javax.swing.JDialog {
         buttonGroup1.add(RadioSI);
         RadioSI.setText("Si");
         RadioSI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        RadioSI.setFocusable(false);
         jPanel4.add(RadioSI);
         RadioSI.setBounds(80, 110, 40, 23);
 
@@ -259,6 +263,7 @@ public class A_Confirmar extends javax.swing.JDialog {
         RadioNO.setSelected(true);
         RadioNO.setText("No");
         RadioNO.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        RadioNO.setFocusable(false);
         jPanel4.add(RadioNO);
         RadioNO.setBounds(130, 110, 50, 23);
 
@@ -281,24 +286,28 @@ public class A_Confirmar extends javax.swing.JDialog {
         buttonGroup2.add(jRadioButton1);
         jRadioButton1.setSelected(true);
         jRadioButton1.setText("Conciente");
+        jRadioButton1.setFocusable(false);
         jPanel4.add(jRadioButton1);
         jRadioButton1.setBounds(80, 170, 90, 23);
 
         jRadioButton2.setBackground(new java.awt.Color(255, 153, 51));
         buttonGroup2.add(jRadioButton2);
         jRadioButton2.setText("Inconsciente");
+        jRadioButton2.setFocusable(false);
         jPanel4.add(jRadioButton2);
         jRadioButton2.setBounds(170, 170, 100, 23);
 
         jRadioButton3.setBackground(new java.awt.Color(255, 102, 102));
         buttonGroup2.add(jRadioButton3);
         jRadioButton3.setText("Muerto");
+        jRadioButton3.setFocusable(false);
         jPanel4.add(jRadioButton3);
         jRadioButton3.setBounds(270, 170, 100, 23);
 
         jRadioButton5.setBackground(new java.awt.Color(153, 153, 153));
         buttonGroup3.add(jRadioButton5);
         jRadioButton5.setText("No");
+        jRadioButton5.setFocusable(false);
         jPanel4.add(jRadioButton5);
         jRadioButton5.setBounds(170, 200, 100, 23);
 
@@ -306,6 +315,7 @@ public class A_Confirmar extends javax.swing.JDialog {
         buttonGroup3.add(jRadioButton4);
         jRadioButton4.setSelected(true);
         jRadioButton4.setText("Si");
+        jRadioButton4.setFocusable(false);
         jPanel4.add(jRadioButton4);
         jRadioButton4.setBounds(80, 200, 90, 23);
 

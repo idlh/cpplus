@@ -76,6 +76,10 @@ public class RecienNacido extends javax.swing.JPanel {
         }
         crearhc();
         bt();
+        jButton1.setToolTipText("Salir (Ctrl+Q)");
+        jButton2.setToolTipText("Imprimir (Crtl+P)");
+        jButton3.setToolTipText("Guardar (Ctrl+G");
+        jButton4.setToolTipText("Finalziar (Crtl+F)");
     }
 
     @SuppressWarnings("unchecked")
@@ -675,13 +679,13 @@ public class RecienNacido extends javax.swing.JPanel {
             String d = (c[0][0].toString());
             Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
 //            if (h[0][23].toString().equals("0")) {
-                antecedentesp.cargarancedentes();
-                enfermedadac.cargardatosenf();
-                diagnosticosm.cargardx();
-                ordenesm.cargarordenesm();
-                motivoc.cargareventose();
-                exploracionf.cargarexploracion();
-                pruebascomple.cargarpruebas();
+            antecedentesp.cargarancedentes();
+            enfermedadac.cargardatosenf();
+            diagnosticosm.cargardx();
+            ordenesm.cargarordenesm();
+            motivoc.cargareventose();
+            exploracionf.cargarexploracion();
+            pruebascomple.cargarpruebas();
 //            }
         }
         antecedentesp.cargarinfoante();
@@ -764,15 +768,15 @@ public class RecienNacido extends javax.swing.JPanel {
                 String d = (c[0][0].toString());
                 Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
 //                if (h[0][23].toString().equals("0")) {
-                    motivoc.actualizardatos();
-                    antecedentesp.guardarantep();
-                    enfermedadac.actualizarenfac();
-                    exploracionf.actexpf();
-                    diagnosticosm.actdx();
-                    ordenesm.actordenesm();
-                    pruebascomple.actpruebasc();
-                    jLabel9.setVisible(true);
-                    Contar();
+                motivoc.actualizardatos();
+                antecedentesp.guardarantep();
+                enfermedadac.actualizarenfac();
+                exploracionf.actexpf();
+                diagnosticosm.actdx();
+                ordenesm.actordenesm();
+                pruebascomple.actpruebasc();
+                jLabel9.setVisible(true);
+                Contar();
 //                }
             }
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));

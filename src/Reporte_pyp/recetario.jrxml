@@ -19,7 +19,7 @@
 	<parameter name="servicio" class="java.lang.String"/>
 	<parameter name="version" class="java.lang.String"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["C:\\Users\\Administrador\\Dropbox\\Clinica_Pajonal\\Proyectos_netbeans\\Clinica_Pajonal\\PyP\\cpplus\\src\\Reporte_pyp\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[".\\"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="idhistoria" class="java.lang.String"/>
 	<queryString>

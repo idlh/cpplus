@@ -231,7 +231,7 @@ public class Dprocedimientos extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton3MouseEntered
 
     private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
-        jPanel2.setBackground(new Color(255,227,255));
+        jPanel2.setBackground(new Color(255, 227, 255));
         jLabel1.setForeground(Color.black);
     }//GEN-LAST:event_jButton3MouseExited
     public void procotros() {

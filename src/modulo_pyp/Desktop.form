@@ -160,6 +160,7 @@
                   <Image iconType="3" name="/Recursos/37.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agendar Pacientes"/>
+                <Property name="toolTipText" type="java.lang.String" value="Agendar pacientes (Ctrl + 1)"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor de Mano"/>
                 </Property>
@@ -197,6 +198,7 @@
                   <Image iconType="3" name="/Recursos/clip_board.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Confirmar Asistencia"/>
+                <Property name="toolTipText" type="java.lang.String" value="Confirmar Asistencia (Ctrl+2)"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor de Mano"/>
                 </Property>
@@ -231,6 +233,7 @@
                   <Image iconType="3" name="/Recursos/atencion.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value=" Pacientes para Atencion"/>
+                <Property name="toolTipText" type="java.lang.String" value="Pacientes para Atencion (Ctrl+4)"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor de Mano"/>
                 </Property>
@@ -252,6 +255,7 @@
                   <Image iconType="3" name="/Recursos/atencion portable.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Atencion Portable"/>
+                <Property name="toolTipText" type="java.lang.String" value="Atencion Portable (Ctrl+5)"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor de Mano"/>
                 </Property>
@@ -273,6 +277,7 @@
                   <Image iconType="3" name="/Recursos/admin.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Administrativo"/>
+                <Property name="toolTipText" type="java.lang.String" value="Administrativo (Ctrl+6)"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor de Mano"/>
                 </Property>

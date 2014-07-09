@@ -24,6 +24,14 @@ public class Actualizar {
                 + " WHERE `pyp_procedimiento`.`id_historiapyp` = '" + id + "' AND `pyp_procedimiento`.`estado`='0'";
     }
 
+    public String obteneridespecialidad(String nombre) {
+        return "SELECT"
+                + "    `id`"
+                + "FROM"
+                + "    `database`.`static_especialidades`"
+                + "WHERE (`especialidad` = '" + nombre + "');";
+    }
+
     public void desactivarproc(String id) {
         try {
             bd.ConectarBasedeDatos();
@@ -1667,5 +1675,23 @@ public class Actualizar {
                 + "    INNER JOIN `database`.`config_parametros` "
                 + "        ON (`config_rel4505`.`idparametro` = `config_parametros`.`id`)"
                 + "WHERE (`config_rel4505`.`estado` = 1);";
+    }
+
+    public void actobservacionp(String id, String observacion) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_procedimiento`"
+                    + "SET `pyp_procedimiento`.`observacion` = ?"
+                    + "WHERE `pyp_procedimiento`.`id` =?");
+            bd.preparedStatement.setString(1, observacion);
+            bd.preparedStatement.setString(2, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a026 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a026 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
     }
 }

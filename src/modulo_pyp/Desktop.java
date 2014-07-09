@@ -9,6 +9,17 @@ import Dialogos.HCDiag.ListPacientes;
 import Portable.Portablep;
 import javax.swing.JOptionPane;
 import Administrativo.Panelconfig.Panelconfigadm;
+import java.awt.Event;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.ComponentInputMap;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
+import javax.swing.plaf.ActionMapUIResource;
 
 public class Desktop extends javax.swing.JFrame {
 
@@ -26,6 +37,7 @@ public class Desktop extends javax.swing.JFrame {
     public Desktop() {
         initComponents();
         setLocationRelativeTo(this);
+        bt();
     }
 
     /**
@@ -85,6 +97,7 @@ public class Desktop extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/37.png"))); // NOI18N
         jLabel5.setText("Agendar Pacientes");
+        jLabel5.setToolTipText("Agendar pacientes (Ctrl + 1)");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -108,6 +121,7 @@ public class Desktop extends javax.swing.JFrame {
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/clip_board.png"))); // NOI18N
         jLabel9.setText("Confirmar Asistencia");
+        jLabel9.setToolTipText("Confirmar Asistencia (Ctrl+2)");
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -130,6 +144,7 @@ public class Desktop extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/atencion.png"))); // NOI18N
         jLabel2.setText(" Pacientes para Atencion");
+        jLabel2.setToolTipText("Pacientes para Atencion (Ctrl+4)");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -147,6 +162,7 @@ public class Desktop extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/atencion portable.png"))); // NOI18N
         jLabel3.setText("Atencion Portable");
+        jLabel3.setToolTipText("Atencion Portable (Ctrl+5)");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -164,6 +180,7 @@ public class Desktop extends javax.swing.JFrame {
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/admin.png"))); // NOI18N
         jLabel11.setText("Administrativo");
+        jLabel11.setToolTipText("Administrativo (Ctrl+6)");
         jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -246,19 +263,11 @@ public class Desktop extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
-        listPacientes = new ListPacientes(this, true);
-        listPacientes.setVisible(true);
-        est = "1";
+        atencion();
     }//GEN-LAST:event_jLabel2MouseReleased
 
     private void jLabel3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseReleased
-        port = new Portablep();
-        Contenedor_.removeAll();
-        port.panelprincipal.setBounds(0, 0, 745, 393);
-        Contenedor_.add(port.panelprincipal);
-        port.panelprincipal.setVisible(true);
-        Contenedor_.repaint();
-        Contenedor_.validate();
+        portable();
     }//GEN-LAST:event_jLabel3MouseReleased
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
@@ -286,15 +295,10 @@ public class Desktop extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel11MouseExited
 
     private void jLabel11MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseReleased
-        Contenedor_.removeAll();
-        panelc.setBounds(0, 0, 745, 393);
-        Contenedor_.add(panelc);
-        this.repaint();
-        Contenedor_.repaint();
-        Contenedor_.validate();
-        est = "2";
+        administrativo();
     }//GEN-LAST:event_jLabel11MouseReleased
     private void Lanzar_Agend() {
+        Contenedor_.removeAll();
         try {
             if (Contenedor_.getComponentCount() == 0) {
                 Load_Contenedor();
@@ -316,6 +320,7 @@ public class Desktop extends javax.swing.JFrame {
     }
 
     private void Lanzar_Asistencia() {
+        Contenedor_.removeAll();
         try {
             if (Contenedor_.getComponentCount() == 0) {
                 Load_Contenedor();
@@ -343,6 +348,117 @@ public class Desktop extends javax.swing.JFrame {
         this.repaint();
         Contenedor_.repaint();
         Contenedor_.validate();
+    }
+
+    private void atencion() {
+        listPacientes = new ListPacientes(this, true);
+        listPacientes.setVisible(true);
+        est = "1";
+    }
+
+    private void portable() {
+        port = new Portablep();
+        Contenedor_.removeAll();
+        port.panelprincipal.setBounds(0, 0, 745, 393);
+        Contenedor_.add(port.panelprincipal);
+        port.panelprincipal.setVisible(true);
+        Contenedor_.repaint();
+        Contenedor_.validate();
+    }
+
+    private void administrativo() {
+        Contenedor_.removeAll();
+        panelc.setBounds(0, 0, 745, 393);
+        Contenedor_.add(panelc);
+        this.repaint();
+        Contenedor_.repaint();
+        Contenedor_.validate();
+        est = "2";
+    }
+
+    private void bt() {
+        //Agendar pacientes
+        InputMap agendar = new ComponentInputMap(jLabel5);
+        agendar.put(KeyStroke.getKeyStroke(KeyEvent.VK_1, Event.CTRL_MASK), jLabel5);
+        ActionMap mapagendar = new ActionMapUIResource();
+        mapagendar.put(jLabel5, agend());
+        SwingUtilities.replaceUIActionMap(jLabel5, mapagendar);
+        SwingUtilities.replaceUIInputMap(jLabel5, JComponent.WHEN_IN_FOCUSED_WINDOW, agendar);
+        //Confirmar Asistencia
+        InputMap asistencia = new ComponentInputMap(jLabel9);
+        asistencia.put(KeyStroke.getKeyStroke(KeyEvent.VK_2, Event.CTRL_MASK), jLabel9);
+        ActionMap mapasistencia = new ActionMapUIResource();
+        mapasistencia.put(jLabel9, asist());
+        SwingUtilities.replaceUIActionMap(jLabel9, mapasistencia);
+        SwingUtilities.replaceUIInputMap(jLabel9, JComponent.WHEN_IN_FOCUSED_WINDOW, asistencia);
+        //Atencion
+        InputMap atencion = new ComponentInputMap(jLabel2);
+        atencion.put(KeyStroke.getKeyStroke(KeyEvent.VK_4, Event.CTRL_MASK), jLabel2);
+        ActionMap mapatecion = new ActionMapUIResource();
+        mapatecion.put(jLabel2, atenc());
+        SwingUtilities.replaceUIActionMap(jLabel2, mapatecion);
+        SwingUtilities.replaceUIInputMap(jLabel2, JComponent.WHEN_IN_FOCUSED_WINDOW, atencion);
+        //portable
+        InputMap portable = new ComponentInputMap(jLabel3);
+        portable.put(KeyStroke.getKeyStroke(KeyEvent.VK_5, Event.CTRL_MASK), jLabel3);
+        ActionMap mapportable = new ActionMapUIResource();
+        mapportable.put(jLabel3, port());
+        SwingUtilities.replaceUIActionMap(jLabel3, mapportable);
+        SwingUtilities.replaceUIInputMap(jLabel3, JComponent.WHEN_IN_FOCUSED_WINDOW, portable);
+        //Administrativo
+        if (jLabel11.isVisible() == true) {
+            InputMap admin = new ComponentInputMap(jLabel11);
+            admin.put(KeyStroke.getKeyStroke(KeyEvent.VK_6, Event.CTRL_MASK), jLabel11);
+            ActionMap mapadmin = new ActionMapUIResource();
+            mapadmin.put(jLabel11, adm());
+            SwingUtilities.replaceUIActionMap(jLabel11, mapadmin);
+            SwingUtilities.replaceUIInputMap(jLabel11, JComponent.WHEN_IN_FOCUSED_WINDOW, admin);
+        }
+    }
+
+    public AbstractAction agend() {
+        return new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Lanzar_Agend();
+            }
+        };
+    }
+
+    public AbstractAction asist() {
+        return new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Lanzar_Asistencia();
+            }
+        };
+    }
+
+    public AbstractAction atenc() {
+        return new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                atencion();
+            }
+        };
+    }
+
+    public AbstractAction port() {
+        return new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                portable();
+            }
+        };
+    }
+
+    public AbstractAction adm() {
+        return new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                administrativo();
+            }
+        };
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel Contenedor_;

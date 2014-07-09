@@ -76,6 +76,10 @@ public class Postparto extends javax.swing.JPanel {
         }
         crearhc();
         bt();
+        jButton1.setToolTipText("Salir (Ctrl+Q)");
+        jButton2.setToolTipText("Imprimir (Crtl+P)");
+        jButton3.setToolTipText("Guardar (Ctrl+G");
+        jButton4.setToolTipText("Finalziar (Crtl+F)");
     }
 
     @SuppressWarnings("unchecked")

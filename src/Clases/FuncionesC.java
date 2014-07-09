@@ -1,6 +1,7 @@
 package Clases;
 
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -53,7 +54,7 @@ public class FuncionesC {
             bd.resultado.close();
             bd.DesconectarBasedeDatos();
         } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Error cargando Lista , - Detalles del Error: " + e.getMessage(), "Clipa+ . Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error cargando Lista , - Detalles del Error: " + e.getMessage(), "Clipa+ . Mensaje de Error", JOptionPane.ERROR_MESSAGE);
         }
         return lista;
     }

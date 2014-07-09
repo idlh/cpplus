@@ -27,6 +27,8 @@ public class CargarordenesM {
                     + "    , `config_cups`.`de_subcategoria` AS `procedimiento`"
                     + "    , `static_estructura_cups`.`des_capitulo` AS `categoria`"
                     + "    , `pyp_procedimiento`.`estado`"
+                    + "    , `pyp_procedimiento`.`observacion`"
+                    + "    , `pyp_procedimiento`.`id` AS `idprocedimiento`"
                     + " FROM"
                     + "    `database`.`pyp_procedimiento`"
                     + "    INNER JOIN `database`.`pyp_historiac` "
@@ -45,6 +47,8 @@ public class CargarordenesM {
                     modelo.setValueAt(bd.resultado.getString("procedimiento"), c, 2);
                     modelo.setValueAt(bd.resultado.getString("categoria"), c, 3);
                     modelo.setValueAt(bd.resultado.getString("estado"), c, 4);
+                    modelo.setValueAt(bd.resultado.getString("observacion"), c, 6);
+                    modelo.setValueAt(bd.resultado.getString("idprocedimiento"), c, 7);
                     c++;
                 }
             }
@@ -68,6 +72,8 @@ public class CargarordenesM {
                     + "    , `config_cups`.`de_subcategoria` AS `procedimiento`"
                     + "    , `static_estructura_cups`.`des_capitulo` AS `categoria`"
                     + "    , `pyp_procedimiento`.`estado`"
+                    + "    , `pyp_procedimiento`.`observacion`"
+                    + "    , `pyp_procedimiento`.`id` AS `idprocedimiento`"
                     + " FROM"
                     + "    `database`.`pyp_procedimiento`"
                     + "    INNER JOIN `database`.`pyp_historiac` "
@@ -86,6 +92,8 @@ public class CargarordenesM {
                     modelo.setValueAt(bd.resultado.getString("procedimiento"), c, 2);
                     modelo.setValueAt(bd.resultado.getString("categoria"), c, 3);
                     modelo.setValueAt(bd.resultado.getString("estado"), c, 4);
+                    modelo.setValueAt(bd.resultado.getString("observacion"), c, 6);
+                    modelo.setValueAt(bd.resultado.getString("idprocedimiento"), c, 7);
                     c++;
                 }
             }
@@ -109,6 +117,8 @@ public class CargarordenesM {
                     + "    , `config_cups`.`de_subcategoria` AS `procedimiento`"
                     + "    , `static_estructura_cups`.`des_capitulo` AS `categoria`"
                     + "    , `pyp_procedimiento`.`estado`"
+                    + "    , `pyp_procedimiento`.`observacion`"
+                    + "    , `pyp_procedimiento`.`id` AS `idprocedimiento`"
                     + " FROM"
                     + "    `database`.`pyp_procedimiento`"
                     + "    INNER JOIN `database`.`pyp_historiac` "
@@ -127,6 +137,8 @@ public class CargarordenesM {
                     modelo.setValueAt(bd.resultado.getString("procedimiento"), c, 2);
                     modelo.setValueAt(bd.resultado.getString("categoria"), c, 3);
                     modelo.setValueAt(bd.resultado.getString("estado"), c, 4);
+                    modelo.setValueAt(bd.resultado.getString("observacion"), c, 6);
+                    modelo.setValueAt(bd.resultado.getString("idprocedimiento"), c, 7);
                     c++;
                 }
             }
