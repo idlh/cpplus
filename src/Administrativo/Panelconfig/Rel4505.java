@@ -301,11 +301,17 @@ public class Rel4505 extends javax.swing.JPanel {
                         archivo.createNewFile();
                     }
                     System.out.println(archivo.getAbsolutePath());
-                    FileWriter escribir = new FileWriter(archivo, true);
+                    FileWriter escribir = new FileWriter(archivo, true); 
                     String apellido2, nombre2, etnia = "ND", gestacion = null, sifilis = null, htagesta = null, hipot = null, genero = null, escolaridad = null, sintomr = null, tuberculosis = null,
                             lepra = null, nutri = null, maltrato = null, abusos = null, infecciones = null, mental = null, cervix = null, seno = null, fluorosis = null, fechapeso = null, peso = null,
                             talla = null, fechatalla = null, fechapparto = null, egparto = null, bgc = null, hepatitisb = null, pentavalente = null, polio = null, dpt = null, rotavirus = null,
-                            neumococo = null, influenza = null, fiebreA = null, hepatitisA = null, tripev = null, vph = null, tdtt = null, placab = null;
+                            neumococo = null, influenza = null, fiebreA = null, hepatitisA = null, tripev = null, vph = null, tdtt = null, placab = null, fechaparto = null, fechasalidaparto = null,
+                            fechalactancia = null, controlrecien = null, planificacionprimera = null, suministrometodo = null, fechasuministro = null, controlprenatal1 = null, ncontroles = null,
+                            ultimocontrol = null, folico = null, ferroso = null, calcio = null, agudezav = null, oftalmologia = null, fechadesnutricion = null, fechamaltrato = null, consultaviolencia = null,
+                            fechanutricion = null, fechapsicologia = null, cyd1vez = null, sulfato = null, vitaA = null, joven1 = null, adulto1 = null, preservativosits = null, preelisavih = null,
+                            postelisavih = null, pdx = null, fechahb = null, resultadohb = null, fechassifilis = null, resultadossifilis = null, fechatelisahiv = null, resultadoelisahiv = null,
+                            fechaths = null, resultadotsh = null, tamizajecuellou = null, citologia = null, citologiabet = null, calidadmuestra = null, codigoips = null, fechacolposcopi = null,
+                            codigoipscolpo = null;
                     boolean valorv = false;
                     for (int b = 0; b < datames.length; b++) {
                         if (datames[b][5].toString().equals("")) {
@@ -466,7 +472,7 @@ public class Rel4505 extends javax.swing.JPanel {
                                 if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
                                         || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
                                     int año = 0;
-                                    String ed[] = datames[b][28].toString().split(" ");
+                                    String ed[] = datames[b][29].toString().split(" ");
                                     String an = ed[0];
                                     año = Integer.parseInt(an);
                                     if (año < 18) {

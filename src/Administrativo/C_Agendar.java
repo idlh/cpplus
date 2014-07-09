@@ -359,6 +359,7 @@ public class C_Agendar extends javax.swing.JPanel {
         jLabel23.setBounds(310, 160, 40, 20);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No Definido", "Preescolar", "Básica Primaria", "Básica Secundaria", "Media Académica o Clásica", "Media Técnica", "Normalista", "Técnica Profesional", "Tecnológia", "Profesional", "Especialización", "Maestría", "Doctorado" }));
+        jComboBox1.setFocusable(false);
         jPanel1.add(jComboBox1);
         jComboBox1.setBounds(480, 160, 150, 20);
 
