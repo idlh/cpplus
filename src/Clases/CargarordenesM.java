@@ -29,6 +29,7 @@ public class CargarordenesM {
                     + "    , `pyp_procedimiento`.`estado`"
                     + "    , `pyp_procedimiento`.`observacion`"
                     + "    , `pyp_procedimiento`.`id` AS `idprocedimiento`"
+                    + "    , `pyp_procedimiento`.`examen`"
                     + " FROM"
                     + "    `database`.`pyp_procedimiento`"
                     + "    INNER JOIN `database`.`pyp_historiac` "
@@ -49,6 +50,7 @@ public class CargarordenesM {
                     modelo.setValueAt(bd.resultado.getString("estado"), c, 4);
                     modelo.setValueAt(bd.resultado.getString("observacion"), c, 6);
                     modelo.setValueAt(bd.resultado.getString("idprocedimiento"), c, 7);
+                    modelo.setValueAt(bd.resultado.getString("examen"), c, 8);
                     c++;
                 }
             }
@@ -74,6 +76,7 @@ public class CargarordenesM {
                     + "    , `pyp_procedimiento`.`estado`"
                     + "    , `pyp_procedimiento`.`observacion`"
                     + "    , `pyp_procedimiento`.`id` AS `idprocedimiento`"
+                    + "    , `pyp_procedimiento`.`examen`"
                     + " FROM"
                     + "    `database`.`pyp_procedimiento`"
                     + "    INNER JOIN `database`.`pyp_historiac` "
@@ -94,6 +97,7 @@ public class CargarordenesM {
                     modelo.setValueAt(bd.resultado.getString("estado"), c, 4);
                     modelo.setValueAt(bd.resultado.getString("observacion"), c, 6);
                     modelo.setValueAt(bd.resultado.getString("idprocedimiento"), c, 7);
+                    modelo.setValueAt(bd.resultado.getString("examen"), c, 8);
                     c++;
                 }
             }
@@ -119,6 +123,7 @@ public class CargarordenesM {
                     + "    , `pyp_procedimiento`.`estado`"
                     + "    , `pyp_procedimiento`.`observacion`"
                     + "    , `pyp_procedimiento`.`id` AS `idprocedimiento`"
+                    + "    , `pyp_procedimiento`.`examen`"
                     + " FROM"
                     + "    `database`.`pyp_procedimiento`"
                     + "    INNER JOIN `database`.`pyp_historiac` "
@@ -139,6 +144,7 @@ public class CargarordenesM {
                     modelo.setValueAt(bd.resultado.getString("estado"), c, 4);
                     modelo.setValueAt(bd.resultado.getString("observacion"), c, 6);
                     modelo.setValueAt(bd.resultado.getString("idprocedimiento"), c, 7);
+                    modelo.setValueAt(bd.resultado.getString("examen"), c, 8);
                     c++;
                 }
             }
@@ -242,12 +248,18 @@ public class CargarordenesM {
                     + "    , `pyp_posologia`.`administracion`"
                     + "    , `pyp_posologia`.`cantidad`"
                     + "    , `pyp_posologia`.`estado`"
+                    + "    , `pyp_anticonceptivosm`.`tipo`"
                     + " FROM"
                     + "    `database`.`pyp_posologia`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_posologia`.`id_historiac` = `pyp_historiac`.`id`)"
                     + "    INNER JOIN `database`.`sum_suministro` "
                     + "        ON (`pyp_posologia`.`id_suministro` = `sum_suministro`.`id`)"
-                    + " WHERE (`pyp_posologia`.`id_historiac` ='" + id + "'"
-                    + "    AND `pyp_posologia`.`estado` = 2 AND `pyp_posologia`.`tipo` = 1);");
+                    + "    INNER JOIN `database`.`pyp_anticonceptivosm` "
+                    + "        ON (`pyp_anticonceptivosm`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + " WHERE (`pyp_historiac`.`id` =9"
+                    + "    AND `pyp_posologia`.`estado` =2"
+                    + "    AND `pyp_posologia`.`tipo` =1);");
             if (bd.resultado != null) {
                 while (bd.resultado.next()) {
                     modelo.addRow(s);
@@ -259,6 +271,7 @@ public class CargarordenesM {
                     modelo.setValueAt(bd.resultado.getString("administracion"), c, 5);
                     modelo.setValueAt(bd.resultado.getString("cantidad"), c, 6);
                     modelo.setValueAt(bd.resultado.getString("estado"), c, 7);
+                    modelo.setValueAt(bd.resultado.getString("tipo"), c, 8);
                     c++;
                 }
             }
@@ -282,12 +295,15 @@ public class CargarordenesM {
                     + "    , `config_cups`.`de_subcategoria` AS `procedimiento`"
                     + "    , `static_estructura_cups`.`des_capitulo` AS `categoria`"
                     + "    , `pyp_procedimiento`.`estado`"
+                    + "    , `pyp_anticonceptivosp`.`tipo`"
                     + " FROM"
                     + "    `database`.`pyp_procedimiento`"
                     + "    INNER JOIN `database`.`pyp_historiac` "
                     + "        ON (`pyp_procedimiento`.`id_historiapyp` = `pyp_historiac`.`id`)"
                     + "    INNER JOIN `database`.`config_cups` "
                     + "        ON (`pyp_procedimiento`.`id_cups` = `config_cups`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_anticonceptivosp` "
+                    + "        ON (`pyp_anticonceptivosp`.`idhistoria` = `pyp_historiac`.`id`)"
                     + "    INNER JOIN `database`.`static_estructura_cups` "
                     + "        ON (`config_cups`.`id_estructura_cups` = `static_estructura_cups`.`id`)"
                     + " WHERE (`pyp_procedimiento`.`id_historiapyp` = '" + id + "'"
@@ -300,6 +316,7 @@ public class CargarordenesM {
                     modelo.setValueAt(bd.resultado.getString("procedimiento"), c, 2);
                     modelo.setValueAt(bd.resultado.getString("categoria"), c, 3);
                     modelo.setValueAt(bd.resultado.getString("estado"), c, 4);
+                    modelo.setValueAt(bd.resultado.getString("tipo"), c, 5);
                     c++;
                 }
             }
@@ -339,7 +356,7 @@ public class CargarordenesM {
                     + "        ON (`config_cups`.`id_estructura_cups` = `static_estructura_cups`.`id`)"
                     + "WHERE (`pyp_adm_agend`.`id_paciente` ='" + idpaciente + "'"
                     + "    AND `pyp_procedimiento`.`estado` =2"
-                    + "    AND `pyp_historiac`.`estado` =1);");
+                    + "    AND `pyp_historiac`.`estado` =1 AND `pyp_procedimiento`.`examen` = 0);");
             if (bd.resultado != null) {
                 while (bd.resultado.next()) {
                     modelo.addRow(s);
@@ -572,6 +589,61 @@ public class CargarordenesM {
             JOptionPane.showMessageDialog(null, "tab011 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "tab011 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void cargaranteexamen(DefaultTableModel modelo, String idpaciente) {
+        try {
+            bd.ConectarBasedeDatos();
+            c = 0;
+            Object s[] = null;
+            bd.resultado = bd.sentencia.executeQuery("SELECT"
+                    + "    `pyp_procedimiento`.`id_cups`"
+                    + "    , `config_cups`.`codigo`"
+                    + "    , `config_cups`.`de_subcategoria`"
+                    + "    , `static_estructura_cups`.`des_capitulo`"
+                    + "    , `pyp_procedimiento`.`estado`"
+                    + "   , `pyp_procedimiento`.`id`"
+                    + "   ,`pyp_laboratory`.`fecha`"
+                    + "   ,`pyp_laboratory`.`resultado`"
+                    + "   ,`pyp_laboratory`.`observacion`"
+                    + "FROM"
+                    + "    `database`.`pyp_procedimiento`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_procedimiento`.`id_historiapyp` = `pyp_historiac`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_adm_asist_con` "
+                    + "        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_adm_agend` "
+                    + "        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)"
+                    + "    INNER JOIN `database`.`info_paciente` "
+                    + "        ON (`pyp_adm_agend`.`id_paciente` = `info_paciente`.`id`)"
+                    + "    INNER JOIN `database`.`config_cups` "
+                    + "        ON (`pyp_procedimiento`.`id_cups` = `config_cups`.`id`)"
+                    + "    INNER JOIN `database`.`static_estructura_cups` "
+                    + "        ON (`config_cups`.`id_estructura_cups` = `static_estructura_cups`.`id`)"
+                    + "    LEFT JOIN `database`.`pyp_laboratory`"
+                    + "        ON (`pyp_laboratory`.`idprocedimiento` = `pyp_procedimiento`.`id`)"
+                    + "WHERE (`pyp_adm_agend`.`id_paciente` ='" + idpaciente + "'"
+                    + "    AND `pyp_procedimiento`.`estado` =2"
+                    + "    AND `pyp_historiac`.`estado` =1 AND `pyp_procedimiento`.`examen` = 1);");
+            if (bd.resultado != null) {
+                while (bd.resultado.next()) {
+                    modelo.addRow(s);
+                    modelo.setValueAt(bd.resultado.getString("id_cups"), c, 0);
+                    modelo.setValueAt(bd.resultado.getString("codigo"), c, 1);
+                    modelo.setValueAt(bd.resultado.getString("de_subcategoria"), c, 2);
+                    modelo.setValueAt(bd.resultado.getString("des_capitulo"), c, 3);
+                    modelo.setValueAt(bd.resultado.getString("estado"), c, 4);
+                    modelo.setValueAt(bd.resultado.getString("id"), c, 5);
+                    c++;
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "tab006 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "tab006 " + e.getMessage().toString(), CargarordenesM.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }

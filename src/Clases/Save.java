@@ -167,16 +167,17 @@ public class Save {
         }
     }
 
-    public void newproce(String id, String idc, String idu, String estado, String fecha, String observacion) {
+    public void newproce(String id, String idc, String idu, String estado, String fecha, String observacion, String examen) {
         try {
             bd.ConectarBasedeDatos();
-            bd.preparedStatement = bd.getConnection().prepareStatement("INSERT INTO pyp_procedimiento (id_historiapyp, id_cups, id_usuario, estado, fecha, observacion) VALUES (?, ?, ?, ?, ?, ?)");
+            bd.preparedStatement = bd.getConnection().prepareStatement("INSERT INTO pyp_procedimiento (id_historiapyp, id_cups, id_usuario, estado, fecha, observacion, examen) VALUES (?, ?, ?, ?, ?, ?, ?)");
             bd.preparedStatement.setString(1, id);
             bd.preparedStatement.setString(2, idc);
             bd.preparedStatement.setString(3, idu);
             bd.preparedStatement.setString(4, estado);
             bd.preparedStatement.setString(5, fecha);
             bd.preparedStatement.setString(6, observacion);
+            bd.preparedStatement.setString(7, examen);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "c007" + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -604,6 +605,42 @@ public class Save {
             JOptionPane.showMessageDialog(null, "c030" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "c030" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void newantim(String idh, String idsum, String tipo) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("INSERT INTO `database`.`pyp_anticonceptivosm` (`pyp_anticonceptivosm`.`idhistoria`, `pyp_anticonceptivosm`.`idsuministro`, `pyp_anticonceptivosm`.`tipo`) VALUES (?,?,?);");
+            bd.preparedStatement.setString(1, idh);
+            bd.preparedStatement.setString(2, idsum);
+            bd.preparedStatement.setString(3, tipo);
+            bd.preparedStatement.execute();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c031" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c031" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void newantip(String idh, String idcup, String tipo) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("INSERT INTO `database`.`pyp_anticonceptivosp` (`pyp_anticonceptivosp`.`idhistoria`, `pyp_anticonceptivosp`.`idprocedimiento`, `pyp_anticonceptivosp`.`tipo`) VALUES (?,?,?);");
+            bd.preparedStatement.setString(1, idh);
+            bd.preparedStatement.setString(2, idcup);
+            bd.preparedStatement.setString(3, tipo);
+            bd.preparedStatement.execute();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c032" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c032" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
         }
     }
 }

@@ -1555,6 +1555,9 @@ public class Actualizar {
                 + "                    , `pyp_materna_gestaactual`.`calcio`"
                 + "                    , `pyp_recienniacido`.`tshneonatal`"
                 + "                    , `calc_edad`(`info_paciente`.`fecha_nacimiento`) as edada"
+                + "                    ,`pyp_antecedentesg`.`FUP`"
+                + "                    ,`pyp_adm_asist_con`.`fecha` AS `faten`"
+                + "                    ,`pyp_historiac`.`id`"
                 + "                FROM"
                 + "                    `database`.`pyp_adm_asist_con`"
                 + "                    INNER JOIN `database`.`pyp_adm_agend` "
@@ -1589,7 +1592,7 @@ public class Actualizar {
                 + "                        ON (`pyp_historiac`.`diagnosticorel3` = `static_cie10_2`.`id`)"
                 + "                    INNER JOIN `database`.`static_cie10` AS `static_cie10_3`"
                 + "                        ON (`pyp_historiac`.`diagnosticorel4` = `static_cie10_3`.`id`)"
-                + "WHERE (`info_entidades`.`nombre_entidad` = '" + nombreentidad + "' AND `pyp_adm_asist_con`.`fecha` BETWEEN '" + fechaini + "' AND '" + fechafin + "');";
+                + "WHERE (`info_entidades`.`nombre_entidad` = '" + nombreentidad + "' AND `pyp_adm_asist_con`.`fecha` BETWEEN '" + fechaini + "' AND '" + fechafin + "' AND `pyp_adm_asist_con`.`estado` = 2);";
     }
 
     public String rel4505tri(String nombreentidad, String fechaini, String fechafin) {
@@ -1624,6 +1627,9 @@ public class Actualizar {
                 + "                    , `pyp_materna_gestaactual`.`calcio`"
                 + "                    , `pyp_recienniacido`.`tshneonatal`"
                 + "                    , `calc_edad`(`info_paciente`.`fecha_nacimiento`) as edada"
+                + "                    ,`pyp_antecedentesg`.`FUP`"
+                + "                    ,`pyp_adm_asist_con`.`fecha` AS `faten`"
+                + "                    ,`pyp_historiac`.`id`"
                 + "                FROM"
                 + "                    `database`.`pyp_adm_asist_con`"
                 + "                    INNER JOIN `database`.`pyp_adm_agend` "
@@ -1658,7 +1664,7 @@ public class Actualizar {
                 + "                        ON (`pyp_historiac`.`diagnosticorel3` = `static_cie10_2`.`id`)"
                 + "                    INNER JOIN `database`.`static_cie10` AS `static_cie10_3`"
                 + "                        ON (`pyp_historiac`.`diagnosticorel4` = `static_cie10_3`.`id`)"
-                + "WHERE (`info_entidades`.`nombre_entidad` = '" + nombreentidad + "' AND `pyp_adm_asist_con`.`fecha` BETWEEN '" + fechaini + "' AND '" + fechafin + "');";
+                + "WHERE (`info_entidades`.`nombre_entidad` = '" + nombreentidad + "' AND `pyp_adm_asist_con`.`fecha` BETWEEN '" + fechaini + "' AND '" + fechafin + "' AND `pyp_adm_asist_con`.`estado` = 2);";
     }
 
     public String cargarparam() {
@@ -1690,6 +1696,82 @@ public class Actualizar {
             JOptionPane.showMessageDialog(null, "a026 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "a026 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public String posologia4505(String id) {
+        return "SELECT"
+                + "    `pyp_posologia`.`id_suministro`"
+                + " FROM"
+                + "    `database`.`pyp_posologia`"
+                + "    INNER JOIN `database`.`pyp_historiac` "
+                + "        ON (`pyp_posologia`.`id_historiac` = `pyp_historiac`.`id`)"
+                + " WHERE (`pyp_historiac`.`id` ='" + id + "');";
+    }
+
+    public String procedimiento4505(String id) {
+        return "SELECT"
+                + "    `config_cups`.`codigo`"
+                + "FROM"
+                + "    `database`.`pyp_procedimiento`"
+                + "    INNER JOIN `database`.`pyp_historiac` "
+                + "        ON (`pyp_procedimiento`.`id_historiapyp` = `pyp_historiac`.`id`)"
+                + "    INNER JOIN `database`.`config_cups` "
+                + "        ON (`pyp_procedimiento`.`id_cups` = `config_cups`.`id`)"
+                + "WHERE (`pyp_historiac`.`id` ='" + id + "');";
+    }
+
+    public void actanti4505m(String idh, String idsum) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_anticonceptivosm` "
+                    + "SET `pyp_anticonceptivosm`.`estado` = 0"
+                    + " WHERE (`pyp_anticonceptivosm`.`idhistoria` = ? AND `pyp_anticonceptivosm`.`idsuministro` = ?)");
+            bd.preparedStatement.setString(1, idh);
+            bd.preparedStatement.setString(2, idsum);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a027" + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a027" + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+    
+    public void actanti4505p(String idh, String idcup) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_anticonceptivosp` "
+                    + "SET `pyp_anticonceptivosp`.`estado` = 0"
+                    + " WHERE (`pyp_anticonceptivosp`.`idhistoria` = ? AND `pyp_anticonceptivosp`.`idprocedimiento` = ?)");
+            bd.preparedStatement.setString(1, idh);
+            bd.preparedStatement.setString(2, idcup);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a027" + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a027" + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+    
+    public void actexamen(String id, String examen) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_procedimiento`"
+                    + "SET `pyp_procedimiento`.`examen` = ?"
+                    + "WHERE `pyp_procedimiento`.`id` =?");
+            bd.preparedStatement.setString(1, examen);
+            bd.preparedStatement.setString(2, id);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a028 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a028 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
