@@ -1,9 +1,12 @@
 package Administrativo.Panelconfig.Dialgs;
 
 import Dialogos.HCDiag.DgCie10;
+import Dialogos.HCDiag.Dmedicamentos;
+import Dialogos.HCDiag.Dprocedimientos;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -157,12 +160,13 @@ public class Creacionpara extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5)))
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -220,9 +224,45 @@ public class Creacionpara extends javax.swing.JDialog {
                     public void actionPerformed(ActionEvent e) {
                         jTextField2.setText(String.valueOf(cie10.jTable1.getValueAt(cie10.jTable1.getSelectedRow(), 1)));
                         cie10.dispose();
+                        jTextField3.requestFocus();
                     }
                 });
                 cie10.setVisible(true);
+            } else {
+                if (jComboBox1.getSelectedIndex() == 1) {
+                    final Dmedicamentos medi = new Dmedicamentos((Frame) SwingUtilities.getWindowAncestor(this), true);
+                    medi.jTabbedPane2.setEnabled(false);
+                    medi.jTextField2.setEnabled(false);
+                    medi.jComboBox1.setEnabled(false);
+                    medi.jComboBox2.setEnabled(false);
+                    medi.jTextField3.setEnabled(false);
+                    medi.jTextArea1.setEnabled(false);
+                    medi.jButton2.addActionListener(new ActionListener() {
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            jTextField2.setText(String.valueOf(medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 0)));
+                            medi.dispose();
+                            jTextField3.requestFocus();
+                        }
+                    });
+                    medi.setVisible(true);
+                } else {
+                    if (jComboBox1.getSelectedIndex() == 2) {
+                        final Dprocedimientos pr = new Dprocedimientos((Frame) SwingUtilities.getWindowAncestor(this), true);
+                        pr.allproced();
+                        pr.jButton3.addActionListener(new ActionListener() {
+
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                jTextField2.setText(String.valueOf(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1)));
+                                pr.dispose();
+                                jTextField3.requestFocus();
+                            }
+                        });
+                        pr.setVisible(true);
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jButton1MouseReleased
@@ -231,6 +271,9 @@ public class Creacionpara extends javax.swing.JDialog {
         String cadena = (jTextField2.getText()).toUpperCase();
         jTextField2.setText(cadena);
         repaint();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jTextField3.requestFocus();
+        }
     }//GEN-LAST:event_jTextField2KeyReleased
 
     private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
