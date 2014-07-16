@@ -38,6 +38,9 @@ public class Anticonceptivos extends javax.swing.JPanel {
     Dialogos.HCDiag.Dprocedimientos prog;
     String est = "1", est2 = "1";
     int columnindex, rowindex;
+    private final String opc[] = {"Dispositivo Intrauterino", "Dispositivo Intrauterino y Barrera", "Implante Subdérmico", "Implante Subdérmico y Barrera", "Oral",
+        "Oral y Barrera", "Inyectable Mensual", "Inyectable Mensual y Barrera", "Inyectable Trimestral", "Inyectable Trimestral y Barrera", "Emergencia",
+        "Emergencia y Barrera", "Esterilización", "Esterilización y Barrera", "Barrera"};
 
     public Anticonceptivos(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
@@ -297,22 +300,29 @@ public class Anticonceptivos extends javax.swing.JPanel {
                                 JOptionPane.showMessageDialog(null, "La cantidad de suministro no puede ser nula");
                                 medi.jTextField3.requestFocus();
                             } else {
-                                Agregar_Registro(medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 0).toString(),
-                                        medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 1).toString(),
-                                        medi.jTextField2.getText(),
-                                        medi.jComboBox1.getSelectedItem().toString(),
-                                        medi.jComboBox2.getSelectedItem().toString(),
-                                        medi.jTextArea1.getText().toString(),
-                                        medi.jTextField3.getText().toString(),
-                                        "1"
-                                );
-                                medi.dispose();
-                                id = String.valueOf(medi.Tmedicamentos.getSelectedRow());
-                                dosis = medi.jTextField2.getText().toString();
-                                cantidad = medi.jTextField3.getText().toString();
-                                dosisu = medi.jComboBox1.getSelectedItem().toString();
-                                via = medi.jComboBox2.getSelectedItem().toString();
-                                administracion = medi.jTextArea1.getText().toString();
+                                String Seleccion;
+                                Seleccion = (String) JOptionPane.showInputDialog(null, "Tipo de Metodo", "Mensaje", JOptionPane.QUESTION_MESSAGE,
+                                        null, opc, "Dispositivo Intrauterino");
+                                if (Seleccion != null) {
+                                    Agregar_Registro(medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 0).toString(),
+                                            medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 1).toString(),
+                                            medi.jTextField2.getText(),
+                                            medi.jComboBox1.getSelectedItem().toString(),
+                                            medi.jComboBox2.getSelectedItem().toString(),
+                                            medi.jTextArea1.getText().toString(),
+                                            medi.jTextField3.getText().toString(),
+                                            "1", Seleccion
+                                    );
+                                    medi.dispose();
+                                    id = String.valueOf(medi.Tmedicamentos.getSelectedRow());
+                                    dosis = medi.jTextField2.getText().toString();
+                                    cantidad = medi.jTextField3.getText().toString();
+                                    dosisu = medi.jComboBox1.getSelectedItem().toString();
+                                    via = medi.jComboBox2.getSelectedItem().toString();
+                                    administracion = medi.jTextArea1.getText().toString();
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Debe Seleccionar que tipo de metodo es el medicamento");
+                                }
                             }
                         }
                     }
@@ -338,12 +348,19 @@ public class Anticonceptivos extends javax.swing.JPanel {
                     }
                 }
                 if (validacion == false) {
-                    Agregar_Registroanti(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0).toString(),
-                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
-                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
-                            pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
-                            "1");
-                    pr.dispose();
+                    String Seleccion;
+                    Seleccion = (String) JOptionPane.showInputDialog(null, "Tipo de Metodo", "Mensaje", JOptionPane.QUESTION_MESSAGE,
+                            null, opc, "Dispositivo Intrauterino");
+                    if (Seleccion != null) {
+                        Agregar_Registroanti(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0).toString(),
+                                pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
+                                pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
+                                pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
+                                "1", Seleccion);
+                        pr.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo para el procedimiento");
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "Ya el procedimiento fue agregado");
                 }
@@ -401,9 +418,9 @@ public class Anticonceptivos extends javax.swing.JPanel {
         jTextField1.selectAll();
     }//GEN-LAST:event_jTextField1FocusGained
 
-    public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5, String r6, String r7, String r8) {
+    public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5, String r6, String r7, String r8, String r9) {
         try {
-            Object nuevo[] = {r1, r2, r3, r4, r5, r6, r7, r8};
+            Object nuevo[] = {r1, r2, r3, r4, r5, r6, r7, r8, r9};
             modelomedi.addRow(nuevo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, " :(  " + e.getMessage());
@@ -412,8 +429,9 @@ public class Anticonceptivos extends javax.swing.JPanel {
 
     public void getModelo() {
         modelomedi = new DefaultTableModel(
-                null, new String[]{"Id", "Medicamento", "dosisf", "dosisff", "viaf", "observacion", "Cantidad sum", "estado"}) {
+                null, new String[]{"Id", "Medicamento", "dosisf", "dosisff", "viaf", "observacion", "Cantidad sum", "estado", "Tipo"}) {
                     Class[] types = new Class[]{
+                        java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
@@ -424,7 +442,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
                         java.lang.String.class
                     };
                     boolean[] canEdit = new boolean[]{
-                        false, false, false, false, false, false, false, false
+                        false, false, false, false, false, false, false, false, false
                     };
 
                     @Override
@@ -444,7 +462,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
         getModelo();
         Tabaantimedi.getTableHeader().setReorderingAllowed(false);
         Tabaantimedi.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        Funciones_AD.setOcultarColumnas(Tabaantimedi, new int[]{0, 2, 3, 4, 6, 5, 7});
+        Funciones_AD.setOcultarColumnas(Tabaantimedi, new int[]{0, 2, 3, 4, 6, 5, 7, 8});
         Funciones_AD.setSizeColumnas(Tabaantimedi, new int[]{1}, new int[]{650});
         Object a[][];
         a = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
@@ -490,6 +508,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
                             modelomedi.getValueAt(i, 6).toString(), modelomedi.getValueAt(i, 3).toString(),
                             modelomedi.getValueAt(i, 4).toString(), modelomedi.getValueAt(i, 5).toString().toUpperCase(),
                             pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc + fh, modelomedi.getValueAt(i, 7).toString());
+                    sav.newantim(d, modelomedi.getValueAt(i, 0).toString(), modelomedi.getValueAt(i, 8).toString());
                 }
             }
         } else {
@@ -497,6 +516,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
                 for (int i = 0; i < modelomedi.getRowCount(); i++) {
                     if (modelomedi.getValueAt(i, 7).equals("0")) {
                         act.actposologia(d, modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 0).toString(), modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 2).toString());
+                        act.actanti4505m(d, modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 0).toString());
                     }
                 }
             }
@@ -506,9 +526,9 @@ public class Anticonceptivos extends javax.swing.JPanel {
         cargar();
     }
 
-    public void Agregar_Registroanti(String r1, String r2, String r3, String r4, String r5) {
+    public void Agregar_Registroanti(String r1, String r2, String r3, String r4, String r5, String r6) {
         try {
-            Object nuevo[] = {r1, r2, r3, r4, r5};
+            Object nuevo[] = {r1, r2, r3, r4, r5, r6};
             modelo.addRow(nuevo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, " :(  " + e.getMessage());
@@ -517,8 +537,9 @@ public class Anticonceptivos extends javax.swing.JPanel {
 
     public void getModeloanti() {
         modelo = new DefaultTableModel(
-                null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria", "Estado"}) {
+                null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria", "Estado", "Tipo"}) {
                     Class[] types = new Class[]{
+                        java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
@@ -526,7 +547,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
                         java.lang.String.class
                     };
                     boolean[] canEdit = new boolean[]{
-                        false, false, false, false, false
+                        false, false, false, false, false, false
                     };
 
                     @Override
@@ -547,8 +568,8 @@ public class Anticonceptivos extends javax.swing.JPanel {
             getModeloanti();
             tablaantiq.getTableHeader().setReorderingAllowed(false);
             tablaantiq.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-            Funciones_AD.setOcultarColumnas(tablaantiq, new int[]{0, 1, 3, 4});
-            Funciones_AD.setSizeColumnas(tablaantiq, new int[]{1}, new int[]{450});
+            Funciones_AD.setOcultarColumnas(tablaantiq, new int[]{0, 3, 4, 5});
+            Funciones_AD.setSizeColumnas(tablaantiq, new int[]{1, 2}, new int[]{45, 405});
             Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
             int b = Integer.parseInt(a[0][0].toString());
             if (b != 0) {
@@ -573,8 +594,8 @@ public class Anticonceptivos extends javax.swing.JPanel {
                 if (modelo.getValueAt(i, 4).equals("1")) {
                     modelo.setValueAt("2", i, 4);
                     sav.newproceanti(d, modelo.getValueAt(i, 0).toString(),
-                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString(), fc
-                    );
+                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString(), fc);
+                    sav.newantip(d, modelo.getValueAt(i, 0).toString(), modelo.getValueAt(i, 5).toString());
                 }
             }
         } else {
@@ -582,6 +603,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
                 for (int i = 0; i < modelo.getRowCount(); i++) {
                     if (modelo.getValueAt(i, 4).equals("0")) {
                         act.actprocedimiento(d, modelo.getValueAt(tablaantiq.getSelectedRow(), 0).toString(), "0");
+                        act.actanti4505p(d, modelo.getValueAt(tablaantiq.getSelectedRow(), 1).toString());
                     }
                 }
             }

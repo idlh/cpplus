@@ -11,6 +11,16 @@ import javax.swing.table.DefaultTableModel;
 import Clases.CargarordenesM;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import Dialogos.HCDiag.Rexamenes;
+import com.toedter.calendar.JDateChooser;
+import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -26,7 +36,7 @@ public class AntecedentesP extends javax.swing.JPanel {
     Actualizar act = new Actualizar();
     Save sav = new Save();
     Funciones_AD Funciones = new Funciones_AD();
-    private DefaultTableModel modelo, modelo2;
+    private DefaultTableModel modelo, modelo2, modelo3;
     CargarordenesM tab = new CargarordenesM();
 
     public AntecedentesP(PypAdmAsistCon pypAdmAsistCon) {
@@ -62,6 +72,7 @@ public class AntecedentesP extends javax.swing.JPanel {
         }
         tabla();
         tabla2();
+        tabla3();
         jTabbedPane1.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
     }
 
@@ -69,6 +80,8 @@ public class AntecedentesP extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jLabel3 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel15 = new javax.swing.JPanel();
@@ -209,6 +222,19 @@ public class AntecedentesP extends javax.swing.JPanel {
         jPanel21 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaanteprocedimiento = new javax.swing.JTable();
+        jPanel22 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablaanteexamen = new javax.swing.JTable();
+
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/clip_board.png"))); // NOI18N
+        jMenuItem1.setText("Revisar Examen");
+        jMenuItem1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jMenuItem1MouseReleased(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(558, 345));
@@ -1551,7 +1577,8 @@ public class AntecedentesP extends javax.swing.JPanel {
 
             }
         ));
-        tablaantemedi.setEnabled(false);
+        tablaantemedi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tablaantemedi.setFocusable(false);
         jScrollPane2.setViewportView(tablaantemedi);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -1560,7 +1587,7 @@ public class AntecedentesP extends javax.swing.JPanel {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -1586,7 +1613,8 @@ public class AntecedentesP extends javax.swing.JPanel {
 
             }
         ));
-        tablaanteprocedimiento.setEnabled(false);
+        tablaanteprocedimiento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tablaanteprocedimiento.setFocusable(false);
         jScrollPane1.setViewportView(tablaanteprocedimiento);
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
@@ -1595,7 +1623,7 @@ public class AntecedentesP extends javax.swing.JPanel {
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel21Layout.setVerticalGroup(
@@ -1607,6 +1635,44 @@ public class AntecedentesP extends javax.swing.JPanel {
         );
 
         jTabbedPane2.addTab("Procedimietos", new javax.swing.ImageIcon(getClass().getResource("/Recursos/paraclinicos.png")), jPanel21); // NOI18N
+
+        jPanel22.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel22.setFocusable(false);
+
+        tablaanteexamen.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tablaanteexamen.setComponentPopupMenu(jPopupMenu1);
+        tablaanteexamen.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tablaanteexamen.setFocusable(false);
+        jScrollPane3.setViewportView(tablaanteexamen);
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane2.addTab("R. Examenes", new javax.swing.ImageIcon(getClass().getResource("/Recursos/analysis.png")), jPanel22); // NOI18N
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -1640,7 +1706,7 @@ public class AntecedentesP extends javax.swing.JPanel {
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addContainerGap(394, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1929,6 +1995,52 @@ public class AntecedentesP extends javax.swing.JPanel {
     private void jTextField10FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField10FocusGained
         jTextField10.selectAll();
     }//GEN-LAST:event_jTextField10FocusGained
+
+    private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
+        final Rexamenes exam = new Rexamenes((Frame) SwingUtilities.getWindowAncestor(this), true);
+        exam.jLabel3.setText("<html>\n"
+                + "<div style=\"width:376;\">" + String.valueOf(tablaanteexamen.getValueAt(tablaanteexamen.getSelectedRow(), 2)) + "\n"
+                + "</div>\n"
+                + "\n"
+                + "</html>");
+        if (tablaanteexamen.getValueAt(tablaanteexamen.getSelectedRow(), 7) == null) {
+            exam.jTextField1.setText("");
+        } else {
+            exam.jTextField1.setText(String.valueOf(tablaanteexamen.getValueAt(tablaanteexamen.getSelectedRow(), 7)));
+        }
+        if (tablaanteexamen.getValueAt(tablaanteexamen.getSelectedRow(), 8) == null) {
+            exam.jTextArea1.setText("");
+        } else {
+            exam.jTextArea1.setText(String.valueOf(tablaanteexamen.getValueAt(tablaanteexamen.getSelectedRow(), 8)));
+        }
+        SimpleDateFormat formato2 = new SimpleDateFormat("dd/MM/yyyy");
+        if (tablaanteexamen.getValueAt(tablaanteexamen.getSelectedRow(), 6) == null) {
+            exam.jDateChooser1.setDate(null);
+        } else {
+            try {
+                exam.jDateChooser1.setDate(formato2.parse(String.valueOf(tablaanteexamen.getValueAt(tablaanteexamen.getSelectedRow(), 6))));
+            } catch (ParseException ex) {
+                Logger.getLogger(AntecedentesP.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        exam.jButton1.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String fecha;
+                String patron = "dd/MM/yyyy";
+                SimpleDateFormat formato = new SimpleDateFormat(patron);
+                fecha = formato.format(exam.jDateChooser1.getDate());
+                tablaanteexamen.setValueAt(fecha, tablaanteexamen.getSelectedRow(), 6);
+                tablaanteexamen.setValueAt(exam.jTextField1.getText().toUpperCase(), tablaanteexamen.getSelectedRow(), 7);
+                tablaanteexamen.setValueAt(exam.jTextArea1.getText().toUpperCase(), tablaanteexamen.getSelectedRow(), 8);
+                tablaanteexamen.setValueAt("3", tablaanteexamen.getSelectedRow(), 4);
+                exam.dispose();
+            }
+        });
+        exam.setLocationRelativeTo(null);
+        exam.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1MouseReleased
 
     public void guardarantep() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
@@ -2294,7 +2406,7 @@ public class AntecedentesP extends javax.swing.JPanel {
             case 2:
                 HC.CYDesarrollo.jLabel4.setText("...");
                 break;
-            case 7: 
+            case 7:
                 HC.Diabetes.jLabel4.setText("...");
                 break;
         }
@@ -2365,7 +2477,7 @@ public class AntecedentesP extends javax.swing.JPanel {
         if (jCheckBox22.isSelected() == false) {
             c6 = "0";
         } else {
-            c6 = "1"; 
+            c6 = "1";
         }
         if (jCheckBox23.isSelected() == false) {
             c7 = "0";
@@ -2377,19 +2489,19 @@ public class AntecedentesP extends javax.swing.JPanel {
         } else {
             c8 = "1";
         }
-        if (jTextField8.getText().toString().equals("")) { 
+        if (jTextField8.getText().toString().equals("")) {
             c9 = "99";
         } else {
             c9 = jTextField8.getText().toString();
-        } 
-        if (jTextField6.getText().equals("")) { 
-            n1 = 0; 
-        } else { 
+        }
+        if (jTextField6.getText().equals("")) {
+            n1 = 0;
+        } else {
             n1 = Float.parseFloat(jTextField6.getText().toString());
         }
         if (jTextField7.getText().equals("")) {
             n2 = 0;
-        } else { 
+        } else {
             n2 = Float.parseFloat(jTextField7.getText().toString());
         }
         if (jTextField9.getText().equals("")) {
@@ -2646,9 +2758,62 @@ public class AntecedentesP extends javax.swing.JPanel {
             tablaantemedi.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             Funciones_AD.setOcultarColumnas(tablaantemedi, new int[]{0});
             Funciones_AD.setSizeColumnas(tablaantemedi, new int[]{1}, new int[]{385});
-                tab.cargarantemedicamento(modelo2, pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString());
+            tab.cargarantemedicamento(modelo2, pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "error: " + e.getMessage().toString(), AntecedentesP.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public void getModeloexam() {
+        modelo3 = new DefaultTableModel(
+                null, new String[]{"Id", "Codigo", "Examen", "Categoria", "Estado", "idprocedi", "fecha", "resultado", "observaciones"}) {
+                    Class[] types = new Class[]{
+                        java.lang.String.class,
+                        java.lang.String.class,
+                        java.lang.String.class,
+                        java.lang.String.class,
+                        java.lang.String.class,
+                        java.lang.String.class,
+                        java.lang.String.class,
+                        java.lang.String.class,
+                        java.lang.String.class
+                    };
+                    boolean[] canEdit = new boolean[]{
+                        false, false, false, false, false, false, false, false, false
+                    };
+
+                    @Override
+                    public Class getColumnClass(int columnIndex) {
+                        return types[columnIndex];
+                    }
+
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int colIndex) {
+                        return canEdit[colIndex];
+                    }
+                };
+        tablaanteexamen.setModel(modelo3);
+    }
+
+    private void tabla3() {
+        try {
+            getModeloexam();
+            tablaanteexamen.getTableHeader().setReorderingAllowed(false);
+            tablaanteexamen.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//            Funciones_AD.setOcultarColumnas(tablaanteexamen, new int[]{0, 1, 3, 4, 5, 6, 7, 8});
+//            Funciones_AD.setSizeColumnas(tablaanteexamen, new int[]{2}, new int[]{385});
+            tab.cargaranteexamen(modelo3, pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "error: " + e.getMessage().toString(), AntecedentesP.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public void Agregar_Registro(String r1, String r2, String r3) {
+        try {
+            Object nuevo[] = {r1, r2, r3};
+            modelo3.addRow(nuevo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, " :(  " + e.getMessage());
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2737,6 +2902,7 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JLabel jLabel7;
     javax.swing.JLabel jLabel8;
     javax.swing.JLabel jLabel9;
+    javax.swing.JMenuItem jMenuItem1;
     javax.swing.JPanel jPanel1;
     javax.swing.JPanel jPanel10;
     javax.swing.JPanel jPanel11;
@@ -2751,6 +2917,7 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JPanel jPanel2;
     javax.swing.JPanel jPanel20;
     javax.swing.JPanel jPanel21;
+    javax.swing.JPanel jPanel22;
     javax.swing.JPanel jPanel23;
     javax.swing.JPanel jPanel24;
     javax.swing.JPanel jPanel3;
@@ -2760,6 +2927,7 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JPanel jPanel7;
     javax.swing.JPanel jPanel8;
     javax.swing.JPanel jPanel9;
+    javax.swing.JPopupMenu jPopupMenu1;
     javax.swing.JScrollPane jScrollPane1;
     javax.swing.JScrollPane jScrollPane17;
     javax.swing.JScrollPane jScrollPane18;
@@ -2770,6 +2938,7 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JScrollPane jScrollPane22;
     javax.swing.JScrollPane jScrollPane23;
     javax.swing.JScrollPane jScrollPane24;
+    javax.swing.JScrollPane jScrollPane3;
     javax.swing.JTabbedPane jTabbedPane1;
     javax.swing.JTabbedPane jTabbedPane2;
     javax.swing.JTextArea jTextArea1;
@@ -2790,6 +2959,7 @@ public class AntecedentesP extends javax.swing.JPanel {
     javax.swing.JTextField jTextField7;
     javax.swing.JTextField jTextField8;
     javax.swing.JTextField jTextField9;
+    javax.swing.JTable tablaanteexamen;
     javax.swing.JTable tablaantemedi;
     javax.swing.JTable tablaanteprocedimiento;
     // End of variables declaration//GEN-END:variables

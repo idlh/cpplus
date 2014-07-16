@@ -268,11 +268,23 @@ public class ProcedimientosI extends javax.swing.JPanel {
                 + "\n"
                 + "</html>");
         procedi.jTextArea1.setText(modelo.getValueAt(Tablaimagenologia.getSelectedRow(), 6).toString());
+        if (modelo.getValueAt(Tablaimagenologia.getSelectedRow(), 8).toString().equals("1")) {
+            procedi.jCheckBox1.setSelected(true);
+        } else {
+            procedi.jCheckBox1.setSelected(false);
+        }
         procedi.jButton1.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                String examen;
+                if (procedi.jCheckBox1.isSelected() == true) {
+                    examen = "1";
+                } else {
+                    examen = "0";
+                }
                 modelo.setValueAt(procedi.jTextArea1.getText().toUpperCase(), Tablaimagenologia.getSelectedRow(), 6);
+                modelo.setValueAt(examen, Tablaimagenologia.getSelectedRow(), 8);
                 icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_blue.png"));
                 modelo.setValueAt(fila[0] = new JLabel(icon), Tablaimagenologia.getSelectedRow(), 5);
                 Tablaimagenologia.setDefaultRenderer(Object.class, new IconCellRendererlabel());
@@ -287,8 +299,8 @@ public class ProcedimientosI extends javax.swing.JPanel {
             getModelo();
             Tablaimagenologia.getTableHeader().setReorderingAllowed(false);
             Tablaimagenologia.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-            Funciones_AD.setOcultarColumnas(Tablaimagenologia, new int[]{0, 1, 3, 4});
-            Funciones_AD.setSizeColumnas(Tablaimagenologia, new int[]{2, 5}, new int[]{336, 20});
+            Funciones_AD.setOcultarColumnas(Tablaimagenologia, new int[]{0, 3, 4});
+            Funciones_AD.setSizeColumnas(Tablaimagenologia, new int[]{1, 2, 5}, new int[]{45, 295, 16});
             Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
             int b = Integer.parseInt(a[0][0].toString());
             if (b != 0) {
@@ -311,8 +323,9 @@ public class ProcedimientosI extends javax.swing.JPanel {
 
     public void getModelo() {
         modelo = new DefaultTableModel(
-                null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria", "Estado", "", "Justificacion", "idp"}) {
+                null, new String[]{"Id", "Codigo", "Procedimiento", "Categoria", "Estado", "", "Justificacion", "idp", "Examen"}) {
                     Class[] types = new Class[]{
+                        java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
                         java.lang.String.class,
@@ -323,7 +336,7 @@ public class ProcedimientosI extends javax.swing.JPanel {
                         java.lang.String.class
                     };
                     boolean[] canEdit = new boolean[]{
-                        false, false, false, false, false, false, false, false
+                        false, false, false, false, false, false, false, false, false
                     };
 
                     @Override
@@ -339,9 +352,9 @@ public class ProcedimientosI extends javax.swing.JPanel {
         Tablaimagenologia.setModel(modelo);
     }
 
-    public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5, ImageIcon icon, String r6) {
+    public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5, ImageIcon icon, String r6, String r7) {
         try {
-            Object nuevo[] = {r1, r2, r3, r4, r5, icon, r6};
+            Object nuevo[] = {r1, r2, r3, r4, r5, icon, r6, r7};
             modelo.addRow(nuevo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, " :(  " + e.getMessage());
@@ -378,6 +391,7 @@ public class ProcedimientosI extends javax.swing.JPanel {
         for (int i = 0; i < modelo.getRowCount(); i++) {
             if (modelo.getValueAt(i, 4).toString().equals("2")) {
                 act.actobservacionp(modelo.getValueAt(i, 7).toString(), modelo.getValueAt(i, 6).toString());
+                act.actexamen(modelo.getValueAt(i, 7).toString(), modelo.getValueAt(i, 8).toString());
             }
         }
         if (est.toString().equals("2")) {
@@ -385,7 +399,8 @@ public class ProcedimientosI extends javax.swing.JPanel {
                 if (modelo.getValueAt(i, 4).toString().equals("1")) {
                     modelo.setValueAt("2", i, 4);
                     sav.newproce(d, modelo.getValueAt(i, 0).toString(),
-                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString(), fc, modelo.getValueAt(i, 6).toString().toUpperCase());
+                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString(), fc, modelo.getValueAt(i, 6).toString().toUpperCase(),
+                            modelo.getValueAt(i, 8).toString());
                 }
             }
         } else {
@@ -486,12 +501,18 @@ public class ProcedimientosI extends javax.swing.JPanel {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             if (!procedi.jTextArea1.getText().equals("")) {
+                                String examen;
+                                if (procedi.jCheckBox1.isSelected() == true) {
+                                    examen = "1";
+                                } else {
+                                    examen = "0";
+                                }
                                 icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_blue.png"));
                                 Agregar_Registro(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0).toString(),
                                         pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
                                         pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
                                         pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
-                                        "1", icon, procedi.jTextArea1.getText());
+                                        "1", icon, procedi.jTextArea1.getText(), examen);
                                 pr.dispose();
                                 for (int u = 0; u < modelo.getRowCount(); u++) {
                                     if (modelo.getValueAt(u, 4).equals("1")) {

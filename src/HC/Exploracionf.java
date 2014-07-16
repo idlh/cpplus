@@ -579,6 +579,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextPane1.setLineWrap(true);
         jTextPane1.setRows(5);
         jTextPane1.setText("Ninguno");
+        jTextPane1.setWrapStyleWord(true);
         jTextPane1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextPane1FocusGained(evt);
@@ -614,6 +615,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jTextArea1.setText("No se encuentran datos relevantes");
+        jTextArea1.setWrapStyleWord(true);
         jTextArea1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea1FocusGained(evt);
@@ -634,6 +636,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
         jTextArea2.setText("No se encuentran datos relevantes");
+        jTextArea2.setWrapStyleWord(true);
         jTextArea2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea2FocusGained(evt);
@@ -654,6 +657,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea3.setLineWrap(true);
         jTextArea3.setRows(5);
         jTextArea3.setText("No se encuentran datos relevantes");
+        jTextArea3.setWrapStyleWord(true);
         jTextArea3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea3FocusGained(evt);
@@ -674,6 +678,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea4.setLineWrap(true);
         jTextArea4.setRows(5);
         jTextArea4.setText("No se encuentran datos relevantes");
+        jTextArea4.setWrapStyleWord(true);
         jTextArea4.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea4FocusGained(evt);
@@ -1714,6 +1719,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea12.setLineWrap(true);
         jTextArea12.setRows(5);
         jTextArea12.setText("Ninguna");
+        jTextArea12.setWrapStyleWord(true);
         jTextArea12.setPreferredSize(new java.awt.Dimension(164, 90));
         jTextArea12.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -1816,24 +1822,28 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea10.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jTextArea10.setLineWrap(true);
         jTextArea10.setRows(5);
+        jTextArea10.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextArea10);
 
         jTextArea13.setColumns(20);
         jTextArea13.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jTextArea13.setLineWrap(true);
         jTextArea13.setRows(5);
+        jTextArea13.setWrapStyleWord(true);
         jScrollPane14.setViewportView(jTextArea13);
 
         jTextArea14.setColumns(20);
         jTextArea14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jTextArea14.setLineWrap(true);
         jTextArea14.setRows(5);
+        jTextArea14.setWrapStyleWord(true);
         jScrollPane15.setViewportView(jTextArea14);
 
         jTextArea15.setColumns(20);
         jTextArea15.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jTextArea15.setLineWrap(true);
         jTextArea15.setRows(5);
+        jTextArea15.setWrapStyleWord(true);
         jScrollPane16.setViewportView(jTextArea15);
 
         jLabel54.setText("Motricidad gruesa:");
@@ -2021,6 +2031,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea16.setLineWrap(true);
         jTextArea16.setRows(5);
         jTextArea16.setText("Ninguno");
+        jTextArea16.setWrapStyleWord(true);
         jTextArea16.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea16FocusGained(evt);
@@ -2114,6 +2125,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea5.setLineWrap(true);
         jTextArea5.setRows(5);
         jTextArea5.setText("No se encuentran datos relevantes");
+        jTextArea5.setWrapStyleWord(true);
         jTextArea5.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea5FocusGained(evt);
@@ -2134,6 +2146,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea6.setLineWrap(true);
         jTextArea6.setRows(5);
         jTextArea6.setText("No se encuentran datos relevantes");
+        jTextArea6.setWrapStyleWord(true);
         jTextArea6.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea6FocusGained(evt);
@@ -2155,6 +2168,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea7.setRows(5);
         jTextArea7.setText("No se encuentran datos relevantes");
         jTextArea7.setToolTipText("");
+        jTextArea7.setWrapStyleWord(true);
         jTextArea7.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea7FocusGained(evt);
@@ -2175,6 +2189,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea8.setLineWrap(true);
         jTextArea8.setRows(5);
         jTextArea8.setText("No se encuentran datos relevantes");
+        jTextArea8.setWrapStyleWord(true);
         jTextArea8.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea8FocusGained(evt);
@@ -2195,6 +2210,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea9.setLineWrap(true);
         jTextArea9.setRows(5);
         jTextArea9.setText("No se encuentran datos relevantes");
+        jTextArea9.setWrapStyleWord(true);
         jTextArea9.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea9FocusGained(evt);
@@ -2229,6 +2245,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jTextArea11.setLineWrap(true);
         jTextArea11.setRows(5);
         jTextArea11.setText("No se encuentran datos relevantes");
+        jTextArea11.setWrapStyleWord(true);
         jTextArea11.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea11FocusGained(evt);

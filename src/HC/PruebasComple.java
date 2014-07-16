@@ -69,6 +69,7 @@ public class PruebasComple extends javax.swing.JPanel {
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jTextArea1.setText("No se encuentran datos relevantes");
+        jTextArea1.setWrapStyleWord(true);
         jTextArea1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea1FocusGained(evt);
