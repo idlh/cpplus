@@ -28,8 +28,8 @@ public class Dprocedimientos extends javax.swing.JDialog {
         getModelo();
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        Funciones_AD.setOcultarColumnas(jTable1, new int[]{0, 1, 3});
-        Funciones_AD.setSizeColumnas(jTable1, new int[]{1}, new int[]{450});
+        Funciones_AD.setOcultarColumnas(jTable1, new int[]{0, 3});
+        Funciones_AD.setSizeColumnas(jTable1, new int[]{1, 2}, new int[]{45, 405});
     }
 
     @SuppressWarnings("unchecked")
@@ -278,6 +278,14 @@ public class Dprocedimientos extends javax.swing.JDialog {
     public void procMon() {
         try {
             mos.Mostrar_datosM();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+
+    public void allproced() {
+        try {
+            mos.Mostrar_datos();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

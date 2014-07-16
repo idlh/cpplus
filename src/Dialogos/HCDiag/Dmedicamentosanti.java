@@ -625,7 +625,7 @@ public class Dmedicamentosanti extends javax.swing.JDialog {
     javax.swing.JScrollPane jScrollPane1;
     javax.swing.JScrollPane jScrollPane2;
     javax.swing.JTabbedPane jTabbedPane1;
-    javax.swing.JTabbedPane jTabbedPane2;
+    public javax.swing.JTabbedPane jTabbedPane2;
     public javax.swing.JTextArea jTextArea1;
     javax.swing.JTextField jTextField1;
     public javax.swing.JTextField jTextField2;

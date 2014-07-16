@@ -214,7 +214,9 @@ public class Dmedicamentos extends javax.swing.JDialog {
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setWrapStyleWord(true);
         jScrollPane2.setViewportView(jTextArea1);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -625,7 +627,7 @@ public class Dmedicamentos extends javax.swing.JDialog {
     javax.swing.JScrollPane jScrollPane1;
     javax.swing.JScrollPane jScrollPane2;
     javax.swing.JTabbedPane jTabbedPane1;
-    javax.swing.JTabbedPane jTabbedPane2;
+    public javax.swing.JTabbedPane jTabbedPane2;
     public javax.swing.JTextArea jTextArea1;
     javax.swing.JTextField jTextField1;
     public javax.swing.JTextField jTextField2;
