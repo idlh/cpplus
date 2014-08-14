@@ -107,6 +107,7 @@ public class Creacionpara extends javax.swing.JDialog {
 
         jLabel1.setText("...");
 
+        jTextField3.setText("0");
         jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField3FocusGained(evt);

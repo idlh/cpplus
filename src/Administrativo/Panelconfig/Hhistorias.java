@@ -38,6 +38,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import modulo_pyp.Desktop;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import Clases.Funciones_AD;
+import Clases.Save;
 
 /**
  *
@@ -46,6 +48,8 @@ import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 public class Hhistorias extends javax.swing.JPanel {
 
     private DefaultTableModel modelo;
+    Funciones_AD Funciones = new Funciones_AD();
+    Save sav = new Save();
     CargarordenesM cargt = new CargarordenesM();
     Properties props = new Properties();
     private EntityManagerFactory factory;
@@ -62,7 +66,7 @@ public class Hhistorias extends javax.swing.JPanel {
     public CYDesarrollo cydesarrollo;
     public AgudezaV agudeza;
     public Diabetes diabetes;
-    public int año = 0, mes = 0, edad, idprograma;
+    public int año = 0, mes = 0, edad, idprograma, usuario;
     public String progam, name;
 
     /**
@@ -537,8 +541,10 @@ public class Hhistorias extends javax.swing.JPanel {
 
     private void cargarprograma() {
         pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+        Object data[][] = Funciones.RetornarDatos(sav.seleccionaruser(pypAdmAsistCon.getId().toString()));
+        usuario = Integer.parseInt(data[0][0].toString());
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            adult = new Adulto(factory, pypAdmAsistCon);
+            adult = new Adulto(factory, pypAdmAsistCon, usuario);
             adult.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(adult);
@@ -547,7 +553,7 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-            adult = new Adulto(factory, pypAdmAsistCon);
+            adult = new Adulto(factory, pypAdmAsistCon, usuario);
             adult.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(adult);
@@ -557,7 +563,7 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            controlp = new Controlprenatal(factory, pypAdmAsistCon);
+            controlp = new Controlprenatal(factory, pypAdmAsistCon, usuario);
             controlp.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(controlp);
@@ -566,7 +572,7 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-            controlp = new Controlprenatal(factory, pypAdmAsistCon);
+            controlp = new Controlprenatal(factory, pypAdmAsistCon, usuario);
             controlp.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(controlp);
@@ -576,7 +582,7 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            postparto = new Postparto(factory, pypAdmAsistCon);
+            postparto = new Postparto(factory, pypAdmAsistCon, usuario);
             postparto.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(postparto);
@@ -585,7 +591,7 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            reciennacido = new RecienNacido(factory, pypAdmAsistCon);
+            reciennacido = new RecienNacido(factory, pypAdmAsistCon, usuario);
             reciennacido.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(reciennacido);
@@ -594,7 +600,7 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            planificacion = new Planificacion(factory, pypAdmAsistCon);
+            planificacion = new Planificacion(factory, pypAdmAsistCon, usuario);
             planificacion.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(planificacion);
@@ -603,7 +609,7 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-            planificacion = new Planificacion(factory, pypAdmAsistCon);
+            planificacion = new Planificacion(factory, pypAdmAsistCon, usuario);
             planificacion.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(planificacion);
@@ -613,7 +619,7 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            jovensano = new Jovensano(factory, pypAdmAsistCon);
+            jovensano = new Jovensano(factory, pypAdmAsistCon, usuario);
             jovensano.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(jovensano);
@@ -622,7 +628,7 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-            jovensano = new Jovensano(factory, pypAdmAsistCon);
+            jovensano = new Jovensano(factory, pypAdmAsistCon, usuario);
             jovensano.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(jovensano);
@@ -632,7 +638,7 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            hipertenso = new Hipertenso(factory, pypAdmAsistCon);
+            hipertenso = new Hipertenso(factory, pypAdmAsistCon, usuario);
             hipertenso.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(hipertenso);
@@ -641,7 +647,7 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-            hipertenso = new Hipertenso(factory, pypAdmAsistCon);
+            hipertenso = new Hipertenso(factory, pypAdmAsistCon, usuario);
             hipertenso.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(hipertenso);
@@ -651,7 +657,7 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            cydesarrollo = new CYDesarrollo(factory, pypAdmAsistCon);
+            cydesarrollo = new CYDesarrollo(factory, pypAdmAsistCon, usuario);
             cydesarrollo.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(cydesarrollo);
@@ -660,7 +666,7 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-            cydesarrollo = new CYDesarrollo(factory, pypAdmAsistCon);
+            cydesarrollo = new CYDesarrollo(factory, pypAdmAsistCon, usuario);
             cydesarrollo.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(cydesarrollo);
@@ -670,7 +676,9 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 4 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            agudeza = new AgudezaV(factory, pypAdmAsistCon);
+            Object datav[][] = Funciones.RetornarDatos(sav.seleccionaruservisual(pypAdmAsistCon.getId().toString()));
+            int usuariov = Integer.parseInt(datav[0][0].toString());
+            agudeza = new AgudezaV(factory, pypAdmAsistCon, usuariov);
             agudeza.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(agudeza);
@@ -679,7 +687,7 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 7 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            diabetes = new Diabetes(factory, pypAdmAsistCon);
+            diabetes = new Diabetes(factory, pypAdmAsistCon, usuario);
             diabetes.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(diabetes);
@@ -688,7 +696,7 @@ public class Hhistorias extends javax.swing.JPanel {
             modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 7 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-            diabetes = new Diabetes(factory, pypAdmAsistCon);
+            diabetes = new Diabetes(factory, pypAdmAsistCon, usuario);
             diabetes.setBounds(0, 0, 745, 393);
             modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
             modulo_pyp.Modulo_PyP.d.Contenedor_.add(diabetes);
