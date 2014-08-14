@@ -39,6 +39,8 @@ import java.awt.Frame;
 import javax.swing.SwingUtilities;
 import Clases.Save;
 import java.awt.Dialog;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
@@ -64,6 +66,7 @@ public class ListPacientes extends javax.swing.JDialog {
     public Diabetes diabetes;
     public int año = 0, mes = 0, edad, idprograma;
     public String progam, name;
+    public int usuario = 2, userbd;
     Save sav = new Save();
     Funciones_AD Funciones = new Funciones_AD();
 
@@ -72,6 +75,7 @@ public class ListPacientes extends javax.swing.JDialog {
         initComponents();
         ParametrosBD();
         showPacientes();
+        Contar();
     }
 
     private List<String> referenceUser() {
@@ -156,7 +160,7 @@ public class ListPacientes extends javax.swing.JDialog {
             //asignar el id del profecional de la tabla cmprofesionales
             jTable1.removeAll();
             ModeloListadoPaciente();
-            asistCon = paacjc.listPypAdmAsistCon(40);
+            asistCon = paacjc.listPypAdmAsistCon(usuario);
         } else {
             jTable1.removeAll();
             ModeloListadoPaciente();
@@ -490,16 +494,47 @@ public class ListPacientes extends javax.swing.JDialog {
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         if (modelo.getRowCount() > 0 && jTable1.getSelectedRow() > -1) {
             pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
-            if (pypAdmAsistCon.getEstado().toString().equals("3")) {
-                if (pypAdmAsistCon.getIdControlPro().getIdProfesional().getId() == 40) {
-                    hiloprograma ut = new hiloprograma(this);
-                    Thread thread = new Thread(ut);
-                    thread.start();
+            if (pypAdmAsistCon.getEstado().toString().equals("3") || pypAdmAsistCon.getEstado().toString().equals("4")) {
+                Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
+                int b = Integer.parseInt(a[0][0].toString());
+                if (b != 0) {
+                    if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 4) {
+                        Object data[][] = Funciones.RetornarDatos(sav.seleccionaruser(pypAdmAsistCon.getId().toString()));
+                        userbd = Integer.parseInt(data[0][0].toString());
+                    } else {
+                        Object datav[][] = Funciones.RetornarDatos(sav.seleccionaruservisual(pypAdmAsistCon.getId().toString()));
+                        userbd = Integer.parseInt(datav[0][0].toString());
+                    }
+                    if (userbd == usuario) {
+                        jButton1.setEnabled(false);
+                        hiloprograma ut = new hiloprograma(this);
+                        Thread thread = new Thread(ut);
+                        thread.start();
+                        jButton1.setEnabled(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El paciente ya se encuentra en atencion");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "El paciente ya se encuentra en atencion");
+                    if (pypAdmAsistCon.getEstado().toString().equals("4")) {
+                        JOptionPane.showMessageDialog(null, "El paciente ya se encuentra en atencion");
+                    } else {
+                        if (pypAdmAsistCon.getEstado().toString().equals("1")) {
+                            jButton1.setEnabled(false);
+                            hiloprograma ut = new hiloprograma(this);
+                            Thread thread = new Thread(ut);
+                            thread.start();
+                            jButton1.setEnabled(true);
+                            sav.validacionpacienteaten(pypAdmAsistCon.getId().toString(), "4");
+                        }
+                    }
                 }
             } else {
-                cargarprograma();
+                jButton1.setEnabled(false);
+                hiloprograma ut = new hiloprograma(this);
+                Thread thread = new Thread(ut);
+                thread.start();
+                jButton1.setEnabled(true);
+                sav.validacionpacienteaten(pypAdmAsistCon.getId().toString(), "4");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un paciente.");
@@ -575,7 +610,7 @@ public class ListPacientes extends javax.swing.JDialog {
         Desktop desktop = (Desktop) this.getParent();
         pypAdmAsistCon = (PypAdmAsistCon) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            adult = new Adulto(factory, pypAdmAsistCon);
+            adult = new Adulto(factory, pypAdmAsistCon, usuario);
             adult.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(adult);
@@ -585,7 +620,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 3 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-            adult = new Adulto(factory, pypAdmAsistCon);
+            adult = new Adulto(factory, pypAdmAsistCon, usuario);
             adult.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(adult);
@@ -596,7 +631,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            controlp = new Controlprenatal(factory, pypAdmAsistCon);
+            controlp = new Controlprenatal(factory, pypAdmAsistCon, usuario);
             controlp.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(controlp);
@@ -606,7 +641,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-            controlp = new Controlprenatal(factory, pypAdmAsistCon);
+            controlp = new Controlprenatal(factory, pypAdmAsistCon, usuario);
             controlp.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(controlp);
@@ -617,7 +652,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            postparto = new Postparto(factory, pypAdmAsistCon);
+            postparto = new Postparto(factory, pypAdmAsistCon, usuario);
             postparto.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(postparto);
@@ -627,7 +662,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            reciennacido = new RecienNacido(factory, pypAdmAsistCon);
+            reciennacido = new RecienNacido(factory, pypAdmAsistCon, usuario);
             reciennacido.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(reciennacido);
@@ -637,7 +672,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            planificacion = new Planificacion(factory, pypAdmAsistCon);
+            planificacion = new Planificacion(factory, pypAdmAsistCon, usuario);
             planificacion.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(planificacion);
@@ -647,7 +682,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-            planificacion = new Planificacion(factory, pypAdmAsistCon);
+            planificacion = new Planificacion(factory, pypAdmAsistCon, usuario);
             planificacion.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(planificacion);
@@ -658,7 +693,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            jovensano = new Jovensano(factory, pypAdmAsistCon);
+            jovensano = new Jovensano(factory, pypAdmAsistCon, usuario);
             jovensano.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(jovensano);
@@ -668,7 +703,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-            jovensano = new Jovensano(factory, pypAdmAsistCon);
+            jovensano = new Jovensano(factory, pypAdmAsistCon, usuario);
             jovensano.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(jovensano);
@@ -679,7 +714,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            hipertenso = new Hipertenso(factory, pypAdmAsistCon);
+            hipertenso = new Hipertenso(factory, pypAdmAsistCon, usuario);
             hipertenso.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(hipertenso);
@@ -689,7 +724,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-            hipertenso = new Hipertenso(factory, pypAdmAsistCon);
+            hipertenso = new Hipertenso(factory, pypAdmAsistCon, usuario);
             hipertenso.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(hipertenso);
@@ -700,7 +735,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            cydesarrollo = new CYDesarrollo(factory, pypAdmAsistCon);
+            cydesarrollo = new CYDesarrollo(factory, pypAdmAsistCon, usuario);
             cydesarrollo.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(cydesarrollo);
@@ -710,7 +745,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-            cydesarrollo = new CYDesarrollo(factory, pypAdmAsistCon);
+            cydesarrollo = new CYDesarrollo(factory, pypAdmAsistCon, usuario);
             cydesarrollo.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(cydesarrollo);
@@ -721,7 +756,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 4 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            agudeza = new AgudezaV(factory, pypAdmAsistCon);
+            agudeza = new AgudezaV(factory, pypAdmAsistCon, usuario);
             agudeza.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(agudeza);
@@ -731,7 +766,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 7 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
-            diabetes = new Diabetes(factory, pypAdmAsistCon);
+            diabetes = new Diabetes(factory, pypAdmAsistCon, usuario);
             diabetes.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(diabetes);
@@ -741,7 +776,7 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 7 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-            diabetes = new Diabetes(factory, pypAdmAsistCon);
+            diabetes = new Diabetes(factory, pypAdmAsistCon, usuario);
             diabetes.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
             desktop.Contenedor_.add(diabetes);
@@ -766,10 +801,40 @@ public class ListPacientes extends javax.swing.JDialog {
             try {
                 cargarprograma();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "cargar programa " + e.getMessage(), Imprimir.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "cargar programa " + e.getMessage(), ListPacientes.class.getName(), JOptionPane.INFORMATION_MESSAGE);
             }
             ((ListPacientes) form).dispose();
         }
+    }
+
+    private Timer timer = new Timer();
+    private int segundos = 30;
+
+    class Contador extends TimerTask {
+
+        @Override
+        public void run() {
+            segundos--;
+            if (segundos == 0) {
+                Detener();
+                showPacientes();
+            }
+        }
+    }
+
+    public void Contar() {
+        this.segundos = 30;
+        timer = new Timer();
+        timer.schedule(new Contador(), 0, 600);
+    }
+
+    public int getSegundos() {
+        return this.segundos;
+    }
+
+    public void Detener() {
+        timer.cancel();
+        Contar();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

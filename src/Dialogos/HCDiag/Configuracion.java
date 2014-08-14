@@ -451,9 +451,7 @@ public class Configuracion extends javax.swing.JDialog {
                     act.cambioestadovisual(d, pypAdmAsistCon.getId().toString());
                 }
             }
-            ListPacientes listPacientes = new ListPacientes((Frame) SwingUtilities.getWindowAncestor(this), true);
             this.dispose();
-            listPacientes.setVisible(true);
         }
     }//GEN-LAST:event_jButton2MouseReleased
 

@@ -197,6 +197,8 @@ public class A_Confirmar extends javax.swing.JDialog {
         jPanel1.add(jLabel13);
         jLabel13.setBounds(50, 90, 130, 14);
 
+        jTabbedPane1.setFocusable(false);
+
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(null);
 

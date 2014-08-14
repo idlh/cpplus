@@ -22,15 +22,16 @@ public class Imprimir extends javax.swing.JDialog {
 
     Imprimirreporte imp = new Imprimirreporte();
     Funciones_AD Funciones = new Funciones_AD();
-    String id;
+    private final String idhc;
     Save sav = new Save();
 
     /**
      * Creates new form Imprimir
      */
-    public Imprimir(java.awt.Frame parent, boolean modal) {
+    public Imprimir(java.awt.Frame parent, boolean modal, String idhc) {
         super(parent, modal);
         initComponents();
+        this.idhc = idhc;
         jLabel3.setVisible(false);
         if (modulo_pyp.Modulo_PyP.d.est.equals("1")) {
             jLabel2.setText("<html>\n"
@@ -47,7 +48,6 @@ public class Imprimir extends javax.swing.JDialog {
                         + "</html>");
             }
         }
-        idhisto();
     }
 
     /**
@@ -203,7 +203,7 @@ public class Imprimir extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Imprimir dialog = new Imprimir(new javax.swing.JFrame(), true);
+                Imprimir dialog = new Imprimir(new javax.swing.JFrame(), true, new String());
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -213,77 +213,8 @@ public class Imprimir extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
-    }
-
-    private void idhisto() {
-        if (modulo_pyp.Modulo_PyP.d.est.equals("1")) {
-            switch (modulo_pyp.Modulo_PyP.d.listPacientes.idprograma) {
-                case 3:
-                    id = modulo_pyp.Modulo_PyP.d.listPacientes.adult.idhc;
-                    break;
-                case 9:
-                    id = modulo_pyp.Modulo_PyP.d.listPacientes.controlp.idhc;
-                    break;
-                case 11:
-                    id = modulo_pyp.Modulo_PyP.d.listPacientes.postparto.idhc;
-                    break;
-                case 10:
-                    id = modulo_pyp.Modulo_PyP.d.listPacientes.reciennacido.idhc;
-                    break;
-                case 5:
-                    id = modulo_pyp.Modulo_PyP.d.listPacientes.planificacion.idhc;
-                    break;
-                case 1:
-                    id = modulo_pyp.Modulo_PyP.d.listPacientes.jovensano.idhc;
-                    break;
-                case 6:
-                    id = modulo_pyp.Modulo_PyP.d.listPacientes.hipertenso.idhc;
-                    break;
-                case 2:
-                    id = modulo_pyp.Modulo_PyP.d.listPacientes.cydesarrollo.idhc;
-                    break;
-                case 4:
-                    id = modulo_pyp.Modulo_PyP.d.listPacientes.agudeza.idhc;
-                    break;
-                case 7:
-                    id = modulo_pyp.Modulo_PyP.d.listPacientes.diabetes.idhc;
-                    break;
-            }
-        } else {
-            switch (modulo_pyp.Modulo_PyP.d.panelc.historias.idprograma) {
-                case 3:
-                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.adult.idhc;
-                    break;
-                case 9:
-                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.controlp.idhc;
-                    break;
-                case 11:
-                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.postparto.idhc;
-                    break;
-                case 10:
-                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.reciennacido.idhc;
-                    break;
-                case 5:
-                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.planificacion.idhc;
-                    break;
-                case 1:
-                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.jovensano.idhc;
-                    break;
-                case 6:
-                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.hipertenso.idhc;
-                    break;
-                case 2:
-                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.cydesarrollo.idhc;
-                    break;
-                case 4:
-                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.agudeza.idhc;
-                    break;
-                case 7:
-                    id = modulo_pyp.Modulo_PyP.d.panelc.historias.diabetes.idhc;
-                    break;
-            }
-        }
-    }
+    }    
+    
 
     private class hiloreporte extends Thread {
 
@@ -301,7 +232,7 @@ public class Imprimir extends javax.swing.JDialog {
                 archivoTemporal = File.createTempFile("Historia", ".pdf");
                 BDConectar bd = new BDConectar();
                 bd.ConectarBasedeDatos();
-                imp.setIdhc(id);
+                imp.setIdhc(idhc);
                 if (modulo_pyp.Modulo_PyP.d.est.equals("1")) {
                     imp.setNombrereport(modulo_pyp.Modulo_PyP.d.listPacientes.progam);
                 } else {
@@ -323,14 +254,14 @@ public class Imprimir extends javax.swing.JDialog {
                 copy.close();
                 Desktop.getDesktop().open(archivoTemporal);
                 //recetario             
-                Object poso[][] = Funciones.RetornarDatos(sav.recetam(id));
+                Object poso[][] = Funciones.RetornarDatos(sav.recetam(idhc));
                 String cantiposo = poso[0][0].toString();
                 System.out.println(cantiposo);
                 if (!cantiposo.equals("0")) {
                     archivotemp = File.createTempFile("Recetario", ".pdf");
                     bd.ConectarBasedeDatos();
                     imp.setNombrereceta("RECETA MEDICA");
-                    imp.setIdhc(id);
+                    imp.setIdhc(idhc);
                     imp.setCodigo("PP-F01-1420");
                     imp.setConexion(bd.conexion);
                     imp.setServicio("P Y P");
