@@ -24,6 +24,7 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.ActionMapUIResource;
+import Dialogos.HCDiag.ListPacientes;
 
 /**
  *
@@ -33,6 +34,7 @@ public class Jovensano extends javax.swing.JPanel {
 
     private final EntityManagerFactory factory;
     private final PypAdmAsistCon pypAdmAsistCon;
+    private final int usuario;
     Funciones_AD Funciones = new Funciones_AD();
     Save sav = new Save();
     MotivoC motivoc = null;
@@ -46,10 +48,11 @@ public class Jovensano extends javax.swing.JPanel {
     String Estadofinal = "1";
     public String idhc;
 
-    public Jovensano(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
+    public Jovensano(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon, Integer usuario) {
         initComponents();
         this.factory = factory;
         this.pypAdmAsistCon = pypAdmAsistCon;
+        this.usuario = usuario;
         jPanel4.setBackground(Color.white);
         jLabel9.setVisible(false);
         jLabel12.setVisible(false);
@@ -660,11 +663,11 @@ public class Jovensano extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
-        save();
+        save(usuario);
     }//GEN-LAST:event_jButton3MouseReleased
 
     private void jButton4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseReleased
-        finalizar();
+        finalizar(usuario);
     }//GEN-LAST:event_jButton4MouseReleased
 
     private void jButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseReleased
@@ -676,17 +679,14 @@ public class Jovensano extends javax.swing.JPanel {
         int b = Integer.parseInt(a[0][0].toString());
         if (b != 0) {
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-            String d = (c[0][0].toString());
-            Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
-//            if (h[0][23].toString().equals("0")) {
-            antecedentesp.cargarancedentes();
-            enfermedadac.cargardatosenf();
-            diagnosticosm.cargardx();
-            ordenesm.cargarordenesm();
-            motivoc.cargareventose();
-            exploracionf.cargarexploracion();
-            pruebascomple.cargarpruebas();
-//            }
+            idhc = c[0][0].toString();
+            antecedentesp.cargarancedentes(idhc);
+            enfermedadac.cargardatosenf(idhc);
+            diagnosticosm.cargardx(idhc);
+            ordenesm.cargarordenesm(idhc);
+            motivoc.cargareventose(idhc);
+            exploracionf.cargarexploracion(idhc);
+            pruebascomple.cargarpruebas(idhc);
         }
         antecedentesp.cargarinfoante();
         antecedentesp.gi.cargarinfoanteg();
@@ -724,11 +724,10 @@ public class Jovensano extends javax.swing.JPanel {
 
     public void imprimirhis() {
         Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        idhc = d;
-        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+        idhc = (c[0][0].toString());
+        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(idhc));
         if (h[0][23].toString().equals("1")) {
-            final Imprimir imp = new Imprimir((Frame) SwingUtilities.getWindowAncestor(this), true);
+            final Imprimir imp = new Imprimir((Frame) SwingUtilities.getWindowAncestor(this), true, idhc);
             imp.setLocationRelativeTo(null);
             imp.setVisible(true);
         } else {
@@ -736,53 +735,53 @@ public class Jovensano extends javax.swing.JPanel {
         }
     }
 
-    private void save() {
+    private void save(Integer usuario) {
         if (Estadofinal.equals("1")) {
             Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
             int b = Integer.parseInt(a[0][0].toString());
             if (b == 0) {
-                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), "40", String.valueOf(diagnosticosm.ciep));
+                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), String.valueOf(usuario), String.valueOf(diagnosticosm.ciep));
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
+                idhc = (c[0][0].toString());
                 Date fecha = pypAdmAsistCon.getFecha();
                 String patron = "yyyy-MM-dd", fc;
                 SimpleDateFormat formato = new SimpleDateFormat(patron);
                 fc = formato.format(fecha);
-                sav.newagineco(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                sav.neweventose(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                sav.newexpf(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                sav.newjoven(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+                sav.newagineco(idhc, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.neweventose(idhc, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.newexpf(idhc, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.newjoven(idhc, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(idhc));
                 if (h[0][23].toString().equals("0")) {
-                    motivoc.actualizardatos();
-                    antecedentesp.guardarantep();
-                    enfermedadac.actualizarenfac();
-                    exploracionf.actexpf();
-                    diagnosticosm.actdx();
-                    ordenesm.actordenesm();
-                    pruebascomple.actpruebasc();
+                    motivoc.actualizardatos(idhc);
+                    antecedentesp.guardarantep(idhc);
+                    enfermedadac.actualizarenfac(idhc);
+                    exploracionf.actexpf(idhc);
+                    diagnosticosm.actdx(idhc);
+                    ordenesm.actordenesm(idhc);
+                    pruebascomple.actpruebasc(idhc);
                     jLabel9.setVisible(true);
                     Contar();
                 }
             } else {
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
-                Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+                idhc = (c[0][0].toString());
+                Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(idhc));
 //                if (h[0][23].toString().equals("0")) {
-                motivoc.actualizardatos();
-                antecedentesp.guardarantep();
-                enfermedadac.actualizarenfac();
-                exploracionf.actexpf();
-                diagnosticosm.actdx();
-                ordenesm.actordenesm();
-                pruebascomple.actpruebasc();
+                motivoc.actualizardatos(idhc);
+                antecedentesp.guardarantep(idhc);
+                enfermedadac.actualizarenfac(idhc);
+                exploracionf.actexpf(idhc);
+                diagnosticosm.actdx(idhc);
+                ordenesm.actordenesm(idhc);
+                pruebascomple.actpruebasc(idhc);
                 jLabel9.setVisible(true);
                 Contar();
 //                }
             }
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
             String d = (c[0][0].toString());
-            if (pypAdmAsistCon.getEstado().toString().equals("1")) {
+            if (pypAdmAsistCon.getEstado().toString().equals("1") || pypAdmAsistCon.getEstado().toString().equals("4")) {
                 act.guardadohc(d, pypAdmAsistCon.getId().toString());
             }
         } else {
@@ -790,71 +789,71 @@ public class Jovensano extends javax.swing.JPanel {
         }
     }
 
-    private void finalizar() {
+    private void finalizar(Integer usuario) {
         if (Estadofinal.equals("1")) {
             Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
             int b = Integer.parseInt(a[0][0].toString());
             if (b == 0) {
-                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), "40", String.valueOf(diagnosticosm.ciep));
+                sav.crearhcnueva(pypAdmAsistCon.getId().toString(), String.valueOf(usuario), String.valueOf(diagnosticosm.ciep));
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
+                idhc = (c[0][0].toString());
                 Date fecha = pypAdmAsistCon.getFecha();
                 String patron = "yyyy-MM-dd", fc;
                 SimpleDateFormat formato = new SimpleDateFormat(patron);
                 fc = formato.format(fecha);
-                sav.newagineco(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                sav.neweventose(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                sav.newexpf(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                sav.newjoven(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
-                Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+                sav.newagineco(idhc, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.neweventose(idhc, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.newexpf(idhc, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                sav.newjoven(idhc, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc);
+                Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(idhc));
                 int id = Integer.parseInt(h[0][23].toString());
                 if (id == 0) {
                     String mensaje = "¿Si finaliza la Historia no podra modificarla posteriormente? ";
                     int entrada = JOptionPane.showConfirmDialog(null, mensaje, "Confirmar finalizacion", JOptionPane.YES_NO_OPTION);
                     if (entrada == 0) {
-                        motivoc.actualizardatos();
-                        antecedentesp.guardarantep();
-                        enfermedadac.actualizarenfac();
-                        exploracionf.actexpf();
-                        diagnosticosm.actdx();
-                        ordenesm.actordenesm();
-                        pruebascomple.actpruebasc();
-                        act.finalizarhc(d, pypAdmAsistCon.getId().toString());
+                        motivoc.actualizardatos(idhc);
+                        antecedentesp.guardarantep(idhc);
+                        enfermedadac.actualizarenfac(idhc);
+                        exploracionf.actexpf(idhc);
+                        diagnosticosm.actdx(idhc);
+                        ordenesm.actordenesm(idhc);
+                        pruebascomple.actpruebasc(idhc);
+                        act.finalizarhc(idhc, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
                         jLabel12.setVisible(true);
                         Contar();
-                        Object poso[][] = Funciones.RetornarDatos(sav.recetam(d));
+                        Object poso[][] = Funciones.RetornarDatos(sav.recetam(idhc));
                         String cantiposo = poso[0][0].toString();
                         if (!cantiposo.equals("0")) {
-                            sav.newreceta(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), "1", "1");
+                            sav.newreceta(idhc, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), "1", "1");
                         }
                         imprimirhis();
                     }
                 }
             } else {
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhcfinal(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
-                Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+                idhc = (c[0][0].toString());
+                Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(idhc));
                 int id = Integer.parseInt(h[0][23].toString());
                 if (id == 0) {
                     String mensaje = "¿Si finaliza la Historia no podra modificarla posteriormente? ";
                     int entrada = JOptionPane.showConfirmDialog(null, mensaje, "Confirmar finalizacion", JOptionPane.YES_NO_OPTION);
                     if (entrada == 0) {
-                        motivoc.actualizardatos();
-                        antecedentesp.guardarantep();
-                        enfermedadac.actualizarenfac();
-                        exploracionf.actexpf();
-                        diagnosticosm.actdx();
-                        ordenesm.actordenesm();
-                        pruebascomple.actpruebasc();
-                        act.finalizarhc(d, pypAdmAsistCon.getId().toString());
+                        motivoc.actualizardatos(idhc);
+                        antecedentesp.guardarantep(idhc);
+                        enfermedadac.actualizarenfac(idhc);
+                        exploracionf.actexpf(idhc);
+                        diagnosticosm.actdx(idhc);
+                        ordenesm.actordenesm(idhc);
+                        pruebascomple.actpruebasc(idhc);
+                        act.finalizarhc(idhc, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
                         jLabel12.setVisible(true);
                         Contar();
-                        Object poso[][] = Funciones.RetornarDatos(sav.recetam(d));
+                        Object poso[][] = Funciones.RetornarDatos(sav.recetam(idhc));
                         String cantiposo = poso[0][0].toString();
                         if (!cantiposo.equals("0")) {
-                            sav.newreceta(d, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), "1", "1");
+                            sav.newreceta(idhc, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), "1", "1");
                         }
                         imprimirhis();
                     }
@@ -866,6 +865,11 @@ public class Jovensano extends javax.swing.JPanel {
     }
 
     private void salir() {
+        Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
+        int b = Integer.parseInt(a[0][0].toString());
+        if (b == 0) {
+            sav.validacionpacienteaten(pypAdmAsistCon.getId().toString(), "1");
+        }
         modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
         modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
     }
@@ -914,7 +918,7 @@ public class Jovensano extends javax.swing.JPanel {
         return new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                save();
+                save(usuario);
             }
         };
     }
@@ -923,7 +927,7 @@ public class Jovensano extends javax.swing.JPanel {
         return new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                finalizar();
+                finalizar(usuario);
             }
         };
     }

@@ -469,8 +469,8 @@ public class Anticonceptivos extends javax.swing.JPanel {
         int b = Integer.parseInt(a[0][0].toString());
         if (b != 0) {
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-            String d = (c[0][0].toString());
-            tab.cargartablamedianti(modelomedi, d);
+            String idhc = (c[0][0].toString());
+            tab.cargartablamedianti(modelomedi, idhc);
         }
     }
 
@@ -489,9 +489,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
         }
     }
 
-    public void actmedicamentos() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
+    public void actmedicamentos(String idhc) {
         Date fecha = pypAdmAsistCon.getFecha();
         Date hora = pypAdmAsistCon.getHora();
         String patronh = "HH:mm:ss";
@@ -504,19 +502,19 @@ public class Anticonceptivos extends javax.swing.JPanel {
             for (int i = 0; i < modelomedi.getRowCount(); i++) {
                 if (modelomedi.getValueAt(i, 7).equals("1")) {
                     modelomedi.setValueAt("2", i, 7);
-                    sav.newposoanti(d, modelomedi.getValueAt(i, 0).toString(), modelomedi.getValueAt(i, 2).toString(),
+                    sav.newposoanti(idhc, modelomedi.getValueAt(i, 0).toString(), modelomedi.getValueAt(i, 2).toString(),
                             modelomedi.getValueAt(i, 6).toString(), modelomedi.getValueAt(i, 3).toString(),
                             modelomedi.getValueAt(i, 4).toString(), modelomedi.getValueAt(i, 5).toString().toUpperCase(),
                             pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc + fh, modelomedi.getValueAt(i, 7).toString());
-                    sav.newantim(d, modelomedi.getValueAt(i, 0).toString(), modelomedi.getValueAt(i, 8).toString());
+                    sav.newantim(idhc, modelomedi.getValueAt(i, 0).toString(), modelomedi.getValueAt(i, 8).toString());
                 }
             }
         } else {
             if (est2.toString().equals("3")) {
                 for (int i = 0; i < modelomedi.getRowCount(); i++) {
                     if (modelomedi.getValueAt(i, 7).equals("0")) {
-                        act.actposologia(d, modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 0).toString(), modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 2).toString());
-                        act.actanti4505m(d, modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 0).toString());
+                        act.actposologia(idhc, modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 0).toString(), modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 2).toString());
+                        act.actanti4505m(idhc, modelomedi.getValueAt(Tabaantimedi.getSelectedRow(), 0).toString());
                     }
                 }
             }
@@ -574,17 +572,15 @@ public class Anticonceptivos extends javax.swing.JPanel {
             int b = Integer.parseInt(a[0][0].toString());
             if (b != 0) {
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
-                tab.cargartablaanti(modelo, d);
+                String idhc = (c[0][0].toString());
+                tab.cargartablaanti(modelo, idhc);
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "error: " + e.getMessage().toString(), ProcedimientosQ.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
-    public void actprocedanti() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
+    public void actprocedanti(String idhc) {
         Date fecha = pypAdmAsistCon.getFecha();
         String patron = "yyyy-MM-dd", fc;
         SimpleDateFormat formato = new SimpleDateFormat(patron);
@@ -593,17 +589,17 @@ public class Anticonceptivos extends javax.swing.JPanel {
             for (int i = 0; i < modelo.getRowCount(); i++) {
                 if (modelo.getValueAt(i, 4).equals("1")) {
                     modelo.setValueAt("2", i, 4);
-                    sav.newproceanti(d, modelo.getValueAt(i, 0).toString(),
+                    sav.newproceanti(idhc, modelo.getValueAt(i, 0).toString(),
                             pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString(), fc);
-                    sav.newantip(d, modelo.getValueAt(i, 0).toString(), modelo.getValueAt(i, 5).toString());
+                    sav.newantip(idhc, modelo.getValueAt(i, 0).toString(), modelo.getValueAt(i, 5).toString());
                 }
             }
         } else {
             if (est.toString().equals("3")) {
                 for (int i = 0; i < modelo.getRowCount(); i++) {
                     if (modelo.getValueAt(i, 4).equals("0")) {
-                        act.actprocedimiento(d, modelo.getValueAt(tablaantiq.getSelectedRow(), 0).toString(), "0");
-                        act.actanti4505p(d, modelo.getValueAt(tablaantiq.getSelectedRow(), 1).toString());
+                        act.actprocedimiento(idhc, modelo.getValueAt(tablaantiq.getSelectedRow(), 0).toString(), "0");
+                        act.actanti4505p(idhc, modelo.getValueAt(tablaantiq.getSelectedRow(), 1).toString());
                     }
                 }
             }
@@ -628,11 +624,9 @@ public class Anticonceptivos extends javax.swing.JPanel {
         }
     }
 
-    public void guardaranticonceptivos() {
-        actmedicamentos();
-        actprocedanti();
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
+    public void guardaranticonceptivos(String idhc) {
+        actmedicamentos(idhc);
+        actprocedanti(idhc);
         String da1, da2, da3;
         if (jCheckBox1.isSelected() == true) {
             da1 = "1";
@@ -649,13 +643,11 @@ public class Anticonceptivos extends javax.swing.JPanel {
         } else {
             da3 = jTextField1.getText().toString();
         }
-        act.actanticonceptivos(d, da1, da2, da3);
+        act.actanticonceptivos(idhc, da1, da2, da3);
     }
 
-    public void cargaranticonceptivos() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object pypdata[][] = Funciones.RetornarDatos(act.cargaranticonceptivos(d));
+    public void cargaranticonceptivos(String idhc) {
+        Object pypdata[][] = Funciones.RetornarDatos(act.cargaranticonceptivos(idhc));
         if (pypdata[0][2].toString().equals("1")) {
             jCheckBox1.setSelected(true);
         } else {

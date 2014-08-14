@@ -90,16 +90,12 @@ public class Recomendaciones extends javax.swing.JPanel {
         jTextArea1.selectAll();
     }//GEN-LAST:event_jTextArea1FocusGained
 
-    public void actrecomendaciones() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        act.actrecomendaciones(d, jTextArea1.getText().toUpperCase().toString());
+    public void actrecomendaciones(String idhc) {
+        act.actrecomendaciones(idhc, jTextArea1.getText().toUpperCase().toString());
     }
 
-    public void cargarrecom() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+    public void cargarrecom(String idhc) {
+        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(idhc));
         if (!h[0][26].toString().equals("NINGUNA")) {
             jTextArea1.setForeground(Color.BLACK);
             jTextArea1.setText(h[0][26].toString());

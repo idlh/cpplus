@@ -195,9 +195,7 @@ public class MotivoC extends javax.swing.JPanel {
         jTextArea1.selectAll();
     }//GEN-LAST:event_jTextArea1FocusGained
 
-    public void actualizardatos() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
+    public void actualizardatos(String idhc) {
         String q, w, e, r, t, y, u, i, o;
         if (jCheckBox1.isSelected() == true) {
             q = "1";
@@ -244,13 +242,11 @@ public class MotivoC extends javax.swing.JPanel {
         } else {
             o = "0";
         }
-        act.actueventos(d, q, w, e, r, t, y, u, i, o, jTextArea1.getText().toUpperCase().toString());
+        act.actueventos(idhc, q, w, e, r, t, y, u, i, o, jTextArea1.getText().toUpperCase().toString());
     }
 
-    public void cargareventose() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object h[][] = Funciones.RetornarDatos(act.cargareventose(d));
+    public void cargareventose(String idhc) {
+        Object h[][] = Funciones.RetornarDatos(act.cargareventose(idhc));
         if (h[0][2].toString().equals("0")) {
             jCheckBox1.setSelected(false);
         } else {

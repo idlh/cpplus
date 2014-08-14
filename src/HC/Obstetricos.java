@@ -20,7 +20,6 @@ public class Obstetricos extends javax.swing.JPanel {
     Funciones_AD Funciones = new Funciones_AD();
     Save sav = new Save();
     Actualizar act = new Actualizar();
-
     public Obstetricos(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
@@ -365,7 +364,7 @@ public class Obstetricos extends javax.swing.JPanel {
         jTextField5.selectAll();
     }//GEN-LAST:event_jTextField5FocusGained
 
-    public void guardarobste() {
+    public void guardarobste(String idhc) {
         Date fcu = jDateChooser1.getDate();
         String fucp, q, w, e, r, t, y, u, i, o, p;
         String patron = "yyyy-MM-dd";
@@ -413,15 +412,11 @@ public class Obstetricos extends javax.swing.JPanel {
         } else {
             p = jTextField5.getText().toString();
         }
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        act.actobstetricos(d, fucp, y, u, i, o, p, e, q, w, r, t);
+        act.actobstetricos(idhc, fucp, y, u, i, o, p, e, q, w, r, t);
     }
 
-    public void cargarobstetricos() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object datos[][] = Funciones.RetornarDatos(act.cargarobtetricos(d));
+    public void cargarobstetricos(String idhc) {
+        Object datos[][] = Funciones.RetornarDatos(act.cargarobtetricos(idhc));
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         try {
             Date fecha = formato.parse(datos[0][2].toString());

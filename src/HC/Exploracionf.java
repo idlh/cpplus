@@ -3033,7 +3033,7 @@ public class Exploracionf extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jLabel65MouseExited
 
-    public void actexpf() {
+    public void actexpf(String idhc) {
         int tas, tad, fc, talla;
         float fr, temp, peso, imc;
         if (jTextField1.getText().equals("")) {
@@ -3076,9 +3076,7 @@ public class Exploracionf extends javax.swing.JPanel {
         } else {
             imc = Float.parseFloat(jTextField10.getText().toString());
         }
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        act.actexploracion(d, tas, tad, fr, fc, temp, talla, peso, imc,
+        act.actexploracion(idhc, tas, tad, fr, fc, temp, talla, peso, imc,
                 jTextPane1.getText().toUpperCase().toString(), jTextArea1.getText().toUpperCase().toString(),
                 jTextArea2.getText().toUpperCase().toString(), jTextArea3.getText().toUpperCase().toString(),
                 jTextArea4.getText().toUpperCase().toString(), jTextArea5.getText().toUpperCase().toString(),
@@ -3135,8 +3133,8 @@ public class Exploracionf extends javax.swing.JPanel {
                 p = jTextField12.getText().toString();
             }
             y = String.valueOf(jComboBox1.getSelectedIndex());
-            act.actgestafinal(d, fppu, q, w, u, i, String.valueOf(jComboBox12.getSelectedIndex()), p, y, e, r, t);
-            guardarcontrolm();
+            act.actgestafinal(idhc, fppu, q, w, u, i, String.valueOf(jComboBox12.getSelectedIndex()), p, y, e, r, t);
+            guardarcontrolm(idhc);
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
             String v, b, n, m, g, ñ;
@@ -3146,7 +3144,7 @@ public class Exploracionf extends javax.swing.JPanel {
             m = String.valueOf(jComboBox5.getSelectedIndex());
             g = String.valueOf(jComboBox6.getSelectedIndex());
             ñ = jLabel35.getText().toString();
-            act.apgarparto(d, v, b, n, m, g, ñ);
+            act.apgarparto(idhc, v, b, n, m, g, ñ);
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
             String v, b, n, m, g, ñ;
@@ -3156,34 +3154,32 @@ public class Exploracionf extends javax.swing.JPanel {
             m = String.valueOf(jComboBox5.getSelectedIndex());
             g = String.valueOf(jComboBox6.getSelectedIndex());
             ñ = jLabel35.getText().toString();
-            act.apgarrecien(d, v, b, n, m, g, ñ);
+            act.apgarrecien(idhc, v, b, n, m, g, ñ);
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-            tanner();
+            tanner(idhc);
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-            acthta();
+            acthta(idhc);
             if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-                guardarhtacontrol();
+                guardarhtacontrol(idhc);
             }
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
-            actvaloracion();
+            actvaloracion(idhc);
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
             if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-                actcontrolplani();
+                actcontrolplani(idhc);
             }
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 7) {
-            actdm();
+            actdm(idhc);
         }
     }
 
-    public void cargarexploracion() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object h[][] = Funciones.RetornarDatos(act.cargarexploracion(d));
+    public void cargarexploracion(String idhc) {
+        Object h[][] = Funciones.RetornarDatos(act.cargarexploracion(idhc));
         if (h[0][2].toString().equals("0")) {
             jTextField1.setText("");
         } else {
@@ -3281,7 +3277,7 @@ public class Exploracionf extends javax.swing.JPanel {
             jTextArea9.setForeground(Color.BLACK);
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
-            Object dato[][] = Funciones.RetornarDatos(act.cargargesta(d));
+            Object dato[][] = Funciones.RetornarDatos(act.cargargesta(idhc));
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             try {
                 Date fecha = formato.parse(dato[0][16].toString());
@@ -3327,7 +3323,7 @@ public class Exploracionf extends javax.swing.JPanel {
             } else {
                 jCheckBox6.setSelected(true);
             }
-            Object awq[][] = Funciones.RetornarDatos(act.cargargananciam(d));
+            Object awq[][] = Funciones.RetornarDatos(act.cargargananciam(idhc));
             jTextField21.setText(awq[0][3].toString());
         }
         if (!jTextField9.getText().equals("0.0") && !jTextField8.getText().equals("0")) {
@@ -3336,7 +3332,7 @@ public class Exploracionf extends javax.swing.JPanel {
             }
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
-            Object part[][] = Funciones.RetornarDatos(act.cargarpostparto(d));
+            Object part[][] = Funciones.RetornarDatos(act.cargarpostparto(idhc));
             jComboBox2.setSelectedIndex(Integer.parseInt(part[0][2].toString()));
             jComboBox3.setSelectedIndex(Integer.parseInt(part[0][3].toString()));
             jComboBox4.setSelectedIndex(Integer.parseInt(part[0][4].toString()));
@@ -3344,7 +3340,7 @@ public class Exploracionf extends javax.swing.JPanel {
             jComboBox6.setSelectedIndex(Integer.parseInt(part[0][6].toString()));
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
-            Object recien[][] = Funciones.RetornarDatos(act.cargarrecien(d));
+            Object recien[][] = Funciones.RetornarDatos(act.cargarrecien(idhc));
             jComboBox2.setSelectedIndex(Integer.parseInt(recien[0][2].toString()));
             jComboBox3.setSelectedIndex(Integer.parseInt(recien[0][3].toString()));
             jComboBox4.setSelectedIndex(Integer.parseInt(recien[0][4].toString()));
@@ -3352,24 +3348,24 @@ public class Exploracionf extends javax.swing.JPanel {
             jComboBox6.setSelectedIndex(Integer.parseInt(recien[0][6].toString()));
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
-            cargartanner();
+            cargartanner(idhc);
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 6) {
-            cargarhta();
+            cargarhta(idhc);
             if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-                cargarhtacontrol();
+                cargarhtacontrol(idhc);
             }
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
-            cargarvaloracion();
+            cargarvaloracion(idhc);
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
             if (pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
-                cargarcontrolplani();
+                cargarcontrolplani(idhc);
             }
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 7) {
-            cargardm();
+            cargardm(idhc);
         }
     }
 
@@ -3419,7 +3415,7 @@ public class Exploracionf extends javax.swing.JPanel {
 
     }
 
-    public void tanner() {
+    public void tanner(String idhc) {
         String va1, va2, va3, va4, va5, va6, va7, fc1, fc2;
         va1 = String.valueOf(jComboBox7.getSelectedIndex());
         va2 = String.valueOf(jComboBox8.getSelectedIndex());
@@ -3462,15 +3458,11 @@ public class Exploracionf extends javax.swing.JPanel {
         } else {
             va7 = "1";
         }
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        act.actjoven(d, va1, va2, va3, fc1, va4, fc2, va5, va7, va6);
+        act.actjoven(idhc, va1, va2, va3, fc1, va4, fc2, va5, va7, va6);
     }
 
-    public void cargartanner() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object pypdata[][] = Funciones.RetornarDatos(act.cargarjoven(d));
+    public void cargartanner(String idhc) {
+        Object pypdata[][] = Funciones.RetornarDatos(act.cargarjoven(idhc));
         jComboBox7.setSelectedIndex(Integer.parseInt(pypdata[0][2].toString()));
         jComboBox8.setSelectedIndex(Integer.parseInt(pypdata[0][3].toString()));
         if (pypdata[0][4].toString().equals("0")) {
@@ -3526,9 +3518,7 @@ public class Exploracionf extends javax.swing.JPanel {
         }
     }
 
-    public void acthta() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
+    public void acthta(String idhc) {
         String var1, var2, var3, var4, var5, var6, var7, var8, var9, var10;
         if (jCheckBox11.isSelected() == false) {
             var1 = "0";
@@ -3572,13 +3562,11 @@ public class Exploracionf extends javax.swing.JPanel {
         }
         var9 = String.valueOf(jComboBox9.getSelectedIndex());
         var10 = String.valueOf(jComboBox10.getSelectedIndex());
-        act.acthta(d, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10);
+        act.acthta(idhc, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10);
     }
 
-    public void cargarhta() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object pypdata[][] = Funciones.RetornarDatos(act.cargarhta(d));
+    public void cargarhta(String idhc) {
+        Object pypdata[][] = Funciones.RetornarDatos(act.cargarhta(idhc));
         if (pypdata[0][2].toString().equals("0")) {
             jCheckBox11.setSelected(false);
             jCheckBox15.setEnabled(false);
@@ -3631,9 +3619,7 @@ public class Exploracionf extends javax.swing.JPanel {
         jComboBox10.setSelectedIndex(Integer.parseInt(pypdata[0][11].toString()));
     }
 
-    public void actvaloracion() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
+    public void actvaloracion(String idhc) {
         String va1, va2, va3, va4, va5, va6;
         if (modulo_pyp.Modulo_PyP.d.listPacientes.año <= 5) {
             va1 = jTextField14.getText();
@@ -3642,14 +3628,14 @@ public class Exploracionf extends javax.swing.JPanel {
             va4 = jTextField17.getText();
             va5 = jTextField18.getText();
             va6 = jTextField19.getText();
-            act.actvaloracion(d, va1, va2, va3, va4, va5, va6);
+            act.actvaloracion(idhc, va1, va2, va3, va4, va5, va6);
         } else {
             va1 = jTextField20.getText();
             va2 = jTextArea10.getText();
             va3 = jTextArea13.getText();
             va4 = jTextArea15.getText();
             va5 = jTextArea14.getText();
-            act.actvaloracionaños(d, va1, va2, va3, va4, va5);
+            act.actvaloracionaños(idhc, va1, va2, va3, va4, va5);
         }
         String var1, var2, var3, var4, var5, var6;
         var1 = String.valueOf(jComboBox2.getSelectedIndex());
@@ -3658,15 +3644,13 @@ public class Exploracionf extends javax.swing.JPanel {
         var4 = String.valueOf(jComboBox5.getSelectedIndex());
         var5 = String.valueOf(jComboBox6.getSelectedIndex());
         var6 = jLabel35.getText().toString();
-        act.actcrecimientoapgar(d, var1, var2, var3, var4, var5, var6);
+        act.actcrecimientoapgar(idhc, var1, var2, var3, var4, var5, var6);
     }
 
-    public void cargarvaloracion() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object pypdata[][] = Funciones.RetornarDatos(act.cargarcrecimiento(d));
+    public void cargarvaloracion(String idhc) {
+        Object pypdata[][] = Funciones.RetornarDatos(act.cargarcrecimiento(idhc));
         if (modulo_pyp.Modulo_PyP.d.listPacientes.año <= 5) {
-            Object pypdatameses[][] = Funciones.RetornarDatos(act.cargarmeses(d));
+            Object pypdatameses[][] = Funciones.RetornarDatos(act.cargarmeses(idhc));
             jTextField14.setText(pypdatameses[0][2].toString());
             jTextField15.setText(pypdatameses[0][3].toString());
             jTextField16.setText(pypdatameses[0][4].toString());
@@ -3674,7 +3658,7 @@ public class Exploracionf extends javax.swing.JPanel {
             jTextField18.setText(pypdatameses[0][6].toString());
             jTextField19.setText(pypdatameses[0][7].toString());
         } else {
-            Object pypdatameses[][] = Funciones.RetornarDatos(act.cargaraños(d));
+            Object pypdatameses[][] = Funciones.RetornarDatos(act.cargaraños(idhc));
             jTextField20.setText(pypdatameses[0][2].toString());
             jTextArea10.setText(pypdatameses[0][3].toString());
             jTextArea13.setText(pypdatameses[0][4].toString());
@@ -3937,10 +3921,8 @@ public class Exploracionf extends javax.swing.JPanel {
         }
     }
 
-    private void actcontrolplani() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object dat[][] = Funciones.RetornarDatos(sav.selectidplanifica(d));
+    private void actcontrolplani(String idhc) {
+        Object dat[][] = Funciones.RetornarDatos(sav.selectidplanifica(idhc));
         String va1, va2, va3, va4, va5, va6, va7, va8, va9, va10, va11, va12, va13, va14, va15, va16, va17, va18;
         va1 = jTextField13.getText().toUpperCase();
         if (jCheckBox21.isSelected() == false) {
@@ -4026,10 +4008,8 @@ public class Exploracionf extends javax.swing.JPanel {
         act.actcontrolplanif(dat[0][0].toString(), va1, va2, va3, va4, va5, va6, va7, va8, va9, va10, va11, va12, va13, va14, va15, va16, va17, va18);
     }
 
-    private void cargarcontrolplani() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object datapyp[][] = Funciones.RetornarDatos(act.cargarcontrolplani(d));
+    private void cargarcontrolplani(String idhc) {
+        Object datapyp[][] = Funciones.RetornarDatos(act.cargarcontrolplani(idhc));
         if (datapyp[0][2].toString().equals("")) {
             jTextField13.setText("");
         } else {
@@ -4125,10 +4105,8 @@ public class Exploracionf extends javax.swing.JPanel {
         }
     }
 
-    private void guardarhtacontrol() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object data[][] = Funciones.RetornarDatos(sav.selectidhta(d));
+    private void guardarhtacontrol(String idhc) {
+        Object data[][] = Funciones.RetornarDatos(sav.selectidhta(idhc));
         String vr1, vr2, vr3, vr4;
         if (jCheckBox37.isSelected() == false) {
             vr1 = "0";
@@ -4153,10 +4131,8 @@ public class Exploracionf extends javax.swing.JPanel {
         act.acthtacontrol(data[0][0].toString(), vr1, vr2, vr3, vr4, jTextArea12.getText().toUpperCase().toString());
     }
 
-    private void cargarhtacontrol() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object pypdata[][] = Funciones.RetornarDatos(act.cargarhtacontrol(d));
+    private void cargarhtacontrol(String idhc) {
+        Object pypdata[][] = Funciones.RetornarDatos(act.cargarhtacontrol(idhc));
         if (pypdata[0][2].toString().equals("0")) {
             jCheckBox37.setSelected(false);
         } else {
@@ -4200,8 +4176,7 @@ public class Exploracionf extends javax.swing.JPanel {
         }
     }
 
-    public
-            void getModelo() {
+    public void getModelo() {
         modelo = new DefaultTableModel(
                 null, new String[]{"Fecha", "Peso", "IMC", "Ganancia", "Numero de control"}) {
                     Class[] types = new Class[]{
@@ -4241,9 +4216,8 @@ public class Exploracionf extends javax.swing.JPanel {
         }
     }
 
-    private void guardarcontrolm() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString()), gan;
+    private void guardarcontrolm(String idhc) {
+        String gan;
         Date fecha = pypAdmAsistCon.getFecha();
         String patron = "yyyy-MM-dd ";
         SimpleDateFormat formato = new SimpleDateFormat(patron);
@@ -4256,12 +4230,10 @@ public class Exploracionf extends javax.swing.JPanel {
         } else {
             gan = jTextField21.getText();
         }
-        act.controlmaterno(d, fc, gan, cont);
+        act.controlmaterno(idhc, fc, gan, cont);
     }
 
-    private void actdm() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
+    private void actdm(String idhc) {
         String var1, var2, var3, var4, var5, var6, var7, var8, var9, var10;
         if (jCheckBox42.isSelected() == false) {
             var1 = "0";
@@ -4330,13 +4302,11 @@ public class Exploracionf extends javax.swing.JPanel {
             var9 = jTextField22.getText();
         }
         var10 = jTextArea16.getText().toUpperCase();
-        act.actdm(d, var1, var2, var3, var4, var5, var6, var7, var8, vr1, vr2, vr3, vr4, jTextArea12.getText().toUpperCase(), var9, var10);
+        act.actdm(idhc, var1, var2, var3, var4, var5, var6, var7, var8, vr1, vr2, vr3, vr4, jTextArea12.getText().toUpperCase(), var9, var10);
     }
 
-    private void cargardm() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object pypdata[][] = Funciones.RetornarDatos(act.cargardm(d));
+    private void cargardm(String idhc) {
+        Object pypdata[][] = Funciones.RetornarDatos(act.cargardm(idhc));
         if (pypdata[0][2].toString().equals("0")) {
             jCheckBox42.setSelected(false);
             jCheckBox38.setEnabled(false);

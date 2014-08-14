@@ -314,12 +314,12 @@ public class Procedimientos extends javax.swing.JPanel {
         explode(procesosotros);
     }//GEN-LAST:event_jLabel18MouseReleased
 
-    public void guardarprocedimientos() {
-        procesosimagenologia.actproceimage();
-        procesoslaboratorios.actprocelab();
-        procesosmonitorizacion.actprocemon();
-        procesosotros.actproceotr();
-        procesosquirurgicos.actprocedquirur();
+    public void guardarprocedimientos(String idhc) {
+        procesosimagenologia.actproceimage(idhc);
+        procesoslaboratorios.actprocelab(idhc);
+        procesosmonitorizacion.actprocemon(idhc);
+        procesosotros.actproceotr(idhc);
+        procesosquirurgicos.actprocedquirur(idhc);
     }
 
     private void retornarayuda() {

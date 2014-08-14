@@ -322,19 +322,19 @@ public class OrdenesM extends javax.swing.JPanel {
         HC.Planificacion.jLabel4.setText("...");
     }//GEN-LAST:event_jLabel17MouseExited
 
-    public void actordenesm() {
-        recomendaciones.actrecomendaciones();
-        medicamentos.actmedicamentos();
-        procedimientos.guardarprocedimientos();
+    public void actordenesm(String idhc) {
+        recomendaciones.actrecomendaciones(idhc);
+        medicamentos.actmedicamentos(idhc);
+        procedimientos.guardarprocedimientos(idhc);
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-            anticonceptivos.guardaranticonceptivos();
+            anticonceptivos.guardaranticonceptivos(idhc);
         }
     }
 
-    public void cargarordenesm() {
-        recomendaciones.cargarrecom();
+    public void cargarordenesm(String idhc) {
+        recomendaciones.cargarrecom(idhc);
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-            anticonceptivos.cargaranticonceptivos();
+            anticonceptivos.cargaranticonceptivos(idhc);
         }
     }
 

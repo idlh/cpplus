@@ -16,7 +16,6 @@ public class Gestacionac extends javax.swing.JPanel {
     Funciones_AD Funciones = new Funciones_AD();
     Save sav = new Save();
     Actualizar act = new Actualizar();
-
     public Gestacionac(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
@@ -361,7 +360,7 @@ public class Gestacionac extends javax.swing.JPanel {
             }
     }//GEN-LAST:event_jTextField1KeyPressed
 
-    public void guardgestaactual() {
+    public void guardgestaactual(String idhc) {
         String q, w, e, r, t, y, u, i, o, p, a, s, z, x;
         q = String.valueOf(jComboBox4.getSelectedIndex());
         w = String.valueOf(jComboBox5.getSelectedIndex());
@@ -409,15 +408,11 @@ public class Gestacionac extends javax.swing.JPanel {
         } else {
             x = jTextField2.getText().toString();
         }
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        act.actgestaante(d, q, w, e, r, t, y, s, o, p, a, z, x, u, i);
+        act.actgestaante(idhc, q, w, e, r, t, y, s, o, p, a, z, x, u, i);
     }
     
-    public void cargargesta(){
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object dato[][] = Funciones.RetornarDatos(act.cargargesta(d));
+    public void cargargesta(String idhc){
+        Object dato[][] = Funciones.RetornarDatos(act.cargargesta(idhc));
         jComboBox4.setSelectedIndex(Integer.parseInt(dato[0][2].toString()));
         jComboBox5.setSelectedIndex(Integer.parseInt(dato[0][3].toString()));
         jComboBox6.setSelectedIndex(Integer.parseInt(dato[0][4].toString()));

@@ -271,10 +271,8 @@ public class ginecomac extends javax.swing.JPanel {
         jTextField9.selectAll();
     }//GEN-LAST:event_jTextField9FocusGained
 
-    public void actginecomac() {
+    public void actginecomac(String idhc) {
         String q, w, e, r, t, y, j1, j2;
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
         if (jCheckBox6.isSelected() == true) {
             q = "1";
         } else {
@@ -315,14 +313,11 @@ public class ginecomac extends javax.swing.JPanel {
         } else {
             y = "0";
         }
-        act.actualizarginecom(d, q, t, j1, w,
-                e, y, j2, r);
+        act.actualizarginecom(idhc, q, t, j1, w, e, y, j2, r);
     }
 
-    public void cargarginecom() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object h[][] = Funciones.RetornarDatos(act.cargarantecedentesg(d));
+    public void cargarginecom(String idhc) {
+        Object h[][] = Funciones.RetornarDatos(act.cargarantecedentesg(idhc));
         if (h[0][16].toString().equals("0")) {
             jCheckBox6.setSelected(false);
         } else {

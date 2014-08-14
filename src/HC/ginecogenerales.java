@@ -429,10 +429,8 @@ public class ginecogenerales extends javax.swing.JPanel {
         jTextField9.selectAll();
     }//GEN-LAST:event_jTextField9FocusGained
 
-    public void actuginecog() {
+    public void actuginecog(String idhc) {
         String q, w, e, r;
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
         if (jCheckBox1.isSelected() == true) {
             q = "1";
         } else {
@@ -478,16 +476,14 @@ public class ginecogenerales extends javax.swing.JPanel {
                     jTextField4.getText().toUpperCase(), jTextField5.getText().toUpperCase(), fup,
                     jTextField7.getText().toUpperCase(), jTextField9.getText().toUpperCase(), q, r, w, e);
         }
-        act.actualizarginecog(d, fum, jTextField10.getText().toUpperCase(), jTextField1.getText().toUpperCase(),
+        act.actualizarginecog(idhc, fum, jTextField10.getText().toUpperCase(), jTextField1.getText().toUpperCase(),
                 jTextField2.getText().toUpperCase(), jTextField3.getText().toUpperCase(),
                 jTextField4.getText().toUpperCase(), jTextField5.getText().toUpperCase(), fup,
                 jTextField7.getText().toUpperCase(), jTextField9.getText().toUpperCase(), q, r, w, e);
     }
 
-    public void cargarginecog() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object h[][] = Funciones.RetornarDatos(act.cargarantecedentesg(d));
+    public void cargarginecog(String idhc) {
+        Object h[][] = Funciones.RetornarDatos(act.cargarantecedentesg(idhc));
         Object car[][] = Funciones.RetornarDatos(act.contarginecog(pypAdmAsistCon.getIdAgend().getIdPaciente().getId().toString()));
         if (car[0][0].toString().equals("0")) {
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -534,7 +530,7 @@ public class ginecogenerales extends javax.swing.JPanel {
                 jCheckBox3.setSelected(false);
             } else {
                 jCheckBox3.setSelected(true);
-            }            
+            }
         } else {
             cargarinfoanteg();
         }

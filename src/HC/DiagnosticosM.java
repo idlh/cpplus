@@ -357,9 +357,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
         est4 = 4;
     }//GEN-LAST:event_jButton4MouseReleased
     
-    public void actdx() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
+    public void actdx(String idhc) {
         int d1, d2, d3, d4;
         if (est == 1) {
             if (jTextField2.getText().equals("")) {
@@ -367,7 +365,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
             } else {
                 d1 = cie101.getId();
             }
-            act.actdx1(d, ciep, d1);
+            act.actdx1(idhc, ciep, d1);
         }
         if (est2 == 2) {
             if (jTextField3.getText().equals("")) {
@@ -375,7 +373,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
             } else {
                 d2 = cie102.getId();
             }
-            act.actdx2(d, ciep, d2);
+            act.actdx2(idhc, ciep, d2);
         }
         if (est3 == 3) {
             if (jTextField5.getText().equals("")) {
@@ -383,7 +381,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
             } else {
                 d3 = cie103.getId();
             }
-            act.actdx3(d, ciep, d3);
+            act.actdx3(idhc, ciep, d3);
         }
         if (est4 == 4) {
             if (jTextField4.getText().equals("")) {
@@ -391,17 +389,20 @@ public class DiagnosticosM extends javax.swing.JPanel {
             } else {
                 d4 = cie104.getId();
             }
-            act.actdx4(d, ciep, d4);
+            act.actdx4(idhc, ciep, d4);
         }
     }
     
-    public void cargardx() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+    public void cargardx(String idhc) {
+        System.out.println("q");
+        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(idhc));
+        System.out.println("w");
         Object r1[][] = Funciones.RetornarDatos(act.cargarcierel1(h[0][18].toString()));
+        System.out.println("r");
         Object r2[][] = Funciones.RetornarDatos(act.cargarcierel2(h[0][19].toString()));
+        System.out.println("t");
         Object r3[][] = Funciones.RetornarDatos(act.cargarcierel3(h[0][20].toString()));
+        System.out.println("y");
         Object r4[][] = Funciones.RetornarDatos(act.cargarcierel4(h[0][21].toString()));
         if (h[0][18].toString().equals("1")) {
             jTextField2.setText("");

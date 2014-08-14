@@ -31,7 +31,6 @@ public class PruebasComple extends javax.swing.JPanel {
     private final Object dato[] = null;
     private final String s = System.getProperty("file.separator");
     CargarordenesM cargarpru = new CargarordenesM();
-
     public PruebasComple(PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
@@ -227,8 +226,8 @@ public class PruebasComple extends javax.swing.JPanel {
                     if (modeloAyudDiag.getRowCount() > 0 && Tablaconte.getSelectedRow() > -1) {
                         if (modeloAyudDiag.getValueAt(Tablaconte.getSelectedRow(), 6).equals("1")) {
                             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-                            String d = (c[0][0].toString());
-                            act.actualizarpruebas(d, modeloAyudDiag.getValueAt(Tablaconte.getSelectedRow(), 2).toString());
+                            String idhc = (c[0][0].toString());
+                            act.actualizarpruebas(idhc, modeloAyudDiag.getValueAt(Tablaconte.getSelectedRow(), 2).toString());
                             modeloAyudDiag.removeRow(Tablaconte.getSelectedRow());
                         } else {
                             if (modeloAyudDiag.getRowCount() > 0 && Tablaconte.getSelectedRow() > -1) {
@@ -307,34 +306,32 @@ public class PruebasComple extends javax.swing.JPanel {
         }
     }
 
-    public void actpruebasc() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
+    public void actpruebasc(String idhc) {
         Date fecha = pypAdmAsistCon.getFecha();
         String patron = "yyyy-MM-dd", fc;
         SimpleDateFormat formato = new SimpleDateFormat(patron);
         fc = formato.format(fecha);
-        act.acthallasgo(d, jTextArea1.getText().toUpperCase().toString());
+        act.acthallasgo(idhc, jTextArea1.getText().toUpperCase().toString());
         for (int i = 0; i < Tablaconte.getRowCount(); i++) {
             if (modeloAyudDiag.getValueAt(i, 6).toString().equals("0")) {
-                sav.newpruebas(d, modeloAyudDiag.getValueAt(i, 2).toString(), modeloAyudDiag.getValueAt(i, 5).toString(),
+                sav.newpruebas(idhc, modeloAyudDiag.getValueAt(i, 2).toString(), modeloAyudDiag.getValueAt(i, 5).toString(),
                         modeloAyudDiag.getValueAt(i, 4).toString(), fc);
                 modeloAyudDiag.setValueAt("1", i, 6);
             }
         }
     }
 
-    public void cargarpruebas() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+    public void cargarpruebas(String idhc) {
+        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(idhc));
 //        Object a[][] = Funciones.RetornarDatos(act.cargarpruebas(d));
         if (!h[0][22].toString().equals("NO SE ENCUENTRAN DATOS RELEVANTES")) {
             jTextArea1.setForeground(Color.BLACK);
             jTextArea1.setText(h[0][22].toString());
         }
-        cargarpru.cargartablapruebas(modeloAyudDiag, d);
+        cargarpru.cargartablapruebas(modeloAyudDiag, idhc);
     }
+    
+//    public void
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JTable Tablaconte;
     javax.swing.JButton jButton1;

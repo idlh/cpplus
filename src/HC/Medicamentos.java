@@ -289,8 +289,8 @@ public class Medicamentos extends javax.swing.JPanel {
         int b = Integer.parseInt(a[0][0].toString());
         if (b != 0) {
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-            String dro = (c[0][0].toString());
-            tab.cargartablamedi(modelo, dro);
+            String idhc = (c[0][0].toString());
+            tab.cargartablamedi(modelo, idhc);
         }
     }
 
@@ -348,9 +348,7 @@ public class Medicamentos extends javax.swing.JPanel {
         }
     }
 
-    public void actmedicamentos() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
+    public void actmedicamentos(String idhc) {
         Date fecha = pypAdmAsistCon.getFecha();
         Date hora = pypAdmAsistCon.getHora();
         String patronh = "HH:mm:ss";
@@ -363,7 +361,7 @@ public class Medicamentos extends javax.swing.JPanel {
             for (int i = 0; i < modelo.getRowCount(); i++) {
                 if (modelo.getValueAt(i, 7).equals("1")) {
                     modelo.setValueAt("2", i, 7);
-                    sav.newposo(d, modelo.getValueAt(i, 0).toString(), modelo.getValueAt(i, 2).toString(),
+                    sav.newposo(idhc, modelo.getValueAt(i, 0).toString(), modelo.getValueAt(i, 2).toString(),
                             modelo.getValueAt(i, 6).toString(), modelo.getValueAt(i, 3).toString(),
                             modelo.getValueAt(i, 4).toString(), modelo.getValueAt(i, 5).toString().toUpperCase(),
                             pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc + fh, modelo.getValueAt(i, 7).toString());
@@ -373,7 +371,7 @@ public class Medicamentos extends javax.swing.JPanel {
             if (est.toString().equals("3")) {
                 for (int i = 0; i < modelo.getRowCount(); i++) {
                     if (modelo.getValueAt(i, 7).equals("0")) {
-                        act.actposologia(d, modelo.getValueAt(Tablamedi.getSelectedRow(), 0).toString(), modelo.getValueAt(Tablamedi.getSelectedRow(), 2).toString());
+                        act.actposologia(idhc, modelo.getValueAt(Tablamedi.getSelectedRow(), 0).toString(), modelo.getValueAt(Tablamedi.getSelectedRow(), 2).toString());
                     }
                 }
             }

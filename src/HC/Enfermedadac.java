@@ -92,16 +92,12 @@ public class Enfermedadac extends javax.swing.JPanel {
         jTextPane1.selectAll();
     }//GEN-LAST:event_jTextPane1FocusGained
 
-    public void actualizarenfac() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        act.actenfactual(d, jTextPane1.getText().toUpperCase().toString());
+    public void actualizarenfac(String idhc) {
+        act.actenfactual(idhc, jTextPane1.getText().toUpperCase().toString());
     }
 
-    public void cargardatosenf() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
+    public void cargardatosenf(String idhc) {
+        Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(idhc));
         if (!h[0][16].toString().equals("NINGUNO")) {
             jTextPane1.setForeground(Color.black);
             jTextPane1.setText(h[0][16].toString());

@@ -363,9 +363,7 @@ public class visual extends javax.swing.JPanel {
         jTextArea1.selectAll();
     }//GEN-LAST:event_jTextArea1FocusGained
 
-    public void actualizardatos() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridvisual(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
+    public void actualizardatos(String idhc) {
         String va1, va2, va3, va4, va5, va6;
         va1 = jTextField1.getText();
         va2 = jTextField2.getText();
@@ -373,14 +371,12 @@ public class visual extends javax.swing.JPanel {
         va4 = jTextField4.getText();
         va5 = jTextField5.getText();
         va6 = jTextField6.getText();
-        act.guardarvisual(d, pypAdmAsistCon.getId().toString(), va1, va2, va3, va4, va5, va6,
+        act.guardarvisual(idhc, pypAdmAsistCon.getId().toString(), va1, va2, va3, va4, va5, va6,
                 jTextArea1.getText().toUpperCase(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
     }
 
-    public void cargarvisual() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridvisual(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
-        Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(d));
+    public void cargarvisual(String idhc) {
+        Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(idhc));
         jTextField1.setText(h[0][2].toString());
         jTextField2.setText(h[0][3].toString());
         jTextField3.setText(h[0][4].toString());

@@ -39,11 +39,13 @@ public class AgudezaV extends javax.swing.JPanel {
     Actualizar act = new Actualizar();
     String Estadofinal = "1";
     public String idhc;
+    private final int usuario;
 
-    public AgudezaV(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
+    public AgudezaV(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon, Integer usuario) {
         initComponents();
         this.factory = factory;
         this.pypAdmAsistCon = pypAdmAsistCon;
+        this.usuario = usuario;
         jPanel4.setBackground(Color.white);
         jLabel9.setVisible(false);
         jLabel12.setVisible(false);
@@ -358,10 +360,10 @@ public class AgudezaV extends javax.swing.JPanel {
         int b = Integer.parseInt(a[0][0].toString());
         if (b != 0) {
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridvisual(pypAdmAsistCon.getId().toString()));
-            String d = (c[0][0].toString());
-            Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(d));
+            idhc = (c[0][0].toString());
+            Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(idhc));
 //            if (h[0][10].toString().equals("0")) {
-            agudeza.cargarvisual();
+            agudeza.cargarvisual(idhc);
 //            }
         }
     }
@@ -401,7 +403,7 @@ public class AgudezaV extends javax.swing.JPanel {
         idhc = d;
         Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(d));
         if (h[0][23].toString().equals("1")) {
-            final Imprimir imp = new Imprimir((Frame) SwingUtilities.getWindowAncestor(this), true);
+            final Imprimir imp = new Imprimir((Frame) SwingUtilities.getWindowAncestor(this), true, idhc);
             imp.setLocationRelativeTo(null);
             imp.setVisible(true);
         } else {
@@ -418,29 +420,29 @@ public class AgudezaV extends javax.swing.JPanel {
                 String patron = "yyyy-MM-dd", fc;
                 SimpleDateFormat formato = new SimpleDateFormat(patron);
                 fc = formato.format(fecha);
-                sav.crearvisualnueva(pypAdmAsistCon.getId().toString(), "40", fc);
+                sav.crearvisualnueva(pypAdmAsistCon.getId().toString(), String.valueOf(usuario), fc);
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridvisual(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
-                Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(d));
+                idhc = (c[0][0].toString());
+                Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(idhc));
                 if (h[0][10].toString().equals("0")) {
-                    agudeza.actualizardatos();
+                    agudeza.actualizardatos(idhc);
                     jLabel9.setVisible(true);
                     Contar();
                 }
             } else {
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridvisual(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
-                Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(d));
+                idhc = (c[0][0].toString());
+                Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(idhc));
 //                if (h[0][10].toString().equals("0")) {
-                agudeza.actualizardatos();
+                agudeza.actualizardatos(idhc);
                 jLabel9.setVisible(true);
                 Contar();
 //                }
             }
             Object c[][] = Funciones.RetornarDatos(sav.seleccionaridvisual(pypAdmAsistCon.getId().toString()));
-            String d = (c[0][0].toString());
+            idhc = (c[0][0].toString());
             if (pypAdmAsistCon.getEstado().toString().equals("1")) {
-                act.guardadovisual(d, pypAdmAsistCon.getId().toString());
+                act.guardadovisual(idhc, pypAdmAsistCon.getId().toString());
             }
         } else {
             JOptionPane.showMessageDialog(null, "La historia ya se encuentra finalizada");
@@ -456,17 +458,17 @@ public class AgudezaV extends javax.swing.JPanel {
                 String patron = "yyyy-MM-dd", fc;
                 SimpleDateFormat formato = new SimpleDateFormat(patron);
                 fc = formato.format(fecha);
-                sav.crearvisualnueva(pypAdmAsistCon.getId().toString(), "40", fc);
+                sav.crearvisualnueva(pypAdmAsistCon.getId().toString(), String.valueOf(usuario), fc);
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridvisual(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
-                Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(d));
+                idhc = (c[0][0].toString());
+                Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(idhc));
                 int id = Integer.parseInt(h[0][10].toString());
                 if (id == 0) {
                     String mensaje = "¿Si finaliza la Valoracion no podra modificarla posteriormente? ";
                     int entrada = JOptionPane.showConfirmDialog(null, mensaje, "Confirmar finalizacion", JOptionPane.YES_NO_OPTION);
                     if (entrada == 0) {
-                        agudeza.actualizardatos();
-                        act.finalizarvisual(d, pypAdmAsistCon.getId().toString());
+                        agudeza.actualizardatos(idhc);
+                        act.finalizarvisual(idhc, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
                         jLabel12.setVisible(true);
                         Contar();
@@ -475,15 +477,15 @@ public class AgudezaV extends javax.swing.JPanel {
                 }
             } else {
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridvisualfinal(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
-                Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(d));
+                idhc = (c[0][0].toString());
+                Object h[][] = Funciones.RetornarDatos(act.cargardatosvisual(idhc));
                 int id = Integer.parseInt(h[0][10].toString());
                 if (id == 0) {
                     String mensaje = "¿Si finaliza la Valoracion no podra modificarla posteriormente? ";
                     int entrada = JOptionPane.showConfirmDialog(null, mensaje, "Confirmar finalizacion", JOptionPane.YES_NO_OPTION);
                     if (entrada == 0) {
-                        agudeza.actualizardatos();
-                        act.finalizarvisual(d, pypAdmAsistCon.getId().toString());
+                        agudeza.actualizardatos(idhc);
+                        act.finalizarvisual(idhc, pypAdmAsistCon.getId().toString());
                         Estadofinal = "2";
                         jLabel12.setVisible(true);
                         Contar();

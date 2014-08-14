@@ -294,6 +294,7 @@ public class ProcedimientosO extends javax.swing.JPanel {
         });
         procedi.setLocationRelativeTo(null);
         procedi.setVisible(true);
+        est = "5";
     }//GEN-LAST:event_JustificacionesMouseReleased
     private void tabla() {
         try {
@@ -306,8 +307,8 @@ public class ProcedimientosO extends javax.swing.JPanel {
             int b = Integer.parseInt(a[0][0].toString());
             if (b != 0) {
                 Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-                String d = (c[0][0].toString());
-                tab.cargartablaotros(modelo, d, "17");
+                String idhc = (c[0][0].toString());
+                tab.cargartablaotros(modelo, idhc, "17");
                 for (int u = 0; u < modelo.getRowCount(); u++) {
                     if (modelo.getValueAt(u, 4).equals("2")) {
                         icon = new javax.swing.ImageIcon(getClass().getResource("/Recursos/bullet_green.png"));
@@ -352,9 +353,9 @@ public class ProcedimientosO extends javax.swing.JPanel {
         Trablaotrosprocedimientos.setModel(modelo);
     }
 
-    public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5, ImageIcon icon, String r6, String r7) {
+    public void Agregar_Registro(String r1, String r2, String r3, String r4, String r5, ImageIcon icon, String r6, String r7, String r8) {
         try {
-            Object nuevo[] = {r1, r2, r3, r4, r5, icon, r6, r7};
+            Object nuevo[] = {r1, r2, r3, r4, r5, icon, r6, r7, r8};
             modelo.addRow(nuevo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, " :(  " + e.getMessage());
@@ -381,24 +382,16 @@ public class ProcedimientosO extends javax.swing.JPanel {
         }
     }
 
-    public void actproceotr() {
-        Object c[][] = Funciones.RetornarDatos(sav.seleccionaridhc(pypAdmAsistCon.getId().toString()));
-        String d = (c[0][0].toString());
+    public void actproceotr(String idhc) {
         Date fecha = pypAdmAsistCon.getFecha();
         String patron = "yyyy-MM-dd", fc;
         SimpleDateFormat formato = new SimpleDateFormat(patron);
         fc = formato.format(fecha);
-        for (int i = 0; i < modelo.getRowCount(); i++) {
-            if (modelo.getValueAt(i, 4).toString().equals("2")) {
-                act.actobservacionp(modelo.getValueAt(i, 7).toString(), modelo.getValueAt(i, 6).toString());
-                act.actexamen(modelo.getValueAt(i, 7).toString(), modelo.getValueAt(i, 8).toString());
-            }
-        }
         if (est.toString().equals("2")) {
             for (int i = 0; i < modelo.getRowCount(); i++) {
                 if (modelo.getValueAt(i, 4).equals("1")) {
                     modelo.setValueAt("2", i, 4);
-                    sav.newproce(d, modelo.getValueAt(i, 0).toString(),
+                    sav.newproce(idhc, modelo.getValueAt(i, 0).toString(),
                             pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString(), fc, modelo.getValueAt(i, 6).toString().toUpperCase(),
                             modelo.getValueAt(i, 8).toString());
                 }
@@ -407,7 +400,23 @@ public class ProcedimientosO extends javax.swing.JPanel {
             if (est.toString().equals("3")) {
                 for (int i = 0; i < modelo.getRowCount(); i++) {
                     if (modelo.getValueAt(i, 4).equals("0")) {
-                        act.actprocedimiento(d, modelo.getValueAt(Trablaotrosprocedimientos.getSelectedRow(), 0).toString(), "0");
+                        act.actprocedimiento(idhc, modelo.getValueAt(Trablaotrosprocedimientos.getSelectedRow(), 0).toString(), "0");
+                    }
+                }
+            } else {
+                if (est.toString().equals("5")) {
+                    for (int i = 0; i < modelo.getRowCount(); i++) {
+                        if (modelo.getValueAt(i, 4).toString().equals("2")) {
+                            act.actobservacionp(modelo.getValueAt(i, 7).toString(), modelo.getValueAt(i, 6).toString());
+                            act.actexamen(modelo.getValueAt(i, 7).toString(), modelo.getValueAt(i, 8).toString());
+                        } else {
+                            if (modelo.getValueAt(i, 4).equals("1")) {
+                                modelo.setValueAt("2", i, 4);
+                                sav.newproce(idhc, modelo.getValueAt(i, 0).toString(),
+                                        pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString(), fc, modelo.getValueAt(i, 6).toString().toUpperCase(),
+                                        modelo.getValueAt(i, 8).toString());
+                            }
+                        }
                     }
                 }
             }
@@ -512,7 +521,7 @@ public class ProcedimientosO extends javax.swing.JPanel {
                                         pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
                                         pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
                                         pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
-                                        "1", icon, procedi.jTextArea1.getText(), examen);
+                                        "1", icon, procedi.jTextArea1.getText(), null, examen);
                                 pr.dispose();
                                 for (int u = 0; u < modelo.getRowCount(); u++) {
                                     if (modelo.getValueAt(u, 4).equals("1")) {
