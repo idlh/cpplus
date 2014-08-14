@@ -8,24 +8,39 @@ public class Save {
     Clases.BDConectar bd = new Clases.BDConectar();
 
     public String contarhc(String id) {
-        return "SELECT COUNT(*)"
-                + " FROM"
-                + " `database`.`pyp_historiac`"
-                + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "';";
+        try {
+            return "SELECT COUNT(*)"
+                    + " FROM"
+                    + " `database`.`pyp_historiac`"
+                    + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "';";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "contar hc" + e.getMessage(), Save.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String contarvisual(String id) {
-        return "SELECT COUNT(*)"
-                + " FROM"
-                + " `database`.`pyp_visual`"
-                + " WHERE `pyp_visual`.`idasistencia`='" + id + "';";
+        try {
+            return "SELECT COUNT(*)"
+                    + " FROM"
+                    + " `database`.`pyp_visual`"
+                    + " WHERE `pyp_visual`.`idasistencia`='" + id + "';";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "contar visual" + e.getMessage(), Save.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String contarproce(String id) {
-        return "SELECT COUNT(*)"
-                + "   FROM"
-                + "       `database`.`pyp_procedimiento`"
-                + "   WHERE `pyp_procedimiento`.`id_historiapyp`='" + id + "';";
+        try {
+            return "SELECT COUNT(*)"
+                    + "   FROM"
+                    + "       `database`.`pyp_procedimiento`"
+                    + "   WHERE `pyp_procedimiento`.`id_historiapyp`='" + id + "' AND `pyp_procedimiento`.`estado` = '2';";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "contar procedimiento " + e.getMessage(), Save.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void crearhcnueva(String idasis, String idp, String dxp) {
@@ -55,39 +70,104 @@ public class Save {
     }
 
     public String seleccionaridhc(String id) {
-        return "SELECT `pyp_historiac`.`id`"
-                + " FROM"
-                + " `database`.`pyp_historiac`"
-                + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "' "
-                //                + "AND `pyp_historiac`.`estado` = 0"
-                //                + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1"
-                + ";";
+        try {
+            return "SELECT `pyp_historiac`.`id`"
+                    + " FROM"
+                    + " `database`.`pyp_historiac`"
+                    + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1') "
+                    //                + "AND `pyp_historiac`.`estado` = 0"
+                    //                + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1"
+                    + ";";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Seleccionar id hc " + e.getMessage(), Save.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+
+    public void validacionpacienteaten(String idasis, String est) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE"
+                    + "     `database`.`pyp_adm_asist_con` "
+                    + " SET `pyp_adm_asist_con`.`estado`=?"
+                    + " WHERE `pyp_adm_asist_con`.`id` = ?;");
+            bd.preparedStatement.setString(1, est);
+            bd.preparedStatement.setString(2, idasis);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Up1 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Up1 " + e.getMessage().toString(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public String seleccionaruser(String id) {
+        try {
+            return "SELECT `pyp_historiac`.`usuariolog`"
+                    + " FROM"
+                    + " `database`.`pyp_historiac`"
+                    + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1') "
+                    //                + "AND `pyp_historiac`.`estado` = 0"
+                    //                + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1"
+                    + ";";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Seleccionar user" + e.getMessage(), Save.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+
+    public String seleccionaruservisual(String id) {
+        try {
+            return "SELECT `pyp_visual`.`usuariolog`"
+                    + " FROM"
+                    + " `database`.`pyp_visual`"
+                    + " WHERE `pyp_visual`.`idasistencia`='" + id + "' AND (`pyp_visual`.`estado` = '0' OR `pyp_visual`.`estado` = '1') "
+                    + ";";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "seleccionar usuario visual" + e.getMessage(), Save.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String seleccionaridvisual(String id) {
-        return "SELECT `pyp_visual`.`id`"
-                + " FROM"
-                + " `database`.`pyp_visual`"
-                + " WHERE `pyp_visual`.`idasistencia`='" + id + "' "
-                //                + "AND `pyp_visual`.`estado` = 0"
-                //                + " GROUP BY `pyp_visual`.`id` DESC LIMIT 1"
-                + ";";
+        try {
+            return "SELECT `pyp_visual`.`id`"
+                    + " FROM"
+                    + " `database`.`pyp_visual`"
+                    + " WHERE `pyp_visual`.`idasistencia`='" + id + "' AND (`pyp_visual`.`estado` = '0' OR `pyp_visual`.`estado` = '1')"
+                    //                + "AND `pyp_visual`.`estado` = 0"
+                    //                + " GROUP BY `pyp_visual`.`id` DESC LIMIT 1"
+                    + ";";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "sleccionar id visual" + e.getMessage(), Save.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String seleccionaridhcfinal(String id) {
-        return "SELECT `pyp_historiac`.`id`"
-                + " FROM"
-                + " `database`.`pyp_historiac`"
-                + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "'"
-                + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1;";
+        try {
+            return "SELECT `pyp_historiac`.`id`"
+                    + " FROM"
+                    + " `database`.`pyp_historiac`"
+                    + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "' AND `pyp_historiacl`.`estado` = '0'"
+                    + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1;";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "seleccionar id hc final" + e.getMessage(), Save.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String seleccionaridvisualfinal(String id) {
-        return "SELECT `pyp_visual`.`id`"
-                + " FROM"
-                + " `database`.`pyp_visual`"
-                + " WHERE `pyp_visual`.`idasistencia`='" + id + "'"
-                + " GROUP BY `pyp_visual`.`id` DESC LIMIT 1;";
+        try {
+            return "SELECT `pyp_visual`.`id`"
+                    + " FROM"
+                    + " `database`.`pyp_visual`"
+                    + " WHERE `pyp_visual`.`idasistencia`='" + id + "' AND `pyp_visual`.`estado` = '0'"
+                    + " GROUP BY `pyp_visual`.`id` DESC LIMIT 1;";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "seleccionar visual final" + e.getMessage(), Save.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void newadulto(String id, String usuario, String fecha) {
@@ -221,9 +301,14 @@ public class Save {
     }
 
     public String idmaterna(String id) {
-        return "SELECT `pyp_materna`.`id`"
-                + "FROM `database`.`pyp_materna`"
-                + "WHERE (`pyp_materna`.`id_historia` ='" + id + "');";
+        try {
+            return "SELECT `pyp_materna`.`id`"
+                    + "FROM `database`.`pyp_materna`"
+                    + "WHERE (`pyp_materna`.`id_historia` ='" + id + "');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "seleccionar id materna" + e.getMessage(), Save.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void newobstetrico(String id, String usuario, String fecha) {
@@ -397,9 +482,14 @@ public class Save {
     }
 
     public String selectidplanifica(String id) {
-        return "SELECT `pyp_planificacionf`.`id`"
-                + "FROM `database`.`pyp_planificacionf`"
-                + "WHERE (`pyp_planificacionf`.`idhistoria` = '" + id + "')";
+        try {
+            return "SELECT `pyp_planificacionf`.`id`"
+                    + "FROM `database`.`pyp_planificacionf`"
+                    + "WHERE (`pyp_planificacionf`.`idhistoria` = '" + id + "')";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "seleccionar id planificacion" + e.getMessage(), Save.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void newplanicontrol(String id, String usuario, String fecha) {
@@ -416,9 +506,14 @@ public class Save {
     }
 
     public String selectidhta(String id) {
-        return "SELECT `pyp_hta`.`id`"
-                + "FROM `database`.`pyp_hta`"
-                + "	WHERE (`pyp_hta`.`idhistoria` = '" + id + "')";
+        try {
+            return "SELECT `pyp_hta`.`id`"
+                    + "FROM `database`.`pyp_hta`"
+                    + "	WHERE (`pyp_hta`.`idhistoria` = '" + id + "')";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "seleccionar id hta" + e.getMessage(), Save.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void newhtacontrol(String id, String usuario, String fecha) {
@@ -521,12 +616,17 @@ public class Save {
     }
 
     public String recetam(String id) {
-        return "SELECT COUNT(*)"
-                + "FROM"
-                + "    `database`.`pyp_posologia`"
-                + "    INNER JOIN `database`.`pyp_historiac` "
-                + "        ON (`pyp_posologia`.`id_historiac` = `pyp_historiac`.`id`)"
-                + "WHERE (`pyp_posologia`.`id_historiac` ='" + id + "');";
+        try {
+            return "SELECT COUNT(*)"
+                    + "FROM"
+                    + "    `database`.`pyp_posologia`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_posologia`.`id_historiac` = `pyp_historiac`.`id`)"
+                    + "WHERE (`pyp_posologia`.`id_historiac` ='" + id + "');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "receta medica" + e.getMessage(), Save.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void newreceta(String historia, String usuario, String tipo, String estado) {
@@ -560,19 +660,24 @@ public class Save {
     }
 
     public String cargarpramen(String id) {
-        return "SELECT"
-                + "      `config_rel4505`.`id`"
-                + "      , `config_rel4505`.`idparametro`"
-                + "      , `config_parametros`.`parametro`"
-                + "      , `config_parametros`.`nombre`"
-                + "      , `config_rel4505`.`tipo`"
-                + "      , `config_rel4505`.`valor`"
-                + "      , `config_rel4505`.`validacion`"
-                + "      FROM"
-                + "          `database`.`config_rel4505`"
-                + "           INNER JOIN `database`.`config_parametros` "
-                + "                    ON (`config_rel4505`.`idparametro` = `config_parametros`.`id`)"
-                + "           WHERE (`config_rel4505`.`estado` = 1 AND `config_rel4505`.`id` = '" + id + "');";
+        try {
+            return "SELECT"
+                    + "      `config_rel4505`.`id`"
+                    + "      , `config_rel4505`.`idparametro`"
+                    + "      , `config_parametros`.`parametro`"
+                    + "      , `config_parametros`.`nombre`"
+                    + "      , `config_rel4505`.`tipo`"
+                    + "      , `config_rel4505`.`valor`"
+                    + "      , `config_rel4505`.`validacion`"
+                    + "      FROM"
+                    + "          `database`.`config_rel4505`"
+                    + "           INNER JOIN `database`.`config_parametros` "
+                    + "                    ON (`config_rel4505`.`idparametro` = `config_parametros`.`id`)"
+                    + "           WHERE (`config_rel4505`.`estado` = 1 AND `config_rel4505`.`id` = '" + id + "');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "cargar parametro mensual " + e.getMessage(), Save.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void modifparam(String id, String tipo, String valor, String validacion) {
@@ -639,6 +744,24 @@ public class Save {
             JOptionPane.showMessageDialog(null, "c032" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "c032" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public void newrelexamen(String idproc, String fecha, String resultado, String observacion) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("INSERT INTO `database`.`pyp_laboratory` (`idprocedimiento`, `fecha`, `resultado`, `observacion`) VALUES (?,?,?,?);");
+            bd.preparedStatement.setString(1, idproc);
+            bd.preparedStatement.setString(2, fecha);
+            bd.preparedStatement.setString(3, resultado);
+            bd.preparedStatement.setString(4, observacion);
+            bd.preparedStatement.execute();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "c033" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "c033" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }

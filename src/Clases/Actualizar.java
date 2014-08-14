@@ -13,23 +13,38 @@ public class Actualizar {
     BDConectar bd = new BDConectar();
 
     public String Selectidposo(String id) {
-        return "SELECT `pyp_posologia`.`id`"
-                + " FROM `database`.`pyp_posologia`"
-                + " WHERE `pyp_posologia`.`id_historiac` = '" + id + "' AND `pyp_posologia`.`estado`='0'";
+        try {
+            return "SELECT `pyp_posologia`.`id`"
+                    + " FROM `database`.`pyp_posologia`"
+                    + " WHERE `pyp_posologia`.`id_historiac` = '" + id + "' AND `pyp_posologia`.`estado`='0' ";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Seleccionar id posologia " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String Selectidproc(String id) {
-        return "SELECT `pyp_procedimiento`.`id`"
-                + " FROM `database`.`pyp_procedimiento`"
-                + " WHERE `pyp_procedimiento`.`id_historiapyp` = '" + id + "' AND `pyp_procedimiento`.`estado`='0'";
+        try {
+            return "SELECT `pyp_procedimiento`.`id`"
+                    + " FROM `database`.`pyp_procedimiento`"
+                    + " WHERE `pyp_procedimiento`.`id_historiapyp` = '" + id + "' AND `pyp_procedimiento`.`estado`='0'";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Seleccionar id procedimiento " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String obteneridespecialidad(String nombre) {
-        return "SELECT"
-                + "    `id`"
-                + "FROM"
-                + "    `database`.`static_especialidades`"
-                + "WHERE (`especialidad` = '" + nombre + "');";
+        try {
+            return "SELECT"
+                    + "    `id`"
+                    + "FROM"
+                    + "    `database`.`static_especialidades`"
+                    + "WHERE (`especialidad` = '" + nombre + "' AND `estado` <> '0');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Obtener id especialidad " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void desactivarproc(String id) {
@@ -351,55 +366,85 @@ public class Actualizar {
     }
 
     public String cargardatoshc(String id) {
-        return "SELECT *"
-                + "  FROM `database`.`pyp_historiac`"
-                + "  WHERE `pyp_historiac`.`id` = '" + id + "';";
+        try {
+            return "SELECT *"
+                    + "  FROM `database`.`pyp_historiac`"
+                    + "  WHERE `pyp_historiac`.`id` = '" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "cargar hc " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String cargardatosvisual(String id) {
-        return "SELECT *"
-                + "  FROM `database`.`pyp_visual`"
-                + "  WHERE `pyp_visual`.`id` = '" + id + "';";
+        try {
+            return "SELECT *"
+                    + "  FROM `database`.`pyp_visual`"
+                    + "  WHERE `pyp_visual`.`id` = '" + id + "';";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar datos tamizaje visual " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String cargarcierel1(String id) {
-        return "SELECT"
-                + "    CONCAT(`static_cie10`.`codigo`,' - ', `static_cie10`.`descripcion`) AS dx1"
-                + " FROM"
-                + "    `database`.`pyp_historiac`"
-                + "    INNER JOIN `database`.`static_cie10` "
-                + "        ON (`pyp_historiac`.`diagnosticorel1` = `static_cie10`.`id`)"
-                + "        WHERE (`pyp_historiac`.`diagnosticorel1` ='" + id + "');";
+        try {
+            return "SELECT"
+                    + "    CONCAT(`static_cie10`.`codigo`,' - ', `static_cie10`.`descripcion`) AS dx1"
+                    + " FROM"
+                    + "    `database`.`pyp_historiac`"
+                    + "    INNER JOIN `database`.`static_cie10` "
+                    + "        ON (`pyp_historiac`.`diagnosticorel1` = `static_cie10`.`id`)"
+                    + "        WHERE `pyp_historiac`.`diagnosticorel1` ='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar cie 1" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String cargarcierel2(String id) {
-        return "SELECT"
-                + "    CONCAT(`static_cie10`.`codigo`,' - ', `static_cie10`.`descripcion`) AS dx1"
-                + " FROM"
-                + "    `database`.`pyp_historiac`"
-                + "    INNER JOIN `database`.`static_cie10` "
-                + "        ON (`pyp_historiac`.`diagnosticorel2` = `static_cie10`.`id`)"
-                + "        WHERE (`pyp_historiac`.`diagnosticorel2` ='" + id + "');";
+        try {
+            return "SELECT"
+                    + "    CONCAT(`static_cie10`.`codigo`,' - ', `static_cie10`.`descripcion`) AS dx1"
+                    + " FROM"
+                    + "    `database`.`pyp_historiac`"
+                    + "    INNER JOIN `database`.`static_cie10` "
+                    + "        ON (`pyp_historiac`.`diagnosticorel2` = `static_cie10`.`id`)"
+                    + "        WHERE `pyp_historiac`.`diagnosticorel2` ='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar cie 2" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String cargarcierel3(String id) {
-        return "SELECT"
-                + "    CONCAT(`static_cie10`.`codigo`,' - ', `static_cie10`.`descripcion`) AS dx1"
-                + " FROM"
-                + "    `database`.`pyp_historiac`"
-                + "    INNER JOIN `database`.`static_cie10` "
-                + "        ON (`pyp_historiac`.`diagnosticorel3` = `static_cie10`.`id`)"
-                + "        WHERE (`pyp_historiac`.`diagnosticorel3` ='" + id + "');";
+        try {
+            return "SELECT"
+                    + "    CONCAT(`static_cie10`.`codigo`,' - ', `static_cie10`.`descripcion`) AS dx1"
+                    + " FROM"
+                    + "    `database`.`pyp_historiac`"
+                    + "    INNER JOIN `database`.`static_cie10` "
+                    + "        ON (`pyp_historiac`.`diagnosticorel3` = `static_cie10`.`id`)"
+                    + "        WHERE `pyp_historiac`.`diagnosticorel3` ='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar cie 3" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String cargarcierel4(String id) {
-        return "SELECT"
-                + "    CONCAT(`static_cie10`.`codigo`,' - ', `static_cie10`.`descripcion`) AS dx1"
-                + " FROM"
-                + "    `database`.`pyp_historiac`"
-                + "    INNER JOIN `database`.`static_cie10` "
-                + "        ON (`pyp_historiac`.`diagnosticorel4` = `static_cie10`.`id`)"
-                + "        WHERE (`pyp_historiac`.`diagnosticorel4` ='" + id + "');";
+        try {
+            return "SELECT"
+                    + "    CONCAT(`static_cie10`.`codigo`,' - ', `static_cie10`.`descripcion`) AS dx1"
+                    + " FROM"
+                    + "    `database`.`pyp_historiac`"
+                    + "    INNER JOIN `database`.`static_cie10` "
+                    + "        ON (`pyp_historiac`.`diagnosticorel4` = `static_cie10`.`id`)"
+                    + "        WHERE `pyp_historiac`.`diagnosticorel4` ='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar cie 4" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void actposologia(String idh, String idposo, String dosis) {
@@ -422,9 +467,16 @@ public class Actualizar {
     }
 
     public String cargareventose(String id) {
-        return "SELECT *"
-                + " FROM `database`.`pyp_eventose`"
-                + " WHERE `pyp_eventose`.`Idhistoriac` = '" + id + "'";
+        try {
+            return "SELECT *"
+                    + " FROM `database`.`pyp_eventose`"
+                    + "                  INNER JOIN `database`.`pyp_historiac` "
+                    + "                  ON (`pyp_eventose`.`Idhistoriac` = `pyp_historiac`.`id`)"
+                    + " WHERE `pyp_eventose`.`Idhistoriac` = '" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1')";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar eventos estresantes " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void actprocedimiento(String id, String idcup, String esta) {
@@ -485,62 +537,77 @@ public class Actualizar {
     }
 
     public String cargarantecedentesg(String id) {
-        return "SELECT `pyp_antecedentesg`.`id`"
-                + "    , `pyp_antecedentesg`.`id_historiac`"
-                + "    , DATE_FORMAT(`pyp_antecedentesg`.`FUM`, '%d/%m/%Y') AS `FUM`"
-                + "    , `pyp_antecedentesg`.`Ciclos`"
-                + "    , `pyp_antecedentesg`.`gestas`"
-                + "    , `pyp_antecedentesg`.`partos`"
-                + "    , `pyp_antecedentesg`.`abortos`"
-                + "    , `pyp_antecedentesg`.`cesareas`"
-                + "    , `pyp_antecedentesg`.`vaginales`"
-                + "    , DATE_FORMAT(`pyp_antecedentesg`.`FUP`, '%d/%m/%Y') AS `FUP`"
-                + "    , `pyp_antecedentesg`.`menarquia`"
-                + "    , `pyp_antecedentesg`.`edadinicio`"
-                + "    , `pyp_antecedentesg`.`vidasexualac`"
-                + "    , `pyp_antecedentesg`.`relacionescon`"
-                + "    , `pyp_antecedentesg`.`parejaestable`"
-                + "    , `pyp_antecedentesg`.`usopreservativo`"
-                + "    , `pyp_antecedentesg`.`macprevio`"
-                + "    , `pyp_antecedentesg`.`metodoprevio`"
-                + "    , `pyp_antecedentesg`.`tiempousoprevio`"
-                + "    , `pyp_antecedentesg`.`efectosprevios`"
-                + "    , `pyp_antecedentesg`.`macactual`"
-                + "    , `pyp_antecedentesg`.`metodoactual`"
-                + "    , `pyp_antecedentesg`.`tiempoactual`"
-                + "    , `pyp_antecedentesg`.`efectosactual`"
-                + " FROM `database`.`pyp_antecedentesg`"
-                + " WHERE `pyp_antecedentesg`.`id_historiac` = '" + id + "'";
+        try {
+            return "SELECT `pyp_antecedentesg`.`id`"
+                    + "    , `pyp_antecedentesg`.`id_historiac`"
+                    + "    , DATE_FORMAT(`pyp_antecedentesg`.`FUM`, '%d/%m/%Y') AS `FUM`"
+                    + "    , `pyp_antecedentesg`.`Ciclos`"
+                    + "    , `pyp_antecedentesg`.`gestas`"
+                    + "    , `pyp_antecedentesg`.`partos`"
+                    + "    , `pyp_antecedentesg`.`abortos`"
+                    + "    , `pyp_antecedentesg`.`cesareas`"
+                    + "    , `pyp_antecedentesg`.`vaginales`"
+                    + "    , DATE_FORMAT(`pyp_antecedentesg`.`FUP`, '%d/%m/%Y') AS `FUP`"
+                    + "    , `pyp_antecedentesg`.`menarquia`"
+                    + "    , `pyp_antecedentesg`.`edadinicio`"
+                    + "    , `pyp_antecedentesg`.`vidasexualac`"
+                    + "    , `pyp_antecedentesg`.`relacionescon`"
+                    + "    , `pyp_antecedentesg`.`parejaestable`"
+                    + "    , `pyp_antecedentesg`.`usopreservativo`"
+                    + "    , `pyp_antecedentesg`.`macprevio`"
+                    + "    , `pyp_antecedentesg`.`metodoprevio`"
+                    + "    , `pyp_antecedentesg`.`tiempousoprevio`"
+                    + "    , `pyp_antecedentesg`.`efectosprevios`"
+                    + "    , `pyp_antecedentesg`.`macactual`"
+                    + "    , `pyp_antecedentesg`.`metodoactual`"
+                    + "    , `pyp_antecedentesg`.`tiempoactual`"
+                    + "    , `pyp_antecedentesg`.`efectosactual`"
+                    + " FROM `database`.`pyp_antecedentesg`"
+                    + " WHERE `pyp_antecedentesg`.`id_historiac` = '" + id + "'";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar antecedentes gineco " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String cargaranteg(String idpaciente) {
-        return "SELECT "
-                + "	`pyp_info_antecedentesg`.`id`"
-                + "      , `pyp_info_antecedentesg`.`idpaciente`"
-                + "      , DATE_FORMAT(`pyp_info_antecedentesg`.`FUM`, '%d/%m/%Y') AS `FUM`"
-                + "      , `pyp_info_antecedentesg`.`Ciclos`"
-                + "      , `pyp_info_antecedentesg`.`gestas`"
-                + "      , `pyp_info_antecedentesg`.`partos`"
-                + "      , `pyp_info_antecedentesg`.`abortos`"
-                + "      , `pyp_info_antecedentesg`.`cesareas`"
-                + "      , `pyp_info_antecedentesg`.`vaginales`"
-                + "      , DATE_FORMAT(`pyp_info_antecedentesg`.`FUP`, '%d/%m/%Y') AS `FUP`"
-                + "      , `pyp_info_antecedentesg`.`menarquia`"
-                + "      , `pyp_info_antecedentesg`.`edadinicio`"
-                + "      , `pyp_info_antecedentesg`.`vidasexualac`"
-                + "      , `pyp_info_antecedentesg`.`relacionescon`"
-                + "      , `pyp_info_antecedentesg`.`parejaestable`"
-                + "      , `pyp_info_antecedentesg`.`usopreservativo`"
-                + "      FROM `database`.`pyp_info_antecedentesg`"
-                + "      WHERE `pyp_info_antecedentesg`.`idpaciente` = '" + idpaciente + "'";
+        try {
+            return "SELECT "
+                    + "	`pyp_info_antecedentesg`.`id`"
+                    + "      , `pyp_info_antecedentesg`.`idpaciente`"
+                    + "      , DATE_FORMAT(`pyp_info_antecedentesg`.`FUM`, '%d/%m/%Y') AS `FUM`"
+                    + "      , `pyp_info_antecedentesg`.`Ciclos`"
+                    + "      , `pyp_info_antecedentesg`.`gestas`"
+                    + "      , `pyp_info_antecedentesg`.`partos`"
+                    + "      , `pyp_info_antecedentesg`.`abortos`"
+                    + "      , `pyp_info_antecedentesg`.`cesareas`"
+                    + "      , `pyp_info_antecedentesg`.`vaginales`"
+                    + "      , DATE_FORMAT(`pyp_info_antecedentesg`.`FUP`, '%d/%m/%Y') AS `FUP`"
+                    + "      , `pyp_info_antecedentesg`.`menarquia`"
+                    + "      , `pyp_info_antecedentesg`.`edadinicio`"
+                    + "      , `pyp_info_antecedentesg`.`vidasexualac`"
+                    + "      , `pyp_info_antecedentesg`.`relacionescon`"
+                    + "      , `pyp_info_antecedentesg`.`parejaestable`"
+                    + "      , `pyp_info_antecedentesg`.`usopreservativo`"
+                    + "      FROM `database`.`pyp_info_antecedentesg`"
+                    + "      WHERE `pyp_info_antecedentesg`.`idpaciente` = '" + idpaciente + "'";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar antecedentes gineco " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String cargarexploracion(String id) {
-        return "SELECT *"
-                + "  FROM"
-                + "       `database`.`pyp_explofisica`"
-                + "  WHERE"
-                + "       `pyp_explofisica`.`idhistoriac` = '" + id + "'";
+        try {
+            return "SELECT *"
+                    + "  FROM"
+                    + "       `database`.`pyp_explofisica`"
+                    + "  WHERE"
+                    + "       `pyp_explofisica`.`idhistoriac` = '" + id + "'";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar exploracion fisica " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void actualizarpruebas(String id, String nombre) {
@@ -562,9 +629,14 @@ public class Actualizar {
     }
 
     public String cargarpruebas(String id) {
-        return "SELECT COUNT(`pyp_pruebascomplementarias`.`id`) AS cantidad"
-                + "	FROM `pyp_pruebascomplementarias`"
-                + "	WHERE `pyp_pruebascomplementarias`.`id_infohisto` = '" + id + "';";
+        try {
+            return "SELECT COUNT(`pyp_pruebascomplementarias`.`id`) AS cantidad"
+                    + "	FROM `pyp_pruebascomplementarias`"
+                    + "	WHERE `pyp_pruebascomplementarias`.`id_infohisto` = '" + id + "';";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar pruebas complementarias " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void actobstetricos(String id, String fcu, String nmuertos, String nvivos, String viven, String muertossem,
@@ -606,27 +678,32 @@ public class Actualizar {
     }
 
     public String cargarobtetricos(String id) {
-        return "SELECT"
-                + "     `pyp_materna_obstetricos`.`id`"
-                + "    , `pyp_materna_obstetricos`.`id_materna`"
-                + "    , DATE_FORMAT (`pyp_materna_obstetricos`.`fcuembarazo`, '%d/%m/%Y') AS `fcuembarazo`"
-                + "    , `pyp_materna_obstetricos`.`nacidosmuertos`"
-                + "    , `pyp_materna_obstetricos`.`nacidosvivos`"
-                + "    , `pyp_materna_obstetricos`.`viven`"
-                + "    , `pyp_materna_obstetricos`.`muertos1sem`"
-                + "    , `pyp_materna_obstetricos`.`despues1sem`"
-                + "    , `pyp_materna_obstetricos`.`ultimoprevio`"
-                + "    , `pyp_materna_obstetricos`.`embarazop`"
-                + "    , `pyp_materna_obstetricos`.`embarazod`"
-                + "    , `pyp_materna_obstetricos`.`complicaciones`"
-                + "    , `pyp_materna_obstetricos`.`fracasomac`"
-                + " FROM"
-                + "    `database`.`pyp_materna`"
-                + "    INNER JOIN `database`.`pyp_historiac` "
-                + "        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)"
-                + "    INNER JOIN `database`.`pyp_materna_obstetricos` "
-                + "        ON (`pyp_materna_obstetricos`.`id_materna` = `pyp_materna`.`id`)"
-                + " WHERE (`pyp_historiac`.`id` ='" + id + "');";
+        try {
+            return "SELECT"
+                    + "     `pyp_materna_obstetricos`.`id`"
+                    + "    , `pyp_materna_obstetricos`.`id_materna`"
+                    + "    , DATE_FORMAT (`pyp_materna_obstetricos`.`fcuembarazo`, '%d/%m/%Y') AS `fcuembarazo`"
+                    + "    , `pyp_materna_obstetricos`.`nacidosmuertos`"
+                    + "    , `pyp_materna_obstetricos`.`nacidosvivos`"
+                    + "    , `pyp_materna_obstetricos`.`viven`"
+                    + "    , `pyp_materna_obstetricos`.`muertos1sem`"
+                    + "    , `pyp_materna_obstetricos`.`despues1sem`"
+                    + "    , `pyp_materna_obstetricos`.`ultimoprevio`"
+                    + "    , `pyp_materna_obstetricos`.`embarazop`"
+                    + "    , `pyp_materna_obstetricos`.`embarazod`"
+                    + "    , `pyp_materna_obstetricos`.`complicaciones`"
+                    + "    , `pyp_materna_obstetricos`.`fracasomac`"
+                    + " FROM"
+                    + "    `database`.`pyp_materna`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_materna_obstetricos` "
+                    + "        ON (`pyp_materna_obstetricos`.`id_materna` = `pyp_materna`.`id`)"
+                    + " WHERE (`pyp_historiac`.`id` ='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar obstetricos" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void actgestaante(String id, String vdmenor, String vdmayor, String sullivan, String agshb,
@@ -671,41 +748,46 @@ public class Actualizar {
     }
 
     public String cargargesta(String id) {
-        return "SELECT"
-                + "   `pyp_materna_gestaactual`.`id`"
-                + "    , `pyp_materna_gestaactual`.`id_materna`"
-                + "    ,`pyp_materna_gestaactual`.`vdrlmenor`"
-                + "    , `pyp_materna_gestaactual`.`vdrlmayor`"
-                + "    , `pyp_materna_gestaactual`.`tsullivan`"
-                + "    , `pyp_materna_gestaactual`.`agshb`"
-                + "    , `pyp_materna_gestaactual`.`toxoplasma`"
-                + "    , `pyp_materna_gestaactual`.`grupos`"
-                + "    , `pyp_materna_gestaactual`.`sifilisfta`"
-                + "    , `pyp_materna_gestaactual`.`antiprevia`"
-                + "    , `pyp_materna_gestaactual`.`antiembarazo`"
-                + "    , `pyp_materna_gestaactual`.`antitevigente`"
-                + "    , `pyp_materna_gestaactual`.`mesd1`"
-                + "    , `pyp_materna_gestaactual`.`mesd2`"
-                + "    , `pyp_materna_gestaactual`.`vihconsej`"
-                + "    , `pyp_materna_gestaactual`.`vihsolicitado`"
-                + "    , DATE_FORMAT(`pyp_materna_gestaactual`.`fpp`, '%d/%m/%Y') AS `FechaParto`"
-                + "    , `pyp_materna_gestaactual`.`egfum`"
-                + "    , `pyp_materna_gestaactual`.`egeco`"
-                + "    , `pyp_materna_gestaactual`.`eg`"
-                + "    , `pyp_materna_gestaactual`.`alturau`"
-                + "    , `pyp_materna_gestaactual`.`movfetales`"
-                + "    , `pyp_materna_gestaactual`.`fcf`"
-                + "    , `pyp_materna_gestaactual`.`presentacion`"
-                + "    , `pyp_materna_gestaactual`.`fe`"
-                + "    , `pyp_materna_gestaactual`.`folatos`"
-                + "    , `pyp_materna_gestaactual`.`calcio`"
-                + "FROM"
-                + "    `database`.`pyp_materna`"
-                + "    INNER JOIN `database`.`pyp_historiac` "
-                + "        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)"
-                + "    INNER JOIN `database`.`pyp_materna_gestaactual` "
-                + "        ON (`pyp_materna_gestaactual`.`id_materna` = `pyp_materna`.`id`)"
-                + "WHERE (`pyp_historiac`.`id` ='" + id + "');";
+        try {
+            return "SELECT"
+                    + "   `pyp_materna_gestaactual`.`id`"
+                    + "    , `pyp_materna_gestaactual`.`id_materna`"
+                    + "    ,`pyp_materna_gestaactual`.`vdrlmenor`"
+                    + "    , `pyp_materna_gestaactual`.`vdrlmayor`"
+                    + "    , `pyp_materna_gestaactual`.`tsullivan`"
+                    + "    , `pyp_materna_gestaactual`.`agshb`"
+                    + "    , `pyp_materna_gestaactual`.`toxoplasma`"
+                    + "    , `pyp_materna_gestaactual`.`grupos`"
+                    + "    , `pyp_materna_gestaactual`.`sifilisfta`"
+                    + "    , `pyp_materna_gestaactual`.`antiprevia`"
+                    + "    , `pyp_materna_gestaactual`.`antiembarazo`"
+                    + "    , `pyp_materna_gestaactual`.`antitevigente`"
+                    + "    , `pyp_materna_gestaactual`.`mesd1`"
+                    + "    , `pyp_materna_gestaactual`.`mesd2`"
+                    + "    , `pyp_materna_gestaactual`.`vihconsej`"
+                    + "    , `pyp_materna_gestaactual`.`vihsolicitado`"
+                    + "    , DATE_FORMAT(`pyp_materna_gestaactual`.`fpp`, '%d/%m/%Y') AS `FechaParto`"
+                    + "    , `pyp_materna_gestaactual`.`egfum`"
+                    + "    , `pyp_materna_gestaactual`.`egeco`"
+                    + "    , `pyp_materna_gestaactual`.`eg`"
+                    + "    , `pyp_materna_gestaactual`.`alturau`"
+                    + "    , `pyp_materna_gestaactual`.`movfetales`"
+                    + "    , `pyp_materna_gestaactual`.`fcf`"
+                    + "    , `pyp_materna_gestaactual`.`presentacion`"
+                    + "    , `pyp_materna_gestaactual`.`fe`"
+                    + "    , `pyp_materna_gestaactual`.`folatos`"
+                    + "    , `pyp_materna_gestaactual`.`calcio`"
+                    + "FROM"
+                    + "    `database`.`pyp_materna`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_materna_gestaactual` "
+                    + "        ON (`pyp_materna_gestaactual`.`id_materna` = `pyp_materna`.`id`)"
+                    + "WHERE (`pyp_historiac`.`id` ='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar datos gesta actual" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void actgestafinal(String id, String fpp, String egfum, String egeco, String eg, String alturau,
@@ -798,13 +880,18 @@ public class Actualizar {
     }
 
     public String cargarpostparto(String id) {
-        return "SELECT"
-                + "	`pyp_postparto`.*"
-                + " FROM"
-                + "    `database`.`pyp_postparto`"
-                + "    INNER JOIN `database`.`pyp_historiac` "
-                + "        ON (`pyp_postparto`.`id_historiac` = `pyp_historiac`.`id`)"
-                + " WHERE (`pyp_historiac`.`id` ='" + id + "');";
+        try {
+            return "SELECT"
+                    + "	`pyp_postparto`.*"
+                    + " FROM"
+                    + "    `database`.`pyp_postparto`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_postparto`.`id_historiac` = `pyp_historiac`.`id`)"
+                    + " WHERE (`pyp_historiac`.`id` ='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar dato post parto " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void apgarrecien(String id, String colorp, String fc, String reflejos, String tonom, String respiracion, String resultado) {
@@ -873,13 +960,18 @@ public class Actualizar {
     }
 
     public String cargarrecien(String id) {
-        return "SELECT"
-                + "`pyp_recienniacido`.*"
-                + "FROM"
-                + "    `database`.`pyp_recienniacido`"
-                + "    INNER JOIN `database`.`pyp_historiac`"
-                + "        ON (`pyp_recienniacido`.`idhistoria` = `pyp_historiac`.`id`)"
-                + "WHERE (`pyp_historiac`.`id` ='" + id + "');";
+        try {
+            return "SELECT"
+                    + "`pyp_recienniacido`.*"
+                    + "FROM"
+                    + "    `database`.`pyp_recienniacido`"
+                    + "    INNER JOIN `database`.`pyp_historiac`"
+                    + "        ON (`pyp_recienniacido`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + "WHERE (`pyp_historiac`.`id` ='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar datos recien nacido" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void actanticonceptivos(String id, String eleccionifor, String preservativos, String cantidad) {
@@ -904,9 +996,14 @@ public class Actualizar {
     }
 
     public String cargaranticonceptivos(String id) {
-        return "SELECT *"
-                + "FROM `database`.`pyp_planificacionf`"
-                + "WHERE (`pyp_planificacionf`.`idhistoria`='" + id + "')";
+        try {
+            return "SELECT *"
+                    + "FROM `database`.`pyp_planificacionf`"
+                    + "WHERE (`pyp_planificacionf`.`idhistoria`='" + id + "')";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar datos de planificacion familiar " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void actjoven(String id, String desarrolloa, String desarrollovello, String valoracionv, String fechavv,
@@ -939,19 +1036,24 @@ public class Actualizar {
     }
 
     public String cargarjoven(String id) {
-        return "SELECT `pyp_joven`.`id`"
-                + "    , `pyp_joven`.`idhistoria`"
-                + "    , `pyp_joven`.`desarrolloa`"
-                + "    , `pyp_joven`.`desarrollovello`"
-                + "    , `pyp_joven`.`valoracionv`"
-                + "    , DATE_FORMAT(`pyp_joven`.`fechavv`, '%d/%m/%Y') AS fechavv"
-                + "    , `pyp_joven`.`valoraciono`"
-                + "    , DATE_FORMAT(`pyp_joven`.`fechavo`, '%d/%m/%Y') AS fechavo"
-                + "    , `pyp_joven`.`controlplaca`"
-                + "    , `pyp_joven`.`sellantes`"
-                + "    , `pyp_joven`.`flour`"
-                + " FROM `database`.`pyp_joven`"
-                + " WHERE (`pyp_joven`.`idhistoria`='" + id + "')";
+        try {
+            return "SELECT `pyp_joven`.`id`"
+                    + "    , `pyp_joven`.`idhistoria`"
+                    + "    , `pyp_joven`.`desarrolloa`"
+                    + "    , `pyp_joven`.`desarrollovello`"
+                    + "    , `pyp_joven`.`valoracionv`"
+                    + "    , DATE_FORMAT(`pyp_joven`.`fechavv`, '%d/%m/%Y') AS fechavv"
+                    + "    , `pyp_joven`.`valoraciono`"
+                    + "    , DATE_FORMAT(`pyp_joven`.`fechavo`, '%d/%m/%Y') AS fechavo"
+                    + "    , `pyp_joven`.`controlplaca`"
+                    + "    , `pyp_joven`.`sellantes`"
+                    + "    , `pyp_joven`.`flour`"
+                    + " FROM `database`.`pyp_joven`"
+                    + " WHERE (`pyp_joven`.`idhistoria`='" + id + "')";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar datos joven sano" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void acthta(String id, String hta, String htac, String dm1, String dm1c, String dm2, String dm2c, String dislipidemia,
@@ -985,15 +1087,25 @@ public class Actualizar {
     }
 
     public String cargarhta(String id) {
-        return "SELECT * "
-                + "FROM `database`.`pyp_hta`"
-                + "WHERE(`pyp_hta`.`idhistoria`='" + id + "')";
+        try {
+            return "SELECT * "
+                    + "FROM `database`.`pyp_hta`"
+                    + "WHERE(`pyp_hta`.`idhistoria`='" + id + "')";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar hta " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String cargardm(String id) {
-        return "SELECT * "
-                + "FROM `database`.`pyp_dm`"
-                + "WHERE(`pyp_dm`.`idhistoria`='" + id + "')";
+        try {
+            return "SELECT * "
+                    + "FROM `database`.`pyp_dm`"
+                    + "WHERE(`pyp_dm`.`idhistoria`='" + id + "')";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar diabetes " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void actvaloracion(String id, String meses, String mg, String mfa, String al, String ps, String total) {
@@ -1020,9 +1132,14 @@ public class Actualizar {
     }
 
     public String cargarcrecimiento(String id) {
-        return "SELECT *"
-                + "FROM `database`.`pyp_crecimiento`"
-                + "WHERE(`pyp_crecimiento`.`idhistoria`='" + id + "')";
+        try {
+            return "SELECT *"
+                    + "FROM `database`.`pyp_crecimiento`"
+                    + "WHERE(`pyp_crecimiento`.`idhistoria`='" + id + "')";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar crecimiento" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void actcrecimientoapgar(String id, String colorpiel, String frecuenciac, String reflejos, String tonomuscular,
@@ -1094,21 +1211,36 @@ public class Actualizar {
     }
 
     public String cargarante(String idpaciente) {
-        return "SELECT *"
-                + "FROM `database`.`info_ant_personales`"
-                + "WHERE `info_ant_personales`.`id_paciente` = '" + idpaciente + "'";
+        try {
+            return "SELECT *"
+                    + "FROM `database`.`info_ant_personales`"
+                    + "WHERE `info_ant_personales`.`id_paciente` = '" + idpaciente + "'";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar anteceentes" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String contarantecedente(String idpaciente) {
-        return "SELECT COUNT(*)"
-                + "FROM `database`.`info_ant_personales`"
-                + "WHERE `info_ant_personales`.`id_paciente` = '" + idpaciente + "'";
+        try {
+            return "SELECT COUNT(*)"
+                    + "FROM `database`.`info_ant_personales`"
+                    + "WHERE `info_ant_personales`.`id_paciente` = '" + idpaciente + "'";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar contar antecedentes" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String contarginecog(String id) {
-        return "SELECT COUNT(*)"
-                + "FROM `database`.`pyp_info_antecedentesg`"
-                + "WHERE `pyp_info_antecedentesg`.`idpaciente` = '" + id + "'";
+        try {
+            return "SELECT COUNT(*)"
+                    + "FROM `database`.`pyp_info_antecedentesg`"
+                    + "WHERE `pyp_info_antecedentesg`.`idpaciente` = '" + id + "'";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar gineco" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void actinfoante(String idpaciente, String alergias, String ingresos, String traumatismos, String tratamientos, String dm,
@@ -1186,34 +1318,39 @@ public class Actualizar {
     }
 
     public String cargarcontrolplani(String id) {
-        return "SELECT"
-                + "    `pyp_planificacion_control`.`id`"
-                + "    , `pyp_planificacion_control`.`idplanificacion`"
-                + "    , `pyp_planificacion_control`.`macante`"
-                + "    , `pyp_planificacion_control`.`satisfaccion`"
-                + "    , `pyp_planificacion_control`.`comprotamiento`"
-                + "    , `pyp_planificacion_control`.`transtornos`"
-                + "    , `pyp_planificacion_control`.`molestiamamas`"
-                + "    , `pyp_planificacion_control`.`manchaspiel`"
-                + "    , `pyp_planificacion_control`.`dolorvientre`"
-                + "    , `pyp_planificacion_control`.`expulsion`"
-                + "    , `pyp_planificacion_control`.`edemas`"
-                + "    , `pyp_planificacion_control`.`varices`"
-                + "    , `pyp_planificacion_control`.`mareos`"
-                + "    , `pyp_planificacion_control`.`cefaleas`"
-                + "    , `pyp_planificacion_control`.`flujo`"
-                + "    , `pyp_planificacion_control`.`urinarios`"
-                + "    , `pyp_planificacion_control`.`citologia`"
-                + "    , DATE_FORMAT(`pyp_planificacion_control`.`fechacito`, '%d/%m/%Y') AS `fechacito`"
-                + "    , `pyp_planificacion_control`.`riesgoproductivo`"
-                + "    , `pyp_planificacion_control`.`descripcion`"
-                + "FROM"
-                + "    `database`.`pyp_planificacion_control`"
-                + "    INNER JOIN `database`.`pyp_planificacionf` "
-                + "        ON (`pyp_planificacion_control`.`idplanificacion` = `pyp_planificacionf`.`id`)"
-                + "    INNER JOIN `database`.`pyp_historiac` "
-                + "        ON (`pyp_planificacionf`.`idhistoria` = `pyp_historiac`.`id`)"
-                + "WHERE (`pyp_historiac`.`id` ='" + id + "');";
+        try {
+            return "SELECT"
+                    + "    `pyp_planificacion_control`.`id`"
+                    + "    , `pyp_planificacion_control`.`idplanificacion`"
+                    + "    , `pyp_planificacion_control`.`macante`"
+                    + "    , `pyp_planificacion_control`.`satisfaccion`"
+                    + "    , `pyp_planificacion_control`.`comprotamiento`"
+                    + "    , `pyp_planificacion_control`.`transtornos`"
+                    + "    , `pyp_planificacion_control`.`molestiamamas`"
+                    + "    , `pyp_planificacion_control`.`manchaspiel`"
+                    + "    , `pyp_planificacion_control`.`dolorvientre`"
+                    + "    , `pyp_planificacion_control`.`expulsion`"
+                    + "    , `pyp_planificacion_control`.`edemas`"
+                    + "    , `pyp_planificacion_control`.`varices`"
+                    + "    , `pyp_planificacion_control`.`mareos`"
+                    + "    , `pyp_planificacion_control`.`cefaleas`"
+                    + "    , `pyp_planificacion_control`.`flujo`"
+                    + "    , `pyp_planificacion_control`.`urinarios`"
+                    + "    , `pyp_planificacion_control`.`citologia`"
+                    + "    , DATE_FORMAT(`pyp_planificacion_control`.`fechacito`, '%d/%m/%Y') AS `fechacito`"
+                    + "    , `pyp_planificacion_control`.`riesgoproductivo`"
+                    + "    , `pyp_planificacion_control`.`descripcion`"
+                    + "FROM"
+                    + "    `database`.`pyp_planificacion_control`"
+                    + "    INNER JOIN `database`.`pyp_planificacionf` "
+                    + "        ON (`pyp_planificacion_control`.`idplanificacion` = `pyp_planificacionf`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_planificacionf`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + "WHERE (`pyp_historiac`.`id` ='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar control planificacion " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void guardadohc(String idhc, String idhis) {
@@ -1321,14 +1458,19 @@ public class Actualizar {
     }
 
     public String cargarhtacontrol(String id) {
-        return "SELECT `pyp_hta_control`.*"
-                + "FROM"
-                + "    `database`.`pyp_hta`"
-                + "    INNER JOIN `database`.`pyp_historiac` "
-                + "        ON (`pyp_hta`.`idhistoria` = `pyp_historiac`.`id`)"
-                + "    INNER JOIN `database`.`pyp_hta_control` "
-                + "        ON (`pyp_hta_control`.`idhta` = `pyp_hta`.`id`)"
-                + "WHERE (`pyp_historiac`.`id` ='" + id + "');";
+        try {
+            return "SELECT `pyp_hta_control`.*"
+                    + "FROM"
+                    + "    `database`.`pyp_hta`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_hta`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_hta_control` "
+                    + "        ON (`pyp_hta_control`.`idhta` = `pyp_hta`.`id`)"
+                    + "WHERE (`pyp_historiac`.`id` ='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar hta control " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void guardarvisual(String id, String idasis, String ojoderecho, String ojoizquierdo, String ambos, String ojoderecho2,
@@ -1360,15 +1502,25 @@ public class Actualizar {
     }
 
     public String cargarmeses(String id) {
-        return "SELECT *"
-                + "FROM `database`.`pyp_crecimiento_eadmeses`"
-                + "WHERE(`pyp_crecimiento_eadmeses`.`idhistoria` = '" + id + "');";
+        try {
+            return "SELECT *"
+                    + "FROM `database`.`pyp_crecimiento_eadmeses`"
+                    + "WHERE(`pyp_crecimiento_eadmeses`.`idhistoria` = '" + id + "');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar crecimiento meses" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String cargaraños(String id) {
-        return "SELECT *"
-                + "FROM `pyp_crecimiento_eadaños`"
-                + "WHERE(`pyp_crecimiento_eadaños`.`idhistoria` = '" + id + "');";
+        try {
+            return "SELECT *"
+                    + "FROM `pyp_crecimiento_eadaños`"
+                    + "WHERE(`pyp_crecimiento_eadaños`.`idhistoria` = '" + id + "');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar crecimiento años" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void actvaloracionaños(String id, String meses, String mg, String mfa, String al, String ps) {
@@ -1394,21 +1546,26 @@ public class Actualizar {
     }
 
     public String cargarganancia(String id) {
-        return "SELECT"
-                + "    `pyp_explofisica`.`peso`"
-                + "FROM"
-                + "    `database`.`pyp_explofisica`"
-                + "    INNER JOIN `database`.`pyp_historiac` "
-                + "        ON (`pyp_explofisica`.`idhistoriac` = `pyp_historiac`.`id`)"
-                + "    INNER JOIN `database`.`pyp_adm_asist_con` "
-                + "        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)"
-                + "    INNER JOIN `database`.`pyp_adm_agend` "
-                + "        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)"
-                + "    INNER JOIN `database`.`info_paciente` "
-                + "        ON (`pyp_adm_agend`.`id_paciente` = `info_paciente`.`id`)"
-                + "WHERE (`info_paciente`.`id` = '" + id + "'"
-                + "    AND `pyp_historiac`.`estado` =1 AND `pyp_adm_agend`.`id_programa` = 9)"
-                + "GROUP BY `pyp_explofisica`.`id` DESC LIMIT 1;";
+        try {
+            return "SELECT"
+                    + "    `pyp_explofisica`.`peso`"
+                    + "FROM"
+                    + "    `database`.`pyp_explofisica`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_explofisica`.`idhistoriac` = `pyp_historiac`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_adm_asist_con` "
+                    + "        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)"
+                    + "    INNER JOIN `database`.`pyp_adm_agend` "
+                    + "        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)"
+                    + "    INNER JOIN `database`.`info_paciente` "
+                    + "        ON (`pyp_adm_agend`.`id_paciente` = `info_paciente`.`id`)"
+                    + "WHERE (`info_paciente`.`id` = '" + id + "'"
+                    + "    AND `pyp_historiac`.`estado` =1 AND `pyp_adm_agend`.`id_programa` = 9)"
+                    + "GROUP BY `pyp_explofisica`.`id` DESC LIMIT 1;";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar ganancia materna" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void controlmaterno(String id, String fecha, String ganancia, String ncontrol) {
@@ -1431,21 +1588,31 @@ public class Actualizar {
     }
 
     public String cargarcantidadcontrol(String id) {
-        return "SELECT"
-                + "    COUNT(`pyp_adm_asist_con`.`id`)"
-                + "FROM"
-                + "    `database`.`pyp_adm_asist_con`"
-                + "    INNER JOIN `database`.`pyp_adm_agend` "
-                + "        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)"
-                + "WHERE (`pyp_adm_asist_con`.`estado` =2"
-                + "    AND `pyp_adm_agend`.`id_paciente` ='" + id + "'"
-                + "    AND `pyp_adm_agend`.`id_programa` =9);";
+        try {
+            return "SELECT"
+                    + "    COUNT(`pyp_adm_asist_con`.`id`)"
+                    + "FROM"
+                    + "    `database`.`pyp_adm_asist_con`"
+                    + "    INNER JOIN `database`.`pyp_adm_agend` "
+                    + "        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)"
+                    + "WHERE (`pyp_adm_asist_con`.`estado` =2"
+                    + "    AND `pyp_adm_agend`.`id_paciente` ='" + id + "'"
+                    + "    AND `pyp_adm_agend`.`id_programa` =9);";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar cantidad control" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String cargargananciam(String id) {
-        return "SELECT *"
-                + "FROM `database`.`pyp_contolmaterno`"
-                + "WHERE (`pyp_contolmaterno`.`idhistoria` ='" + id + "');";
+        try {
+            return "SELECT *"
+                    + "FROM `database`.`pyp_contolmaterno`"
+                    + "WHERE (`pyp_contolmaterno`.`idhistoria` ='" + id + "');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar ganancia m " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void actualizarginecoginfo(String id, String fum, String ciclos, String gestas, String partos, String abortos, String cesareas,
@@ -1524,163 +1691,178 @@ public class Actualizar {
     }
 
     public String rel4505mes(String nombreentidad, String fechaini, String fechafin) {
-        return "SELECT"
-                + "                    `pyp_adm_agend`.`id_programa`"
-                + "                    , `pyp_adm_asist_con`.`primera_vez`"
-                + "                    , `info_paciente`.`tipo_doc`"
-                + "                    , `info_paciente`.`num_doc`"
-                + "                    , `info_paciente`.`apellido1`"
-                + "                    , `info_paciente`.`apellido2`"
-                + "                    , `info_paciente`.`nombre1`"
-                + "                    , `info_paciente`.`nombre2`"
-                + "                    ,DATE_FORMAT(`info_paciente`.`fecha_nacimiento`, '%Y-%m-%d') AS fecha"
-                + "                    , `info_paciente`.`genero`"
-                + "                    , `info_paciente`.`raza`"
-                + "                    , `info_paciente`.`etnia`"
-                + "                    , `pyp_adm_agend`.`escolaridad`"
-                + "                    , `pyp_eventose`.`decersionE` AS `gestacion`"
-                + "                    , `static_cie10`.`codigo`"
-                + "                    , `static_cie10_1`.`codigo`"
-                + "                    , `static_cie10_2`.`codigo`"
-                + "                    , `static_cie10_3`.`codigo`"
-                + "                    , `pyp_adm_agend`.`fecha` AS `fechaatencion`"
-                + "                    , `pyp_explofisica`.`peso`"
-                + "                    , `pyp_explofisica`.`talla`"
-                + "                    , `pyp_materna_gestaactual`.`fpp`"
-                + "                    , `pyp_crecimiento`.`egparto`"
-                + "                    , `pyp_antecedentesg`.`metodoactual`"
-                + "                    , `pyp_contolmaterno`.`ncontrol`"
-                + "                    , `pyp_materna_gestaactual`.`fe`"
-                + "                    , `pyp_materna_gestaactual`.`folatos`"
-                + "                    , `pyp_materna_gestaactual`.`calcio`"
-                + "                    , `pyp_recienniacido`.`tshneonatal`"
-                + "                    , `calc_edad`(`info_paciente`.`fecha_nacimiento`) as edada"
-                + "                    ,`pyp_antecedentesg`.`FUP`"
-                + "                    ,`pyp_adm_asist_con`.`fecha` AS `faten`"
-                + "                    ,`pyp_historiac`.`id`"
-                + "                FROM"
-                + "                    `database`.`pyp_adm_asist_con`"
-                + "                    INNER JOIN `database`.`pyp_adm_agend` "
-                + "                        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)"
-                + "                    INNER JOIN `database`.`info_paciente` "
-                + "                        ON (`pyp_adm_agend`.`id_paciente` = `info_paciente`.`id`)"
-                + "                    INNER JOIN `database`.`info_entidades` "
-                + "                        ON (`info_paciente`.`contratante` = `info_entidades`.`id`)"
-                + "                    INNER JOIN `database`.`pyp_historiac` "
-                + "                        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)"
-                + "                    INNER JOIN `database`.`pyp_eventose` "
-                + "                        ON (`pyp_eventose`.`Idhistoriac` = `pyp_historiac`.`id`)"
-                + "                    INNER JOIN `database`.`pyp_explofisica` "
-                + "                        ON (`pyp_explofisica`.`idhistoriac` = `pyp_historiac`.`id`)"
-                + "                    LEFT JOIN `database`.`pyp_crecimiento` "
-                + "                        ON (`pyp_crecimiento`.`idhistoria` = `pyp_historiac`.`id`)"
-                + "                    INNER JOIN `database`.`pyp_antecedentesg` "
-                + "                        ON (`pyp_antecedentesg`.`id_historiac` = `pyp_historiac`.`id`)"
-                + "                    LEFT JOIN `database`.`pyp_contolmaterno` "
-                + "                        ON (`pyp_contolmaterno`.`idhistoria` = `pyp_historiac`.`id`)"
-                + "                    LEFT JOIN `database`.`pyp_materna` "
-                + "                        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)"
-                + "                    LEFT JOIN `database`.`pyp_materna_gestaactual` "
-                + "                        ON (`pyp_materna_gestaactual`.`id_materna` = `pyp_materna`.`id`)"
-                + "                    LEFT JOIN `database`.`pyp_recienniacido` "
-                + "                        ON (`pyp_recienniacido`.`idhistoria` = `pyp_historiac`.`id`)"
-                + "                    INNER JOIN `database`.`static_cie10` "
-                + "                        ON (`pyp_historiac`.`diagnosticorel1` = `static_cie10`.`id`)"
-                + "                    INNER JOIN `database`.`static_cie10` AS `static_cie10_1`"
-                + "                        ON (`pyp_historiac`.`diagnosticorel2` = `static_cie10_1`.`id`)"
-                + "                    INNER JOIN `database`.`static_cie10` AS `static_cie10_2`"
-                + "                        ON (`pyp_historiac`.`diagnosticorel3` = `static_cie10_2`.`id`)"
-                + "                    INNER JOIN `database`.`static_cie10` AS `static_cie10_3`"
-                + "                        ON (`pyp_historiac`.`diagnosticorel4` = `static_cie10_3`.`id`)"
-                + "WHERE (`info_entidades`.`nombre_entidad` = '" + nombreentidad + "' AND `pyp_adm_asist_con`.`fecha` BETWEEN '" + fechaini + "' AND '" + fechafin + "' AND `pyp_adm_asist_con`.`estado` = 2);";
+        try {
+            return "SELECT"
+                    + "                    `pyp_adm_agend`.`id_programa`"
+                    + "                    , `pyp_adm_asist_con`.`primera_vez`"
+                    + "                    , `info_paciente`.`tipo_doc`"
+                    + "                    , `info_paciente`.`num_doc`"
+                    + "                    , `info_paciente`.`apellido1`"
+                    + "                    , `info_paciente`.`apellido2`"
+                    + "                    , `info_paciente`.`nombre1`"
+                    + "                    , `info_paciente`.`nombre2`"
+                    + "                    ,DATE_FORMAT(`info_paciente`.`fecha_nacimiento`, '%Y-%m-%d') AS fecha"
+                    + "                    , `info_paciente`.`genero`"
+                    + "                    , `info_paciente`.`raza`"
+                    + "                    , `info_paciente`.`etnia`"
+                    + "                    , `pyp_adm_agend`.`escolaridad`"
+                    + "                    , `pyp_eventose`.`decersionE` AS `gestacion`"
+                    + "                    , `static_cie10`.`codigo`"
+                    + "                    , `static_cie10_1`.`codigo`"
+                    + "                    , `static_cie10_2`.`codigo`"
+                    + "                    , `static_cie10_3`.`codigo`"
+                    + "                    , `pyp_adm_agend`.`fecha` AS `fechaatencion`"
+                    + "                    , `pyp_explofisica`.`peso`"
+                    + "                    , `pyp_explofisica`.`talla`"
+                    + "                    , `pyp_materna_gestaactual`.`fpp`"
+                    + "                    , `pyp_crecimiento`.`egparto`"
+                    + "                    , `pyp_antecedentesg`.`metodoactual`"
+                    + "                    , `pyp_contolmaterno`.`ncontrol`"
+                    + "                    , `pyp_materna_gestaactual`.`fe`"
+                    + "                    , `pyp_materna_gestaactual`.`folatos`"
+                    + "                    , `pyp_materna_gestaactual`.`calcio`"
+                    + "                    , `pyp_recienniacido`.`tshneonatal`"
+                    + "                    , `calc_edad`(`info_paciente`.`fecha_nacimiento`) as edada"
+                    + "                    ,`pyp_antecedentesg`.`FUP`"
+                    + "                    ,`pyp_adm_asist_con`.`fecha` AS `faten`"
+                    + "                    ,`pyp_historiac`.`id`"
+                    + "                FROM"
+                    + "                    `database`.`pyp_adm_asist_con`"
+                    + "                    INNER JOIN `database`.`pyp_adm_agend` "
+                    + "                        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)"
+                    + "                    INNER JOIN `database`.`info_paciente` "
+                    + "                        ON (`pyp_adm_agend`.`id_paciente` = `info_paciente`.`id`)"
+                    + "                    INNER JOIN `database`.`info_entidades` "
+                    + "                        ON (`info_paciente`.`contratante` = `info_entidades`.`id`)"
+                    + "                    INNER JOIN `database`.`pyp_historiac` "
+                    + "                        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)"
+                    + "                    INNER JOIN `database`.`pyp_eventose` "
+                    + "                        ON (`pyp_eventose`.`Idhistoriac` = `pyp_historiac`.`id`)"
+                    + "                    INNER JOIN `database`.`pyp_explofisica` "
+                    + "                        ON (`pyp_explofisica`.`idhistoriac` = `pyp_historiac`.`id`)"
+                    + "                    LEFT JOIN `database`.`pyp_crecimiento` "
+                    + "                        ON (`pyp_crecimiento`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + "                    INNER JOIN `database`.`pyp_antecedentesg` "
+                    + "                        ON (`pyp_antecedentesg`.`id_historiac` = `pyp_historiac`.`id`)"
+                    + "                    LEFT JOIN `database`.`pyp_contolmaterno` "
+                    + "                        ON (`pyp_contolmaterno`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + "                    LEFT JOIN `database`.`pyp_materna` "
+                    + "                        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)"
+                    + "                    LEFT JOIN `database`.`pyp_materna_gestaactual` "
+                    + "                        ON (`pyp_materna_gestaactual`.`id_materna` = `pyp_materna`.`id`)"
+                    + "                    LEFT JOIN `database`.`pyp_recienniacido` "
+                    + "                        ON (`pyp_recienniacido`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + "                    INNER JOIN `database`.`static_cie10` "
+                    + "                        ON (`pyp_historiac`.`diagnosticorel1` = `static_cie10`.`id`)"
+                    + "                    INNER JOIN `database`.`static_cie10` AS `static_cie10_1`"
+                    + "                        ON (`pyp_historiac`.`diagnosticorel2` = `static_cie10_1`.`id`)"
+                    + "                    INNER JOIN `database`.`static_cie10` AS `static_cie10_2`"
+                    + "                        ON (`pyp_historiac`.`diagnosticorel3` = `static_cie10_2`.`id`)"
+                    + "                    INNER JOIN `database`.`static_cie10` AS `static_cie10_3`"
+                    + "                        ON (`pyp_historiac`.`diagnosticorel4` = `static_cie10_3`.`id`)"
+                    + "WHERE (`info_entidades`.`nombre_entidad` = '" + nombreentidad + "' AND `pyp_adm_asist_con`.`fecha` BETWEEN '" + fechaini + "' AND '" + fechafin + "' AND `pyp_adm_asist_con`.`estado` = 2 AND `pyp_historiac`.`estado` = '1');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar rel 4505mes " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String rel4505tri(String nombreentidad, String fechaini, String fechafin) {
-        return "SELECT"
-                + "                    `pyp_adm_agend`.`id_programa`"
-                + "                    , `pyp_adm_asist_con`.`primera_vez`"
-                + "                    , `info_paciente`.`tipo_doc`"
-                + "                    , `info_paciente`.`num_doc`"
-                + "                    , `info_paciente`.`apellido1`"
-                + "                    , `info_paciente`.`apellido2`"
-                + "                    , `info_paciente`.`nombre1`"
-                + "                    , `info_paciente`.`nombre2`"
-                + "                    ,DATE_FORMAT(`info_paciente`.`fecha_nacimiento`, '%Y-%m-%d') AS fecha"
-                + "                    , `info_paciente`.`genero`"
-                + "                    , `info_paciente`.`raza`"
-                + "                    , `info_paciente`.`etnia`"
-                + "                    , `pyp_adm_agend`.`escolaridad`"
-                + "                    , `pyp_eventose`.`decersionE` AS `gestacion`"
-                + "                    , `static_cie10`.`codigo`"
-                + "                    , `static_cie10_1`.`codigo`"
-                + "                    , `static_cie10_2`.`codigo`"
-                + "                    , `static_cie10_3`.`codigo`"
-                + "                    , `pyp_adm_agend`.`fecha` AS `fechaatencion`"
-                + "                    , `pyp_explofisica`.`peso`"
-                + "                    , `pyp_explofisica`.`talla`"
-                + "                    , `pyp_materna_gestaactual`.`fpp`"
-                + "                    , `pyp_crecimiento`.`egparto`"
-                + "                    , `pyp_antecedentesg`.`metodoactual`"
-                + "                    , `pyp_contolmaterno`.`ncontrol`"
-                + "                    , `pyp_materna_gestaactual`.`fe`"
-                + "                    , `pyp_materna_gestaactual`.`folatos`"
-                + "                    , `pyp_materna_gestaactual`.`calcio`"
-                + "                    , `pyp_recienniacido`.`tshneonatal`"
-                + "                    , `calc_edad`(`info_paciente`.`fecha_nacimiento`) as edada"
-                + "                    ,`pyp_antecedentesg`.`FUP`"
-                + "                    ,`pyp_adm_asist_con`.`fecha` AS `faten`"
-                + "                    ,`pyp_historiac`.`id`"
-                + "                FROM"
-                + "                    `database`.`pyp_adm_asist_con`"
-                + "                    INNER JOIN `database`.`pyp_adm_agend` "
-                + "                        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)"
-                + "                    INNER JOIN `database`.`info_paciente` "
-                + "                        ON (`pyp_adm_agend`.`id_paciente` = `info_paciente`.`id`)"
-                + "                    INNER JOIN `database`.`info_entidades` "
-                + "                        ON (`info_paciente`.`contratante` = `info_entidades`.`id`)"
-                + "                    INNER JOIN `database`.`pyp_historiac` "
-                + "                        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)"
-                + "                    INNER JOIN `database`.`pyp_eventose` "
-                + "                        ON (`pyp_eventose`.`Idhistoriac` = `pyp_historiac`.`id`)"
-                + "                    INNER JOIN `database`.`pyp_explofisica` "
-                + "                        ON (`pyp_explofisica`.`idhistoriac` = `pyp_historiac`.`id`)"
-                + "                    LEFT JOIN `database`.`pyp_crecimiento` "
-                + "                        ON (`pyp_crecimiento`.`idhistoria` = `pyp_historiac`.`id`)"
-                + "                    INNER JOIN `database`.`pyp_antecedentesg` "
-                + "                        ON (`pyp_antecedentesg`.`id_historiac` = `pyp_historiac`.`id`)"
-                + "                    LEFT JOIN `database`.`pyp_contolmaterno` "
-                + "                        ON (`pyp_contolmaterno`.`idhistoria` = `pyp_historiac`.`id`)"
-                + "                    LEFT JOIN `database`.`pyp_materna` "
-                + "                        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)"
-                + "                    LEFT JOIN `database`.`pyp_materna_gestaactual` "
-                + "                        ON (`pyp_materna_gestaactual`.`id_materna` = `pyp_materna`.`id`)"
-                + "                    LEFT JOIN `database`.`pyp_recienniacido` "
-                + "                        ON (`pyp_recienniacido`.`idhistoria` = `pyp_historiac`.`id`)"
-                + "                    INNER JOIN `database`.`static_cie10` "
-                + "                        ON (`pyp_historiac`.`diagnosticorel1` = `static_cie10`.`id`)"
-                + "                    INNER JOIN `database`.`static_cie10` AS `static_cie10_1`"
-                + "                        ON (`pyp_historiac`.`diagnosticorel2` = `static_cie10_1`.`id`)"
-                + "                    INNER JOIN `database`.`static_cie10` AS `static_cie10_2`"
-                + "                        ON (`pyp_historiac`.`diagnosticorel3` = `static_cie10_2`.`id`)"
-                + "                    INNER JOIN `database`.`static_cie10` AS `static_cie10_3`"
-                + "                        ON (`pyp_historiac`.`diagnosticorel4` = `static_cie10_3`.`id`)"
-                + "WHERE (`info_entidades`.`nombre_entidad` = '" + nombreentidad + "' AND `pyp_adm_asist_con`.`fecha` BETWEEN '" + fechaini + "' AND '" + fechafin + "' AND `pyp_adm_asist_con`.`estado` = 2);";
+        try {
+            return "SELECT"
+                    + "                    `pyp_adm_agend`.`id_programa`"
+                    + "                    , `pyp_adm_asist_con`.`primera_vez`"
+                    + "                    , `info_paciente`.`tipo_doc`"
+                    + "                    , `info_paciente`.`num_doc`"
+                    + "                    , `info_paciente`.`apellido1`"
+                    + "                    , `info_paciente`.`apellido2`"
+                    + "                    , `info_paciente`.`nombre1`"
+                    + "                    , `info_paciente`.`nombre2`"
+                    + "                    ,DATE_FORMAT(`info_paciente`.`fecha_nacimiento`, '%Y-%m-%d') AS fecha"
+                    + "                    , `info_paciente`.`genero`"
+                    + "                    , `info_paciente`.`raza`"
+                    + "                    , `info_paciente`.`etnia`"
+                    + "                    , `pyp_adm_agend`.`escolaridad`"
+                    + "                    , `pyp_eventose`.`decersionE` AS `gestacion`"
+                    + "                    , `static_cie10`.`codigo`"
+                    + "                    , `static_cie10_1`.`codigo`"
+                    + "                    , `static_cie10_2`.`codigo`"
+                    + "                    , `static_cie10_3`.`codigo`"
+                    + "                    , `pyp_adm_agend`.`fecha` AS `fechaatencion`"
+                    + "                    , `pyp_explofisica`.`peso`"
+                    + "                    , `pyp_explofisica`.`talla`"
+                    + "                    , `pyp_materna_gestaactual`.`fpp`"
+                    + "                    , `pyp_crecimiento`.`egparto`"
+                    + "                    , `pyp_antecedentesg`.`metodoactual`"
+                    + "                    , `pyp_contolmaterno`.`ncontrol`"
+                    + "                    , `pyp_materna_gestaactual`.`fe`"
+                    + "                    , `pyp_materna_gestaactual`.`folatos`"
+                    + "                    , `pyp_materna_gestaactual`.`calcio`"
+                    + "                    , `pyp_recienniacido`.`tshneonatal`"
+                    + "                    , `calc_edad`(`info_paciente`.`fecha_nacimiento`) as edada"
+                    + "                    ,`pyp_antecedentesg`.`FUP`"
+                    + "                    ,`pyp_adm_asist_con`.`fecha` AS `faten`"
+                    + "                    ,`pyp_historiac`.`id`"
+                    + "                FROM"
+                    + "                    `database`.`pyp_adm_asist_con`"
+                    + "                    INNER JOIN `database`.`pyp_adm_agend` "
+                    + "                        ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)"
+                    + "                    INNER JOIN `database`.`info_paciente` "
+                    + "                        ON (`pyp_adm_agend`.`id_paciente` = `info_paciente`.`id`)"
+                    + "                    INNER JOIN `database`.`info_entidades` "
+                    + "                        ON (`info_paciente`.`contratante` = `info_entidades`.`id`)"
+                    + "                    INNER JOIN `database`.`pyp_historiac` "
+                    + "                        ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)"
+                    + "                    INNER JOIN `database`.`pyp_eventose` "
+                    + "                        ON (`pyp_eventose`.`Idhistoriac` = `pyp_historiac`.`id`)"
+                    + "                    INNER JOIN `database`.`pyp_explofisica` "
+                    + "                        ON (`pyp_explofisica`.`idhistoriac` = `pyp_historiac`.`id`)"
+                    + "                    LEFT JOIN `database`.`pyp_crecimiento` "
+                    + "                        ON (`pyp_crecimiento`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + "                    INNER JOIN `database`.`pyp_antecedentesg` "
+                    + "                        ON (`pyp_antecedentesg`.`id_historiac` = `pyp_historiac`.`id`)"
+                    + "                    LEFT JOIN `database`.`pyp_contolmaterno` "
+                    + "                        ON (`pyp_contolmaterno`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + "                    LEFT JOIN `database`.`pyp_materna` "
+                    + "                        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)"
+                    + "                    LEFT JOIN `database`.`pyp_materna_gestaactual` "
+                    + "                        ON (`pyp_materna_gestaactual`.`id_materna` = `pyp_materna`.`id`)"
+                    + "                    LEFT JOIN `database`.`pyp_recienniacido` "
+                    + "                        ON (`pyp_recienniacido`.`idhistoria` = `pyp_historiac`.`id`)"
+                    + "                    INNER JOIN `database`.`static_cie10` "
+                    + "                        ON (`pyp_historiac`.`diagnosticorel1` = `static_cie10`.`id`)"
+                    + "                    INNER JOIN `database`.`static_cie10` AS `static_cie10_1`"
+                    + "                        ON (`pyp_historiac`.`diagnosticorel2` = `static_cie10_1`.`id`)"
+                    + "                    INNER JOIN `database`.`static_cie10` AS `static_cie10_2`"
+                    + "                        ON (`pyp_historiac`.`diagnosticorel3` = `static_cie10_2`.`id`)"
+                    + "                    INNER JOIN `database`.`static_cie10` AS `static_cie10_3`"
+                    + "                        ON (`pyp_historiac`.`diagnosticorel4` = `static_cie10_3`.`id`)"
+                    + "WHERE (`info_entidades`.`nombre_entidad` = '" + nombreentidad + "' AND `pyp_adm_asist_con`.`fecha` BETWEEN '" + fechaini + "' AND '" + fechafin + "' AND `pyp_adm_asist_con`.`estado` = 2 AND `pyp_historiac`.`estado` = '1');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar rel 4505trimestral" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String cargarparam() {
-        return "SELECT"
-                + "    `config_rel4505`.`id`"
-                + "    , `config_rel4505`.`idparametro`"
-                + "    , `config_parametros`.`parametro`"
-                + "    , `config_parametros`.`nombre`"
-                + "    , `config_rel4505`.`tipo`"
-                + "    , `config_rel4505`.`valor`"
-                + "    , `config_rel4505`.`validacion`"
-                + "FROM"
-                + "    `database`.`config_rel4505`"
-                + "    INNER JOIN `database`.`config_parametros` "
-                + "        ON (`config_rel4505`.`idparametro` = `config_parametros`.`id`)"
-                + "WHERE (`config_rel4505`.`estado` = 1);";
+        try {
+            return "SELECT"
+                    + "    `config_rel4505`.`id`"
+                    + "    , `config_rel4505`.`idparametro`"
+                    + "    , `config_parametros`.`parametro`"
+                    + "    , `config_parametros`.`nombre`"
+                    + "    , `config_rel4505`.`tipo`"
+                    + "    , `config_rel4505`.`valor`"
+                    + "    , `config_rel4505`.`validacion`"
+                    + "FROM"
+                    + "    `database`.`config_rel4505`"
+                    + "    INNER JOIN `database`.`config_parametros` "
+                    + "        ON (`config_rel4505`.`idparametro` = `config_parametros`.`id`)"
+                    + "WHERE (`config_rel4505`.`estado` = 1);";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar parametro" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void actobservacionp(String id, String observacion) {
@@ -1702,25 +1884,36 @@ public class Actualizar {
     }
 
     public String posologia4505(String id) {
-        return "SELECT"
-                + "    `pyp_posologia`.`id_suministro`"
-                + " FROM"
-                + "    `database`.`pyp_posologia`"
-                + "    INNER JOIN `database`.`pyp_historiac` "
-                + "        ON (`pyp_posologia`.`id_historiac` = `pyp_historiac`.`id`)"
-                + " WHERE (`pyp_historiac`.`id` ='" + id + "');";
+        try {
+            return "SELECT"
+                    + "    `pyp_posologia`.`id_suministro`"
+                    + " FROM"
+                    + "    `database`.`pyp_posologia`"
+                    + "    INNER JOIN `database`.`pyp_historiac` "
+                    + "        ON (`pyp_posologia`.`id_historiac` = `pyp_historiac`.`id`)"
+                    + " WHERE (`pyp_historiac`.`id` ='" + id + "');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar posologia 4505" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public String procedimiento4505(String id) {
-        return "SELECT"
-                + "    `config_cups`.`codigo`"
-                + "FROM"
-                + "    `database`.`pyp_procedimiento`"
-                + "    INNER JOIN `database`.`pyp_historiac` "
-                + "        ON (`pyp_procedimiento`.`id_historiapyp` = `pyp_historiac`.`id`)"
-                + "    INNER JOIN `database`.`config_cups` "
-                + "        ON (`pyp_procedimiento`.`id_cups` = `config_cups`.`id`)"
-                + "WHERE (`pyp_historiac`.`id` ='" + id + "');";
+        try {
+            return "SELECT"
+                    + "    `config_cups`.`codigo`"
+                    + "   ,`pyp_procedimiento`.`id`"
+                    + "FROM"
+                    + "    `database`.`pyp_procedimiento`"
+                    + "    INNER JOIN `database`.`pyp_historiac`"
+                    + "        ON (`pyp_procedimiento`.`id_historiapyp` = `pyp_historiac`.`id`)"
+                    + "    INNER JOIN `database`.`config_cups` "
+                    + "        ON (`pyp_procedimiento`.`id_cups` = `config_cups`.`id`)"
+                    + "WHERE (`pyp_historiac`.`id` ='" + id + "');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar procedimiento 4505 " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     public void actanti4505m(String idh, String idsum) {
@@ -1740,7 +1933,7 @@ public class Actualizar {
             bd.DesconectarBasedeDatos();
         }
     }
-    
+
     public void actanti4505p(String idh, String idcup) {
         try {
             bd.ConectarBasedeDatos();
@@ -1758,7 +1951,7 @@ public class Actualizar {
             bd.DesconectarBasedeDatos();
         }
     }
-    
+
     public void actexamen(String id, String examen) {
         try {
             bd.ConectarBasedeDatos();
@@ -1774,6 +1967,49 @@ public class Actualizar {
             JOptionPane.showMessageDialog(null, "a028 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public String conteoexamen(String idp) {
+        try {
+            return "SELECT"
+                    + " COUNT(`pyp_laboratory`.id) AS `Conteo`"
+                    + " FROM `database`.`pyp_laboratory`"
+                    + " WHERE(`pyp_laboratory`.`idprocedimiento` = '" + idp + "');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "conteo examen " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+
+    public void actrexamen(String idp, String fecha, String resultado, String observacion) {
+        try {
+            bd.ConectarBasedeDatos();
+            bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_laboratory`"
+                    + " SET `pyp_laboratory`.`fecha` = ?, `pyp_laboratory`.`resultado` = ?, `pyp_laboratory`.`observacion` = ?"
+                    + " WHERE (`pyp_laboratory`.`idprocedimiento` = ?);");
+            bd.preparedStatement.setString(1, fecha);
+            bd.preparedStatement.setString(2, resultado);
+            bd.preparedStatement.setString(3, observacion);
+            bd.preparedStatement.setString(4, idp);
+            bd.preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "a029" + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "a029" + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            bd.DesconectarBasedeDatos();
+        }
+    }
+
+    public String cargadatoslaboratorio(String id) {
+        try {
+            return "SELECT *"
+                    + "FROM `database`.`pyp_laboratory`"
+                    + "WHERE (`pyp_laboratory`.`idprocedimiento`= '" + id + "');";
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cargar datos laboratorio" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
+            return null;
         }
     }
 }

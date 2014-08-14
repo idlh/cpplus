@@ -207,9 +207,9 @@ public class Funciones_AD {
             BD.DesconectarBasedeDatos();
             return obj;
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Clipa+", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Retornar datos " + e.getMessage(), JOptionPane.ERROR_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Clipa+", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Retornar datos " + e.getMessage(), JOptionPane.ERROR_MESSAGE);
         }
         return null;
     }
@@ -231,11 +231,11 @@ public class Funciones_AD {
                 j++;
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Clipa+", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Resulset to array " + e.getMessage(), JOptionPane.ERROR_MESSAGE);
         }
         return obj;
     }
-    
+
     public Boolean Validar_CampoHora(String Hora) {
         boolean b;
         char[] a = Hora.toString().toCharArray();

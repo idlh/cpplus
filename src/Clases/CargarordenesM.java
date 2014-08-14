@@ -606,7 +606,7 @@ public class CargarordenesM {
                     + "    , `static_estructura_cups`.`des_capitulo`"
                     + "    , `pyp_procedimiento`.`estado`"
                     + "   , `pyp_procedimiento`.`id`"
-                    + "   ,`pyp_laboratory`.`fecha`"
+                    + "   ,DATE_FORMAT(`pyp_laboratory`.`fecha`, '%d/%m/%Y') AS `fecha`"
                     + "   ,`pyp_laboratory`.`resultado`"
                     + "   ,`pyp_laboratory`.`observacion`"
                     + "FROM"
@@ -637,6 +637,9 @@ public class CargarordenesM {
                     modelo.setValueAt(bd.resultado.getString("des_capitulo"), c, 3);
                     modelo.setValueAt(bd.resultado.getString("estado"), c, 4);
                     modelo.setValueAt(bd.resultado.getString("id"), c, 5);
+                    modelo.setValueAt(bd.resultado.getString("fecha"), c, 6);
+                    modelo.setValueAt(bd.resultado.getString("resultado"), c, 7);
+                    modelo.setValueAt(bd.resultado.getString("observacion"), c, 8);
                     c++;
                 }
             }
