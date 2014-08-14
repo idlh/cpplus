@@ -407,7 +407,7 @@ public class C_Agendar extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel18MouseReleased
 
     private void jLabel10MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseReleased
-        Save();  
+        Save();
     }//GEN-LAST:event_jLabel10MouseReleased
 
     private void jLabel11MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseReleased
@@ -440,32 +440,33 @@ public class C_Agendar extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel4MouseReleased
     public void validar_programa() {
         String[] v = jLabel20.getText().split(" ");
-        if((programa.getId()==2) && (getInteger(v[0]) > 10)
-            && (v[1].toString().equals("Años"))){
+        if ((programa.getId() == 2) && (getInteger(v[0]) > 10)
+                && (v[1].toString().equals("Años"))) {
             validar = 0;
             jPanel6.setVisible(true);
             CDM10A();
-        }else if((programa.getId()==1) && (getInteger(v[0]) < 10)
-            || (getInteger(v[0]) > 29) && (v[1].toString().equals("Años"))){
+        } else if ((programa.getId() == 1) && (getInteger(v[0]) < 10)
+                || (getInteger(v[0]) > 29) && (v[1].toString().equals("Años"))) {
             validar = 0;
             jPanel6.setVisible(true);
             DTCD10_29A();
-        }else if((programa.getId()==8 || programa.getId()==9 || programa.getId()==11)
-            && paciente.getGenero().toString().equals("M")){
+        } else if ((programa.getId() == 8 || programa.getId() == 9 || programa.getId() == 11)
+                && paciente.getGenero().toString().equals("M")) {
             validar = 0;
             jPanel6.setVisible(true);
             ProgramasFemeninos();
-        }else if((programa.getId()==3) && (getInteger(v[0]) < 45)
-            && (v[1].toString().equals("Años"))){  
+        } else if ((programa.getId() == 3) && (getInteger(v[0]) < 45)
+                && (v[1].toString().equals("Años"))) {
             validar = 0;
             jPanel6.setVisible(true);
             MayoriaEdad();
-        }else{
+        } else {
             validar = 1;
             jPanel6.setVisible(false);
-        } 
-    }     
-    private int getInteger(String i){
+        }
+    }
+
+    private int getInteger(String i) {
         int inT = Integer.parseInt(i);
         return inT;
     }
@@ -480,38 +481,42 @@ public class C_Agendar extends javax.swing.JPanel {
             Logger.getLogger(C_Agendar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jLabel22MouseClicked
-    private void CDM10A(){  //DETECCIÓN TEMPRANA DE LAS ALTERACIONES DEL CRECIMIENTO Y DESARROLLO (MENORES DE 10 AÑOS)
+    private void CDM10A() {  //DETECCIÓN TEMPRANA DE LAS ALTERACIONES DEL CRECIMIENTO Y DESARROLLO (MENORES DE 10 AÑOS)
         String s = "<html><b><font color='red'>Resolución 412 de 200 Articulo 9</font>"
-        + "</b> Deteccion temprana de alteraciones del crecimiento y desarrollo solo Menores de 10 años <br> <a href=''>Clic Aquí</a></html>";
+                + "</b> Deteccion temprana de alteraciones del crecimiento y desarrollo solo Menores de 10 años <br> <a href=''>Clic Aquí</a></html>";
         jLabel22.setText("<html>\n"
-        + "<div style=\"width:355;\">" + s + "</div>\n"
-        + "\n"
-        + "</html>"); 
+                + "<div style=\"width:355;\">" + s + "</div>\n"
+                + "\n"
+                + "</html>");
     }
-    private void DTCD10_29A(){  //DETECCIÓN TEMPRANA DE LAS ALTERACIONES DEL DESARROLLO DEL JOVEN (10-29 AÑOS)
+
+    private void DTCD10_29A() {  //DETECCIÓN TEMPRANA DE LAS ALTERACIONES DEL DESARROLLO DEL JOVEN (10-29 AÑOS)
         String s = "<html><b><font color='red'>Resolución 412 de 200 Articulo 9</font>"
-        + "</b> Detección temprana de las alteraciones del desarrollo del joven solo personas entre (10 - 29 Años) <br> <a href=''>Clic Aquí</a></html>";
+                + "</b> Detección temprana de las alteraciones del desarrollo del joven solo personas entre (10 - 29 Años) <br> <a href=''>Clic Aquí</a></html>";
         jLabel22.setText("<html>\n"
-        + "<div style=\"width:355;\">" + s + "</div>\n"
-        + "\n"
-        + "</html>"); 
+                + "<div style=\"width:355;\">" + s + "</div>\n"
+                + "\n"
+                + "</html>");
     }
-    private void ProgramasFemeninos(){  
+
+    private void ProgramasFemeninos() {
         String s = "<html><b><font color='red'>Error en Asignación del programa <br></font>"
-        + "</b> Este programa solo puede ser asignado a pacientes femeninos.";
+                + "</b> Este programa solo puede ser asignado a pacientes femeninos.";
         jLabel22.setText("<html>\n"
-        + "<div style=\"width:355;\">" + s + "</div>\n"
-        + "\n"
-        + "</html>"); 
+                + "<div style=\"width:355;\">" + s + "</div>\n"
+                + "\n"
+                + "</html>");
     }
-    private void MayoriaEdad(){  
+
+    private void MayoriaEdad() {
         String s = "<html><b><font color='red'>Error en Asignación del programa <br></font>"
-        + "</b> El paciente no cuenta con la mayoria de edad.";
+                + "</b> El paciente no cuenta con la mayoria de edad.";
         jLabel22.setText("<html>\n"
-        + "<div style=\"width:355;\">" + s + "</div>\n"
-        + "\n"
-        + "</html>"); 
+                + "<div style=\"width:355;\">" + s + "</div>\n"
+                + "\n"
+                + "</html>");
     }
+
     private void Limpiar() {
         jTextField1.setText("");
         jTextField2.setText("");
@@ -544,11 +549,12 @@ public class C_Agendar extends javax.swing.JPanel {
                     jPanel5.setVisible(true);
                     verify = 1;
                 } else {
-                    jTextField1.requestFocusInWindow();
-                    Limpiar();
-                    jLabel15.setVisible(true);
-                    jLabel15.setText("No existe un usuario asociado a esta identificación");
-                    jLabel18.setVisible(true);
+//                    jTextField1.requestFocusInWindow();
+//                    Limpiar();
+//                    jLabel15.setVisible(true);
+//                    jLabel15.setText("No existe un usuario asociado a esta identificación");
+//                    jLabel18.setVisible(true);                    
+                    U.show();
                 }
             } else {
                 jLabel15.setText("Por favor ingrese un numero de identificacion");
@@ -574,20 +580,20 @@ public class C_Agendar extends javax.swing.JPanel {
             if (verify == 1 && !jTextField1.getText().isEmpty()) {
                 if (!jTextField2.getText().isEmpty()) {
                     if (Funciones.Validar_CampoHora(jFormattedTextField3.getText()) == true) {
-                        if(validar == 1){
-                        Declaraciones.RAgendas.setIdPaciente(paciente);
-                        Declaraciones.RAgendas.setIdPrograma(programa);
-                        Declaraciones.RAgendas.setFecha(Funciones.stringToDate(Funciones.getFecha_Jcalendar(jCalendar1)));
-                        Declaraciones.RAgendas.setHora(Funciones.getHora(jFormattedTextField3.getText()));
-                        Declaraciones.RAgendas.setEscolaridad((short) (jComboBox1.getSelectedIndex()+1));
-                        Declaraciones.RAgendas.setEstado('1');
-                        Agenda.create(Declaraciones.RAgendas);
-                        jLabel16.setVisible(true);
-                        Contar();
-                        }else{
-                           jLabel15.setText("El usuario no cumple con los requisitos del programa");  
-                           jLabel15.setVisible(true);
-                      }
+                        if (validar == 1) {
+                            Declaraciones.RAgendas.setIdPaciente(paciente);
+                            Declaraciones.RAgendas.setIdPrograma(programa);
+                            Declaraciones.RAgendas.setFecha(Funciones.stringToDate(Funciones.getFecha_Jcalendar(jCalendar1)));
+                            Declaraciones.RAgendas.setHora(Funciones.getHora(jFormattedTextField3.getText()));
+                            Declaraciones.RAgendas.setEscolaridad((short) (jComboBox1.getSelectedIndex() + 1));
+                            Declaraciones.RAgendas.setEstado('1');
+                            Agenda.create(Declaraciones.RAgendas);
+                            jLabel16.setVisible(true);
+                            Contar();
+                        } else {
+                            jLabel15.setText("El usuario no cumple con los requisitos del programa");
+                            jLabel15.setVisible(true);
+                        }
                     } else {
                         jLabel15.setText("Por favor ingrese una hora válida");
                         jLabel15.setVisible(true);
