@@ -11,6 +11,7 @@ import Clases.Funciones_AD;
 import com.toedter.calendar.JDateChooser;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -39,6 +40,10 @@ public class Rel4505 extends javax.swing.JPanel {
         actdescheck(jCheckBox2, jDateChooser3, jDateChooser4);
         CargarEntidad();
         jLabel2.setVisible(false);
+        jRadioButton1.setEnabled(false);
+        jRadioButton2.setEnabled(false);
+        jRadioButton3.setEnabled(false);
+        jRadioButton4.setEnabled(false);
     }
 
     /**
@@ -66,6 +71,10 @@ public class Rel4505 extends javax.swing.JPanel {
         jComboBox1 = new javax.swing.JComboBox();
         jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(562, 345));
@@ -76,6 +85,7 @@ public class Rel4505 extends javax.swing.JPanel {
         jLabel1.setText("Generacion Archivo (4505)");
 
         jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jCheckBox1.setText("Mensual");
         jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox1.setFocusable(false);
@@ -98,6 +108,7 @@ public class Rel4505 extends javax.swing.JPanel {
         jLabel4.setText("Desde:");
 
         jCheckBox2.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jCheckBox2.setText("Trimestral");
         jCheckBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox2.setFocusable(false);
@@ -150,6 +161,46 @@ public class Rel4505 extends javax.swing.JPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/cargando.gif"))); // NOI18N
 
+        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButton1.setText("1er Trimestre");
+        jRadioButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jRadioButton1.setFocusable(false);
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButton2.setText("2do Trimestre");
+        jRadioButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jRadioButton2.setFocusable(false);
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButton3.setText("3er Trimestre");
+        jRadioButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jRadioButton3.setFocusable(false);
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButton4.setText("4to Trimestre");
+        jRadioButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jRadioButton4.setFocusable(false);
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -157,6 +208,15 @@ public class Rel4505 extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jRadioButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton4)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -217,6 +277,12 @@ public class Rel4505 extends javax.swing.JPanel {
                                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(13, 13, 13)
                         .addComponent(jCheckBox2)
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton1)
+                            .addComponent(jRadioButton2)
+                            .addComponent(jRadioButton3)
+                            .addComponent(jRadioButton4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -227,7 +293,7 @@ public class Rel4505 extends javax.swing.JPanel {
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(59, 59, 59)
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))))
@@ -240,7 +306,23 @@ public class Rel4505 extends javax.swing.JPanel {
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        actdescheck(jCheckBox2, jDateChooser3, jDateChooser4);
+        if (jCheckBox2.isSelected() == true) {
+            jRadioButton1.setEnabled(true);
+            jRadioButton2.setEnabled(true);
+            jRadioButton3.setEnabled(true);
+            jRadioButton4.setEnabled(true);
+        } else {
+            jRadioButton1.setEnabled(false);
+            jRadioButton2.setEnabled(false);
+            jRadioButton3.setEnabled(false);
+            jRadioButton4.setEnabled(false);
+            jDateChooser3.setEnabled(false);
+            jDateChooser4.setEnabled(false);
+            jRadioButton1.setSelected(false);
+            jRadioButton2.setSelected(false);
+            jRadioButton3.setSelected(false);
+            jRadioButton4.setSelected(false);
+        }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
@@ -254,6 +336,58 @@ public class Rel4505 extends javax.swing.JPanel {
         modulo_pyp.Modulo_PyP.d.panelc.Cprincipal.removeAll();
         modulo_pyp.Modulo_PyP.d.panelc.Cprincipal.repaint();
     }//GEN-LAST:event_jButton6MouseReleased
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        if (jRadioButton1.isSelected() == true) {
+            jRadioButton2.setSelected(false);
+            jRadioButton3.setSelected(false);
+            jRadioButton4.setSelected(false);
+            jDateChooser3.setEnabled(true);
+            jDateChooser4.setEnabled(true);
+        } else {
+            jDateChooser3.setEnabled(false);
+            jDateChooser4.setEnabled(false);
+        }
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        if (jRadioButton2.isSelected() == true) {
+            jRadioButton1.setSelected(false);
+            jRadioButton3.setSelected(false);
+            jRadioButton4.setSelected(false);
+            jDateChooser3.setEnabled(true);
+            jDateChooser4.setEnabled(true);
+        } else {
+            jDateChooser3.setEnabled(false);
+            jDateChooser4.setEnabled(false);
+        }
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        if (jRadioButton3.isSelected() == true) {
+            jRadioButton2.setSelected(false);
+            jRadioButton1.setSelected(false);
+            jRadioButton4.setSelected(false);
+            jDateChooser3.setEnabled(true);
+            jDateChooser4.setEnabled(true);
+        } else {
+            jDateChooser3.setEnabled(false);
+            jDateChooser4.setEnabled(false);
+        }
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        if (jRadioButton4.isSelected() == true) {
+            jRadioButton2.setSelected(false);
+            jRadioButton3.setSelected(false);
+            jRadioButton1.setSelected(false);
+            jDateChooser3.setEnabled(true);
+            jDateChooser4.setEnabled(true);
+        } else {
+            jDateChooser3.setEnabled(false);
+            jDateChooser4.setEnabled(false);
+        }
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     private void actdescheck(JCheckBox check, JDateChooser date1, JDateChooser date2) {
         if (check.isSelected() == false) {
@@ -287,482 +421,637 @@ public class Rel4505 extends javax.swing.JPanel {
             final String ln = System.getProperty("line.separator");
             String patron = "yyyy-MM-dd", fecini = null, fecfin = null;
             SimpleDateFormat formato = new SimpleDateFormat(patron);
+            boolean value = false;
             if (jCheckBox1.isSelected() == true) {
                 fecini = formato.format(jDateChooser1.getDate());
                 fecfin = formato.format(jDateChooser2.getDate());
                 if (jDateChooser1.getDate().getMonth() != jDateChooser2.getDate().getMonth()) {
                     JOptionPane.showMessageDialog(null, "Debe seleccionar el mismo mes");
                 } else {
-                    
-                }
-                Object datames[][] = Funtions.RetornarDatos(act.rel4505mes(jComboBox1.getSelectedItem().toString(), fecini, fecfin));
-                Object dataparam[][] = Funtions.RetornarDatos(act.cargarparam());
-                try {
-                    File archivo = new File(ruta, "4505 " + jComboBox1.getSelectedItem() + " Mensual.txt");
-                    if (archivo.exists()) {
-                        archivo.delete();
-                        archivo.createNewFile();
-                    } else {
-                        archivo.createNewFile();
+                    long val = jDateChooser2.getCalendar().getTimeInMillis() - jDateChooser1.getCalendar().getTimeInMillis();
+                    long dias = val / (24 * 60 * 60 * 1000);
+                    switch (jDateChooser1.getDate().getMonth()) {
+                        case 0:
+                            if (dias == 30) {
+                                value = true;
+                            }
+                            break;
+                        case 1:
+                            if (dias == 27 || dias == 28) {
+                                value = true;
+                            }
+                            break;
+                        case 2:
+                            if (dias == 30) {
+                                value = true;
+                            }
+                            break;
+                        case 3:
+                            if (dias == 29) {
+                                value = true;
+                            }
+                            break;
+                        case 4:
+                            if (dias == 30) {
+                                value = true;
+                            }
+                            break;
+                        case 5:
+                            if (dias == 29) {
+                                value = true;
+                            }
+                            break;
+                        case 6:
+                            if (dias == 30) {
+                                value = true;
+                            }
+                            break;
+                        case 7:
+                            if (dias == 30) {
+                                value = true;
+                            }
+                            break;
+                        case 8:
+                            if (dias == 29) {
+                                value = true;
+                            }
+                            break;
+                        case 9:
+                            if (dias == 30) {
+                                value = true;
+                            }
+                            break;
+                        case 10:
+                            if (dias == 29) {
+                                value = true;
+                            }
+                            break;
+                        case 11:
+                            if (dias == 30) {
+                                value = true;
+                            }
+                            break;
                     }
-                    System.out.println(archivo.getAbsolutePath());
-                    FileWriter escribir = new FileWriter(archivo, true);
-                    String apellido2, nombre2, etnia = "ND", gestacion = null, sifilis = null, htagesta = null, hipot = null, genero = null, escolaridad = null, sintomr = null, tuberculosis = null,
-                            lepra = null, nutri = null, maltrato = null, abusos = null, infecciones = null, mental = null, cervix = null, seno = null, fluorosis = null, fechapeso = null, peso = null,
-                            talla = null, fechatalla = null, fechapparto = null, egparto = null, bgc = null, hepatitisb = null, pentavalente = null, polio = null, dpt = null, rotavirus = null,
-                            neumococo = null, influenza = null, fiebreA = null, hepatitisA = null, tripev = null, vph = null, tdtt = null, placab = null, fechaparto = null, fechasalidaparto = null,
-                            fechalactancia = null, controlrecien = null, planificacionprimera = null, suministrometodo = null, fechasuministro = null, controlprenatal1 = null, ncontroles = null,
-                            ultimocontrol = null, folico = null, ferroso = null, calcio = null, agudezav = null, oftalmologia = null, fechadesnutricion = null, fechamaltrato = null, consultaviolencia = null,
-                            fechanutricion = null, fechapsicologia = null, cyd1vez = null, sulfato = null, vitaA = null, joven1 = null, adulto1 = null, preservativosits = null, preelisavih = null,
-                            postelisavih = null, pdx = null, fechahb = null, resultadohb = null, fechassifilis = null, resultadossifilis = null, fechatelisahiv = null, resultadoelisahiv = null,
-                            fechaths = null, resultadotsh = null, tamizajecuellou = null, citologia = null, citologiabet = null, calidadmuestra = null, codigoips = null, fechacolposcopi = null,
-                            codigoipscolpo = null, fechabiopsia = null, resultadobiopsia = null, codigobiopsia = null, fechamamografia = "1845-01-01", resultadomamografia = "98", codigomamografia = null,
-                            fechabacaf = null, resultadobacaf = null, bacaf = null, codigobacaf = null, fechahemoglobina = null, hemoglobina = null, fechaglisemia = null, fechacreatinina = null,
-                            creatinina = null, fechaglicosada = null, glicosada = null, fechamicroalbuminuria = null, fechahdl = null, fechabaciloscopia = null, baciloscopia = null,
-                            hipotiroidismo = null, sgestacional = null, scongenita = null, tlepra = null, leishmaniasis = null;
-                    boolean valorv = false;
-                    for (int b = 0; b < datames.length; b++) {
-                        if (datames[b][5].toString().equals("")) {
-                            apellido2 = "NONE";
+                }
+                if (value == true) {
+                    Object datames[][] = Funtions.RetornarDatos(act.rel4505mes(jComboBox1.getSelectedItem().toString(), fecini, fecfin));
+                    Object dataparam[][] = Funtions.RetornarDatos(act.cargarparam());
+                    try {
+                        File archivo = new File(ruta, "4505 " + jComboBox1.getSelectedItem() + " Mensual.txt");
+                        if (archivo.exists()) {
+                            archivo.delete();
+                            archivo.createNewFile();
                         } else {
-                            apellido2 = datames[b][5].toString();
+                            archivo.createNewFile();
                         }
-                        if (datames[b][7].toString().equals("")) {
-                            nombre2 = "NONE";
-                        } else {
-                            nombre2 = datames[b][7].toString();
-                        }
-                        genero = datames[b][9].toString();
-                        if (datames[b][10].toString().equals("INDIGENA") || datames[b][11].toString().equals("INDIGENA")) {
-                            etnia = "1";
-                        } else {
-                            if (datames[b][10].toString().equals("ROM") || datames[b][11].toString().equals("ROM")) {
-                                etnia = "2";
-                            } else {
-                                if (datames[b][10].toString().equals("RAIZAL") || datames[b][11].toString().equals("RAIZAL")) {
-                                    etnia = "3";
-                                } else {
-                                    if (datames[b][10].toString().equals("AFROCOLOMBIANO") || datames[b][11].toString().equals("AFROCOLOMBIANO")) {
-                                        etnia = "5";
+                        System.out.println(archivo.getAbsolutePath());
+                        FileWriter escribir = new FileWriter(archivo, true);
+                        String nombreprograma = null, codigoipsprimaria = "051540381702", apellido2, nombre2, etnia = "6", codocupacion = "9999", gestacion = "0", sifilis = "0", htagesta = "0", hipot = "0", genero = null, escolaridad = "1", sintomr = "2", tuberculosis = "0",
+                                lepra = "3", nutri = "3", maltrato = "0", abusos = "2", infecciones = "2", mental = "7", cervix = "0", seno = "2", fluorosis = "2", fechapeso = "1800-01-01", peso = "999",
+                                talla = "999", fechatalla = "1800-01-01", fechapparto = "1845-01-01", egparto = "0", bgc = "0", hepatitisb = "0", pentavalente = "0", polio = "0", dpt = "0", rotavirus = "0",
+                                neumococo = "0", influenza = "0", fiebreA = "0", hepatitisA = "0", tripev = "0", vph = "0", tdtt = "0", placab = "0", fechaparto = "1845-01-01", fechasalidaparto = "1845-01-01",
+                                fechalactancia = "1845-01-01", controlrecien = "1845-01-01", planificacionprimera = "1845-01-01", suministrometodo = "0", fechasuministro = "1845-01-01", controlprenatal1 = "1845-01-01", ncontroles = "0",
+                                ultimocontrol = "1845-01-01", folico = "0", ferroso = "0", calcio = "0", agudezav = "1845-01-01", oftalmologia = "1845-01-01", fechadesnutricion = "1845-01-01", fechamaltrato = "1845-01-01", consultaviolencia = "1845-01-01",
+                                fechanutricion = "1845-01-01", fechapsicologia = "1845-01-01", cyd1vez = "1845-01-01", sulfato = "0", vitaA = "0", joven1 = "1845-01-01", adulto1 = "1845-01-01", preservativosits = "0", preelisavih = "1845-01-01",
+                                postelisavih = "1845-01-01", pdx = "0", fechahb = "1845-01-01", resultadohb = "0", fechassifilis = "1845-01-01", resultadossifilis = "0", fechatelisahiv = "1845-01-01", resultadoelisahiv = "0",
+                                fechaths = "1845-01-01", resultadotsh = "0", tamizajecuellou = "0", citologia = "1845-01-01", citologiabet = "0", calidadmuestra = "0", codigoips = "051540381702", fechacolposcopi = "1845-01-01",
+                                codigoipscolpo = "051540381702", fechabiopsia = "1845-01-01", resultadobiopsia = "0", codigobiopsia = "051540381702", fechamamografia = "1845-01-01", resultadomamografia = "0", codigomamografia = "051540381702",
+                                fechabacaf = "1845-01-01", resultadobacaf = "1845-01-01", bacaf = "0", codigobacaf = "051540381702", fechahemoglobina = "1845-01-01", hemoglobina = "0", fechaglisemia = "1845-01-01", fechacreatinina = "1845-01-01",
+                                creatinina = "0", fechaglicosada = "1845-01-01", glicosada = "0", fechamicroalbuminuria = "1845-01-01", fechahdl = "1845-01-01", fechabaciloscopia = "1845-01-01", baciloscopia = "4",
+                                hipotiroidismo = "0", sgestacional = "0", scongenita = "0", tlepra = "0", leishmaniasis = "1845-01-01";
+                        for (int b = 0; b < datames.length; b++) {
+                            //Nombre programa.
+                            switch (Integer.parseInt(datames[b][0].toString())) {
+                                case 1:
+                                    if (datames[b][1].toString().equals("1")) {
+                                        nombreprograma = "Ingreso joven sano";
                                     } else {
-                                        if (datames[b][10].toString().equals("NO APLICA") || datames[b][11].toString().equals("NO APLICA")) {
-                                            etnia = "6";
+                                        nombreprograma = "Joven sano";
+                                    }
+                                    break;
+                                case 2:
+                                    if (datames[b][1].toString().equals("1")) {
+                                        nombreprograma = "Ingreso CYD";
+                                    } else {
+                                        nombreprograma = "Control CYD";
+                                    }
+                                    break;
+                                case 3:
+                                    if (datames[b][1].toString().equals("1")) {
+                                        nombreprograma = "ingreso adulto sano";
+                                    } else {
+                                        nombreprograma = "control adulto sano";
+                                    }
+                                    break;
+                                case 4:
+                                    nombreprograma = "Agudeza visual";
+                                    break;
+                                case 5:
+                                    if (datames[b][1].toString().equals("1")) {
+                                        nombreprograma = "Ingreso planificacion";
+                                    } else {
+                                        nombreprograma = "Control planificacion";
+                                    }
+                                    break;
+                                case 6:
+                                    if (datames[b][1].toString().equals("1")) {
+                                        nombreprograma = "Ingreso Hta";
+                                    } else {
+                                        nombreprograma = "Control hta";
+                                    }
+                                    break;
+                                case 7:
+                                    if (datames[b][1].toString().equals("1")) {
+                                        nombreprograma = "Ingreso diabetes";
+                                    } else {
+                                        nombreprograma = "Control diabetes";
+                                    }
+                                    break;
+                                case 8:
+                                    nombreprograma = "Citologia";
+                                    break;
+                                case 9:
+                                    if (datames[b][1].toString().equals("1")) {
+                                        nombreprograma = "Ingreso cpn";
+                                    } else {
+                                        nombreprograma = "Cpn";
+                                    }
+                                    break;
+                                case 10:
+                                    nombreprograma = "recien nacido";
+                                    break;
+                                case 11:
+                                    nombreprograma = "post parto";
+                                    break;
+                            }
+                            //Segundo apellido.
+                            if (datames[b][5].toString().equals("")) {
+                                apellido2 = "NONE";
+                            } else {
+                                apellido2 = datames[b][5].toString();
+                            }
+                            //Segundo nombre
+                            if (datames[b][7].toString().equals("")) {
+                                nombre2 = "NONE";
+                            } else {
+                                nombre2 = datames[b][7].toString();
+                            }
+                            //Sexo
+                            genero = datames[b][9].toString();
+                            //Etnia
+                            if (datames[b][10].toString().equals("INDIGENA") || datames[b][11].toString().equals("INDIGENA")) {
+                                etnia = "1";
+                            } else {
+                                if (datames[b][10].toString().equals("ROM") || datames[b][11].toString().equals("ROM")) {
+                                    etnia = "2";
+                                } else {
+                                    if (datames[b][10].toString().equals("RAIZAL") || datames[b][11].toString().equals("RAIZAL")) {
+                                        etnia = "3";
+                                    } else {
+                                        if (datames[b][10].toString().equals("AFROCOLOMBIANO") || datames[b][11].toString().equals("AFROCOLOMBIANO")) {
+                                            etnia = "5";
+                                        } else {
+                                            if (datames[b][10].toString().equals("NO APLICA") || datames[b][11].toString().equals("NO APLICA")) {
+                                                etnia = "6";
+                                            }
                                         }
                                     }
                                 }
                             }
-                        }
-                        escolaridad = datames[b][12].toString();
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (datames[b][9].toString().equals("M")) {
-                                gestacion = "0";
-                            } else {
-                                if (datames[b][13].toString().equals("0")) {
-                                    gestacion = "2";
+                            //escolaridad
+                            escolaridad = datames[b][12].toString();
+                            //Gestacion
+                            for (int i = 0; i < dataparam.length; i++) {
+                                int año = 0;
+                                String ed[] = datames[b][29].toString().split(" ");
+                                String an = ed[0];
+                                año = Integer.parseInt(an);
+                                if (año < 10) {
+                                    gestacion = "0";
                                 } else {
-                                    gestacion = "1";
+                                    if (datames[b][9].toString().equals("M")) {
+                                        gestacion = "0";
+                                    } else {
+                                        if (datames[b][13].toString().equals("0")) {
+                                            gestacion = "1";
+                                        } else {
+                                            gestacion = "2";
+                                        }
+                                    }
                                 }
                             }
-                        }
-                        //Sifilis
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("21")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    if (!datames[b][9].toString().equals("M")) {
-                                        sifilis = dataparam[i][6].toString();
-                                        break;
+                            //Sifilis
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("21")) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                        if (datames[b][0].toString().equals("10")) {
+                                            sifilis = dataparam[i][6].toString();
+                                        } else {
+                                            if (!datames[b][9].toString().equals("M")) {
+                                                sifilis = dataparam[i][6].toString();
+                                                break;
+                                            } else {
+                                                sifilis = "3";
+                                            }
+                                        }
                                     } else {
                                         sifilis = "0";
                                     }
-                                } else {
-                                    sifilis = "3";
                                 }
-                            } else {
-                                sifilis = "0";
                             }
-                        }
-                        //Hipertencion por gestacion
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("22")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    if (!datames[b][9].toString().equals("M")) {
-                                        htagesta = dataparam[i][6].toString();
-                                        break;
-                                    } else {
-                                        htagesta = "0";
+                            //Hipertencion por gestacion
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("22")) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                        int año = 0;
+                                        String ed[] = datames[b][29].toString().split(" ");
+                                        String an = ed[0];
+                                        año = Integer.parseInt(an);
+                                        if (año < 10) {
+                                            htagesta = "0";
+                                            break;
+                                        } else {
+                                            if (!datames[b][9].toString().equals("M")) {
+                                                htagesta = "1";
+                                                break;
+                                            } else {
+                                                htagesta = "0";
+                                            }
+                                        }
                                     }
-                                } else {
-                                    htagesta = "2";
                                 }
-                            } else {
-                                htagesta = "0";
                             }
-                        }
-                        //Hipotiroidismo
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("23")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    if (datames[b][1].toString().equals("10")) {
-                                        hipot = dataparam[i][6].toString();
-                                        break;
+                            //Hipotiroidismo
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("23")) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                        int año = 0;
+                                        String ed[] = datames[b][29].toString().split(" ");
+                                        String an = ed[0];
+                                        año = Integer.parseInt(an);
+                                        if (año > 3) {
+                                            hipot = "0";
+                                            break;
+                                        } else {
+                                            hipot = "1";
+                                        }
                                     } else {
-                                        hipot = "0";
+                                        hipot = "2";
                                     }
-                                } else {
-                                    hipot = "2";
                                 }
-                            } else {
-                                hipot = "0";
                             }
-                        }
-                        //Sintomatico Respiratorio
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("24")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    sintomr = dataparam[i][6].toString();
-                                    break;
-                                } else {
-                                    sintomr = "2";
-                                }
-                            } else {
-                                sintomr = "2";
-                            }
-                        }
-                        //tuberculosis
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("25")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    tuberculosis = dataparam[i][6].toString();
-                                    break;
-                                } else {
-                                    tuberculosis = "2";
-                                }
-                            } else {
-                                tuberculosis = "0";
-                            }
-                        }
-                        //Lepra
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("26")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    lepra = dataparam[i][6].toString();
-                                    break;
-                                } else {
-                                    lepra = "3";
-                                }
-                            } else {
-                                lepra = "3";
-                            }
-                        }
-                        //Obesidad o desnutricion
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("27")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    nutri = dataparam[i][6].toString();
-                                    break;
-                                } else {
-                                    nutri = "3";
-                                }
-                            } else {
-                                nutri = "3";
-                            }
-                        }
-                        //Victima de maltrato
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("28")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    int año = 0;
-                                    String ed[] = datames[b][29].toString().split(" ");
-                                    String an = ed[0];
-                                    año = Integer.parseInt(an);
-                                    if (año < 18) {
-                                        maltrato = dataparam[i][6].toString();
+                            //Sintomatico Respiratorio
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("24")) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                        sintomr = "1";
                                         break;
                                     } else {
-                                        if (!datames[b][9].toString().equals("M")) {
+                                        sintomr = "2";
+                                    }
+                                }
+                            }
+                            //tuberculosis
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("25")) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                        tuberculosis = "1";
+                                        break;
+                                    } else {
+                                        tuberculosis = "0";
+                                    }
+                                }
+                            }
+                            //Lepra
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("26")) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                        lepra = dataparam[i][6].toString();
+                                        break;
+                                    } else {
+                                        lepra = "3";
+                                    }
+                                }
+                            }
+                            //Obesidad o desnutricion
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("27")) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                        nutri = dataparam[i][6].toString();
+                                        break;
+                                    } else {
+                                        nutri = "3";
+                                    }
+                                }
+                            }
+                            //Victima de maltrato
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("28")) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                        int año = 0;
+                                        String ed[] = datames[b][29].toString().split(" ");
+                                        String an = ed[0];
+                                        año = Integer.parseInt(an);
+                                        if (año < 18) {
                                             maltrato = dataparam[i][6].toString();
                                             break;
                                         } else {
-                                            maltrato = "0";
+                                            if (!datames[b][9].toString().equals("M")) {
+                                                maltrato = dataparam[i][6].toString();
+                                                break;
+                                            } else {
+                                                maltrato = "0";
+                                            }
+                                        }
+                                    } else {
+                                        maltrato = "3";
+                                    }
+                                }
+                            }
+                            //Victima de violencia sexual
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("29")) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                        abusos = "1";
+                                        break;
+                                    } else {
+                                        abusos = "2";
+                                    }
+                                }
+                            }
+                            //Infecciones sexuales
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("30")) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                        infecciones = "1";
+                                        break;
+                                    } else {
+                                        infecciones = "2";
+                                    }
+                                }
+                            }
+                            //Enfermedad mental
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("31")) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                        mental = dataparam[i][6].toString();
+                                    } else {
+                                        mental = "7";
+                                    }
+                                }
+                            }
+                            //Cancer de cervix
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("32")) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                        if (!datames[b][9].toString().equals("M")) {
+                                            cervix = "1";
+                                        } else {
+                                            cervix = "0";
+                                        }
+                                    } else {
+                                        cervix = "2";
+                                    }
+                                }
+                            }
+                            //Cancer de seno
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("33")) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                        seno = "1";
+                                    } else {
+                                        seno = "2";
+                                    }
+                                }
+                            }
+                            //Fluorosis dental
+                            //Fecha peso y peso
+                            if (datames[b][19].toString().equals("0.0")) {
+                                fechapeso = "1800-01-01";
+                                peso = "999";
+                            } else {
+                                fechapeso = datames[b][18].toString();
+                                String de[] = datames[b][19].toString().split("\\.");
+                                peso = de[0];
+                            }
+                            //Fecha talla y talla
+                            if (datames[b][20].toString().equals("0")) {
+                                fechatalla = "1800-01-01";
+                                talla = "999";
+                            } else {
+                                fechatalla = datames[b][18].toString();
+                                talla = datames[b][20].toString();
+                            }
+                            //fecha parto
+                            if (datames[b][21] == null) {
+                                fechapparto = "1845-01-01";
+                            } else {
+                                fechapparto = datames[b][21].toString();
+                            }
+                            //Edad gestacional
+                            if (datames[b][22] == null) {
+                                egparto = "0";
+                            } else {
+                                egparto = datames[b][22].toString();
+                            }
+                            //bcg
+                            //hepatitis b en menores de 1 año
+                            //pentavalente
+                            //polio
+                            //dpt menores de 5 años
+                            //rotavirus
+                            //neumococo                            
+                            //influenza niños
+                            //fiebre amarilla niños de 1 año
+                            //hepatitis a
+                            //triple viral niños
+                            //vph
+                            //td o tt mujeres en edad fertil 15 a 49 años
+                            //control placa bacteriana
+                            //ultimo parto y concejeria lactancia materna
+                            if (datames[b][9].toString().equals("M")) {
+                                fechaparto = "1845-01-01";
+                                fechalactancia = "1845-01-01";
+                            } else {
+                                if (datames[b][30].toString().equals("0001-01-01")) {
+                                    fechaparto = "1800-01-01";
+                                    fechalactancia = "1800-01-01";
+                                } else {
+                                    fechaparto = datames[b][30].toString();
+                                    fechalactancia = datames[b][30].toString();
+                                }
+                            }
+                            //salida parto
+                            if (datames[b][9].toString().equals("M")) {
+                                fechasalidaparto = "1845-01-01";
+                            } else {
+                                if (datames[b][30].toString().equals("0001-01-01")) {
+                                    fechasalidaparto = "1800-01-01";
+                                } else {
+                                    fechasalidaparto = datames[b][30].toString();
+                                }
+                            }
+                            //control recien
+                            if (datames[b][0].toString().equals("10")) {
+                                controlrecien = datames[b][30].toString();
+                            } else {
+                                controlrecien = "1845-01-01";
+                            }
+                            //planificacion y fecha suministro del metodo
+                            if (datames[b][0].toString().equals("5")) {
+                                if (datames[b][1].toString().equals("1")) {
+                                    planificacionprimera = datames[b][30].toString();
+                                    fechasuministro = datames[b][30].toString();
+                                } else {
+                                    planificacionprimera = "1800-01-01";
+                                    fechasuministro = "1800-01-01";
+                                }
+                            } else {
+                                planificacionprimera = "1845-01-01";
+                                fechasuministro = "1845-01-01";
+                            }
+                            //suministro metodo 
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("60")) {
+
+                                }
+                            }
+                            //control prenatal 1
+                            if (datames[b][9].toString().equals("M")) {
+                                controlprenatal1 = "1845-01-01";
+                            } else {
+                                if (datames[b][0].toString().equals("9")) {
+                                    if (datames[b][1].toString().equals("1")) {
+                                        controlprenatal1 = datames[b][30].toString();
+                                    } else {
+                                        controlprenatal1 = "1800-01-01";
+                                    }
+                                }
+                            }
+                            //n° controles
+                            if (datames[b][9].toString().equals("M")) {
+                                ncontroles = "0";
+                            } else {
+                                if (datames[b][0].toString().equals("9")) {
+                                    if (datames[b][24] == null) {
+                                        ncontroles = "999";
+                                    } else {
+                                        ncontroles = datames[b][24].toString();
+                                        break;
+                                    }
+                                } else {
+                                    if (datames[b][24] == null) {
+                                        ncontroles = "0";
+                                    }
+                                }
+                            }
+                            //ultimo control
+                            if (datames[b][9].toString().equals("M")) {
+                                ultimocontrol = "1845-01-01";
+                            } else {
+                                if (datames[b][0].toString().equals("9")) {
+                                    ultimocontrol = datames[b][30].toString();
+                                    break;
+                                } else {
+                                    ultimocontrol = "1800-01-01";
+                                }
+                            }
+                            //Acido folico
+                            if (datames[b][9].toString().equals("M")) {
+                                folico = "0";
+                            } else {
+                                Object dataposo[][] = Funtions.RetornarDatos(act.posologia4505(datames[b][32].toString()));
+                                for (int i = 0; i < dataparam.length; i++) {
+                                    if (dataparam[i][1].toString().equals("65")) {
+                                        for (int j = 0; j < dataposo.length; j++) {
+                                            if (dataparam[i][5].toString().equals(dataposo[j][0].toString())) {
+                                                folico = "1";
+                                                break;
+                                            } else {
+                                                folico = "20";
+                                            }
                                         }
                                     }
-                                } else {
-                                    maltrato = "3";
                                 }
                             }
-                        }
-                        //Victima de violencia sexual
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("29")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    abusos = dataparam[i][6].toString();
-                                    break;
-                                } else {
-                                    abusos = "2";
-                                }
-                            }
-                        }
-                        //Infecciones sexuales
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("30")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    infecciones = dataparam[i][6].toString();
-                                    break;
-                                } else {
-                                    infecciones = "2";
-                                }
-                            }
-                        }
-                        //Enfermedad mental
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("31")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    mental = dataparam[i][6].toString();
-                                } else {
-                                    mental = "7";
-                                }
-                            }
-                        }
-                        //Cancer de cervix
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("32")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    if (!datames[b][9].toString().equals("M")) {
-                                        cervix = dataparam[i][6].toString();
-                                    } else {
-                                        cervix = "0";
+                            //sulfato ferroso
+                            if (datames[b][9].toString().equals("M")) {
+                                ferroso = "0";
+                            } else {
+                                Object dataposo[][] = Funtions.RetornarDatos(act.posologia4505(datames[b][32].toString()));
+                                for (int i = 0; i < dataparam.length; i++) {
+                                    if (dataparam[i][1].toString().equals("66")) {
+                                        for (int j = 0; j < dataposo.length; j++) {
+                                            if (dataparam[i][5].toString().equals(dataposo[j][0].toString())) {
+                                                ferroso = "1";
+                                                break;
+                                            } else {
+                                                ferroso = "20";
+                                            }
+                                        }
                                     }
-                                } else {
-                                    cervix = "2";
                                 }
                             }
-                        }
-                        //Cancer de seno
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("33")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    seno = dataparam[i][6].toString();
-                                } else {
-                                    seno = "2";
-                                }
-                            }
-                        }
-                        if (datames[b][19].toString().equals("0.0")) {
-                            fechapeso = "1800-01-01";
-                            peso = "999";
-                        } else {
-                            fechapeso = datames[b][18].toString();
-                            String de[] = datames[b][19].toString().split("\\.");
-                            peso = de[0];
-                        }
-                        if (datames[b][20].toString().equals("0")) {
-                            fechatalla = "1845-01-01";
-                            talla = "999";
-                        } else {
-                            fechatalla = datames[b][18].toString();
-                            talla = datames[b][20].toString();
-                        }
-                        if (datames[b][21] == null) {
-                            fechapparto = "1845-01-01";
-                        } else {
-                            fechapparto = datames[b][21].toString();
-                        }
-                        if (datames[b][22] == null) {
-                            egparto = "98";
-                        } else {
-                            egparto = datames[b][22].toString();
-                        }
-                        //ultimo parto
-                        if (datames[b][9].toString().equals("M")) {
-                            fechaparto = "1845-01-01";
-                        } else {
-                            if (datames[b][30].toString().equals("0001-01-01")) {
-                                fechaparto = "1800-01-01";
+                            //calcio
+                            if (datames[b][9].toString().equals("M")) {
+                                calcio = "0";
                             } else {
-                                fechaparto = datames[b][30].toString();
-                            }
-                        }
-                        //salida parto
-                        if (datames[b][9].toString().equals("M")) {
-                            fechasalidaparto = "1845-01-01";
-                        } else {
-                            if (datames[b][30].toString().equals("0001-01-01")) {
-                                fechasalidaparto = "1800-01-01";
-                            } else {
-                                fechasalidaparto = datames[b][30].toString();
-                            }
-                        }
-                        //control recien
-                        if (datames[b][0].toString().equals("10")) {
-                            controlrecien = datames[b][30].toString();
-                        } else {
-                            controlrecien = "1845-01-01";
-                        }
-                        //planificacion
-                        if (datames[b][0].toString().equals("5")) {
-                            if (datames[b][1].toString().equals("1")) {
-                                planificacionprimera = datames[b][30].toString();
-                            } else {
-                                planificacionprimera = "1800-01-01";
-                            }
-                        } else {
-                            planificacionprimera = "1845-01-01";
-                        }
-                        //suministro metodo 
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("60")) {
-
-                            }
-                        }
-                        //control prenatal 1
-                        if (datames[b][9].toString().equals("M")) {
-                            controlprenatal1 = "1845-01-01";
-                        } else {
-                            if (datames[b][0].toString().equals("9")) {
-                                if (datames[b][1].toString().equals("1")) {
-                                    controlprenatal1 = datames[b][30].toString();
-                                } else {
-                                    controlprenatal1 = "1800-01-01";
+                                Object dataposo[][] = Funtions.RetornarDatos(act.posologia4505(datames[b][32].toString()));
+                                for (int i = 0; i < dataparam.length; i++) {
+                                    if (dataparam[i][1].toString().equals("67")) {
+                                        for (int j = 0; j < dataposo.length; j++) {
+                                            if (dataparam[i][5].toString().equals(dataposo[j][0].toString())) {
+                                                calcio = "1";
+                                                break;
+                                            } else {
+                                                calcio = "20";
+                                            }
+                                        }
+                                    }
                                 }
                             }
-                        }
-                        //n° controles
-                        if (datames[b][9].toString().equals("M")) {
-                            ncontroles = "998";
-                        } else {
-                            if (datames[b][0].toString().equals("9")) {
-                                if (datames[b][24] == null) {
-                                    ncontroles = "999";
-                                } else {
-                                    ncontroles = datames[b][24].toString();
-                                    break;
-                                }
-                            } else {
-                                if (datames[b][24] == null) {
-                                    ncontroles = "998";
-                                }
-                            }
-                        }
-                        //ultimo control
-                        if (datames[b][9].toString().equals("M")) {
-                            ultimocontrol = "1845-01-01";
-                        } else {
-                            if (datames[b][0].toString().equals("9")) {
-                                ultimocontrol = datames[b][30].toString();
+                            //Agudeza visual y oftalmologia
+                            if (datames[b][0].toString().equals("4")) {
+                                agudezav = datames[b][31].toString();
+                                oftalmologia = datames[b][31].toString();
                                 break;
                             } else {
-                                ultimocontrol = "1800-01-01";
+                                agudezav = "1845-01-01";
+                                oftalmologia = "1845-01-01";
                             }
-                        }
-                        //Acido folico
-                        if (datames[b][9].toString().equals("M")) {
-                            folico = "6";
-                        } else {
-                            Object dataposo[][] = Funtions.RetornarDatos(act.posologia4505(datames[b][32].toString()));
-                            for (int i = 0; i < dataparam.length; i++) {
-                                if (dataparam[i][1].toString().equals("65")) {
-                                    for (int j = 0; j < dataposo.length; j++) {
-                                        if (dataparam[i][5].toString().equals(dataposo[j][0].toString())) {
-                                            folico = dataparam[i][6].toString();
-                                            break;
-                                        } else {
-                                            folico = "3";
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        //sulfato ferroso
-                        if (datames[b][9].toString().equals("M")) {
-                            ferroso = "6";
-                        } else {
-                            Object dataposo[][] = Funtions.RetornarDatos(act.posologia4505(datames[b][32].toString()));
-                            for (int i = 0; i < dataparam.length; i++) {
-                                if (dataparam[i][1].toString().equals("66")) {
-                                    for (int j = 0; j < dataposo.length; j++) {
-                                        if (dataparam[i][5].toString().equals(dataposo[j][0].toString())) {
-                                            ferroso = dataparam[i][6].toString();
-                                            break;
-                                        } else {
-                                            ferroso = "3";
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        //calcio
-                        if (datames[b][9].toString().equals("M")) {
-                            calcio = "6";
-                        } else {
-                            Object dataposo[][] = Funtions.RetornarDatos(act.posologia4505(datames[b][32].toString()));
-                            for (int i = 0; i < dataparam.length; i++) {
-                                if (dataparam[i][1].toString().equals("67")) {
-                                    for (int j = 0; j < dataposo.length; j++) {
-                                        if (dataparam[i][5].toString().equals(dataposo[j][0].toString())) {
-                                            calcio = dataparam[i][6].toString();
-                                            break;
-                                        } else {
-                                            calcio = "3";
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        //Agudeza visual
-                        if (datames[b][0].toString().equals("4")) {
-                            agudezav = datames[b][31].toString();
-                            break;
-                        } else {
-                            agudezav = "1845-01-01";
-                        }
-                        //Desnutricion proteicocalorica
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("70")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    fechadesnutricion = datames[b][31].toString();
-                                    break;
-                                } else {
-                                    fechadesnutricion = "1845-01-01";
-                                }
-                            }
-                        }
-                        //mujer o menor victima de maltrato
-                        int año = 0;
-                        String ed[] = datames[b][29].toString().split(" ");
-                        String an = ed[0];
-                        año = Integer.parseInt(an);
-                        if (año < 18) {
+                            //Desnutricion proteicocalorica
                             for (int i = 0; i < dataparam.length; i++) {
                                 if (dataparam[i][1].toString().equals("70")) {
                                     if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
                                             || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                        fechamaltrato = datames[b][31].toString();
+                                        fechadesnutricion = datames[b][31].toString();
                                         break;
                                     } else {
-                                        fechamaltrato = "1845-01-01";
+                                        fechadesnutricion = "1845-01-01";
                                     }
                                 }
                             }
-                        } else {
-                            if (datames[b][9].toString().equals("M")) {
-                                fechamaltrato = "1845-01-01";
-                            } else {
+                            //mujer o menor victima de maltrato
+                            int año = 0;
+                            String ed[] = datames[b][29].toString().split(" ");
+                            String an = ed[0];
+                            año = Integer.parseInt(an);
+                            if (año < 18) {
                                 for (int i = 0; i < dataparam.length; i++) {
-                                    if (dataparam[i][1].toString().equals("70")) {
+                                    if (dataparam[i][1].toString().equals("71")) {
                                         if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
                                                 || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
                                             fechamaltrato = datames[b][31].toString();
@@ -772,385 +1061,793 @@ public class Rel4505 extends javax.swing.JPanel {
                                         }
                                     }
                                 }
+                            } else {
+                                if (datames[b][9].toString().equals("M")) {
+                                    fechamaltrato = "1845-01-01";
+                                } else {
+                                    for (int i = 0; i < dataparam.length; i++) {
+                                        if (dataparam[i][1].toString().equals("71")) {
+                                            if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                                    || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                                fechamaltrato = datames[b][31].toString();
+                                                break;
+                                            } else {
+                                                fechamaltrato = "1845-01-01";
+                                            }
+                                        }
+                                    }
+                                }
                             }
-                        }
-                        //victimas de violencia sexual
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("72")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    consultaviolencia = datames[b][31].toString();
+                            //victimas de violencia sexual
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("72")) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                        consultaviolencia = datames[b][31].toString();
+                                        break;
+                                    } else {
+                                        consultaviolencia = "1845-01-01";
+                                    }
+                                }
+                            }
+                            //consulta nutricion
+                            //consulta psicologia
+                            //Consulta cyd1
+                            if (datames[b][0].toString().equals("2")) {
+                                if (datames[b][1].toString().equals("1")) {
+                                    cyd1vez = datames[b][31].toString();
+                                } else {
+                                    cyd1vez = "1800-01-01";
+                                }
+                            } else {
+                                cyd1vez = "1845-01-01";
+                            }
+                            //sulfato menor 10 años
+                            if (datames[b][0].toString().equals("2")) {
+                                Object dataposo[][] = Funtions.RetornarDatos(act.posologia4505(datames[b][32].toString()));
+                                for (int i = 0; i < dataparam.length; i++) {
+                                    if (dataparam[i][1].toString().equals("76")) {
+                                        for (int j = 0; j < dataposo.length; j++) {
+                                            if (año <= 10) {
+                                                if (dataparam[i][5].toString().equals(dataposo[j][0].toString())) {
+                                                    sulfato = "1";
+                                                    break;
+                                                } else {
+                                                    sulfato = "20";
+                                                }
+                                            } else {
+                                                sulfato = "0";
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            //vitamina A
+                            if (datames[b][0].toString().equals("2")) {
+                                Object dataposo[][] = Funtions.RetornarDatos(act.posologia4505(datames[b][32].toString()));
+                                for (int i = 0; i < dataparam.length; i++) {
+                                    if (dataparam[i][1].toString().equals("77")) {
+                                        for (int j = 0; j < dataposo.length; j++) {
+                                            if (año <= 10) {
+                                                if (dataparam[i][5].toString().equals(dataposo[j][0].toString())) {
+                                                    vitaA = "1";
+                                                    break;
+                                                } else {
+                                                    vitaA = "20";
+                                                }
+                                            } else {
+                                                sulfato = "0";
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            //joven primera vez
+                            if (datames[b][0].toString().equals("1")) {
+                                if (datames[b][1].toString().equals("1")) {
+                                    joven1 = datames[b][31].toString();
+                                } else {
+                                    joven1 = "1800-01-01";
+                                }
+                            } else {
+                                joven1 = "1845-01-01";
+                            }
+                            //adulto primera vez
+                            if (datames[b][0].toString().equals("3")) {
+                                if (datames[b][1].toString().equals("1")) {
+                                    adulto1 = datames[b][31].toString();
                                     break;
                                 } else {
-                                    consultaviolencia = "1845-01-01";
+                                    adulto1 = "1800-01-01";
                                 }
-                            }
-                        }
-                        //Consulta cyd1
-                        if (datames[b][0].toString().equals("2")) {
-                            if (datames[b][1].toString().equals("1")) {
-                                cyd1vez = datames[b][31].toString();
                             } else {
-                                cyd1vez = "1800-01-01";
+                                adulto1 = "1845-01-01";
                             }
-                        } else {
-                            cyd1vez = "1845-01-01";
-                        }
-                        //sulfato menor 10 años
-                        if (datames[b][0].toString().equals("2")) {
-                            Object dataposo[][] = Funtions.RetornarDatos(act.posologia4505(datames[b][32].toString()));
+                            //preservativos entregados pcete its
+                            //pdx - paciente multidiagnostico (todos de loquera)
                             for (int i = 0; i < dataparam.length; i++) {
-                                if (dataparam[i][1].toString().equals("76")) {
-                                    for (int j = 0; j < dataposo.length; j++) {
-                                        if (dataparam[i][5].toString().equals(dataposo[j][0].toString())) {
-                                            sulfato = dataparam[i][6].toString();
-                                            break;
-                                        } else {
-                                            sulfato = "3";
-                                        }
+                                if (dataparam[i][1].toString().equals("83")) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
+                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                        pdx = dataparam[i][6].toString();
+                                        break;
+                                    } else {
+                                        pdx = "0";
                                     }
                                 }
                             }
-                        } else {
-                            sulfato = "6";
-                        }
-                        //vitamina A
-                        if (datames[b][0].toString().equals("2")) {
-                            Object dataposo[][] = Funtions.RetornarDatos(act.posologia4505(datames[b][32].toString()));
+                            //asesoria pre test elisa vih
+                            Object dataproced[][] = Funtions.RetornarDatos(act.procedimiento4505(datames[b][32].toString()));
                             for (int i = 0; i < dataparam.length; i++) {
-                                if (dataparam[i][1].toString().equals("76")) {
-                                    for (int j = 0; j < dataposo.length; j++) {
-                                        if (dataparam[i][5].toString().equals(dataposo[j][0].toString())) {
-                                            vitaA = dataparam[i][6].toString();
+                                if (dataparam[i][1].toString().equals("81")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            preelisavih = datames[b][31].toString();
                                             break;
                                         } else {
-                                            vitaA = "3";
+                                            preelisavih = "1845-01-01";
                                         }
                                     }
                                 }
                             }
-                        } else {
-                            vitaA = "6";
-                        }
-                        //joven primera vez
-                        if (datames[b][0].toString().equals("1")) {
-                            if (datames[b][1].toString().equals("1")) {
-                                joven1 = datames[b][31].toString();
-                            } else {
-                                joven1 = "1800-01-01";
-                            }
-                        } else {
-                            joven1 = "1845-01-01";
-                        }
-                        //adulto primera vez
-                        if (datames[b][0].toString().equals("3")) {
-                            if (datames[b][1].toString().equals("1")) {
-                                adulto1 = datames[b][31].toString();
-                                break;
-                            } else {
-                                adulto1 = "1800-01-01";
-                            }
-                        } else {
-                            adulto1 = "1845-01-01";
-                        }
-                        //pdx - paciente multidiagnostico (todos de loquera)
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("83")) {
-                                if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                        || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                    pdx = dataparam[i][6].toString();
-                                    break;
-                                } else {
-                                    pdx = "7";
-                                }
-                            }
-                        }
-                        //fecha antigeno hepatitis B
-                        Object dataproced[][] = Funtions.RetornarDatos(act.procedimiento4505(datames[b][32].toString()));
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("84")) {
-                                for (int j = 0; j < dataproced.length; j++) {
-                                    if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
-                                        Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
-                                        if (!datacont[0][0].toString().equals("0")) {
-                                            Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
-                                            fechahb = hb[0][2].toString();
-                                            break;
+                            //fecha antigeno hepatitis B
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("84")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                fechahb = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                fechahb = "1800-01-01";
+                                            }
                                         } else {
-                                            fechahb = "1800-01-01";
+                                            fechahb = "1845-01-01";
                                         }
-                                    } else {
-                                        fechahb = "1845-01-01";
                                     }
                                 }
                             }
-                        }
-                        //resultado hpb
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("85")) {
-                                for (int j = 0; j < dataproced.length; j++) {
-                                    if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
-                                        Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
-                                        if (!datacont[0][0].toString().equals("0")) {
-                                            Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
-                                            resultadohb = hb[0][3].toString();
-                                            break;
+                            //resultado hpb
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("85")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                resultadohb = hb[0][3].toString();
+                                                break;
+                                            } else {
+                                                resultadohb = "22";
+                                            }
                                         } else {
-                                            resultadohb = "2";
+                                            resultadohb = "0";
                                         }
-                                    } else {
-                                        resultadohb = "3";
                                     }
                                 }
                             }
-                        }
-                        //Fecha serologia sifilis
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("86")) {
-                                for (int j = 0; j < dataproced.length; j++) {
-                                    if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
-                                        Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
-                                        if (!datacont[0][0].toString().equals("0")) {
-                                            Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
-                                            fechassifilis = hb[0][2].toString();
-                                            break;
+                            //Fecha serologia sifilis
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("86")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                fechassifilis = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                fechassifilis = "1800-01-01";
+                                            }
                                         } else {
-                                            fechassifilis = "1800-01-01";
+                                            fechassifilis = "1845-01-01";
                                         }
-                                    } else {
-                                        fechassifilis = "1845-01-01";
                                     }
                                 }
                             }
-                        }
-                        //Resultado serologia sifilis
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("87")) {
-                                for (int j = 0; j < dataproced.length; j++) {
-                                    if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
-                                        Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
-                                        if (!datacont[0][0].toString().equals("0")) {
-                                            Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
-                                            resultadossifilis = hb[0][3].toString();
-                                            break;
+                            //Resultado serologia sifilis
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("87")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                resultadossifilis = hb[0][3].toString();
+                                                break;
+                                            } else {
+                                                resultadossifilis = "22";
+                                            }
                                         } else {
-                                            resultadossifilis = "2";
+                                            resultadossifilis = "0";
                                         }
-                                    } else {
-                                        resultadossifilis = "3";
                                     }
                                 }
                             }
-                        }
-                        //fecha toma de elisa
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("88")) {
-                                for (int j = 0; j < dataproced.length; j++) {
-                                    if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
-                                        Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
-                                        if (!datacont[0][0].toString().equals("0")) {
-                                            Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
-                                            fechatelisahiv = hb[0][2].toString();
-                                            break;
+                            //fecha toma de elisa y asesoria post-test
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("88")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                fechatelisahiv = hb[0][2].toString();
+                                                postelisavih = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                fechatelisahiv = "1800-01-01";
+                                                postelisavih = "1845-01-01";
+                                            }
                                         } else {
-                                            fechatelisahiv = "1800-01-01";
+                                            fechatelisahiv = "1845-01-01";
                                         }
-                                    } else {
-                                        fechatelisahiv = "1845-01-01";
                                     }
                                 }
                             }
-                        }
-                        //Resultado elisa hiv
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("89")) {
-                                for (int j = 0; j < dataproced.length; j++) {
-                                    if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
-                                        Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
-                                        if (!datacont[0][0].toString().equals("0")) {
-                                            Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
-                                            resultadoelisahiv = hb[0][3].toString();
-                                            break;
+                            //Resultado elisa hiv
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("89")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                resultadoelisahiv = hb[0][3].toString();
+                                                break;
+                                            } else {
+                                                resultadoelisahiv = "22";
+                                            }
                                         } else {
-                                            resultadoelisahiv = "3";
+                                            resultadoelisahiv = "0";
                                         }
-                                    } else {
-                                        resultadoelisahiv = "4";
                                     }
                                 }
                             }
-                        }
-                        //fecha tsh neonatal
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("90")) {
-                                for (int j = 0; j < dataproced.length; j++) {
-                                    if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
-                                        Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
-                                        if (!datacont[0][0].toString().equals("0")) {
-                                            Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
-                                            fechaths = hb[0][2].toString();
-                                            break;
+                            //fecha tsh neonatal
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("90")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                fechaths = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                fechaths = "1800-01-01";
+                                            }
                                         } else {
-                                            fechaths = "1800-01-01";
+                                            fechaths = "1845-01-01";
                                         }
-                                    } else {
-                                        fechaths = "1845-01-01";
                                     }
                                 }
                             }
-                        }
-                        //Resultado tsh neonatal
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("91")) {
-                                for (int j = 0; j < dataproced.length; j++) {
-                                    if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
-                                        Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
-                                        if (!datacont[0][0].toString().equals("0")) {
-                                            Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
-                                            resultadoelisahiv = hb[0][3].toString();
-                                            break;
+                            //Resultado tsh neonatal
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("91")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                resultadoelisahiv = hb[0][3].toString();
+                                                break;
+                                            } else {
+                                                resultadoelisahiv = "22";
+                                            }
                                         } else {
-                                            resultadoelisahiv = "2";
+                                            resultadoelisahiv = "0";
                                         }
-                                    } else {
-                                        resultadoelisahiv = "3";
                                     }
                                 }
                             }
-                        }
-                        //fecha coloscopia
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("97")) {
-                                for (int j = 0; j < dataproced.length; j++) {
-                                    if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
-                                        Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
-                                        if (!datacont[0][0].toString().equals("0")) {
-                                            Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
-                                            fechacolposcopi = hb[0][2].toString();
-                                            break;
+                            //tamizaje cancer de cuello uterino
+                            //citologia cervico uterina
+                            //citologia cervico uterina bethesda
+                            //calidad de la muestra
+                            //codigo donde se toma la muestra
+                            //fecha coloscopia
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("97")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                fechacolposcopi = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                fechacolposcopi = "1800-01-01";
+                                            }
                                         } else {
-                                            fechacolposcopi = "1800-01-01";
+                                            fechacolposcopi = "1845-01-01";
                                         }
-                                    } else {
-                                        fechacolposcopi = "1845-01-01";
                                     }
                                 }
                             }
-                        }
-                        //Fecha de la biopsia cervical
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("99")) {
-                                for (int j = 0; j < dataproced.length; j++) {
-                                    if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
-                                        Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
-                                        if (!datacont[0][0].toString().equals("0")) {
-                                            Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
-                                            fechabiopsia = hb[0][2].toString();
-                                            break;
+                            //ips toma colposcopia
+                            //Fecha de la biopsia cervical
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("99")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                fechabiopsia = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                fechabiopsia = "1800-01-01";
+                                            }
                                         } else {
-                                            fechabiopsia = "1800-01-01";
+                                            fechabiopsia = "1845-01-01";
                                         }
-                                    } else {
-                                        fechabiopsia = "1845-01-01";
                                     }
                                 }
                             }
-                        }
-                        //Resultado de la biopsia cervical
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("100")) {
-                                for (int j = 0; j < dataproced.length; j++) {
-                                    if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
-                                        Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
-                                        if (!datacont[0][0].toString().equals("0")) {
-                                            Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
-                                            resultadobiopsia = hb[0][3].toString();
-                                            break;
+                            //Resultado de la biopsia cervical
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("100")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                resultadobiopsia = hb[0][3].toString();
+                                                break;
+                                            } else {
+                                                resultadobiopsia = "999";
+                                            }
                                         } else {
-                                            resultadobiopsia = "99";
+                                            resultadobiopsia = "0";
                                         }
-                                    } else {
-                                        resultadobiopsia = "98";
                                     }
                                 }
                             }
-                        }
-                        //fecha mamografia
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("102")) {
-                                for (int j = 0; j < dataproced.length; j++) {
-                                    if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
-                                        Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
-                                        if (!datacont[0][0].toString().equals("0")) {
-                                            Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
-                                            fechamamografia = hb[0][2].toString();
-                                            break;
+                            //codigo habilitacion ips biopsia cervical
+                            //fecha mamografia
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("102")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                fechamamografia = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                fechamamografia = "1800-01-01";
+                                            }
                                         } else {
-                                            fechamamografia = "1800-01-01";
+                                            fechamamografia = "1845-01-01";
                                         }
-                                    } else {
-                                        fechamamografia = "1845-01-01";
                                     }
                                 }
                             }
-                        }
-                        //resultado mamografia
-                        for (int i = 0; i < dataparam.length; i++) {
-                            if (dataparam[i][1].toString().equals("103")) {
-                                for (int j = 0; j < dataproced.length; j++) {
-                                    if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
-                                        Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
-                                        if (!datacont[0][0].toString().equals("0")) {
-                                            Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
-                                            resultadomamografia = hb[0][3].toString();
-                                            break;
+                            //resultado mamografia
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("103")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                resultadomamografia = hb[0][3].toString();
+                                                break;
+                                            } else {
+                                                resultadomamografia = "999";
+                                            }
                                         } else {
-                                            resultadomamografia = "99";
+                                            resultadomamografia = "0";
                                         }
-                                    } else {
-                                        resultadomamografia = "98";
                                     }
                                 }
                             }
+                            //codigo habilitacion ips mamografia
+                            //fecha toma biopcia bacaf
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("105")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                fechabacaf = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                fechabacaf = "1800-01-01";
+                                            }
+                                        } else {
+                                            fechabacaf = "1845-01-01";
+                                        }
+                                    }
+                                }
+                            }
+                            //fecha resultado biopsia bacaf
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("106")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                resultadobacaf = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                resultadobacaf = "1800-01-01";
+                                            }
+                                        } else {
+                                            resultadobacaf = "1845-01-01";
+                                        }
+                                    }
+                                }
+                            }
+                            //Resultado biopsia bacaf
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("107")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                bacaf = hb[0][3].toString();
+                                                break;
+                                            } else {
+                                                bacaf = "99";
+                                            }
+                                        } else {
+                                            bacaf = "98";
+                                        }
+                                    }
+                                }
+                            }
+                            //codigo de habilitacion biopsia bacaf
+                            //fecha toma de emoglobina
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("109")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                fechahemoglobina = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                fechahemoglobina = "1800-01-01";
+                                            }
+                                        } else {
+                                            fechahemoglobina = "1845-01-01";
+                                        }
+                                    }
+                                }
+                            }
+                            //resultado hemoglobina
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("110")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                hemoglobina = hb[0][4].toString();
+                                                break;
+                                            } else {
+                                                hemoglobina = "0";
+                                            }
+                                        } else {
+                                            hemoglobina = "0";
+                                        }
+                                    }
+                                }
+                            }
+                            //Fecha toma glicemia basal
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("111")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                fechaglisemia = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                fechaglisemia = "1800-01-01";
+                                            }
+                                        } else {
+                                            fechaglisemia = "1845-01-01";
+                                        }
+                                    }
+                                }
+                            }
+                            //Fecha creatinina
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("112")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                fechacreatinina = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                fechacreatinina = "1800-01-01";
+                                            }
+                                        } else {
+                                            fechacreatinina = "1845-01-01";
+                                        }
+                                    }
+                                }
+                            }
+                            //Resultado creatinina
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("113")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                creatinina = hb[0][4].toString();
+                                                break;
+                                            } else {
+                                                creatinina = "999";
+                                            }
+                                        } else {
+                                            creatinina = "0";
+                                        }
+                                    }
+                                }
+                            }
+                            //Fecha hemoglobina glicosada
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("114")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                fechaglicosada = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                fechaglicosada = "1800-01-01";
+                                            }
+                                        } else {
+                                            fechaglicosada = "1845-01-01";
+                                        }
+                                    }
+                                }
+                            }
+                            //Resultado hemoglobina glicosada
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("115")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                glicosada = hb[0][4].toString();
+                                                break;
+                                            } else {
+                                                glicosada = "999";
+                                            }
+                                        } else {
+                                            glicosada = "0";
+                                        }
+                                    }
+                                }
+                            }
+                            //Fecha toma de microalbuminuria
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("116")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                fechamicroalbuminuria = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                fechamicroalbuminuria = "1800-01-01";
+                                            }
+                                        } else {
+                                            fechamicroalbuminuria = "1845-01-01";
+                                        }
+                                    }
+                                }
+                            }
+                            //fecha toma hdl
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("117")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                fechahdl = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                fechahdl = "1800-01-01";
+                                            }
+                                        } else {
+                                            fechahdl = "1845-01-01";
+                                        }
+                                    }
+                                }
+                            }
+                            //fecha toma de baciloscopia de diagnostico
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("118")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                fechabaciloscopia = hb[0][2].toString();
+                                                break;
+                                            } else {
+                                                fechabaciloscopia = "1800-01-01";
+                                            }
+                                        } else {
+                                            fechabaciloscopia = "1845-01-01";
+                                        }
+                                    }
+                                }
+                            }
+                            //Baciloscopia de diagnostico
+                            for (int i = 0; i < dataparam.length; i++) {
+                                if (dataparam[i][1].toString().equals("119")) {
+                                    for (int j = 0; j < dataproced.length; j++) {
+                                        if (dataparam[i][5].toString().equals(dataproced[j][0].toString())) {
+                                            Object datacont[][] = Funtions.RetornarDatos(act.conteoexamen(dataproced[j][1].toString()));
+                                            if (!datacont[0][0].toString().equals("0")) {
+                                                Object hb[][] = Funtions.RetornarDatos(act.cargadatoslaboratorio(dataproced[j][1].toString()));
+                                                baciloscopia = hb[0][3].toString();
+                                                break;
+                                            } else {
+                                                baciloscopia = "3";
+                                            }
+                                        } else {
+                                            baciloscopia = "4";
+                                        }
+                                    }
+                                }
+                            }
+                            escribir.write(nombreprograma.toUpperCase() + "|1|999||||2|" + (b + 1) + "|" + codigoipsprimaria + "|" + datames[b][2] + "|" + datames[b][3] + "|" + datames[b][4] + "|" + apellido2
+                                    + "|" + datames[b][6] + "|" + nombre2 + "|" + datames[b][8] + "|" + datames[b][9] + "|" + etnia + "|" + codocupacion + "|" + escolaridad + "|" + gestacion + "|" + sifilis + "|"
+                                    + htagesta + "|" + hipot + "|" + sintomr + "|" + tuberculosis + "|" + lepra + "|" + nutri + "|" + maltrato + "|" + abusos + "|" + infecciones + "|" + mental + "|"
+                                    + cervix + "|" + seno + "|" + fluorosis + "|" + fechapeso + "|" + peso + "|" + fechatalla + "|" + talla + "|" + fechapparto + "|" + egparto + "|" + bgc + "|"
+                                    + hepatitisb + "|" + pentavalente + "|" + polio + "|" + dpt + "|" + rotavirus + "|" + neumococo + "|" + influenza + "|" + fiebreA + "|" + hepatitisA + "|"
+                                    + tripev + "|" + vph + "|" + tdtt + "|" + placab + "|" + fechaparto + "|" + fechasalidaparto + "|" + fechalactancia + "|" + controlrecien + "|"
+                                    + planificacionprimera + "|" + suministrometodo + "|" + fechasuministro + "|" + controlprenatal1 + "|" + ncontroles + "|" + ultimocontrol + "|"
+                                    + folico + "|" + ferroso + "|" + calcio + "|" + agudezav + "|" + oftalmologia + "|" + fechadesnutricion + "|" + fechamaltrato + "|" + consultaviolencia + "|"
+                                    + fechanutricion + "|" + fechapsicologia + "|" + cyd1vez + "|" + sulfato + "|" + vitaA + "|" + joven1 + "|" + adulto1 + "|" + preservativosits + "|" + preelisavih + "|"
+                                    + postelisavih + "|" + pdx + "|" + fechahb + "|" + resultadohb + "|" + fechassifilis + "|" + resultadossifilis + "|" + fechatelisahiv + "|" + resultadoelisahiv + "|"
+                                    + fechaths + "|" + resultadotsh + "|" + tamizajecuellou + "|" + citologia + "|" + citologiabet + "|" + calidadmuestra + "|" + codigoips + "|" + fechacolposcopi + "|"
+                                    + codigoipscolpo + "|" + fechabiopsia + "|" + resultadobiopsia + "|" + codigobiopsia + "|" + fechamamografia + "|" + resultadomamografia + "|"
+                                    + codigomamografia + "|" + fechabacaf + "|" + resultadobacaf + "|" + bacaf + "|" + codigobacaf + "|" + fechahemoglobina + "|" + hemoglobina + "|"
+                                    + fechaglisemia + "|" + fechacreatinina + "|" + creatinina + "|" + fechaglicosada + "|" + glicosada + "|" + fechamicroalbuminuria + "|" + fechahdl + "|"
+                                    + fechabaciloscopia + "|" + baciloscopia + "|" + hipotiroidismo + "|" + sgestacional + "|" + scongenita + "|" + tlepra + "|" + leishmaniasis + ln);
                         }
-
-                        escribir.write(datames[b][0].toString() + "|1|999||||2|" + (b + 1) + "|051540381702|" + datames[b][2] + "|" + datames[b][3] + "|" + datames[b][4] + "|" + apellido2
-                                + "|" + datames[b][6] + "|" + nombre2 + "|" + datames[b][8] + "|" + datames[b][9] + "|" + etnia + "|9999|" + escolaridad + "|" + gestacion + "|" + sifilis + "|"
-                                + htagesta + "|" + hipot + "|" + sintomr + "|" + tuberculosis + "|" + lepra + "|" + nutri + "|" + maltrato + "|" + abusos + "|" + infecciones + "|" + mental + "|"
-                                + cervix + "|" + seno + "|" + fluorosis + "|" + fechapeso + "|" + peso + "|" + fechatalla + "|" + talla + "|" + fechapparto + "|" + egparto + "|" + bgc + "|"
-                                + hepatitisb + "|" + pentavalente + "|" + polio + "|" + dpt + "|" + rotavirus + "|" + neumococo + "|" + influenza + "|" + fiebreA + "|" + hepatitisA + "|"
-                                + tripev + "|" + vph + "|" + tdtt + "|" + placab + "|" + fechaparto + "|" + fechasalidaparto + "|" + fechalactancia + "|" + controlrecien + "|"
-                                + planificacionprimera + "|" + suministrometodo + "|" + fechasuministro + "|" + controlprenatal1 + "|" + ncontroles + "|" + ultimocontrol + "|"
-                                + folico + "|" + ferroso + "|" + calcio + "|" + agudezav + "|" + oftalmologia + "|" + fechadesnutricion + "|" + fechamaltrato + "|" + consultaviolencia + "|"
-                                + fechanutricion + "|" + fechapsicologia + "|" + cyd1vez + "|" + sulfato + "|" + vitaA + "|" + joven1 + "|" + adulto1 + "|" + preservativosits + "|" + preelisavih + "|"
-                                + postelisavih + "|" + pdx + "|" + fechahb + "|" + resultadohb + "|" + fechassifilis + "|" + resultadossifilis + "|" + fechatelisahiv + "|" + resultadoelisahiv + "|"
-                                + fechaths + "|" + resultadotsh + "|" + tamizajecuellou + "|" + citologia + "|" + citologiabet + "|" + calidadmuestra + "|" + codigoips + "|" + fechacolposcopi + "|"
-                                + codigoipscolpo + "|" + fechabiopsia + "|" + resultadobiopsia + "|" + codigobiopsia + "|" + fechamamografia + "|" + resultadomamografia + "|"
-                                + codigomamografia + "|" + fechabacaf + "|" + resultadobacaf + "|" + bacaf + "|" + codigobacaf + "|" + fechahemoglobina + "|" + hemoglobina + "|"
-                                + fechaglisemia + "|" + fechacreatinina + "|" + creatinina + "|" + fechaglicosada + "|" + glicosada + "|" + fechamicroalbuminuria + "|" + fechahdl + "|"
-                                + fechabaciloscopia + "|" + baciloscopia + "|" + hipotiroidismo + "|" + sgestacional + "|" + scongenita + "|" + tlepra + "|" + leishmaniasis + ln);
+                        escribir.close();
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(null, "Error creacion archivo 4505: " + e.getMessage(), Rel4505.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+                    } catch (NumberFormatException e) {
+                        JOptionPane.showMessageDialog(null, "Error creacion archivo 4505: " + e.getMessage(), Rel4505.class.getName(), JOptionPane.INFORMATION_MESSAGE);
                     }
-                    escribir.close();
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Error creacion archivo 4505: " + e.getMessage(), Rel4505.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "El rango de fecha ingresado no es valido");
                 }
             }
 
             if (jCheckBox2.isSelected() == true) {
                 fecini = formato.format(jDateChooser3.getDate());
                 fecfin = formato.format(jDateChooser4.getDate());
-                Object datatri[][] = Funtions.RetornarDatos(act.rel4505tri(jComboBox1.getSelectedItem().toString(), fecini, fecfin));
-                try {
-                    File archivo = new File(ruta, "4505 " + jComboBox1.getSelectedItem() + " Trimestral.txt");
-                    archivo.createNewFile();
-                    System.out.println(archivo.getAbsolutePath());
-                    FileWriter escribir = new FileWriter(archivo, true);
-                    for (int b = 0; b < datatri.length; b++) {
-                        escribir.write("programa" + "|1|999||||" + ln);
+                boolean bol = false;
+                if ((jDateChooser4.getDate().getMonth() - jDateChooser3.getDate().getMonth()) != 2) {
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar un rango de fecha valido");
+                } else {
+                    long val = jDateChooser4.getCalendar().getTimeInMillis() - jDateChooser3.getCalendar().getTimeInMillis();
+                    long dias = val / (24 * 60 * 60 * 1000);
+                    if (jRadioButton1.isSelected() == true) {
+                        if (jDateChooser3.getDate().getMonth() == 0 && jDateChooser4.getDate().getMonth() == 2) {
+                            if (dias == 89 || dias == 90) {
+                                bol = true;
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El rango de fechas seleccionadas no es valido");
+                        }
                     }
-                    escribir.close();
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Error creacion archivo 4505: " + e.getMessage(), Rel4505.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+                    if (jRadioButton2.isSelected() == true) {
+                        if (jDateChooser3.getDate().getMonth() == 3 && jDateChooser4.getDate().getMonth() == 5) {
+                            if (dias == 90) {
+                                bol = true;
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El rango de fechas seleccionadas no es valido");
+                        }
+                    }
+                    if (jRadioButton3.isSelected() == true) {
+                        if (jDateChooser3.getDate().getMonth() == 6 && jDateChooser4.getDate().getMonth() == 8) {
+                            if (dias == 91) {
+                                bol = true;
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El rango de fechas seleccionadas no es valido");
+                        }
+                    }
+                    if (jRadioButton4.isSelected() == true) {
+                        if (jDateChooser3.getDate().getMonth() == 9 && jDateChooser4.getDate().getMonth() == 11) {
+                            if (dias == 91) {
+                                bol = true;
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El rango de fechas seleccionadas no es valido");
+                        }
+                    }
+                }
+                if (bol == true) {
+                    Object datatri[][] = Funtions.RetornarDatos(act.rel4505tri(jComboBox1.getSelectedItem().toString(), fecini, fecfin));
+                    try {
+                        File archivo = new File(ruta, "4505 " + jComboBox1.getSelectedItem() + " Trimestral.txt");
+                        if (archivo.exists()) {
+                            archivo.delete();
+                            archivo.createNewFile();
+                        } else {
+                            archivo.createNewFile();
+                        }
+                        System.out.println(archivo.getAbsolutePath());
+                        FileWriter escribir = new FileWriter(archivo, true);
+                        String nombreprograma = null, codigoipsprimaria = "051540381702", apellido2, nombre2, etnia = "6", codocupacion = "9999", gestacion = "0", sifilis = "0", htagesta = "0", hipot = "0", genero = null, escolaridad = "1", sintomr = "2", tuberculosis = "0",
+                                lepra = "3", nutri = "3", maltrato = "0", abusos = "2", infecciones = "2", mental = "7", cervix = "0", seno = "2", fluorosis = "2", fechapeso = "1800-01-01", peso = "999",
+                                talla = "999", fechatalla = "1800-01-01", fechapparto = "1845-01-01", egparto = "0", bgc = "0", hepatitisb = "0", pentavalente = "0", polio = "0", dpt = "0", rotavirus = "0",
+                                neumococo = "0", influenza = "0", fiebreA = "0", hepatitisA = "0", tripev = "0", vph = "0", tdtt = "0", placab = "0", fechaparto = "1845-01-01", fechasalidaparto = "1845-01-01",
+                                fechalactancia = "1845-01-01", controlrecien = "1845-01-01", planificacionprimera = "1845-01-01", suministrometodo = "0", fechasuministro = "1845-01-01", controlprenatal1 = "1845-01-01", ncontroles = "0",
+                                ultimocontrol = "1845-01-01", folico = "0", ferroso = "0", calcio = "0", agudezav = "1845-01-01", oftalmologia = "1845-01-01", fechadesnutricion = "1845-01-01", fechamaltrato = "1845-01-01", consultaviolencia = "1845-01-01",
+                                fechanutricion = "1845-01-01", fechapsicologia = "1845-01-01", cyd1vez = "1845-01-01", sulfato = "0", vitaA = "0", joven1 = "1845-01-01", adulto1 = "1845-01-01", preservativosits = "0", preelisavih = "1845-01-01",
+                                postelisavih = "1845-01-01", pdx = "0", fechahb = "1845-01-01", resultadohb = "0", fechassifilis = "1845-01-01", resultadossifilis = "0", fechatelisahiv = "1845-01-01", resultadoelisahiv = "0",
+                                fechaths = "1845-01-01", resultadotsh = "0", tamizajecuellou = "0", citologia = "1845-01-01", citologiabet = "0", calidadmuestra = "0", codigoips = "051540381702", fechacolposcopi = "1845-01-01",
+                                codigoipscolpo = "051540381702", fechabiopsia = "1845-01-01", resultadobiopsia = "0", codigobiopsia = "051540381702", fechamamografia = "1845-01-01", resultadomamografia = "0", codigomamografia = "051540381702",
+                                fechabacaf = "1845-01-01", resultadobacaf = "1845-01-01", bacaf = "0", codigobacaf = "051540381702", fechahemoglobina = "1845-01-01", hemoglobina = "0", fechaglisemia = "1845-01-01", fechacreatinina = "1845-01-01",
+                                creatinina = "0", fechaglicosada = "1845-01-01", glicosada = "0", fechamicroalbuminuria = "1845-01-01", fechahdl = "1845-01-01", fechabaciloscopia = "1845-01-01", baciloscopia = "4",
+                                hipotiroidismo = "0", sgestacional = "0", scongenita = "0", tlepra = "0", leishmaniasis = "1845-01-01";
+
+                        for (int b = 0; b < datatri.length; b++) {
+                            if (datatri[b][5].toString().equals("")) {
+                                apellido2 = "NONE";
+                            } else {
+                                apellido2 = datatri[b][5].toString();
+                            }
+                            if (datatri[b][7].toString().equals("")) {
+                                nombre2 = "NONE";
+                            } else {
+                                nombre2 = datatri[b][7].toString();
+                            }
+                            genero = datatri[b][9].toString();
+
+                            escribir.write(datatri[b][0].toString() + "|1|999||||2|" + (b + 1) + "|" + codigoipsprimaria + "|" + datatri[b][2] + "|" + datatri[b][3] + "|" + datatri[b][4] + "|" + apellido2
+                                    + "|" + datatri[b][6] + "|" + nombre2 + "|" + datatri[b][8] + "|" + datatri[b][9] + "|" + etnia + "|" + codocupacion + "|" + escolaridad + "|" + gestacion + "|" + sifilis + "|"
+                                    + htagesta + "|" + hipot + "|" + sintomr + "|" + tuberculosis + "|" + lepra + "|" + nutri + "|" + maltrato + "|" + abusos + "|" + infecciones + "|" + mental + "|"
+                                    + cervix + "|" + seno + "|" + fluorosis + "|" + fechapeso + "|" + peso + "|" + fechatalla + "|" + talla + "|" + fechapparto + "|" + egparto + "|" + bgc + "|"
+                                    + hepatitisb + "|" + pentavalente + "|" + polio + "|" + dpt + "|" + rotavirus + "|" + neumococo + "|" + influenza + "|" + fiebreA + "|" + hepatitisA + "|"
+                                    + tripev + "|" + vph + "|" + tdtt + "|" + placab + "|" + fechaparto + "|" + fechasalidaparto + "|" + fechalactancia + "|" + controlrecien + "|"
+                                    + planificacionprimera + "|" + suministrometodo + "|" + fechasuministro + "|" + controlprenatal1 + "|" + ncontroles + "|" + ultimocontrol + "|"
+                                    + folico + "|" + ferroso + "|" + calcio + "|" + agudezav + "|" + oftalmologia + "|" + fechadesnutricion + "|" + fechamaltrato + "|" + consultaviolencia + "|"
+                                    + fechanutricion + "|" + fechapsicologia + "|" + cyd1vez + "|" + sulfato + "|" + vitaA + "|" + joven1 + "|" + adulto1 + "|" + preservativosits + "|" + preelisavih + "|"
+                                    + postelisavih + "|" + pdx + "|" + fechahb + "|" + resultadohb + "|" + fechassifilis + "|" + resultadossifilis + "|" + fechatelisahiv + "|" + resultadoelisahiv + "|"
+                                    + fechaths + "|" + resultadotsh + "|" + tamizajecuellou + "|" + citologia + "|" + citologiabet + "|" + calidadmuestra + "|" + codigoips + "|" + fechacolposcopi + "|"
+                                    + codigoipscolpo + "|" + fechabiopsia + "|" + resultadobiopsia + "|" + codigobiopsia + "|" + fechamamografia + "|" + resultadomamografia + "|"
+                                    + codigomamografia + "|" + fechabacaf + "|" + resultadobacaf + "|" + bacaf + "|" + codigobacaf + "|" + fechahemoglobina + "|" + hemoglobina + "|"
+                                    + fechaglisemia + "|" + fechacreatinina + "|" + creatinina + "|" + fechaglicosada + "|" + glicosada + "|" + fechamicroalbuminuria + "|" + fechahdl + "|"
+                                    + fechabaciloscopia + "|" + baciloscopia + "|" + hipotiroidismo + "|" + sgestacional + "|" + scongenita + "|" + tlepra + "|" + leishmaniasis + ln);
+                        }
+                        escribir.close();
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(null, "Error creacion archivo 4505: " + e.getMessage(), Rel4505.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "El rango de fechas seleccionado no corresponde a la cantidad de dias del trimestre seleccionado");
                 }
             }
             jLabel2.setVisible(false);
@@ -1173,5 +1870,9 @@ public class Rel4505 extends javax.swing.JPanel {
     javax.swing.JLabel jLabel6;
     javax.swing.JLabel jLabel7;
     javax.swing.JLabel jLabel8;
+    javax.swing.JRadioButton jRadioButton1;
+    javax.swing.JRadioButton jRadioButton2;
+    javax.swing.JRadioButton jRadioButton3;
+    javax.swing.JRadioButton jRadioButton4;
     // End of variables declaration//GEN-END:variables
 }
