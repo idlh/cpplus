@@ -31,9 +31,12 @@ public class PruebasComple extends javax.swing.JPanel {
     private final Object dato[] = null;
     private final String s = System.getProperty("file.separator");
     CargarordenesM cargarpru = new CargarordenesM();
-    public PruebasComple(PypAdmAsistCon pypAdmAsistCon) {
+    private final int usuario;
+
+    public PruebasComple(PypAdmAsistCon pypAdmAsistCon, Integer usuario) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
+        this.usuario = usuario;
         TablaAyudDiag();
         jTextField1.setEditable(false);
         jTextField1.setBackground(Color.white);
@@ -315,7 +318,7 @@ public class PruebasComple extends javax.swing.JPanel {
         for (int i = 0; i < Tablaconte.getRowCount(); i++) {
             if (modeloAyudDiag.getValueAt(i, 6).toString().equals("0")) {
                 sav.newpruebas(idhc, modeloAyudDiag.getValueAt(i, 2).toString(), modeloAyudDiag.getValueAt(i, 5).toString(),
-                        modeloAyudDiag.getValueAt(i, 4).toString(), fc);
+                        modeloAyudDiag.getValueAt(i, 4).toString(), fc, usuario);
                 modeloAyudDiag.setValueAt("1", i, 6);
             }
         }
@@ -330,7 +333,7 @@ public class PruebasComple extends javax.swing.JPanel {
         }
         cargarpru.cargartablapruebas(modeloAyudDiag, idhc);
     }
-    
+
 //    public void
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JTable Tablaconte;

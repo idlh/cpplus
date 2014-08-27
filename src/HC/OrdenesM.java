@@ -13,21 +13,23 @@ public class OrdenesM extends javax.swing.JPanel {
     public Recomendaciones recomendaciones = null;
     public Medicamentos medicamentos = null;
     public Anticonceptivos anticonceptivos = null;
+    private final int usuario;
 
-    public OrdenesM(PypAdmAsistCon pypAdmAsistCon) {
+    public OrdenesM(PypAdmAsistCon pypAdmAsistCon, Integer usuario) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
+        this.usuario = usuario;
         jPanel1.setBackground(Color.white);
         jPanel2.setVisible(false);
         jPanel21.setLocation(10, 113);
         if (medicamentos == null) {
-            medicamentos = new Medicamentos(pypAdmAsistCon);
+            medicamentos = new Medicamentos(pypAdmAsistCon, usuario);
         }
         if (procedimientos == null) {
-            procedimientos = new Procedimientos(pypAdmAsistCon);
+            procedimientos = new Procedimientos(pypAdmAsistCon, usuario);
         }
         if (recomendaciones == null) {
-            recomendaciones = new Recomendaciones(pypAdmAsistCon);
+            recomendaciones = new Recomendaciones(pypAdmAsistCon, usuario);
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 5) {
             jPanel22.setVisible(false);
@@ -35,7 +37,7 @@ public class OrdenesM extends javax.swing.JPanel {
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
             jPanel22.setLocation(10, 153);
             if (anticonceptivos == null) {
-                anticonceptivos = new Anticonceptivos(pypAdmAsistCon);
+                anticonceptivos = new Anticonceptivos(pypAdmAsistCon, usuario);
             }
         }
     }

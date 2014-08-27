@@ -15,10 +15,12 @@ public class MotivoC extends javax.swing.JPanel {
     Funciones_AD Funciones = new Funciones_AD();
     Save sav = new Save();
     private final PypAdmAsistCon pypAdmAsistCon;
+    private final int usuario;
 
-    public MotivoC(PypAdmAsistCon pypAdmAsistCon) {
+    public MotivoC(PypAdmAsistCon pypAdmAsistCon, Integer usuario) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
+        this.usuario = usuario;
         if (jCheckBox10.isSelected() == false) {
             jTextArea1.setEnabled(false);
         } else {
@@ -242,7 +244,7 @@ public class MotivoC extends javax.swing.JPanel {
         } else {
             o = "0";
         }
-        act.actueventos(idhc, q, w, e, r, t, y, u, i, o, jTextArea1.getText().toUpperCase().toString());
+        act.actueventos(idhc, q, w, e, r, t, y, u, i, o, jTextArea1.getText().toUpperCase().toString(), usuario);
     }
 
     public void cargareventose(String idhc) {

@@ -20,9 +20,12 @@ public class Obstetricos extends javax.swing.JPanel {
     Funciones_AD Funciones = new Funciones_AD();
     Save sav = new Save();
     Actualizar act = new Actualizar();
-    public Obstetricos(PypAdmAsistCon pypAdmAsistCon) {
+    private final int usuario;
+
+    public Obstetricos(PypAdmAsistCon pypAdmAsistCon, Integer usario) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
+        this.usuario = usario;
     }
 
     /**
@@ -412,7 +415,7 @@ public class Obstetricos extends javax.swing.JPanel {
         } else {
             p = jTextField5.getText().toString();
         }
-        act.actobstetricos(idhc, fucp, y, u, i, o, p, e, q, w, r, t);
+        act.actobstetricos(idhc, fucp, y, u, i, o, p, e, q, w, r, t, usuario);
     }
 
     public void cargarobstetricos(String idhc) {

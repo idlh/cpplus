@@ -56,25 +56,25 @@ public class RecienNacido extends javax.swing.JPanel {
         jLabel9.setVisible(false);
         jLabel12.setVisible(false);
         if (pruebascomple == null) {
-            pruebascomple = new PruebasComple(pypAdmAsistCon);
+            pruebascomple = new PruebasComple(pypAdmAsistCon, usuario);
         }
         if (motivoc == null) {
-            motivoc = new MotivoC(pypAdmAsistCon);
+            motivoc = new MotivoC(pypAdmAsistCon, usuario);
         }
         if (antecedentesp == null) {
-            antecedentesp = new AntecedentesP(pypAdmAsistCon);
+            antecedentesp = new AntecedentesP(pypAdmAsistCon, usuario);
         }
         if (enfermedadac == null) {
             enfermedadac = new Enfermedadac(pypAdmAsistCon);
         }
         if (exploracionf == null) {
-            exploracionf = new Exploracionf(pypAdmAsistCon);
+            exploracionf = new Exploracionf(pypAdmAsistCon, usuario);
         }
         if (diagnosticosm == null) {
             diagnosticosm = new DiagnosticosM(factory, pypAdmAsistCon);
         }
         if (ordenesm == null) {
-            ordenesm = new OrdenesM(pypAdmAsistCon);
+            ordenesm = new OrdenesM(pypAdmAsistCon, usuario);
         }
         crearhc();
         bt();
@@ -866,6 +866,11 @@ public class RecienNacido extends javax.swing.JPanel {
     }
 
     private void salir() {
+        Object a[][] = Funciones.RetornarDatos(sav.contarhc(pypAdmAsistCon.getId().toString()));
+        int b = Integer.parseInt(a[0][0].toString());
+        if (b == 0) {
+            sav.validacionpacienteaten(pypAdmAsistCon.getId().toString(), "1");
+        }
         modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
         modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
     }

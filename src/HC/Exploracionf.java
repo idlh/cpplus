@@ -33,10 +33,12 @@ public class Exploracionf extends javax.swing.JPanel {
     CargarordenesM tab = new CargarordenesM();
     FuncionesC FuncionesC = new FuncionesC();
     private DefaultTableModel modelo;
+    private final int usuario;
 
-    public Exploracionf(PypAdmAsistCon pypAdmAsistCon) {
+    public Exploracionf(PypAdmAsistCon pypAdmAsistCon, Integer usuario) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
+        this.usuario = usuario;
         jTextField10.setEditable(false);
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 9) {
             jTabbedPane1.remove(jPanel2);
@@ -3081,7 +3083,7 @@ public class Exploracionf extends javax.swing.JPanel {
                 jTextArea2.getText().toUpperCase().toString(), jTextArea3.getText().toUpperCase().toString(),
                 jTextArea4.getText().toUpperCase().toString(), jTextArea5.getText().toUpperCase().toString(),
                 jTextArea6.getText().toUpperCase().toString(), jTextArea7.getText().toUpperCase().toString(),
-                jTextArea8.getText().toUpperCase().toString(), jTextArea9.getText().toUpperCase().toString());
+                jTextArea8.getText().toUpperCase().toString(), jTextArea9.getText().toUpperCase().toString(), usuario);
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
             Date fpp = jDateChooser1.getDate();
             String fppu, q, w, e, r, t, y, u, i, o, p;
@@ -3133,7 +3135,7 @@ public class Exploracionf extends javax.swing.JPanel {
                 p = jTextField12.getText().toString();
             }
             y = String.valueOf(jComboBox1.getSelectedIndex());
-            act.actgestafinal(idhc, fppu, q, w, u, i, String.valueOf(jComboBox12.getSelectedIndex()), p, y, e, r, t);
+            act.actgestafinal(idhc, fppu, q, w, u, i, String.valueOf(jComboBox12.getSelectedIndex()), p, y, e, r, t, usuario);
             guardarcontrolm(idhc);
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 11) {
@@ -3144,7 +3146,7 @@ public class Exploracionf extends javax.swing.JPanel {
             m = String.valueOf(jComboBox5.getSelectedIndex());
             g = String.valueOf(jComboBox6.getSelectedIndex());
             ñ = jLabel35.getText().toString();
-            act.apgarparto(idhc, v, b, n, m, g, ñ);
+            act.apgarparto(idhc, v, b, n, m, g, ñ, usuario);
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
             String v, b, n, m, g, ñ;
@@ -3154,7 +3156,7 @@ public class Exploracionf extends javax.swing.JPanel {
             m = String.valueOf(jComboBox5.getSelectedIndex());
             g = String.valueOf(jComboBox6.getSelectedIndex());
             ñ = jLabel35.getText().toString();
-            act.apgarrecien(idhc, v, b, n, m, g, ñ);
+            act.apgarrecien(idhc, v, b, n, m, g, ñ, usuario);
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
             tanner(idhc);
@@ -3458,7 +3460,7 @@ public class Exploracionf extends javax.swing.JPanel {
         } else {
             va7 = "1";
         }
-        act.actjoven(idhc, va1, va2, va3, fc1, va4, fc2, va5, va7, va6);
+        act.actjoven(idhc, va1, va2, va3, fc1, va4, fc2, va5, va7, va6, usuario);
     }
 
     public void cargartanner(String idhc) {
@@ -3562,7 +3564,7 @@ public class Exploracionf extends javax.swing.JPanel {
         }
         var9 = String.valueOf(jComboBox9.getSelectedIndex());
         var10 = String.valueOf(jComboBox10.getSelectedIndex());
-        act.acthta(idhc, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10);
+        act.acthta(idhc, var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, usuario);
     }
 
     public void cargarhta(String idhc) {
@@ -3628,14 +3630,14 @@ public class Exploracionf extends javax.swing.JPanel {
             va4 = jTextField17.getText();
             va5 = jTextField18.getText();
             va6 = jTextField19.getText();
-            act.actvaloracion(idhc, va1, va2, va3, va4, va5, va6);
+            act.actvaloracion(idhc, va1, va2, va3, va4, va5, va6, usuario);
         } else {
             va1 = jTextField20.getText();
             va2 = jTextArea10.getText();
             va3 = jTextArea13.getText();
             va4 = jTextArea15.getText();
             va5 = jTextArea14.getText();
-            act.actvaloracionaños(idhc, va1, va2, va3, va4, va5);
+            act.actvaloracionaños(idhc, va1, va2, va3, va4, va5, usuario);
         }
         String var1, var2, var3, var4, var5, var6;
         var1 = String.valueOf(jComboBox2.getSelectedIndex());
@@ -3644,7 +3646,7 @@ public class Exploracionf extends javax.swing.JPanel {
         var4 = String.valueOf(jComboBox5.getSelectedIndex());
         var5 = String.valueOf(jComboBox6.getSelectedIndex());
         var6 = jLabel35.getText().toString();
-        act.actcrecimientoapgar(idhc, var1, var2, var3, var4, var5, var6);
+        act.actcrecimientoapgar(idhc, var1, var2, var3, var4, var5, var6, usuario);
     }
 
     public void cargarvaloracion(String idhc) {
@@ -4005,7 +4007,8 @@ public class Exploracionf extends javax.swing.JPanel {
             va17 = "1";
         }
         va18 = jTextArea11.getText().toUpperCase();
-        act.actcontrolplanif(dat[0][0].toString(), va1, va2, va3, va4, va5, va6, va7, va8, va9, va10, va11, va12, va13, va14, va15, va16, va17, va18);
+        act.actcontrolplanif(dat[0][0].toString(), va1, va2, va3, va4, va5, va6, va7, va8, va9, va10, va11,
+                va12, va13, va14, va15, va16, va17, va18, usuario);
     }
 
     private void cargarcontrolplani(String idhc) {
@@ -4128,7 +4131,7 @@ public class Exploracionf extends javax.swing.JPanel {
         } else {
             vr4 = "1";
         }
-        act.acthtacontrol(data[0][0].toString(), vr1, vr2, vr3, vr4, jTextArea12.getText().toUpperCase().toString());
+        act.acthtacontrol(data[0][0].toString(), vr1, vr2, vr3, vr4, jTextArea12.getText().toUpperCase().toString(), usuario);
     }
 
     private void cargarhtacontrol(String idhc) {
@@ -4230,7 +4233,7 @@ public class Exploracionf extends javax.swing.JPanel {
         } else {
             gan = jTextField21.getText();
         }
-        act.controlmaterno(idhc, fc, gan, cont);
+        act.controlmaterno(idhc, fc, gan, cont, usuario);
     }
 
     private void actdm(String idhc) {
@@ -4302,7 +4305,8 @@ public class Exploracionf extends javax.swing.JPanel {
             var9 = jTextField22.getText();
         }
         var10 = jTextArea16.getText().toUpperCase();
-        act.actdm(idhc, var1, var2, var3, var4, var5, var6, var7, var8, vr1, vr2, vr3, vr4, jTextArea12.getText().toUpperCase(), var9, var10);
+        act.actdm(idhc, var1, var2, var3, var4, var5, var6, var7, var8, vr1, vr2,
+                vr3, vr4, jTextArea12.getText().toUpperCase(), var9, var10, usuario);
     }
 
     private void cargardm(String idhc) {

@@ -16,9 +16,12 @@ public class Gestacionac extends javax.swing.JPanel {
     Funciones_AD Funciones = new Funciones_AD();
     Save sav = new Save();
     Actualizar act = new Actualizar();
-    public Gestacionac(PypAdmAsistCon pypAdmAsistCon) {
+    private final int usuario;
+
+    public Gestacionac(PypAdmAsistCon pypAdmAsistCon, Integer usuario) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
+        this.usuario = usuario;
     }
 
     /**
@@ -356,8 +359,8 @@ public class Gestacionac extends javax.swing.JPanel {
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-                jTextField2.requestFocus();
-            }
+            jTextField2.requestFocus();
+        }
     }//GEN-LAST:event_jTextField1KeyPressed
 
     public void guardgestaactual(String idhc) {
@@ -408,10 +411,10 @@ public class Gestacionac extends javax.swing.JPanel {
         } else {
             x = jTextField2.getText().toString();
         }
-        act.actgestaante(idhc, q, w, e, r, t, y, s, o, p, a, z, x, u, i);
+        act.actgestaante(idhc, q, w, e, r, t, y, s, o, p, a, z, x, u, i, usuario);
     }
-    
-    public void cargargesta(String idhc){
+
+    public void cargargesta(String idhc) {
         Object dato[][] = Funciones.RetornarDatos(act.cargargesta(idhc));
         jComboBox4.setSelectedIndex(Integer.parseInt(dato[0][2].toString()));
         jComboBox5.setSelectedIndex(Integer.parseInt(dato[0][3].toString()));
@@ -419,7 +422,7 @@ public class Gestacionac extends javax.swing.JPanel {
         jComboBox7.setSelectedIndex(Integer.parseInt(dato[0][5].toString()));
         jComboBox8.setSelectedIndex(Integer.parseInt(dato[0][6].toString()));
         jComboBox9.setSelectedIndex(Integer.parseInt(dato[0][7].toString()));
-         if (dato[0][14].toString().equals("0")) {
+        if (dato[0][14].toString().equals("0")) {
             jCheckBox1.setSelected(false);
         } else {
             jCheckBox1.setSelected(true);
@@ -429,7 +432,7 @@ public class Gestacionac extends javax.swing.JPanel {
         } else {
             jCheckBox2.setSelected(true);
         }
-         if (dato[0][9].toString().equals("0")) {
+        if (dato[0][9].toString().equals("0")) {
             jCheckBox3.setSelected(false);
         } else {
             jCheckBox3.setSelected(true);
@@ -439,7 +442,7 @@ public class Gestacionac extends javax.swing.JPanel {
         } else {
             jCheckBox4.setSelected(true);
         }
-         if (dato[0][8].toString().equals("0")) {
+        if (dato[0][8].toString().equals("0")) {
             jCheckBox6.setSelected(false);
         } else {
             jCheckBox6.setSelected(true);

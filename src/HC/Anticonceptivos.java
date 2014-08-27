@@ -41,10 +41,12 @@ public class Anticonceptivos extends javax.swing.JPanel {
     private final String opc[] = {"Dispositivo Intrauterino", "Dispositivo Intrauterino y Barrera", "Implante Subdérmico", "Implante Subdérmico y Barrera", "Oral",
         "Oral y Barrera", "Inyectable Mensual", "Inyectable Mensual y Barrera", "Inyectable Trimestral", "Inyectable Trimestral y Barrera", "Emergencia",
         "Emergencia y Barrera", "Esterilización", "Esterilización y Barrera", "Barrera"};
+    private final int usuario;
 
-    public Anticonceptivos(PypAdmAsistCon pypAdmAsistCon) {
+    public Anticonceptivos(PypAdmAsistCon pypAdmAsistCon, Integer usuario) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
+        this.usuario = usuario;
         cargar();
         tabla();
         Tabaantimedi.addMouseListener(new MouseAdapter() {
@@ -505,7 +507,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
                     sav.newposoanti(idhc, modelomedi.getValueAt(i, 0).toString(), modelomedi.getValueAt(i, 2).toString(),
                             modelomedi.getValueAt(i, 6).toString(), modelomedi.getValueAt(i, 3).toString(),
                             modelomedi.getValueAt(i, 4).toString(), modelomedi.getValueAt(i, 5).toString().toUpperCase(),
-                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc + fh, modelomedi.getValueAt(i, 7).toString());
+                            String.valueOf(usuario), fc + fh, modelomedi.getValueAt(i, 7).toString());
                     sav.newantim(idhc, modelomedi.getValueAt(i, 0).toString(), modelomedi.getValueAt(i, 8).toString());
                 }
             }
@@ -590,7 +592,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
                 if (modelo.getValueAt(i, 4).equals("1")) {
                     modelo.setValueAt("2", i, 4);
                     sav.newproceanti(idhc, modelo.getValueAt(i, 0).toString(),
-                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString(), fc);
+                            String.valueOf(usuario), modelo.getValueAt(i, 4).toString(), fc);
                     sav.newantip(idhc, modelo.getValueAt(i, 0).toString(), modelo.getValueAt(i, 5).toString());
                 }
             }

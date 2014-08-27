@@ -57,25 +57,25 @@ public class Jovensano extends javax.swing.JPanel {
         jLabel9.setVisible(false);
         jLabel12.setVisible(false);
         if (pruebascomple == null) {
-            pruebascomple = new PruebasComple(pypAdmAsistCon);
+            pruebascomple = new PruebasComple(pypAdmAsistCon, usuario);
         }
         if (motivoc == null) {
-            motivoc = new MotivoC(pypAdmAsistCon);
+            motivoc = new MotivoC(pypAdmAsistCon, usuario);
         }
         if (antecedentesp == null) {
-            antecedentesp = new AntecedentesP(pypAdmAsistCon);
+            antecedentesp = new AntecedentesP(pypAdmAsistCon, usuario);
         }
         if (enfermedadac == null) {
             enfermedadac = new Enfermedadac(pypAdmAsistCon);
         }
         if (exploracionf == null) {
-            exploracionf = new Exploracionf(pypAdmAsistCon);
+            exploracionf = new Exploracionf(pypAdmAsistCon, usuario);
         }
         if (diagnosticosm == null) {
             diagnosticosm = new DiagnosticosM(factory, pypAdmAsistCon);
         }
         if (ordenesm == null) {
-            ordenesm = new OrdenesM(pypAdmAsistCon);
+            ordenesm = new OrdenesM(pypAdmAsistCon, usuario);
         }
         crearhc();
         bt();

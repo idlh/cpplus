@@ -37,10 +37,12 @@ public class ProcedimientosI extends javax.swing.JPanel {
     int rowindex;
     ImageIcon icon = null, icono2 = null, icono3 = null;
     Object[] fila = new Object[2];
+    private final int usuario;
 
-    public ProcedimientosI(PypAdmAsistCon pypAdmAsistCon) {
+    public ProcedimientosI(PypAdmAsistCon pypAdmAsistCon, Integer usuario) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
+        this.usuario = usuario;
         tabla();
     }
 
@@ -392,7 +394,7 @@ public class ProcedimientosI extends javax.swing.JPanel {
                 if (modelo.getValueAt(i, 4).toString().equals("1")) {
                     modelo.setValueAt("2", i, 4);
                     sav.newproce(idhc, modelo.getValueAt(i, 0).toString(),
-                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString(), fc, modelo.getValueAt(i, 6).toString().toUpperCase(),
+                            String.valueOf(usuario), modelo.getValueAt(i, 4).toString(), fc, modelo.getValueAt(i, 6).toString().toUpperCase(),
                             modelo.getValueAt(i, 8).toString());
                 }
             }
@@ -413,7 +415,7 @@ public class ProcedimientosI extends javax.swing.JPanel {
                             if (modelo.getValueAt(i, 4).equals("1")) {
                                 modelo.setValueAt("2", i, 4);
                                 sav.newproce(idhc, modelo.getValueAt(i, 0).toString(),
-                                        pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), modelo.getValueAt(i, 4).toString(), fc, modelo.getValueAt(i, 6).toString().toUpperCase(),
+                                        String.valueOf(usuario), modelo.getValueAt(i, 4).toString(), fc, modelo.getValueAt(i, 6).toString().toUpperCase(),
                                         modelo.getValueAt(i, 8).toString());
                             }
                         }

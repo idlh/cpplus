@@ -50,7 +50,7 @@ public class AgudezaV extends javax.swing.JPanel {
         jLabel9.setVisible(false);
         jLabel12.setVisible(false);
         if (agudeza == null) {
-            agudeza = new visual(pypAdmAsistCon);
+            agudeza = new visual(pypAdmAsistCon, usuario);
         }
         crearhc();
         bt();
@@ -499,6 +499,11 @@ public class AgudezaV extends javax.swing.JPanel {
     }
 
     private void salir() {
+        Object a[][] = Funciones.RetornarDatos(sav.contarvisual(pypAdmAsistCon.getId().toString()));
+        int b = Integer.parseInt(a[0][0].toString());
+        if (b == 0) {
+            sav.validacionpacienteaten(pypAdmAsistCon.getId().toString(), "1");
+        }
         modulo_pyp.Modulo_PyP.d.Contenedor_.removeAll();
         modulo_pyp.Modulo_PyP.d.Contenedor_.repaint();
     }

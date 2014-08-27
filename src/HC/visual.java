@@ -16,10 +16,12 @@ public class visual extends javax.swing.JPanel {
     Funciones_AD Funciones = new Funciones_AD();
     Save sav = new Save();
     private final PypAdmAsistCon pypAdmAsistCon;
+    private final int usuario;
 
-    public visual(PypAdmAsistCon pypAdmAsistCon) {
+    public visual(PypAdmAsistCon pypAdmAsistCon, Integer usuario) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
+        this.usuario = usuario;
     }
 
     @SuppressWarnings("unchecked")
@@ -372,7 +374,7 @@ public class visual extends javax.swing.JPanel {
         va5 = jTextField5.getText();
         va6 = jTextField6.getText();
         act.guardarvisual(idhc, pypAdmAsistCon.getId().toString(), va1, va2, va3, va4, va5, va6,
-                jTextArea1.getText().toUpperCase(), pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString());
+                jTextArea1.getText().toUpperCase(), String.valueOf(usuario));
     }
 
     public void cargarvisual(String idhc) {

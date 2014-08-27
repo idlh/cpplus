@@ -32,10 +32,12 @@ public class Medicamentos extends javax.swing.JPanel {
     Actualizar act = new Actualizar();
     CargarordenesM tab = new CargarordenesM();
     String est = "0";
+    private final int usuario;
 
-    public Medicamentos(PypAdmAsistCon pypAdmAsistCon) {
+    public Medicamentos(PypAdmAsistCon pypAdmAsistCon, Integer usuario) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
+        this.usuario = usuario;
         cargar();
         Tablamedi.addMouseListener(new MouseAdapter() {
         });
@@ -364,7 +366,7 @@ public class Medicamentos extends javax.swing.JPanel {
                     sav.newposo(idhc, modelo.getValueAt(i, 0).toString(), modelo.getValueAt(i, 2).toString(),
                             modelo.getValueAt(i, 6).toString(), modelo.getValueAt(i, 3).toString(),
                             modelo.getValueAt(i, 4).toString(), modelo.getValueAt(i, 5).toString().toUpperCase(),
-                            pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), fc + fh, modelo.getValueAt(i, 7).toString());
+                            String.valueOf(usuario), fc + fh, modelo.getValueAt(i, 7).toString());
                 }
             }
         } else {

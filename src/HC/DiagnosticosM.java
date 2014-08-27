@@ -1,17 +1,20 @@
 package HC;
 
+import Clases.Actualizar;
 import Clases.Consultarcie10;
+import Clases.Funciones_AD;
+import Clases.Save;
 import Dialogos.HCDiag.DgCie10;
 import entity.PypAdmAsistCon;
 import entity.StaticCie10;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManagerFactory;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import Clases.Actualizar;
-import Clases.Save;
-import Clases.Funciones_AD;
 
 /**
  *
@@ -28,6 +31,8 @@ public class DiagnosticosM extends javax.swing.JPanel {
     Funciones_AD Funciones = new Funciones_AD();
     Save sav = new Save();
     Actualizar act = new Actualizar();
+    private final List<String> tratamiento = new ArrayList<String>();
+    int seleccion1 = 0, seleccion2 = 0, seleccion3 = 0, seleccion4 = 0;
     
     public DiagnosticosM(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
@@ -58,11 +63,13 @@ public class DiagnosticosM extends javax.swing.JPanel {
             jTextField1.setEditable(false);
             ciep = 12251;
         }
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
-            cie = new Consultarcie10();
-            cie.llamar_cie("Z300");
-            jTextField1.setEditable(false);
-            ciep = 11947;
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5 && pypAdmAsistCon.getPrimeraVez() == 1) {
+            if (pypAdmAsistCon.getIdAgend().getIdPaciente().getGenero().toString().equals("M")) {
+                cie = new Consultarcie10();
+                cie.llamar_cie("Z300");
+                jTextField1.setEditable(false);
+                ciep = 11947;
+            }
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
             cie = new Consultarcie10();
@@ -92,6 +99,14 @@ public class DiagnosticosM extends javax.swing.JPanel {
         jTextField3.setEditable(false);
         jTextField4.setEditable(false);
         jTextField5.setEditable(false);
+        tratamiento.add("NO APLICA");
+        tratamiento.add("SI RECIBE PERO AUN NO LO HA TERMINADO");
+        tratamiento.add("SI RECIBIÓ TRATAMIENTO Y YA LO TERMINO");
+        tratamiento.add("NO RECIBIÓ TRATAMIENTO POR UNA TRADICION");
+        tratamiento.add("NO RECIBIÓ TRATAMIENTO POR CONDICION DE SALUD");
+        tratamiento.add("NO RECIBIÓ TRATAMIENTO POR NEGACION DEL USUARIO");
+        tratamiento.add("NO RECIBIO TRATAMIENTO POR DATOS NO ACTUALIZADOS");
+        tratamiento.add("NO RECIBIO TRATAMIENTO POR OTRAS RAZONES");
     }
     
     @SuppressWarnings("unchecked")
@@ -300,10 +315,18 @@ public class DiagnosticosM extends javax.swing.JPanel {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                cie101 = (StaticCie10) dc.jTable1.getValueAt(dc.jTable1.getSelectedRow(), 0);
-                jTextField2.setText(cie101.getCodigo() + " - " + cie101.getDescripcion());
-                dc.dispose();
-                jButton3.setEnabled(true);
+                Object[] opciones = tratamiento.toArray();
+                Object value = JOptionPane.showInputDialog(null, "Tratamiento para el Diagnostico", "mensaje",
+                        JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+                seleccion1 = tratamiento.indexOf(value);
+                if (seleccion1 > -1) {
+                    cie101 = (StaticCie10) dc.jTable1.getValueAt(dc.jTable1.getSelectedRow(), 0);
+                    jTextField2.setText(cie101.getCodigo() + " - " + cie101.getDescripcion());
+                    dc.dispose();
+                    jButton3.setEnabled(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe añadir el tipo de tratamiento");
+                }
             }
         });
         dc.setVisible(true);
@@ -316,10 +339,18 @@ public class DiagnosticosM extends javax.swing.JPanel {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                cie102 = (StaticCie10) dc.jTable1.getValueAt(dc.jTable1.getSelectedRow(), 0);
-                jTextField3.setText(cie102.getCodigo() + " - " + cie102.getDescripcion());
-                dc.dispose();
-                jButton5.setEnabled(true);
+                Object[] opciones = tratamiento.toArray();
+                Object value = JOptionPane.showInputDialog(null, "Tratamiento para el Diagnostico", "mensaje",
+                        JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+                seleccion2 = tratamiento.indexOf(value);
+                if (seleccion2 > -1) {
+                    cie102 = (StaticCie10) dc.jTable1.getValueAt(dc.jTable1.getSelectedRow(), 0);
+                    jTextField3.setText(cie102.getCodigo() + " - " + cie102.getDescripcion());
+                    dc.dispose();
+                    jButton5.setEnabled(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe añadir el tipo de tratamiento");
+                }
             }
         });
         dc.setVisible(true);
@@ -332,10 +363,18 @@ public class DiagnosticosM extends javax.swing.JPanel {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                cie103 = (StaticCie10) dc.jTable1.getValueAt(dc.jTable1.getSelectedRow(), 0);
-                jTextField5.setText(cie103.getCodigo() + " - " + cie103.getDescripcion());
-                dc.dispose();
-                jButton4.setEnabled(true);
+                Object[] opciones = tratamiento.toArray();
+                Object value = JOptionPane.showInputDialog(null, "Tratamiento para el Diagnostico", "mensaje",
+                        JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+                seleccion3 = tratamiento.indexOf(value);
+                if (seleccion3 > -1) {
+                    cie103 = (StaticCie10) dc.jTable1.getValueAt(dc.jTable1.getSelectedRow(), 0);
+                    jTextField5.setText(cie103.getCodigo() + " - " + cie103.getDescripcion());
+                    dc.dispose();
+                    jButton4.setEnabled(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe añadir el tipo de tratamiento");
+                }
             }
         });
         dc.setVisible(true);
@@ -348,9 +387,17 @@ public class DiagnosticosM extends javax.swing.JPanel {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                cie104 = (StaticCie10) dc.jTable1.getValueAt(dc.jTable1.getSelectedRow(), 0);
-                jTextField4.setText(cie104.getCodigo() + " - " + cie104.getDescripcion());
-                dc.dispose();
+                Object[] opciones = tratamiento.toArray();
+                Object value = JOptionPane.showInputDialog(null, "Tratamiento para el Diagnostico", "mensaje",
+                        JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+                seleccion4 = tratamiento.indexOf(value);
+                if (seleccion4 > -1) {
+                    cie104 = (StaticCie10) dc.jTable1.getValueAt(dc.jTable1.getSelectedRow(), 0);
+                    jTextField4.setText(cie104.getCodigo() + " - " + cie104.getDescripcion());
+                    dc.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe añadir el tipo de tratamiento");
+                }
             }
         });
         dc.setVisible(true);
@@ -365,7 +412,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
             } else {
                 d1 = cie101.getId();
             }
-            act.actdx1(idhc, ciep, d1);
+            act.actdx1(idhc, ciep, d1, seleccion1);
         }
         if (est2 == 2) {
             if (jTextField3.getText().equals("")) {
@@ -373,7 +420,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
             } else {
                 d2 = cie102.getId();
             }
-            act.actdx2(idhc, ciep, d2);
+            act.actdx2(idhc, ciep, d2, seleccion2);
         }
         if (est3 == 3) {
             if (jTextField5.getText().equals("")) {
@@ -381,7 +428,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
             } else {
                 d3 = cie103.getId();
             }
-            act.actdx3(idhc, ciep, d3);
+            act.actdx3(idhc, ciep, d3, seleccion3);
         }
         if (est4 == 4) {
             if (jTextField4.getText().equals("")) {
@@ -389,20 +436,15 @@ public class DiagnosticosM extends javax.swing.JPanel {
             } else {
                 d4 = cie104.getId();
             }
-            act.actdx4(idhc, ciep, d4);
+            act.actdx4(idhc, ciep, d4, seleccion4);
         }
     }
     
     public void cargardx(String idhc) {
-        System.out.println("q");
         Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(idhc));
-        System.out.println("w");
         Object r1[][] = Funciones.RetornarDatos(act.cargarcierel1(h[0][18].toString()));
-        System.out.println("r");
         Object r2[][] = Funciones.RetornarDatos(act.cargarcierel2(h[0][19].toString()));
-        System.out.println("t");
         Object r3[][] = Funciones.RetornarDatos(act.cargarcierel3(h[0][20].toString()));
-        System.out.println("y");
         Object r4[][] = Funciones.RetornarDatos(act.cargarcierel4(h[0][21].toString()));
         if (h[0][18].toString().equals("1")) {
             jTextField2.setText("");
@@ -456,7 +498,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
         darayuda("Añadir Diagnostico");
     }//GEN-LAST:event_jButton4MouseEntered
-
+    
     private void retornarayuda() {
         switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
             case 3:
@@ -486,7 +528,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
         }
     }
     
-    private void darayuda(String texto){
+    private void darayuda(String texto) {
         switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
             case 3:
                 HC.Adulto.jLabel4.setText(texto);
@@ -514,7 +556,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
                 break;
         }
     }
-    
+
     private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
         retornarayuda();
     }//GEN-LAST:event_jButton4MouseExited

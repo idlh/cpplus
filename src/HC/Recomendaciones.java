@@ -16,10 +16,12 @@ public class Recomendaciones extends javax.swing.JPanel {
     Actualizar act = new Actualizar();
     Save sav = new Save();
     Funciones_AD Funciones = new Funciones_AD();
+    private final int usuario;
 
-    public Recomendaciones(PypAdmAsistCon pypAdmAsistCon) {
+    public Recomendaciones(PypAdmAsistCon pypAdmAsistCon, Integer usuario) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
+        this.usuario = usuario;
     }
 
     /**
@@ -91,7 +93,7 @@ public class Recomendaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextArea1FocusGained
 
     public void actrecomendaciones(String idhc) {
-        act.actrecomendaciones(idhc, jTextArea1.getText().toUpperCase().toString());
+        act.actrecomendaciones(idhc, jTextArea1.getText().toUpperCase().toString(), usuario);
     }
 
     public void cargarrecom(String idhc) {

@@ -22,24 +22,26 @@ public class Procedimientos extends javax.swing.JPanel {
     private PypAdmAsistCon pypAdmAsistCon;
     Funciones_AD Funciones = new Funciones_AD();
     Save sav = new Save();
+    private final int usuario;
 
-    public Procedimientos(PypAdmAsistCon pypAdmAsistCon) {
+    public Procedimientos(PypAdmAsistCon pypAdmAsistCon, Integer usuario) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
+        this.usuario = usuario;
         if (procesosmonitorizacion == null) {
-            procesosmonitorizacion = new ProcedimientosM(pypAdmAsistCon);
+            procesosmonitorizacion = new ProcedimientosM(pypAdmAsistCon, usuario);
         }
         if (procesoslaboratorios == null) {
-            procesoslaboratorios = new ProcedimientosL(pypAdmAsistCon);
+            procesoslaboratorios = new ProcedimientosL(pypAdmAsistCon, usuario);
         }
         if (procesosimagenologia == null) {
-            procesosimagenologia = new ProcedimientosI(pypAdmAsistCon);
+            procesosimagenologia = new ProcedimientosI(pypAdmAsistCon, usuario);
         }
         if (procesosquirurgicos == null) {
-            procesosquirurgicos = new ProcedimientosQ(pypAdmAsistCon);
+            procesosquirurgicos = new ProcedimientosQ(pypAdmAsistCon, usuario);
         }
         if (procesosotros == null) {
-            procesosotros = new ProcedimientosO(pypAdmAsistCon);
+            procesosotros = new ProcedimientosO(pypAdmAsistCon, usuario);
         }
     }
 

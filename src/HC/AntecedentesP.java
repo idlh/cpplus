@@ -16,6 +16,7 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
@@ -38,10 +39,13 @@ public class AntecedentesP extends javax.swing.JPanel {
     Funciones_AD Funciones = new Funciones_AD();
     private DefaultTableModel modelo, modelo2, modelo3;
     CargarordenesM tab = new CargarordenesM();
+    String idparametro;
+    private final int usuario;
 
-    public AntecedentesP(PypAdmAsistCon pypAdmAsistCon) {
+    public AntecedentesP(PypAdmAsistCon pypAdmAsistCon, Integer usuario) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
+        this.usuario = usuario;
         if (gi == null) {
             gi = new ginecogenerales(pypAdmAsistCon);
         }
@@ -55,10 +59,10 @@ public class AntecedentesP extends javax.swing.JPanel {
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 9) {
             if (obs == null) {
-                obs = new Obstetricos(pypAdmAsistCon);
+                obs = new Obstetricos(pypAdmAsistCon, usuario);
             }
             if (gesta == null) {
-                gesta = new Gestacionac(pypAdmAsistCon);
+                gesta = new Gestacionac(pypAdmAsistCon, usuario);
             }
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() != 11) {
@@ -2001,29 +2005,26 @@ public class AntecedentesP extends javax.swing.JPanel {
         Object dataparam[][] = Funciones.RetornarDatos(act.cargarparam());
         for (int i = 0; i < dataparam.length; i++) {
             if (tablaanteexamen.getValueAt(tablaanteexamen.getSelectedRow(), 1).toString().equals(dataparam[i][5].toString())) {
+                //El 1 difirencia cuando es un resultado de una fecha (iria en el valor adicional a la hora de la configuarcion del parametro)
                 if (dataparam[i][6].toString().equals("1")) {
                     exam.jComboBox1.removeAllItems();
+                    idparametro = dataparam[i][1].toString();
                     switch (Integer.parseInt(dataparam[i][1].toString())) {
                         case 85:
                             exam.jComboBox1.addItem("NEGATIVO");
                             exam.jComboBox1.addItem("POSITIVO");
-                            exam.jComboBox1.addItem("SIN DATO");
                             break;
                         case 87:
                             exam.jComboBox1.addItem("NO REACTIVA");
                             exam.jComboBox1.addItem("REACTIVA");
-                            exam.jComboBox1.addItem("SIN DATO");
                             break;
                         case 89:
                             exam.jComboBox1.addItem("NEGATIVO");
                             exam.jComboBox1.addItem("POSITIVO");
-                            exam.jComboBox1.addItem("INDETERMINADO");
-                            exam.jComboBox1.addItem("SIN DATO");
                             break;
                         case 91:
                             exam.jComboBox1.addItem("NORMAL");
                             exam.jComboBox1.addItem("ANORMAL");
-                            exam.jComboBox1.addItem("SIN DATO");
                             break;
                         case 100:
                             exam.jComboBox1.addItem("NEGATIVO PARA NEOPLASTIA");
@@ -2042,6 +2043,49 @@ public class AntecedentesP extends javax.swing.JPanel {
                             exam.jComboBox1.addItem("ALTAMENTE SOSPECHOSO DE MALIGNIDAD");
                             exam.jComboBox1.addItem("MALIGNIDAD POR BIOPSIA CONOCIDA");
                             break;
+                        case 107:
+                            exam.jComboBox1.addItem("BENIGNA");
+                            exam.jComboBox1.addItem("ATIPICA (INDETERMINADA)");
+                            exam.jComboBox1.addItem("MALIGNIDAD SOSPECHOSA/PROBABLE");
+                            exam.jComboBox1.addItem("MALIGNA");
+                            exam.jComboBox1.addItem("NO SATISFACTORIA");
+                            break;
+                        case 110:
+                        case 113:
+                        case 115:
+                            exam.jComboBox1.setEnabled(false);
+                            exam.jTextArea1.addKeyListener(new KeyListener() {
+
+                                @Override
+                                public void keyTyped(KeyEvent e) {
+                                    char car = e.getKeyChar();
+                                    if ((car < '0' || car > '9') && ((car != '.') && (car != ','))) {
+                                        e.consume();
+                                    } else {
+                                        if ((car < '0' || car > '9') && ((exam.jTextArea1.getText().contains(".")) || exam.jTextArea1.getText().contains(","))) {
+                                            e.consume();
+                                        } else {
+                                            if (exam.jTextArea1.getText().length() >= 5) {
+                                                e.consume();
+                                            }
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void keyPressed(KeyEvent e) {
+                                }
+
+                                @Override
+                                public void keyReleased(KeyEvent e) {
+                                }
+                            });
+                            break;
+                        case 119:
+                            exam.jComboBox1.addItem("NO");
+                            exam.jComboBox1.addItem("NEGATIVA");
+                            exam.jComboBox1.addItem("POSITIVA");
+                            break;
                     }
                 }
             }
@@ -2052,10 +2096,15 @@ public class AntecedentesP extends javax.swing.JPanel {
                 + "</div>\n"
                 + "\n"
                 + "</html>");
-        if (tablaanteexamen.getValueAt(tablaanteexamen.getSelectedRow(), 7) == null) {
-            exam.jComboBox1.setSelectedIndex(-1);
+
+        if (!idparametro.equals("110") && !idparametro.equals("113") && !idparametro.equals("115")) {
+            if (tablaanteexamen.getValueAt(tablaanteexamen.getSelectedRow(), 7) == null) {
+                exam.jComboBox1.setSelectedIndex(-1);
+            } else {
+                exam.jComboBox1.setSelectedIndex(Integer.parseInt(String.valueOf(tablaanteexamen.getValueAt(tablaanteexamen.getSelectedRow(), 7))));
+            }
         } else {
-            exam.jComboBox1.setSelectedIndex(Integer.parseInt(String.valueOf(tablaanteexamen.getValueAt(tablaanteexamen.getSelectedRow(), 7))));
+            exam.jComboBox1.setSelectedIndex(-1);
         }
         if (tablaanteexamen.getValueAt(tablaanteexamen.getSelectedRow(), 8) == null) {
             exam.jTextArea1.setText("");
@@ -2079,18 +2128,30 @@ public class AntecedentesP extends javax.swing.JPanel {
                 if (exam.jDateChooser1.getDate() == null) {
                     JOptionPane.showMessageDialog(null, "El campo fecha no puede estar vacio o debe ingresar un dato correcto");
                 } else {
-                    if (exam.jComboBox1.getSelectedIndex() > -1) {
+                    if (!idparametro.equals("110") && !idparametro.equals("113") && !idparametro.equals("115")) {
+                        if (exam.jComboBox1.getSelectedIndex() > -1) {
+                            String fecha;
+                            String patron = "dd/MM/yyyy";
+                            SimpleDateFormat formato = new SimpleDateFormat(patron);
+                            fecha = formato.format(exam.jDateChooser1.getDate());
+                            tablaanteexamen.setValueAt(fecha, tablaanteexamen.getSelectedRow(), 6);
+                            tablaanteexamen.setValueAt(exam.jComboBox1.getSelectedIndex() + 1, tablaanteexamen.getSelectedRow(), 7);
+                            tablaanteexamen.setValueAt(exam.jTextArea1.getText().toUpperCase(), tablaanteexamen.getSelectedRow(), 8);
+                            tablaanteexamen.setValueAt("3", tablaanteexamen.getSelectedRow(), 4);
+                            exam.dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Debe seleccionar un valor adecuado para el resultado");
+                        }
+                    } else {
                         String fecha;
                         String patron = "dd/MM/yyyy";
                         SimpleDateFormat formato = new SimpleDateFormat(patron);
                         fecha = formato.format(exam.jDateChooser1.getDate());
                         tablaanteexamen.setValueAt(fecha, tablaanteexamen.getSelectedRow(), 6);
-                        tablaanteexamen.setValueAt(exam.jComboBox1.getSelectedIndex(), tablaanteexamen.getSelectedRow(), 7);
+                        tablaanteexamen.setValueAt(0, tablaanteexamen.getSelectedRow(), 7);
                         tablaanteexamen.setValueAt(exam.jTextArea1.getText().toUpperCase(), tablaanteexamen.getSelectedRow(), 8);
                         tablaanteexamen.setValueAt("3", tablaanteexamen.getSelectedRow(), 4);
                         exam.dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Debe seleccionar un valor adecuado para el resultado");
                     }
                 }
             }
@@ -2129,7 +2190,7 @@ public class AntecedentesP extends javax.swing.JPanel {
             } else {
                 k = "1";
             }
-            act.posparto(idhc, v, b, n, m, ñ, f, g, j, k);
+            act.posparto(idhc, v, b, n, m, ñ, f, g, j, k, usuario);
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 10) {
             String c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12;
@@ -2197,7 +2258,7 @@ public class AntecedentesP extends javax.swing.JPanel {
             c10 = String.valueOf(jComboBox8.getSelectedIndex());
             c11 = String.valueOf(jComboBox9.getSelectedIndex());
             c12 = String.valueOf(jComboBox10.getSelectedIndex());
-            act.actrecien(idhc, c1, c2, c3, c4, c5, c6, c7, c8, n1, n2, c9, n3, c10, c11, c12);
+            act.actrecien(idhc, c1, c2, c3, c4, c5, c6, c7, c8, n1, n2, c9, n3, c10, c11, c12, usuario);
         }
         String q, w, e, r, t, y;
         if (jCheckBox1.isSelected() == true) {//hta
@@ -2245,7 +2306,7 @@ public class AntecedentesP extends javax.swing.JPanel {
         act.actualizarantp(idhc, jTextArea1.getText().toUpperCase(), jTextArea2.getText().toUpperCase(),
                 jTextArea3.getText().toUpperCase(), jTextArea4.getText().toUpperCase(),
                 w, q, e, jTextArea5.getText().toUpperCase(), r, t, y, jTextArea6.getText().toUpperCase(),
-                jTextArea7.getText().toUpperCase(), jTextArea8.getText().toUpperCase(), "40");
+                jTextArea7.getText().toUpperCase(), jTextArea8.getText().toUpperCase(), String.valueOf(usuario));
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 2) {
             actcrecimiento(idhc);
         }
@@ -2575,7 +2636,7 @@ public class AntecedentesP extends javax.swing.JPanel {
         } else {
             c15 = "1";
         }
-        act.actcrecimiento(idhc, c1, c2, c3, c4, c5, c6, c7, c8, n1, n2, c9, n3, c10, c11, c12, c14, c13, c15);
+        act.actcrecimiento(idhc, c1, c2, c3, c4, c5, c6, c7, c8, n1, n2, c9, n3, c10, c11, c12, c14, c13, c15, usuario);
     }
 
     public void cargarcrecimiento(String idhc) {
@@ -2866,14 +2927,14 @@ public class AntecedentesP extends javax.swing.JPanel {
                     String fecha[] = modelo3.getValueAt(i, 6).toString().split("/");
                     String ad = (fecha[2] + "-" + fecha[1] + "-" + fecha[0]);
                     modelo3.setValueAt("2", i, 4);
-                    sav.newrelexamen(modelo3.getValueAt(i, 5).toString(), ad, modelo3.getValueAt(i, 7).toString(), modelo3.getValueAt(i, 8).toString());
+                    sav.newrelexamen(modelo3.getValueAt(i, 5).toString(), ad, modelo3.getValueAt(i, 7).toString(), modelo3.getValueAt(i, 8).toString(), usuario);
                 }
             } else {
                 if (tablaanteexamen.getValueAt(i, 4).toString().equals("3")) {
                     String fecha[] = modelo3.getValueAt(i, 6).toString().split("/");
                     String ad = (fecha[2] + "-" + fecha[1] + "-" + fecha[0]);
                     modelo3.setValueAt("2", i, 4);
-                    act.actrexamen(modelo3.getValueAt(i, 5).toString(), ad, modelo3.getValueAt(i, 7).toString(), modelo3.getValueAt(i, 8).toString());
+                    act.actrexamen(modelo3.getValueAt(i, 5).toString(), ad, modelo3.getValueAt(i, 7).toString(), modelo3.getValueAt(i, 8).toString(), usuario);
                 }
             }
         }
