@@ -63,14 +63,14 @@ public class Actualizar {
     }
 
     public void actueventos(String id, String separacion, String embarazoa, String fracasoe, String conflictoc, String salidah,
-            String dificultadesl, String muerteh, String decersione, String otro, String totros) {
+            String dificultadesl, String muerteh, String decersione, String otro, String totros, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_eventose`"
                     + " SET `pyp_eventose`.`sepodivorcio` = ?, `pyp_eventose`.`EmbarazoA` = ?, `pyp_eventose`.`FracasoE` = ?,"
                     + "     `pyp_eventose`.`ConflictoC` = ?, `pyp_eventose`.`Salidahijo` = ?, `pyp_eventose`.`DificultadesL` = ?,"
                     + "     `pyp_eventose`.`Muertehijo` = ?, `pyp_eventose`.`decersionE` = ?, `pyp_eventose`.`otros` = ?,"
-                    + "     `pyp_eventose`.`totros` = ?"
+                    + "     `pyp_eventose`.`totros` = ?, `pyp_eventose`.`userlog` = ?"
                     + "WHERE `pyp_eventose`.`Idhistoriac` = ?");
             bd.preparedStatement.setString(1, separacion);
             bd.preparedStatement.setString(2, embarazoa);
@@ -82,7 +82,8 @@ public class Actualizar {
             bd.preparedStatement.setString(8, decersione);
             bd.preparedStatement.setString(9, otro);
             bd.preparedStatement.setString(10, totros);
-            bd.preparedStatement.setString(11, id);
+            bd.preparedStatement.setInt(11, usuario);
+            bd.preparedStatement.setString(12, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a002 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -213,7 +214,7 @@ public class Actualizar {
 
     public void actexploracion(String id, int tas, int tad, float fr, int fc, float tempe, int talla, float peso,
             float imc, String otro, String aspectog, String neu, String cardio, String resp, String gastro, String genito,
-            String hemato, String endoc, String osteo) {
+            String hemato, String endoc, String osteo, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_explofisica`"
@@ -222,7 +223,7 @@ public class Actualizar {
                     + "    `pyp_explofisica`.`imc` = ?, `pyp_explofisica`.`otro`=?, `pyp_explofisica`.`aspectog`=?, `pyp_explofisica`.`neurologicooc` =?,"
                     + "    `pyp_explofisica`.`cardiovascular` = ?, `pyp_explofisica`.`respiratorio` = ?, `pyp_explofisica`.`gastrointestinal` =?,"
                     + "    `pyp_explofisica`.`genitourinario` = ?, `pyp_explofisica`.`hematoinfeccioso`=?, `pyp_explofisica`.`endocrinometa` = ?,"
-                    + "    `pyp_explofisica`.`osteo`=?"
+                    + "    `pyp_explofisica`.`osteo`=?, `pyp_explofisica`.`userlog`=?"
                     + "    WHERE `pyp_explofisica`.`idhistoriac` = ?;");
             bd.preparedStatement.setInt(1, tas);
             bd.preparedStatement.setInt(2, tad);
@@ -242,7 +243,8 @@ public class Actualizar {
             bd.preparedStatement.setString(16, hemato);
             bd.preparedStatement.setString(17, endoc);
             bd.preparedStatement.setString(18, osteo);
-            bd.preparedStatement.setString(19, id);
+            bd.preparedStatement.setInt(19, usuario);
+            bd.preparedStatement.setString(20, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a007 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -271,15 +273,16 @@ public class Actualizar {
         }
     }
 
-    public void actdx1(String id, int dx, int dx1) {
+    public void actdx1(String id, int dx, int dx1, int tratamiento1) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_historiac`"
-                    + " SET `pyp_historiac`.`diagnosticos` = ?, `pyp_historiac`.`diagnosticorel1` = ?"
+                    + " SET `pyp_historiac`.`diagnosticos` = ?, `pyp_historiac`.`diagnosticorel1` = ?, `pyp_historiac`.`tratamiento1` = ? "
                     + "    WHERE `pyp_historiac`.`id` = ?;");
             bd.preparedStatement.setInt(1, dx);
             bd.preparedStatement.setInt(2, dx1);
-            bd.preparedStatement.setString(3, id);
+            bd.preparedStatement.setInt(3, tratamiento1);
+            bd.preparedStatement.setString(4, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a010r1 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -290,15 +293,16 @@ public class Actualizar {
         }
     }
 
-    public void actdx2(String id, int dx, int dx2) {
+    public void actdx2(String id, int dx, int dx2, int tratamiento2) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_historiac`"
-                    + " SET `pyp_historiac`.`diagnosticos` = ?, `pyp_historiac`.`diagnosticorel2` = ?"
+                    + " SET `pyp_historiac`.`diagnosticos` = ?, `pyp_historiac`.`diagnosticorel2` = ?, `pyp_historiac`.`tratamiento2` = ? "
                     + "    WHERE `pyp_historiac`.`id` = ?;");
             bd.preparedStatement.setInt(1, dx);
             bd.preparedStatement.setInt(2, dx2);
-            bd.preparedStatement.setString(3, id);
+            bd.preparedStatement.setInt(3, tratamiento2);
+            bd.preparedStatement.setString(4, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a010r2 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -309,15 +313,16 @@ public class Actualizar {
         }
     }
 
-    public void actdx3(String id, int dx, int dx3) {
+    public void actdx3(String id, int dx, int dx3, int tratamiento3) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_historiac`"
-                    + " SET `pyp_historiac`.`diagnosticos` = ?, `pyp_historiac`.`diagnosticorel3` = ?"
+                    + " SET `pyp_historiac`.`diagnosticos` = ?, `pyp_historiac`.`diagnosticorel3` = ?, `pyp_historiac`.`tratamiento3` = ? "
                     + "    WHERE `pyp_historiac`.`id` = ?;");
             bd.preparedStatement.setInt(1, dx);
             bd.preparedStatement.setInt(2, dx3);
-            bd.preparedStatement.setString(3, id);
+            bd.preparedStatement.setInt(3, tratamiento3);
+            bd.preparedStatement.setString(4, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a010r3 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -328,15 +333,16 @@ public class Actualizar {
         }
     }
 
-    public void actdx4(String id, int dx, int dx4) {
+    public void actdx4(String id, int dx, int dx4, int tratamiento4) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_historiac`"
-                    + " SET `pyp_historiac`.`diagnosticos` = ?, `pyp_historiac`.`diagnosticorel4` = ?"
+                    + " SET `pyp_historiac`.`diagnosticos` = ?, `pyp_historiac`.`diagnosticorel4` = ?, `pyp_historiac`.`tratamiento4` = ? "
                     + "    WHERE `pyp_historiac`.`id` = ?;");
             bd.preparedStatement.setInt(1, dx);
             bd.preparedStatement.setInt(2, dx4);
-            bd.preparedStatement.setString(3, id);
+            bd.preparedStatement.setInt(3, tratamiento4);
+            bd.preparedStatement.setString(4, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a010r4 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -347,14 +353,15 @@ public class Actualizar {
         }
     }
 
-    public void actrecomendaciones(String id, String reco) {
+    public void actrecomendaciones(String id, String reco, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_historiac`"
-                    + " SET `pyp_historiac`.`recomendaciones` = ?"
+                    + " SET `pyp_historiac`.`recomendaciones` = ?, `pyp_historiac`.`usuariolog` = ?"
                     + " WHERE `pyp_historiac`.`id` = ?;");
             bd.preparedStatement.setString(1, reco);
-            bd.preparedStatement.setString(2, id);
+            bd.preparedStatement.setInt(2, usuario);
+            bd.preparedStatement.setString(3, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a011 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -640,7 +647,8 @@ public class Actualizar {
     }
 
     public void actobstetricos(String id, String fcu, String nmuertos, String nvivos, String viven, String muertossem,
-            String despuessem, String ultimoprevio, String embarazop, String embarazod, String complicaciones, String fracasomac) {
+            String despuessem, String ultimoprevio, String embarazop, String embarazod, String complicaciones, String fracasomac,
+            int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareCall("UPDATE `database`.`pyp_materna`"
@@ -653,7 +661,7 @@ public class Actualizar {
                     + "	    `pyp_materna_obstetricos`.`muertos1sem` = ?, `pyp_materna_obstetricos`.`despues1sem` = ?,"
                     + "	    `pyp_materna_obstetricos`.`ultimoprevio` = ?, `pyp_materna_obstetricos`.`embarazop` = ?,"
                     + "	    `pyp_materna_obstetricos`.`embarazod` = ?, `pyp_materna_obstetricos`.`complicaciones` = ?,"
-                    + "	    `pyp_materna_obstetricos`.`fracasomac` = ?"
+                    + "	    `pyp_materna_obstetricos`.`fracasomac` = ?, `pyp_materna_obstetricos`.`userlog` = ?"
                     + "	    WHERE (`pyp_historiac`.`id` = ?);");
             bd.preparedStatement.setString(1, fcu);
             bd.preparedStatement.setString(2, nmuertos);
@@ -666,7 +674,8 @@ public class Actualizar {
             bd.preparedStatement.setString(9, embarazod);
             bd.preparedStatement.setString(10, complicaciones);
             bd.preparedStatement.setString(11, fracasomac);
-            bd.preparedStatement.setString(12, id);
+            bd.preparedStatement.setInt(12, usuario);
+            bd.preparedStatement.setString(13, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a016 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -708,7 +717,7 @@ public class Actualizar {
 
     public void actgestaante(String id, String vdmenor, String vdmayor, String sullivan, String agshb,
             String toxoplasma, String grupos, String sifilis, String antiprevia, String antiembarazo,
-            String antitevigente, String mesd1, String mesd2, String vihcon, String vihsoli) {
+            String antitevigente, String mesd1, String mesd2, String vihcon, String vihsoli, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_materna`"
@@ -722,7 +731,8 @@ public class Actualizar {
                     + "    , `pyp_materna_gestaactual`.`sifilisfta` = ?, `pyp_materna_gestaactual`.`antiprevia`=?"
                     + "    , `pyp_materna_gestaactual`.`antiembarazo` = ?, `pyp_materna_gestaactual`.`antitevigente`=?"
                     + "    , `pyp_materna_gestaactual`.`mesd1`=?, `pyp_materna_gestaactual`.`mesd2`=?"
-                    + "    , `pyp_materna_gestaactual`.`vihconsej`=?, `pyp_materna_gestaactual`.`vihsolicitado`=?"
+                    + "    , `pyp_materna_gestaactual`.`vihconsej`=?, `pyp_materna_gestaactual`.`vihsolicitado`=?,"
+                    + "      `pyp_materna_gestaactual`.`userlog`=?"
                     + " WHERE (`pyp_historiac`.`id` =?);");
             bd.preparedStatement.setString(1, vdmenor);
             bd.preparedStatement.setString(2, vdmayor);
@@ -738,7 +748,8 @@ public class Actualizar {
             bd.preparedStatement.setString(12, mesd2);
             bd.preparedStatement.setString(13, vihcon);
             bd.preparedStatement.setString(14, vihsoli);
-            bd.preparedStatement.setString(15, id);
+            bd.preparedStatement.setInt(15, usuario);
+            bd.preparedStatement.setString(16, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a017 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -791,7 +802,7 @@ public class Actualizar {
     }
 
     public void actgestafinal(String id, String fpp, String egfum, String egeco, String eg, String alturau,
-            String movfetales, String fcf, String presentacion, String fe, String folatos, String calcio) {
+            String movfetales, String fcf, String presentacion, String fe, String folatos, String calcio, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareCall("UPDATE `database`.`pyp_materna`"
@@ -804,7 +815,7 @@ public class Actualizar {
                     + "    , `pyp_materna_gestaactual`.`alturau` = ?, `pyp_materna_gestaactual`.`movfetales` = ?"
                     + "    , `pyp_materna_gestaactual`.`fcf` = ?, `pyp_materna_gestaactual`.`presentacion` = ?"
                     + "    , `pyp_materna_gestaactual`.`fe` = ?, `pyp_materna_gestaactual`.`folatos` = ?"
-                    + "    , `pyp_materna_gestaactual`.`calcio` = ?"
+                    + "    , `pyp_materna_gestaactual`.`calcio` = ?,`pyp_materna_gestaactual`.`userlog` = ?"
                     + " WHERE (`pyp_historiac`.`id` =?);");
             bd.preparedStatement.setString(1, fpp);
             bd.preparedStatement.setString(2, egfum);
@@ -817,7 +828,8 @@ public class Actualizar {
             bd.preparedStatement.setString(9, fe);
             bd.preparedStatement.setString(10, folatos);
             bd.preparedStatement.setString(11, calcio);
-            bd.preparedStatement.setString(12, id);
+            bd.preparedStatement.setInt(12, usuario);
+            bd.preparedStatement.setString(13, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a018 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -826,14 +838,15 @@ public class Actualizar {
         }
     }
 
-    public void apgarparto(String id, String colorp, String fc, String reflejos, String tonom, String respiracion, String resultado) {
+    public void apgarparto(String id, String colorp, String fc, String reflejos, String tonom, String respiracion, String resultado, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("update `database`.`pyp_postparto`"
                     + "    INNER JOIN `database`.`pyp_historiac` "
                     + "        ON (`pyp_postparto`.`id_historiac` = `pyp_historiac`.`id`)"
                     + "SET `pyp_postparto`.`colorpiel` = ?, `pyp_postparto`.`frecucardiaca` = ?, `pyp_postparto`.`reflejos` = ?,"
-                    + "    `pyp_postparto`.`tonomuscular` = ?, `pyp_postparto`.`respiracion` = ?, `pyp_postparto`.`resultado` = ?"
+                    + "    `pyp_postparto`.`tonomuscular` = ?, `pyp_postparto`.`respiracion` = ?, `pyp_postparto`.`resultado` = ?,"
+                    + "    `pyp_postparto`.`userlog` = ?"
                     + "WHERE (`pyp_historiac`.`id` =?);");
             bd.preparedStatement.setString(1, colorp);
             bd.preparedStatement.setString(2, fc);
@@ -841,7 +854,8 @@ public class Actualizar {
             bd.preparedStatement.setString(4, tonom);
             bd.preparedStatement.setString(5, respiracion);
             bd.preparedStatement.setString(6, resultado);
-            bd.preparedStatement.setString(7, id);
+            bd.preparedStatement.setInt(7, usuario);
+            bd.preparedStatement.setString(8, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a019 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -851,7 +865,7 @@ public class Actualizar {
     }
 
     public void posparto(String id, String terminacion, String edad, String vacuancion, String agsph, String vih, String vdrl,
-            String feto, String partot, String hospi) {
+            String feto, String partot, String hospi, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("update `database`.`pyp_postparto`"
@@ -859,7 +873,7 @@ public class Actualizar {
                     + "        ON (`pyp_postparto`.`id_historiac` = `pyp_historiac`.`id`)"
                     + " SET `pyp_postparto`.`terminacionparto` = ?, `pyp_postparto`.`edadgestaparto` = ?, `pyp_postparto`.`vacunaciont` = ?,"
                     + "    `pyp_postparto`.`agsph` = ?, `pyp_postparto`.`vih` = ?, `pyp_postparto`.`vdrl` = ?, `pyp_postparto`.`feto` = ?,"
-                    + "    `pyp_postparto`.`partotraumado` = ?, `pyp_postparto`.`hospitaizacion` = ?"
+                    + "    `pyp_postparto`.`partotraumado` = ?, `pyp_postparto`.`hospitaizacion` = ?, `pyp_postparto`.`userlog` = ?"
                     + " WHERE (`pyp_historiac`.`id` =?);");
             bd.preparedStatement.setString(1, terminacion);
             bd.preparedStatement.setString(2, edad);
@@ -870,7 +884,8 @@ public class Actualizar {
             bd.preparedStatement.setString(7, feto);
             bd.preparedStatement.setString(8, partot);
             bd.preparedStatement.setString(9, hospi);
-            bd.preparedStatement.setString(10, id);
+            bd.preparedStatement.setInt(10, usuario);
+            bd.preparedStatement.setString(11, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a020 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -894,22 +909,24 @@ public class Actualizar {
         }
     }
 
-    public void apgarrecien(String id, String colorp, String fc, String reflejos, String tonom, String respiracion, String resultado) {
+    public void apgarrecien(String id, String colorp, String fc, String reflejos, String tonom, String respiracion, String resultado, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("update `database`.`pyp_recienniacido`"
                     + "    INNER JOIN `database`.`pyp_historiac` "
                     + "        ON (`pyp_recienniacido`.`idhistoria` = `pyp_historiac`.`id`)"
-                    + "SET `pyp_recienniacido`.`colorpiel` = ?, `pyp_recienniacido`.`frecucardiaca` = ?, `pyp_recienniacido`.`reflejos` = ?,"
-                    + "    `pyp_recienniacido`.`tonomuscular` = ?, `pyp_recienniacido`.`respiracion` = ?, `pyp_recienniacido`.`resultado` = ?"
-                    + "WHERE (`pyp_historiac`.`id` =?);");
+                    + " SET `pyp_recienniacido`.`colorpiel` = ?, `pyp_recienniacido`.`frecucardiaca` = ?, `pyp_recienniacido`.`reflejos` = ?,"
+                    + "    `pyp_recienniacido`.`tonomuscular` = ?, `pyp_recienniacido`.`respiracion` = ?, `pyp_recienniacido`.`resultado` = ?,"
+                    + "    `pyp_recienniacido`.`userlog` = ?"
+                    + " WHERE (`pyp_historiac`.`id` =?);");
             bd.preparedStatement.setString(1, colorp);
             bd.preparedStatement.setString(2, fc);
             bd.preparedStatement.setString(3, reflejos);
             bd.preparedStatement.setString(4, tonom);
             bd.preparedStatement.setString(5, respiracion);
             bd.preparedStatement.setString(6, resultado);
-            bd.preparedStatement.setString(7, id);
+            bd.preparedStatement.setInt(7, usuario);
+            bd.preparedStatement.setString(8, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a021 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -920,7 +937,7 @@ public class Actualizar {
 
     public void actrecien(String id, String incmpatibilidad, String sufrimiento, String icteria, String patologia,
             String partoprolongado, String partotraumatico, String hospitalizacion, String otros, float pesoalnacer,
-            float talla, String eg, float tsh, String terminap, String hemoclasificacion, String vdrl) {
+            float talla, String eg, float tsh, String terminap, String hemoclasificacion, String vdrl, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("update `database`.`pyp_recienniacido`"
@@ -933,7 +950,7 @@ public class Actualizar {
                     + "    , `pyp_recienniacido`.`otros` = ?, `pyp_recienniacido`.`pesoalnacer` = ?"
                     + "    , `pyp_recienniacido`.`tallanacer` = ?, `pyp_recienniacido`.`egparto` = ?"
                     + "    , `pyp_recienniacido`.`tshneonatal` = ?, `pyp_recienniacido`.`terminaparto` = ?"
-                    + "    , `pyp_recienniacido`.`hemoclasificacion` = ?, `pyp_recienniacido`.`vdrl` = ?"
+                    + "    , `pyp_recienniacido`.`hemoclasificacion` = ?, `pyp_recienniacido`.`vdrl` = ?, `pyp_recienniacido`.`userlog` = ?"
                     + " WHERE (`pyp_historiac`.`id` = ?);");
             bd.preparedStatement.setString(1, incmpatibilidad);
             bd.preparedStatement.setString(2, sufrimiento);
@@ -950,7 +967,8 @@ public class Actualizar {
             bd.preparedStatement.setString(13, terminap);
             bd.preparedStatement.setString(14, hemoclasificacion);
             bd.preparedStatement.setString(15, vdrl);
-            bd.preparedStatement.setString(16, id);
+            bd.preparedStatement.setInt(16, usuario);
+            bd.preparedStatement.setString(17, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a022 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -1007,13 +1025,14 @@ public class Actualizar {
     }
 
     public void actjoven(String id, String desarrolloa, String desarrollovello, String valoracionv, String fechavv,
-            String valoraciono, String fechavo, String controlplaca, String sellantes, String fluor) {
+            String valoraciono, String fechavo, String controlplaca, String sellantes, String fluor, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_joven`"
                     + " SET `pyp_joven`.`desarrolloa`=?, `pyp_joven`.`desarrollovello`=?, `pyp_joven`.`valoracionv`=?,"
                     + "    `pyp_joven`.`fechavv`=?, `pyp_joven`.`valoraciono`=?, `pyp_joven`.`fechavo`=?,"
-                    + "    `pyp_joven`.`controlplaca`=?, `pyp_joven`.`sellantes`=?, `pyp_joven`.`flour`=?"
+                    + "    `pyp_joven`.`controlplaca`=?, `pyp_joven`.`sellantes`=?, `pyp_joven`.`flour`=?,"
+                    + "    `pyp_joven`.`userlog`=?"
                     + "    WHERE(`pyp_joven`.`idhistoria`=?)");
             bd.preparedStatement.setString(1, desarrolloa);
             bd.preparedStatement.setString(2, desarrollovello);
@@ -1024,7 +1043,8 @@ public class Actualizar {
             bd.preparedStatement.setString(7, controlplaca);
             bd.preparedStatement.setString(8, sellantes);
             bd.preparedStatement.setString(9, fluor);
-            bd.preparedStatement.setString(10, id);
+            bd.preparedStatement.setInt(10, usuario);
+            bd.preparedStatement.setString(11, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a024 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -1057,13 +1077,13 @@ public class Actualizar {
     }
 
     public void acthta(String id, String hta, String htac, String dm1, String dm1c, String dm2, String dm2c, String dislipidemia,
-            String dislipidemiac, String estadio, String riesgo) {
+            String dislipidemiac, String estadio, String riesgo, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("update `database`.`pyp_hta`"
                     + " set `pyp_hta`.`hta`=?, `pyp_hta`.`htac`=?, `pyp_hta`.`dm1`=?, `pyp_hta`.`dm1c`=?,"
                     + "    `pyp_hta`.`dm2`=?, `pyp_hta`.`dm2c`=?, `pyp_hta`.`dislipidemia`=?, `pyp_hta`.`dislipidemiac`=?,"
-                    + "    `pyp_hta`.`estadio`=?, `pyp_hta`.`riesgo`=?"
+                    + "    `pyp_hta`.`estadio`=?, `pyp_hta`.`riesgo`=?, `pyp_hta`.`userlog`=?"
                     + "    where(`pyp_hta`.`idhistoria`=?)");
             bd.preparedStatement.setString(1, hta);
             bd.preparedStatement.setString(2, htac);
@@ -1075,7 +1095,8 @@ public class Actualizar {
             bd.preparedStatement.setString(8, dislipidemiac);
             bd.preparedStatement.setString(9, estadio);
             bd.preparedStatement.setString(10, riesgo);
-            bd.preparedStatement.setString(11, id);
+            bd.preparedStatement.setInt(11, usuario);
+            bd.preparedStatement.setString(12, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a025 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -1108,19 +1129,22 @@ public class Actualizar {
         }
     }
 
-    public void actvaloracion(String id, String meses, String mg, String mfa, String al, String ps, String total) {
+    public void actvaloracion(String id, String meses, String mg, String mfa, String al, String ps, String total, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_crecimiento_eadmeses`"
-                    + "SET `pyp_crecimiento_eadmeses`.`meses`=?, `pyp_crecimiento_eadmeses`.`mg`=?, `pyp_crecimiento_eadmeses`.`mfa`=?, `pyp_crecimiento_eadmeses`.`al`=?, `pyp_crecimiento_eadmeses`.`ps`=?, `pyp_crecimiento_eadmeses`.`total`=?"
-                    + "WHERE(`pyp_crecimiento_eadmeses`.`idhistoria`=?)");
+                    + " SET `pyp_crecimiento_eadmeses`.`meses`=?, `pyp_crecimiento_eadmeses`.`mg`=?, `pyp_crecimiento_eadmeses`.`mfa`=?, "
+                    + " `pyp_crecimiento_eadmeses`.`al`=?, `pyp_crecimiento_eadmeses`.`ps`=?, `pyp_crecimiento_eadmeses`.`total`=?,"
+                    + " `pyp_crecimiento_eadmeses`.`userlog`=?"
+                    + " WHERE(`pyp_crecimiento_eadmeses`.`idhistoria`=?)");
             bd.preparedStatement.setString(1, meses);
             bd.preparedStatement.setString(2, mg);
             bd.preparedStatement.setString(3, mfa);
             bd.preparedStatement.setString(4, al);
             bd.preparedStatement.setString(5, ps);
             bd.preparedStatement.setString(6, total);
-            bd.preparedStatement.setString(7, id);
+            bd.preparedStatement.setInt(7, usuario);
+            bd.preparedStatement.setString(8, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a026 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -1143,12 +1167,13 @@ public class Actualizar {
     }
 
     public void actcrecimientoapgar(String id, String colorpiel, String frecuenciac, String reflejos, String tonomuscular,
-            String respiracion, String resultado) {
+            String respiracion, String resultado, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_crecimiento`"
                     + "SET `pyp_crecimiento`.`colorpiel`=?, `pyp_crecimiento`.`frecucardiaca`=?, `pyp_crecimiento`.`reflejos`=?,"
-                    + "    `pyp_crecimiento`.`tonomuscular`=?, `pyp_crecimiento`.`respiracion`=?, `pyp_crecimiento`.`resultado`=?"
+                    + "    `pyp_crecimiento`.`tonomuscular`=?, `pyp_crecimiento`.`respiracion`=?, `pyp_crecimiento`.`resultado`=?,"
+                    + "    `pyp_crecimiento`.`userlog`=?"
                     + "    WHERE(`pyp_crecimiento`.`idhistoria`=?)");
             bd.preparedStatement.setString(1, colorpiel);
             bd.preparedStatement.setString(2, frecuenciac);
@@ -1156,7 +1181,8 @@ public class Actualizar {
             bd.preparedStatement.setString(4, tonomuscular);
             bd.preparedStatement.setString(5, respiracion);
             bd.preparedStatement.setString(6, resultado);
-            bd.preparedStatement.setString(7, id);
+            bd.preparedStatement.setInt(7, usuario);
+            bd.preparedStatement.setString(8, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a027 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -1170,7 +1196,7 @@ public class Actualizar {
     public void actcrecimiento(String id, String incompatibilidad, String sufrimiento, String icteria, String patologiascpn,
             String partoprolongado, String partotraumatico, String hospitalizacion, String otros, float pesoalnacer, float tallanacer,
             String egparto, float tshneonatal, String terminaparto, String hemoclasificacion, String vdrl, String alimentacion,
-            String lugarnacimiento, String embarazodeseado) {
+            String lugarnacimiento, String embarazodeseado, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_crecimiento`"
@@ -1179,7 +1205,8 @@ public class Actualizar {
                     + "    `pyp_crecimiento`.`hospitalizacion`=?, `pyp_crecimiento`.`otros`=?, `pyp_crecimiento`.`pesoalnacer`=?,"
                     + "    `pyp_crecimiento`.`tallanacer`=?, `pyp_crecimiento`.`egparto`=?, `pyp_crecimiento`.`tshneonatal`=?,"
                     + "    `pyp_crecimiento`.`terminaparto`=?, `pyp_crecimiento`.`hemoclasificacion`=?, `pyp_crecimiento`.`vdrl`=?,"
-                    + "    `pyp_crecimiento`.`alimentacion`=?, `pyp_crecimiento`.`lugarnacimiento`=?, `pyp_crecimiento`.`embarazodeseado`=?"
+                    + "    `pyp_crecimiento`.`alimentacion`=?, `pyp_crecimiento`.`lugarnacimiento`=?, `pyp_crecimiento`.`embarazodeseado`=?,"
+                    + "    `pyp_crecimiento`.`userlog`=?"
                     + "    WHERE(`pyp_crecimiento`.`idhistoria`=?)");
             bd.preparedStatement.setString(1, incompatibilidad);
             bd.preparedStatement.setString(2, sufrimiento);
@@ -1199,7 +1226,8 @@ public class Actualizar {
             bd.preparedStatement.setString(16, alimentacion);
             bd.preparedStatement.setString(17, lugarnacimiento);
             bd.preparedStatement.setString(18, embarazodeseado);
-            bd.preparedStatement.setString(19, id);
+            bd.preparedStatement.setInt(19, usuario);
+            bd.preparedStatement.setString(20, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a028 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -1279,7 +1307,7 @@ public class Actualizar {
 
     public void actcontrolplanif(String id, String macante, String satisfaccion, String comportamiento, String trastornos, String molestiasmamas,
             String manchaspiel, String dolorvientre, String expulsion, String edemas, String varices, String mareos, String cefaleas, String flujo,
-            String urinarios, String citologia, String fechacito, String riesgoproductivo, String descripcion) {
+            String urinarios, String citologia, String fechacito, String riesgoproductivo, String descripcion, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_planificacion_control`"
@@ -1288,7 +1316,8 @@ public class Actualizar {
                     + "    `pyp_planificacion_control`.`dolorvientre`=?, `pyp_planificacion_control`.`expulsion`=?, `pyp_planificacion_control`.`edemas`=?,"
                     + "    `pyp_planificacion_control`.`varices`=?, `pyp_planificacion_control`.`mareos`=?, `pyp_planificacion_control`.`cefaleas`=?,"
                     + "    `pyp_planificacion_control`.`flujo`=?, `pyp_planificacion_control`.`urinarios`=?, `pyp_planificacion_control`.`citologia`=?,"
-                    + "    `pyp_planificacion_control`.`fechacito`=?, `pyp_planificacion_control`.`riesgoproductivo`=?, `pyp_planificacion_control`.`descripcion`=?"
+                    + "    `pyp_planificacion_control`.`fechacito`=?, `pyp_planificacion_control`.`riesgoproductivo`=?, `pyp_planificacion_control`.`descripcion`=?,"
+                    + "    `pyp_planificacion_control`.`userlog`=?"
                     + "    WHERE(`pyp_planificacion_control`.`idplanificacion`=?)");
             bd.preparedStatement.setString(1, macante);
             bd.preparedStatement.setString(2, satisfaccion);
@@ -1308,7 +1337,8 @@ public class Actualizar {
             bd.preparedStatement.setString(16, fechacito);
             bd.preparedStatement.setString(17, riesgoproductivo);
             bd.preparedStatement.setString(18, descripcion);
-            bd.preparedStatement.setString(19, id);
+            bd.preparedStatement.setInt(19, usuario);
+            bd.preparedStatement.setString(20, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a030 " + e.getMessage(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -1433,20 +1463,21 @@ public class Actualizar {
         }
     }
 
-    public void acthtacontrol(String id, String dieta, String ejercicio, String esecundarios, String tratamiento, String observacion) {
+    public void acthtacontrol(String id, String dieta, String ejercicio, String esecundarios, String tratamiento, String observacion, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_hta_control`"
                     + "SET `pyp_hta_control`.`dieta` = ?, `pyp_hta_control`.`ejercicio` = ?,"
                     + "    `pyp_hta_control`.`esecundarios` = ?, `pyp_hta_control`.`tratamiento` = ?,"
-                    + "    `pyp_hta_control`.`observacion` = ?"
+                    + "    `pyp_hta_control`.`observacion` = ?, `pyp_hta_control`.`userlog` = ?"
                     + "    WHERE `pyp_hta_control`.`idhta` = ?;");
             bd.preparedStatement.setString(1, dieta);
             bd.preparedStatement.setString(2, ejercicio);
             bd.preparedStatement.setString(3, esecundarios);
             bd.preparedStatement.setString(4, tratamiento);
             bd.preparedStatement.setString(5, observacion);
-            bd.preparedStatement.setString(6, id);
+            bd.preparedStatement.setInt(6, usuario);
+            bd.preparedStatement.setString(7, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a032 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -1523,18 +1554,20 @@ public class Actualizar {
         }
     }
 
-    public void actvaloracionaños(String id, String meses, String mg, String mfa, String al, String ps) {
+    public void actvaloracionaños(String id, String meses, String mg, String mfa, String al, String ps, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_crecimiento_eadaños`"
-                    + "SET `pyp_crecimiento_eadaños`.`edad`=?, `pyp_crecimiento_eadaños`.`mg`=?, `pyp_crecimiento_eadaños`.`mfa`=?, `pyp_crecimiento_eadaños`.`dl`=?, `pyp_crecimiento_eadaños`.`ps`=?"
+                    + "SET `pyp_crecimiento_eadaños`.`edad`=?, `pyp_crecimiento_eadaños`.`mg`=?, `pyp_crecimiento_eadaños`.`mfa`=?,"
+                    + " `pyp_crecimiento_eadaños`.`dl`=?, `pyp_crecimiento_eadaños`.`ps`=?, `pyp_crecimiento_eadaños`.`userlog`=?"
                     + "WHERE(`pyp_crecimiento_eadaños`.`idhistoria`=?)");
             bd.preparedStatement.setString(1, meses);
             bd.preparedStatement.setString(2, mg);
             bd.preparedStatement.setString(3, mfa);
             bd.preparedStatement.setString(4, al);
             bd.preparedStatement.setString(5, ps);
-            bd.preparedStatement.setString(6, id);
+            bd.preparedStatement.setInt(6, usuario);
+            bd.preparedStatement.setString(7, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a034 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -1568,17 +1601,18 @@ public class Actualizar {
         }
     }
 
-    public void controlmaterno(String id, String fecha, String ganancia, String ncontrol) {
+    public void controlmaterno(String id, String fecha, String ganancia, String ncontrol, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_contolmaterno`"
                     + "	SET `pyp_contolmaterno`.`fecha` = ?, `pyp_contolmaterno`.`ganancia`=?,"
-                    + "	    `pyp_contolmaterno`.`ncontrol`=?"
+                    + "	    `pyp_contolmaterno`.`ncontrol`=?, `pyp_contolmaterno`.`userlog`=?"
                     + "	    WHERE(`pyp_contolmaterno`.`idhistoria` = ?);");
             bd.preparedStatement.setString(1, fecha);
             bd.preparedStatement.setString(2, ganancia);
             bd.preparedStatement.setString(3, ncontrol);
-            bd.preparedStatement.setString(4, id);
+            bd.preparedStatement.setInt(4, usuario);
+            bd.preparedStatement.setString(5, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a035 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -1653,7 +1687,7 @@ public class Actualizar {
 
     public void actdm(String id, String hta, String htac, String dm1, String dm1c, String dm2, String dm2c, String dislipidemia,
             String dislipidemiac, String dieta, String ejercicio, String esecundarios, String tratamiento, String observacion, String glucometria,
-            String trat) {
+            String trat, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_dm`"
@@ -1662,7 +1696,7 @@ public class Actualizar {
                     + "    `pyp_dm`.`dislipidemia` = ?, `pyp_dm`.`dislipidemiac` = ?,"
                     + "    `pyp_dm`.`dieta` = ?, `pyp_dm`.`ejercicio` = ?, `pyp_dm`.`esecundarios` =?,"
                     + "    `pyp_dm`.`glucometria` = ?, `pyp_dm`.`trat` = ?, `pyp_dm`.`tratamiento` =?,"
-                    + "    `pyp_dm`.`observacion` = ?"
+                    + "    `pyp_dm`.`observacion` = ?, `pyp_dm`.`userlog` = ?"
                     + "    WHERE (`pyp_dm`.`idhistoria` = ?)");
             bd.preparedStatement.setString(1, hta);
             bd.preparedStatement.setString(2, htac);
@@ -1679,7 +1713,8 @@ public class Actualizar {
             bd.preparedStatement.setString(13, trat);
             bd.preparedStatement.setString(14, tratamiento);
             bd.preparedStatement.setString(15, observacion);
-            bd.preparedStatement.setString(16, id);
+            bd.preparedStatement.setInt(16, usuario);
+            bd.preparedStatement.setString(17, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a025 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
@@ -1903,13 +1938,13 @@ public class Actualizar {
             return "SELECT"
                     + "    `config_cups`.`codigo`"
                     + "   ,`pyp_procedimiento`.`id`"
-                    + "FROM"
+                    + " FROM"
                     + "    `database`.`pyp_procedimiento`"
                     + "    INNER JOIN `database`.`pyp_historiac`"
                     + "        ON (`pyp_procedimiento`.`id_historiapyp` = `pyp_historiac`.`id`)"
                     + "    INNER JOIN `database`.`config_cups` "
                     + "        ON (`pyp_procedimiento`.`id_cups` = `config_cups`.`id`)"
-                    + "WHERE (`pyp_historiac`.`id` ='" + id + "');";
+                    + " WHERE (`pyp_historiac`.`id` ='" + id + "');";
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Cargar procedimiento 4505 " + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
             return null;
@@ -1982,16 +2017,17 @@ public class Actualizar {
         }
     }
 
-    public void actrexamen(String idp, String fecha, String resultado, String observacion) {
+    public void actrexamen(String idp, String fecha, String resultado, String observacion, int usuario) {
         try {
             bd.ConectarBasedeDatos();
             bd.preparedStatement = bd.getConnection().prepareStatement("UPDATE `database`.`pyp_laboratory`"
-                    + " SET `pyp_laboratory`.`fecha` = ?, `pyp_laboratory`.`resultado` = ?, `pyp_laboratory`.`observacion` = ?"
+                    + " SET `pyp_laboratory`.`fecha` = ?, `pyp_laboratory`.`resultado` = ?, `pyp_laboratory`.`observacion` = ?, `pyp_laboratory`.`usuariolog` = ?"
                     + " WHERE (`pyp_laboratory`.`idprocedimiento` = ?);");
             bd.preparedStatement.setString(1, fecha);
             bd.preparedStatement.setString(2, resultado);
             bd.preparedStatement.setString(3, observacion);
-            bd.preparedStatement.setString(4, idp);
+            bd.preparedStatement.setInt(4, usuario);
+            bd.preparedStatement.setString(5, idp);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "a029" + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
