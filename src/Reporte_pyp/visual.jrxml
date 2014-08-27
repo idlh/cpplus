@@ -82,22 +82,20 @@ FROM
     `database`.`pyp_visual`
     INNER JOIN `database`.`pyp_adm_asist_con`
         ON (`pyp_visual`.`idasistencia` = `pyp_adm_asist_con`.`id`)
+    INNER JOIN `database`.`config_decripcion_login`
+        ON (`pyp_visual`.`usuariolog` = `config_decripcion_login`.`id`)
     INNER JOIN `database`.`pyp_adm_agend`
         ON (`pyp_adm_asist_con`.`id_agend` = `pyp_adm_agend`.`id`)
     INNER JOIN `database`.`pyp_adm_control_profesionales`
         ON (`pyp_adm_asist_con`.`id_control_pro` = `pyp_adm_control_profesionales`.`id`)
     INNER JOIN `database`.`info_paciente`
         ON (`pyp_adm_agend`.`id_paciente` = `info_paciente`.`id`)
-    INNER JOIN `database`.`info_admision`
-        ON (`info_admision`.`id_datos_personales` = `info_paciente`.`id`)
-    INNER JOIN `database`.`info_entidades`
-        ON (`info_admision`.`id_entidad_admision` = `info_entidades`.`id`)
     INNER JOIN `database`.`cm_profesionales`
         ON (`pyp_adm_control_profesionales`.`id_profesional` = `cm_profesionales`.`id`)
-    INNER JOIN `database`.`config_decripcion_login`
-        ON (`cm_profesionales`.`id_descripcion_login` = `config_decripcion_login`.`id`)
+    INNER JOIN `database`.`info_entidades`
+        ON (`info_paciente`.`contratante` = `info_entidades`.`id`)
     INNER JOIN `database`.`info_municipios`
-        ON (`info_municipios`.`id` = `info_paciente`.`id_mun_res`)
+        ON (`info_paciente`.`id_mun_res` = `info_municipios`.`id`)
     INNER JOIN `database`.`pyp_adm_programas`
         ON (`pyp_adm_agend`.`id_programa` = `pyp_adm_programas`.`id`)
 WHERE (`pyp_visual`.`id` =$P{idhistoria}

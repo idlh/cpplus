@@ -47,9 +47,9 @@ FROM
         ON (`pyp_historiac`.`id_admisionpyp` = `pyp_adm_asist_con`.`id`)
     INNER JOIN `database`.`pyp_receta_medica`
         ON (`pyp_receta_medica`.`id_historiapyp` = `pyp_historiac`.`id`)
-    INNER JOIN `database`.`cm_profesionales`
-        ON (`pyp_receta_medica`.`id_decription_login` = `cm_profesionales`.`id`)
     INNER JOIN `database`.`config_decripcion_login`
+        ON (`pyp_receta_medica`.`id_decription_login` = `config_decripcion_login`.`id`)
+    INNER JOIN `database`.`cm_profesionales`
         ON (`cm_profesionales`.`id_descripcion_login` = `config_decripcion_login`.`id`)
 WHERE (`pyp_historiac`.`id` =$P{idhistoria}
     AND `pyp_historiac`.`estado` =1);]]>
