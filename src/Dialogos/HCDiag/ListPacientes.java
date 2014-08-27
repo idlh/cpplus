@@ -66,7 +66,7 @@ public class ListPacientes extends javax.swing.JDialog {
     public Diabetes diabetes;
     public int año = 0, mes = 0, edad, idprograma;
     public String progam, name;
-    public int usuario = 2, userbd;
+    public int usuario = 48, userbd;
     Save sav = new Save();
     Funciones_AD Funciones = new Funciones_AD();
 
@@ -756,6 +756,16 @@ public class ListPacientes extends javax.swing.JDialog {
             this.dispose();
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 4 && pypAdmAsistCon.getPrimeraVez().toString().equals("1")) {
+            agudeza = new AgudezaV(factory, pypAdmAsistCon, usuario);
+            agudeza.setBounds(0, 0, 745, 393);
+            desktop.Contenedor_.removeAll();
+            desktop.Contenedor_.add(agudeza);
+            agudeza.setVisible(true);
+            desktop.Contenedor_.validate();
+            desktop.Contenedor_.repaint();
+            this.dispose();
+        }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 4 && pypAdmAsistCon.getPrimeraVez().toString().equals("0")) {
             agudeza = new AgudezaV(factory, pypAdmAsistCon, usuario);
             agudeza.setBounds(0, 0, 745, 393);
             desktop.Contenedor_.removeAll();
