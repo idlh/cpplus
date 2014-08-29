@@ -1,23 +1,26 @@
 package HC;
 
-import entity.PypAdmAsistCon;
 import Clases.Actualizar;
-import Clases.Save;
+import Clases.CargarordenesM;
 import Clases.Funciones_AD;
+import Clases.Save;
 import Dialogos.HCDiag.Dmedicamentosanti;
+import Dialogos.HCDiag.Dprocedimientos;
+import Dialogos.HCDiag.Mostrarmed;
+import entity.PypAdmAsistCon;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.text.SimpleDateFormat;
+import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
-import Clases.CargarordenesM;
-import java.awt.event.MouseAdapter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import Dialogos.HCDiag.Mostrarmed;
-import Dialogos.HCDiag.Dprocedimientos;
 
 /**
  *
@@ -38,15 +41,30 @@ public class Anticonceptivos extends javax.swing.JPanel {
     Dialogos.HCDiag.Dprocedimientos prog;
     String est = "1", est2 = "1";
     int columnindex, rowindex;
-    private final String opc[] = {"Dispositivo Intrauterino", "Dispositivo Intrauterino y Barrera", "Implante Subdérmico", "Implante Subdérmico y Barrera", "Oral",
-        "Oral y Barrera", "Inyectable Mensual", "Inyectable Mensual y Barrera", "Inyectable Trimestral", "Inyectable Trimestral y Barrera", "Emergencia",
-        "Emergencia y Barrera", "Esterilización", "Esterilización y Barrera", "Barrera"};
+    private final List<String> opc = new ArrayList<String>();
+
     private final int usuario;
 
     public Anticonceptivos(PypAdmAsistCon pypAdmAsistCon, Integer usuario) {
         initComponents();
         this.pypAdmAsistCon = pypAdmAsistCon;
         this.usuario = usuario;
+        opc.add("No Aplica");
+        opc.add("Dispositivo Intrauterino");
+        opc.add("Dispositivo Intrauterino y Barrera");
+        opc.add("Implante Subdérmico");
+        opc.add("Implante Subdérmico y Barrera");
+        opc.add("Oral");
+        opc.add("Oral y Barrera");
+        opc.add("Inyectable Mensual");
+        opc.add("Inyectable Mensual y Barrera");
+        opc.add("Inyectable Trimestral");
+        opc.add("Inyectable Trimestral y Barrera");
+        opc.add("Emergencia");
+        opc.add("Emergencia y Barrera");
+        opc.add("Esterilización");
+        opc.add("Esterilización y Barrera");
+        opc.add("Barrera");
         cargar();
         tabla();
         Tabaantimedi.addMouseListener(new MouseAdapter() {
@@ -302,10 +320,12 @@ public class Anticonceptivos extends javax.swing.JPanel {
                                 JOptionPane.showMessageDialog(null, "La cantidad de suministro no puede ser nula");
                                 medi.jTextField3.requestFocus();
                             } else {
-                                String Seleccion;
-                                Seleccion = (String) JOptionPane.showInputDialog(null, "Tipo de Metodo", "Mensaje", JOptionPane.QUESTION_MESSAGE,
-                                        null, opc, "Dispositivo Intrauterino");
-                                if (Seleccion != null) {
+                                Object opciones[] = opc.toArray();
+                                int Seleccion;
+                                Object value = (String) JOptionPane.showInputDialog(null, "Tipo de Metodo", "Mensaje", JOptionPane.QUESTION_MESSAGE,
+                                        null, opciones, opciones[0]);
+                                Seleccion = opc.indexOf(value);
+                                if (Seleccion > -1) {
                                     Agregar_Registro(medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 0).toString(),
                                             medi.Tmedicamentos.getValueAt(medi.Tmedicamentos.getSelectedRow(), 1).toString(),
                                             medi.jTextField2.getText(),
@@ -313,8 +333,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
                                             medi.jComboBox2.getSelectedItem().toString(),
                                             medi.jTextArea1.getText().toString(),
                                             medi.jTextField3.getText().toString(),
-                                            "1", Seleccion
-                                    );
+                                            "1", String.valueOf(Seleccion));
                                     medi.dispose();
                                     id = String.valueOf(medi.Tmedicamentos.getSelectedRow());
                                     dosis = medi.jTextField2.getText().toString();
@@ -350,15 +369,17 @@ public class Anticonceptivos extends javax.swing.JPanel {
                     }
                 }
                 if (validacion == false) {
-                    String Seleccion;
-                    Seleccion = (String) JOptionPane.showInputDialog(null, "Tipo de Metodo", "Mensaje", JOptionPane.QUESTION_MESSAGE,
-                            null, opc, "Dispositivo Intrauterino");
-                    if (Seleccion != null) {
+                    Object opciones[] = opc.toArray();
+                    int Seleccion;
+                    Object value = (String) JOptionPane.showInputDialog(null, "Tipo de Metodo", "Mensaje", JOptionPane.QUESTION_MESSAGE,
+                            null, opciones, opciones[0]);
+                    Seleccion = opc.indexOf(value);
+                    if (Seleccion > -1) {
                         Agregar_Registroanti(pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 0).toString(),
                                 pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 1).toString(),
                                 pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 2).toString(),
                                 pr.jTable1.getValueAt(pr.jTable1.getSelectedRow(), 3).toString(),
-                                "1", Seleccion);
+                                "1", String.valueOf(Seleccion));
                         pr.dispose();
                     } else {
                         JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo para el procedimiento");
@@ -592,7 +613,7 @@ public class Anticonceptivos extends javax.swing.JPanel {
                 if (modelo.getValueAt(i, 4).equals("1")) {
                     modelo.setValueAt("2", i, 4);
                     sav.newproceanti(idhc, modelo.getValueAt(i, 0).toString(),
-                            String.valueOf(usuario), modelo.getValueAt(i, 4).toString(), fc);
+                            String.valueOf(usuario), modelo.getValueAt(i, 4).toString(), fc, "Metodo de planificacion - Anticonceptivo".toUpperCase());
                     sav.newantip(idhc, modelo.getValueAt(i, 0).toString(), modelo.getValueAt(i, 5).toString());
                 }
             }

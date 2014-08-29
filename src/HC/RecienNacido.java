@@ -761,6 +761,11 @@ public class RecienNacido extends javax.swing.JPanel {
                     diagnosticosm.actdx(idhc);
                     ordenesm.actordenesm(idhc);
                     pruebascomple.actpruebasc(idhc);
+                    Object poso[][] = Funciones.RetornarDatos(sav.recetam(idhc));
+                    String cantiposo = poso[0][0].toString();
+                    if (!cantiposo.equals("0")) {
+                        sav.newreceta(idhc, String.valueOf(usuario), "1", "1");
+                    }
                     jLabel9.setVisible(true);
                     Contar();
                 }
@@ -776,6 +781,11 @@ public class RecienNacido extends javax.swing.JPanel {
                 diagnosticosm.actdx(idhc);
                 ordenesm.actordenesm(idhc);
                 pruebascomple.actpruebasc(idhc);
+                Object poso[][] = Funciones.RetornarDatos(sav.recetam(idhc));
+                String cantiposo = poso[0][0].toString();
+                if (!cantiposo.equals("0")) {
+                    sav.newreceta(idhc, String.valueOf(usuario), "1", "1");
+                }
                 jLabel9.setVisible(true);
                 Contar();
 //                }
@@ -826,7 +836,7 @@ public class RecienNacido extends javax.swing.JPanel {
                         Object poso[][] = Funciones.RetornarDatos(sav.recetam(idhc));
                         String cantiposo = poso[0][0].toString();
                         if (!cantiposo.equals("0")) {
-                            sav.newreceta(idhc, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), "1", "1");
+                            sav.newreceta(idhc, String.valueOf(usuario), "1", "1");
                         }
                         imprimirhis();
                     }
@@ -854,7 +864,7 @@ public class RecienNacido extends javax.swing.JPanel {
                         Object poso[][] = Funciones.RetornarDatos(sav.recetam(idhc));
                         String cantiposo = poso[0][0].toString();
                         if (!cantiposo.equals("0")) {
-                            sav.newreceta(idhc, pypAdmAsistCon.getIdControlPro().getIdProfesional().getId().toString(), "1", "1");
+                            sav.newreceta(idhc, String.valueOf(usuario), "1", "1");
                         }
                         imprimirhis();
                     }

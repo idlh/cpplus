@@ -21,7 +21,7 @@ import javax.swing.SwingUtilities;
  * @author Camilo
  */
 public class DiagnosticosM extends javax.swing.JPanel {
-    
+
     private Clases.Consultarcie10 cie;
     private final EntityManagerFactory factory;
     private final PypAdmAsistCon pypAdmAsistCon;
@@ -33,7 +33,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
     Actualizar act = new Actualizar();
     private final List<String> tratamiento = new ArrayList<String>();
     int seleccion1 = 0, seleccion2 = 0, seleccion3 = 0, seleccion4 = 0;
-    
+
     public DiagnosticosM(EntityManagerFactory factory, PypAdmAsistCon pypAdmAsistCon) {
         initComponents();
         this.factory = factory;
@@ -63,13 +63,11 @@ public class DiagnosticosM extends javax.swing.JPanel {
             jTextField1.setEditable(false);
             ciep = 12251;
         }
-        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5 && pypAdmAsistCon.getPrimeraVez() == 1) {
-            if (pypAdmAsistCon.getIdAgend().getIdPaciente().getGenero().toString().equals("M")) {
-                cie = new Consultarcie10();
-                cie.llamar_cie("Z300");
-                jTextField1.setEditable(false);
-                ciep = 11947;
-            }
+        if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 5) {
+            cie = new Consultarcie10();
+            cie.llamar_cie("Z300");
+            jTextField1.setEditable(false);
+            ciep = 11947;
         }
         if (pypAdmAsistCon.getIdAgend().getIdPrograma().getId() == 1) {
             cie = new Consultarcie10();
@@ -108,7 +106,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
         tratamiento.add("NO RECIBIO TRATAMIENTO POR DATOS NO ACTUALIZADOS");
         tratamiento.add("NO RECIBIO TRATAMIENTO POR OTRAS RAZONES");
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -312,7 +310,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
     private void jButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseReleased
         final DgCie10 dc = new DgCie10((Frame) SwingUtilities.getWindowAncestor(this), true, factory);
         dc.jButton1.addActionListener(new ActionListener() {
-            
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 Object[] opciones = tratamiento.toArray();
@@ -336,7 +334,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
     private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
         final DgCie10 dc = new DgCie10((Frame) SwingUtilities.getWindowAncestor(this), true, factory);
         dc.jButton1.addActionListener(new ActionListener() {
-            
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 Object[] opciones = tratamiento.toArray();
@@ -360,7 +358,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
     private void jButton5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseReleased
         final DgCie10 dc = new DgCie10((Frame) SwingUtilities.getWindowAncestor(this), true, factory);
         dc.jButton1.addActionListener(new ActionListener() {
-            
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 Object[] opciones = tratamiento.toArray();
@@ -384,7 +382,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
     private void jButton4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseReleased
         final DgCie10 dc = new DgCie10((Frame) SwingUtilities.getWindowAncestor(this), true, factory);
         dc.jButton1.addActionListener(new ActionListener() {
-            
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 Object[] opciones = tratamiento.toArray();
@@ -403,7 +401,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
         dc.setVisible(true);
         est4 = 4;
     }//GEN-LAST:event_jButton4MouseReleased
-    
+
     public void actdx(String idhc) {
         int d1, d2, d3, d4;
         if (est == 1) {
@@ -439,7 +437,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
             act.actdx4(idhc, ciep, d4, seleccion4);
         }
     }
-    
+
     public void cargardx(String idhc) {
         Object h[][] = Funciones.RetornarDatos(act.cargardatoshc(idhc));
         Object r1[][] = Funciones.RetornarDatos(act.cargarcierel1(h[0][18].toString()));
@@ -498,7 +496,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
         darayuda("Añadir Diagnostico");
     }//GEN-LAST:event_jButton4MouseEntered
-    
+
     private void retornarayuda() {
         switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
             case 3:
@@ -527,7 +525,7 @@ public class DiagnosticosM extends javax.swing.JPanel {
                 break;
         }
     }
-    
+
     private void darayuda(String texto) {
         switch (pypAdmAsistCon.getIdAgend().getIdPrograma().getId()) {
             case 3:
