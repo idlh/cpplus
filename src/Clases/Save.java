@@ -382,16 +382,17 @@ public class Save {
         }
     }
     
-    public void newproceanti(String id, String idc, String idu, String estado, String fecha) {
+    public void newproceanti(String id, String idc, String idu, String estado, String fecha, String observacion) {
         try {
             bd.ConectarBasedeDatos();
-            bd.preparedStatement = bd.getConnection().prepareStatement("INSERT INTO pyp_procedimiento (id_historiapyp, id_cups, id_usuario, estado, tipo, fecha) VALUES (?, ?, ?, ?, ?, ?)");
+            bd.preparedStatement = bd.getConnection().prepareStatement("INSERT INTO pyp_procedimiento (id_historiapyp, id_cups, id_usuario, estado, tipo, fecha, observacion) VALUES (?, ?, ?, ?, ?, ?, ?)");
             bd.preparedStatement.setString(1, id);
             bd.preparedStatement.setString(2, idc);
             bd.preparedStatement.setString(3, idu);
             bd.preparedStatement.setString(4, estado);
             bd.preparedStatement.setString(5, "1");
             bd.preparedStatement.setString(6, fecha);
+            bd.preparedStatement.setString(7, observacion);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "c015" + e.getMessage(), Save.class.getName(), JOptionPane.INFORMATION_MESSAGE);

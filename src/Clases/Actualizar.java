@@ -71,7 +71,7 @@ public class Actualizar {
                     + "     `pyp_eventose`.`ConflictoC` = ?, `pyp_eventose`.`Salidahijo` = ?, `pyp_eventose`.`DificultadesL` = ?,"
                     + "     `pyp_eventose`.`Muertehijo` = ?, `pyp_eventose`.`decersionE` = ?, `pyp_eventose`.`otros` = ?,"
                     + "     `pyp_eventose`.`totros` = ?, `pyp_eventose`.`userlog` = ?"
-                    + "WHERE `pyp_eventose`.`Idhistoriac` = ?");
+                    + " WHERE `pyp_eventose`.`Idhistoriac` = ?");
             bd.preparedStatement.setString(1, separacion);
             bd.preparedStatement.setString(2, embarazoa);
             bd.preparedStatement.setString(3, fracasoe);
@@ -86,9 +86,9 @@ public class Actualizar {
             bd.preparedStatement.setString(12, id);
             bd.preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "a002 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a002 " + e.getMessage(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "a002 " + e.getMessage().toString(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "a002 " + e.getMessage(), Actualizar.class.getName(), JOptionPane.INFORMATION_MESSAGE);
         } finally {
             bd.DesconectarBasedeDatos();
         }
@@ -2047,5 +2047,37 @@ public class Actualizar {
             JOptionPane.showMessageDialog(null, "Cargar datos laboratorio" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
             return null;
         }
+    }
+
+    public String contar4505procedimientos(String id) {
+        return "SELECT COUNT(*)"
+                + "FROM `database`.`pyp_anticonceptivosp`"
+                + "INNER JOIN `database`.`pyp_historiac`"
+                + "ON(`pyp_historiac`.`id` = `pyp_anticonceptivosp`.`idhistoria`)"
+                + "WHERE `pyp_historiac`.`id` = '" + id + "';";
+    }
+
+    public String contar4505medicamento(String id) {
+        return "SELECT COUNT(*)"
+                + "FROM `database`.`pyp_anticonceptivosm`"
+                + "INNER JOIN `database`.`pyp_historiac`"
+                + "ON(`pyp_historiac`.`id` = `pyp_anticonceptivosm`.`idhistoria`)"
+                + "WHERE `pyp_historiac`.`id` = '" + id + "';";
+    }
+
+    public String cargar4505procedimiento(String id) {
+        return "SELECT `pyp_anticonceptivosp`.`tipo`"
+                + "FROM `database`.`pyp_anticonceptivosp`"
+                + "INNER JOIN `database`.`pyp_historiac`"
+                + "ON(`pyp_historiac`.`id` = `pyp_anticonceptivosp`.`idhistoria`)"
+                + "WHERE `pyp_historiac`.`id` = '" + id + "';";
+    }
+
+    public String cargar4505medicamento(String id) {
+        return "SELECT `pyp_anticonceptivosm`.`tipo`"
+                + "FROM `database`.`pyp_anticonceptivosm`"
+                + "INNER JOIN `database`.`pyp_historiac`"
+                + "ON(`pyp_historiac`.`id` = `pyp_anticonceptivosm`.`idhistoria`)"
+                + "WHERE `pyp_historiac`.`id` = '" + id + "';";
     }
 }
