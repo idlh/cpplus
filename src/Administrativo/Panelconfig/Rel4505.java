@@ -926,7 +926,25 @@ public class Rel4505 extends javax.swing.JPanel {
                             //suministro metodo 
                             for (int i = 0; i < dataparam.length; i++) {
                                 if (dataparam[i][1].toString().equals("60")) {
-
+                                    if (datames[b][0].toString().equals("5")) {
+                                        Object datoproce4505[][] = Funtions.RetornarDatos(act
+                                                .contar4505procedimientos(datames[b][32].toString()));
+                                        if (datoproce4505[0][0].toString().equals("0")) {
+                                            Object datomedi4505[][] = Funtions.RetornarDatos(act
+                                                    .contar4505medicamento(datames[b][32].toString()));
+                                            if (!datomedi4505[0][0].toString().equals("0")) {
+                                                Object datmedi4505[][] = Funtions.RetornarDatos(act
+                                                        .cargar4505medicamento(datames[b][32].toString()));
+                                                suministrometodo = datmedi4505[0][0].toString();
+                                            }
+                                        } else {
+                                            Object datproce4505[][] = Funtions.RetornarDatos(act
+                                                    .cargar4505procedimiento(datames[b][32].toString()));
+                                            suministrometodo = datproce4505[0][0].toString();
+                                        }
+                                    } else {
+                                        suministrometodo = "0";
+                                    }
                                 }
                             }
                             //control prenatal 1
