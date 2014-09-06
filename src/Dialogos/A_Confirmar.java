@@ -336,8 +336,10 @@ public class A_Confirmar extends javax.swing.JDialog {
         jLabel18.setBounds(10, 230, 70, 14);
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel4.add(jScrollPane1);
