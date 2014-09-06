@@ -708,7 +708,7 @@ public class Actualizar {
                     + "        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)"
                     + "    INNER JOIN `database`.`pyp_materna_obstetricos` "
                     + "        ON (`pyp_materna_obstetricos`.`id_materna` = `pyp_materna`.`id`)"
-                    + " WHERE (`pyp_historiac`.`id` ='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1');";
+                    + " WHERE (`pyp_historiac`.`id` ='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1'));";
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Cargar obstetricos" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
             return null;
@@ -794,7 +794,7 @@ public class Actualizar {
                     + "        ON (`pyp_materna`.`id_historia` = `pyp_historiac`.`id`)"
                     + "    INNER JOIN `database`.`pyp_materna_gestaactual` "
                     + "        ON (`pyp_materna_gestaactual`.`id_materna` = `pyp_materna`.`id`)"
-                    + "WHERE (`pyp_historiac`.`id` ='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1');";
+                    + "WHERE (`pyp_historiac`.`id` ='" + id + "' AND (`pyp_historiac`.`estado` = '0' OR `pyp_historiac`.`estado` = '1'));";
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Cargar datos gesta actual" + e.getMessage(), Actualizar.class.getName(), JOptionPane.ERROR_MESSAGE);
             return null;

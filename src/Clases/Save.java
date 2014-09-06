@@ -149,7 +149,7 @@ public class Save {
             return "SELECT `pyp_historiac`.`id`"
                     + " FROM"
                     + " `database`.`pyp_historiac`"
-                    + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "' AND `pyp_historiacl`.`estado` = '0'"
+                    + " WHERE `pyp_historiac`.`id_admisionpyp`='" + id + "' AND `pyp_historiac`.`estado` = '0'"
                     + " GROUP BY `pyp_historiac`.`id` DESC LIMIT 1;";
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "seleccionar id hc final" + e.getMessage(), Save.class.getName(), JOptionPane.ERROR_MESSAGE);
