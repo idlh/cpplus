@@ -66,7 +66,7 @@ public class ListPacientes extends javax.swing.JDialog {
     public Diabetes diabetes;
     public int año = 0, mes = 0, edad, idprograma;
     public String progam, name;
-    public int usuario = 48, userbd;
+    public int usuario = 89, userbd;
     Save sav = new Save();
     Funciones_AD Funciones = new Funciones_AD();
 
