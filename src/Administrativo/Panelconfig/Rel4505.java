@@ -19,6 +19,7 @@ import java.util.Date;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import Resolucion4505.Config_Rel4505;
 
 /**
  *
@@ -30,6 +31,7 @@ public class Rel4505 extends javax.swing.JPanel {
     FuncionesC Funciones = new FuncionesC();
     Actualizar act = new Actualizar();
     Funciones_AD Funtions = new Funciones_AD();
+    Config_Rel4505 rel4505 = new Config_Rel4505();
 
     /**
      * Creates new form Rel4505
@@ -422,6 +424,19 @@ public class Rel4505 extends javax.swing.JPanel {
             String patron = "yyyy-MM-dd", fecini = null, fecfin = null;
             SimpleDateFormat formato = new SimpleDateFormat(patron);
             boolean value = false;
+            String nombreprograma = null, consecutivo = null, fechanacimiento = null, tipodoc = null, identificacion = null, apellido = null, nombre = null, codigoipsprimaria = "051540381702", apellido2, nombre2, etnia = "6", codocupacion = "9999", gestacion = "0", sifilis = "0", htagesta = "0", hipot = "0", genero = null, escolaridad = "1", sintomr = "2", tuberculosis = "0",
+                    lepra = "3", nutri = "3", maltrato = "0", abusos = "2", infecciones = "2", mental = "7", cervix = "0", seno = "2", fluorosis = "2", fechapeso = "1800-01-01", peso = "999",
+                    talla = "999", fechatalla = "1800-01-01", fechapparto = "1845-01-01", egparto = "0", bgc = "0", hepatitisb = "0", pentavalente = "0", polio = "0", dpt = "0", rotavirus = "0",
+                    neumococo = "0", influenza = "0", fiebreA = "0", hepatitisA = "0", tripev = "0", vph = "0", tdtt = "0", placab = "0", fechaparto = "1845-01-01", fechasalidaparto = "1845-01-01",
+                    fechalactancia = "1845-01-01", controlrecien = "1845-01-01", planificacionprimera = "1845-01-01", suministrometodo = "0", fechasuministro = "1845-01-01", controlprenatal1 = "1845-01-01", ncontroles = "0",
+                    ultimocontrol = "1845-01-01", folico = "0", ferroso = "0", calcio = "0", agudezav = "1845-01-01", oftalmologia = "1845-01-01", fechadesnutricion = "1845-01-01", fechamaltrato = "1845-01-01", consultaviolencia = "1845-01-01",
+                    fechanutricion = "1845-01-01", fechapsicologia = "1845-01-01", cyd1vez = "1845-01-01", sulfato = "0", vitaA = "0", joven1 = "1845-01-01", adulto1 = "1845-01-01", preservativosits = "0", preelisavih = "1845-01-01",
+                    postelisavih = "1845-01-01", pdx = "0", fechahb = "1845-01-01", resultadohb = "0", fechassifilis = "1845-01-01", resultadossifilis = "0", fechatelisahiv = "1845-01-01", resultadoelisahiv = "0",
+                    fechaths = "1845-01-01", resultadotsh = "0", tamizajecuellou = "0", citologia = "1845-01-01", citologiabet = "0", calidadmuestra = "0", codigoips = "051540381702", fechacolposcopi = "1845-01-01",
+                    codigoipscolpo = "051540381702", fechabiopsia = "1845-01-01", resultadobiopsia = "0", codigobiopsia = "051540381702", fechamamografia = "1845-01-01", resultadomamografia = "0", codigomamografia = "051540381702",
+                    fechabacaf = "1845-01-01", resultadobacaf = "1845-01-01", bacaf = "0", codigobacaf = "051540381702", fechahemoglobina = "1845-01-01", hemoglobina = "0", fechaglisemia = "1845-01-01", fechacreatinina = "1845-01-01",
+                    creatinina = "0", fechaglicosada = "1845-01-01", glicosada = "0", fechamicroalbuminuria = "1845-01-01", fechahdl = "1845-01-01", fechabaciloscopia = "1845-01-01", baciloscopia = "4",
+                    hipotiroidismo = "0", sgestacional = "0", scongenita = "0", tlepra = "0", leishmaniasis = "1845-01-01";
             if (jCheckBox1.isSelected() == true) {
                 fecini = formato.format(jDateChooser1.getDate());
                 fecfin = formato.format(jDateChooser2.getDate());
@@ -506,20 +521,16 @@ public class Rel4505 extends javax.swing.JPanel {
                         }
                         System.out.println(archivo.getAbsolutePath());
                         FileWriter escribir = new FileWriter(archivo, true);
-                        String nombreprograma = null, codigoipsprimaria = "051540381702", apellido2, nombre2, etnia = "6", codocupacion = "9999", gestacion = "0", sifilis = "0", htagesta = "0", hipot = "0", genero = null, escolaridad = "1", sintomr = "2", tuberculosis = "0",
-                                lepra = "3", nutri = "3", maltrato = "0", abusos = "2", infecciones = "2", mental = "7", cervix = "0", seno = "2", fluorosis = "2", fechapeso = "1800-01-01", peso = "999",
-                                talla = "999", fechatalla = "1800-01-01", fechapparto = "1845-01-01", egparto = "0", bgc = "0", hepatitisb = "0", pentavalente = "0", polio = "0", dpt = "0", rotavirus = "0",
-                                neumococo = "0", influenza = "0", fiebreA = "0", hepatitisA = "0", tripev = "0", vph = "0", tdtt = "0", placab = "0", fechaparto = "1845-01-01", fechasalidaparto = "1845-01-01",
-                                fechalactancia = "1845-01-01", controlrecien = "1845-01-01", planificacionprimera = "1845-01-01", suministrometodo = "0", fechasuministro = "1845-01-01", controlprenatal1 = "1845-01-01", ncontroles = "0",
-                                ultimocontrol = "1845-01-01", folico = "0", ferroso = "0", calcio = "0", agudezav = "1845-01-01", oftalmologia = "1845-01-01", fechadesnutricion = "1845-01-01", fechamaltrato = "1845-01-01", consultaviolencia = "1845-01-01",
-                                fechanutricion = "1845-01-01", fechapsicologia = "1845-01-01", cyd1vez = "1845-01-01", sulfato = "0", vitaA = "0", joven1 = "1845-01-01", adulto1 = "1845-01-01", preservativosits = "0", preelisavih = "1845-01-01",
-                                postelisavih = "1845-01-01", pdx = "0", fechahb = "1845-01-01", resultadohb = "0", fechassifilis = "1845-01-01", resultadossifilis = "0", fechatelisahiv = "1845-01-01", resultadoelisahiv = "0",
-                                fechaths = "1845-01-01", resultadotsh = "0", tamizajecuellou = "0", citologia = "1845-01-01", citologiabet = "0", calidadmuestra = "0", codigoips = "051540381702", fechacolposcopi = "1845-01-01",
-                                codigoipscolpo = "051540381702", fechabiopsia = "1845-01-01", resultadobiopsia = "0", codigobiopsia = "051540381702", fechamamografia = "1845-01-01", resultadomamografia = "0", codigomamografia = "051540381702",
-                                fechabacaf = "1845-01-01", resultadobacaf = "1845-01-01", bacaf = "0", codigobacaf = "051540381702", fechahemoglobina = "1845-01-01", hemoglobina = "0", fechaglisemia = "1845-01-01", fechacreatinina = "1845-01-01",
-                                creatinina = "0", fechaglicosada = "1845-01-01", glicosada = "0", fechamicroalbuminuria = "1845-01-01", fechahdl = "1845-01-01", fechabaciloscopia = "1845-01-01", baciloscopia = "4",
-                                hipotiroidismo = "0", sgestacional = "0", scongenita = "0", tlepra = "0", leishmaniasis = "1845-01-01";
+
                         for (int b = 0; b < datames.length; b++) {
+                            //consecutivo
+                            consecutivo = String.valueOf(b + 1);
+                            //tipo de documento
+                            tipodoc = datames[b][2].toString();
+                            //identificacion
+                            identificacion = datames[b][3].toString();
+                            //apellido
+                            apellido = datames[b][4].toString();
                             //Nombre programa.
                             switch (Integer.parseInt(datames[b][0].toString())) {
                                 case 1:
@@ -596,8 +607,12 @@ public class Rel4505 extends javax.swing.JPanel {
                             } else {
                                 nombre2 = datames[b][7].toString();
                             }
+                            //Primer nombre
+                            nombre = datames[b][6].toString();
                             //Sexo
                             genero = datames[b][9].toString();
+                            //fechanac
+                            fechanacimiento = datames[b][8].toString();
                             //Etnia
                             if (datames[b][10].toString().equals("INDIGENA") || datames[b][11].toString().equals("INDIGENA")) {
                                 etnia = "1";
@@ -728,7 +743,7 @@ public class Rel4505 extends javax.swing.JPanel {
                                 }
                             }
                             //Lepra
-                            for (int i = 0; i < dataparam.length; i++) {
+                            for (int i = 0; i < dataparam.length; i++) {    
                                 if (dataparam[i][1].toString().equals("26")) {
                                     if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
                                             || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
@@ -784,7 +799,7 @@ public class Rel4505 extends javax.swing.JPanel {
                                         abusos = "1";
                                         break;
                                     } else {
-                                        abusos = "2";
+                                         abusos = "2";
                                     }
                                 }
                             }
@@ -806,6 +821,7 @@ public class Rel4505 extends javax.swing.JPanel {
                                     if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
                                             || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
                                         mental = dataparam[i][6].toString();
+                                        break;
                                     } else {
                                         mental = "7";
                                     }
@@ -843,7 +859,7 @@ public class Rel4505 extends javax.swing.JPanel {
                                 fechapeso = "1800-01-01";
                                 peso = "999";
                             } else {
-                                fechapeso = datames[b][18].toString();
+                                fechapeso = datames[b][31].toString();
                                 String de[] = datames[b][19].toString().split("\\.");
                                 peso = de[0];
                             }
@@ -852,7 +868,7 @@ public class Rel4505 extends javax.swing.JPanel {
                                 fechatalla = "1800-01-01";
                                 talla = "999";
                             } else {
-                                fechatalla = datames[b][18].toString();
+                                fechatalla = datames[b][31].toString();
                                 talla = datames[b][20].toString();
                             }
                             //fecha parto
@@ -906,15 +922,15 @@ public class Rel4505 extends javax.swing.JPanel {
                             }
                             //control recien
                             if (datames[b][0].toString().equals("10")) {
-                                controlrecien = datames[b][30].toString();
+                                controlrecien = datames[b][31].toString();
                             } else {
                                 controlrecien = "1845-01-01";
                             }
                             //planificacion y fecha suministro del metodo
                             if (datames[b][0].toString().equals("5")) {
                                 if (datames[b][1].toString().equals("1")) {
-                                    planificacionprimera = datames[b][30].toString();
-                                    fechasuministro = datames[b][30].toString();
+                                    planificacionprimera = datames[b][31].toString();
+                                    fechasuministro = datames[b][31].toString();
                                 } else {
                                     planificacionprimera = "1800-01-01";
                                     fechasuministro = "1800-01-01";
@@ -953,7 +969,7 @@ public class Rel4505 extends javax.swing.JPanel {
                             } else {
                                 if (datames[b][0].toString().equals("9")) {
                                     if (datames[b][1].toString().equals("1")) {
-                                        controlprenatal1 = datames[b][30].toString();
+                                        controlprenatal1 = datames[b][31].toString();
                                     } else {
                                         controlprenatal1 = "1800-01-01";
                                     }
@@ -968,7 +984,6 @@ public class Rel4505 extends javax.swing.JPanel {
                                         ncontroles = "999";
                                     } else {
                                         ncontroles = datames[b][24].toString();
-                                        break;
                                     }
                                 } else {
                                     if (datames[b][24] == null) {
@@ -981,8 +996,7 @@ public class Rel4505 extends javax.swing.JPanel {
                                 ultimocontrol = "1845-01-01";
                             } else {
                                 if (datames[b][0].toString().equals("9")) {
-                                    ultimocontrol = datames[b][30].toString();
-                                    break;
+                                    ultimocontrol = datames[b][31].toString();
                                 } else {
                                     ultimocontrol = "1800-01-01";
                                 }
@@ -997,7 +1011,6 @@ public class Rel4505 extends javax.swing.JPanel {
                                         for (int j = 0; j < dataposo.length; j++) {
                                             if (dataparam[i][5].toString().equals(dataposo[j][0].toString())) {
                                                 folico = "1";
-                                                break;
                                             } else {
                                                 folico = "20";
                                             }
@@ -1015,7 +1028,6 @@ public class Rel4505 extends javax.swing.JPanel {
                                         for (int j = 0; j < dataposo.length; j++) {
                                             if (dataparam[i][5].toString().equals(dataposo[j][0].toString())) {
                                                 ferroso = "1";
-                                                break;
                                             } else {
                                                 ferroso = "20";
                                             }
@@ -1033,7 +1045,6 @@ public class Rel4505 extends javax.swing.JPanel {
                                         for (int j = 0; j < dataposo.length; j++) {
                                             if (dataparam[i][5].toString().equals(dataposo[j][0].toString())) {
                                                 calcio = "1";
-                                                break;
                                             } else {
                                                 calcio = "20";
                                             }
@@ -1045,7 +1056,6 @@ public class Rel4505 extends javax.swing.JPanel {
                             if (datames[b][0].toString().equals("4")) {
                                 agudezav = datames[b][31].toString();
                                 oftalmologia = datames[b][31].toString();
-                                break;
                             } else {
                                 agudezav = "1845-01-01";
                                 oftalmologia = "1845-01-01";
@@ -1465,7 +1475,7 @@ public class Rel4505 extends javax.swing.JPanel {
                                 }
                             }
                             //codigo habilitacion ips mamografia
-                            //fecha toma biopcia bacaf
+                            //fecha toma biopcia bacaf                            System.out.println("66");
                             for (int i = 0; i < dataparam.length; i++) {
                                 if (dataparam[i][1].toString().equals("105")) {
                                     for (int j = 0; j < dataproced.length; j++) {
@@ -1732,21 +1742,127 @@ public class Rel4505 extends javax.swing.JPanel {
                                     }
                                 }
                             }
-                            escribir.write(nombreprograma.toUpperCase() + "|1|999||||2|" + (b + 1) + "|" + codigoipsprimaria + "|" + datames[b][2] + "|" + datames[b][3] + "|" + datames[b][4] + "|" + apellido2
-                                    + "|" + datames[b][6] + "|" + nombre2 + "|" + datames[b][8] + "|" + datames[b][9] + "|" + etnia + "|" + codocupacion + "|" + escolaridad + "|" + gestacion + "|" + sifilis + "|"
-                                    + htagesta + "|" + hipot + "|" + sintomr + "|" + tuberculosis + "|" + lepra + "|" + nutri + "|" + maltrato + "|" + abusos + "|" + infecciones + "|" + mental + "|"
-                                    + cervix + "|" + seno + "|" + fluorosis + "|" + fechapeso + "|" + peso + "|" + fechatalla + "|" + talla + "|" + fechapparto + "|" + egparto + "|" + bgc + "|"
-                                    + hepatitisb + "|" + pentavalente + "|" + polio + "|" + dpt + "|" + rotavirus + "|" + neumococo + "|" + influenza + "|" + fiebreA + "|" + hepatitisA + "|"
-                                    + tripev + "|" + vph + "|" + tdtt + "|" + placab + "|" + fechaparto + "|" + fechasalidaparto + "|" + fechalactancia + "|" + controlrecien + "|"
-                                    + planificacionprimera + "|" + suministrometodo + "|" + fechasuministro + "|" + controlprenatal1 + "|" + ncontroles + "|" + ultimocontrol + "|"
-                                    + folico + "|" + ferroso + "|" + calcio + "|" + agudezav + "|" + oftalmologia + "|" + fechadesnutricion + "|" + fechamaltrato + "|" + consultaviolencia + "|"
-                                    + fechanutricion + "|" + fechapsicologia + "|" + cyd1vez + "|" + sulfato + "|" + vitaA + "|" + joven1 + "|" + adulto1 + "|" + preservativosits + "|" + preelisavih + "|"
-                                    + postelisavih + "|" + pdx + "|" + fechahb + "|" + resultadohb + "|" + fechassifilis + "|" + resultadossifilis + "|" + fechatelisahiv + "|" + resultadoelisahiv + "|"
-                                    + fechaths + "|" + resultadotsh + "|" + tamizajecuellou + "|" + citologia + "|" + citologiabet + "|" + calidadmuestra + "|" + codigoips + "|" + fechacolposcopi + "|"
-                                    + codigoipscolpo + "|" + fechabiopsia + "|" + resultadobiopsia + "|" + codigobiopsia + "|" + fechamamografia + "|" + resultadomamografia + "|"
-                                    + codigomamografia + "|" + fechabacaf + "|" + resultadobacaf + "|" + bacaf + "|" + codigobacaf + "|" + fechahemoglobina + "|" + hemoglobina + "|"
-                                    + fechaglisemia + "|" + fechacreatinina + "|" + creatinina + "|" + fechaglicosada + "|" + glicosada + "|" + fechamicroalbuminuria + "|" + fechahdl + "|"
-                                    + fechabaciloscopia + "|" + baciloscopia + "|" + hipotiroidismo + "|" + sgestacional + "|" + scongenita + "|" + tlepra + "|" + leishmaniasis + ln);
+                            rel4505.setAbusos(abusos);
+                            rel4505.setAdulto1(adulto1);
+                            rel4505.setAgudezav(agudezav);
+                            rel4505.setApellido(apellido);
+                            rel4505.setApellido2(apellido2);
+                            rel4505.setBacaf(bacaf);
+                            rel4505.setBaciloscopia(baciloscopia);
+                            rel4505.setBgc(bgc);
+                            rel4505.setCalcio(calcio);
+                            rel4505.setCalidadmuestra(calidadmuestra);
+                            rel4505.setCervix(cervix);
+                            rel4505.setCitologia(citologia);
+                            rel4505.setCitologiabet(citologiabet);
+                            rel4505.setCodigobacaf(codigobacaf);
+                            rel4505.setCodigobiopsia(codigobiopsia);
+                            rel4505.setCodigoips(codigoips);
+                            rel4505.setCodigoipscolpo(codigoipscolpo);
+                            rel4505.setCodigoipsprimaria(codigoipsprimaria);
+                            rel4505.setCodigomamografia(codigomamografia);
+                            rel4505.setCodocupacion(codocupacion);
+                            rel4505.setConsecutivo(consecutivo);
+                            rel4505.setConsultaviolencia(consultaviolencia);
+                            rel4505.setControlprenatal1(controlprenatal1);
+                            rel4505.setControlrecien(controlrecien);
+                            rel4505.setCreatinina(creatinina);
+                            rel4505.setCyd1vez(cyd1vez);
+                            rel4505.setDpt(dpt);
+                            rel4505.setEgparto(egparto);
+                            rel4505.setEscolaridad(escolaridad);
+                            rel4505.setEtnia(etnia);
+                            rel4505.setFechabacaf(fechabacaf);
+                            rel4505.setFechabaciloscopia(fechabaciloscopia);
+                            rel4505.setFechabiopsia(fechabiopsia);
+                            rel4505.setFechacolposcopi(fechacolposcopi);
+                            rel4505.setFechacreatinina(fechacreatinina);
+                            rel4505.setFechadesnutricion(fechadesnutricion);
+                            rel4505.setFechaglicosada(fechaglicosada);
+                            rel4505.setFechaglisemia(fechaglisemia);
+                            rel4505.setFechahb(fechahb);
+                            rel4505.setFechahdl(fechahdl);
+                            rel4505.setFechahemoglobina(fechahemoglobina);
+                            rel4505.setFechalactancia(fechalactancia);
+                            rel4505.setFechamaltrato(fechamaltrato);
+                            rel4505.setFechamamografia(fechamamografia);
+                            rel4505.setFechamicroalbuminuria(fechamicroalbuminuria);
+                            rel4505.setFechanacimiento(fechanacimiento);
+                            rel4505.setFechanutricion(fechanutricion);
+                            rel4505.setFechaparto(fechaparto);
+                            rel4505.setFechapeso(fechapeso);
+                            rel4505.setFechapparto(fechapparto);
+                            rel4505.setFechapsicologia(fechapsicologia);
+                            rel4505.setFechasalidaparto(fechasalidaparto);
+                            rel4505.setFechassifilis(fechassifilis);
+                            rel4505.setFechasuministro(fechasuministro);
+                            rel4505.setFechatalla(fechatalla);
+                            rel4505.setFechatelisahiv(fechatelisahiv);
+                            rel4505.setFechaths(fechaths);
+                            rel4505.setFerroso(ferroso);
+                            rel4505.setFiebreA(fiebreA);
+                            rel4505.setFluorosis(fluorosis);
+                            rel4505.setFolico(folico);
+                            rel4505.setGenero(genero);
+                            rel4505.setGestacion(gestacion);
+                            rel4505.setGlicosada(glicosada);
+                            rel4505.setHemoglobina(hemoglobina);
+                            rel4505.setHepatitisA(hepatitisA);
+                            rel4505.setHepatitisb(hepatitisb);
+                            rel4505.setHipot(hipot);
+                            rel4505.setHipotiroidismo(hipotiroidismo);
+                            rel4505.setHtagesta(htagesta);
+                            rel4505.setIdentificacion(identificacion);
+                            rel4505.setInfecciones(infecciones);
+                            rel4505.setInfluenza(influenza);
+                            rel4505.setJoven1(joven1);
+                            rel4505.setLeishmaniasis(leishmaniasis);
+                            rel4505.setLepra(lepra);
+                            rel4505.setMaltrato(maltrato);
+                            rel4505.setMental(mental);
+                            rel4505.setNcontroles(ncontroles);
+                            rel4505.setNeumococo(neumococo);
+                            rel4505.setNombre(nombre);
+                            rel4505.setNombre2(nombre2);
+                            rel4505.setNombreprograma(nombreprograma);
+                            rel4505.setNutri(nutri);
+                            rel4505.setOftalmologia(oftalmologia);
+                            rel4505.setPdx(pdx);
+                            rel4505.setPentavalente(pentavalente);
+                            rel4505.setPeso(peso);
+                            rel4505.setPlacab(placab);
+                            rel4505.setPlanificacionprimera(planificacionprimera);
+                            rel4505.setPolio(polio);
+                            rel4505.setPostelisavih(postelisavih);
+                            rel4505.setPreelisavih(preelisavih);
+                            rel4505.setPreservativosits(preservativosits);
+                            rel4505.setResultadobacaf(resultadobacaf);
+                            rel4505.setResultadobiopsia(resultadobiopsia);
+                            rel4505.setResultadoelisahiv(resultadoelisahiv);
+                            rel4505.setResultadohb(resultadohb);
+                            rel4505.setResultadomamografia(resultadomamografia);
+                            rel4505.setResultadossifilis(resultadossifilis);
+                            rel4505.setResultadotsh(resultadotsh);
+                            rel4505.setRotavirus(rotavirus);
+                            rel4505.setScongenita(scongenita);
+                            rel4505.setSeno(seno);
+                            rel4505.setSgestacional(sgestacional);
+                            rel4505.setSifilis(sifilis);
+                            rel4505.setSintomr(sintomr);
+                            rel4505.setSulfato(sulfato);
+                            rel4505.setSuministrometodo(suministrometodo);
+                            rel4505.setTalla(talla);
+                            rel4505.setTamizajecuellou(tamizajecuellou);
+                            rel4505.setTdtt(tdtt);
+                            rel4505.setTipodoc(tipodoc);
+                            rel4505.setTlepra(tlepra);
+                            rel4505.setTripev(tripev);
+                            rel4505.setTuberculosis(tuberculosis);
+                            rel4505.setUltimocontrol(ultimocontrol);
+                            rel4505.setVitaA(vitaA);
+                            rel4505.setVph(vph);
+                            //control prenatal y planificacion no generan ¬¬
+                            escribir.write(rel4505.Rel4505(jComboBox1) + ln);
                         }
                         escribir.close();
                     } catch (IOException e) {
@@ -1817,20 +1933,6 @@ public class Rel4505 extends javax.swing.JPanel {
                         }
                         System.out.println(archivo.getAbsolutePath());
                         FileWriter escribir = new FileWriter(archivo, true);
-                        String nombreprograma = null, codigoipsprimaria = "051540381702", apellido2, nombre2, etnia = "6", codocupacion = "9999", gestacion = "0", sifilis = "0", htagesta = "0", hipot = "0", genero = null, escolaridad = "1", sintomr = "2", tuberculosis = "0",
-                                lepra = "3", nutri = "3", maltrato = "0", abusos = "2", infecciones = "2", mental = "7", cervix = "0", seno = "2", fluorosis = "2", fechapeso = "1800-01-01", peso = "999",
-                                talla = "999", fechatalla = "1800-01-01", fechapparto = "1845-01-01", egparto = "0", bgc = "0", hepatitisb = "0", pentavalente = "0", polio = "0", dpt = "0", rotavirus = "0",
-                                neumococo = "0", influenza = "0", fiebreA = "0", hepatitisA = "0", tripev = "0", vph = "0", tdtt = "0", placab = "0", fechaparto = "1845-01-01", fechasalidaparto = "1845-01-01",
-                                fechalactancia = "1845-01-01", controlrecien = "1845-01-01", planificacionprimera = "1845-01-01", suministrometodo = "0", fechasuministro = "1845-01-01", controlprenatal1 = "1845-01-01", ncontroles = "0",
-                                ultimocontrol = "1845-01-01", folico = "0", ferroso = "0", calcio = "0", agudezav = "1845-01-01", oftalmologia = "1845-01-01", fechadesnutricion = "1845-01-01", fechamaltrato = "1845-01-01", consultaviolencia = "1845-01-01",
-                                fechanutricion = "1845-01-01", fechapsicologia = "1845-01-01", cyd1vez = "1845-01-01", sulfato = "0", vitaA = "0", joven1 = "1845-01-01", adulto1 = "1845-01-01", preservativosits = "0", preelisavih = "1845-01-01",
-                                postelisavih = "1845-01-01", pdx = "0", fechahb = "1845-01-01", resultadohb = "0", fechassifilis = "1845-01-01", resultadossifilis = "0", fechatelisahiv = "1845-01-01", resultadoelisahiv = "0",
-                                fechaths = "1845-01-01", resultadotsh = "0", tamizajecuellou = "0", citologia = "1845-01-01", citologiabet = "0", calidadmuestra = "0", codigoips = "051540381702", fechacolposcopi = "1845-01-01",
-                                codigoipscolpo = "051540381702", fechabiopsia = "1845-01-01", resultadobiopsia = "0", codigobiopsia = "051540381702", fechamamografia = "1845-01-01", resultadomamografia = "0", codigomamografia = "051540381702",
-                                fechabacaf = "1845-01-01", resultadobacaf = "1845-01-01", bacaf = "0", codigobacaf = "051540381702", fechahemoglobina = "1845-01-01", hemoglobina = "0", fechaglisemia = "1845-01-01", fechacreatinina = "1845-01-01",
-                                creatinina = "0", fechaglicosada = "1845-01-01", glicosada = "0", fechamicroalbuminuria = "1845-01-01", fechahdl = "1845-01-01", fechabaciloscopia = "1845-01-01", baciloscopia = "4",
-                                hipotiroidismo = "0", sgestacional = "0", scongenita = "0", tlepra = "0", leishmaniasis = "1845-01-01";
-
                         for (int b = 0; b < datatri.length; b++) {
                             if (datatri[b][5].toString().equals("")) {
                                 apellido2 = "NONE";

@@ -446,8 +446,8 @@ public class C_Agendar extends javax.swing.JPanel {
             validar = 0;
             jPanel6.setVisible(true);
             CDM10A();
-        } else if ((programa.getId() == 1) && (getInteger(v[0]) < 10)
-                || (getInteger(v[0]) > 29) && (v[1].toString().equals("Años"))) {
+        } else if ((programa.getId() == 1) && ((getInteger(v[0]) < 10)
+                || (getInteger(v[0]) > 29)) && (v[1].toString().equals("Años"))) {
             validar = 0;
             jPanel6.setVisible(true);
             DTCD10_29A();
