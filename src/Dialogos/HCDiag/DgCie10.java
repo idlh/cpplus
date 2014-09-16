@@ -18,6 +18,7 @@ import javax.swing.table.TableRowSorter;
  * @author Alvaro Monsalve
  */
 public class DgCie10 extends javax.swing.JDialog {
+
     public DefaultTableModel modelo;
     private final EntityManagerFactory factory;
     private final Object dato[] = null;
@@ -29,32 +30,34 @@ public class DgCie10 extends javax.swing.JDialog {
         this.factory = factory;
         ModeloListadoPaciente();
     }
-    
-    private DefaultTableModel getModelo(){
+
+    private DefaultTableModel getModelo() {
         DefaultTableModel model = new DefaultTableModel(
-        null, new String [] {"entidad","Codigo", "Descripcion"}){
-            Class[] types = new Class []{
-                    StaticCie10.class,
-                    java.lang.String.class,
-                    java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false,false,false
-            };
-            @Override
-            public Class getColumnClass(int columnIndex) {
-               return types [columnIndex];
-            }
-            @Override
-            public boolean isCellEditable(int rowIndex, int colIndex){
-               return canEdit [colIndex];
-            }
-        };  
+                null, new String[]{"entidad", "Codigo", "Descripcion"}) {
+                    Class[] types = new Class[]{
+                        StaticCie10.class,
+                        java.lang.String.class,
+                        java.lang.String.class
+                    };
+                    boolean[] canEdit = new boolean[]{
+                        false, false, false
+                    };
+
+                    @Override
+                    public Class getColumnClass(int columnIndex) {
+                        return types[columnIndex];
+                    }
+
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int colIndex) {
+                        return canEdit[colIndex];
+                    }
+                };
         return model;
     }
-    
-    private void ModeloListadoPaciente(){
-        modelo =getModelo();
+
+    private void ModeloListadoPaciente() {
+        modelo = getModelo();
         jTable1.setModel(modelo);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -62,18 +65,23 @@ public class DgCie10 extends javax.swing.JDialog {
         Funciones_AD.setSizeColumnas(jTable1, new int[]{1}, new int[]{60});
         listar();
     }
-    
-    private void listar(){
+
+    private void listar() {
         StaticCie10JpaController staticcie10EJB = new StaticCie10JpaController(factory);
         List<StaticCie10> listaCie10 = staticcie10EJB.findStaticCie10Entities();
-        for(int i=0;i<listaCie10.size();i++){
-                modelo.addRow(dato);
-                modelo.setValueAt(listaCie10.get(i), i, 0);
-                modelo.setValueAt(listaCie10.get(i).getCodigo(), i, 1);
-                modelo.setValueAt(listaCie10.get(i).getDescripcion(), i, 2);
+        for (int i = 0; i < listaCie10.size(); i++) {
+            modelo.addRow(dato);
+            modelo.setValueAt(listaCie10.get(i), i, 0);
+            modelo.setValueAt(listaCie10.get(i).getCodigo(), i, 1);
+            modelo.setValueAt(listaCie10.get(i).getDescripcion(), i, 2);
+        }
+        for (int a = 0; a < modelo.getRowCount(); a++) {
+            if(modelo.getValueAt(a, 1).toString().equals("0000")){
+                modelo.removeRow(a);
+            }
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -222,8 +230,8 @@ public class DgCie10 extends javax.swing.JDialog {
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         TableRowSorter sorter = new TableRowSorter(modelo);
-        sorter.setRowFilter (RowFilter.regexFilter(jTextField1.getText().toUpperCase()));
-        jTable1.setRowSorter (sorter);
+        sorter.setRowFilter(RowFilter.regexFilter(jTextField1.getText().toUpperCase()));
+        jTable1.setRowSorter(sorter);
     }//GEN-LAST:event_jTextField1KeyReleased
 
     private void jTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseEntered
@@ -239,12 +247,12 @@ public class DgCie10 extends javax.swing.JDialog {
     }//GEN-LAST:event_jTable1MouseMoved
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        jPanel2.setBackground(new Color(125,164,222));
+        jPanel2.setBackground(new Color(125, 164, 222));
         jLabel1.setForeground(Color.white);
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        jPanel2.setBackground(new Color(255,227,255));
+        jPanel2.setBackground(new Color(255, 227, 255));
         jLabel1.setForeground(Color.black);
     }//GEN-LAST:event_jButton1MouseExited
 
