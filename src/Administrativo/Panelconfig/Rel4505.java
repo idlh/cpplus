@@ -743,14 +743,32 @@ public class Rel4505 extends javax.swing.JPanel {
                                 }
                             }
                             //Lepra
-                            for (int i = 0; i < dataparam.length; i++) {    
+                            for (int i = 0; i < dataparam.length; i++) {
                                 if (dataparam[i][1].toString().equals("26")) {
-                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString())) {
                                         lepra = dataparam[i][6].toString();
+                                        tlepra = datames[b][33].toString();
                                         break;
                                     } else {
-                                        lepra = "3";
+                                        if (datames[b][15].toString().equals(dataparam[i][5].toString())) {
+                                            lepra = dataparam[i][6].toString();
+                                            tlepra = datames[b][34].toString();
+                                            break;
+                                        } else {
+                                            if (datames[b][16].toString().equals(dataparam[i][5].toString())) {
+                                                lepra = dataparam[i][6].toString();
+                                                tlepra = datames[b][35].toString();
+                                                break;
+                                            } else {
+                                                if (datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                                    lepra = dataparam[i][6].toString();
+                                                    tlepra = datames[b][36].toString();
+                                                    break;
+                                                } else {
+                                                    lepra = "3";
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -799,7 +817,7 @@ public class Rel4505 extends javax.swing.JPanel {
                                         abusos = "1";
                                         break;
                                     } else {
-                                         abusos = "2";
+                                        abusos = "2";
                                     }
                                 }
                             }
