@@ -1728,39 +1728,43 @@ public class Actualizar {
     public String rel4505mes(String nombreentidad, String fechaini, String fechafin) {
         try {
             return "SELECT"
-                    + "                    `pyp_adm_agend`.`id_programa`"
-                    + "                    , `pyp_adm_asist_con`.`primera_vez`"
-                    + "                    , `info_paciente`.`tipo_doc`"
-                    + "                    , `info_paciente`.`num_doc`"
-                    + "                    , `info_paciente`.`apellido1`"
-                    + "                    , `info_paciente`.`apellido2`"
-                    + "                    , `info_paciente`.`nombre1`"
-                    + "                    , `info_paciente`.`nombre2`"
-                    + "                    ,DATE_FORMAT(`info_paciente`.`fecha_nacimiento`, '%Y-%m-%d') AS fecha"
-                    + "                    , `info_paciente`.`genero`"
-                    + "                    , `info_paciente`.`raza`"
-                    + "                    , `info_paciente`.`etnia`"
-                    + "                    , `pyp_adm_agend`.`escolaridad`"
-                    + "                    , `pyp_eventose`.`decersionE` AS `gestacion`"
-                    + "                    , `static_cie10`.`codigo`"
-                    + "                    , `static_cie10_1`.`codigo`"
-                    + "                    , `static_cie10_2`.`codigo`"
-                    + "                    , `static_cie10_3`.`codigo`"
-                    + "                    , `pyp_adm_agend`.`fecha` AS `fechaatencion`"
-                    + "                    , `pyp_explofisica`.`peso`"
-                    + "                    , `pyp_explofisica`.`talla`"
-                    + "                    , `pyp_materna_gestaactual`.`fpp`"
-                    + "                    , `pyp_crecimiento`.`egparto`"
-                    + "                    , `pyp_antecedentesg`.`metodoactual`"
-                    + "                    , `pyp_contolmaterno`.`ncontrol`"
-                    + "                    , `pyp_materna_gestaactual`.`fe`"
-                    + "                    , `pyp_materna_gestaactual`.`folatos`"
-                    + "                    , `pyp_materna_gestaactual`.`calcio`"
-                    + "                    , `pyp_recienniacido`.`tshneonatal`"
-                    + "                    , `calc_edad`(`info_paciente`.`fecha_nacimiento`) as edada"
-                    + "                    ,`pyp_antecedentesg`.`FUP`"
-                    + "                    ,`pyp_adm_asist_con`.`fecha` AS `faten`"
-                    + "                    ,`pyp_historiac`.`id`"
+                    + "                    `pyp_adm_agend`.`id_programa`"//0
+                    + "                    , `pyp_adm_asist_con`.`primera_vez`"//1
+                    + "                    , `info_paciente`.`tipo_doc`"//2
+                    + "                    , `info_paciente`.`num_doc`"//3
+                    + "                    , `info_paciente`.`apellido1`"//4
+                    + "                    , `info_paciente`.`apellido2`"//5
+                    + "                    , `info_paciente`.`nombre1`"//6
+                    + "                    , `info_paciente`.`nombre2`"//7
+                    + "                    ,DATE_FORMAT(`info_paciente`.`fecha_nacimiento`, '%Y-%m-%d') AS fecha"//8
+                    + "                    , `info_paciente`.`genero`"//9
+                    + "                    , `info_paciente`.`raza`"//10
+                    + "                    , `info_paciente`.`etnia`"//11
+                    + "                    , `pyp_adm_agend`.`escolaridad`"//12
+                    + "                    , `pyp_eventose`.`decersionE` AS `gestacion`"//13
+                    + "                    , `static_cie10`.`codigo`"//14
+                    + "                    , `static_cie10_1`.`codigo`"//15
+                    + "                    , `static_cie10_2`.`codigo`"//16
+                    + "                    , `static_cie10_3`.`codigo`"//17
+                    + "                    , `pyp_adm_agend`.`fecha` AS `fechaatencion`"//18
+                    + "                    , `pyp_explofisica`.`peso`"//19
+                    + "                    , `pyp_explofisica`.`talla`"//20
+                    + "                    , `pyp_materna_gestaactual`.`fpp`"//21
+                    + "                    , `pyp_crecimiento`.`egparto`"//22
+                    + "                    , `pyp_antecedentesg`.`metodoactual`"//23
+                    + "                    , `pyp_contolmaterno`.`ncontrol`"//24
+                    + "                    , `pyp_materna_gestaactual`.`fe`"//25
+                    + "                    , `pyp_materna_gestaactual`.`folatos`"//26
+                    + "                    , `pyp_materna_gestaactual`.`calcio`"//27
+                    + "                    , `pyp_recienniacido`.`tshneonatal`"//28
+                    + "                    , `calc_edad`(`info_paciente`.`fecha_nacimiento`) as edada"//29
+                    + "                    , `pyp_antecedentesg`.`FUP`"//30
+                    + "                    , `pyp_adm_asist_con`.`fecha` AS `faten`"//31
+                    + "                    , `pyp_historiac`.`id`"//32
+                    + "                    , `pyp_historiac`.`tratamiento1`"//33
+                    + "                    , `pyp_historiac`.`tratamiento2`"//34
+                    + "                    , `pyp_historiac`.`tratamiento3`"//35
+                    + "                    , `pyp_historiac`.`tratamiento4`"//36
                     + "                FROM"
                     + "                    `database`.`pyp_adm_asist_con`"
                     + "                    INNER JOIN `database`.`pyp_adm_agend` "
@@ -1835,9 +1839,13 @@ public class Actualizar {
                     + "                    , `pyp_materna_gestaactual`.`calcio`"
                     + "                    , `pyp_recienniacido`.`tshneonatal`"
                     + "                    , `calc_edad`(`info_paciente`.`fecha_nacimiento`) as edada"
-                    + "                    ,`pyp_antecedentesg`.`FUP`"
-                    + "                    ,`pyp_adm_asist_con`.`fecha` AS `faten`"
-                    + "                    ,`pyp_historiac`.`id`"
+                    + "                    , `pyp_antecedentesg`.`FUP`"
+                    + "                    , `pyp_adm_asist_con`.`fecha` AS `faten`"
+                    + "                    , `pyp_historiac`.`id`"
+                    + "                    , `pyp_historiac`.`tratamiento1`"
+                    + "                    , `pyp_historiac`.`tratamiento2`"
+                    + "                    , `pyp_historiac`.`tratamiento3`"
+                    + "                    , `pyp_historiac`.`tratamiento4`"
                     + "                FROM"
                     + "                    `database`.`pyp_adm_asist_con`"
                     + "                    INNER JOIN `database`.`pyp_adm_agend` "
