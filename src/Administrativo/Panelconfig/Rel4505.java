@@ -658,8 +658,7 @@ public class Rel4505 extends javax.swing.JPanel {
                             //Sifilis
                             for (int i = 0; i < dataparam.length; i++) {
                                 if (dataparam[i][1].toString().equals("21")) {
-                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString())) {
                                         if (datames[b][0].toString().equals("10")) {
                                             sifilis = dataparam[i][6].toString();
                                         } else {
@@ -671,7 +670,46 @@ public class Rel4505 extends javax.swing.JPanel {
                                             }
                                         }
                                     } else {
-                                        sifilis = "0";
+                                        if (datames[b][15].toString().equals(dataparam[i][5].toString())) {
+                                            if (datames[b][0].toString().equals("10")) {
+                                                sifilis = dataparam[i][6].toString();
+                                            } else {
+                                                if (!datames[b][9].toString().equals("M")) {
+                                                    sifilis = dataparam[i][6].toString();
+                                                    break;
+                                                } else {
+                                                    sifilis = "3";
+                                                }
+                                            }
+                                        } else {
+                                            if (datames[b][16].toString().equals(dataparam[i][5].toString())) {
+                                                if (datames[b][0].toString().equals("10")) {
+                                                    sifilis = dataparam[i][6].toString();
+                                                } else {
+                                                    if (!datames[b][9].toString().equals("M")) {
+                                                        sifilis = dataparam[i][6].toString();
+                                                        break;
+                                                    } else {
+                                                        sifilis = "3";
+                                                    }
+                                                }
+                                            } else {
+                                                if (datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                                    if (datames[b][0].toString().equals("10")) {
+                                                        sifilis = dataparam[i][6].toString();
+                                                    } else {
+                                                        if (!datames[b][9].toString().equals("M")) {
+                                                            sifilis = dataparam[i][6].toString();
+                                                            break;
+                                                        } else {
+                                                            sifilis = "3";
+                                                        }
+                                                    }
+                                                } else {
+                                                    sifilis = "0";
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -698,23 +736,57 @@ public class Rel4505 extends javax.swing.JPanel {
                                     }
                                 }
                             }
-                            //Hipotiroidismo
+                            //Hipotiroidismo + tratamiento
                             for (int i = 0; i < dataparam.length; i++) {
                                 if (dataparam[i][1].toString().equals("23")) {
-                                    if (datames[b][14].toString().equals(dataparam[i][5].toString()) || datames[b][15].toString().equals(dataparam[i][5].toString())
-                                            || datames[b][16].toString().equals(dataparam[i][5].toString()) || datames[b][17].toString().equals(dataparam[i][5].toString())) {
-                                        int año = 0;
-                                        String ed[] = datames[b][29].toString().split(" ");
-                                        String an = ed[0];
-                                        año = Integer.parseInt(an);
+                                    int año = 0;
+                                    String ed[] = datames[b][29].toString().split(" ");
+                                    String an = ed[0];
+                                    año = Integer.parseInt(an);
+                                    if (datames[b][14].toString().equals(dataparam[i][5].toString())) {
                                         if (año > 3) {
                                             hipot = "0";
+                                            hipotiroidismo = "0";
                                             break;
                                         } else {
                                             hipot = "1";
+                                            hipotiroidismo = datames[b][33].toString();
                                         }
                                     } else {
-                                        hipot = "2";
+                                        if (datames[b][15].toString().equals(dataparam[i][5].toString())) {
+                                            if (año > 3) {
+                                                hipot = "0";
+                                                hipotiroidismo = "0";
+                                                break;
+                                            } else {
+                                                hipot = "1";
+                                                hipotiroidismo = datames[b][34].toString();
+                                            }
+                                        } else {
+                                            if (datames[b][16].toString().equals(dataparam[i][5].toString())) {
+                                                if (año > 3) {
+                                                    hipot = "0";
+                                                    hipotiroidismo = "0";
+                                                    break;
+                                                } else {
+                                                    hipot = "1";
+                                                    hipotiroidismo = datames[b][35].toString();
+                                                }
+                                            } else {
+                                                if (datames[b][17].toString().equals(dataparam[i][5].toString())) {
+                                                    if (año > 3) {
+                                                        hipot = "0";
+                                                        hipotiroidismo = "0";
+                                                        break;
+                                                    } else {
+                                                        hipot = "1";
+                                                        hipotiroidismo = datames[b][36].toString();
+                                                    }
+                                                } else {
+                                                    hipot = "2";
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -742,7 +814,7 @@ public class Rel4505 extends javax.swing.JPanel {
                                     }
                                 }
                             }
-                            //Lepra
+                            //Lepra + tratamiento
                             for (int i = 0; i < dataparam.length; i++) {
                                 if (dataparam[i][1].toString().equals("26")) {
                                     if (datames[b][14].toString().equals(dataparam[i][5].toString())) {
@@ -1493,7 +1565,7 @@ public class Rel4505 extends javax.swing.JPanel {
                                 }
                             }
                             //codigo habilitacion ips mamografia
-                            //fecha toma biopcia bacaf                            System.out.println("66");
+                            //fecha toma biopcia bacaf
                             for (int i = 0; i < dataparam.length; i++) {
                                 if (dataparam[i][1].toString().equals("105")) {
                                     for (int j = 0; j < dataproced.length; j++) {
