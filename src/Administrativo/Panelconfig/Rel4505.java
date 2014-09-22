@@ -1832,6 +1832,10 @@ public class Rel4505 extends javax.swing.JPanel {
                                     }
                                 }
                             }
+                            /*Les agradezco por la oportunidad y por lo aprendido, fue un buen año,
+                            gracias por la paciencia y los regaños, las mamaderas de gallo y cada cosa
+                            que se hacia en la ofi, les deseo muchisimos exitos :)*/. /*pd: el punto es aproposito*/
+                            
                             rel4505.setAbusos(abusos);
                             rel4505.setAdulto1(adulto1);
                             rel4505.setAgudezav(agudezav);
